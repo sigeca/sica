@@ -1,0 +1,124 @@
+<h2> <?php echo $title; ?> </h2>
+<hr/>
+<?php echo form_open("calendarioacademico/save") ?>
+
+
+
+
+
+<div class="form-group row">
+    <label class="col-md-2 col-form-label"> Periodo académico:</label>
+	<div class="col-md-10">
+		<?php
+$options= array('--Select--');
+foreach ($periodoacademicos as $row){
+	$options[$row->idperiodoacademico]= $row->nombrecorto;
+}
+
+ echo form_dropdown($name="idperiodoacademico",$options, set_select('--Select--','default_value'),array('id'=>'idperiodoacademico'));  
+		?>
+	</div> 
+</div>
+
+
+
+
+
+<div class="form-group row">
+    <label class="col-md-2 col-form-label"> Nombre:</label>
+	<div class="col-md-10">
+		<?php
+$eys_arrinput=array('name'=>'nombre','value'=>'', "style"=>"width:500px");
+ echo form_input($eys_arrinput); 
+		?>
+	</div> 
+</div>
+
+
+
+
+<div class="form-group row">
+    <label class="col-md-2 col-form-label"> Fechadesde:</label>
+	<div class="col-md-10">
+		<?php
+      echo form_input( array("name"=>'fechadesde',"id"=>'fechadesde',"value"=>'','type'=>'date','placeholder'=>'fecha')); 
+		?>
+	</div> 
+</div>
+
+<div class="form-group row">
+    <label class="col-md-2 col-form-label"> Fechahasta:</label>
+	<div class="col-md-10">
+		<?php
+      echo form_input( array("name"=>'fechahasta',"id"=>'fechahasta',"value"=>'','type'=>'date','placeholder'=>'fecha')); 
+		?>
+	</div> 
+</div>
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table>
+
+
+
+
+<tr>
+<td colspan="2"> <hr><?php echo form_submit("submit", "Guardar"); ?><?php echo anchor("calendarioacademico","Atras") ?> </td>
+</tr>
+
+</table>
+<?php echo form_close();?>
+
+
+
+  <script>
+
+
+
+function get_periodoacademico() {
+	var idperiodoacademico = $('select[name=idperiodoacademico]').val();
+    $.ajax({
+        url: "<?php echo site_url('calendarioacademico/get_periodoacademico') ?>",
+        data: {idperiodoacademico: idperiodoacademico},
+        method: 'POST',
+	async : true,
+        dataType : 'json',
+        success: function(data){
+        var html = '';
+        var i;
+        for(i=0; i<data.length; i++){
+        html += '<option value='+data[i].idperiodoacademico+'>'+data[i].nombrecorto+'</option>';
+        }
+        $('#idperiodoacademico').html(html);
+
+
+        },
+      error: function (xhr, ajaxOptions, thrownError) {
+        alert(xhr.status);
+        alert(thrownError);
+      }
+
+    })
+
+}
+
+
+  </script>
+
+
