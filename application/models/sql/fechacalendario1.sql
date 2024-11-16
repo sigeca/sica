@@ -1,0 +1,18 @@
+use educayso_facae;
+drop view fechacalendario1;
+create view fechacalendario1 as 
+select fechacalendario.idfechacalendario,
+fechacalendario.fechacalendario,
+fechacalendario.actividad,
+fechacalendario.detalle,
+fechacalendario.resultados,
+fechacalendario.hito ,
+periodoacademico.idperiodoacademico,
+estadoactividad.color,
+estadoactividad.nombre as elestado,
+periodoacademico.nombrecorto as elperiodoacademico,
+calendarioacademico.idcalendarioacademico 
+from fechacalendario,calendarioacademico,periodoacademico,estadoactividad 
+where fechacalendario.idcalendarioacademico=calendarioacademico.idcalendarioacademico 
+and fechacalendario.idestadoactividad=estadoactividad.idestadoactividad 
+and calendarioacademico.idperiodoacademico=periodoacademico.idperiodoacademico; 

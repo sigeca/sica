@@ -1,0 +1,4 @@
+
+use educayso_facae;
+drop view   referenciasasignatura1;
+create view referenciasasignatura1 as select referenciasasignatura.idreferenciasasignatura,referenciasasignatura.titulo,referenciasasignatura.apa,referenciasasignatura.bibtex,referenciasasignatura.idasignatura,asignatura.nombre as laasignatura,tiporeferenciasasignatura.idtiporeferenciasasignatura, tiporeferenciasasignatura.nombre as tipo,referenciasasignatura.url  from referenciasasignatura,tiporeferenciasasignatura,asignatura  where referenciasasignatura.idtiporeferenciasasignatura=tiporeferenciasasignatura.idtiporeferenciasasignatura and referenciasasignatura.idasignatura=asignatura.idasignatura;
