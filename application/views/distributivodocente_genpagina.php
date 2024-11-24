@@ -503,8 +503,8 @@ $data=$data.'<button class="toggle-btn" onclick="toggleContenido(this)">+</butto
 	}
 
 if($row->numeronivelacademico != $nivel){
-    $data=$data.'</div></div></div></div><br>';
-    $data=$data.'<button class="toggle-btn" onclick="toggleContenido(this)">+</button>'.$row->nivel.'.
+    $data=$data.'</div></div></div></div>';
+    $data=$data.'<br><button class="toggle-btn" onclick="toggleContenido(this)">+</button>'.$row->nivel.'.
     <div class="contenido">
         <div class="album py-5 bg-light">
             <div class="container">
@@ -566,28 +566,28 @@ if($file_headers[0] == 'HTTP/1.1 404 Not Found') {
 $data=$data.'</div>
 	    <div class="card-body" style="background-color:'.$arrcolor[$row->numeronivelacademico].'"  >
 <div style="display: flex; align-items: center;  font-weight: bold; color: #333; margin-top: 10px;">
-    <span style="color:red;  margin-right: 5px;">código:</span>
+    <span style="color:red; margin-right: 5px; width: 100px; display: inline-block;">código:</span>
     <span>'.$row->codigo. ' </span>
 </div>
 <div  id="'.str_replace(' ', '', $row->laasignatura.' - '.$row->paralelo).'"   style="display: flex; align-items: flex-start;  font-weight: bold; color: #333; margin-top: 10px;">
-    <span style="color:red;  margin-right: 5px;">Asignatura:</span>
+    <span style="color:red; margin-right: 5px; width: 100px; display: inline-block;">Asignatura:</span>
     <span>'.$row->laasignatura. ' </span>
 </div>
 <div style="display: flex; align-items: center;  font-weight: bold; color: #333; margin-top: 10px;">
-    <span style="color:red;  margin-right: 5px;">Nivel:</span>
+    <span style="color:red; margin-right: 5px; width: 100px; display: inline-block;">Nivel:</span>
     <span>'.$row->nivel. ' </span>
 </div>
 <div style="display: flex; align-items: center;  font-weight: bold; color: #333; margin-top: 10px;">
-    <span style="color:red;  margin-right: 5px;">Paralelo:</span>
+    <span style="color:red; margin-right: 5px; width: 100px; display: inline-block;">Paralelo:</span>
     <span>'.$row->paralelo. ' </span>
 </div>
 <div style="display: flex; align-items: center;  font-weight: bold; color: #333; margin-top: 10px;">
-    <span style="color:red;  margin-right: 5px;">Area:</span>
+    <span style="color:red; margin-right: 5px; width: 100px; display: inline-block;">Área:</span>
     <span>'.$row->area. ' </span>
 </div>
 
-
-<button class="toggle-btn" onclick="toggleContenido(this)">+</button>Docente-Instructor.<br>
+<br>
+<button class="toggle-btn" onclick="toggleContenido(this)">+</button>Docente-Instructor.
 <div class="contenido">
  
 <div  id="'.str_replace(' ', '', $row->eldocente.' - '.$row->paralelo).'"   style="display: flex; align-items: flex-start;  font-weight: bold; color: #333; margin-top: 10px;">
