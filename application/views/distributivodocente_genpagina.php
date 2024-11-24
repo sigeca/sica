@@ -569,12 +569,17 @@ if($file_headers[0] == 'HTTP/1.1 404 Not Found') {
 
 $data=$data.'</div>
 	    <div class="card-body" style="background-color:'.$arrcolor[$row->numeronivelacademico].'"  >
-<div style="display: flex; align-items: center; font-size: 24px; font-weight: bold; color: #333; margin-top: 10px;">
-    <span style="margin-right: 5px;">Código:</span>
+<div style="display: flex; align-items: center;  font-weight: bold; color: #333; margin-top: 10px;">
+    <span style="color:red;  margin-right: 5px;">Código:</span>
     <span>'.$row->codigo. ' </span>
 </div>
+<div  id="'.str_replace(' ', '', $row->laasignatura.' - '.$row->paralelo).'"   style="display: flex; align-items: center;  font-weight: bold; color: #333; margin-top: 10px;">
+    <span style="color:red;  margin-right: 5px;">Código:</span>
+    <span>'.$row->laasignatura. ' </span>
+</div>
 
-	    <div id="'.str_replace(' ', '', $row->laasignatura.' - '.$row->paralelo).'"      style="font-size:24px; font-weight:bold; color:#333;  margin-top:10px;" >'.$row->laasignatura.' </div>	
+
+
 
 <button class="toggle-btn" onclick="toggleContenido(this)">+</button>Contenidos minimos.
 <div class="contenido">
