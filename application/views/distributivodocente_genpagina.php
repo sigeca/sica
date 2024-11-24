@@ -325,10 +325,10 @@ $calificaciones1 = <calificaciones1>; // Ejemplo de porcentaje de informes final
             const contenido = button.nextElementSibling;
 
             // Verificar el estado actual y alternar entre mostrar y ocultar
-            if (contenido.style.display === 'none' || contenido.style.display === '') {
-                contenido.style.display = 'block';
+            if (contenido.style.display === "none" || contenido.style.display === "") {
+                contenido.style.display = "block";
             } else {
-                contenido.style.display = 'none';
+                contenido.style.display = "none";
             }
         }
 
