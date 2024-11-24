@@ -504,7 +504,7 @@ $data=$data.'<button class="toggle-btn" onclick="toggleContenido(this)">+</butto
 
 if($row->numeronivelacademico != $nivel){
     if( $nivel>0){
-        $data=$data.'</div>';
+        $data=$data.'</div></div>';
     }   
     $data=$data.'<button class="toggle-btn" onclick="toggleContenido(this)">+</button>'.$row->nivel.'.
     <div class="contenido">
