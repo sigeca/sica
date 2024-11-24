@@ -489,7 +489,7 @@ $data=$data.'
 </div>
  </div>';
 
-$data=$data.'<button class="toggle-btn" onclick="toggleContenido(this)">+</button>'.$row->nivel.'.
+$data=$data.'<br><button class="toggle-btn" onclick="toggleContenido(this)">+</button>'.$row->nivel.'.
 <div class="contenido">
   <div class="album py-5 bg-light">
     <div class="container">
@@ -610,7 +610,7 @@ $data=$data.'</div>
 
 
 
-<button class="toggle-btn" onclick="toggleContenido(this)">+</button>Contenidos mínimos.
+<br><button class="toggle-btn" onclick="toggleContenido(this)">+</button>Contenidos mínimos.
 <div class="contenido">
     <div class="texto-transversal">
       <h2>Contenidos minimos</h2>
@@ -728,7 +728,7 @@ $data=$data.'</div>
 			}
 
 
-			$data=$data.'<p>';
+			$data=$data.'<br><p>';
 			if(isset($row->silabopdf)){
 			    $data=$data.'[<a href="https://repositorioutlvte.org/Repositorio/'.$row->silabopdf.'"  '.$disable1.'><i class="fas fa-file-pdf" style="font-size:24px" ></i> <span style="color:'.$color1.'" >Sillabus</span></a>] - ';
             }
