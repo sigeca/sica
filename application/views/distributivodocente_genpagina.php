@@ -473,7 +473,7 @@ $data=$data.'
 
 
 
-<button class="toggle-btn" onclick="toggleContenido(this)">+</button>Estadística de cumplimiento.<br>
+<button class="toggle-btn" onclick="toggleContenido(this)">+</button>Estadística de cumplimiento.
 <div class="contenido">
 <div class="col">
      <div class="card shadow-sm">
