@@ -461,22 +461,29 @@ $data='
 $data=$data.'
   <section class="py-5 text-center container">
     <div class="row py-lg-5" style="display:flex;  align-items:center; justify-content: center;" >
+<div>
+        <h1 class="fw-light">'.$malla[0]->eldepartamento.'</h1>  
+        <p class="lead text-muted">Cursos regulares</p>
+        <p class="lead text-muted">Área:'.$row->area.'   -  Periodo:'.$row->elperiodoacademico.' :: '.$elorden.'.</p>
+      </div>
 <div style=" flex-basis: 40%"  >
 <img src="https://repositorioutlvte.org/Repositorio/qr/'.$elperiodoacademico.'-'.$idareaconocimiento.$qridx.'.png" height="150px">
 </div>
       <div >
-        <h1 class="fw-light">'.$malla[0]->eldepartamento.'</h1>  
-        <p class="lead text-muted">Área:'.$row->area.'   -  Periodo:'.$row->elperiodoacademico.' :: '.$elorden.'.</p>
  <p class="lead text-muted"> <a href="https://repositorioutlvte.org/Repositorio/aulas/aulas'.$row->elperiodoacademico.'.jpg"> <i class="fas fa-map-marker-alt" style="font-size:24px" ></i> Ubicación del las aulas </a></p>
       </div>
     </div>
   </section>
 
 
+
+<button class="toggle-btn" onclick="toggleContenido(this)">+</button>Contenidos mínimos.
+<div class="contenido">
+
 <div class="col">
-          <div class="card shadow-sm">
- <center> <h1 class="fw-light" >Gráficos de Cumplimiento de Entrega de Documentos</h1></center>
- <div class="chart-container">
+     <div class="card shadow-sm">
+        <center> <h1 class="fw-light" >Gráficos de Cumplimiento de Entrega de Documentos</h1></center>
+    <div class="chart-container">
         <div class="chart-box">
             <canvas id="silabosChart"></canvas>
         </div>
@@ -484,10 +491,9 @@ $data=$data.'
             <canvas id="planessemestralesChart"></canvas>
         </div>
     </div>
-      		</div>
-    		</div>
-
-
+   	</div>
+</div>
+ </div>
 
 
 
@@ -627,8 +633,6 @@ $data=$data.'</div>
       <p>'.$row->resultadosaprendizaje.'.</p>
     </div>
   </div>';
-
-
 
 				$disable1='';
 				$color1='green';
