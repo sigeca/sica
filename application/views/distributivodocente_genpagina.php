@@ -503,13 +503,13 @@ $data=$data.'
 
 	}
 
-if($row->idnivel != $nivel){
+if($row->numeronivelacademico != $nivel){
  if( $nivel>0){
     $data=$data.'</div>';
 }   
 $data=$data.'<button class="toggle-btn" onclick="toggleContenido(this)">+</button>'.$row->nivel.'.
 <div class="contenido">';
-    $nivel=$row->idnivel;
+    $nivel=$row->numeronivelacademico;
 }
 
 $data=$data.'<div class="col">
@@ -811,9 +811,9 @@ foreach($jornadadocente as $rowj){
 
 
 }
-if($row->idnivel != $nivel){
+if($row->numeronivelacademico != $nivel){
     $data=$data.'</div>';
-    $nivel=$row->idnivel;
+    $nivel=$row->numeronivelacademico;
 }
 
 $dataresu='
