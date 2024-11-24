@@ -503,16 +503,16 @@ $data=$data.'<button class="toggle-btn" onclick="toggleContenido(this)">+</butto
 	}
 
 if($row->numeronivelacademico != $nivel){
- if( $nivel>0){
-    $data=$data.'</div></div></div></div>';
-}   
-$data=$data.'<button class="toggle-btn" onclick="toggleContenido(this)">+</button>'.$row->nivel.'.
-<div class="contenido">
-  <div class="album py-5 bg-light">
-    <div class="container">
-      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">';
-    $nivel=$row->numeronivelacademico;
-}
+    if( $nivel>0){
+        $data=$data.'</div></div></div>';
+    }   
+    $data=$data.'<button class="toggle-btn" onclick="toggleContenido(this)">+</button>'.$row->nivel.'.
+    <div class="contenido">
+        <div class="album py-5 bg-light">
+            <div class="container">
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">';
+                $nivel=$row->numeronivelacademico;
+    }
 
 $data=$data.'<div class="col">
           <div class="card shadow-sm">
@@ -802,6 +802,7 @@ foreach($jornadadocente as $rowj){
                 <small class="text-muted"><b>Modalidad:</b>Presencial</small>
 
               </div>
+              </div>
 
         ';
 
@@ -810,10 +811,7 @@ foreach($jornadadocente as $rowj){
 
 
 }
-if($row->numeronivelacademico != $nivel){
-    $data=$data.'</div></div></div></div>';
-    $nivel=$row->numeronivelacademico;
-}
+    $data=$data.'</div></div></div>';
 
 $dataresu='
 
