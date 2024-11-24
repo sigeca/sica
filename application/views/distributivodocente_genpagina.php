@@ -82,6 +82,7 @@ overflow:hidden;
 
 
 contenedor {
+  display:none;
   position: relative;
   width: 600px;
   height: 400px;
@@ -142,6 +143,32 @@ contenedor {
         }
 
 
+
+
+
+/* Estilo para los contenedores ocultos */
+         .contenido {
+             display: none; /* Ocultarlo por defecto */
+             border: 1px solid #ccc;
+             padding: 10px;
+             margin-top: 10px;
+             background-color: #f9f9f9;
+         }
+
+         /* Estilo para el botón */
+         .toggle-btn {
+             background-color: #007BFF;
+             color: white;
+             border: none;
+             padding: 10px;
+             cursor: pointer;
+             font-size: 16px;
+             border-radius: 5px;
+         }
+
+         .toggle-btn:hover {
+            background-color: #0056b3;
+         }
 
 
 
@@ -291,7 +318,23 @@ $calificaciones1 = <calificaciones1>; // Ejemplo de porcentaje de informes final
                 }
             }
         });
-    </script>
+ 
+// Función para mostrar/ocultar el contenido asociado al botón
+        function toggleContenido(button) {
+            // Obtener el siguiente elemento hermano del botón (el div con clase "contenido")
+            const contenido = button.nextElementSibling;
+
+            // Verificar el estado actual y alternar entre mostrar y ocultar
+            if (contenido.style.display === 'none' || contenido.style.display === '') {
+                contenido.style.display = 'block';
+            } else {
+                contenido.style.display = 'none';
+            }
+        }
+
+
+
+   </script>
 
 
 
@@ -529,13 +572,16 @@ $data=$data.'</div>
 	    <div    style="font-size:24px; font-weight:bold; color:#333;  margin-top:10px;" >Código:'.$row->codigo.' </div>	
 	    <div id="'.str_replace(' ', '', $row->laasignatura.' - '.$row->paralelo).'"      style="font-size:24px; font-weight:bold; color:#333;  margin-top:10px;" >'.$row->laasignatura.' </div>	
 
-<div class="contenedor">
+<button class="toggle-btn" onclick="toggleContenido()">+</button>Contenidos minimos.
+<div class="contenido">
     <div class="texto-transversal">
       <h2>Contenidos minimos</h2>
       <p>'.$row->contenidosminimos.'.</p>
     </div>
   </div>
-<div class="contenedor">
+
+<button class="toggle-btn" onclick="toggleContenido()">+</button>Resultados de aprendizaje.
+<div class="contenido">
     <div class="texto-transversal">
       <h2>Resultado de aprendizaje</h2>
       <p>'.$row->resultadosaprendizaje.'.</p>
