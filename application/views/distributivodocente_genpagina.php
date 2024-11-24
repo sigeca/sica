@@ -386,10 +386,6 @@ foreach($asignaturadocentes as $row){
 //	}
 
 
-
-
-
-
 	if($row->idareaconocimiento != $idareaconocimiento and $inicio==0)
 {
 	 	$data=$data.$data1;
@@ -477,12 +473,10 @@ $data=$data.'
 
 
 
-<button class="toggle-btn" onclick="toggleContenido(this)">+</button>Contenidos mínimos.
+<button class="toggle-btn" onclick="toggleContenido(this)">+</button>Estadística de cumplimiento.
 <div class="contenido">
-
 <div class="col">
      <div class="card shadow-sm">
-        <center> <h1 class="fw-light" >Gráficos de Cumplimiento de Entrega de Documentos</h1></center>
     <div class="chart-container">
         <div class="chart-box">
             <canvas id="silabosChart"></canvas>
@@ -498,29 +492,25 @@ $data=$data.'
 
 
 
-
-
-
-
-
   <div class="album py-5 bg-light">
     <div class="container">
-
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-
-
 
 ';
 
-
-
-
-
+     $nivel=0;
 	 $inicio=0;
 
 	}
 
-
+if($row->idnivel != $nivel){
+ if( $nivel>0){
+    $data=$data.'</div>';
+}   
+$data=$data.'<button class="toggle-btn" onclick="toggleContenido(this)">+</button>'.$row->nivel.'.
+<div class="contenido">';
+    $nivel=$row->idnivel;
+}
 
 $data=$data.'<div class="col">
           <div class="card shadow-sm">
@@ -736,12 +726,6 @@ $data=$data.'</div>
 			}
 
 
-
-
-
-
-
-
 			$data=$data.'<p>';
 			if(isset($row->silabopdf)){
 			    $data=$data.'[<a href="https://repositorioutlvte.org/Repositorio/'.$row->silabopdf.'"  '.$disable1.'><i class="fas fa-file-pdf" style="font-size:24px" ></i> <span style="color:'.$color1.'" >Sillabus</span></a>] - ';
@@ -820,20 +804,17 @@ foreach($jornadadocente as $rowj){
           </div>
         </div>
 
-
-
         ';
-/*
-    if($j>100){
 
-        break;
 
-    }
- */
+
 
 
 }
-
+if($row->idnivel != $nivel){
+    $data=$data.'</div>';
+    $nivel=$row->idnivel;
+}
 
 $dataresu='
 
