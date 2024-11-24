@@ -473,7 +473,7 @@ $data=$data.'
 
 
 
-<button class="toggle-btn" onclick="toggleContenido(this)">+</button>Estadística de cumplimiento.
+<button class="toggle-btn" onclick="toggleContenido(this)">+</button>Estadística de cumplimiento.<br>
 <div class="contenido">
 <div class="col">
      <div class="card shadow-sm">
@@ -498,13 +498,12 @@ $data=$data.'<button class="toggle-btn" onclick="toggleContenido(this)">+</butto
 ';
 
     $nivel=$row->numeronivelacademico;
-     $nivel=0;
 	 $inicio=0;
 
 	}
 
 if($row->numeronivelacademico != $nivel){
- if( $nivel>1){
+ if( $nivel>0){
     $data=$data.'</div></div></div></div>';
 }   
 $data=$data.'<button class="toggle-btn" onclick="toggleContenido(this)">+</button>'.$row->nivel.'.
