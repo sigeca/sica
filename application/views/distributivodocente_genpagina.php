@@ -503,7 +503,7 @@ $data=$data.'<button class="toggle-btn" onclick="toggleContenido(this)">+</butto
 	}
 
 if($row->numeronivelacademico != $nivel){
-    $data=$data.'</div></div></div><br>';
+    $data=$data.'</div></div></div></div><br>';
     $data=$data.'<button class="toggle-btn" onclick="toggleContenido(this)">+</button>'.$row->nivel.'.
     <div class="contenido">
         <div class="album py-5 bg-light">
