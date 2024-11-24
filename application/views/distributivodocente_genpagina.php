@@ -569,18 +569,22 @@ if($file_headers[0] == 'HTTP/1.1 404 Not Found') {
 
 $data=$data.'</div>
 	    <div class="card-body" style="background-color:'.$arrcolor[$row->numeronivelacademico].'"  >
-	    <div    style="font-size:24px; font-weight:bold; color:#333;  margin-top:10px;" >Código:'.$row->codigo.' </div>	
+<div style="display: flex; align-items: center; font-size: 24px; font-weight: bold; color: #333; margin-top: 10px;">
+    <span style="margin-right: 5px;">Código:</span>
+    <span>'.$row->codigo. ' </span>
+</div>
+
 	    <div id="'.str_replace(' ', '', $row->laasignatura.' - '.$row->paralelo).'"      style="font-size:24px; font-weight:bold; color:#333;  margin-top:10px;" >'.$row->laasignatura.' </div>	
 
-<button class="toggle-btn" onclick="toggleContenido()">+</button>Contenidos minimos.
+<button class="toggle-btn" onclick="toggleContenido(this)">+</button>Contenidos minimos.
 <div class="contenido">
     <div class="texto-transversal">
       <h2>Contenidos minimos</h2>
       <p>'.$row->contenidosminimos.'.</p>
     </div>
   </div>
-
-<button class="toggle-btn" onclick="toggleContenido()">+</button>Resultados de aprendizaje.
+<br>
+<button class="toggle-btn" onclick="toggleContenido(this)">+</button>Resultados de aprendizaje.
 <div class="contenido">
     <div class="texto-transversal">
       <h2>Resultado de aprendizaje</h2>
