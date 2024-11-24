@@ -626,7 +626,7 @@ $data=$data.'</div>
       <h2>Resultado de aprendizaje</h2>
       <p>'.$row->resultadosaprendizaje.'.</p>
     </div>
-  </div>
+  </div>';
 
 
 
