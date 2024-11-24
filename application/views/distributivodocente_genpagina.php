@@ -570,18 +570,49 @@ if($file_headers[0] == 'HTTP/1.1 404 Not Found') {
 $data=$data.'</div>
 	    <div class="card-body" style="background-color:'.$arrcolor[$row->numeronivelacademico].'"  >
 <div style="display: flex; align-items: center;  font-weight: bold; color: #333; margin-top: 10px;">
-    <span style="color:red;  margin-right: 5px;">Código:</span>
+    <span style="color:red;  margin-right: 5px;">código:</span>
     <span>'.$row->codigo. ' </span>
 </div>
-<div  id="'.str_replace(' ', '', $row->laasignatura.' - '.$row->paralelo).'"   style="display: flex; align-items: center;  font-weight: bold; color: #333; margin-top: 10px;">
-    <span style="color:red;  margin-right: 5px;">Código:</span>
+<div  id="'.str_replace(' ', '', $row->laasignatura.' - '.$row->paralelo).'"   style="display: flex; align-items: flex-start;  font-weight: bold; color: #333; margin-top: 10px;">
+    <span style="color:red;  margin-right: 5px;">Asignatura:</span>
     <span>'.$row->laasignatura. ' </span>
+</div>
+<div  id="'.str_replace(' ', '', $row->eldocente.' - '.$row->paralelo).'"   style="display: flex; align-items: flex-start;  font-weight: bold; color: #333; margin-top: 10px;">
+    <span style="color:red;  margin-right: 5px;">Instructor:</span>
+    <span>'.$row->eldocente. ' </span>
+</div>
+<div style="display: flex; align-items: center;  font-weight: bold; color: #333; margin-top: 10px;">
+    <span style="color:red;  margin-right: 5px;">correo:</span>
+    <span>'.$row->correo. ' </span>
+</div>
+<div style="display: flex; align-items: center;  font-weight: bold; color: #333; margin-top: 10px;">
+    <span style="color:red;  margin-right: 5px;">pregrado:</span>
+    <span>'.$row->pregrado. ' </span>
+</div>
+<div style="display: flex; align-items: center;  font-weight: bold; color: #333; margin-top: 10px;">
+    <span style="color:red;  margin-right: 5px;">Maestría:</span>
+    <span>'.$row->maestria. ' </span>
+</div>
+<div style="display: flex; align-items: center;  font-weight: bold; color: #333; margin-top: 10px;">
+    <span style="color:red;  margin-right: 5px;">Nivel:</span>
+    <span>'.$row->nivel. ' </span>
+</div>
+<div style="display: flex; align-items: center;  font-weight: bold; color: #333; margin-top: 10px;">
+    <span style="color:red;  margin-right: 5px;">Paralelo:</span>
+    <span>'.$row->paralelo. ' </span>
+</div>
+<div style="display: flex; align-items: center;  font-weight: bold; color: #333; margin-top: 10px;">
+    <span style="color:red;  margin-right: 5px;">Area:</span>
+    <span>'.$row->area. ' </span>
 </div>
 
 
 
 
-<button class="toggle-btn" onclick="toggleContenido(this)">+</button>Contenidos minimos.
+
+
+
+<button class="toggle-btn" onclick="toggleContenido(this)">+</button>Contenidos mínimos.
 <div class="contenido">
     <div class="texto-transversal">
       <h2>Contenidos minimos</h2>
@@ -596,14 +627,6 @@ $data=$data.'</div>
       <p>'.$row->resultadosaprendizaje.'.</p>
     </div>
   </div>
-
-	     <p><span style="color:red;" >Instructor : </span><span  id="'.str_replace(' ', '',$row->eldocente.' - '.$row->paralelo).'"  style="font-size:16px; font-weight:bold;">'.$row->eldocente.'.</span> <br>
-	     <span style="color:red;" >correo : </span><span style="font-size:16px; font-weight:bold;">'.$row->correo.'.</span> </p></p>
-	     <p><span style="color:red;" >pregrado : </span><span style="font-size:16px; font-weight:bold;">'.$row->pregrado.'.</span> <br>
-	     <span style="color:red;" >maestria : </span><span style="font-size:16px; font-weight:bold;">'.$row->maestria.'.</span> <br></p>
-              <b>Nivel:</b>'.$row->nivel.'.<br>
-              <b>Paralelo : </b> '.$row->paralelo.'".<br>
-              <b>Area:</b>'.$row->area.'.<br>';
 
 
 
