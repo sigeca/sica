@@ -573,6 +573,23 @@ $data=$data.'</div>
     <span style="color:red;  margin-right: 5px;">Asignatura:</span>
     <span>'.$row->laasignatura. ' </span>
 </div>
+<div style="display: flex; align-items: center;  font-weight: bold; color: #333; margin-top: 10px;">
+    <span style="color:red;  margin-right: 5px;">Nivel:</span>
+    <span>'.$row->nivel. ' </span>
+</div>
+<div style="display: flex; align-items: center;  font-weight: bold; color: #333; margin-top: 10px;">
+    <span style="color:red;  margin-right: 5px;">Paralelo:</span>
+    <span>'.$row->paralelo. ' </span>
+</div>
+<div style="display: flex; align-items: center;  font-weight: bold; color: #333; margin-top: 10px;">
+    <span style="color:red;  margin-right: 5px;">Area:</span>
+    <span>'.$row->area. ' </span>
+</div>
+
+
+<button class="toggle-btn" onclick="toggleContenido(this)">+</button>Docente-Instructor.<br>
+<div class="contenido">
+ 
 <div  id="'.str_replace(' ', '', $row->eldocente.' - '.$row->paralelo).'"   style="display: flex; align-items: flex-start;  font-weight: bold; color: #333; margin-top: 10px;">
     <span style="color:red;  margin-right: 5px;">Instructor:</span>
     <span>'.$row->eldocente. ' </span>
@@ -589,22 +606,7 @@ $data=$data.'</div>
     <span style="color:red;  margin-right: 5px;">Maestría:</span>
     <span>'.$row->maestria. ' </span>
 </div>
-<div style="display: flex; align-items: center;  font-weight: bold; color: #333; margin-top: 10px;">
-    <span style="color:red;  margin-right: 5px;">Nivel:</span>
-    <span>'.$row->nivel. ' </span>
 </div>
-<div style="display: flex; align-items: center;  font-weight: bold; color: #333; margin-top: 10px;">
-    <span style="color:red;  margin-right: 5px;">Paralelo:</span>
-    <span>'.$row->paralelo. ' </span>
-</div>
-<div style="display: flex; align-items: center;  font-weight: bold; color: #333; margin-top: 10px;">
-    <span style="color:red;  margin-right: 5px;">Area:</span>
-    <span>'.$row->area. ' </span>
-</div>
-
-
-
-
 
 
 
@@ -622,7 +624,7 @@ $data=$data.'</div>
       <h2>Resultado de aprendizaje</h2>
       <p>'.$row->resultadosaprendizaje.'.</p>
     </div>
-  </div>';
+  </div><br>';
 
 				$disable1='';
 				$color1='green';
