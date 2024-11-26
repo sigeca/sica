@@ -271,7 +271,7 @@ function uploadFiles(url1) {
     			if (status === 0 || (status >= 200 && status < 400)) {
       				// The request has been completed successfully
 				var response = xhttp.responseText;
-          			alert(response + "archivo cargado");
+          		alert(response + " -archivo cargado"+iddocumento);
 				archivo_cargado(iddocumento);
 
 				history.back(); //Go to the previous page
