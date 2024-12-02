@@ -6,18 +6,29 @@ class Documento extends CI_Controller{
       parent::__construct();
     $this->load->database();
     $this->load->helper('form');
-      $this->load->model('documento_model');
-      $this->load->model('tipodocu_model');
-      $this->load->model('destinodocumento_model');
-      $this->load->model('ordenador_model');
-      $this->load->model('directorio_model');
-      $this->load->model('persona_model');
-      $this->load->model('documento_estado_model');
-      $this->load->model('tipodocumentodocumento_model');
-      $this->load->model('portafolio_model');
 	}
 
+
+// Método para cargar un modelo solo cuando sea necesario
+    private function load_model($model_name) {
+        if (!isset($this->$model_name)) {
+            $this->load->model($model_name);
+        }
+    }
+
+
+
+
+
 	public function index(){
+
+	    $this->load_model('documento_model');
+	    $this->load_model('tipodocumentodocumento_model');
+	    $this->load_model('tipodocu_model');
+	    $this->load_model('destinodocumento_model');
+	    $this->load_model('ordenador_model');
+	    $this->load_model('directorio_model');
+
  		if(isset($this->session->userdata['logged_in'])){
 			$data['documento'] = $this->documento_model->elultimo();
 		    $data['tipodocumentodocumentos'] =$this->tipodocumentodocumento_model->tipodocumentodocumento1($data['documento']['iddocumento'])->result();
@@ -48,6 +59,12 @@ class Documento extends CI_Controller{
 
 	public function add()
 	{
+        $this->load_model('documento_model');
+	    $this->load_model('persona_model');
+	    $this->load_model('tipodocu_model');
+	    $this->load_model('destinodocumento_model');
+	    $this->load_model('ordenador_model');
+
 		$data['title']="Usted esta Creando un nuevo Documento";
 		$data['tipodocus']= $this->tipodocu_model->lista_tipodocu()->result();
 		$data['destinodocumentos']= $this->destinodocumento_model->lista_destinodocumento()->result();
@@ -65,6 +82,7 @@ class Documento extends CI_Controller{
 // ==============================================
 	public function  save()
 	{
+        $this->load_model('documento_model');
 	 	$array_item=array(
 		 	
 		 	'iddocumento' => $this->input->post('iddocumento'),
@@ -92,6 +110,7 @@ class Documento extends CI_Controller{
 	public function get_parametros()
 	{
 
+        $this->load_model('documento_model');
  	$iddocumento = $this->input->get('iddocumento');
 	header("Content-type: application/json; charset=utf-8");
  	echo json_encode($this->documento_model->parametros_documento($iddocumento));
@@ -103,6 +122,12 @@ class Documento extends CI_Controller{
 
 	public function actual(){
 
+        $this->load_model('documento_model');
+	    $this->load_model('persona_model');
+	    $this->load_model('tipodocu_model');
+	    $this->load_model('destinodocumento_model');
+	    $this->load_model('ordenador_model');
+	    $this->load_model('directorio_model');
 
 
 	 // $data['documento_list']=$this->documento_model->lista_documento()->result();
@@ -126,6 +151,10 @@ class Documento extends CI_Controller{
 /////////////////////////////////
 	public function listar()
 	{
+        $this->load_model('documento_model');
+	    $this->load_model('portafolio_model');
+	    $this->load_model('tipodocu_model');
+	    $this->load_model('destinodocumento_model');
 	
   		$data['documentos'] = $this->documento_model->lista_documentos1()->result();
   		$data['tipodocus']= $this->tipodocu_model->lista_tipodocu()->result();
@@ -140,6 +169,7 @@ class Documento extends CI_Controller{
 
 	function documento_data()
 	{
+        $this->load_model('documento_model');
 		$draw= intval($this->input->get("draw"));
 		$draw= intval($this->input->get("start"));
 		$draw= intval($this->input->get("length"));
@@ -191,6 +221,8 @@ class Documento extends CI_Controller{
 	public function listarxtipodocu()
 
 	{
+        $this->load_model('documento_model');
+	    $this->load_model('tipodocu_model');
 	
   		$data['documento'] = $this->documento_model->lista_documentos()->result();
   		$data['tipodocus']= $this->tipodocu_model->lista_tipodocu()->result();
@@ -255,6 +287,11 @@ class Documento extends CI_Controller{
 
 public function elprimero()
 {
+        $this->load_model('documento_model');
+	    $this->load_model('tipodocumentodocumento_model');
+	    $this->load_model('destinodocumento_model');
+	    $this->load_model('ordenador_model');
+	    $this->load_model('directorio_model');
 
 	$data['documento'] = $this->documento_model->elprimero();
   if(!empty($data))
@@ -287,6 +324,12 @@ public function elprimero()
 public function elultimo()
 {
 
+        $this->load_model('documento_model');
+	    $this->load_model('tipodocumentodocumento_model');
+	    $this->load_model('tipodocu_model');
+	    $this->load_model('destinodocumento_model');
+	    $this->load_model('ordenador_model');
+	    $this->load_model('directorio_model');
 	$data['documento'] = $this->documento_model->elultimo();
   if(!empty($data))
   {
@@ -322,6 +365,15 @@ public function elultimo()
 
 
 public function siguiente(){
+
+
+        $this->load_model('documento_model');
+	    $this->load_model('tipodocumentodocumento_model');
+	    $this->load_model('tipodocu_model');
+	    $this->load_model('destinodocumento_model');
+	    $this->load_model('ordenador_model');
+	    $this->load_model('directorio_model');
+
  // $data['documento_list']=$this->documento_model->lista_documento()->result();
 	$data['documento'] = $this->documento_model->siguiente($this->uri->segment(3))->row_array();
   $data['tipodocus']= $this->tipodocu_model->lista_tipodocu()->result();
@@ -340,6 +392,15 @@ public function siguiente(){
 
 
 public function anterior(){
+
+
+        $this->load_model('documento_model');
+	    $this->load_model('tipodocumentodocumento_model');
+	    $this->load_model('tipodocu_model');
+	    $this->load_model('destinodocumento_model');
+	    $this->load_model('ordenador_model');
+	    $this->load_model('directorio_model');
+
  // $data['documento_list']=$this->documento_model->lista_documento()->result();
 	$data['documento'] = $this->documento_model->anterior($this->uri->segment(3))->row_array();
   $data['tipodocus']= $this->tipodocu_model->lista_tipodocu()->result();
@@ -366,6 +427,13 @@ public function anterior(){
 
 	public function edit()
 	{
+
+        $this->load_model('documento_model');
+	    $this->load_model('tipodocumentodocumento_model');
+	    $this->load_model('tipodocu_model');
+	    $this->load_model('destinodocumento_model');
+	    $this->load_model('ordenador_model');
+	    $this->load_model('directorio_model');
     		$data['documento'] = $this->documento_model->documento($this->uri->segment(3))->row_array();
     		$data['tipodocus']= $this->tipodocu_model->lista_tipodocu()->result();
     		$data['destinodocumentos']= $this->destinodocumento_model->lista_destinodocumento()->result();
