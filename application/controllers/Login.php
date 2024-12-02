@@ -5,26 +5,20 @@ Class Login extends CI_Controller {
 public function __construct() {
 parent::__construct();
 
-
-// Load database
-	$this->load->model('login_model');
-	$this->load->model('persona_model');
-	$this->load->model('perfil_model');
-	$this->load->model('acceso_model');
-	$this->load->model('modulo_model');
-	$this->load->model('nivelacceso_model');
-	$this->load->model('institucion_model');
-      $this->load->model('sexo_model');
-      $this->load->model('pais_model');
-      	$this->load->model('evento_model');
-      	$this->load->model('pagina_model');
-      	$this->load->model('asistencia_model');
-//$this->load->model('programa_model');
 }
+
+// Método para cargar un modelo solo cuando sea necesario
+    private function load_model($model_name) {
+        if (!isset($this->$model_name)) {
+            $this->load->model($model_name);
+        }
+    }
+
+
 
 // Show login page
 public function index() {
-	
+	$this->load_model('evento_model');
 	 $data['eventos']= $this->evento_model->lista_eventos_open(0)->result();
 	 $this->load->view('template/page_header.php');
 	 $this->load->view('login_form',$data);
@@ -34,7 +28,12 @@ public function index() {
 // Show registration page
 public function registro() {
 
-        if($this->input->get('idevento') ){
+	$this->load_model('evento_model');
+	$this->load_model('sexo_model');
+	$this->load_model('pais_model');
+	$this->load_model('perfil_model');
+
+    if($this->input->get('idevento') ){
 		$data['eventos']= $this->evento_model->lista_eventos_open($this->input->get('idevento'))->result();
 	}else{	
 		$data['eventos']= $this->evento_model->lista_eventos_open(54)->result();
@@ -52,7 +51,8 @@ public function registro() {
 
 public function validarcorreo()
 {
-        if($this->input->get('idevento') ){
+	$this->load_model('evento_model');
+    if($this->input->get('idevento') ){
 		$data['eventos']= $this->evento_model->lista_eventos_open($this->input->get('idevento'))->result();
 		$data['idevento']=$this->input->get('idevento'); 
 	}else{	
@@ -76,6 +76,9 @@ public function user_registration_show()
 
 // Show registration page
 public function registro_postulacion_MTI() {
+	$this->load_model('perfil_model');
+	$this->load_model('institucion_model');
+	$this->load_model('evento_model');
  	//$data['programa_list'] = $this->programa_model->list_programa()->result();
 	$data['perfiles']= $this->perfil_model->lista_perfiles()->result();
 	$data['instituciones']= $this->institucion_model->lista_instituciones_con_inscripciones()->result();
@@ -90,6 +93,9 @@ public function registro_postulacion_MTI() {
 
 // Show registration page
 public function registrate() {
+	$this->load_model('perfil_model');
+	$this->load_model('institucion_model');
+	$this->load_model('evento_model');
  	//$data['programa_list'] = $this->programa_model->list_programa()->result();
 	$data['perfiles']= $this->perfil_model->lista_perfiles()->result();
 	$data['instituciones']= $this->institucion_model->lista_instituciones_con_inscripciones()->result();
@@ -232,6 +238,10 @@ public function new_user_registration() {
 // Validate and store registration data in database
 public function carga_masiva_save() {
 
+	$this->load_model('pagina_model');
+	$this->load_model('login_model');
+	$this->load_model('evento_model');
+	$this->load_model('persona_model');
 	if(!$this->persona_model->existe($this->input->get('cedula')))
 	{
 	 
@@ -309,6 +319,13 @@ public function carga_masiva_save() {
 public function user_login_process() {
 
 
+	$this->load_model('evento_model');
+	$this->load_model('login_model');
+	$this->load_model('modulo_model');
+	$this->load_model('institucion_model');
+	$this->load_model('acceso_model');
+	$this->load_model('nivelacceso_model');
+	$this->load_model('asistencia_model');
 	$data['eventos']= $this->evento_model->lista_eventos()->result();
 
 	$this->form_validation->set_rules('email', 'Email', 'trim|required|xss_clean');
@@ -453,6 +470,7 @@ if ($result == TRUE) {
 // =========================
 public function logout() {
 
+	$this->load_model('evento_model');
 // Removing session data
 	
 	 $data['eventos']= $this->evento_model->lista_eventos_open(0)->result();
@@ -483,6 +501,7 @@ public function carga_masiva(){
 public function save_geolocalizacion()
 {
 
+	$this->load_model('evento_model');
 	$update_array=array('longitud'=>$_GET['longitud'],'latitud'=>$_GET['latitud']);
 	$idasistencia= $_GET['idasistencia'];
 
