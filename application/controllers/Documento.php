@@ -400,6 +400,7 @@ public function anterior(){
 
         $this->load_model('documento_model');
 	    $this->load_model('tipodocumentodocumento_model');
+	    $this->load_model('documento_estado_model');
 	    $this->load_model('tipodocu_model');
 	    $this->load_model('destinodocumento_model');
 	    $this->load_model('ordenador_model');
