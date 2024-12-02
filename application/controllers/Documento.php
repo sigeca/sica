@@ -461,6 +461,7 @@ public function anterior(){
 
 	public function  save_edit()
 	{
+        $this->load_model('documento_model');
 		$id=$this->input->post('iddocumento');
 	 	$array_item=array(
 		 	
