@@ -405,7 +405,7 @@ $config['cookie_path']		= '/';
 $config['cookie_secure']	= TRUE;
 $config['cookie_httponly'] 	= TRUE;
 // Configurar SameSite como "None", "Lax" o "Strict"
-$config['cookie_samesite']  = 'Lax'; // Puedes cambiarlo a 'None' si necesitas acceso en contextos de terceros
+$config['cookie_samesite']  = 'None'; // Puedes cambiarlo a 'None' si necesitas acceso en contextos de terceros
 
 /*
 |--------------------------------------------------------------------------
