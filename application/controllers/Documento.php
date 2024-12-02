@@ -535,6 +535,7 @@ public function anterior(){
 
  	public function delete()
  	{
+        $this->load_model('documento_model');
  		$data=$this->documento_model->delete($this->uri->segment(3));
  		echo json_encode($data);
 	 	redirect('documento/elprimero');
