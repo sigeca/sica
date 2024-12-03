@@ -61,6 +61,7 @@ class Documento extends CI_Controller{
 	public function add()
 	{
         $this->load_model('documento_model');
+        $this->load_model('documento_estado_model');
 	    $this->load_model('persona_model');
 	    $this->load_model('tipodocu_model');
 	    $this->load_model('destinodocumento_model');
