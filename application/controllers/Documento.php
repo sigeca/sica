@@ -268,6 +268,7 @@ class Documento extends CI_Controller{
 	public function reportepdf()
 	{
 
+        $this->load_model('documento_model');
 
 		if($asunto=$this->input->get('asunto')){
 		    $data['documentos'] = $this->documento_model->documentosxtipo($this->uri->segment(3),$asunto)->result();
