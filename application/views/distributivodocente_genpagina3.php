@@ -580,7 +580,7 @@ if($file_headers[0] == 'HTTP/1.1 404 Not Found') {
 $data=$data.'</div>
 
 	    <div class="card-body" style="background-color:'.$arrcolor[1].'"  >
-	    <div style="font-size:24px; font-weight:bold; color:#333;  margin-top:10px;" >'.$row->eldocente.' </div>';	
+	    <div style="font-size:18px; font-weight:bold; color:#333;  margin-top:5px; margin-bottom:5px" >'.$row->eldocente.' </div>';	
 
             $total=$total+1;
 			if(isset($row->distributivoindividualpdf)){
@@ -594,7 +594,7 @@ $data=$data.'</div>
 			}
 			$data=$data.'<br><br>';
 
-			$data=$data.'[<a href="'.$row->portafoliodrive.'"  '.$disable1.'><i class="fas fa-file-pdf" style="font-size:24px" ></i> <span style="color:'.$color1.'" >Portafolio Drive</span></a>] - ';
+			$data=$data.'[<a href="'.$row->portafoliodrive.'"  '.$disable1.'> <i class="fab fa-google-drive"  style="font-size:24px"  ></i>    <span style="color:'.$color1.'" >Portafolio Drive</span></a>] - ';
 
 
 $data=$data.'<div class="tabla-container">
