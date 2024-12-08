@@ -452,7 +452,7 @@ function myFunction(id) {
 
 
 /* ===============================*/
-
+/*
 .sidebar{
 	position: fixed;
 	height: 100%;
@@ -466,6 +466,55 @@ function myFunction(id) {
 	padding: 0.5rem 0;
 	box-sizing: border-box;
 }
+
+*/
+
+
+.sidebar {
+    background-color: #f4f4f4;
+    padding: 15px;
+    width: 250px;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow-y: auto;
+}
+
+boton-cerrar {
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #333;
+    cursor: pointer;
+}
+
+
+.menu {
+    list-style: none;
+    padding: 0;
+}
+
+.menu li {
+    margin: 10px 0;
+}
+
+.menu-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: orange;
+    font-size: 80%;
+}
+
+.menu-icon {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
+
+
+
 
 .sidebar .boton-cerrar{
 	position: absolute;
@@ -776,29 +825,33 @@ span a {
 
   <div   style="margin-top: 5vh; display:flex; flex-direction: row; justify-content:flex-end;  padding:0;">
     <div id="sidebar" class="sidebar">
-        <a href="#" class="boton-cerrar" onclick="ocultar()">&times;</a>
+    <!----    <a href="#" class="boton-cerrar" onclick="ocultar()">&times;</a> -->
+    <button class="boton-cerrar" onclick="ocultar()" aria-label="Cerrar menú">&times;</button>
 
  <ul class="menu" >
+   <?php if(isset($this->session->userdata['acceso'])) ?>
 
-   
-    
-   <?php
+   <?php foreach($this->session->userdata['acceso'] as $row)
+	    
+		$id= htmlspecialchars( $row["modulo"]["id"]);
+		$nombre= htmlspecialchars($row["modulo"]["nombre"]);
+		$icono=htmlspecialchars($row["modulo"]["icono"]);
+		$modulo=htmlspecialchars($row["modulo"]["modulo"]);
+		$funcion=htmlspecialchars($row["modulo"]["funcion"]);
 
-if(isset($this->session->userdata['acceso'])){
+//      echo '<li><a id="'.$id.'" style="font-size:80%; color:orange;" href="'.base_url().'index.php/'.$modulo.'/'. (empty($funcion) ? '': $funcion.$this->session->userdata['logged_in']['idpersona']).'"><img src="'.base_url().'assets/iconos/'.$icono.'.png"  style="width:50px;height:50px:"  alt="Formget logo"></a></li>';
 
-  foreach($this->session->userdata['acceso'] as $row)
-	    {
-		$id=$row["modulo"]["id"];
-		$nombre=$row["modulo"]["nombre"];
-		$icono=$row["modulo"]["icono"];
-		$modulo=$row["modulo"]["modulo"];
-		$funcion=$row["modulo"]["funcion"];
-
-      echo '<li><a id="'.$id.'" style="font-size:80%; color:orange;" href="'.base_url().'index.php/'.$modulo.'/'. (empty($funcion) ? '': $funcion.$this->session->userdata['logged_in']['idpersona']).'"><img src="'.base_url().'assets/iconos/'.$icono.'.png"  style="width:50px;height:50px:"  alt="Formget logo"></a></li>';
-	    } 
-}
+        $url = base_url("index.php/{$modulo}/" . (!empty($funcion) ? $funcion . $this->session->userdata['logged_in']['idpersona'] : ''));
+        $iconUrl = base_url("assets/iconos/{$icono}.png");
         ?>
-
+         <li>
+                    <a id="<?= $id ?>" href="<?= $url ?>" class="menu-link">
+                        <img src="<?= $iconUrl ?>" alt="<?= $nombre ?>" class="menu-icon">
+                        <span class="menu-text"><?= $nombre ?></span>
+                    </a>
+                </li>
+            <?php endforeach; ?>
+        <?php endif; ?>
   </ul>
 
 
@@ -811,7 +864,6 @@ if(isset($this->session->userdata['acceso'])){
         </a>
     </div>
 
-     
     <nav class="menu-items pull-right">
         <div class="w3-bar">
             <a href="http://congresoutlvte.org/informatica" 
