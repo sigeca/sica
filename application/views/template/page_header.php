@@ -724,8 +724,7 @@ span a {
 
 
 
-<!----<div  style="position:fixed; width: 100%; padding:0px; background-color: #04df8c ; margin-top:0; border-bottom:2px solid green ;z-index: 9999; display: flex; flex-direction: row; justify-content:space-between; "> ---->
-<div  style="position:fixed; width: 100%; padding:0px; background-color: #04df8c ; margin-top:0; border-bottom:2px solid green ;z-index: 9999; display: flex; flex-direction: row; justify-content:space-between; ">
+<div  style="position:fixed; width: 100%; padding:0px; background-color: #f5f5f5; margin-top:0; border-bottom:2px solid green ;z-index: 9999; display: flex; flex-direction: row; justify-content:space-between; ">
   
    	<?php if(isset($this->session->userdata['logged_in']) ){ ?>
  
@@ -758,7 +757,6 @@ span a {
       			<div class="btn-group">
         	 		 <button class="btn btn-success">
 		            		<img id="foto" src= "<?php echo 'https://repositorioutlvte.org/Repositorio/'.$this->session->userdata['logged_in']['foto']; ?>" height="100%" class="avatar" onerror="this.onerror=null; this.src='<?php echo base_url().'fotos/perfil.jpg'; ?>'">
-<!----				<img id="foto" src= "<?php echo base_url().$this->session->userdata['logged_in']['foto']; ?>" height="100%" class="avatar" onerror="this.onerror=null; this.src='<?php echo base_url().'fotos/perfil.jpg'; ?>'">   --->
 	          		</button>
             			<button class="btn btn-success dropdown-toggle" data-toggle="dropdown">
                             		<span class="caret"></span>
