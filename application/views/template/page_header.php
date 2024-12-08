@@ -93,7 +93,16 @@ flex-direction:row;
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    padding: 10px;
+    background-color: #f5f5f5
+
 }
+
+.logo-container img.logo {
+    height: 50px;
+}
+
 
 .logo-container, .title-container, .menu-items {
     padding: 10px;
@@ -106,7 +115,16 @@ flex-direction:row;
 }
 
 
+.menu-items .menu-link {
+    text-decoration: none;
+    padding: 10px 15px;
+    color: #333;
+    display: inline-block;
+}
 
+.menu-link:hover {
+    background-color: #e0e0e0;
+}
 
 
 
@@ -786,48 +804,30 @@ if(isset($this->session->userdata['acceso'])){
   </ul>
 
 
-	    <?php }else { ?>
+ <?php }else { ?>
 
-
-
-<div class="menu-container">
+<header class="menu-container">
     <div class="logo-container media-left">
-        <a href="<?php echo base_url(); ?>index.php/mti">
-            <img src="<?php echo base_url(); ?>images/logo-cti.png" style="height:50px;" alt="Formget logo">
+        <a href="<?= base_url('index.php/mti'); ?>">
+            <img src="<?=  base_url('images/logo-cti.png');  ?>" alt="Logo de la carrera CTI" class="logo">
         </a>
     </div>
-    
-    <div class="menu-items pull-right">
-			<div  style="display:flex; vertical-align: middle;">
+
+     
+    <nav class="menu-items pull-right">
         <div class="w3-bar">
-            <a id="ln-registrar" href="http://congresoutlvte.org/informatica" class="abrir-cerrar w3-bar-item w3-border-green w3-border-right">Nuestra carrera</a>
-            <a id="ln-registrar" href="<?php echo base_url(); ?>index.php/login/user_registration_show" class="abrir-cerrar w3-bar-item w3-border-green w3-border-right">Registrar</a>
-            <a href="<?php echo base_url(); ?>index.php/login" class="abrir-cerrar w3-bar-item">Inicia sesión</a>
+            <a href="http://congresoutlvte.org/informatica" 
+                class="menu-link w3-bar-item w3-border-green w3-border-right"
+                aria-label="Ir a nuestra carrera">Nuestra carrera</a>
+           <a href="<?= base_url('index.php/login/user_registration_show'); ?>"  
+                class="menu-link w3-bar-item w3-border-green w3-border-right"
+                aria-label="Registrar nuevo usuario">Registrar</a>
+           <a href="<?= base_url("index.php/login"); ?>" 
+            class="menu-link w3-bar-item"
+            aria-label="Inicia sesión en la plataforma">Inicia sesión</a>
         </div>
-        </div>
-    </div>
-</div>
-
-
-
-<!---
-		<div class="media-left">
-			<a href=" <?php echo base_url(); ?>index.php/mti"> <img src="<?php echo base_url(); ?>images/logo.jpg"  style="width:50px;height:50px:" alt="Formget logo"></a>  
-		</div>    
-		<div class="media-left" style=" display:table-cell; vertical-align:middle;"  >
-			<h4 > UNIVERSIDAD TÉCNICA LUIS VARGAS TORRES DE ESMERALDAS</h4>
-		</div>
-
-		<div class="pull-right">
-			<div  style="display:flex; vertical-align: middle;">
-			  <div class= "w3-bar" > 
-				  <a id="ln-registrar" href= "<?php echo base_url(); ?>index.php/login/user_registration_show" class= "abrir-cerrar w3-bar-item  w3-border-green w3-border-right"> Registrar</a>
-				  <a href= "<?php echo base_url(); ?>index.php/login" class= "abrir-cerrar w3-bar-item"> Entrar</a>
-			  </div> 
-			 </div>
-		</div>
--->
-
+    </nav>
+</header>
 
 	<?php } ?>
 
