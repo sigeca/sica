@@ -829,9 +829,9 @@ span a {
     <button class="boton-cerrar" onclick="ocultar()" aria-label="Cerrar menú">&times;</button>
 
  <ul class="menu" >
-   <?php if(isset($this->session->userdata['acceso'])) ?>
+   <?php if(isset($this->session->userdata['acceso'])): ?>
 
-   <?php foreach($this->session->userdata['acceso'] as $row)
+   <?php foreach($this->session->userdata['acceso'] as $row):
 	    
 		$id= htmlspecialchars( $row["modulo"]["id"]);
 		$nombre= htmlspecialchars($row["modulo"]["nombre"]);
