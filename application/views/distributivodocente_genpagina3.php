@@ -627,7 +627,7 @@ foreach($docenteactividadacademica as $rowj){
 
 
                 $data=$data.'<tr><td></td><td></td><td>Total horas:</td><td>'.$thoras.'</td></tr>                          </tbody></table></div>  */
-    
+                  $data=$data.'</div>
                     <div class="d-flex justify-content-between align-items-center">
 
 
