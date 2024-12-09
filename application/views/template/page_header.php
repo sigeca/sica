@@ -496,7 +496,7 @@ boton-cerrar {
 }
 
 .menu li {
-    margin: 10px 0;
+    margin: 5px 0;
 }
 
 .menu-link {
@@ -790,7 +790,7 @@ span a {
 }
 
 .menu-toggle img {
-    height: 30px;
+    height: 50px;
 }
 
 .logo img {
