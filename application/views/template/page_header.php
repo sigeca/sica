@@ -771,57 +771,63 @@ span a {
 <body >
 
 
-
-
-<div  style="position:fixed; width: 100%; padding:0px; background-color: #f5f5f5; margin-top:0; border-bottom:2px solid green ;z-index: 9999; display: flex; flex-direction: row; justify-content:space-between; ">
-  
-   	<?php if(isset($this->session->userdata['logged_in']) ){ ?>
+<header class="fixed-header">
+    <?php if (isset($this->session->userdata['logged_in'])): ?>
+        <div class="header-left">  
  
-<div style="display: flex; flex-direction: row; justify-content: flex-start;">
+            <div class="menu-toggle">
+                <a id="abrir" class="toggle-button" href="javascript:void(0)" onclick="mostrar()">
+                    <img src="<?= base_url('images/menu0.png') ?>" alt="Abrir menú">
+                </a>
+                <a id="cerrar" class="toggle-button" href="javascript:void(0)" onclick="ocultar()">
+                    <img src="<?= base_url('images/menu1.png') ?>" alt="Cerrar menú">
+                </a>
+            </div>
+            
+            <div class="logo">
+                <a href="<?= base_url('index.php/mti') ?>">
+                    <img src="<?= base_url('images/logo-cti.png') ?>" alt="Logo CTI">
+                </a>
+            </div>
+            
+            <div class="institution">
+                <p><?= $this->session->userdata['logged_in']['institucion'] ?></p>
+            </div>
+        </div>
 
-    	<div style="height: 50px;">
-        	<a id="abrir" class="abrir-cerrar w3-bar-item"  href="javascript:void(0)" onclick="mostrar()"><img src="<?php echo base_url(); ?>images/menu0.png"  style="height:100%;"  alt="Formget logo"> </a><a id="cerrar" class="abrir-cerrar w3-bar-item" href="#" onclick="ocultar()"><img src="<?php echo base_url(); ?>images/menu1.png"  style="height:100%;"  alt="Formget logo"> </a>
-    	</div>    
-
- 	    <div style="height: 50px;">
-    		<a href=" <?php echo base_url(); ?>index.php/mti"> <img src="<?php echo base_url(); ?>images/logo-cti.png" style="height: 100%;" alt="Formget logo"></a>  
-    	</div>    
-
-		<div class="media-left" style=" display:table-cell; vertical-align:middle; "  >
-			<p style="font-size: 1em;line-height: 20px; " ><?php echo  $this->session->userdata['logged_in']['institucion']; ?>  </p>
-		<!---	<p style="font-size: 1em;line-height: 20px; " > UNIVERSIDAD TÉCNICA LUIS VARGAS TORRES DE ESMERALDAS</p>  --->
-		</div>
-
-</div>
+           <div class="header-right">
+            <div class="user-info">
+                <p><?= $this->session->userdata['logged_in']['elusuario'] ?></p>
+                <p><?= $this->session->userdata['logged_in']['email'] ?></p>
+            </div>
 
 
-    	<div class="pull-right">
-		<div style="display: flex; flex-direction: row;">
-			<div style="line-height:10px; display:flex; align-items: center; flex-direction: column; margin-top: 10px;">
-				<?php
-			   		 echo "<p>". $this->session->userdata['logged_in']['elusuario']."</p><p>". $this->session->userdata['logged_in']['email']. "</p></p>";
-		    		?>
-			</div>       
+            <div class="user-actions">
+                <button class="btn btn-success profile-button">
+                    <img 
+                        id="foto" 
+                        src="<?= 'https://repositorioutlvte.org/Repositorio/' . $this->session->userdata['logged_in']['foto'] ?>" 
+                        alt="Foto de perfil" 
+                        class="avatar"
+                        onerror="this.onerror=null; this.src='<?= base_url('fotos/perfil.jpg') ?>';">
+                </button>
 
-      			<div class="btn-group">
-        	 		 <button class="btn btn-success">
-		            		<img id="foto" src= "<?php echo 'https://repositorioutlvte.org/Repositorio/'.$this->session->userdata['logged_in']['foto']; ?>" height="100%" class="avatar" onerror="this.onerror=null; this.src='<?php echo base_url().'fotos/perfil.jpg'; ?>'">
-	          		</button>
-            			<button class="btn btn-success dropdown-toggle" data-toggle="dropdown">
-                            		<span class="caret"></span>
-           			</button>
-                        	<ul class="dropdown-menu pull-right">
-                            		<li><a href="<?php echo base_url();?>index.php/upfoto">Subir foto</a></li>
-                          <!--  		<li><a href="<?php echo base_url(); ?>index.php/portafolio">Tu portafolio</a></li>   -->
-                            		<li><a href="<?php echo base_url(); ?>index.php/login/logout">Salir</a></li>
-                        	</ul>
-      			</div>
+
+
+                <button class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-label="Opciones de usuario">
+                    <span class="caret"></span>
+                </button>		
+
+                <ul class="dropdown-menu">
+                    <li><a href="<?= base_url('index.php/upfoto') ?>">Subir foto</a></li>
+                    <li><a href="<?= base_url('index.php/login/logout') ?>">Salir</a></li>
+                </ul>
+
       		</div>
    	</div>
+    <?php endif; ?>
 
-	</div>
-
-
+</header>
 
   <div   style="margin-top: 5vh; display:flex; flex-direction: row; justify-content:flex-end;  padding:0;">
     <div id="sidebar" class="sidebar">
