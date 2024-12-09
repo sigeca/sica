@@ -510,7 +510,6 @@ foreach($distributivodocentes as $row){
   		</section>
 <div class="col">
           <div class="card shadow-sm">
- <center> <h1 class="fw-light" >Gráficos de Cumplimiento de Entrega de Documentos</h1></center>
  <div class="chart-container">
         <div class="chart-box">
             <canvas id="distributivoChart"></canvas>
@@ -596,7 +595,7 @@ $data=$data.'</div>
 
 			$data=$data.'[<a href="'.$row->portafoliodrive.'"  '.$disable1.'> <i class="fab fa-google-drive"  style="font-size:24px"  ></i>    <span style="color:'.$color1.'" >Portafolio Drive</span></a>] - ';
 
-
+/*
 $data=$data.'<div class="tabla-container">
   <table class="miTabla">
     <thead>
@@ -627,7 +626,9 @@ foreach($docenteactividadacademica as $rowj){
 
 
 
-              	$data=$data.'<tr><td></td><td></td><td>Total horas:</td><td>'.$thoras.'</td></tr>                          </tbody></table></div>                 <div class="d-flex justify-content-between align-items-center">
+                $data=$data.'<tr><td></td><td></td><td>Total horas:</td><td>'.$thoras.'</td></tr>                          </tbody></table></div>  */
+    
+                    <div class="d-flex justify-content-between align-items-center">
 
 
               </div>
