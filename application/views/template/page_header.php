@@ -272,7 +272,7 @@ flex-direction:row;
 }
 
 #menu {
-    width: 550px;
+    width: 300px;
     height: 35px;
     font-size: 16px;
     font-family: Tahoma, Geneva, sans-serif;
@@ -826,7 +826,7 @@ span a {
 <body >
 
 
-        <?php if(isset($this->session->userdata['logged_in']) ){ ?>
+ <?php if(isset($this->session->userdata['logged_in']) ){ ?>
 
 <header class="fixed-header">
         <div class="header-left">  
@@ -899,8 +899,6 @@ span a {
 		$icono=htmlspecialchars($row["modulo"]["icono"]);
 		$modulo=htmlspecialchars($row["modulo"]["modulo"]);
 		$funcion=htmlspecialchars($row["modulo"]["funcion"]);
-
-//      echo '<li><a id="'.$id.'" style="font-size:80%; color:orange;" href="'.base_url().'index.php/'.$modulo.'/'. (empty($funcion) ? '': $funcion.$this->session->userdata['logged_in']['idpersona']).'"><img src="'.base_url().'assets/iconos/'.$icono.'.png"  style="width:50px;height:50px:"  alt="Formget logo"></a></li>';
 
         $url = base_url("index.php/{$modulo}/" . (!empty($funcion) ? $funcion . $this->session->userdata['logged_in']['idpersona'] : ''));
         $iconUrl = base_url("assets/iconos/{$icono}.png");
