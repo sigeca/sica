@@ -830,16 +830,6 @@ span a {
 
 <header class="fixed-header">
         <div class="header-left">  
- 
-            <div class="menu-toggle">
-                <a id="abrir" class="toggle-button" href="javascript:void(0)" onclick="mostrar()">
-                    <img src="<?= base_url('images/menu0.png') ?>" alt="Abrir menú">
-                </a>
-                <a id="cerrar" class="toggle-button" href="javascript:void(0)" onclick="ocultar()">
-                    <img src="<?= base_url('images/menu1.png') ?>" alt="Cerrar menú">
-                </a>
-            </div>
-            
             <div class="logo">
                 <a href="<?= base_url('index.php/mti') ?>">
                     <img src="<?= base_url('images/logo-cti.png') ?>" alt="Logo CTI">
