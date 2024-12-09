@@ -790,7 +790,7 @@ span a {
 }
 
 .menu-toggle img {
-    height: 50px;
+    height: 30px;
 }
 
 .logo img {
