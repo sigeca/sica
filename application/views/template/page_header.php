@@ -826,7 +826,7 @@ span a {
 <body >
 
 
-<header class="fixed-header">
+<div class="fixed-header">
         <?php if(isset($this->session->userdata['logged_in']) ){ ?>
         <div class="header-left">  
  
