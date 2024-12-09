@@ -273,7 +273,7 @@ function getValueById(id) {
 function getUploadUrl() {
     var selectElement = document.getElementById('idordenador');
     var url = "https://" + selectElement.options[selectElement.selectedIndex].text;
-    return url.endsWith('/') ? url + "cargafile.php" : url + "/cargafile.php";
+    return url.endsWith('/') ? url + "cargafileaxios.php" : url + "/cargafileaxios.php";
 }
 
 
