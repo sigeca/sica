@@ -826,8 +826,9 @@ span a {
 <body >
 
 
-<div class="fixed-header">
         <?php if(isset($this->session->userdata['logged_in']) ){ ?>
+
+<header class="fixed-header">
         <div class="header-left">  
  
             <div class="menu-toggle">
@@ -881,7 +882,7 @@ span a {
       		</div>
    	</div>
 
-<!--- </header> --->
+ </header>
 
   <div   style="margin-top: 5vh; display:flex; flex-direction: row; justify-content:flex-end;  padding:0;">
     <div id="sidebar" class="sidebar">
