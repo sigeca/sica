@@ -508,9 +508,10 @@ boton-cerrar {
 }
 
 .menu-icon {
-    width: 50px;
-    height: 50px;
-    margin-right: 10px;
+    width: 20px;
+    height: 20px;
+    margin-right: 4px;
+    vertical-align: middle; /* Asegura la alineación adecuada */
 }
 
 
