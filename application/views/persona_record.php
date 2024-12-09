@@ -104,7 +104,7 @@ if(isset($persona))
 
 
 <div class="form-group row">
-    elabel class="col-md-2 col-form-label"> Fecha nacimiento:</label>
+    <label class="col-md-2 col-form-label"> Fecha nacimiento:</label>
 	<div class="col-md-10">
 	<?php
       echo form_input('fechanacimiento',$persona['fechanacimiento'],array("disabled"=>"disabled",'placeholder'=>'Fechanacimiento','style'=>'width:600px;')) ;
