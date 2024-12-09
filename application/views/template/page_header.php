@@ -508,13 +508,16 @@ boton-cerrar {
 }
 
 .menu-icon {
-    width: 20px;
-    height: 20px;
+    width: 50px;
+    height: 50px;
     margin-right: 4px;
     vertical-align: middle; /* Asegura la alineación adecuada */
 }
 
-
+.menu-text {
+    font-size: 14px; /* Tamaño de texto ajustable */
+    margin: 0; /* Eliminar márgenes adicionales */
+}
 
 
 .sidebar .boton-cerrar{
