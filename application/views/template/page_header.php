@@ -932,10 +932,7 @@ span a {
         </div>
 
            <div class="header-right">
-            <div class="user-info">
-                <p><?= $this->session->userdata['logged_in']['elusuario'] ?></p>
-                <p><?= $this->session->userdata['logged_in']['email'] ?></p>
-            </div>
+            
 
 <div class="user-profile">
     <div class="profile-avatar">
