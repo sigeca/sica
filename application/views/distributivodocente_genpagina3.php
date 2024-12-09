@@ -595,6 +595,7 @@ $data=$data.'</div>
 
 			$data=$data.'[<a href="'.$row->portafoliodrive.'"  '.$disable1.'> <i class="fab fa-google-drive"  style="font-size:24px"  ></i>    <span style="color:'.$color1.'" >Portafolio Drive</span></a>] - ';
 
+$data=$data.'<div class="tabla-container">';
 /*
 $data=$data.'<div class="tabla-container">
   <table class="miTabla">
