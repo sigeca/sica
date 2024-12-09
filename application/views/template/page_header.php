@@ -515,7 +515,7 @@ boton-cerrar {
 }
 
 .menu-text {
-    font-size: 14px; /* Tamaño de texto ajustable */
+    font-size: 12px; /* Tamaño de texto ajustable */
     margin: 0; /* Eliminar márgenes adicionales */
 }
 
@@ -824,6 +824,92 @@ span a {
     object-fit: cover;
 }
 
+
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    background-color: #f5f5f5; /* Fondo suave */
+    padding: 10px 20px;
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+    gap: 15px;
+}
+
+.profile-avatar {
+    flex-shrink: 0;
+}
+
+.avatar {
+    width: 50px; /* Tamaño ajustable */
+    height: 50px;
+    border-radius: 50%; /* Forma circular */
+    border: 2px solid #4CAF50; /* Borde color principal */
+}
+
+.profile-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.user-name {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0;
+    color: #333;
+}
+
+.user-email {
+    font-size: 14px;
+    margin: 0;
+    color: #666;
+}
+
+.profile-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.action-button {
+    background-color: #4CAF50; /* Color verde */
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.action-button:hover {
+    background-color: #45a049; /* Color más oscuro al pasar el ratón */
+}
+
+.logout {
+    background-color: #e53935; /* Color rojo para salir */
+}
+
+.logout:hover {
+    background-color: #d32f2f;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </style>
 
 </head>
@@ -851,29 +937,33 @@ span a {
                 <p><?= $this->session->userdata['logged_in']['email'] ?></p>
             </div>
 
+<div class="user-profile">
+    <div class="profile-avatar">
+        <img 
+            id="foto" 
+            src="<?= 'https://repositorioutlvte.org/Repositorio/' . $this->session->userdata['logged_in']['foto'] ?>" 
+            alt="Foto de perfil" 
+            class="avatar"
+            onerror="this.onerror=null; this.src='<?= base_url('fotos/perfil.jpg') ?>';">
+    </div>
+    <div class="profile-info">
+        <p class="user-name"><?= $this->session->userdata['logged_in']['elusuario'] ?></p>
+        <p class="user-email"><?= $this->session->userdata['logged_in']['email'] ?></p>
+    </div>
+    <div class="profile-actions">
+        <button class="action-button" onclick="window.location.href='<?= base_url('index.php/upfoto') ?>'">Subir foto</button>
+        <button class="action-button logout" onclick="window.location.href='<?= base_url('index.php/login/logout') ?>'">Salir</button>
+    </div>
+</div>
 
-            <div class="user-actions">
-                <button class="btn btn-success profile-button">
-                    <img 
-                        id="foto" 
-                        src="<?= 'https://repositorioutlvte.org/Repositorio/' . $this->session->userdata['logged_in']['foto'] ?>" 
-                        alt="Foto de perfil" 
-                        class="avatar"
-                        onerror="this.onerror=null; this.src='<?= base_url('fotos/perfil.jpg') ?>';">
-                </button>
 
 
 
-                <button class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-label="Opciones de usuario">
-                    <span class="caret"></span>
-                </button>		
 
-                <ul class="dropdown-menu">
-                    <li><a href="<?= base_url('index.php/upfoto') ?>">Subir foto</a></li>
-                    <li><a href="<?= base_url('index.php/login/logout') ?>">Salir</a></li>
-                </ul>
 
-      		</div>
+
+
+            
    	</div>
 
  </header>
