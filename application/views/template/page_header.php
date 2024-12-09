@@ -765,6 +765,61 @@ span a {
 
 
 
+.fixed-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #f5f5f5;
+    border-bottom: 2px solid green;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+    z-index: 9999;
+}
+
+.header-left, .header-right {
+    display: flex;
+    align-items: center;
+}
+
+.menu-toggle {
+    display: flex;
+    align-items: center;
+}
+
+.menu-toggle img {
+    height: 50px;
+}
+
+.logo img {
+    height: 50px;
+}
+
+.institution p {
+    font-size: 1em;
+    line-height: 20px;
+    margin: 0;
+}
+
+.user-info p {
+    margin: 0;
+    font-size: 0.9em;
+}
+
+.user-actions {
+    display: flex;
+    align-items: center;
+}
+
+.profile-button .avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
 </style>
 
 </head>
