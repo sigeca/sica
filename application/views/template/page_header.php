@@ -473,7 +473,7 @@ function myFunction(id) {
 .sidebar {
     background-color: #f4f4f4;
     padding: 15px;
-    width: 150px;
+    width: 100px;
     height: 100%;
     position: fixed;
     top: 0;
