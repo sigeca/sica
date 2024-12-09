@@ -272,7 +272,7 @@ flex-direction:row;
 }
 
 #menu {
-    width: 300px;
+    width: 550px;
     height: 35px;
     font-size: 16px;
     font-family: Tahoma, Geneva, sans-serif;
@@ -473,7 +473,7 @@ function myFunction(id) {
 .sidebar {
     background-color: #f4f4f4;
     padding: 15px;
-    width: 250px;
+    width: 150px;
     height: 100%;
     position: fixed;
     top: 0;
