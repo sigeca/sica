@@ -226,7 +226,8 @@ $silabos = <silabos>; // Ejemplo de porcentaje de distributivos entregados
 $total = <total>; // Ejemplo de total de elementos
 $planessemestrales = <planessemestrales>; // Ejemplo de porcentaje de informes finales entregados
 $reactivos1 = <reactivos1>; // Ejemplo de porcentaje de informes finales entregados
-$calificaciones1 = <calificaciones1>; // Ejemplo de porcentaje de informes finales entregados
+$calificaciones1p = <calificaciones1p>; // Ejemplo de porcentaje de informes finales entregados
+$calificaciones2p = <calificaciones2p>; // Ejemplo de porcentaje de informes finales entregados
 ?>
 
 
@@ -268,6 +269,16 @@ $calificaciones1 = <calificaciones1>; // Ejemplo de porcentaje de informes final
 
         const planessemestralesEntregado =  <?php echo $planessemestrales; ?> // Porcentaje de informes finales entregados
         const planessemestralesPendiente =  <?php echo $total; ?>- planessemestralesEntregado;
+
+        const calificaciones1pEntregados = <?php echo $calificaciones1p; ?>; // Porcentaje de  calificaciones primer parcial
+        const calificaciones1pPendientes = <?php echo $total; ?> - calificaciones1pEntregados;
+
+
+        const calificaciones2pEntregados = <?php echo $calificaciones2p; ?>; // Porcentaje de  calificaciones segundo parcial
+        const calificaciones2pPendientes = <?php echo $total; ?> - calificaciones2pEntregados;
+
+
+
 
         // Configuración del gráfico de Distributivos
         const ctxDistributivo = document.getElementById("silabosChart").getContext("2d");
@@ -313,12 +324,95 @@ $calificaciones1 = <calificaciones1>; // Ejemplo de porcentaje de informes final
                     },
                     title: {
                         display: true,
-                        text: "PLANES SEMESTRALES"
+                        text: "Planes semestrales"
+                    }
+                }
+            }
+        });
+
+
+       // Configuración del gráfico de Primer parcial
+        const ctxCalificaiones1p = document.getElementById("calificaciones1pChart").getContext("2d");
+        const calificaciones1pChart = new Chart(ctxCalificaciones1p, {
+            type: "pie",
+            data: {
+                labels: ["Entregados", "Pendientes"],
+                datasets: [{
+                    data: [calificaciones1pEntregado, calificaciones1pPendiente],
+                    backgroundColor: ["#36A2EB", "#FF6384"]
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: "top",
+                    },
+                    title: {
+                        display: true,
+                        text: "Calificaciones 1er Parcial"
                     }
                 }
             }
         });
  
+
+   
+     // Configuración del gráfico de Primer parcial
+        const ctxCalificaiones2p = document.getElementById("calificaciones2pChart").getContext("2d");
+        const calificaciones2pChart = new Chart(ctxCalificaciones2p, {
+            type: "pie",
+            data: {
+                labels: ["Entregados", "Pendientes"],
+                datasets: [{
+                    data: [calificaciones2pEntregado, calificaciones2pPendiente],
+                    backgroundColor: ["#36A2EB", "#FF6384"]
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: "top",
+                    },
+                    title: {
+                        display: true,
+                        text: "Calificaciones 2do Parcial"
+                    }
+                }
+            }
+        });
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // Función para mostrar/ocultar el contenido asociado al botón
         function toggleContenido(button) {
             // Obtener el siguiente elemento hermano del botón (el div con clase "contenido")
@@ -358,7 +452,8 @@ $totalparalelos=0;
 $silabos=0;
 $planessemestrales=0;
 $reactivos1=0;
-$calificaciones1=0;
+$calificaciones1p=0;
+$calificaciones2p=0;
 $total=0;
 
 
@@ -703,7 +798,7 @@ $data=$data.'</div>
 			if(isset($row->calificacon1pdf)){
 				$disable5= 'style="pointer-events:none; cursor:default"';
                 $color5='gray';
-                $calificaciones1=$calificaciones1+1;
+                $calificaciones1p=$calificaciones1p+1;
 			}else{
 				$disable5= 'style="pointer-events:none; cursor:default"';
 				$color5='gray';
@@ -722,6 +817,7 @@ $data=$data.'</div>
 			if(isset($row->calificacion2pdf)){
 				$disable7= 'style="pointer-events:none; cursor:default"';
 				$color7='gray';
+                $calificaciones2p=$calificaciones2p+1;
 			}else{
 				$disable7= 'style="pointer-events:none; cursor:default"';
 				$color7='gray';
@@ -978,7 +1074,8 @@ $data1= str_replace('<total>',$total,$data1);
 $data1= str_replace('<silabos>',$silabos,$data1);
 $data1= str_replace('<planessemestrales>',$planessemestrales,$data1);
 $data1= str_replace('<reactivos1>',$reactivos1,$data1);
-$data1= str_replace('<calificaciones1>',$calificaciones1,$data1);
+$data1= str_replace('<calificaciones1p>',$calificaciones1p,$data1);
+$data1= str_replace('<calificaciones2p>',$calificaciones2p,$data1);
 
 $data=$data.$data1;
 
