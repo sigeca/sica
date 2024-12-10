@@ -321,7 +321,7 @@ $calificaciones2p = <calificaciones2p>; // Ejemplo de porcentaje de informes fin
             data: {
                 labels: ["Entregados", "Pendientes"],
                 datasets: [{
-                    data: [Seguimiento silabo Entregados, Seguimiento silabo Pendientes],
+                    data: [seguimientosilaboEntregados, seguimientosilaboPendientes],
                     backgroundColor: ["#36A2EB", "#FF6384"]
                 }]
             },
