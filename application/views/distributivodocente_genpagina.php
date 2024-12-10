@@ -270,12 +270,12 @@ $calificaciones2p = <calificaciones2p>; // Ejemplo de porcentaje de informes fin
         const planessemestralesEntregado =  <?php echo $planessemestrales; ?> // Porcentaje de informes finales entregados
         const planessemestralesPendiente =  <?php echo $total; ?>- planessemestralesEntregado;
 
-        const calificaciones1pEntregados = <?php echo $calificaciones1p; ?>; // Porcentaje de  calificaciones primer parcial
-        const calificaciones1pPendientes = <?php echo $total; ?> - calificaciones1pEntregados;
+        const calificaciones1pEntregado = <?php echo $calificaciones1p; ?>; // Porcentaje de  calificaciones primer parcial
+        const calificaciones1pPendiente = <?php echo $total; ?> - calificaciones1pEntregado;
 
 
-        const calificaciones2pEntregados = <?php echo $calificaciones2p; ?>; // Porcentaje de  calificaciones segundo parcial
-        const calificaciones2pPendientes = <?php echo $total; ?> - calificaciones2pEntregados;
+        const calificaciones2pEntregado = <?php echo $calificaciones2p; ?>; // Porcentaje de  calificaciones segundo parcial
+        const calificaciones2pPendiente = <?php echo $total; ?> - calificaciones2pEntregado;
 
 
 
