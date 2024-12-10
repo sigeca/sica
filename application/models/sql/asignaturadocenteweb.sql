@@ -8,7 +8,7 @@ hodo.iddocente,concat(COALESCE(pers.apellidos,''),"  ",COALESCE(pers.nombres,'')
 (select docu.archivopdf from documento docu, documentoevento doev where docu.iddocumento=doev.iddocumento and doev.idevento=even.idevento and  doev.idtipodocu=38 limit 1 ) as planclasepdf,
 (select docu.archivopdf from documento docu, documentosilabo dosi where docu.iddocumento=dosi.iddocumento and dosi.idsilabo=sila.idsilabo and dosi.idtipodocu=9 limit 1 ) as silabopdf,
 (select docu.archivopdf from documento docu, documentosilabo dosi where docu.iddocumento=dosi.iddocumento and dosi.idsilabo=sila.idsilabo and dosi.idtipodocu=46 limit 1 ) as proyectocursopdf,
-(select docu.archivopdf from documento docu, documentoevento doev where docu.iddocumento=doev.iddocumento and doev.idevento=even.idevento and doev.idtipodocu=34 limit 1 ) as seguimientosilabopdf,
+(select docu.archivopdf from documento docu, documentoevento doev where docu.iddocumento=doev.iddocumento and doev.idevento=even.idevento and doev.idtipodocu=83 limit 1 ) as seguimientosilabopdf,
 (select docu.archivopdf from documento docu, documentoevento doev where docu.iddocumento=doev.iddocumento and doev.idevento=even.idevento and doev.idtipodocu=47 limit 1 ) as reactivo1pdf,
 (select docu.archivopdf from documento docu, documentoevento doev where docu.iddocumento=doev.iddocumento and doev.idevento=even.idevento and doev.idtipodocu=56 limit 1 ) as reactivo2pdf,
 (select docu.archivopdf from documento docu, documentoevento doev where docu.iddocumento=doev.iddocumento and doev.idevento=even.idevento and doev.idtipodocu=40 limit 1 ) as calificacion1pdf,
