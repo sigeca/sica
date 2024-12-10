@@ -332,7 +332,7 @@ $calificaciones2p = <calificaciones2p>; // Ejemplo de porcentaje de informes fin
 
 
        // Configuración del gráfico de Primer parcial
-        const ctxCalificaiones1p = document.getElementById("calificaciones1pChart").getContext("2d");
+        const ctxCalificaciones1p = document.getElementById("calificaciones1pChart").getContext("2d");
         const calificaciones1pChart = new Chart(ctxCalificaciones1p, {
             type: "pie",
             data: {
@@ -359,7 +359,7 @@ $calificaciones2p = <calificaciones2p>; // Ejemplo de porcentaje de informes fin
 
    
      // Configuración del gráfico de Primer parcial
-        const ctxCalificaiones2p = document.getElementById("calificaciones2pChart").getContext("2d");
+        const ctxCalificaciones2p = document.getElementById("calificaciones2pChart").getContext("2d");
         const calificaciones2pChart = new Chart(ctxCalificaciones2p, {
             type: "pie",
             data: {
