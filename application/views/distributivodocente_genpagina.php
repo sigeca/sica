@@ -498,6 +498,7 @@ $k=0;
 $totalinscritos=0;
 $totalparalelos=0;
 $silabos=0;
+$seguimientosilabo=0;
 $planessemestrales=0;
 $reactivos1=0;
 $calificaciones1p=0;
