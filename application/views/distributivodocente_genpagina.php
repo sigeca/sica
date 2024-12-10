@@ -579,6 +579,12 @@ $data=$data.'
         <div class="chart-box">
             <canvas id="planessemestralesChart"></canvas>
         </div>
+        <div class="chart-box">
+            <canvas id="calificaciones1pChart"></canvas>
+        </div>
+        <div class="chart-box">
+            <canvas id="calificaciones2pChart"></canvas>
+        </div>
     </div>
    	</div>
 </div>
