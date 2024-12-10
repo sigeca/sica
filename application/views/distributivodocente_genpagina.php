@@ -129,8 +129,8 @@ contenedor {
             align-items: center;
         }
         .chart-box {
-            width: 25%;
-            margin: 10px;
+            width: 20%;
+            margin: 5px;
         }
         canvas {
             width: 100% !important;
@@ -138,7 +138,7 @@ contenedor {
         }
         @media (max-width: 768px) {
             .chart-box {
-                width: 90%;
+                width: 70%;
             }
         }
 
@@ -801,7 +801,7 @@ $data=$data.'</div>
 			}
 
 
-			if(isset($row->calificacon1pdf)){
+			if(isset($row->calificacion1pdf)){
 				$disable5= 'style="pointer-events:none; cursor:default"';
                 $color5='gray';
                 $calificaciones1p=$calificaciones1p+1;
