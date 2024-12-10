@@ -809,13 +809,13 @@ $data=$data.'</div>
             $total=$total+1;
 			if(isset($row->silabopdf)){
 			if($row->silabopdf==''){
-				$disable1='style="pointer-events:none; cursor:default"';
+				$disable0='style="pointer-events:none; cursor:default"';
 				$color1='gray';
 			}
             $silabos=$silabos+1;
 			}else{
 
-				$disable1='style="pointer-events:none; cursor:default"';
+				$disable0='style="pointer-events:none; cursor:default"';
 				$color1='gray';
 
 			}
@@ -898,7 +898,7 @@ $data=$data.'</div>
 
 			$data=$data.'<br><p>';
 			if(isset($row->silabopdf)){
-			    $data=$data.'[<a href="https://repositorioutlvte.org/Repositorio/'.$row->silabopdf.'"  '.$disable1.'><i class="fas fa-file-pdf" style="font-size:24px" ></i> <span style="color:'.$color1.'" >Sillabus</span></a>] - ';
+			    $data=$data.'[<a href="https://repositorioutlvte.org/Repositorio/'.$row->silabopdf.'"  '.$disable0.'><i class="fas fa-file-pdf" style="font-size:24px" ></i> <span style="color:'.$color1.'" >Sillabus</span></a>] - ';
             }
 
 			$data=$data.'<br><p>';
