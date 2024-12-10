@@ -129,8 +129,8 @@ contenedor {
             align-items: center;
         }
         .chart-box {
-            width: 20%;
-            margin: 5px;
+            width: 15%;
+            margin: 3px;
         }
         canvas {
             width: 100% !important;
@@ -223,6 +223,7 @@ $data1='</div>
 
 <?php
 $silabos = <silabos>; // Ejemplo de porcentaje de distributivos entregados
+$seguimientosilabo = <seguimientosilabo>; // Ejemplo de porcentaje de distributivos entregados
 $total = <total>; // Ejemplo de total de elementos
 $planessemestrales = <planessemestrales>; // Ejemplo de porcentaje de informes finales entregados
 $reactivos1 = <reactivos1>; // Ejemplo de porcentaje de informes finales entregados
@@ -267,6 +268,12 @@ $calificaciones2p = <calificaciones2p>; // Ejemplo de porcentaje de informes fin
         const silabosEntregados = <?php echo $silabos; ?>; // Porcentaje de distributivos entregados
         const silabosPendientes = <?php echo $total; ?> - silabosEntregados;
 
+        const seguimientosilaboEntregados = <?php echo $seguimientosilabo; ?>; // Porcentaje de distributivos entregados
+        const seguimientosilaboPendientes = <?php echo $total; ?> - seguimientosilaboEntregados;
+
+
+
+
         const planessemestralesEntregado =  <?php echo $planessemestrales; ?> // Porcentaje de informes finales entregados
         const planessemestralesPendiente =  <?php echo $total; ?>- planessemestralesEntregado;
 
@@ -304,6 +311,47 @@ $calificaciones2p = <calificaciones2p>; // Ejemplo de porcentaje de informes fin
                 }
             }
         });
+
+
+
+        // Configuración del gráfico de Distributivos
+        const ctxseguimientosilabo = document.getElementById("seguimientosilaboChart").getContext("2d");
+        const seguimientosilaboChart = new Chart(ctxseguimientosilabo, {
+            type: "pie",
+            data: {
+                labels: ["Entregados", "Pendientes"],
+                datasets: [{
+                    data: [Seguimiento silabo Entregados, Seguimiento silabo Pendientes],
+                    backgroundColor: ["#36A2EB", "#FF6384"]
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: "top",
+                    },
+                    title: {
+                        display: true,
+                        text: "SEGUIMIENTO SÍLABO"
+                    }
+                }
+            }
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         // Configuración del gráfico de Informes Finales
         const ctxInformeFinal = document.getElementById("planessemestralesChart").getContext("2d");
@@ -577,6 +625,9 @@ $data=$data.'
             <canvas id="silabosChart"></canvas>
         </div>
         <div class="chart-box">
+            <canvas id="seguimientosilaboChart"></canvas>
+        </div>
+        <div class="chart-box">
             <canvas id="planessemestralesChart"></canvas>
         </div>
         <div class="chart-box">
@@ -768,6 +819,20 @@ $data=$data.'</div>
 
 			}
 
+			if(isset($row->seguimientosilabopdf)){
+			if($row->seguimientosilabopdf==''){
+				$disable1='style="pointer-events:none; cursor:default"';
+				$color1='gray';
+			}
+            $seguimientosilabo=$seguimientosilabo+1;
+			}else{
+
+				$disable1='style="pointer-events:none; cursor:default"';
+				$color1='gray';
+
+			}
+
+
 			if(isset($row->planclasepdf)){
 			if($row->planclasepdf==''){
 				$disable2= 'style="pointer-events:none; cursor:default"';
@@ -834,6 +899,13 @@ $data=$data.'</div>
 			if(isset($row->silabopdf)){
 			    $data=$data.'[<a href="https://repositorioutlvte.org/Repositorio/'.$row->silabopdf.'"  '.$disable1.'><i class="fas fa-file-pdf" style="font-size:24px" ></i> <span style="color:'.$color1.'" >Sillabus</span></a>] - ';
             }
+
+			$data=$data.'<br><p>';
+			if(isset($row->seguimientosilabopdf)){
+			    $data=$data.'[<a href="https://repositorioutlvte.org/Repositorio/'.$row->seguimientosilabopdf.'"  '.$disable1.'><i class="fas fa-file-pdf" style="font-size:24px" ></i> <span style="color:'.$color1.'" >SeguimientoSillabus</span></a>] - ';
+            }
+
+
 
 			if(isset($row->planclasepdf)){
 			$data=$data.'[<a href="https://repositorioutlvte.org/Repositorio/'.$row->planclasepdf.'"  '.$disable2.' ><i class="fas fa-file-pdf" style="font-size:24px" ></i> <span style="color:'.$color2.'" >PlanSemestral</span></a>] - ';
@@ -1078,6 +1150,7 @@ $data1= str_replace('<totalparalelos>',$totalparalelos,$data1);
 
 $data1= str_replace('<total>',$total,$data1);
 $data1= str_replace('<silabos>',$silabos,$data1);
+$data1= str_replace('<seguimientosilabo>',$seguimientosilabo,$data1);
 $data1= str_replace('<planessemestrales>',$planessemestrales,$data1);
 $data1= str_replace('<reactivos1>',$reactivos1,$data1);
 $data1= str_replace('<calificaciones1p>',$calificaciones1p,$data1);
