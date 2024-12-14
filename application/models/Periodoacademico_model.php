@@ -13,6 +13,13 @@ class Periodoacademico_model extends CI_model {
 	}
 
 
+	function lista_periodoacademicosxpersona($idpersona){
+         $periodoacademico =  $this->db->query('SELECT * FROM periodoacademico WHERE idperiodoacademico IN (SELECT idperiodoacademico FROM portafolio  WHERE idpersona = ? ) ', [$idpersona]);
+		 return $periodoacademico;
+	}
+
+
+
 
 
  	function periodoacademico( $id){

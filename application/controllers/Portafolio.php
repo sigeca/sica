@@ -122,7 +122,6 @@ public function listar()
 	public function listarxpersona()
 	{
 		$data['instituciones']= $this->institucion_model->lista_instituciones()->result();
-	 	$data['periodoacademicos'] = $this->periodoacademico_model->lista_periodoacademicos()->result();
    		$data['filtro']=0;
 		if($this->uri->segment(3))
 		{
@@ -132,6 +131,7 @@ public function listar()
 		$data['filtro']= $idpersona; //$data['participante']['idparticipante'];
 		}
 
+	 	$data['periodoacademicos'] = $this->periodoacademico_model->lista_periodoacademicosxpersona($idpersona)->result();
 		$data['title']="Evento";
 		$this->load->view('template/page_header');		
 		$this->load->view('portafolio_xpersona',$data);
