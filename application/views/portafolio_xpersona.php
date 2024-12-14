@@ -140,7 +140,7 @@ $(document).ready(function(){
 	var idpersona = document.getElementById("idpersona").innerHTML;
 	var idportafolio=0;
 	var idperiodoacademico=0;
-	var mytablaf= $('#mydatap').DataTable({"ajax": {url: '<?php echo site_url('portafolio/documento_data')?>', type: 'GET',data:{idpersona:idpersona,idperiodoacademico:idperiodoacademico}},});
+	var mytablaf= $('#mydatap').DataTable({scrollX:true,responsive:true, autoWidth:false, "ajax": {url: '<?php echo site_url('portafolio/documento_data')?>', type: 'GET',data:{idpersona:idpersona,idperiodoacademico:idperiodoacademico}},});
 });
 
 
