@@ -122,7 +122,6 @@ public function listar()
 	public function listarxpersona()
 	{
 		$data['instituciones']= $this->institucion_model->lista_instituciones()->result();
-		$data['participantes'] =$this->participante_model->participantes($data['evento']['idevento'])->result();
 
 	 	$data['periodoacademicos'] = $this->periodoacademico_model->lista_periodoacademicos()->result();
    		$data['filtro']=0;
