@@ -161,9 +161,6 @@ function portafolio_data()
 		);
 		echo json_encode($output);
 		exit();
-	
-			
-
 }
 
 
