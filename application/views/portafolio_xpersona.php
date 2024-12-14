@@ -65,6 +65,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
 
 
 
+<div id="idpersona" style="display:none"><?php echo $filtro; ?></div>
 	<table class="table table-striped table-bordered table-hover" id="mydatap">
 	 <thead>
 	 <tr>
@@ -136,7 +137,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
 <script type="text/javascript">
 
 $(document).ready(function(){
-	var idpersona = document.getElementById("filtro").innerHTML;
+	var idpersona = document.getElementById("idpersona").innerHTML;
 	var idportafolio=0;
 	var idperiodoacademico=0;
 	var mytablaf= $('#mydatap').DataTable({"ajax": {url: '<?php echo site_url('portafolio/documento_data')?>', type: 'GET',data:{idpersona:idpersona,idperiodoacademico:idperiodoacademico}},});
@@ -190,7 +191,7 @@ function filtra_evento()
 {
 //       var idevento_estado = $('select[name=idevento_estado]').val();
 
-	var idpersona = document.getElementById("filtro").innerHTML;
+	var idpersona = document.getElementById("idpersona").innerHTML;
        
 var mytabla= $('#mydatac').DataTable({destroy: true,"ajax": {url: '<?php echo site_url('evento/persona_data')?>', type: 'GET',data:{idpersona:idpersona}},});
 }
@@ -198,7 +199,7 @@ var mytabla= $('#mydatac').DataTable({destroy: true,"ajax": {url: '<?php echo si
 var idperiodoacademico=0;
 function filtra_periodo()
 {
-	var idpersona = document.getElementById("filtro").innerHTML;
+	var idpersona = document.getElementById("idpersona").innerHTML;
 	idperiodoacademico = $('select[name=idperiodoacademico]').val();
 //	var mytabla= $('#mydatac').DataTable({destroy: true,"ajax": {url: '<?php echo site_url('documento/documento_dataxtipodocu')?>', type: 'GET',data:{idperiodoacaemico:idperiodoacademico}},});
 	var mytablaf= $('#mydatap').DataTable({destroy:true,"ajax": {url: '<?php echo site_url('portafolio/documento_data')?>', type: 'GET',data:{idpersona:idpersona,idperiodoacademico:idperiodoacademico}},});
