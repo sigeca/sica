@@ -10,6 +10,9 @@ class Portafolio extends CI_Controller{
   	$this->load->model('portafolio_model');
       	$this->load->model('ordenador_model');
       	$this->load->model('directorio_model');
+      	$this->load->model('institucion_model');
+      	$this->load->model('participante_model');
+      	$this->load->model('periodoacademico_model');
 }
 
 public function index(){
@@ -112,6 +115,40 @@ public function listar()
   	$this->load->view('portafolio_list',$data);
 	$this->load->view('template/page_footer');
 }
+
+
+
+
+	public function listarxpersona()
+	{
+		$data['instituciones']= $this->institucion_model->lista_instituciones()->result();
+		$data['participantes'] =$this->participante_model->participantes($data['evento']['idevento'])->result();
+
+	 	$data['periodoacademicos'] = $this->periodoacademico_model->lista_periodoacademicos()->result();
+   		$data['filtro']=0;
+		if($this->uri->segment(3))
+		{
+			$idpersona=$this->uri->segment(3);
+			$data['persona']=$this->persona_model->persona($this->uri->segment(3))->result();
+
+		$data['filtro']= $idpersona; //$data['participante']['idparticipante'];
+		}
+
+		$data['title']="Evento";
+		$this->load->view('template/page_header');		
+		$this->load->view('portafolio_xpersona',$data);
+		$this->load->view('template/page_footer');
+	}
+
+
+
+
+
+
+
+
+
+
 
 
 
