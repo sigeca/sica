@@ -14,6 +14,7 @@ if(isset($portafolio) and !empty($portafolio))
 <!--        <li style="border-right:1px solid green"> <?php echo anchor('portafolio/delete/'.$portafolio['idportafolio'],'Delete'); ?></li> -->
         <li> <?php echo anchor('portafolio/listar/','Listar'); ?></li>
         <li> <?php echo anchor('portafolio/listar_doce/','Portafolio'); ?></li>
+        <li> <?php echo anchor('portafolio/listarxpersona/'.$idpersona,'PortafolioPersona'); ?></li>
         <li> <?php echo anchor('portafolio/reportepdf/'.$portafolio['idportafolio'],'Reporte'); ?></li>
 
 <?php 
