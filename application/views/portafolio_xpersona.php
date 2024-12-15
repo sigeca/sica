@@ -50,7 +50,8 @@ body {font-family: Arial, Helvetica, sans-serif;}
                         <label class="col-md-2 col-form-label">PERIODO ACADÉMICO:</label>
                         <?php
                         $options = array('--Select--');
-                        foreach ($periodoacademicos as $index=> $row) {
+                        $default_value='';
+                        foreach ($periodoacademicos as $row) {
                             $options[$row->idperiodoacademico] = $row->nombrecorto;
                              if ($index === array_key_last($periodoacademicos)) {
                                 $default_value = $row->idperiodoacademico;
@@ -59,7 +60,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
                         ?>
                         <div class="col-md-10">
                             <?php
-                            echo form_dropdown("idperiodoacademico", $options, set_select('--Select--', 'default_value'), array('onchange' => 'filtra_periodo()'));
+                            echo form_dropdown("idperiodoacademico", $options, $default_value, array('onchange' => 'filtra_periodo()'));
                             ?>
                         </div>
                     </div>
