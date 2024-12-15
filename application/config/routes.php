@@ -56,4 +56,6 @@ $route['index.php/login']='login';
 $route['tesiscti']='documento/listarxtipodocu/11';
 $route['maestriati']='index.php/login/user_registration_show?idinstitucion=1&idevento=27';
 $route['menu'] = 'MenuController/index';
-
+$route['blog'] = 'blog/index';
+$route['blog/view/(:num)'] = 'blog/view/$1';
+$route['blog/create'] = 'blog/create';
