@@ -50,7 +50,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
                         <label class="col-md-2 col-form-label">PERIODO ACADÉMICO:</label>
                         <?php
                         $options = array('--Select--');
-                        foreach ($periodoacademicos as $row) {
+                        foreach ($periodoacademicos as $index=> $row) {
                             $options[$row->idperiodoacademico] = $row->nombrecorto;
                              if ($index === array_key_last($periodoacademicos)) {
                                 $default_value = $row->idperiodoacademico;
