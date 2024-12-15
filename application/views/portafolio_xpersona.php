@@ -40,18 +40,21 @@ body {font-family: Arial, Helvetica, sans-serif;}
                             <div class="pull-left">
                                 <b style="color: white;">
                                     <i class="fas fa-file-alt fa-2x"></i> <!-- Icono del documento -->
-                                    Documentos del portafolio:
+                                    DOCUMENTOS DEL PORTAFOLIO:
                                 </b>
                             </div>
                         </div>
                     </div>
 
                     <div class="form-group row">
-                        <label class="col-md-2 col-form-label">Periodo:</label>
+                        <label class="col-md-2 col-form-label">PERIODO ACADÉMICO:</label>
                         <?php
                         $options = array('--Select--');
                         foreach ($periodoacademicos as $row) {
                             $options[$row->idperiodoacademico] = $row->nombrecorto;
+                             if ($index === array_key_last($periodoacademicos)) {
+                                $default_value = $row->idperiodoacademico;
+                            }
                         }
                         ?>
                         <div class="col-md-10">
@@ -67,9 +70,9 @@ body {font-family: Arial, Helvetica, sans-serif;}
                         <table class="table table-striped table-bordered table-hover" id="mydatap">
                             <thead>
                                 <tr>
-                                    <th>Id document</th>
-                                    <th>Tipo document</th>
-                                    <th>Título asunto</th>
+                                    <th>Id</th>
+                                    <th>Tipo documento</th>
+                                    <th>Título o Asunto</th>
                                     <th>Nombre archivo</th>
                                     <th style="text-align: right;">Actions</th>
                                 </tr>
