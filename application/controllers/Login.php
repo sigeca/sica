@@ -119,6 +119,7 @@ public function new_user_registration() {
 	      $this->load_model('pais_model');
 	      $this->load_model('correo_model');
 	      $this->load_model('password_model');
+	      $this->load_model('institucion_model');
           // Check validation for user input in SignUp form
           $this->form_validation->set_rules('cedula', 'Cedula', 'trim|required|regex_match[/^[0-9]{10}$/]|xss_clean');
           $this->form_validation->set_rules('apellidos', 'Apellidos', 'trim|required|xss_clean');
