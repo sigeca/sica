@@ -51,7 +51,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
                         <?php
                         $options = array('--Select--');
                         $default_value='';
-                        foreach ($periodoacademicos as $row) {
+                        foreach ($periodoacademicos as $index=> $row) {
                             $options[$row->idperiodoacademico] = $row->nombrecorto;
                              if ($index === array_key_last($periodoacademicos)) {
                                 $default_value = $row->idperiodoacademico;
