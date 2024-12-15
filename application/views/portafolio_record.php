@@ -1,25 +1,62 @@
 <div id="eys-nav-i">
 <h3 style="text-align: left; margin-top:-10px;"> <?php echo $title;  ?></h3>
-	<ul>
 <?php
 if(isset($portafolio) and !empty($portafolio))
 {
+
+	$permitir=0;
+	$j=0;
+	$numero=$j;
+	if(isset($this->session->userdata['acceso'])){
+  		foreach($this->session->userdata['acceso'] as $row)
+	    	{
+			if("evento"==$row["modulo"]["nombre"]);
+			{
+				$numero=$j;
+				$permitir=1;
+			}		
+			$j=$j+1;
+	    	} 
+	}
+	if($permitir==0){
+		redirect('login/logout');
+	}
+
+?>
+
+
+<?php 	if($this->session->userdata['acceso'][$numero]['nivelacceso']['navegar']){ ?>
+<ul>
+
+
+
 ?>
         <li> <?php echo anchor('portafolio/elprimero/', 'primero'); ?></li>
         <li> <?php echo anchor('portafolio/anterior/'.$portafolio['idportafolio'], 'anterior'); ?></li>
         <li> <?php echo anchor('portafolio/siguiente/'.$portafolio['idportafolio'], 'siguiente'); ?></li>
         <li style="border-right:1px solid green"><?php echo anchor('portafolio/elultimo/', 'Último'); ?></li>
+
+	<?php 	if($this->session->userdata['acceso'][$numero]['nivelacceso']['create']){ ?>
         <li> <?php echo anchor('portafolio/add', 'Nuevo'); ?></li>
+	<?php } ?>
+
+	<?php 	if($this->session->userdata['acceso'][$numero]['nivelacceso']['update']){ ?>
         <li style="border-right:1px solid green"> <?php echo anchor('portafolio/edit/'.$portafolio['idportafolio'],'Edit'); ?></li>
-<!--        <li style="border-right:1px solid green"> <?php echo anchor('portafolio/delete/'.$portafolio['idportafolio'],'Delete'); ?></li> -->
+	<?php } ?>
+
+
+	<?php 	if($this->session->userdata['acceso'][$numero]['nivelacceso']['read']){ ?>
         <li> <?php echo anchor('portafolio/listar/','Listar'); ?></li>
         <li> <?php echo anchor('portafolio/listar_doce/','Portafolio'); ?></li>
-        <li> <?php echo anchor('portafolio/listarxpersona/'.$portafolio['idpersona'],'PortafolioPersona'); ?></li>
         <li> <?php echo anchor('portafolio/reportepdf/'.$portafolio['idportafolio'],'Reporte'); ?></li>
+	<?php } ?>
+        <li> <?php echo anchor('portafolio/listarxpersona/'.$portafolio['idpersona'],'PortafolioPersona'); ?></li>
 
+	<?php } ?>
 <?php 
 }else{
 ?>
+	<ul>
 
         <li> <?php echo anchor('portafolio/add', 'Nuevo'); ?></li>
 <?php

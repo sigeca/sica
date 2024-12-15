@@ -282,7 +282,6 @@ public function read_user_information($email,$password) {
                               return $arrusuario;
                           } else {
 
-
                         $condition = "idpagina =47";
                         $this->db->select('*');
                         $this->db->from('pagina');
