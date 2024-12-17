@@ -14,7 +14,6 @@
 <div id="eys-nav-i">
 	<div style="text-align: left; font-size:large"> <?php echo $title  ?></div>
 	
-
 <?php
 if(isset($evento))
 {
@@ -36,9 +35,7 @@ if(isset($evento))
 	if($permitir==0){
 		redirect('login/logout');
 	}
-
 ?>
-
 
 <?php 	if($this->session->userdata['acceso'][$numero]['nivelacceso']['navegar']){ ?>
 <ul>
@@ -50,7 +47,6 @@ if(isset($evento))
 	<?php 	if($this->session->userdata['acceso'][$numero]['nivelacceso']['create']){ ?>
         <li> <?php echo anchor('evento/add', 'Nuevo'); ?></li>
 	<?php } ?>
-
 
 	<?php 	if($this->session->userdata['acceso'][$numero]['nivelacceso']['update']){ ?>
         <li> <?php echo anchor('evento/edit/'.$evento['idevento'],'Edit'); ?></li>
@@ -81,7 +77,6 @@ if(isset($evento))
 <?php 
 }else{
 ?>
-
         <li> <?php echo anchor('evento_estado/add', 'Nuevo'); ?></li>
 <?php
 }
@@ -91,10 +86,8 @@ if(isset($evento))
 </div>
 <br>
 
-
 <?php echo form_open('evento/save_edit') ?>
 <?php echo form_hidden('idevento',$evento['idevento'],array('name'=>'idevento')) ?>
-
 
 <div class="form-group row">
     <label class="col-md-2 col-form-label"> <?php echo anchor('institucion/add', 'Institución:') ?> </label>
