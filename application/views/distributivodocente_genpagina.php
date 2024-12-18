@@ -693,9 +693,14 @@ if($file_headers[0] == 'HTTP/1.1 404 Not Found') {
 
 
 
-// Start container for profile picture and name
-$data = $data . '<div class="profile-container" style="position:absolute; top:10px; right:10px; display:flex; align-items:center;">';
 
+// Start container for name and profile picture
+$data = $data . '<div class="profile-container" style="position:absolute; top:10px; right:10px; display:flex; flex-direction:column; align-items:flex-end;">';
+
+
+// Add name first
+$data = $data . '<span style="font-size:18px; color:#ffffff; font-weight:bold; text-shadow: 2px 2px 4px rgba(0,0,0,0.7);">'
+               . htmlspecialchars($row->eldocente) . '</span>';
 
 // Remote file url
 $remoteFile = "https://repositorioutlvte.org/Repositorio/fotos/".trim($row->cedula).".jpg";
@@ -704,16 +709,11 @@ $file_headers = @get_headers($remoteFile);
 
 // Check if file exists
 if ($file_headers[0] == 'HTTP/1.1 404 Not Found') {
-    $data = $data . '<img src="https://repositorioutlvte.org/Repositorio/fotos/perfil.jpg" width="50px" height="50px" style="border: 2px solid green; border-radius: 50%;">';
+    $data = $data . '<img src="https://repositorioutlvte.org/Repositorio/fotos/perfil.jpg" width="80px" height="80px" style="border: 2px solid green; border-radius: 50%;">';
 } else {
-    $data = $data . '<img src="https://repositorioutlvte.org/Repositorio/fotos/' . trim($row->cedula) . '.jpg" width="50px" height="50px" style="border: 2px solid green; border-radius: 50%;">';
+    $data = $data . '<img src="https://repositorioutlvte.org/Repositorio/fotos/' . trim($row->cedula) . '.jpg" width="80px" height="80px" style="border: 2px solid green; border-radius: 50%;">';
 }
 
-
-
-// Add name to the left of the image
-$data = $data . '<span style="margin-left:10px; font-size:16px; color:#ffffff; font-weight:bold; text-shadow: 2px 2px 4px rgba(0,0,0,0.7);">'
-               . htmlspecialchars($row->eldocente) . '</span>';
 
 
 
