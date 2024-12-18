@@ -709,9 +709,9 @@ $file_headers = @get_headers($remoteFile);
 
 // Check if file exists
 if ($file_headers[0] == 'HTTP/1.1 404 Not Found') {
-    $data = $data . '<img src="https://repositorioutlvte.org/Repositorio/fotos/perfil.jpg" width="80px" height="80px" style="border: 2px solid green; border-radius: 50%;">';
+    $data = $data . '<img src="https://repositorioutlvte.org/Repositorio/fotos/perfil.jpg" width="100px" height="100px" style="border: 2px solid green; border-radius: 50%;">';
 } else {
-    $data = $data . '<img src="https://repositorioutlvte.org/Repositorio/fotos/' . trim($row->cedula) . '.jpg" width="80px" height="80px" style="border: 2px solid green; border-radius: 50%;">';
+    $data = $data . '<img src="https://repositorioutlvte.org/Repositorio/fotos/' . trim($row->cedula) . '.jpg" width="100px" height="100px" style="border: 2px solid green; border-radius: 50%;">';
 }
 
 
