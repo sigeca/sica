@@ -665,9 +665,15 @@ if($row->numeronivelacademico != $nivel){
                 $nivel=$row->numeronivelacademico;
     }
 
-$data=$data.'<div class="col">
+$data = $data . '<div class="col">
           <div class="card shadow-sm">
-		  <a  href="https://educaysoft.org/sica/evento/detalle/'.$row->idevento.'"><svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/>';
+          <a href="https://educaysoft.org/sica/evento/detalle/' . $row->idevento . '">
+            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
+              <title>Placeholder</title>
+              <rect width="100%" height="100%" fill="#55595c"/>';
+
+
+
 
 // Remote file url
 $remoteFile = "https://repositorioutlvte.org/Repositorio/eventos/AreaConocimiento/".trim($row->idareaconocimiento).".jpg";
@@ -699,11 +705,11 @@ if($file_headers[0] == 'HTTP/1.1 404 Not Found') {
 }
 
 // Add name to the left of the image
-$data = $data . '<span style="margin-left:10px; font-size:14px; color:#333; font-weight:bold;">' . htmlspecialchars($row->eldocente) . '</span>';
+$data = $data . '<span style="margin-left:10px; font-size:16px; color:#ffffff; font-weight:bold; text-shadow: 2px 2px 4px rgba(0,0,0,0.7);">'
+               . htmlspecialchars($row->eldocente) . '</span>';
 
-$data = $data . '</div>'; // Close profile-container
-$data = $data . '</div>'; // Close card
-$data = $data . '</div>'; // Close col
+
+
 
 
 $data=$data.'</div>
