@@ -703,7 +703,7 @@ $data = $data . '<span style="margin-left:10px; font-size:14px; color:#333; font
 
 $data = $data . '</div>'; // Close profile-container
 $data = $data . '</div>'; // Close card
-$
+$data = $data . '</div>'; // Close col
 
 
 $data=$data.'</div>
