@@ -687,9 +687,14 @@ if($file_headers[0] == 'HTTP/1.1 404 Not Found') {
     $data=$data.'<image href="https://repositorioutlvte.org/Repositorio/eventos/AreaConocimiento/'.trim($row->codigo).'.jpg" alt="Revisar la programación"  height="100%" width="100%"/> </svg></a>';
 }
 
-// Start container for profile picture and name
-$data = $data . '<div class="profile-container" style="position:absolute; top:10px; right:10px; display:flex; align-items:center; border: 2px solid green; border-radius: 50px; background-color: rgba(255,255,255,0.8); padding:5px;">';
 
+
+
+
+
+
+// Start container for profile picture and name
+$data = $data . '<div class="profile-container" style="position:absolute; top:10px; right:10px; display:flex; align-items:center;">';
 
 
 // Remote file url
@@ -698,11 +703,13 @@ $remoteFile = "https://repositorioutlvte.org/Repositorio/fotos/".trim($row->cedu
 $file_headers = @get_headers($remoteFile);
 
 // Check if file exists
-if($file_headers[0] == 'HTTP/1.1 404 Not Found') {
-	$data=$data.'<img src="https://repositorioutlvte.org/Repositorio/fotos/perfil.jpg" width="100%" height="100%" style="border-radius:50px;">';
-}else{
-	$data=$data.'<img src="https://repositorioutlvte.org/Repositorio/fotos/'.trim($row->cedula).'.jpg" width="100%" height="100%" style="border-radius:50px;">';
+if ($file_headers[0] == 'HTTP/1.1 404 Not Found') {
+    $data = $data . '<img src="https://repositorioutlvte.org/Repositorio/fotos/perfil.jpg" width="50px" height="50px" style="border: 2px solid green; border-radius: 50%;">';
+} else {
+    $data = $data . '<img src="https://repositorioutlvte.org/Repositorio/fotos/' . trim($row->cedula) . '.jpg" width="50px" height="50px" style="border: 2px solid green; border-radius: 50%;">';
 }
+
+
 
 // Add name to the left of the image
 $data = $data . '<span style="margin-left:10px; font-size:16px; color:#ffffff; font-weight:bold; text-shadow: 2px 2px 4px rgba(0,0,0,0.7);">'
