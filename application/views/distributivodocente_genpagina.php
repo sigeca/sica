@@ -675,29 +675,15 @@ $remoteFile = "https://repositorioutlvte.org/Repositorio/eventos/AreaConocimient
 $file_headers = @get_headers($remoteFile);
 
 // Check if file exists
-//if(!file_exists($remoteFile)){
-
 if($file_headers[0] == 'HTTP/1.1 404 Not Found') {
- $data=$data.'<image href="https://repositorioutlvte.org/Repositorio/eventos/sinimagen.png"  height="100%" width="100%"/> </svg></a>
-
-<div class="img-contenedor w3-card-4" style="position:absolute; top:0px;right:0px; border: 2px solid green; border-radius: 50%; width: 30%; display:flex; justify-content: center; align-items: center;">';
-
+    $data=$data.'<image href="https://repositorioutlvte.org/Repositorio/eventos/sinimagen.png"  height="100%" width="100%"/> </svg></a>';
 }else{
-/*
-	if(is_null($row->silabopdf) || $row->silabopdf=="")
-	{
-$data=$data.'<image href="https://repositorioutlvte.org/Repositorio/eventos/AreaConocimiento/'.trim($row->idareaconocimiento).'-no.jpg" alt="No hay programación" height="100%" width="100%"/> </svg></a>
-<div class="img-contenedor w3-card-4" style="position:absolute; top:0px;right:0px; border: 2px solid green; border-radius: 50%; width: 30%; display:flex; justify-content: center; align-items: center;">';
-	}else{
-
-$data=$data.'<image href="https://repositorioutlvte.org/Repositorio/eventos/AreaConocimiento/'.trim($row->idareaconocimiento).'-si.jpg" alt="Revisar la programación"  height="100%" width="100%"/> </svg></a>
-<div class="img-contenedor w3-card-4" style="position:absolute; top:0px;right:0px; border: 2px solid green; border-radius: 50%; width: 30%; display:flex; justify-content: center; align-items: center;">';
-	}
- */
-$data=$data.'<image href="https://repositorioutlvte.org/Repositorio/eventos/AreaConocimiento/'.trim($row->codigo).'.jpg" alt="Revisar la programación"  height="100%" width="100%"/> </svg></a>
-<div class="img-contenedor w3-card-4" style="position:absolute; top:0px;right:0px; border: 2px solid green; border-radius: 50%; width: 30%; display:flex; justify-content: center; align-items: center;">';
-
+    $data=$data.'<image href="https://repositorioutlvte.org/Repositorio/eventos/AreaConocimiento/'.trim($row->codigo).'.jpg" alt="Revisar la programación"  height="100%" width="100%"/> </svg></a>';
 }
+
+// Start container for profile picture and name
+$data = $data . '<div class="profile-container" style="position:absolute; top:10px; right:10px; display:flex; align-items:center; border: 2px solid green; border-radius: 50px; background-color: rgba(255,255,255,0.8); padding:5px;">';
+
 
 
 // Remote file url
@@ -706,15 +692,19 @@ $remoteFile = "https://repositorioutlvte.org/Repositorio/fotos/".trim($row->cedu
 $file_headers = @get_headers($remoteFile);
 
 // Check if file exists
-//if(!file_exists($remoteFile)){
 if($file_headers[0] == 'HTTP/1.1 404 Not Found') {
-  //  echo 'File not found';
 	$data=$data.'<img src="https://repositorioutlvte.org/Repositorio/fotos/perfil.jpg" width="100%" height="100%" style="border-radius:50px;">';
-
 }else{
-//	$data=$data.'<img src="https://repositorioutlvte.org/Repositorio/fotos/perfil.jpg" width="100%" height="100%" style="border-radius:50px;">';
 	$data=$data.'<img src="https://repositorioutlvte.org/Repositorio/fotos/'.trim($row->cedula).'.jpg" width="100%" height="100%" style="border-radius:50px;">';
 }
+
+// Add name to the left of the image
+$data = $data . '<span style="margin-left:10px; font-size:14px; color:#333; font-weight:bold;">' . htmlspecialchars($row->eldocente) . '</span>';
+
+$data = $data . '</div>'; // Close profile-container
+$data = $data . '</div>'; // Close card
+$
+
 
 $data=$data.'</div>
 	    <div class="card-body" style="background-color:'.$arrcolor[$row->numeronivelacademico].'"  >

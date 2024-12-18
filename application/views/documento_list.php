@@ -502,7 +502,7 @@ $("#btn_update").on("click", function(){
     idtipodocu=0;
 var mytabla= $('#mydatac').DataTable({destroy:true,"ajax": {url: '<?php echo site_url('documento/documento_data')?>', type: 'GET',data:{idtipodocu:idtipodocu}},});
 
-	},
+},
       error: function (xhr, ajaxOptions, thrownError) {
         alert(xhr.status);
         alert(thrownError);
