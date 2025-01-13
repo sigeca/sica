@@ -144,7 +144,7 @@ function password_data()
 		$data=array();
 		foreach($data0->result() as $r){
 			$data[]=array($r->idpassword,$r->elusuario,$r->elevento,$r->password,$r->onoff,$r->fechaon,$r->fechaoff,
-				$r->href='<a href="javascript:void(0);" class="btn btn-info btn-sm item_ver" data-retorno="'.site_url('password/actual').'"  data-idpassword="'.$r->idpassword.'">Ver</a>'.$r->href='<a href="javascript:void(0);" class="btn btn-info btn-sm item_enviar"  data-idordenador="'.$r->elusuario.'"  data-ordenador="'.$r->password.'" data-lapersona="'.$r->lapersona.'"      data-idpersona="'.$r->idpersona.'"    data-asunto="'.$r->asunto.'"          data-subject="'.$r->subject.'"    data-head="'.$r->head.'"    data-foot="'.$r->foot.'">enviar</a>');
+				$r->href='<a href="javascript:void(0);" class="btn btn-info btn-sm item_ver" data-retorno="'.site_url('password/actual').'"  data-idpassword="'.$r->idpassword.'">Ver</a>'.$r->href='<a href="javascript:void(0);" class="btn btn-info btn-sm item_enviar"  data-email="'.$r->email.'"  data-password="'.$r->password.'" data-lapersona="'.$r->lapersona.'"      data-idpersona="'.$r->idpersona.'"    data-asunto="'.$r->asunto.'"          data-subject="'.$r->subject.'"    data-head="'.$r->head.'"    data-foot="'.$r->foot.'">enviar</a>');
 		}	
 		$output=array( "draw"=>$draw,
 			"recordsTotal"=> $data0->num_rows(),
