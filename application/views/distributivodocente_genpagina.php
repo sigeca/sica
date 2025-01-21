@@ -82,7 +82,7 @@ overflow:hidden;
 
 
 contenedor {
-  display:block;
+  display:none;
   position: relative;
   width: 600px;
   height: 400px;
@@ -130,7 +130,7 @@ contenedor {
         }
         .chart-box {
             width: 15%;
-            margin: 3px;
+            maxrgin: 3px;
         }
         canvas {
             width: 100% !important;
@@ -154,6 +154,11 @@ contenedor {
              margin-top: 10px;
              background-color: #f9f9f9;
          }
+
+#contenedor1 {
+    display: block; /* Solo este estará visible */
+  }
+
 
          /* Estilo para el botón */
          .toggle-btn {
@@ -618,7 +623,7 @@ $data=$data.'
 
 
 <button class="toggle-btn" onclick="toggleContenido(this)">+</button>Estadística de cumplimiento.
-<div class="contenido">
+<div class="contenido" id="contenedor1">
 <div class="col">
      <div class="card shadow-sm">
     <div class="chart-container">
