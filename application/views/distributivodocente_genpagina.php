@@ -82,7 +82,7 @@ overflow:hidden;
 
 
 contenedor {
-  display:none;
+  display:block;
   position: relative;
   width: 600px;
   height: 400px;
