@@ -148,7 +148,7 @@ contenedor {
 
 /* Estilo para los contenedores ocultos */
          .contenido {
-             display: none; /* Ocultarlo por defecto */
+             display: block; /* Ocultarlo por defecto */
              border: 1px solid #ccc;
              padding: 10px;
              margin-top: 10px;
