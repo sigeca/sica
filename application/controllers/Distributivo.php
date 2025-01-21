@@ -30,6 +30,7 @@ class Distributivo extends CI_Controller{
 			$data['periodoacademicos'] = $this->periodoacademico_model->lista_periodoacademicos1()->result();
   			$data['departamentos']= $this->departamento_model->lista_departamentos()->result();
   			$data['estadodistributivos']= $this->estadodistributivo_model->lista_estadodistributivos()->result();
+	        $data['asignaturadocente'] = $this->asignaturadocente_model->asignaturadocentexdistributivo2($data['distributivo']['iddistributivo'],1)->row_array();
 			$data['title']="Lista de distributivoes";
 			$this->load->view('template/page_header');
 			$this->load->view('distributivo_record',$data);
@@ -393,6 +394,7 @@ public function elultimo()
 		$data['departamentos']= $this->departamento_model->lista_departamentos()->result();
 		$data['estadodistributivos']= $this->estadodistributivo_model->lista_estadodistributivos()->result();
 	$data['periodoacademicos'] = $this->periodoacademico_model->lista_periodoacademicos1()->result();
+	    $data['asignaturadocente'] = $this->asignaturadocente_model->asignaturadocentexdistributivo2($data['distributivo']['iddistributivo'],1)->row_array();
   if(!empty($data))
   {
     $data['title']="Distributivo";
@@ -414,6 +416,8 @@ public function siguiente(){
 	$data['departamentos']= $this->departamento_model->lista_departamentos()->result();
 	$data['estadodistributivos']= $this->estadodistributivo_model->lista_estadodistributivos()->result();
 	$data['periodoacademicos'] = $this->periodoacademico_model->lista_periodoacademicos1()->result();
+    
+	    $data['asignaturadocente'] = $this->asignaturadocente_model->asignaturadocentexdistributivo2($data['distributivo']['iddistributivo'],1)->row_array();
   	$data['title']="Distributivo";
 	$this->load->view('template/page_header');		
   	$this->load->view('distributivo_record',$data);
@@ -426,6 +430,8 @@ public function anterior(){
 	$data['departamentos']= $this->departamento_model->lista_departamentos()->result();
 	$data['estadodistributivos']= $this->estadodistributivo_model->lista_estadodistributivos()->result();
 	$data['periodoacademicos'] = $this->periodoacademico_model->lista_periodoacademicos1()->result();
+
+	    $data['asignaturadocente'] = $this->asignaturadocente_model->asignaturadocentexdistributivo2($data['distributivo']['iddistributivo'],1)->row_array();
   	$data['title']="Distributivo";
 	$this->load->view('template/page_header');		
   	$this->load->view('distributivo_record',$data);
