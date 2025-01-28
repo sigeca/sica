@@ -28,14 +28,14 @@ foreach ($personas as $row){
 </tr>
 
 <tr>
-<td> Institucion:</td>
+<td> Departamento/Carrera:</td>
 <td><?php
 $options= array('--Select--');
-foreach ($instituciones as $row){
-	$options[$row->idinstitucion]= $row->nombre;
+foreach ($departamentoes as $row){
+	$options[$row->iddepartamento]= $row->nombre;
 }
 
- echo form_dropdown("idinstitucion",$options, $estudiante['idinstitucion']);  ?></td>
+ echo form_dropdown("iddepartamento",$options, $estudiante['iddepartamento']);  ?></td>
 </tr>
 
 <tr>
