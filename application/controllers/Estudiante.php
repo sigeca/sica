@@ -107,7 +107,8 @@ public function actual(){
 		 	'idestudiante' => $this->input->post('idestudiante'),
 			'idpersona' => $this->input->post('idpersona'),
 			'iddepartamento' => $this->input->post('iddepartamento'),
-			'fechainscripcion' => $this->input->post('fechainscripcion'),
+			'fechadesde' => $this->input->post('fechadesde'),
+			'fechahasta' => $this->input->post('fechahasta'),
 	 	);
 	 	$this->estudiante_model->update($id,$array_item);
 	 	redirect('estudiante');
