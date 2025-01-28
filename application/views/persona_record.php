@@ -102,6 +102,15 @@ if(isset($persona))
 	</div> 
 </div> 
 
+<div class="form-group row">
+    <label class="col-md-2 col-form-label"> Foto:</label>
+	<div class="col-md-10">
+ <img src="https://repositorioutlvte.org/Repositorio/fotos/<?php echo $persona['cedula']; ?>.jpg" alt="foto" width="400" height="300"> 
+	</div> 
+</div>
+
+
+
 
 <div class="form-group row">
     <label class="col-md-2 col-form-label"> Fecha nacimiento:</label>
