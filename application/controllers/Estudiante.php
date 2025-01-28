@@ -16,7 +16,9 @@ public function index(){
   	if(isset($this->session->userdata['logged_in'])){
 			
 		$data['estudiante']=$this->estudiante_model->elultimo();
-		$data['personas']= $this->persona_model->lista_personas()->result();
+		//$data['personas']= $this->persona_model->lista_personas()->result();
+		$data['personas']= $this->persona_model->persona($data['estudiante']['idpersona'])->result();
+
 		$data['departamentos']= $this->departamento_model->lista_departamentos()->result();
 		$data['estudios']= $this->estudio_model->estudios($data['estudiante']['idpersona'])->result();
 			
