@@ -39,8 +39,13 @@ foreach ($departamentos as $row){
 </tr>
 
 <tr>
-      <td>Fecha de Inscripcion:</td>
-      <td><?php echo form_input( array("name"=>'fechainscripcion',"id"=>'fechainscripcion',"value"=>$estudiante['fechainscripcion'],'type'=>'date','placeholder'=>'fechainscripcion')); ?></td>
+      <td>Fecha de Desde:</td>
+      <td><?php echo form_input( array("name"=>'fechadesde',"id"=>'fechadesde',"value"=>$estudiante['fechadesde'],'type'=>'date','placeholder'=>'fechadesde')); ?></td>
+  </tr>
+
+<tr>
+      <td>Fecha de hasta:</td>
+      <td><?php echo form_input( array("name"=>'fechahasta',"id"=>'fechahata',"value"=>$estudiante['fechahasta'],'type'=>'date','placeholder'=>'fechahasta')); ?></td>
   </tr>
 
  
