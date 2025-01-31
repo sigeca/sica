@@ -6,14 +6,14 @@ class Literalreglamento extends CI_Controller{
       parent::__construct();
       $this->load->model('literalreglamento_model');
   	  $this->load->model('institucion_model');
-     $this->load->model('articuloarticuloreglamento_model');
+     $this->load->model('articuloreglamento_model');
 }
 
 public function index(){
 	if(isset($this->session->userdata['logged_in'])){
 	  	$data['literalreglamento']=$this->literalreglamento_model->elultimo();
   		$data['instituciones']= $this->institucion_model->lista_instituciones()->result();
-		$data['articuloreglamentos']= $this->articuloarticuloreglamento_model->lista_literalreglamentos()->result();
+		$data['articuloreglamentos']= $this->articuloreglamento_model->lista_literalreglamentos()->result();
   		$data['title']="Lista de Artiulos";
 			$this->load->view('template/page_header');		
   		$this->load->view('literalreglamento_record',$data);
