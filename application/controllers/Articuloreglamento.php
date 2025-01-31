@@ -183,7 +183,7 @@ public function genpagina()
 	if($this->uri->segment(3))
 	{
 		$idreglamento=$this->uri->segment(3);
-	 	$data['articuloreglamentos']= $this->articuloreglamento_model->articuloreglamentoA($iddistributivo)->result();
+	 	$data['articuloreglamentos']= $this->articuloreglamento_model->articuloreglamentoA($idreglamento)->result();
 		$arreglo=array();
 		$i=0;
 		$data['prestamoarticuloreglamento']=array();
