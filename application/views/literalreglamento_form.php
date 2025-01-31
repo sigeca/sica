@@ -40,7 +40,7 @@ echo form_textarea("contenido","", $textarea_options);
 
 
 <div class="form-group row">
-<label class="col-md-2 col-form-label">Reglamento: </label>
+<label class="col-md-2 col-form-label">Articulo del Reglamento: </label>
 <div class="col-md-10">
 <?php
 $options= array('--Select--');
