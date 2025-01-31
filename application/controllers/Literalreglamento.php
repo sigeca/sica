@@ -43,7 +43,7 @@ public function  save()
 	 	'idliteralreglamento' => $this->input->post('idliteralreglamento'),
 	 	'contenido' => $this->input->post('contenido'),
 		'idarticuloreglamento' => $this->input->post('idarticuloreglamento'),
-	 	'titulo' => $this->input->post('titulo'),
+	 	'letra' => $this->input->post('letra'),
 	 	);
 	 	$result=$this->literalreglamento_model->save($array_item);
 	 	if($result == FALSE)
