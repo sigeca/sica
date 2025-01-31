@@ -78,10 +78,8 @@ public function edit()
 		 	
 		 	'idarticuloreglamento' => $this->input->post('idarticuloreglamento'),
 		 	'contenido' => $this->input->post('contenido'),
-	 	'archivo' => $this->input->post('archivo'),
 		'idreglamento' => $this->input->post('idreglamento'),
-	 	'numero' => $this->input->post('numero'),
-	 		'idinstitucion' => $this->input->post('idinstitucion'),
+	 	'numero' => $this->input->post('numero')
 	 	);
 	 	$this->articuloreglamento_model->update($id,$array_item);
 	 	redirect('articuloreglamento/actual/'.$id);
