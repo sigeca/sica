@@ -44,7 +44,7 @@ if(isset($literalreglamento))
 
 
  <div class="form-group row">
-    <label class="col-md-2 col-form-label"> <?php echo anchor('reglamento/actual/'.$literalreglamento['idreglamento'], 'Reglamento:'); ?> </label>
+    <label class="col-md-2 col-form-label"> <?php echo anchor('reglamento/actual/'.$literalreglamento['idarticuloreglamento'], 'Reglamento:'); ?> </label>
 	<div class="col-md-10">
      <?php 
 $options= array("NADA");
