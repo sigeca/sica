@@ -430,7 +430,7 @@ $data=$data.'
 
 
 
-        <div class="card-body" style="background-color:green"  >
+        <div class="card-body" style="background-color:'.$row->color.'"  >
         <div style="font-size:20px;  color:#333;  margin-top:10px;" > Nombre del reglamento:<br> <span  style="color:#6c757d;text-shadow: 1px 1px 2px #000, -1px -1px 2px #fff;" >'.$row->elreglamento.'</span> </div>
         <div style="font-size:20px;  color:#333;  margin-top:10px;" > <b>Proceso:</b>  <span  style="color:#6c757d;text-shadow: 1px 1px 2px #000, -1px -1px 2px #fff;" >'.$row->elreglamento.'</span> </div>
         <div style="font-size:20px;  color:#333;  margin-top:10px;" > <b>Orden:</b>'.$row->numero.' </div>
