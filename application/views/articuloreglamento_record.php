@@ -59,6 +59,20 @@ echo form_input('idreglamento',$options[$articuloreglamento['idreglamento']],arr
 	</div> 
 </div>
 
+
+<div class="form-group row">
+    <label class="col-md-2 col-form-label"> Título:</label>
+	<div class="col-md-10">
+     <?php
+
+  $eys_arrctl=array("name"=>'titulo','value'=>$articuloreglamento['titulo'],"disabled"=>"disabled",'placeholder'=>'Orden','style'=>'width:500px;');
+ echo form_input($eys_arrctl);
+		?>
+	</div> 
+</div>
+
+
+
 <div class="form-group row">
     <label class="col-md-2 col-form-label"> Número:</label>
 	<div class="col-md-10">

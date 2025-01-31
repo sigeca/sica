@@ -28,7 +28,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
 
 <div id="eys-nav-i">
 	<ul>
-		<li> <?php echo anchor('articuloreglamento', 'Home'); ?></li>
+		<li> <?php echo anchor('literalreglamento', 'Home'); ?></li>
 	</ul>
 </div>
 
@@ -81,13 +81,13 @@ body {font-family: Arial, Helvetica, sans-serif;}
 
 $(document).ready(function(){
 
-	var mytabla= $('#mydatac').DataTable({"ajax": {url: '<?php echo site_url('articuloreglamento/articuloreglamento_data')?>', type: 'GET'},});
+	var mytabla= $('#mydatac').DataTable({"ajax": {url: '<?php echo site_url('literalreglamento/literalreglamento_data')?>', type: 'GET'},});
 
 });
 
 $('#show_data').on('click','.item_ver',function(){
 
-var id= $(this).data('idarticuloreglamento');
+var id= $(this).data('idliteralreglamento');
 var retorno= $(this).data('retorno');
 window.location.href = retorno+'/'+id;
 

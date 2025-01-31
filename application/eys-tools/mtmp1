@@ -1,18 +1,18 @@
 <?php
-class Articuloreglamento_model extends CI_model {
+class Literalreglamento_model extends CI_model {
 
-	function lista_reglamentos(){
-		 $reglamento= $this->db->get('reglamento');
-		 return $reglamento;
+	function lista_articuloreglamentos(){
+		 $articuloreglamento= $this->db->get('articuloreglamento');
+		 return $articuloreglamento;
 	}
 
 
-	function lista_reglamentosA(){
+	function lista_articuloreglamentosA(){
 
 $this->db->order_by('idproceso', 'asc');
 $this->db->order_by('orden', 'asc');
 
-$query = $this->db->get('reglamento1');
+$query = $this->db->get('articuloreglamento1');
 
 
 
@@ -22,14 +22,14 @@ $query = $this->db->get('reglamento1');
 
 
 
- 	function reglamento( $id){
- 		$reglamento = $this->db->query('select * from reglamento where idreglamento="'. $id.'"');
- 		return $reglamento;
+ 	function articuloreglamento( $id){
+ 		$articuloreglamento = $this->db->query('select * from articuloreglamento where idarticuloreglamento="'. $id.'"');
+ 		return $articuloreglamento;
  	}
 
- 	function reglamentoA( $id){
- 		$reglamento = $this->db->query('select * from reglamento1 where idinstitucion="'. $id.'" order by idproceso,orden');
- 		return $reglamento;
+ 	function articuloreglamentoA( $idreglamento){
+ 		$articuloreglamento = $this->db->query('select * from articuloreglamento1 where idreglamento="'. $idreglamento.'" order by idreglamento,numero');
+ 		return $articuloreglamento;
  	}
 
 
@@ -37,7 +37,7 @@ $query = $this->db->get('reglamento1');
 
  	function save($array)
  	{
-		$this->db->insert("reglamento", $array);
+		$this->db->insert("articuloreglamento", $array);
 		   if( $this->db->affected_rows()>0){
 			    return true;
 		   }else{
@@ -48,15 +48,15 @@ $query = $this->db->get('reglamento1');
 
  	function update($id,$array_item)
  	{
- 		$this->db->where('idreglamento',$id);
- 		$this->db->update('reglamento',$array_item);
+ 		$this->db->where('idarticuloreglamento',$id);
+ 		$this->db->update('articuloreglamento',$array_item);
 	}
 
 
  	public function delete($id)
 	{
- 		$this->db->where('idreglamento',$id);
-		$this->db->delete('reglamento');
+ 		$this->db->where('idarticuloreglamento',$id);
+		$this->db->delete('articuloreglamento');
     if($this->db->affected_rows()==1)
 			$result=true;
 		else
@@ -67,7 +67,7 @@ $query = $this->db->get('reglamento1');
 
 	function elprimero()
 	{
-		$query=$this->db->order_by("idreglamento")->get('reglamento');
+		$query=$this->db->order_by("idarticuloreglamento")->get('articuloreglamento');
 		if($query->num_rows()>0)
 		{
 			return $query->first_row('array');
@@ -80,7 +80,7 @@ $query = $this->db->get('reglamento1');
 // Para ir al último registro
 	function elultimo()
 	{
-		$query=$this->db->order_by("idreglamento")->get('reglamento');
+		$query=$this->db->order_by("idarticuloreglamento")->get('articuloreglamento');
 		if($query->num_rows()>0)
 		{
 			return $query->last_row('array');
@@ -92,37 +92,37 @@ $query = $this->db->get('reglamento1');
 
 	// Para moverse al siguiente registro
  	function siguiente($id){
- 		$reglamento = $this->db->select("idreglamento")->order_by("idreglamento")->get('reglamento')->result_array();
-		$arr=array("idreglamento"=>$id);
-		$clave=array_search($arr,$reglamento);
-	   if(array_key_exists($clave+1,$reglamento))
+ 		$articuloreglamento = $this->db->select("idarticuloreglamento")->order_by("idarticuloreglamento")->get('articuloreglamento')->result_array();
+		$arr=array("idarticuloreglamento"=>$id);
+		$clave=array_search($arr,$articuloreglamento);
+	   if(array_key_exists($clave+1,$articuloreglamento))
 		 {
 
- 		$reglamento = $this->db->query('select * from reglamento where idreglamento="'. $reglamento[$clave+1]["idreglamento"].'"');
+ 		$articuloreglamento = $this->db->query('select * from articuloreglamento where idarticuloreglamento="'. $articuloreglamento[$clave+1]["idarticuloreglamento"].'"');
 		 }else{
 
- 		$reglamento = $this->db->query('select * from reglamento where idreglamento="'. $id.'"');
+ 		$articuloreglamento = $this->db->query('select * from articuloreglamento where idarticuloreglamento="'. $id.'"');
 		 }
 		 	
- 		return $reglamento;
+ 		return $articuloreglamento;
  	}
 
 
 // Para moverse al anterior registro
  	function anterior($id){
- 		$reglamento = $this->db->select("idreglamento")->order_by("idreglamento")->get('reglamento')->result_array();
-		$arr=array("idreglamento"=>$id);
-		$clave=array_search($arr,$reglamento);
-	   if(array_key_exists($clave-1,$reglamento))
+ 		$articuloreglamento = $this->db->select("idarticuloreglamento")->order_by("idarticuloreglamento")->get('articuloreglamento')->result_array();
+		$arr=array("idarticuloreglamento"=>$id);
+		$clave=array_search($arr,$articuloreglamento);
+	   if(array_key_exists($clave-1,$articuloreglamento))
 		 {
 
- 		$reglamento = $this->db->query('select * from reglamento where idreglamento="'. $reglamento[$clave-1]["idreglamento"].'"');
+ 		$articuloreglamento = $this->db->query('select * from articuloreglamento where idarticuloreglamento="'. $articuloreglamento[$clave-1]["idarticuloreglamento"].'"');
 		 }else{
 
- 		$reglamento = $this->db->query('select * from reglamento where idreglamento="'. $id.'"');
+ 		$articuloreglamento = $this->db->query('select * from articuloreglamento where idarticuloreglamento="'. $id.'"');
 		 }
 		 	
- 		return $reglamento;
+ 		return $articuloreglamento;
  	}
 
 
