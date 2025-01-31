@@ -2,25 +2,25 @@
     <h3 style="text-align: left; margin-top:-10px;"> <?php echo $title;  ?></h3>
     <ul>
 <?php
-if(isset($articuloreglamento))
+if(isset($literalreglamento))
 {
 ?>
-        <li> <?php echo anchor('articuloreglamento/elprimero/', 'primero'); ?></li>
-        <li> <?php echo anchor('articuloreglamento/siguiente/'.$articuloreglamento['idarticuloreglamento'], 'siguiente'); ?></li>
-        <li> <?php echo anchor('articuloreglamento/anterior/'.$articuloreglamento['idarticuloreglamento'], 'anterior'); ?></li>
-        <li style="border-right:1px solid green"><?php echo anchor('articuloreglamento/elultimo/', 'Último'); ?></li>
-        <li> <?php echo anchor('articuloreglamento/add', 'Nuevo'); ?></li>
-        <li> <?php echo anchor('articuloreglamento/edit/'.$articuloreglamento['idarticuloreglamento'],'Edit'); ?></li>
-      <!--  <li style="border-right:1px solid green"> <?php echo anchor('articuloreglamento/delete/'.$articuloreglamento['idarticuloreglamento'],'Delete'); ?></li> --->
-        <li> <?php echo anchor('articuloreglamento/listar/','Listar'); ?></li>
-        <li> <?php echo anchor('articuloreglamento/genpagina/'.$articuloreglamento['idreglamento'],'generar web'); ?></li>
-        <li> <?php echo anchor('articuloreglamento/articuloreglamento_'.$articuloreglamento['idreglamento'],'Web'); ?></li>
+        <li> <?php echo anchor('literalreglamento/elprimero/', 'primero'); ?></li>
+        <li> <?php echo anchor('literalreglamento/siguiente/'.$literalreglamento['idliteralreglamento'], 'siguiente'); ?></li>
+        <li> <?php echo anchor('literalreglamento/anterior/'.$literalreglamento['idliteralreglamento'], 'anterior'); ?></li>
+        <li style="border-right:1px solid green"><?php echo anchor('literalreglamento/elultimo/', 'Último'); ?></li>
+        <li> <?php echo anchor('literalreglamento/add', 'Nuevo'); ?></li>
+        <li> <?php echo anchor('literalreglamento/edit/'.$literalreglamento['idliteralreglamento'],'Edit'); ?></li>
+      <!--  <li style="border-right:1px solid green"> <?php echo anchor('literalreglamento/delete/'.$literalreglamento['idliteralreglamento'],'Delete'); ?></li> --->
+        <li> <?php echo anchor('literalreglamento/listar/','Listar'); ?></li>
+        <li> <?php echo anchor('literalreglamento/genpagina/'.$literalreglamento['idreglamento'],'generar web'); ?></li>
+        <li> <?php echo anchor('literalreglamento/literalreglamento_'.$literalreglamento['idreglamento'],'Web'); ?></li>
 
 <?php 
 }else{
 ?>
 
-        <li> <?php echo anchor('articuloreglamento/add', 'Nuevo'); ?></li>
+        <li> <?php echo anchor('literalreglamento/add', 'Nuevo'); ?></li>
 <?php
 }
 ?>
@@ -30,7 +30,7 @@ if(isset($articuloreglamento))
 <br>
 
 
-<?php echo form_hidden('idarticuloreglamento',$articuloreglamento['idarticuloreglamento']) ?>
+<?php echo form_hidden('idliteralreglamento',$literalreglamento['idliteralreglamento']) ?>
 
 
  <div class="form-group row">
@@ -38,7 +38,7 @@ if(isset($articuloreglamento))
 	<div class="col-md-10">
      <?php
 
-  $eys_arrctl=array("id"=>"idarticuloreglamento",  "name"=>'idarticuloreglamento','value'=>$articuloreglamento['idarticuloreglamento'],"disabled"=>"disabled",'placeholder'=>'Idarticuloreglamentos','style'=>'width:500px;');
+  $eys_arrctl=array("id"=>"idliteralreglamento",  "name"=>'idliteralreglamento','value'=>$literalreglamento['idliteralreglamento'],"disabled"=>"disabled",'placeholder'=>'Idliteralreglamentos','style'=>'width:500px;');
  echo form_input($eys_arrctl);
 		?>
 	</div> 
@@ -46,7 +46,7 @@ if(isset($articuloreglamento))
 
 
  <div class="form-group row">
-    <label class="col-md-2 col-form-label"> <?php echo anchor('reglamento/actual/'.$articuloreglamento['idreglamento'], 'Reglamento:'); ?> </label>
+    <label class="col-md-2 col-form-label"> <?php echo anchor('reglamento/actual/'.$literalreglamento['idreglamento'], 'Reglamento:'); ?> </label>
 	<div class="col-md-10">
      <?php 
 $options= array("NADA");
@@ -54,7 +54,7 @@ foreach ($reglamentos as $row){
 	$options[$row->idreglamento]= $row->nombre;
 }
 
-echo form_input('idreglamento',$options[$articuloreglamento['idreglamento']],array("disabled"=>"disabled",'style'=>'width:500px;')); 
+echo form_input('idreglamento',$options[$literalreglamento['idreglamento']],array("disabled"=>"disabled",'style'=>'width:500px;')); 
 		?>
 	</div> 
 </div>
@@ -65,7 +65,7 @@ echo form_input('idreglamento',$options[$articuloreglamento['idreglamento']],arr
 	<div class="col-md-10">
      <?php
 
-  $eys_arrctl=array("name"=>'titulo','value'=>$articuloreglamento['titulo'],"disabled"=>"disabled",'placeholder'=>'Orden','style'=>'width:500px;');
+  $eys_arrctl=array("name"=>'titulo','value'=>$literalreglamento['titulo'],"disabled"=>"disabled",'placeholder'=>'Orden','style'=>'width:500px;');
  echo form_input($eys_arrctl);
 		?>
 	</div> 
@@ -78,7 +78,7 @@ echo form_input('idreglamento',$options[$articuloreglamento['idreglamento']],arr
 	<div class="col-md-10">
      <?php
 
-  $eys_arrctl=array("name"=>'numero','value'=>$articuloreglamento['numero'],"disabled"=>"disabled",'placeholder'=>'Orden','style'=>'width:500px;');
+  $eys_arrctl=array("name"=>'numero','value'=>$literalreglamento['numero'],"disabled"=>"disabled",'placeholder'=>'Orden','style'=>'width:500px;');
  echo form_input($eys_arrctl);
 		?>
 	</div> 
@@ -90,7 +90,7 @@ echo form_input('idreglamento',$options[$articuloreglamento['idreglamento']],arr
      <?php
     
 $textarea_options = array('class' => 'form-control','rows' => '20','disabled'=>'disabled',   'cols' => '20', 'style'=> 'width:500px;height:200px;');    
- echo form_textarea('contenido',$articuloreglamento['contenido'],$textarea_options); 
+ echo form_textarea('contenido',$literalreglamento['contenido'],$textarea_options); 
 		?>
 	</div> 
 </div>
@@ -130,16 +130,16 @@ $textarea_options = array('class' => 'form-control','rows' => '20','disabled'=>'
 <script type="text/javascript">
 
 $(document).ready(function(){
-	var idarticuloreglamento=document.getElementById("idarticuloreglamento").value;
+	var idliteralreglamento=document.getElementById("idliteralreglamento").value;
 
-	var mytablaf= $('#mydatau').DataTable({"ajax": {url: '<?php echo site_url('articuloreglamento/ubicacion_data')?>', type: 'GET',data:{idarticuloreglamento:idarticuloreglamento}},});
+	var mytablaf= $('#mydatau').DataTable({"ajax": {url: '<?php echo site_url('literalreglamento/ubicacion_data')?>', type: 'GET',data:{idliteralreglamento:idliteralreglamento}},});
 
 
-	var mytablaf= $('#mydatac').DataTable({"ajax": {url: '<?php echo site_url('articuloreglamento/prestamo_data')?>', type: 'GET',data:{idarticuloreglamento:idarticuloreglamento}},});
+	var mytablaf= $('#mydatac').DataTable({"ajax": {url: '<?php echo site_url('literalreglamento/prestamo_data')?>', type: 'GET',data:{idliteralreglamento:idliteralreglamento}},});
 });
 
 $('#show_datau').on('click','.item_ver',function(){
-var id= $(this).data('idubicacionarticuloreglamento');
+var id= $(this).data('idubicacionliteralreglamento');
 var retorno= $(this).data('retorno');
 window.location.href = retorno+'/'+id;
 });
@@ -149,7 +149,7 @@ window.location.href = retorno+'/'+id;
 
 
 $('#show_data').on('click','.item_ver',function(){
-var id= $(this).data('idprestamoarticuloreglamento');
+var id= $(this).data('idprestamoliteralreglamento');
 var retorno= $(this).data('retorno');
 window.location.href = retorno+'/'+id;
 });
@@ -205,7 +205,7 @@ function uploadImage(nombre,idx) {
 function getUploadUrl() {
     var selectElement = document.getElementById("idnumeroador");
     var url = "https://repositorioutlvte.org";
-    return url.endsWith("/") ? url + "cargaimagenarticuloreglamento.php" : url + "/cargaimagenarticuloreglamento.php";
+    return url.endsWith("/") ? url + "cargaimagenliteralreglamento.php" : url + "/cargaimagenliteralreglamento.php";
 }
 
 

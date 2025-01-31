@@ -17,6 +17,12 @@ foreach ($reglamentos as $row){
 </tr>
 
 <tr>
+      <td>Titulo:</td>
+      <td><?php echo form_input('titulo',$articuloreglamento['titulo'],array('placeholder'=>'Nombre del ', "style"=>"width:500px")) ?></td>
+  </tr>
+
+
+<tr>
       <td>Número:</td>
       <td><?php echo form_input('numero',$articuloreglamento['numero'],array('placeholder'=>'Nombre del ', "style"=>"width:500px")) ?></td>
   </tr>

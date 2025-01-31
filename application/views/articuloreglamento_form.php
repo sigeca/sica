@@ -11,6 +11,16 @@
 
 
 <div class="form-group row">
+<label class="col-md-2 col-form-label">Título: </label>
+<div class="col-md-10">
+<?php
+     
+     echo form_input("titulo","", array("placeholder"=>"titulo en el reglamento",'style'=>'width:500px;'));
+?>
+</div>
+</div>
+
+<div class="form-group row">
 <label class="col-md-2 col-form-label">Número: </label>
 <div class="col-md-10">
 <?php
@@ -19,8 +29,6 @@
 ?>
 </div>
 </div>
-
-
 
 
 

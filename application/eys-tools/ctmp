@@ -1,22 +1,22 @@
 <?php
 
-class Reglamento extends CI_Controller{
+class Articuloreglamento extends CI_Controller{
 
   public function __construct(){
       parent::__construct();
-      $this->load->model('reglamento_model');
+      $this->load->model('articuloreglamento_model');
   	  $this->load->model('institucion_model');
-     $this->load->model('proceso_model');
+     $this->load->model('reglamento_model');
 }
 
 public function index(){
 	if(isset($this->session->userdata['logged_in'])){
-	  	$data['reglamento']=$this->reglamento_model->elultimo();
+	  	$data['articuloreglamento']=$this->articuloreglamento_model->elultimo();
   		$data['instituciones']= $this->institucion_model->lista_instituciones()->result();
-		$data['procesos']= $this->proceso_model->lista_procesos()->result();
+		$data['reglamentos']= $this->reglamento_model->lista_reglamentos()->result();
   		$data['title']="Lista de Artiulos";
 			$this->load->view('template/page_header');		
-  		$this->load->view('reglamento_record',$data);
+  		$this->load->view('articuloreglamento_record',$data);
 			$this->load->view('template/page_footer');
 	}else{
 	 	$this->load->view('template/page_header.php');
@@ -29,10 +29,10 @@ public function index(){
 public function add()
 {
   		$data['instituciones']= $this->institucion_model->lista_instituciones()->result();
-		$data['procesos']= $this->proceso_model->lista_procesos()->result();
+		$data['reglamentos']= $this->reglamento_model->lista_reglamentos()->result();
 		$data['title']="Nuevo Artículo";
 	 	$this->load->view('template/page_header');		
-	 	$this->load->view('reglamento_form',$data);
+	 	$this->load->view('articuloreglamento_form',$data);
 	 	$this->load->view('template/page_footer');
 }
 
@@ -40,15 +40,13 @@ public function add()
 public function  save()
 	{
 	 	$array_item=array(
-	 	'idreglamento' => $this->input->post('idreglamento'),
-	 	'nombre' => $this->input->post('nombre'),
-	 	'detalle' => $this->input->post('detalle'),
-	 	'archivo' => $this->input->post('archivo'),
-		'idproceso' => $this->input->post('idproceso'),
-	 	'orden' => $this->input->post('orden'),
-	 	'idinstitucion' => $this->input->post('idinstitucion'),
+	 	'idarticuloreglamento' => $this->input->post('idarticuloreglamento'),
+	 	'contenido' => $this->input->post('contenido'),
+		'idreglamento' => $this->input->post('idreglamento'),
+	 	'titulo' => $this->input->post('titulo'),
+	 	'numero' => $this->input->post('numero'),
 	 	);
-	 	$result=$this->reglamento_model->save($array_item);
+	 	$result=$this->articuloreglamento_model->save($array_item);
 	 	if($result == FALSE)
 		{
 			echo "<script language='JavaScript'> alert('formato ya existe ya existe'); </script>";
@@ -63,12 +61,12 @@ public function  save()
 
 public function edit()
 {
-	 	$data['reglamento'] = $this->reglamento_model->reglamento($this->uri->segment(3))->row_array();
+	 	$data['articuloreglamento'] = $this->articuloreglamento_model->articuloreglamento($this->uri->segment(3))->row_array();
   		$data['instituciones']= $this->institucion_model->lista_instituciones()->result();
-		$data['procesos']= $this->proceso_model->lista_procesos()->result();
- 	 	$data['title'] = "Actualizar Reglamento";
+		$data['reglamentos']= $this->reglamento_model->lista_reglamentos()->result();
+ 	 	$data['title'] = "Actualizar Articuloarticuloreglamento";
  	 	$this->load->view('template/page_header');		
- 	 	$this->load->view('reglamento_edit',$data);
+ 	 	$this->load->view('articuloreglamento_edit',$data);
 	 	$this->load->view('template/page_footer');
  
 }
@@ -76,19 +74,17 @@ public function edit()
 
 	public function  save_edit()
 	{
-		$id=$this->input->post('idreglamento');
+		$id=$this->input->post('idarticuloreglamento');
 	 	$array_item=array(
 		 	
-		 	'idreglamento' => $this->input->post('idreglamento'),
-		 	'nombre' => $this->input->post('nombre'),
-		 	'detalle' => $this->input->post('detalle'),
-	 	'archivo' => $this->input->post('archivo'),
-		'idproceso' => $this->input->post('idproceso'),
-	 	'orden' => $this->input->post('orden'),
-	 		'idinstitucion' => $this->input->post('idinstitucion'),
+		 	'idarticuloreglamento' => $this->input->post('idarticuloreglamento'),
+		 	'contenido' => $this->input->post('contenido'),
+		'idreglamento' => $this->input->post('idreglamento'),
+	 	'titulo' => $this->input->post('titulo'),
+	 	'numero' => $this->input->post('numero')
 	 	);
-	 	$this->reglamento_model->update($id,$array_item);
-	 	redirect('reglamento/actual/'.$id);
+	 	$this->articuloreglamento_model->update($id,$array_item);
+	 	redirect('articuloreglamento/actual/'.$id);
  	}
 
 
@@ -96,24 +92,24 @@ public function edit()
 public function listar()
 {
 	
-  $data['title']="Reglamento";
+  $data['title']="Articuloarticuloreglamento";
 	$this->load->view('template/page_header');		
-  $this->load->view('reglamento_list',$data);
+  $this->load->view('articuloreglamento_list',$data);
 	$this->load->view('template/page_footer');
 }
 
-function reglamento_data()
+function articuloreglamento_data()
 {
 		$draw= intval($this->input->get("draw"));
 		$draw= intval($this->input->get("start"));
 		$draw= intval($this->input->get("length"));
 
 
-	 	$data0 = $this->reglamento_model->lista_reglamentos();
+	 	$data0 = $this->articuloreglamento_model->lista_articuloreglamentos();
 		$data=array();
 		foreach($data0->result() as $r){
-			$data[]=array($r->idreglamento,$r->nombre,$r->detalle,
-				$r->href='<a href="javascript:void(0);" class="btn btn-info btn-sm item_ver"  data-retorno="'.site_url('reglamento/actual').'"  data-idreglamento="'.$r->idreglamento.'">Ver</a>');
+			$data[]=array($r->idarticuloreglamento,$r->nombre,$r->contenido,
+				$r->href='<a href="javascript:void(0);" class="btn btn-info btn-sm item_ver"  data-retorno="'.site_url('articuloreglamento/actual').'"  data-idarticuloreglamento="'.$r->idarticuloreglamento.'">Ver</a>');
 		}	
 		$output=array( "draw"=>$draw,
 			"recordsTotal"=> $data0->num_rows(),
@@ -133,12 +129,12 @@ function reglamento_data()
 			$draw= intval($this->input->get("start"));
 			$draw= intval($this->input->get("length"));
 
-			$idreglamento=$this->input->get('idreglamento');
-			$data0 =$this->ubicacionreglamento_model->ubicacionreglamentosA($idreglamento);
+			$idarticuloreglamento=$this->input->get('idarticuloreglamento');
+			$data0 =$this->ubicacionarticuloreglamento_model->ubicacionarticuloreglamentosA($idarticuloreglamento);
 			$data=array();
 			foreach($data0->result() as $r){
-				$data[]=array($r->idubicacionreglamento,$r->idreglamento,$r->launidad,$r->lapersona,$r->fecha,
-				$r->href='<a href="javascript:void(0);" class="btn btn-info btn-sm item_ver"  data-retorno="'.site_url('ubicacionreglamento/actual').'"    data-idubicacionreglamento="'.$r->idubicacionreglamento.'">Ver</a><a href="javascript:void(0);" class="btn btn-info btn-sm item_ver"  data-retorno="'.site_url('ubicacionreglamento/edit').'"    data-idubicacionreglamento="'.$r->idubicacionreglamento.'">edit</a>');
+				$data[]=array($r->idubicacionarticuloreglamento,$r->idarticuloreglamento,$r->launidad,$r->lapersona,$r->fecha,
+				$r->href='<a href="javascript:void(0);" class="btn btn-info btn-sm item_ver"  data-retorno="'.site_url('ubicacionarticuloreglamento/actual').'"    data-idubicacionarticuloreglamento="'.$r->idubicacionarticuloreglamento.'">Ver</a><a href="javascript:void(0);" class="btn btn-info btn-sm item_ver"  data-retorno="'.site_url('ubicacionarticuloreglamento/edit').'"    data-idubicacionarticuloreglamento="'.$r->idubicacionarticuloreglamento.'">edit</a>');
 			}	
 			$output=array( "draw"=>$draw,
 				"recordsTotal"=> $data0->num_rows(),
@@ -162,12 +158,12 @@ function reglamento_data()
 			$draw= intval($this->input->get("start"));
 			$draw= intval($this->input->get("length"));
 
-			$idreglamento=$this->input->get('idreglamento');
-			$data0 =$this->prestamoreglamento_model->prestamoreglamentosA($idreglamento);
+			$idarticuloreglamento=$this->input->get('idarticuloreglamento');
+			$data0 =$this->prestamoarticuloreglamento_model->prestamoarticuloreglamentosA($idarticuloreglamento);
 			$data=array();
 			foreach($data0->result() as $r){
-				$data[]=array($r->idprestamoreglamento,$r->idreglamento,$r->lapersona,$r->fechaprestamo,$r->horaprestamo,$r->fechadevolucion,$r->horadevolucion,
-				$r->href='<a href="javascript:void(0);" class="btn btn-info btn-sm item_ver"  data-retorno="'.site_url('prestamoreglamento/actual').'"    data-idprestamoreglamento="'.$r->idprestamoreglamento.'">Ver</a><a href="javascript:void(0);" class="btn btn-info btn-sm item_ver"  data-retorno="'.site_url('prestamoreglamento/edit').'"    data-idprestamoreglamento="'.$r->idprestamoreglamento.'">edit</a>');
+				$data[]=array($r->idprestamoarticuloreglamento,$r->idarticuloreglamento,$r->lapersona,$r->fechaprestamo,$r->horaprestamo,$r->fechadevolucion,$r->horadevolucion,
+				$r->href='<a href="javascript:void(0);" class="btn btn-info btn-sm item_ver"  data-retorno="'.site_url('prestamoarticuloreglamento/actual').'"    data-idprestamoarticuloreglamento="'.$r->idprestamoarticuloreglamento.'">Ver</a><a href="javascript:void(0);" class="btn btn-info btn-sm item_ver"  data-retorno="'.site_url('prestamoarticuloreglamento/edit').'"    data-idprestamoarticuloreglamento="'.$r->idprestamoarticuloreglamento.'">edit</a>');
 			}	
 			$output=array( "draw"=>$draw,
 				"recordsTotal"=> $data0->num_rows(),
@@ -185,18 +181,17 @@ public function genpagina()
 {
 	$iddistributivo=0;
 
-	$ordenrpt=0;
+	$numerorpt=0;
 	if($this->uri->segment(3))
 	{
-		//$iddistributivo=$this->uri->segment(3);
-		$iddistributivo=1;
-	 	$data['reglamentos']= $this->reglamento_model->reglamentoA($iddistributivo)->result();
+		$idreglamento=$this->uri->segment(3);
+	 	$data['articuloreglamentos']= $this->articuloreglamento_model->articuloreglamentoA($idreglamento)->result();
 		$arreglo=array();
 		$i=0;
-		$data['prestamoreglamento']=array();
+		$data['prestamoarticuloreglamento']=array();
 		echo "<br> jornadadocnete<br>" ;
 
-		$this->load->view('reglamento_genpagina',$data);
+		$this->load->view('articuloreglamento_genpagina',$data);
 	}
 }
 
@@ -211,14 +206,14 @@ public function genpagina()
 
 public function actual()
 {
-	$data['reglamento'] = $this->reglamento_model->reglamento($this->uri->segment(3))->row_array();
+	$data['articuloreglamento'] = $this->articuloreglamento_model->articuloreglamento($this->uri->segment(3))->row_array();
  	$data['instituciones']= $this->institucion_model->lista_instituciones()->result();
-		$data['procesos']= $this->proceso_model->lista_procesos()->result();
+		$data['reglamentos']= $this->reglamento_model->lista_reglamentos()->result();
   if(!empty($data))
   {
-    $data['title']="Reglamento";
+    $data['title']="Articuloarticuloreglamento";
     $this->load->view('template/page_header');		
-    $this->load->view('reglamento_record',$data);
+    $this->load->view('articuloreglamento_record',$data);
     $this->load->view('template/page_footer');
   }else{
     $this->load->view('template/page_header');		
@@ -235,14 +230,14 @@ public function actual()
 
 public function elprimero()
 {
-	$data['reglamento'] = $this->reglamento_model->elprimero();
+	$data['articuloreglamento'] = $this->articuloreglamento_model->elprimero();
  	$data['instituciones']= $this->institucion_model->lista_instituciones()->result();
-		$data['procesos']= $this->proceso_model->lista_procesos()->result();
+		$data['reglamentos']= $this->reglamento_model->lista_reglamentos()->result();
   if(!empty($data))
   {
-    $data['title']="Reglamento";
+    $data['title']="Articuloarticuloreglamento";
     $this->load->view('template/page_header');		
-    $this->load->view('reglamento_record',$data);
+    $this->load->view('articuloreglamento_record',$data);
     $this->load->view('template/page_footer');
   }else{
     $this->load->view('template/page_header');		
@@ -253,15 +248,15 @@ public function elprimero()
 
 public function elultimo()
 {
-	  $data['reglamento'] = $this->reglamento_model->elultimo();
+	  $data['articuloreglamento'] = $this->articuloreglamento_model->elultimo();
  	$data['instituciones']= $this->institucion_model->lista_instituciones()->result();
-		$data['procesos']= $this->proceso_model->lista_procesos()->result();
+		$data['reglamentos']= $this->reglamento_model->lista_reglamentos()->result();
   if(!empty($data))
   {
-    $data['title']="Reglamento";
+    $data['title']="Articuloarticuloreglamento";
   
     $this->load->view('template/page_header');		
-    $this->load->view('reglamento_record',$data);
+    $this->load->view('articuloreglamento_record',$data);
     $this->load->view('template/page_footer');
   }else{
 
@@ -272,33 +267,32 @@ public function elultimo()
 }
 
 public function siguiente(){
- // $data['reglamento_list']=$this->reglamento_model->lista_reglamento()->result();
-	$data['reglamento'] = $this->reglamento_model->siguiente($this->uri->segment(3))->row_array();
+ // $data['articuloreglamento_list']=$this->articuloreglamento_model->lista_articuloreglamento()->result();
+	$data['articuloreglamento'] = $this->articuloreglamento_model->siguiente($this->uri->segment(3))->row_array();
  	$data['instituciones']= $this->institucion_model->lista_instituciones()->result();
-		$data['procesos']= $this->proceso_model->lista_procesos()->result();
-  $data['title']="Reglamento";
+		$data['reglamentos']= $this->reglamento_model->lista_reglamentos()->result();
+  $data['title']="Articuloarticuloreglamento";
 	$this->load->view('template/page_header');		
-  $this->load->view('reglamento_record',$data);
+  $this->load->view('articuloreglamento_record',$data);
 	$this->load->view('template/page_footer');
 }
 
 public function anterior(){
- // $data['reglamento_list']=$this->reglamento_model->lista_reglamento()->result();
-	$data['reglamento'] = $this->reglamento_model->anterior($this->uri->segment(3))->row_array();
- 	$data['instituciones']= $this->institucion_model->lista_instituciones()->result();
-		$data['procesos']= $this->proceso_model->lista_procesos()->result();
-  $data['title']="Reglamento";
+ // $data['articuloreglamento_list']=$this->articuloreglamento_model->lista_articuloreglamento()->result();
+	$data['articuloreglamento'] = $this->articuloreglamento_model->anterior($this->uri->segment(3))->row_array();
+$data['reglamentos']= $this->reglamento_model->lista_reglamentos()->result();
+  $data['title']="Articuloarticuloreglamento";
 	$this->load->view('template/page_header');		
-  $this->load->view('reglamento_record',$data);
+  $this->load->view('articuloreglamento_record',$data);
 	$this->load->view('template/page_footer');
 }
 
 
 
 
-	public function reglamento_1()
+	public function articuloreglamento_280()
 	{
-	  $this->load->view('reglamentos/reglamento-1');
+	  $this->load->view('reglamentos/articuloreglamento-280');
 	}
 
 

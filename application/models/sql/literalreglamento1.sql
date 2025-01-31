@@ -1,0 +1,2 @@
+use educayso_facae;
+create view literalreglamento1 as select lire.idliteralreglamento,  lire.contenido,arre.idreglamento,regl.nombre as elreglamento, lire.idarticuloreglamento, arre.titulo as elarticuloreglamento, regl.archivo, lire.letra,inst.idinstitucion, inst.nombre as lainstitucion  from literalreglamento lire, reglamento  regl, institucion inst, articuloreglamento arre  where lire.idarticuloreglamento=arre.idarticuloreglamento and arre.idreglamento=regl.idreglamento and  regl.idinstitucion=inst.idinstitucion; 
