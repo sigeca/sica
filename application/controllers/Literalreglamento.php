@@ -45,7 +45,7 @@ public function  save()
 		'idarticuloreglamento' => $this->input->post('idarticuloreglamento'),
 	 	'titulo' => $this->input->post('titulo'),
 	 	);
-	 	$result=$this->literalareglamento_model->save($array_item);
+	 	$result=$this->literalreglamento_model->save($array_item);
 	 	if($result == FALSE)
 		{
 			echo "<script language='JavaScript'> alert('formato ya existe ya existe'); </script>";
