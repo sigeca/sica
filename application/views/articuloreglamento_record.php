@@ -75,7 +75,7 @@ echo form_input('idreglamento',$options[$articuloreglamento['idreglamento']],arr
 	<div class="col-md-10">
      <?php
     
-$textarea_options = array('class' => 'form-control','rows' => '4','disabled'=>'disabled',   'cols' => '20', 'style'=> 'width:500px;height:100px;');    
+$textarea_options = array('class' => 'form-control','rows' => '20','disabled'=>'disabled',   'cols' => '20', 'style'=> 'width:500px;height:200px;');    
  echo form_textarea('contenido',$articuloreglamento['contenido'],$textarea_options); 
 		?>
 	</div> 
