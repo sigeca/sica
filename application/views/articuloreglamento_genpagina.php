@@ -390,7 +390,7 @@ foreach($articuloreglamentos as $row){
 
 
 
-$data=$data.'<div class="col">
+$data=$data.'<div class="col-md-4">
           <div class="card shadow-sm">
 		  <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/>';
 
