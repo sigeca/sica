@@ -381,14 +381,15 @@ foreach($articuloreglamentos as $row){
         	<p style="font-size:2em; color:#6c757d;text-shadow: 1px 1px 2px #000, -1px -1px 2px #fff;">Reglamentos institucionales</p>
       		</div>
     		</div>
-  		</section>
-  		<div class="album py-5 bg-light">
-    		<div class="container">
-      		<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">';
-	 	$inicio=0;
+  		</section>';
+ 	$inicio=0;
 		}
 
-
+  $data=$data.'	<div class="album py-5 bg-light">
+    		<div class="container">
+      		<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">';
+	
+    
 
 $data=$data.'<div class="col">
           <div class="card shadow-sm">
@@ -430,7 +431,7 @@ $data=$data.'
 
 
 
-        <div class="card-body" style="background-color:'.$row->color.'"  >
+        <div class="card-body" style="background-color:green"  >
         <div style="font-size:20px;  color:#333;  margin-top:10px;" > Nombre del reglamento:<br> <span  style="color:#6c757d;text-shadow: 1px 1px 2px #000, -1px -1px 2px #fff;" >'.$row->elreglamento.'</span> </div>
         <div style="font-size:20px;  color:#333;  margin-top:10px;" > <b>Proceso:</b>  <span  style="color:#6c757d;text-shadow: 1px 1px 2px #000, -1px -1px 2px #fff;" >'.$row->elreglamento.'</span> </div>
         <div style="font-size:20px;  color:#333;  margin-top:10px;" > <b>Orden:</b>'.$row->numero.' </div>
