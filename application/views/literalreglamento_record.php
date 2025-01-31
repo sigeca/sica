@@ -13,8 +13,6 @@ if(isset($literalreglamento))
         <li> <?php echo anchor('literalreglamento/edit/'.$literalreglamento['idliteralreglamento'],'Edit'); ?></li>
       <!--  <li style="border-right:1px solid green"> <?php echo anchor('literalreglamento/delete/'.$literalreglamento['idliteralreglamento'],'Delete'); ?></li> --->
         <li> <?php echo anchor('literalreglamento/listar/','Listar'); ?></li>
-        <li> <?php echo anchor('literalreglamento/genpagina/'.$literalreglamento['idreglamento'],'generar web'); ?></li>
-        <li> <?php echo anchor('literalreglamento/literalreglamento_'.$literalreglamento['idreglamento'],'Web'); ?></li>
 
 <?php 
 }else{
