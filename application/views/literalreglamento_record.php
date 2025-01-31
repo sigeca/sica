@@ -50,22 +50,22 @@ if(isset($literalreglamento))
 	<div class="col-md-10">
      <?php 
 $options= array("NADA");
-foreach ($reglamentos as $row){
-	$options[$row->idreglamento]= $row->nombre;
+foreach ($articuloreglamentos as $row){
+	$options[$row->idarticuloreglamento]= $row->titulo;
 }
 
-echo form_input('idreglamento',$options[$literalreglamento['idreglamento']],array("disabled"=>"disabled",'style'=>'width:500px;')); 
+echo form_input('idarticuloreglamento',$options[$literalreglamento['idarticuloreglamento']],array("disabled"=>"disabled",'style'=>'width:500px;')); 
 		?>
 	</div> 
 </div>
 
 
 <div class="form-group row">
-    <label class="col-md-2 col-form-label"> Título:</label>
+    <label class="col-md-2 col-form-label"> Literal:</label>
 	<div class="col-md-10">
      <?php
 
-  $eys_arrctl=array("name"=>'titulo','value'=>$literalreglamento['titulo'],"disabled"=>"disabled",'placeholder'=>'Orden','style'=>'width:500px;');
+  $eys_arrctl=array("name"=>'letra','value'=>$literalreglamento['letra'],"disabled"=>"disabled",'placeholder'=>'Orden','style'=>'width:500px;');
  echo form_input($eys_arrctl);
 		?>
 	</div> 
@@ -73,16 +73,7 @@ echo form_input('idreglamento',$options[$literalreglamento['idreglamento']],arra
 
 
 
-<div class="form-group row">
-    <label class="col-md-2 col-form-label"> Número:</label>
-	<div class="col-md-10">
-     <?php
 
-  $eys_arrctl=array("name"=>'numero','value'=>$literalreglamento['numero'],"disabled"=>"disabled",'placeholder'=>'Orden','style'=>'width:500px;');
- echo form_input($eys_arrctl);
-		?>
-	</div> 
-</div>
 
  <div class="form-group row">
     <label class="col-md-2 col-form-label"> Contenido:</label>
