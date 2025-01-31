@@ -405,11 +405,16 @@ if($file_headers[0] == 'HTTP/1.1 404 Not Found') {
     <div class="img-contenedor w3-card-4" style="position:relative; width:100%; height:100%; display:flex; justify-content: center; align-items: center;">';
 
 
+$data=$data.' <input type="file" id="fileInput'.trim($row->idreglamento).'" accept="image/*">
+  <button onclick="uploadImage(\'reglamento'.trim($row->idreglamento).'.jpg\',\''.trim($row->idreglamento).'\')">Subir Imagen</button>
+  <p id="status'.trim($row->idreglamento).'"></p> </div>';
 
 }else{
 
 $data=$data.'<image  class="thumbnail" href="https://repositorioutlvte.org/Repositorio/reglamento/reglamento'.trim($row->idreglamento).'.jpg" alt="No hay programación" height="100%" width="100%"  onclick="mostrarImagen(\'https://repositorioutlvte.org/Repositorio/reglamento/reglamento'.trim($row->idreglamento).'.jpg\')" /> </svg>
 <div class="img-contenedor w3-card-4" style="position:absolute"; top:0px;right:0px; border: 2px solid green; border-radius: 50%; width: 30%; display:flex; justify-content: center; align-items: center;">';
+
+
 
 }
 
