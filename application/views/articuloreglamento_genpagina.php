@@ -380,6 +380,7 @@ foreach($articuloreglamentos as $row){
         	<p class="lead text-muted">Institución:'.$row->idinstitucion.' :: '.$row->lainstitucion.'.</p>
         	<p style="font-size:2em; color:#6c757d;text-shadow: 1px 1px 2px #000, -1px -1px 2px #fff;">Reglamentos institucionales</p>
         	<p style="font-size:2em; color:#6c757d;text-shadow: 1px 1px 2px #000, -1px -1px 2px #fff;">'.$row->idreglamento.' - '.$row->elreglamento.'</p>
+        <div style="font-size:20px;  color:#333;  margin-top:10px;" ><b>Link del archivo:</b><br>  <a href="'.$row->archivo.'"> '.$row->archivo.'</a> </div>
       		</div>
     		</div>
   		</section>';
@@ -404,10 +405,9 @@ $data=$data.'
 
 
         <div class="card-body" style="background-color:green"  >
-        <div style="font-size:20px;  color:#333;  margin-top:10px;" > <b>Proceso:</b>  <span  style="color:#6c757d;text-shadow: 1px 1px 2px #000, -1px -1px 2px #fff;" >'.$row->elreglamento.'</span> </div>
         <div style="font-size:20px;  color:#333;  margin-top:10px;" > <b>No. Artículo:</b>'.$row->numero.' </div>
-        <div style="font-size:20px;  color:#333;  margin-top:10px; text-align: justify;" ><b>Detalle:</b><br> '.$row->contenido.' </div>
-        <div style="font-size:20px;  color:#333;  margin-top:10px;" ><b>Link del archivo:</b><br>  <a href="'.$row->archivo.'"> '.$row->archivo.'</a> </div>'
+        <div style="font-size:20px;  color:#333;  margin-top:10px;" > <b>Titulo:</b>  <span  style="color:#6c757d;text-shadow: 1px 1px 2px #000, -1px -1px 2px #fff;" >'.$row->titulo.'</span> </div>
+        <div style="font-size:20px;  color:#333;  margin-top:10px; text-align: justify;" ><b>Detalle:</b><br> '.$row->contenido.' </div>'
         ;	
 
 
