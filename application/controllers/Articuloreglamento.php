@@ -290,7 +290,7 @@ $data['reglamentos']= $this->reglamento_model->lista_reglamentos()->result();
 
 	public function articuloreglamento_280()
 	{
-	  $this->load->view('articuloreglamentos/articuloreglamento-280');
+	  $this->load->view('reglamentos/articuloreglamento-280');
 	}
 
 
