@@ -415,10 +415,20 @@ $data=$data.'<image  class="thumbnail" href="https://repositorioutlvte.org/Repos
 <div class="img-contenedor w3-card-4" style="position:absolute"; top:0px;right:0px; border: 2px solid green; border-radius: 50%; width: 30%; display:flex; justify-content: center; align-items: center;">';
 
 
+$data=$data.'</div>
+
+<div id="modal">
+  <span class="close" onclick="cerrarModal()">&times;</span>
+  <img id="modal-content" src="" alt="Imagen Grande">
+</div>';
 
 }
 
 $data=$data.'
+
+
+
+
 
         <div class="card-body" style="background-color:green"  >
         <div style="font-size:20px;  color:#333;  margin-top:10px;" > Nombre del reglamento:<br> <span  style="color:#6c757d;text-shadow: 1px 1px 2px #000, -1px -1px 2px #fff;" >'.$row->elreglamento.'</span> </div>
