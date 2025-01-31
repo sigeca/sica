@@ -4,38 +4,14 @@
 <?php echo form_hidden("idarticuloreglamento")  ?>
 
 
-<div class="form-group row">
-<label class="col-md-2 col-form-label">Institución: </label>
-<div class="col-md-10">
-<?php
- 
-
-
-$options= array('--Select--');
-foreach ($instituciones as $row){
-	$options[$row->idinstitucion]= $row->nombre;
-}
-
-echo form_dropdown("idinstitucion",$options, set_select('--Select--','default_value')); 
-
-?>
-</div>
-</div>
 
 
 
 
 
 
-<div class="form-group row">
-<label class="col-md-2 col-form-label">Nombre: </label>
-<div class="col-md-10">
-<?php
-     
-     echo form_input("nombre","", array("placeholder"=>"Nombre de la artículo",'style'=>'width:500px;'));
-?>
-</div>
-</div>
+
+
 
 
 
@@ -47,9 +23,9 @@ echo form_dropdown("idinstitucion",$options, set_select('--Select--','default_va
 	
 
 	
-$textarea_options = array('class' => 'form-control','rows' => '4',   'cols' => '20', 'style'=> 'width:50%;height:100px;', "placeholder"=>"detalle" );    
+$textarea_options = array('class' => 'form-control','rows' => '4',   'cols' => '20', 'style'=> 'width:50%;height:100px;', "placeholder"=>"contenido" );    
 	
-echo form_textarea("detalle","", $textarea_options);
+echo form_textarea("contenido","", $textarea_options);
 
 ?>
 </div>
@@ -62,7 +38,7 @@ echo form_textarea("detalle","", $textarea_options);
 <div class="col-md-10">
 <?php
 	
-$textarea_options = array('class' => 'form-control','rows' => '4',   'cols' => '20', 'style'=> 'width:50%;height:100px;', "placeholder"=>"detalle" );    
+$textarea_options = array('class' => 'form-control','rows' => '4',   'cols' => '20', 'style'=> 'width:50%;height:100px;', "placeholder"=>"contenido" );    
  echo form_textarea("archivo","", $textarea_options);  
 
 ?>
@@ -74,15 +50,15 @@ $textarea_options = array('class' => 'form-control','rows' => '4',   'cols' => '
 
 
 <div class="form-group row">
-<label class="col-md-2 col-form-label">Proceso: </label>
+<label class="col-md-2 col-form-label">Reglamento: </label>
 <div class="col-md-10">
 <?php
 $options= array('--Select--');
-foreach ($procesos as $row){
-	$options[$row->idproceso]= $row->nombre;
+foreach ($reglamentos as $row){
+	$options[$row->idreglamento]= $row->nombre;
 }
 
- echo form_dropdown("idproceso",$options, set_select('--Select--','default_value'),array('id'=>'idproceso'));  
+ echo form_dropdown("idreglamento",$options, set_select('--Select--','default_value'),array('id'=>'idreglamento'));  
 ?>
 </div>
 </div>
@@ -92,7 +68,7 @@ foreach ($procesos as $row){
 <div class="col-md-10">
 <?php
      
-     echo form_input("orden","", array("placeholder"=>"orden en el proceso",'style'=>'width:500px;'));
+     echo form_input("numero","", array("placeholder"=>"numero en el reglamento",'style'=>'width:500px;'));
 ?>
 </div>
 </div>
