@@ -379,6 +379,7 @@ foreach($articuloreglamentos as $row){
         	<h1 class="fw-light"  style="font-size:2em; color:#6c757d;text-shadow: 1px 1px 2px #000, -1px -1px 2px #fff;">CARRERA EN TECNOLOGÍAS DE LA INFORMACIÓN</h1>  
         	<p class="lead text-muted">Institución:'.$row->idinstitucion.' :: '.$row->lainstitucion.'.</p>
         	<p style="font-size:2em; color:#6c757d;text-shadow: 1px 1px 2px #000, -1px -1px 2px #fff;">Reglamentos institucionales</p>
+        	<p style="font-size:2em; color:#6c757d;text-shadow: 1px 1px 2px #000, -1px -1px 2px #fff;">'.$row->idreglamento.' - '.$row->elreglamento.'</p>
       		</div>
     		</div>
   		</section>';
@@ -397,30 +398,7 @@ $remoteFile = "https://repositorioutlvte.org/Repositorio/reglamento/reglamento".
 
 $file_headers = @get_headers($remoteFile);
 
-if($file_headers[0] == 'HTTP/1.1 404 Not Found') {
 
-    $data=$data.'<image href="https://repositorioutlvte.org/Repositorio/reglamento/reglamento0.jpg" alt="No hay programación" height="100%" width="100%"/> </svg>
-    <div class="img-contenedor w3-card-4" style="position:relative; width:100%; height:100%; display:flex; justify-content: center; align-items: center;">';
-
-
-$data=$data.' <input type="file" id="fileInput'.trim($row->idreglamento).'" accept="image/*">
-  <button onclick="uploadImage(\'reglamento'.trim($row->idreglamento).'.jpg\',\''.trim($row->idreglamento).'\')">Subir Imagen</button>
-  <p id="status'.trim($row->idreglamento).'"></p> </div>';
-
-}else{
-
-$data=$data.'<image  class="thumbnail" href="https://repositorioutlvte.org/Repositorio/reglamento/reglamento'.trim($row->idreglamento).'.jpg" alt="No hay programación" height="100%" width="100%"  onclick="mostrarImagen(\'https://repositorioutlvte.org/Repositorio/reglamento/reglamento'.trim($row->idreglamento).'.jpg\')" /> </svg>
-<div class="img-contenedor w3-card-4" style="position:absolute"; top:0px;right:0px; border: 2px solid green; border-radius: 50%; width: 30%; display:flex; justify-content: center; align-items: center;">';
-
-
-$data=$data.'</div>
-
-<div id="modal">
-  <span class="close" onclick="cerrarModal()">&times;</span>
-  <img id="modal-content" src="" alt="Imagen Grande">
-</div>';
-
-}
 
 $data=$data.'
 
@@ -429,10 +407,8 @@ $data=$data.'
 
 
         <div class="card-body" style="background-color:green"  >
-        <div style="font-size:20px;  color:#333;  margin-top:10px;" > Nombre del reglamento:<br> <span  style="color:#6c757d;text-shadow: 1px 1px 2px #000, -1px -1px 2px #fff;" >'.$row->elreglamento.'</span> </div>
         <div style="font-size:20px;  color:#333;  margin-top:10px;" > <b>Proceso:</b>  <span  style="color:#6c757d;text-shadow: 1px 1px 2px #000, -1px -1px 2px #fff;" >'.$row->elreglamento.'</span> </div>
-        <div style="font-size:20px;  color:#333;  margin-top:10px;" > <b>Orden:</b>'.$row->numero.' </div>
-        <div style="font-size:20px;  color:#333;  margin-top:10px;" > <b>Código:</b> '.$row->idreglamento.' </div>
+        <div style="font-size:20px;  color:#333;  margin-top:10px;" > <b>No. Artículo:</b>'.$row->numero.' </div>
         <div style="font-size:20px;  color:#333;  margin-top:10px; text-align: justify;" ><b>Detalle:</b><br> '.$row->contenido.' </div>
         <div style="font-size:20px;  color:#333;  margin-top:10px;" ><b>Link del archivo:</b><br>  <a href="'.$row->archivo.'"> '.$row->archivo.'</a> </div>'
         ;	
