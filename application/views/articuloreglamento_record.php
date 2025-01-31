@@ -46,45 +46,7 @@ if(isset($articuloreglamento))
 
 
  <div class="form-group row">
-    <label class="col-md-2 col-form-label"> Nombre:</label>
-	<div class="col-md-10">
-     <?php
-
-  $eys_arrctl=array("name"=>'nombre','value'=>$articuloreglamento['nombre'],"disabled"=>"disabled",'placeholder'=>'Inombre','style'=>'width:500px;');
- echo form_input($eys_arrctl);
-		?>
-	</div> 
-</div>
-
-
-
- <div class="form-group row">
-    <label class="col-md-2 col-form-label"> Detalle:</label>
-	<div class="col-md-10">
-     <?php
-    
-$textarea_options = array('class' => 'form-control','rows' => '4','disabled'=>'disabled',   'cols' => '20', 'style'=> 'width:500px;height:100px;');    
- echo form_textarea('contenido',$articuloreglamento['contenido'],$textarea_options); 
-		?>
-	</div> 
-</div>
-  
-
-
-<div class="form-group row">
-    <label class="col-md-2 col-form-label"> Archivo:</label>
-	<div class="col-md-10">
-     <?php
-    
-$textarea_options = array('class' => 'form-control','rows' => '4','disabled'=>'disabled',   'cols' => '20', 'style'=> 'width:500px;height:100px;');    
- echo form_textarea('archivo',$articuloreglamento['archivo'],$textarea_options); 
-		?>
-	</div> 
-</div>
-
-
-<div class="form-group row">
-    <label class="col-md-2 col-form-label"> <?php echo anchor('reglamento/actual/'.$articuloreglamento['idreglamento'], 'El trámite:'); ?> </label>
+    <label class="col-md-2 col-form-label"> <?php echo anchor('reglamento/actual/'.$articuloreglamento['idreglamento'], 'Reglamento:'); ?> </label>
 	<div class="col-md-10">
      <?php 
 $options= array("NADA");
@@ -97,9 +59,8 @@ echo form_input('idreglamento',$options[$articuloreglamento['idreglamento']],arr
 	</div> 
 </div>
 
-
 <div class="form-group row">
-    <label class="col-md-2 col-form-label"> Orden:</label>
+    <label class="col-md-2 col-form-label"> Número:</label>
 	<div class="col-md-10">
      <?php
 
@@ -109,25 +70,31 @@ echo form_input('idreglamento',$options[$articuloreglamento['idreglamento']],arr
 	</div> 
 </div>
 
-
-
-
-<div class="form-group row">
-    <label class="col-md-2 col-form-label"> Foto:</label>
+ <div class="form-group row">
+    <label class="col-md-2 col-form-label"> Contenido:</label>
 	<div class="col-md-10">
- <img src="https://repositorioutlvte.org/Repositorio/articuloreglamento/articuloreglamento<?php echo $articuloreglamento['idarticuloreglamento']; ?>.jpg" alt="articuloreglamento" width="400" height="300"> 
+     <?php
+    
+$textarea_options = array('class' => 'form-control','rows' => '4','disabled'=>'disabled',   'cols' => '20', 'style'=> 'width:500px;height:100px;');    
+ echo form_textarea('contenido',$articuloreglamento['contenido'],$textarea_options); 
+		?>
+	</div> 
+</div>
   
 
-	</div> 
-<div class="img-contenedor w3-card-4" style="position:relative; width:100%; height:100%; display:flex; justify-content: center; align-items: center;">
 
 
- <input type="file" id="fileInput<?php echo trim($articuloreglamento['idarticuloreglamento']); ?>" accept="image/*">
-  <button onclick="uploadImage('articuloreglamento<?php echo trim($articuloreglamento['idarticuloreglamento']); ?>.jpg','<?php echo trim($articuloreglamento['idarticuloreglamento']); ?>')">Subir Imagen</button>
-  <p id="status<?php echo trim($articuloreglamento['idarticuloreglamento']); ?>"></p> </div>';
 
 
-</div>
+
+
+
+
+
+
+
+
+
 
 
 
