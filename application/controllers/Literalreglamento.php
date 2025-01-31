@@ -13,7 +13,7 @@ public function index(){
 	if(isset($this->session->userdata['logged_in'])){
 	  	$data['literalreglamento']=$this->literalreglamento_model->elultimo();
   		$data['instituciones']= $this->institucion_model->lista_instituciones()->result();
-		$data['articuloreglamentos']= $this->articuloreglamento_model->lista_literalreglamentos()->result();
+		$data['articuloreglamentos']= $this->articuloreglamento_model->lista_articuloreglamentos()->result();
   		$data['title']="Lista de Artiulos";
 			$this->load->view('template/page_header');		
   		$this->load->view('literalreglamento_record',$data);
