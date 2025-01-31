@@ -103,7 +103,6 @@ public function actual(){
 	{
 		$id=$this->input->post('idestudiante');
 	 	$array_item=array(
-		 	
 		 	'idestudiante' => $this->input->post('idestudiante'),
 			'idpersona' => $this->input->post('idpersona'),
 			'iddepartamento' => $this->input->post('iddepartamento'),
