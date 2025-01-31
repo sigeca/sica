@@ -13,8 +13,8 @@ if(isset($articuloreglamento))
         <li> <?php echo anchor('articuloreglamento/edit/'.$articuloreglamento['idarticuloreglamento'],'Edit'); ?></li>
       <!--  <li style="border-right:1px solid green"> <?php echo anchor('articuloreglamento/delete/'.$articuloreglamento['idarticuloreglamento'],'Delete'); ?></li> --->
         <li> <?php echo anchor('articuloreglamento/listar/','Listar'); ?></li>
-        <li> <?php echo anchor('articuloreglamento/genpagina/1','generar web'); ?></li>
-        <li> <?php echo anchor('articuloreglamento/articuloreglamento_1','Web'); ?></li>
+        <li> <?php echo anchor('articuloreglamento/genpagina/'.$articuloreglamento['idreglamento'],'generar web'); ?></li>
+        <li> <?php echo anchor('articuloreglamento/articuloreglamento_'.$articuloreglamento['idreglamento'],'Web'); ?></li>
 
 <?php 
 }else{
