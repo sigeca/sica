@@ -10,19 +10,24 @@
 
 
 
-
+<div class="form-group row">
+<label class="col-md-2 col-form-label">Número: </label>
+<div class="col-md-10">
+<?php
+     
+     echo form_input("numero","", array("placeholder"=>"numero en el reglamento",'style'=>'width:500px;'));
+?>
+</div>
+</div>
 
 
 
 
 
 <div class="form-group row">
-<label class="col-md-2 col-form-label">Detalle: </label>
+<label class="col-md-2 col-form-label">Contenido: </label>
 <div class="col-md-10">
 <?php
-	
-
-	
 $textarea_options = array('class' => 'form-control','rows' => '4',   'cols' => '20', 'style'=> 'width:50%;height:100px;', "placeholder"=>"contenido" );    
 	
 echo form_textarea("contenido","", $textarea_options);
@@ -30,21 +35,6 @@ echo form_textarea("contenido","", $textarea_options);
 ?>
 </div>
 </div>
-
-
-
-<div class="form-group row">
-<label class="col-md-2 col-form-label">Archivo: </label>
-<div class="col-md-10">
-<?php
-	
-$textarea_options = array('class' => 'form-control','rows' => '4',   'cols' => '20', 'style'=> 'width:50%;height:100px;', "placeholder"=>"contenido" );    
- echo form_textarea("archivo","", $textarea_options);  
-
-?>
-</div>
-</div>
-
 
 
 
@@ -63,15 +53,7 @@ foreach ($reglamentos as $row){
 </div>
 </div>
 
-<div class="form-group row">
-<label class="col-md-2 col-form-label">Orden: </label>
-<div class="col-md-10">
-<?php
-     
-     echo form_input("numero","", array("placeholder"=>"numero en el reglamento",'style'=>'width:500px;'));
-?>
-</div>
-</div>
+
 
 
 <table>
