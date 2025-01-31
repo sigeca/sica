@@ -44,11 +44,11 @@ echo form_textarea("contenido","", $textarea_options);
 <div class="col-md-10">
 <?php
 $options= array('--Select--');
-foreach ($reglamentos as $row){
-	$options[$row->idarticuloreglamento]="Articulo No.". $row->numero]." - ".$row->titulo;
+foreach ($articuloreglamentos as $row){
+	$options[$row->idarticuloreglamento]="Articulo No.". $row->numero." - ".$row->titulo;
 }
 
- echo form_dropdown("idreglamento",$options, set_select('--Select--','default_value'),array('id'=>'idreglamento'));  
+ echo form_dropdown("idarticuloreglamento",$options, set_select('--Select--','default_value'),array('id'=>'idarticuloreglamento'));  
 ?>
 </div>
 </div>
