@@ -42,9 +42,8 @@ public function  save()
 	 	$array_item=array(
 	 	'idliteralreglamento' => $this->input->post('idliteralreglamento'),
 	 	'contenido' => $this->input->post('contenido'),
-		'idreglamento' => $this->input->post('idreglamento'),
+		'idarticuloreglamento' => $this->input->post('idarticuloreglamento'),
 	 	'titulo' => $this->input->post('titulo'),
-	 	'numero' => $this->input->post('numero'),
 	 	);
 	 	$result=$this->literalreglamento_model->save($array_item);
 	 	if($result == FALSE)
@@ -79,9 +78,8 @@ public function edit()
 		 	
 		 	'idliteralreglamento' => $this->input->post('idliteralreglamento'),
 		 	'contenido' => $this->input->post('contenido'),
-		'idreglamento' => $this->input->post('idreglamento'),
-	 	'titulo' => $this->input->post('titulo'),
-	 	'numero' => $this->input->post('numero')
+		'idarticuloreglamento' => $this->input->post('idarticuloreglamento'),
+	 	'letra' => $this->input->post('letra'),
 	 	);
 	 	$this->literalreglamento_model->update($id,$array_item);
 	 	redirect('literalreglamento/actual/'.$id);
@@ -184,8 +182,8 @@ public function genpagina()
 	$numerorpt=0;
 	if($this->uri->segment(3))
 	{
-		$idreglamento=$this->uri->segment(3);
-	 	$data['literalreglamentos']= $this->literalreglamento_model->literalreglamentoA($idreglamento)->result();
+		$idarticuloreglamento=$this->uri->segment(3);
+	 	$data['literalreglamentos']= $this->literalreglamento_model->literalreglamentoA($idarticuloreglamento)->result();
 		$arreglo=array();
 		$i=0;
 		$data['prestamoliteralreglamento']=array();
