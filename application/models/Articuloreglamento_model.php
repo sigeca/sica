@@ -27,8 +27,8 @@ $query = $this->db->get('articuloreglamento1');
  		return $articuloreglamento;
  	}
 
- 	function articuloreglamentoA( $id){
- 		$articuloreglamento = $this->db->query('select * from articuloreglamento1 where idinstitucion="'. $id.'" order by idproceso,orden');
+ 	function articuloreglamentoA( $idreglamento){
+ 		$articuloreglamento = $this->db->query('select * from articuloreglamento1 where idreglamento="'. $idreglamento.'" order by idreglamento,numero');
  		return $articuloreglamento;
  	}
 
