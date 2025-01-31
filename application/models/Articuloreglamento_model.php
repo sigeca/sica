@@ -1,5 +1,5 @@
 <?php
-class Articuloarticuloreglamento_model extends CI_model {
+class Articuloreglamento_model extends CI_model {
 
 	function lista_articuloreglamentos(){
 		 $articuloreglamento= $this->db->get('articuloreglamento');
