@@ -410,10 +410,10 @@ $data=$data.'
         <div style="font-size:20px;  color:#333;  margin-top:10px; text-align: justify;" ><b>Detalle:</b><br> '.$row->contenido.' </div>'
         ;	
 
-        foreach($literalreglamentos as $rowj){
-			if(isset($rowj[$row->idarticuloreglamento])){		
+			if(isset($literalreglamentos    [$row->idarticuloreglamento])){		
+        foreach($literalreglamentos[$row->idarticuloreglamento] as $rowj){
 
-			$data=$data.'<b>'.$rowj[$row->idarticuloreglamento]['letra'] .': </b><span style="color:red">'.$rowj[$row->idarticuloreglamento]['contenido'].'),</span> <br>';
+			$data=$data.'<b>'.$rowj['letra'] .': </b><span style="color:red">'.$rowj['contenido'].'),</span> <br>';
 
 			}	
 		}
