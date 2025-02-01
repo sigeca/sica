@@ -62,7 +62,7 @@ public function edit()
 {
 	 	$data['literalreglamento'] = $this->literalreglamento_model->literalreglamento($this->uri->segment(3))->row_array();
   		$data['instituciones']= $this->institucion_model->lista_instituciones()->result();
-		$data['reglamentos']= $this->articuloreglamento_model->lista_reglamentos()->result();
+		$data['articuloreglamentos']= $this->articuloreglamento_model->lista_articuloreglamentos()->result();
  	 	$data['title'] = "Actualizar Articuloliteralreglamento";
  	 	$this->load->view('template/page_header');		
  	 	$this->load->view('literalreglamento_edit',$data);
@@ -206,7 +206,7 @@ public function actual()
 {
 	$data['literalreglamento'] = $this->literalreglamento_model->literalreglamento($this->uri->segment(3))->row_array();
  	$data['instituciones']= $this->institucion_model->lista_instituciones()->result();
-		$data['articuloreglamentos']= $this->articuloreglamento_model->lista_articuloreglamentos()->result();
+	$data['articuloreglamentos']= $this->articuloreglamento_model->lista_articuloreglamentos()->result();
   if(!empty($data))
   {
     $data['title']="Articuloliteralreglamento";

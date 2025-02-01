@@ -412,7 +412,7 @@ $data=$data.'
 
 if (isset($literalreglamentos[$row->idarticuloreglamento]) && !empty($literalreglamentos[$row->idarticuloreglamento])) {    
     foreach ($literalreglamentos[$row->idarticuloreglamento] as $rowj) {
-        $data .= '<span style=" font-size:20px;  color:#A67C52"> <b>' . htmlspecialchars($rowj['letra']) . ': </b>' . htmlspecialchars($rowj['contenido']) . '),</span> <br>';
+        $data .= '<span style=" font-size:20px;  color:#A67C52"> <b>' . htmlspecialchars($rowj['letra']) . ': </b>' . htmlspecialchars($rowj['contenido']) . '</span> <br>';
     }
 }
 
