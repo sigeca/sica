@@ -27,6 +27,14 @@ $query = $this->db->get('literalreglamento1');
  		return $literalreglamento;
  	}
 
+ 	function literalreglamentoxarticulo( $idarticuloreglamento){
+ 		$literalreglamento = $this->db->query('select * from literalreglamento where idarticuloreglamento="'. $idarticuloreglamento.'"');
+ 		return $literalreglamento;
+ 	}
+
+
+
+
  	function literalreglamentoA( $idreglamento){
  		$literalreglamento = $this->db->query('select * from literalreglamento1 where idreglamento="'. $idreglamento.'" order by idreglamento,numero');
  		return $literalreglamento;
