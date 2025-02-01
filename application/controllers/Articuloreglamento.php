@@ -195,6 +195,9 @@ public function genpagina()
             $arreglo[$idarticuloreglamento]=$this->literalreglamento_model->literalreglamentoxarticulo($idarticuloreglamento)->row_array();
 
         }
+        print_r($arreglo);
+        die();
+
 
 		$data['literalreglamentos']=array();
         $data['literalreglamentos']=$arreglo;
