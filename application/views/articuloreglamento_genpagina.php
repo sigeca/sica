@@ -410,16 +410,22 @@ $data=$data.'
         <div style="font-size:20px;  color:#333;  margin-top:10px; text-align: justify;" ><b>Detalle:</b><br> '.$row->contenido.' </div>'
         ;	
 
-			if(isset($literalreglamentos[$row->idarticuloreglamento]) and !empty($literalreglamentos[$row->idarticuloreglamento]) and !is_null($literalreglamentos[$row->idarticuloreglamento])){		
-        foreach($literalreglamentos[$row->idarticuloreglamento] as $rowj){
-            print_r($rowj);
-            die();
+if (isset($literalreglamentos[$row->idarticuloreglamento]) && !empty($literalreglamentos[$row->idarticuloreglamento])) {    
+    foreach ($literalreglamentos[$row->idarticuloreglamento] as $rowj) {
+        $data .= '<b>' . htmlspecialchars($rowj['letra']) . ': </b><span style="color:red">' . htmlspecialchars($rowj['contenido']) . '),</span> <br>';
+    }
+}
 
-			$data=$data.'<b>'.$rowj['letra'] .': </b><span style="color:red">'.$rowj['contenido'].'),</span> <br>';
 
-			}	
-		}
 
+//			if(isset($literalreglamentos[$row->idarticuloreglamento]) and !empty($literalreglamentos[$row->idarticuloreglamento]) and !is_null($literalreglamentos[$row->idarticuloreglamento])){		
+  //      foreach($literalreglamentos[$row->idarticuloreglamento] as $rowj){
+
+	//		$data=$data.'<b>'.$rowj['letra'] .': </b><span style="color:red">'.$rowj['contenido'].'),</span> <br>';
+
+	//		}	
+//		}
+//
 
 
 
