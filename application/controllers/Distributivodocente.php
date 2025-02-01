@@ -304,7 +304,7 @@ echo "El script tardó " . $tiempoEjecucion . " segundos en ejecutarse asignatur
 	//	array_push($data['jornadadocente'],$arreglo); 
 		$data['jornadadocente']=$arreglo; 
 		$data['silabos']=$arreglo2;
-		$data['asignatura']= $this->asignatura_model->asignaturas1($data['asignaturadocentes'][0]->idasignatura)->row_array();
+		$data['aignatura']= $this->asignatura_model->asignaturas1($data['asignaturadocentes'][0]->idasignatura)->row_array();
 
 		$data['malla']= $this->malla_model->mallaA($data['asignatura']['idmalla'])->result();
 
