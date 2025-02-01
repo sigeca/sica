@@ -9,13 +9,9 @@ class Articuloreglamento_model extends CI_model {
 
 	function lista_articuloreglamentosA(){
 
-$this->db->order_by('idproceso', 'asc');
-$this->db->order_by('orden', 'asc');
-
-$query = $this->db->get('articuloreglamento1');
-
-
-
+        $this->db->order_by('idproceso', 'asc');
+        $this->db->order_by('orden', 'asc');
+        $query = $this->db->get('articuloreglamento1');
 		 return $query;
 	}
 
