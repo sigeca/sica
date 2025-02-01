@@ -412,6 +412,8 @@ $data=$data.'
 
 			if(isset($literalreglamentos[$row->idarticuloreglamento]) and !empty($literalreglamentos[$row->idarticuloreglamento])){		
         foreach($literalreglamentos[$row->idarticuloreglamento] as $rowj){
+            print_r($rowj);
+            die();
 
 			$data=$data.'<b>'.$rowj['letra'] .': </b><span style="color:red">'.$rowj['contenido'].'),</span> <br>';
 
