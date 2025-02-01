@@ -49,7 +49,7 @@ if(isset($literalreglamento))
      <?php 
 $options= array("NADA");
 foreach ($articuloreglamentos as $row){
-	$options[$row->idarticuloreglamento]= $row->titulo;
+	$options[$row->idarticuloreglamento]= "Articulo No.". $row->numero." - ".$row->titulo;
 }
 
 echo form_input('idarticuloreglamento',$options[$literalreglamento['idarticuloreglamento']],array("disabled"=>"disabled",'style'=>'width:500px;')); 
