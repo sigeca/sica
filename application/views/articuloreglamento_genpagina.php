@@ -390,7 +390,7 @@ foreach($articuloreglamentos as $row){
 
     
 
-$data=$data.'<div class="col">
+$data=$data.'<div class="container col">
           <div class="card shadow-sm">
 		  ';
 
@@ -415,18 +415,6 @@ if (isset($literalreglamentos[$row->idarticuloreglamento]) && !empty($literalreg
         $data .= '<b>' . htmlspecialchars($rowj['letra']) . ': </b><span style="color:red">' . htmlspecialchars($rowj['contenido']) . '),</span> <br>';
     }
 }
-
-
-
-//			if(isset($literalreglamentos[$row->idarticuloreglamento]) and !empty($literalreglamentos[$row->idarticuloreglamento]) and !is_null($literalreglamentos[$row->idarticuloreglamento])){		
-  //      foreach($literalreglamentos[$row->idarticuloreglamento] as $rowj){
-
-	//		$data=$data.'<b>'.$rowj['letra'] .': </b><span style="color:red">'.$rowj['contenido'].'),</span> <br>';
-
-	//		}	
-//		}
-//
-
 
 
               	$data=$data.'<div class="d-flex justify-content-between align-items-center">
