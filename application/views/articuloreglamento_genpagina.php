@@ -413,7 +413,7 @@ $data=$data.'
 			if(isset($literalreglamentos    [$row->idarticuloreglamento])){		
         foreach($literalreglamentos[$row->idarticuloreglamento] as $rowj){
 
-			$data=$data.'<b>'.$rowj['letra'] .': </b><span style="color:red">'.$rowj['contenido'].'),</span> <br>';
+			$data=$data.'<b>'.$rowj->letra .': </b><span style="color:red">'.$rowj->contenido.'),</span> <br>';
 
 			}	
 		}
