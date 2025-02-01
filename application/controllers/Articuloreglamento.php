@@ -108,6 +108,8 @@ function articuloreglamento_data()
 
 	 	$data0 = $this->articuloreglamento_model->lista_articuloreglamentosA();
 		$data=array();
+
+        print_r($data0);
 		foreach($data0->result() as $r){
 			$data[]=array($r->idarticuloreglamento,$r->elreglamento,$r->elartitulo,$r->contenido,
 				$r->href='<a href="javascript:void(0);" class="btn btn-info btn-sm item_ver"  data-retorno="'.site_url('articuloreglamento/actual').'"  data-idarticuloreglamento="'.$r->idarticuloreglamento.'">Ver</a>');
