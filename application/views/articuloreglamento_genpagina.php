@@ -404,7 +404,7 @@ $data=$data.'
 
 
 
-        <div class="card-body" style="background-color:green"  >
+        <div class="card-body" style="background-color:#0F172A"  >
         <div style="font-size:20px;  color:#333;  margin-top:10px;" > <b>No. Artículo:</b>'.$row->numero.' </div>
         <div style="font-size:20px;  color:#333;  margin-top:10px;" > <b>Titulo:</b>  <span  style="color:#6c757d;text-shadow: 1px 1px 2px #000, -1px -1px 2px #fff;" >'.$row->titulo.'</span> </div>
         <div style="font-size:20px;  color:#333;  margin-top:10px; text-align: justify;" ><b>Detalle:</b><br> '.$row->contenido.' </div>'
