@@ -406,13 +406,13 @@ $data=$data.'
 
         <div class="card-body" style="background-color:#FAF3E0"  >
         <div style="font-size:20px;  color:#333;  margin-top:10px;" > <b>No. Artículo:</b>'.$row->numero.' </div>
-        <div style="font-size:20px;  color:#333;  margin-top:10px;" > <b>Titulo:</b>  <span  style="color:#6c757d;text-shadow: 1px 1px 2px #000, -1px -1px 2px #fff;" >'.$row->titulo.'</span> </div>
+        <div style="font-size:20px;  color:#333;  margin-top:10px;" > <b>Titulo:</b>  <span  style="color:#6c757d;text-shadow: 1px 1px 2px #FFD700 , -1px -1px 2px #fff;" >'.$row->titulo.'</span> </div>
         <div style="font-size:20px;  color:#333;  margin-top:10px; text-align: justify;" ><b>Detalle:</b><br> '.$row->contenido.' </div>'
         ;	
 
 if (isset($literalreglamentos[$row->idarticuloreglamento]) && !empty($literalreglamentos[$row->idarticuloreglamento])) {    
     foreach ($literalreglamentos[$row->idarticuloreglamento] as $rowj) {
-        $data .= '<b>' . htmlspecialchars($rowj['letra']) . ': </b><span style="color:red">' . htmlspecialchars($rowj['contenido']) . '),</span> <br>';
+        $data .= '<b>' . htmlspecialchars($rowj['letra']) . ': </b><span style="color:#A67C52">' . htmlspecialchars($rowj['contenido']) . '),</span> <br>';
     }
 }
 
