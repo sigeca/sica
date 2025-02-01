@@ -49,8 +49,9 @@ body {font-family: Arial, Helvetica, sans-serif;}
  <thead>
  <tr>
  <th>ID</th>
- <th>nombre</th>
- <th>detalle</th>
+ <th>reglamento</th>
+ <th>articulo</th>
+ <th>Contenido</th>
  <th style="text-align: right;">Actions</th>
  </tr>
  </thead>

@@ -106,10 +106,10 @@ function articuloreglamento_data()
 		$draw= intval($this->input->get("length"));
 
 
-	 	$data0 = $this->articuloreglamento_model->lista_articuloreglamentos();
+	 	$data0 = $this->articuloreglamento_model->lista_articuloreglamentosA();
 		$data=array();
 		foreach($data0->result() as $r){
-			$data[]=array($r->idarticuloreglamento,$r->nombre,$r->contenido,
+			$data[]=array($r->idarticuloreglamento,$r->elreglamento,$r->elartitulo,$r->contenido,
 				$r->href='<a href="javascript:void(0);" class="btn btn-info btn-sm item_ver"  data-retorno="'.site_url('articuloreglamento/actual').'"  data-idarticuloreglamento="'.$r->idarticuloreglamento.'">Ver</a>');
 		}	
 		$output=array( "draw"=>$draw,
