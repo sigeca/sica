@@ -9,24 +9,18 @@
 <td> reglamento:</td>
 <td><?php
 $options= array('--Select--');
-foreach ($reglamentos as $row){
-	$options[$row->idreglamento]= $row->nombre;
+
+foreach ($articuloreglamentos as $row){
+	$options[$row->idarticuloreglamento]="Articulo No.". $row->numero." - ".$row->titulo;
 }
 
  echo form_dropdown("idreglamento",$options, $literalreglamento['idreglamento']);  ?></td>
 </tr>
 
 <tr>
-      <td>Titulo:</td>
-      <td><?php echo form_input('titulo',$literalreglamento['titulo'],array('placeholder'=>'Nombre del ', "style"=>"width:500px")) ?></td>
+      <td>Letra:</td>
+      <td><?php echo form_input('letra',$literalreglamento['letra'],array('placeholder'=>'Letra del ', "style"=>"width:500px")) ?></td>
   </tr>
-
-
-<tr>
-      <td>Número:</td>
-      <td><?php echo form_input('numero',$literalreglamento['numero'],array('placeholder'=>'Nombre del ', "style"=>"width:500px")) ?></td>
-  </tr>
-
 
 
 <tr>
