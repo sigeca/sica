@@ -196,7 +196,7 @@ public function genpagina()
 
         }
         print_r($arreglo);
-        die();
+      //  die();
 
 
 		$data['literalreglamentos']=array();
