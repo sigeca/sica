@@ -192,7 +192,7 @@ public function genpagina()
         foreach($data['articuloreglamentos'] as $row){
             $idarticuloreglamento=$row->idarticuloreglamento;
 
-            $arreglo[$idarticuloreglamento]=$this->literalreglamento_model->literalreglamentoxarticulo($idarticuloreglamento)->row_array();
+            $arreglo[$idarticuloreglamento]=$this->literalreglamento_model->literalreglamentoxarticulo($idarticuloreglamento)->result_array();
 
         }
         print_r($arreglo);
