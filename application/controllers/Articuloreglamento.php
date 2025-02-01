@@ -5,6 +5,7 @@ class Articuloreglamento extends CI_Controller{
   public function __construct(){
       parent::__construct();
       $this->load->model('articuloreglamento_model');
+      $this->load->model('literalreglamento_model');
   	  $this->load->model('institucion_model');
      $this->load->model('reglamento_model');
 }
@@ -187,8 +188,16 @@ public function genpagina()
 		$idreglamento=$this->uri->segment(3);
 	 	$data['articuloreglamentos']= $this->articuloreglamento_model->articuloreglamentoA($idreglamento)->result();
 		$arreglo=array();
-		$i=0;
-		$data['prestamoarticuloreglamento']=array();
+        $i=0;
+        foreach($data['articuloreglamentos'] as $row){
+            $idarticuloreglamento=$row->idarticuloreglamento;
+
+            $arreglo[$idarticuloreglamento]=$this->literalreglamento_model->literalreglamento($idarticuloreglamento)->row_array();
+
+        }
+
+		$data['literalreglamentos']=array();
+        $data['literalreglamentos']=$arreglo;
 		echo "<br> jornadadocnete<br>" ;
 
 		$this->load->view('articuloreglamento_genpagina',$data);
