@@ -111,7 +111,7 @@ function articuloreglamento_data()
 
         print_r($data0);
 		foreach($data0->result() as $r){
-			$data[]=array($r->idarticuloreglamento,$r->elreglamento,$r->elartitulo,$r->contenido,
+			$data[]=array($r->idarticuloreglamento,$r->elreglamento,$r->elarticuloreglamento,$r->contenido,
 				$r->href='<a href="javascript:void(0);" class="btn btn-info btn-sm item_ver"  data-retorno="'.site_url('articuloreglamento/actual').'"  data-idarticuloreglamento="'.$r->idarticuloreglamento.'">Ver</a>');
 		}	
 		$output=array( "draw"=>$draw,
