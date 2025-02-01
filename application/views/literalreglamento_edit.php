@@ -14,7 +14,7 @@ foreach ($articuloreglamentos as $row){
 	$options[$row->idarticuloreglamento]="Articulo No.". $row->numero." - ".$row->titulo;
 }
 
- echo form_dropdown("idreglamento",$options, $literalreglamento['idreglamento']);  ?></td>
+ echo form_dropdown("idarticuloreglamento",$options, $literalreglamento['idarticuloreglamento']);  ?></td>
 </tr>
 
 <tr>
