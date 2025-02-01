@@ -206,7 +206,7 @@ public function actual()
 {
 	$data['literalreglamento'] = $this->literalreglamento_model->literalreglamento($this->uri->segment(3))->row_array();
  	$data['instituciones']= $this->institucion_model->lista_instituciones()->result();
-		$data['reglamentos']= $this->articuloreglamento_model->lista_reglamentos()->result();
+		$data['articuloreglamentos']= $this->articuloreglamento_model->lista_articuloreglamentos()->result();
   if(!empty($data))
   {
     $data['title']="Articuloliteralreglamento";
@@ -230,7 +230,7 @@ public function elprimero()
 {
 	$data['literalreglamento'] = $this->literalreglamento_model->elprimero();
  	$data['instituciones']= $this->institucion_model->lista_instituciones()->result();
-		$data['reglamentos']= $this->articuloreglamento_model->lista_reglamentos()->result();
+		$data['articuloreglamentos']= $this->articuloreglamento_model->lista_articuloreglamentos()->result();
   if(!empty($data))
   {
     $data['title']="Articuloliteralreglamento";
@@ -248,7 +248,7 @@ public function elultimo()
 {
 	  $data['literalreglamento'] = $this->literalreglamento_model->elultimo();
  	$data['instituciones']= $this->institucion_model->lista_instituciones()->result();
-		$data['reglamentos']= $this->articuloreglamento_model->lista_reglamentos()->result();
+		$data['articuloreglamentos']= $this->articuloreglamento_model->lista_articuloreglamentos()->result();
   if(!empty($data))
   {
     $data['title']="Articuloliteralreglamento";
@@ -268,7 +268,7 @@ public function siguiente(){
  // $data['literalreglamento_list']=$this->literalreglamento_model->lista_literalreglamento()->result();
 	$data['literalreglamento'] = $this->literalreglamento_model->siguiente($this->uri->segment(3))->row_array();
  	$data['instituciones']= $this->institucion_model->lista_instituciones()->result();
-		$data['reglamentos']= $this->articuloreglamento_model->lista_reglamentos()->result();
+		$data['articuloreglamentos']= $this->articuloreglamento_model->lista_articuloreglamentos()->result();
   $data['title']="Articuloliteralreglamento";
 	$this->load->view('template/page_header');		
   $this->load->view('literalreglamento_record',$data);
@@ -278,7 +278,7 @@ public function siguiente(){
 public function anterior(){
  // $data['literalreglamento_list']=$this->literalarticuloreglamento_model->lista_literalreglamento()->result();
 	$data['literalreglamento'] = $this->literalreglamento_model->anterior($this->uri->segment(3))->row_array();
-$data['reglamentos']= $this->articuloreglamento_model->lista_reglamentos()->result();
+		$data['articuloreglamentos']= $this->articuloreglamento_model->lista_articuloreglamentos()->result();
   $data['title']="Articuloliteralreglamento";
 	$this->load->view('template/page_header');		
   $this->load->view('literalreglamento_record',$data);
