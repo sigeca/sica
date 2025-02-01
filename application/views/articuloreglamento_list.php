@@ -50,6 +50,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
  <tr>
  <th>ID</th>
  <th>reglamento</th>
+ <th>No</th>
  <th>articulo</th>
  <th>Contenido</th>
  <th style="text-align: right;">Actions</th>
