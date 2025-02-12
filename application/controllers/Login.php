@@ -336,9 +336,8 @@ public function user_login_process() {
 	$this->load_model('nivelacceso_model');
 	$this->load_model('asistencia_model');
 	$data['eventos']= $this->evento_model->lista_eventos()->result();
-
-	$this->form_validation->set_rules('email', 'Email', 'trim|required|xss_clean');
-	$this->form_validation->set_rules('password', 'Password', 'trim|required|xss_clean');
+	$this->form_validation->set_rules('email', 'Email', 'trim|required');
+	$this->form_validation->set_rules('password', 'Password', 'trim|required');
 
 	if ($this->form_validation->run() == FALSE) {
         die("paso");
