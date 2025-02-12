@@ -1185,11 +1185,20 @@ if ($ordenrpt != 0) {
 }
 $file .= '.php';
 
-if (!write_file($file, $data)) {
+if (file_put_contents($file, $data) === false) {
     echo 'Unable to write the file';
 } else {
     echo "File written successfully: " . $file . "\n";
 }
+
+
+
+
+//if (!write_file($file, $data)) {
+  //  echo 'Unable to write the file';
+//} else {
+ //   echo "File written successfully: " . $file . "\n";
+//}
 
 
 
