@@ -341,16 +341,13 @@ public function user_login_process() {
 	$this->form_validation->set_rules('password', 'Password', 'trim|required|xss_clean');
 
 	if ($this->form_validation->run() == FALSE) {
-		if(isset($this->session->userdata['logged_in'])){
+//		if(isset($this->session->userdata['logged_in'])){
 			redirect('principal');
-	//	 $this->load->view('template/page_header.php');
-	//	$this->load->view('admin_page');
-	//	 $this->load->view('template/page_footer.php');
-		}else{
-		 	$this->load->view('template/page_header.php');
-			$this->load->view('login_form',$data);
-	 		$this->load->view('template/page_footer.php');
-		}
+//		}else{
+//		 	$this->load->view('template/page_header.php');
+//			$this->load->view('login_form',$data);
+//	 		$this->load->view('template/page_footer.php');
+//		}
 	} else {
 
 	// ======================================================================

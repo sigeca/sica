@@ -61,7 +61,7 @@ public function index(){
 
 
 public function cumplimiento(){
-// if(isset($this->session->userdata['logged_in'])){
+ if(isset($this->session->userdata['logged_in'])){
 
 	$data['evento'] = $this->evento_model->evento($this->uri->segment(3))->row_array();
 	$data['eventos']= $this->evento_model->lista_eventos()->result();
@@ -78,11 +78,11 @@ public function cumplimiento(){
 	$this->load->view('template/page_header');		
 	$this->load->view('evento_cumplimiento',$data);
 	$this->load->view('template/page_footer');
-  // }else{
-//	$this->load->view('template/page_header.php');
-//	$this->load->view('login_form');
-//	$this->load->view('template/page_footer.php');
- //  }
+   }else{
+	$this->load->view('template/page_header.php');
+	$this->load->view('login_form');
+	$this->load->view('template/page_footer.php');
+   }
 }
 
 
