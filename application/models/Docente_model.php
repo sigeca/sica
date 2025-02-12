@@ -120,7 +120,7 @@ class Docente_model extends CI_model {
 // Para ir al último registro
 	function elultimo()
 	{
-		$query=$this->db->order_by("iddocente")->get('docente0');
+		$query=$this->db->order_by("iddocente")->get('docente1');
 		if($query->num_rows()>0)
 		{
 			return $query->last_row('array');
@@ -132,7 +132,7 @@ class Docente_model extends CI_model {
 
 	// Para moverse al siguiente registro
  	function siguiente($id){
- 		$docente = $this->db->select("iddocente")->order_by("iddocente")->get('docente0')->result_array();
+ 		$docente = $this->db->select("iddocente")->order_by("iddocente")->get('docente1')->result_array();
 		$arr=array("iddocente"=>$id);
 		$clave=array_search($arr,$docente);
 	   if(array_key_exists($clave+1,$docente))
@@ -150,7 +150,7 @@ class Docente_model extends CI_model {
 
 // Para moverse al anterior registro
  	function anterior($id){
- 		$docente = $this->db->select("iddocente")->order_by("iddocente")->get('docente0')->result_array();
+ 		$docente = $this->db->select("iddocente")->order_by("iddocente")->get('docente1')->result_array();
 		$arr=array("iddocente"=>$id);
 		$clave=array_search($arr,$docente);
 	   if(array_key_exists($clave-1,$docente))
