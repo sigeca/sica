@@ -341,7 +341,7 @@ public function user_login_process() {
 	$this->form_validation->set_rules('password', 'Password', 'trim|required|xss_clean');
 
 	if ($this->form_validation->run() == FALSE) {
-        echo "paso";
+        die("paso");
 //		if(isset($this->session->userdata['logged_in'])){
 			redirect('principal');
 //		}else{
@@ -350,7 +350,7 @@ public function user_login_process() {
 //	 		$this->load->view('template/page_footer.php');
 //		}
 	} else {
-        echo "no paso";
+        die("no paso");
 	// ======================================================================
 	// Recuperando el correo y el password del formulario login en un arreglo
 	// ======================================================================	
