@@ -285,26 +285,26 @@ echo "El script tardó " . $tiempoEjecucion . " segundos en ejecutarse asignatur
 		foreach($data['asignaturadocentes'] as $row){
 		$idasignaturadocente=$row->idasignaturadocente;
 
-//		$arreglo2+=array($idasignaturadocente=>$this->silabo_model->silabo2($row->iddocente,$row->idasignatura,$row->idevento)->result_array());
+		$arreglo2+=array($idasignaturadocente=>$this->silabo_model->silabo2($row->iddocente,$row->idasignatura,$row->idevento)->result_array());
 
-//		$arreglo[$row->idasignaturadocente]=$this->jornadadocente_model->jornadadocentes($idasignaturadocente)->row_array();
-//		$xx=array($this->jornadadocente_model->jornadadocentes($idasignaturadocente)->result_array());
-//		if(count($xx[0]) > 0){
-//		foreach($xx as $row2){
-//			foreach($row2 as $row3)
-//			 {
-//				$arreglo+=array($i=>array($row->idasignaturadocente=>$row3));
-//				$i=$i+1;
-//			}
-//			}
-//		}
+		$arreglo[$row->idasignaturadocente]=$this->jornadadocente_model->jornadadocentes($idasignaturadocente)->row_array();
+		$xx=array($this->jornadadocente_model->jornadadocentes($idasignaturadocente)->result_array());
+		if(count($xx[0]) > 0){
+		foreach($xx as $row2){
+			foreach($row2 as $row3)
+			 {
+				$arreglo+=array($i=>array($row->idasignaturadocente=>$row3));
+				$i=$i+1;
+			}
+			}
+		}
 		}
 		$data['jornadadocente']=array();
 		$data['silabos']=array();
 	//	array_push($data['jornadadocente'],$arreglo); 
 		$data['jornadadocente']=$arreglo; 
 		$data['silabos']=$arreglo2;
-		$data['aignatura']= $this->asignatura_model->asignaturas1($data['asignaturadocentes'][0]->idasignatura)->row_array();
+		$data['asignatura']= $this->asignatura_model->asignaturas1($data['asignaturadocentes'][0]->idasignatura)->row_array();
 
 		$data['malla']= $this->malla_model->mallaA($data['asignatura']['idmalla'])->result();
 

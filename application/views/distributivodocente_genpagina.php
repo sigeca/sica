@@ -957,7 +957,7 @@ $data=$data.'</div>
 
 
 
-/*
+
 
 foreach($jornadadocente as $rowj){
 			if(isset($rowj[$row->idasignaturadocente]['idasignaturadocente'])){		
@@ -967,7 +967,7 @@ foreach($jornadadocente as $rowj){
 		$k=$k+$rowj[$row->idasignaturadocente]['duracionminutos']/60;
 			}	
 		}
- */
+
 
 			$disabled='';
 		if(strpos($row->estadoevento,"INSCRIPCION")=== false){
