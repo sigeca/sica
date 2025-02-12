@@ -684,14 +684,18 @@ $data = $data . '<div class="col">
 $remoteFile = "https://repositorioutlvte.org/Repositorio/eventos/AreaConocimiento/".trim($row->idareaconocimiento).".jpg";
 
 $file_headers = @get_headers($remoteFile);
-
+if ($file_headers && is_array($file_headers) && isset($file_headers[0])) {
 // Check if file exists
 if($file_headers[0] == 'HTTP/1.1 404 Not Found') {
     $data=$data.'<image href="https://repositorioutlvte.org/Repositorio/eventos/sinimagen.png"  height="100%" width="100%"/> </svg></a>';
 }else{
     $data=$data.'<image href="https://repositorioutlvte.org/Repositorio/eventos/AreaConocimiento/'.trim($row->codigo).'.jpg" alt="Revisar la programación"  height="100%" width="100%"/> </svg></a>';
 }
+}else{
 
+    $data=$data.'<image href="https://repositorioutlvte.org/Repositorio/eventos/sinimagen.png"  height="100%" width="100%"/> </svg></a>';
+
+}
 
 
 
