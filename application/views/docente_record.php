@@ -77,6 +77,14 @@ echo form_input('idpersona',$options[$docente['idpersona']],array("disabled"=>"d
 </div>
 
 
+<div class="form-group row">
+    <label class="col-md-2 col-form-label"> Foto:</label>
+	<div class="col-md-10">
+ <img src="https://repositorioutlvte.org/Repositorio/fotos/<?php echo $docente['cedula']; ?>.jpg" alt="foto" width="400" height="300"> 
+	</div> 
+</div>
+
+
 
 <div class="form-group row">
 <label class="col-md-2 col-form-label"> Depart-Carrera: </label>
