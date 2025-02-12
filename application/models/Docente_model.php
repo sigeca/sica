@@ -2,7 +2,7 @@
 class Docente_model extends CI_model {
 
 	function lista_docentes(){
-		 $docente= $this->db->get('docente0');
+		 $docente= $this->db->get('docente1');
 		 return $docente;
 	}
 
@@ -25,7 +25,7 @@ class Docente_model extends CI_model {
 
 
  	function docente( $id){
- 		$docente = $this->db->query('select * from docente0 where iddocente="'. $id.'"');
+ 		$docente = $this->db->query('select * from docente1 where iddocente="'. $id.'"');
  		return $docente;
  	}
 
