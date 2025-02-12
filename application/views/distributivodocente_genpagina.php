@@ -1179,18 +1179,34 @@ $data1= str_replace('<calificaciones2p>',$calificaciones2p,$data1);
 
 $data=$data.$data1;
 
-		if($ordenrpt==0){
-			$file='application/views/web/distributivo'.$elperiodoacademico.'-'.$idareaconocimiento.'.php';
-		}else{
-			$file='application/views/web/distributivo'.$elperiodoacademico.'-'.$idareaconocimiento.'-'.$ordenrpt.'.php';
-		}
+$file = FCPATH . 'application/views/web/distributivo' . $elperiodoacademico . '-' . $idareaconocimiento;
+if ($ordenrpt != 0) {
+    $file .= '-' . $ordenrpt;
+}
+$file .= '.php';
+
+if (!write_file($file, $data)) {
+    echo 'Unable to write the file';
+} else {
+    echo "File written successfully: " . $file . "\n";
+}
 
 
-	if ( !write_file($file, $data)){
-	     echo 'Unable to write the file';
-	}else{
-	    echo $file."\n";
-	}
+
+
+
+//		if($ordenrpt==0){
+//			$file='application/views/web/distributivo'.$elperiodoacademico.'-'.$idareaconocimiento.'.php';
+//		}else{
+//			$file='application/views/web/distributivo'.$elperiodoacademico.'-'.$idareaconocimiento.'-'.$ordenrpt.'.php';
+//		}
+
+
+//	if ( !write_file($file, $data)){
+//	     echo 'Unable to write the file';
+//	}else{
+//	    echo $file."\n";
+//	}
 
 
 
