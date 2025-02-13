@@ -376,7 +376,7 @@ if ((bool)$result === TRUE) {
 		$result2 = $this->login_model->get_persona($result[0]->idpersona);
 		if ($result2) {
       			$resulti = $this->institucion_model->get_institucion($result[0]->idinstitucion);
-                die("esta cargando");
+              //  die("esta cargando");
 			$session_data = array(
 				'email' => $result[0]->email,
 				'idusuario' => $result[0]->idusuario,
@@ -427,7 +427,10 @@ if ((bool)$result === TRUE) {
 
 		// Add user data in session
 		$this->session->set_userdata('logged_in', $session_data);
-		
+
+     if (!empty($this->session->userdata('logged_in'))){ 
+       die("si existe");
+    }
 //		$acceso=array(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
 	//	$acceso=array(1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
 
