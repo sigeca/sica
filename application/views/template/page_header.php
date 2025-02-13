@@ -916,7 +916,7 @@ span a {
 <body >
 <?php
 echo "despues"; 
-print_r($this->session->userdata());
+print_r($session_data);
 //die();
 ?>
 
