@@ -349,7 +349,6 @@ public function user_login_process() {
 //	 		$this->load->view('template/page_footer.php');
 //		}
 	} else {
-        die("no paso");
 	// ======================================================================
 	// Recuperando el correo y el password del formulario login en un arreglo
 	// ======================================================================	
@@ -364,7 +363,7 @@ public function user_login_process() {
 	// Verificando que el correo y password estén registrado en la base de datos
 	// ==========================================================================
 	$result = $this->login_model->login($data);
-
+    die($resul); 
 
 if ($result == TRUE) {
 	$email = $this->input->post('email');
