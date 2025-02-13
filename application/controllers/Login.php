@@ -454,7 +454,7 @@ if ((bool)$result === TRUE) {
 				$this->load->view('template/page_footer.php');
 			}
 		   	  $moduloinicio=$this->session->userdata['logged_in']['inicio'];	
-            $this->session->sess_write_close(); // Guarda la sesión explícitamente
+           // $this->session->sess_write_close(); // Guarda la sesión explícitamente
 		//	echo $moduloinicio;
 		//	die();
 			redirect($moduloinicio."/".$result[0]->idpersona); 
