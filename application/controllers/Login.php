@@ -363,7 +363,7 @@ public function user_login_process() {
 	// Verificando que el correo y password estén registrado en la base de datos
 	// ==========================================================================
 	$result = $this->login_model->login($data);
-    die($resul); 
+    die($result); 
 
 if ($result == TRUE) {
 	$email = $this->input->post('email');
