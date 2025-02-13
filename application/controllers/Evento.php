@@ -382,6 +382,10 @@ public function cumplimiento(){
 
 	public function listarxp()
 	{
+print_r($this->session->userdata());
+die(); // Detiene la ejecución antes del redirect
+
+
 		$data['evento'] = $this->evento_model->evento(1)->row_array();
 		$data['evento_estados']= $this->evento_estado_model->lista_evento_estados()->result();
 		$data['instituciones']= $this->institucion_model->lista_instituciones()->result();
