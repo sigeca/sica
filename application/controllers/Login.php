@@ -370,10 +370,10 @@ if ((bool)$result === TRUE) {
 //	$idevento = $this->input->post('idevento');
 //	$result = $this->login_model->read_user_information($email,$password,$idevento);
 	$result = $this->login_model->read_user_information($email,$password);
-	if ($result != false) {
+	if ((bool)$result != false) {
 	// Se busca la información del dueño del usuario.
 		$result2 = $this->login_model->get_persona($result[0]->idpersona);
-		if ($result2 != false) {
+		if ((bool)$result2 != false) {
       			$resulti = $this->institucion_model->get_institucion($result[0]->idinstitucion);
 			$session_data = array(
 				'email' => $result[0]->email,
@@ -390,7 +390,7 @@ if ((bool)$result === TRUE) {
 		
 		$result3 = $this->acceso_model->get_usuario($result[0]->idusuario);
 
-		if ((true)$result3 != false) {
+		if ((bool)$result3 != false) {
 			$accesos = array();
 			foreach($result3 as $row)
 			{
