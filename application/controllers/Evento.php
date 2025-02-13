@@ -382,8 +382,8 @@ public function cumplimiento(){
 
 	public function listarxp()
 	{
-print_r($this->session->userdata());
-die(); // Detiene la ejecución antes del redirect
+//print_r($this->session->userdata());
+//die(); // Detiene la ejecución antes del redirect
 
 
 		$data['evento'] = $this->evento_model->evento(1)->row_array();
