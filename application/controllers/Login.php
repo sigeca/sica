@@ -462,10 +462,10 @@ if ((bool)$result === TRUE) {
             //
         $this->session->set_userdata('logged_in', $session_data);
 
-echo "<pre> hoal";  // Para formatear la salida y ver claramente el array
-print_r($this->session->userdata());
-echo "</pre>";
-die();
+//echo "<pre> hoal";  // Para formatear la salida y ver claramente el array
+//print_r($this->session->userdata());
+//echo "</pre>";
+//die();
 			redirect($moduloinicio."/".$result[0]->idpersona); 
 		}
 		//	redirect('aspirante/add'); 
