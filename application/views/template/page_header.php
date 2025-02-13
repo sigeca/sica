@@ -915,7 +915,7 @@ span a {
 </head>
 <body >
 
-  die(isset($this->session->userdata['logged_in']));
+  <?php  die(isset($this->session->userdata['logged_in']));?>
 
 
  <?php if(isset($this->session->userdata['logged_in']) ){ ?>
