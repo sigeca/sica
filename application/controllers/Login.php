@@ -457,6 +457,11 @@ if ((bool)$result === TRUE) {
            // $this->session->sess_write_close(); // Guarda la sesión explícitamente
 		//	echo $moduloinicio;
 		//	die();
+            //
+            //
+            //
+        $this->session->set_userdata('logged_in', $session_data);
+$this->session->sess_write_close();  // Guarda la sesión explícitamente
 			redirect($moduloinicio."/".$result[0]->idpersona); 
 		}
 		//	redirect('aspirante/add'); 
