@@ -371,10 +371,10 @@ if ((bool)$result === TRUE) {
 //	$result = $this->login_model->read_user_information($email,$password,$idevento);
 	$result = $this->login_model->read_user_information($email,$password);
 
-	if (!empty($result)) {
+	if ($result) {
 	// Se busca la información del dueño del usuario.
 		$result2 = $this->login_model->get_persona($result[0]->idpersona);
-		if (!empty($result2)) {
+		if ($result2) {
       			$resulti = $this->institucion_model->get_institucion($result[0]->idinstitucion);
                 echo "que paso con esto¨;
 			$session_data = array(
