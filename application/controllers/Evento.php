@@ -395,7 +395,7 @@ public function cumplimiento(){
 
 		$data['filtro']= $idpersona; //$data['participante']['idparticipante'];
 		}
-
+        die("llago hasta aqui");
 		$data['title']="Evento";
 		$this->load->view('template/page_header');		
 		$this->load->view('evento_xpersona',$data);
