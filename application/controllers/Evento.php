@@ -2,6 +2,7 @@
 class Evento extends CI_Controller{
   public function __construct(){
       parent::__construct();
+      $this->load->library('session');
       $this->load->model('evento_model');
       $this->load->model('evento_estado_model');
    	$this->load->model('periodoacademico_model');
@@ -396,9 +397,9 @@ public function cumplimiento(){
 		$data['filtro']= $idpersona; //$data['participante']['idparticipante'];
 		}
 		$data['title']="Evento";
-		$this->load->view('template/page_header');		
+		$this->load->view('template/page_header',array('session_data' => $this->session->userdata())  );		
 		$this->load->view('evento_xpersona',$data);
-		$this->load->view('template/page_footer');
+		$this->load->view('template/page_footer',array('session_data' => $this->session->userdata()) );
 	}
 
 
