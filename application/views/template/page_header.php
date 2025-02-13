@@ -916,6 +916,7 @@ span a {
 <body >
 <?php
 print_r($this->session->userdata());
+die();
 ?>
 
   <?php if (!empty($this->session->userdata('logged_in'))){ die("existen tambien"); ?>
