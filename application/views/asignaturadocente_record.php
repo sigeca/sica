@@ -144,7 +144,7 @@ echo form_input('iddistributivodocente',$asignaturadocente['iddistributivodocent
             <b>Horario semanal</b>
         </div>
         <div class="pull-right">
-            <a class="btn btn-success" href="<?php echo base_url('jornadadocente/add/'.$asignaturadocente['idasignaturadocente']) ?>">Nueva hora</a>
+            <a class="btn btn-success" href="<?php echo anchor('jornadadocente/add/'.$asignaturadocente['idasignaturadocente']) ?>">Nueva hora</a>
         </div>
     </div>
 </div>
