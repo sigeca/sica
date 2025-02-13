@@ -915,6 +915,7 @@ span a {
 </head>
 <body >
 <?php
+echo "despues"; 
 print_r($this->session->userdata());
 die();
 ?>
