@@ -46,7 +46,7 @@ if(isset($asignaturadocente))
 
 
 <div class="form-group row">
-    <label class="col-md-2 col-form-label"><a href= "<?php echo base_url(); ?>distributivodocente/actual/<?php echo $asignaturadocente['iddistributivodocente']; ?> "   >Distri_Docente: &#x1F448;</a>     </label>
+    <label class="col-md-2 col-form-label"><a href= "<?php echo base_url(); ?>index.php/distributivodocente/actual/<?php echo $asignaturadocente['iddistributivodocente']; ?> "   >Distri_Docente: &#x1F448;</a>     </label>
 	<div class="col-md-10">
 	<?php
 	$options= array("NADA");
@@ -64,7 +64,7 @@ echo form_input('iddistributivodocente',$asignaturadocente['iddistributivodocent
  
 
 <div class="form-group row">
-    <label class="col-md-2 col-form-label"><a href= "<?php echo base_url(); ?>asignatura/actual/<?php echo $asignaturadocente['idasignatura']; ?> "   >Asignatura: &#x1F448;</a>         </label>
+    <label class="col-md-2 col-form-label"><a href= "<?php echo base_url(); ?>index.php/asignatura/actual/<?php echo $asignaturadocente['idasignatura']; ?> "   >Asignatura: &#x1F448;</a>         </label>
 	<div class="col-md-10">
 	<?php
     $options= array("NADA");
@@ -144,7 +144,7 @@ echo form_input('iddistributivodocente',$asignaturadocente['iddistributivodocent
             <b>Horario semanal</b>
         </div>
         <div class="pull-right">
-            <a class="btn btn-success" href="<?php echo anchor('jornadadocente/add/'.$asignaturadocente['idasignaturadocente']) ?>">Nueva hora</a>
+            <a class="btn btn-success" href="<?php echo base_url('index.php/jornadadocente/add/'.$asignaturadocente['idasignaturadocente']) ?>">Nueva hora</a>
         </div>
     </div>
 </div>
@@ -188,7 +188,7 @@ echo form_input('iddistributivodocente',$asignaturadocente['iddistributivodocent
             <b>Eventos-cursos:</b>
         </div>
         <div class="pull-right">
-            <a class="btn btn-success" href="<?php echo base_url('evento/add/') ?>">Crear un evento</a>
+            <a class="btn btn-success" href="<?php echo base_url('index.php/evento/add/') ?>">Crear un evento</a>
         </div>
     </div>
 </div>
