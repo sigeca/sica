@@ -917,7 +917,9 @@ span a {
 
 
 
-  <?php if (!empty($this->session->userdata('logged_in'))){ ?>
+  <?php if (!empty($this->session->userdata('logged_in'))){ die("existen tambien"); ?>
+    
+
 
 <header class="fixed-header">
         <div class="header-left">  
