@@ -1019,7 +1019,7 @@ span a {
     </nav>
 </header>
 
-	<?php } ?>
+	<?php } die("se cargo"); ?>
 
 
  	</div>
