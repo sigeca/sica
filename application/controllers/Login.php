@@ -357,14 +357,14 @@ public function user_login_process() {
 //	'idevento' => $this->input->post('idevento'),
 	'email' => $this->input->post('email'),
 	'password' => $this->input->post('password')
-	);
+    );
 
 	// =========================================================================
 	// Verificando que el correo y password estén registrado en la base de datos
 	// ==========================================================================
 	$result = $this->login_model->login($data);
 
-if ($result == TRUE) {
+if ((bool)$result === TRUE) {
 	$email = $this->input->post('email');
 	$password = $this->input->post('password');
 //	$idevento = $this->input->post('idevento');
@@ -460,7 +460,7 @@ if ($result == TRUE) {
 		//	 $this->load->view('template/page_footer.php');
 		}
 	} else {
-       die("No paso por aqu") 
+       die("No paso por aqu"); 
 		$data = array('error_message' => '-Invalid Username or Password');
 	 	$data['eventos']= $this->evento_model->lista_eventos_open(0)->result();
 		$this->load->view('template/page_header.php');
