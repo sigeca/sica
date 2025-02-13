@@ -917,7 +917,7 @@ span a {
 <?php
 echo "despues"; 
 print_r($this->session->userdata());
-die();
+//die();
 ?>
 
   <?php if (!empty($this->session->userdata('logged_in'))){ die("existen tambien"); ?>
