@@ -390,7 +390,7 @@ if ((bool)$result === TRUE) {
 		
 		$result3 = $this->acceso_model->get_usuario($result[0]->idusuario);
 
-		if ($result3 != false) {
+		if ((true)$result3 != false) {
 			$accesos = array();
 			foreach($result3 as $row)
 			{
@@ -450,8 +450,8 @@ if ((bool)$result === TRUE) {
 				$this->load->view('template/page_footer.php');
 			}
 		   	  $moduloinicio=$this->session->userdata['logged_in']['inicio'];	
-	//		echo $moduloinicio;
-	//		die();
+			echo $moduloinicio;
+			die();
 			redirect($moduloinicio."/".$result[0]->idpersona); 
 		}
 		//	redirect('aspirante/add'); 
