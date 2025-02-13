@@ -267,7 +267,7 @@ public function read_user_information($email,$password) {
             $this->db->select('*');
             $this->db->from('password');
             $this->db->where($condition);
-	    $this->db->where("password like binary",$password);
+	        $this->db->where("password like binary",$password);
             $this->db->limit(1);
             $query = $this->db->get();
             if ($query->num_rows() == 1) {
