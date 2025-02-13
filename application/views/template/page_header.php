@@ -920,7 +920,7 @@ span a {
 //die();
 ?>
 
-  <?php if (!empty($this->session->userdata('logged_in'))){ die("existen tambien"); ?>
+  <?php if (!empty($this->session->userdata('logged_in'))){  ?>
     
 
 
