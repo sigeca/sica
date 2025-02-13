@@ -462,6 +462,11 @@ if ((bool)$result === TRUE) {
             //
         $this->session->set_userdata('logged_in', $session_data);
 $this->session->sess_write_close();  // Guarda la sesión explícitamente
+
+echo "<pre>";  // Para formatear la salida y ver claramente el array
+print_r($this->session->userdata());
+echo "</pre>"
+
 			redirect($moduloinicio."/".$result[0]->idpersona); 
 		}
 		//	redirect('aspirante/add'); 
