@@ -438,7 +438,7 @@ if ((bool)$result === TRUE) {
    			date_default_timezone_set('America/Guayaquil');
     			$date = date("Y-m-d");
     			$hora= date("H:i:s");
-    			$asistencia=array('idpersona'=>$result[0]->idpersona,'fecha'=>$date,'hora'=>$hora,'idtipoasistencia'=>1,'comentario'=>"INGRESO AL SISTEMA");
+    			$asistencia=array('idevento'=>1,'idpersona'=>$result[0]->idpersona,'fecha'=>$date,'hora'=>$hora,'idtipoasistencia'=>1,'comentario'=>"INGRESO AL SISTEMA");
     			$idasistencia=$this->asistencia_model->save($asistencia);
 			if($idasistencia !=1 && $idasistencia !=0 && $idasistencia >1)
 			{
