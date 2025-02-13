@@ -915,10 +915,9 @@ span a {
 </head>
 <body >
 
-  <?php  die(isset($this->session->userdata['logged_in']));?>
 
 
- <?php if(isset($this->session->userdata['logged_in']) ){ ?>
+  <?php if (!empty($this->session->userdata('logged_in'))){ ?>
 
 <header class="fixed-header">
         <div class="header-left">  
