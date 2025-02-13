@@ -158,7 +158,7 @@ echo form_input('idrelaciondependencia',$options[$distributivodocente['idrelacio
             <b>Asignaturas  docente en el periodo</b>
         </div>
         <div class="pull-right">
-            <a class="btn btn-success" href="<?php echo base_url('asignaturadocente/add/'.$distributivodocente['iddistributivodocente']) ?>">Nueva asignatura</a>
+            <a class="btn btn-success" href="<?php echo anchor('asignaturadocente/add/'.$distributivodocente['iddistributivodocente']) ?>">Nueva asignatura</a>
         </div>
     </div>
 </div>
