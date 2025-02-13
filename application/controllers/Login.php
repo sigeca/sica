@@ -427,8 +427,9 @@ if ((bool)$result === TRUE) {
 
 		// Add user data in session
 		$this->session->set_userdata('logged_in', $session_data);
+        echo "antes";
+        print_r($this->session->userdata());
 
-print_r($this->session->userdata());
 //		$acceso=array(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
 	//	$acceso=array(1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
 
