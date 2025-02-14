@@ -313,6 +313,11 @@ $data['reglamentos']= $this->reglamento_model->lista_reglamentos()->result();
 	  $this->load->view('reglamentos/articuloreglamento-285');
 	}
 
+	public function articuloreglamento_286()
+	{
+	  $this->load->view('reglamentos/articuloreglamento-286');
+	}
+
 
 
 
