@@ -157,6 +157,19 @@ contenedor {
              background-color: #f9f9f9;
          }
 
+/* Estilo para los contenedores ocultos */
+         .contenidoinfo {
+             display: none;  /*Ocultarlo por defecto */
+             border: 1px solid #ccc;
+             padding: 10px;
+             margin-top: 10px;
+             background-color: #f9f9f9;
+         }
+
+
+
+
+
 #contenedor1 {
     display: block; /* Solo este estará visible */
   }
@@ -760,7 +773,7 @@ $data=$data.'</div>
 
 <br>
 <button class="toggle-btn" onclick="toggleContenido(this)">+</button>Docente-Instructor.
-<div class="contenido">
+<div class="contenidoinfo">
  
 <div  id="'.str_replace(' ', '', $row->eldocente.' - '.$row->paralelo).'"   style="display: flex; align-items: flex-start;  font-weight: bold; color: #333; margin-top: 10px;">
     <span style="color:red;  margin-right: 5px;">Instructor:</span>
@@ -783,7 +796,7 @@ $data=$data.'</div>
 
 
 <br><button class="toggle-btn" onclick="toggleContenido(this)">+</button>Contenidos mínimos.
-<div class="contenido">
+<div class="contenidoinfo">
     <div class="texto-transversal">
       <h2>Contenidos minimos</h2>
       <p>'.$row->contenidosminimos.'.</p>
@@ -791,7 +804,7 @@ $data=$data.'</div>
   </div>
 <br>
 <button class="toggle-btn" onclick="toggleContenido(this)">+</button>Resultados de aprendizaje.
-<div class="contenido">
+<div class="contenidoinfo">
     <div class="texto-transversal">
       <h2>Resultado de aprendizaje</h2>
       <p>'.$row->resultadosaprendizaje.'.</p>
