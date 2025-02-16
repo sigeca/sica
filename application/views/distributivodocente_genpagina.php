@@ -1006,8 +1006,8 @@ foreach($jornadadocente as $rowj){
 	}
               	$data=$data.'<div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary" onclick="location.href=\'5.161.176.197/sica/index.php/sica/login/validarcorreo?idevento='.$row->idevento.'\'" '.$disabled.' >Inscribete</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary" onclick="location.href=\'5.161.176.197/sica/index.php/sica/login\'">Ingresa</button>
+                  <button type="button" class="btn btn-sm btn-outline-secondary" onclick="location.href=\'http://5.161.176.197/sica/index.php/sica/login/validarcorreo?idevento='.$row->idevento.'\'" '.$disabled.' >Inscribete</button>
+                  <button type="button" class="btn btn-sm btn-outline-secondary" onclick="location.href=\'http://5.161.176.197/sica/index.php/sica/login\'">Ingresa</button>
                 </div>
                 <small class="text-muted"><b>Modalidad:</b>Presencial</small>
 
