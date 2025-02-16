@@ -82,7 +82,8 @@ overflow:hidden;
 
 
 contenedor {
-  display:none;
+  /* display:none; */
+  display:block;
   position: relative;
   width: 600px;
   height: 400px;
@@ -148,7 +149,8 @@ contenedor {
 
 /* Estilo para los contenedores ocultos */
          .contenido {
-             display: none; /* Ocultarlo por defecto */
+            /* display: none;  Ocultarlo por defecto */
+             display: block; /* Ocultarlo por defecto */
              border: 1px solid #ccc;
              padding: 10px;
              margin-top: 10px;
@@ -1233,7 +1235,8 @@ body {font-family: Arial, Helvetica, sans-serif;}
 
 /* The Modal (background) */
 .modal {
-    display: none; /* Hidden by default */
+   /* display: none;  Hidden by default */
+    display: block; /* Hidden by default */
     position: fixed; /* Stay in place */
     padding-top: 100px; /* Location of the box */
     left: 0;
