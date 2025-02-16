@@ -197,9 +197,9 @@ contenedor {
         <div class="col-sm-4 offset-md-1 py-4">
           <h4 class="text-white">Contactanos</h4>
           <ul class="list-unstyled">
-            <li><a href="https://educaysoft.org/sica/evento/participantes/356" class="text-white">5to-A Ingenieria de Software I</a></li>
-            <li><a href="https://educaysoft.org/sica/evento/participantes/357" class="text-white">5to-B Ingenieria de Softare I</a></li>
-            <li><a href="https://educaysoft.org/sica/evento/participantes/350" class="text-white">4to-B Base de Datos I</a></li>
+            <li><a href="5.161.176.197/sica/index.php/sica/evento/participantes/356" class="text-white">5to-A Ingenieria de Software I</a></li>
+            <li><a href="5.161.176.197/sica/index.php/sica/evento/participantes/357" class="text-white">5to-B Ingenieria de Softare I</a></li>
+            <li><a href="5.161.176.197/sica/index.php/sica/evento/participantes/350" class="text-white">4to-B Base de Datos I</a></li>
           </ul>
         </div>
       </div>
@@ -250,7 +250,7 @@ $calificaciones2p = <calificaciones2p>; // Ejemplo de porcentaje de informes fin
       <a href="#">Back to top</a>
     </p>
      <p class="mb-1">Este sitio web que presenta<b> <xxxx>/<yyyy> cursos, con <zzzz> horas/semana  </b> es parte del producto del <b>PROYECTO DE AULA</b> titulado <a href="https://repositorioutlvte.org/Repositorio/2024-01-15-FQSA-01627.pdf"> <b> "Diseño y Desarrollo de una plataforma web para la Gestión de la información Académica"</b></a> </p>
-    <p class="mb-0">El proyecto fue realizado con la participación de <a href="https://educaysoft.org/sica/evento/participantes/350"> 4-B Base de Datos I</a> ,<a href="https://educaysoft.org/sica/evento/participantes/356"> 5to-A</a> y <a href="https://educaysoft.org/sica/evento/participantes/357">5to-B</a>  Ingenieria de Software I en el periodo 2023-1S, cuyo tutor fue el Ing. Stalin Francis Msc., Docente de las Asignaturas.</p>
+    <p class="mb-0">El proyecto fue realizado con la participación de <a href="5.161.176.197/sica/index.php/sica/evento/participantes/350"> 4-B Base de Datos I</a> ,<a href="5.161.176.197/sica/index.php/sica/evento/participantes/356"> 5to-A</a> y <a href="5.161.176.197/sica/index.php/sica/evento/participantes/357">5to-B</a>  Ingenieria de Software I en el periodo 2023-1S, cuyo tutor fue el Ing. Stalin Francis Msc., Docente de las Asignaturas.</p>
   </div>
 </footer>
 
@@ -672,7 +672,7 @@ if($row->numeronivelacademico != $nivel){
 
 $data = $data . '<div class="col">
           <div class="card shadow-sm">
-          <a href="https://educaysoft.org/sica/evento/detalle/' . $row->idevento . '">
+          <a href="5.161.176.197/sica/index.php/sica/evento/detalle/' . $row->idevento . '">
             <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
               <title>Placeholder</title>
               <rect width="100%" height="100%" fill="#55595c"/>';
@@ -991,8 +991,8 @@ foreach($jornadadocente as $rowj){
 	}
               	$data=$data.'<div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary" onclick="location.href=\'https://educaysoft.org/sica/login/validarcorreo?idevento='.$row->idevento.'\'" '.$disabled.' >Inscribete</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary" onclick="location.href=\'https://educaysoft.org/sica/login\'">Ingresa</button>
+                  <button type="button" class="btn btn-sm btn-outline-secondary" onclick="location.href=\'5.161.176.197/sica/index.php/sica/login/validarcorreo?idevento='.$row->idevento.'\'" '.$disabled.' >Inscribete</button>
+                  <button type="button" class="btn btn-sm btn-outline-secondary" onclick="location.href=\'5.161.176.197/sica/index.php/sica/login\'">Ingresa</button>
                 </div>
                 <small class="text-muted"><b>Modalidad:</b>Presencial</small>
 
