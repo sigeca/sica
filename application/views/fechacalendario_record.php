@@ -154,7 +154,7 @@ foreach ($estadoactividades as $row){
 	$options[$row->idestadoactividad]=$row->nombre;
 }
 
-echo form_input('idestadoactividad',$options[$['idestadoactividad']],array("disabled"=>"disabled",'style'=>'width:500px;')); 
+echo form_input('idestadoactividad',$options[$fechacalendario['idestadoactividad']],array("disabled"=>"disabled",'style'=>'width:500px;')); 
 		?>
 	</div> 
 </div>
