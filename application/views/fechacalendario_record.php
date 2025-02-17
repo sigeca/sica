@@ -50,7 +50,7 @@ if(isset($fechacalendario))
     <label class="col-md-2 col-form-label"> Actividad :</label>
 	<div class="col-md-10">
 		<?php
-       echo form_input('actividad',$['actividad'],array('placeholder'=>'Nombre del fechacalendario','style'=>'width:500px;'));
+       echo form_input('actividad',$fechacalendario['actividad'],array('placeholder'=>'Nombre del fechacalendario','style'=>'width:500px;'));
 		?>
 	</div> 
 </div> 
@@ -63,7 +63,7 @@ if(isset($fechacalendario))
 
 $textarea_options = array('class' => 'form-control','rows' => '4',   'cols' => '20',"disabled"=>"disabled", 'style'=> 'width:50%;height:100px;', "placeholder"=>"Tema a  tratar" );    
 
-	echo form_textarea('detalle',$['detalle'],$textarea_options);
+	echo form_textarea('detalle',$fechacalendario['detalle'],$textarea_options);
 
 		?>
 	</div> 
@@ -77,7 +77,7 @@ $textarea_options = array('class' => 'form-control','rows' => '4',   'cols' => '
 
 $textarea_options = array('class' => 'form-control','rows' => '4',   'cols' => '20',"disabled"=>"disabled", 'style'=> 'width:50%;height:100px;', "placeholder"=>"Tema a  tratar" );    
 
-	echo form_textarea('resultados',$['resultados'],$textarea_options);
+	echo form_textarea('resultados',$fechacalendario['resultados'],$textarea_options);
 
 		?>
 	</div> 
@@ -114,7 +114,7 @@ $textarea_options = array('class' => 'form-control','rows' => '4',   'cols' => '
     <label class="col-md-2 col-form-label"> Hito:</label>
 	<div class="col-md-10">
 		<?php
-       echo form_input('actividad',$['hito'],array('placeholder'=>'Hito','style'=>'width:500px;'));
+       echo form_input('actividad',$fechacalendario['hito'],array('placeholder'=>'Hito','style'=>'width:500px;'));
 		?>
 	</div> 
 </div>
