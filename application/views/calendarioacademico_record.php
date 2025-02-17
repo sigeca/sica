@@ -156,7 +156,8 @@ if(isset($calendarioacademico))
 	 <th>idcal</th>
 	 <th>idfecha</th>
 	 <th>fecha</th>
-	 <th>actividad.</th>
+	 <th>desde</th>
+	 <th>hasta</th>
 	 <th>estado.</th>
 	 <th>color.</th>
 	 <th style="text-align: right;">Actions</th>
