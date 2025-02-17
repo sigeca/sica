@@ -362,7 +362,13 @@ alter table matricula change iddepartamentoalumno idmatricula int(11) not null a
 
 /* alter table matricula add column idtipomatricula int default 1; */
 
- alter table matricula change idrepeticion idnivelacademico int default 1; 
+/* alter table matricula change idrepeticion idnivelacademico int default 1; */
+
+
+ALTER TABLE fechacalendario
+CHANGE COLUMN fechacalendario fechadesde DATE NOT NULL,
+ADD COLUMN fechahasta DATE NOT NULL;
+
 
 
 

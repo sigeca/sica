@@ -14,14 +14,26 @@ $eys_arrinput=array('name'=>'idfechacalendario','value'=>$fechacalendario['idfec
 </div>
 
 <div class="form-group row">
-    <label class="col-md-2 col-form-label"> Fecha :</label>
+    <label class="col-md-2 col-form-label"> Fecha desde :</label>
 	<div class="col-md-10">
 
-      <?php echo form_input( array("name"=>'fechacalendario',"id"=>'fechacalendario',"value"=>$fechacalendario['fechacalendario'],'type'=>'date','placeholder'=>'fecha calendaria'));
+      <?php echo form_input( array("name"=>'fechadesde',"id"=>'fechadesde',"value"=>$fechacalendario['fechadesde'],'type'=>'date','placeholder'=>'fecha desde'));
 
 		?>
 	</div> 
 </div>
+
+<div class="form-group row">
+    <label class="col-md-2 col-form-label"> Fecha hasta :</label>
+	<div class="col-md-10">
+
+      <?php echo form_input( array("name"=>'fechahasta',"id"=>'fechahasta',"value"=>$fechacalendario['fechahasta'],'type'=>'date','placeholder'=>'fecha hasta'));
+
+		?>
+	</div> 
+</div>
+
+
 
 
 <div class="form-group row">
