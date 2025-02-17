@@ -205,7 +205,7 @@ function enviar_correo() {
     var correode = "stalin.francis@utelvt.edu.ec";
     var nome = 'Stalin Francis Q.';
     var msg = "Ingresa al siguiente link para terminar tu registro y poder recibir tu certificado al culminar el evento: <b>";
-     var msg="Ingresa al siguiente link para terminar tu registro y poder recibir tu certificado al culminar el evento <br><br><a href='https://educaysoft.org/sica/index.php/login/registro?idevento="+idevento+"' style='text-align:center;'><b>Evento :</b>"+titulo+"</a><br><br>";  //tinyMCE.activeEditor.getContent({format:'text'});
+     var msg="Ingresa al siguiente link para terminar tu registro y poder recibir tu certificado al culminar el evento <br><br><a href='http://5.161.176.197/sica/index.php/login/registro?idevento="+idevento+"' style='text-align:center;'><b>Evento :</b>"+titulo+"</a><br><br>";  //tinyMCE.activeEditor.getContent({format:'text'});
 		 
  
  
