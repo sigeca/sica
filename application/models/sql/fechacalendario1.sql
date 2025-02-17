@@ -2,7 +2,8 @@ use educayso_facae;
 drop view fechacalendario1;
 create view fechacalendario1 as 
 select fechacalendario.idfechacalendario,
-fechacalendario.fechacalendario,
+fechacalendario.fechadesde,
+fechacalendario.fechahasta,
 fechacalendario.actividad,
 fechacalendario.detalle,
 fechacalendario.resultados,
