@@ -2,7 +2,7 @@
 	<h3 style="text-align: left; margin-top:-10px;"> <?php echo $title;  ?></h3>
 	<ul>
 <?php
-if(isset($))
+if(isset($fechacalendario))
 {
 ?>
         <li> <?php echo anchor('/elprimero/', 'primero'); ?></li>
