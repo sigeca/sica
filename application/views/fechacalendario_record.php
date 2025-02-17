@@ -131,14 +131,14 @@ $textarea_options = array('class' => 'form-control','rows' => '4',   'cols' => '
 
 
 <div class="form-group row">
-    <label class="col-md-2 col-form-label"><?php echo anchor('calendarioacademico/actual/'.$['idcalendarioacademico'],'Calendario acadiemico:'); ?> </label>
+    <label class="col-md-2 col-form-label"><?php echo anchor('calendarioacademico/actual/'.$fechacalendario['idcalendarioacademico'],'Calendario acadiemico:'); ?> </label>
 	<div class="col-md-10">
 	<?php
 $options= array("NADA");
 foreach ($calendarioacademicos as $row){
 	$options[$row->idcalendarioacademico]= $row->elcalendarioacademico;
 }
-echo form_input('',$options[$['idcalendarioacademico']],array("disabled"=>"disabled",'style'=>'width:500px;'));
+echo form_input('',$options[$fechacalendario['idcalendarioacademico']],array("disabled"=>"disabled",'style'=>'width:500px;'));
 		?>
 	</div> 
 </div>
