@@ -5,14 +5,14 @@
 if(isset($fechacalendario))
 {
 ?>
-        <li> <?php echo anchor('/elprimero/', 'primero'); ?></li>
-        <li> <?php echo anchor('/siguiente/'.$fechacalendario['idfechacalendario'], 'siguiente'); ?></li>
-        <li> <?php echo anchor('/anterior/'.$fechacalendario['idfechacalendario'], 'anterior'); ?></li>
-        <li style="border-right:1px solid green"><?php echo anchor('/elultimo/', 'Último'); ?></li>
-        <li> <?php echo anchor('/add', 'Nuevo'); ?></li>
-        <li> <?php echo anchor('/edit/'.$fechacalendario['idfechacalendario'],'Edit'); ?></li>
-        <li style="border-right:1px solid green"> <?php echo anchor('/delete/'.$fechacalendario['idfechacalendario'],'Delete'); ?></li>
-        <li> <?php echo anchor('/listar/'.$fechacalendario['idfechacalendario'],'Listar'); ?></li>
+        <li> <?php echo anchor('fechacalendario/elprimero/', 'primero'); ?></li>
+        <li> <?php echo anchor('fechacalendario/siguiente/'.$fechacalendario['idfechacalendario'], 'siguiente'); ?></li>
+        <li> <?php echo anchor('fechacalendario/anterior/'.$fechacalendario['idfechacalendario'], 'anterior'); ?></li>
+        <li style="border-right:1px solid green"><?php echo anchor('fechacalendario/elultimo/', 'Último'); ?></li>
+        <li> <?php echo anchor('fechacalendario/add', 'Nuevo'); ?></li>
+        <li> <?php echo anchor('fechacalendario/edit/'.$fechacalendario['idfechacalendario'],'Edit'); ?></li>
+        <li style="border-right:1px solid green"> <?php echo anchor('fechacalendario/delete/'.$fechacalendario['idfechacalendario'],'Delete'); ?></li>
+        <li> <?php echo anchor('fechacalendario/listar/'.$fechacalendario['idfechacalendario'],'Listar'); ?></li>
 
 <?php 
 }else{
