@@ -56,16 +56,31 @@ $textarea_options = array('class' => 'form-control','rows' => '4',   'cols' => '
 
 
 <div class="form-group row">
-<label class="col-md-2 col-form-label">Fecha calendaria:</label>
+<label class="col-md-2 col-form-label">Fecha desde:</label>
 <div class="col-md-10">
 <?php
 
 
- echo form_input(array("name"=>"fechacalendario","id"=>"fechacalendario","type"=>"date"));  
+ echo form_input(array("name"=>"fechadesde","id"=>"fechadesde","type"=>"date"));  
 
 ?>
 </div>
 </div>
+
+
+<div class="form-group row">
+<label class="col-md-2 col-form-label">Fecha hasta:</label>
+<div class="col-md-10">
+<?php
+
+
+ echo form_input(array("name"=>"fechahasta","id"=>"fechahasta","type"=>"date"));  
+
+?>
+</div>
+</div>
+
+
 
 
 
