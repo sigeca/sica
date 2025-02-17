@@ -419,7 +419,7 @@ echo form_input($arrdatos) ?>
             <b>Los participantes: </b>
         </div>
         <div class="pull-right">
-          <a class="btn btn-danger" href="<?php echo base_url('asistencia/add/'.$evento['idevento']) ?>">Tomar Asistencia</a>  <a class="btn btn-success" href="<?php echo base_url('asistencia/reportepdf/'.$evento['idevento']) ?>">Reporte</a><a class="btn btn-warning" href="<?php echo base_url('participante/add/'.$evento['idevento']) ?>">+</a>
+          <a class="btn btn-danger" href="<?php echo base_url('index.php/asistencia/add/'.$evento['idevento']) ?>">Tomar Asistencia</a>  <a class="btn btn-success" href="<?php echo base_url('index.php/asistencia/reportepdf/'.$evento['idevento']) ?>">Reporte</a><a class="btn btn-warning" href="<?php echo base_url('index.php/participante/add/'.$evento['idevento']) ?>">+</a>
 
         </div>
     </div>
