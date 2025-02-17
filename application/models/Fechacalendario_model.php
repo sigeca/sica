@@ -50,13 +50,13 @@ function lista_fechacalendarios1($idperiodoacademico){
 
 
  	function fechacalendarios( $idcalendarioacademico){
- 		$fechacalendario = $this->db->query('select * from fechacalendario where idcalendarioacademico="'. $idcalendarioacademico.'" order by fechacalendario');
+ 		$fechacalendario = $this->db->query('select * from fechacalendario where idcalendarioacademico="'. $idcalendarioacademico.'" order by fechadesde');
  		return $fechacalendario;
  	}
 
 
 	function fechacalendarios1( $idcalendarioacademico){
- 		$fechacalendario = $this->db->query('select * from fechacalendario1 where idcalendarioacademico="'. $idcalendarioacademico.'" order by fechacalendario');
+ 		$fechacalendario = $this->db->query('select * from fechacalendario1 where idcalendarioacademico="'. $idcalendarioacademico.'" order by fechadesde');
  		return $fechacalendario;
  	}
 
