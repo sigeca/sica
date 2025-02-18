@@ -623,6 +623,20 @@ public function genpagina()
 		$data['participacionC1'] = $this->participacion_model->ParticipacionxPersonaC1($data['evento']['idevento'])->result();
 		$data['participacionE1'] = $this->participacion_model->ParticipacionxPersonaE1($data['evento']['idevento'])->result();
 
+        foreach($data['participantes'] as $row){
+            $idparticipante=$row->idparticipante;
+            $xx=array($this->grupoparticipante_model->lista_grupoparticipantesA($idparticipante)->result_array());
+           if(count($xx[0]) > 0){
+            foreach($xx as $row2){
+            foreach($row2 as $row3)
+             {
+                $arreglo+=array($i=>array($row->idparticipante=>$row3));
+                $i=$i+1;
+            }
+            }
+           }
+ $data['participantecongrupo']=array();
+        $data['participantecongrupo']=$arreglo;
 	//	print_r($data['participacionesn']);
 	//	die();
 
