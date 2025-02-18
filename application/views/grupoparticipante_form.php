@@ -34,9 +34,23 @@ foreach ($tipogrupoparticipantes as $row){
 </tr>
 
 <tr>
-<td> Cantidad de horas: </td>
-<td><?php echo form_input("cantidad","", array("placeholder"=>"Cantidad de horas(float)"))  ?></td>
+<td> nombre grupo: </td>
+<td><?php echo form_input("nombre","", array("placeholder"=>"nombre(float)"))  ?></td>
 </tr>
+
+<tr>
+<td> Fecha de desde: </td>
+<td><?php echo form_input(array("name"=>"fechadesde","id"=>"fechadesde","type"=>"date"));  ?></td>
+</tr>
+
+<tr>
+<td> Fecha de hasta: </td>
+<td><?php echo form_input(array("name"=>"fechahasta","id"=>"fechahasta","type"=>"date"));  ?></td>
+</tr>
+
+
+
+
 
 <tr>
 <td colspan="2"> <hr><?php echo form_submit("submit", "Guardar"); ?><?php echo anchor("grupoparticipante","Atras") ?> </td>
