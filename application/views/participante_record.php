@@ -192,12 +192,12 @@ echo form_input('idnivelparticipante',$options[$participante['idnivelparticipant
 
 
 <div class="form-group row">
-    <label class="col-md-2 col-form-label"> <?php echo anchor('grupoparticipante/add/'.$participante['idparticipante'], 'Participante:'); ?></label>
+    <label class="col-md-2 col-form-label"> <?php echo anchor('grupoparticipante/add/'.$participante['idparticipante'], 'Grupos de participación:'); ?></label>
 	<div class="col-md-10">
 	<?php
  	$options = array();
  	$arrurl2 = array();
-  	foreach ($grupoparticipantes as $row){
+  	foreach ($grupoparticipantes as $row
 		$options[$row->idgrupoparticipante]=$row->nombre." (".$row->fechadesde." - ".$row->fechahasta.")";
 		$arrurl2[$row->idgrupoparticipante]= base_url().'grupoparticipante/actual/'.$row->idgrupoparticipante;
 	}

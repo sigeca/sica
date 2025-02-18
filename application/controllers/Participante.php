@@ -44,7 +44,7 @@ public function actual(){
  
  
    	$data['participante']=$this->participante_model->participante($this->uri->segment(3))->row_array();
-  	$data['grupoparticipantes']= $this->grupoparticipante_model->grupoparticipantesA($data['participante']['idevento'])->result();
+  	$data['grupoparticipantes']= $this->grupoparticipante_model->grupoparticipantesxparticipante($data['participante']['idparticipante'])->result();
 	$data['evento'] = $this->evento_model->evento($data['participante']['idevento'])->row_array();
 	$data['title']="Esta viendo el Participante # :";
 	$this->load->view('template/page_header');		

@@ -26,6 +26,15 @@ class Grupoparticipante_model extends CI_model {
  	}
 
 
+ 	function grupoparticipantesxparticipante( $idparticipante){
+ 		$grupoparticipante = $this->db->query('select * from grupoparticipante1 where idparticipante="'. $idparticipante.'"');
+ 		return $grupoparticipante;
+ 	}
+
+
+
+
+
 
  	function save($array)
  	{
