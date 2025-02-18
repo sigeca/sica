@@ -14,7 +14,7 @@ public function index(){
 //	   if($this->uri->segment(3)){
   //        $idevento= $this->uri->segment(3);
     //    }else{
-            $idevento=200;
+            $idevento=50;
       //  }
   		$data['grupoparticipante']=$this->grupoparticipante_model->lista_grupoparticipantes()->row_array();
   		$data['participantes']= $this->participante_model->listar_participante3($idevento)->result();
