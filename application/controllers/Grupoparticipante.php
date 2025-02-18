@@ -57,7 +57,7 @@ public function add()
 
 	if($this->uri->segment(3))
 	{
-		$data['participantes']= $this->participante_model->participantes1($this->uri->segment(3))->result();
+		$data['participantes']= $this->participante_model->listar_participante3($this->uri->segment(3))->result();
 
 	}else{
 
