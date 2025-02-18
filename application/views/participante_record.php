@@ -197,7 +197,7 @@ echo form_input('idnivelparticipante',$options[$participante['idnivelparticipant
 	<?php
  	$options = array();
  	$arrurl2 = array();
-  	foreach ($grupoparticipantes as $row
+  	foreach ($grupoparticipantes as $row)
 		$options[$row->idgrupoparticipante]=$row->nombre." (".$row->fechadesde." - ".$row->fechahasta.")";
 		$arrurl2[$row->idgrupoparticipante]= base_url().'grupoparticipante/actual/'.$row->idgrupoparticipante;
 	}
