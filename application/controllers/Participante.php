@@ -10,6 +10,7 @@ class Participante extends CI_Controller{
       		$this->load->model('participanteestado_model');
       		$this->load->model('nivelparticipante_model');
       		$this->load->model('tipoparticipacion_model');
+      		$this->load->model('grupoparticipante_model');
 	}
 
 	public function index(){
