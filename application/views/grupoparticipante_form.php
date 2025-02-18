@@ -20,18 +20,7 @@ foreach ($participantes as $row){
 
 
 
-<tr>
-<td> Tipo de horas: </td>
-<td><?php 
 
-$options= array('--Select--');
-foreach ($tipogrupoparticipantes as $row){
-	$options[$row->idtipogrupoparticipante]=$row->nombre;
-
-}
-
- echo form_dropdown("idtipogrupoparticipante",$options, set_select('--Select--','default_value'));  ?></td>
-</tr>
 
 <tr>
 <td> nombre grupo: </td>
