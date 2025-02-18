@@ -12,7 +12,7 @@ public function index(){
 
   	if(isset($this->session->userdata['logged_in'])){
 	   if($this->uri->segment(3)){
-          $idevento= $this->uri->segment(3));
+          $idevento= $this->uri->segment(3);
         }else{
             $idevento=0;
         }
