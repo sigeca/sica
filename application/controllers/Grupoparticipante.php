@@ -5,7 +5,7 @@ class Grupoparticipante extends CI_Controller{
   public function __construct(){
       parent::__construct();
       $this->load->model('grupoparticipante_model');
-  	  $this->load->model('perticipante_model');
+  	  $this->load->model('participante_model');
 }
 
 public function index(){
