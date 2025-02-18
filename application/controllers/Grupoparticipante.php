@@ -57,11 +57,13 @@ public function add()
 
 	if($this->uri->segment(3))
 	{
-		$data['participantes']= $this->participante_model->listar_participante3($this->uri->segment(3))->result();
+   	$data['participantes']=$this->participante_model->participante3($this->uri->segment(3))->row_array();
+	//	$data['participantes']= $this->participante_model->listar_participante3($this->uri->segment(3))->result();
 
 	}else{
+   	$data['participantes']=$this->participante_model->participante3($this->uri->segment(3))->row_array();
 
-		$data['participantes']= $this->participante_model->listar_participante3(50)->result();
+	//	$data['participantes']= $this->participante_model->listar_participante3(50)->result();
 	}
 
 
