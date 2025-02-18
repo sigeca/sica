@@ -46,7 +46,7 @@ if(isset($grupoparticipante))
 	$options = array();
   	foreach ($estudios as $row){
 		$options[$row->idparticipante]=$row->elparticipante;
-	
+        }	
 echo form_input('idparticipante',$options[$grupoparticipante['idparticipante']],array("disabled"=>"disabled",'style'=>'width:500px')); 
  
 		?>
