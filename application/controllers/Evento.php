@@ -638,8 +638,8 @@ public function genpagina()
             }
            }
            }
- $data['grupo']=array();
-        $data['grupo']=$arreglo;
+ $data['grupos']=array();
+        $data['grupos']=$arreglo;
 	//	print_r($data['participacionesn']);
 	//	die();
 
