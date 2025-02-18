@@ -25,6 +25,7 @@ class Evento extends CI_Controller{
       $this->load->model('asignatura_model');
       $this->load->model('jornadadocente_model');
       $this->load->model('seguimientosilabo_model');
+      $this->load->model('grupoparticipante_model');
 }
 
 public function index(){
@@ -625,7 +626,7 @@ public function genpagina()
 
         foreach($data['participantes'] as $row){
             $idparticipante=$row->idparticipante;
-            $xx=array($this->grupoparticipante_model->lista_grupoparticipantesA($idparticipante)->result_array());
+            $xx=array($this->grupoparticipante_model->grupoparticipantesxparticipante($idparticipante)->result_array());
            if(count($xx[0]) > 0){
             foreach($xx as $row2){
             foreach($row2 as $row3)
@@ -635,8 +636,9 @@ public function genpagina()
             }
             }
            }
- $data['participantecongrupo']=array();
-        $data['participantecongrupo']=$arreglo;
+           }
+ $data['grupo']=array();
+        $data['grupo']=$arreglo;
 	//	print_r($data['participacionesn']);
 	//	die();
 
