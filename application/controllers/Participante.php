@@ -22,6 +22,7 @@ class Participante extends CI_Controller{
 		$data['participante'] = $this->participante_model->elultimo();
 		$data['evento'] = $this->evento_model->evento($data['participante']['idevento'])->row_array();
   		$data['tipoparticipacions']= $this->tipoparticipacion_model->lista_tipoparticipacions()->result();
+  		$data['grupoparticipante']= $this->grupoparticipante_model->lista_grupoparticipantes()->result();
 
  		// print_r($data['participante_list']);
   		$data['title']="Lista de Participantees";
