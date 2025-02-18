@@ -1,7 +1,7 @@
 <h2> <?php echo $title; ?> </h2>
 <hr/>
-<?php echo form_open("horasasignatura/save") ?>
-<?php echo form_hidden("idhorasasignatura")  ?>
+<?php echo form_open("grupoparticipante/save") ?>
+<?php echo form_hidden("idgrupoparticipante")  ?>
 <table>
 
 
@@ -25,12 +25,12 @@ foreach ($asignaturas as $row){
 <td><?php 
 
 $options= array('--Select--');
-foreach ($tipohorasasignaturas as $row){
-	$options[$row->idtipohorasasignatura]=$row->nombre;
+foreach ($tipogrupoparticipantes as $row){
+	$options[$row->idtipogrupoparticipante]=$row->nombre;
 
 }
 
- echo form_dropdown("idtipohorasasignatura",$options, set_select('--Select--','default_value'));  ?></td>
+ echo form_dropdown("idtipogrupoparticipante",$options, set_select('--Select--','default_value'));  ?></td>
 </tr>
 
 <tr>
@@ -39,7 +39,7 @@ foreach ($tipohorasasignaturas as $row){
 </tr>
 
 <tr>
-<td colspan="2"> <hr><?php echo form_submit("submit", "Guardar"); ?><?php echo anchor("horasasignatura","Atras") ?> </td>
+<td colspan="2"> <hr><?php echo form_submit("submit", "Guardar"); ?><?php echo anchor("grupoparticipante","Atras") ?> </td>
 </tr>
 
 </table>

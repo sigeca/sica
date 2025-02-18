@@ -93,8 +93,6 @@ echo form_input('iddepartamento',$options[$estudiante['iddepartamento']],array("
     <label class="col-md-2 col-form-label"> Fecha desde: </label>
 	<div class="col-md-10">
      	<?php 
-
-
       echo form_input('fechadesde',$estudiante['fechadesde'],array('type'=>'date','placeholder'=>'fechadesde','style'=>'width:500px;')); 
 
 		?>
