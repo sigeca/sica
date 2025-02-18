@@ -42,6 +42,7 @@ public function actual(){
   	$data['nivelparticipante']= $this->nivelparticipante_model->lista_nivelparticipantes()->result();
 	$data['personas']= $this->persona_model->lista_personas()->result();
  
+  		$data['grupoparticipantes']= $this->grupoparticipante_model->lista_grupoparticipantes()->result();
  
    	$data['participante']=$this->participante_model->participante($this->uri->segment(3))->row_array();
 	$data['evento'] = $this->evento_model->evento($data['participante']['idevento'])->row_array();
