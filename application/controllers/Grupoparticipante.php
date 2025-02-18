@@ -13,7 +13,7 @@ public function index(){
   	if(isset($this->session->userdata['logged_in'])){
 			
   		$data['grupoparticipante']=$this->grupoparticipante_model->lista_grupoparticipantes()->row_array();
-  		$data['perticipantes']= $this->perticipante_model->lista_perticipantes()->result();
+  		$data['participantes']= $this->participante_model->lista_participantes()->result();
 			
 		$data['title']="Lista de grupoparticipantes";
 		$this->load->view('template/page_header');
@@ -31,7 +31,7 @@ public function index(){
 public function actual(){
  if(isset($this->session->userdata['logged_in'])){
         $data['grupoparticipante'] = $this->grupoparticipante_model->grupoparticipante($this->uri->segment(3))->row_array();
-        $data['perticipantes']= $this->perticipante_model->lista_perticipantes()->result();
+        $data['participantes']= $this->participante_model->lista_participantes()->result();
         $data['title']="Modulo de Telefonos";
         $this->load->view('template/page_header');		
         $this->load->view('grupoparticipante_record',$data);
@@ -53,11 +53,11 @@ public function add()
 
 	if($this->uri->segment(3))
 	{
-		$data['perticipantes']= $this->perticipante_model->perticipantes1($this->uri->segment(3))->result();
+		$data['participantes']= $this->participante_model->participantes1($this->uri->segment(3))->result();
 
 	}else{
 
-		$data['perticipantes']= $this->perticipante_model->lista_perticipantesA()->result();
+		$data['participantes']= $this->participante_model->lista_participantesA()->result();
 	}
 
 
@@ -78,7 +78,7 @@ public function add()
 		 	'fechadesde' => $this->input->post('fechadesde'),
 		 	'fechahasta' => $this->input->post('fechahasta'),
 		 	'nombre' => $this->input->post('nombre'),
-			'idperticipante' => $this->input->post('idperticipante'),
+			'idparticipante' => $this->input->post('idparticipante'),
 	 	);
 	 	$this->grupoparticipante_model->save($array_item);
 	 	//redirect('grupoparticipante');
@@ -90,7 +90,7 @@ public function add()
 public function edit()
 {
 	 	$data['grupoparticipante'] = $this->grupoparticipante_model->grupoparticipante($this->uri->segment(3))->row_array();
-		$data['perticipantes']= $this->perticipante_model->lista_perticipantesA(0)->result();
+		$data['participantes']= $this->participante_model->lista_participantesA(0)->result();
   		$data['tipogrupoparticipantes']= $this->tipogrupoparticipante_model->lista_tipogrupoparticipantes()->result();
  	 	$data['title'] = "Actualizar Grupoparticipante";
  	 	$this->load->view('template/page_header');		
@@ -109,7 +109,7 @@ public function edit()
 		 	'fechadesde' => $this->input->post('fechadesde'),
 		 	'fechahasta' => $this->input->post('fechahasta'),
 		 	'nombre' => $this->input->post('nombre'),
-			'idperticipante' => $this->input->post('idperticipante'),
+			'idparticipante' => $this->input->post('idparticipante'),
 	 	);
 	 	$this->grupoparticipante_model->update($id,$array_item);
 	 	//redirect('grupoparticipante');
@@ -147,7 +147,7 @@ function grupoparticipante_data()
 	 	$data0 = $this->grupoparticipante_model->lista_grupoparticipantesA();
 		$data=array();
 		foreach($data0->result() as $r){
-			$data[]=array($r->idgrupoparticipante,$r->area,$r->malla,$r->laperticipante,$r->descripcion,$r->cantidad,
+			$data[]=array($r->idgrupoparticipante,$r->area,$r->malla,$r->laparticipante,$r->descripcion,$r->cantidad,
 			$r->href='<a href="javascript:void(0);" class="btn btn-info btn-sm item_ver" data-retorno="'.site_url('grupoparticipante/actual').'"  data-idgrupoparticipante="'.$r->idgrupoparticipante.'">Ver</a>');
 		}	
 		$output=array( "draw"=>$draw,
@@ -175,7 +175,7 @@ public function elprimero()
   	$data['tipogrupoparticipantes']= $this->tipogrupoparticipante_model->lista_tipogrupoparticipantes()->result();
   if(!empty($data))
   {
-  	$data['perticipantes']= $this->perticipante_model->lista_perticipantes()->result();
+  	$data['participantes']= $this->participante_model->lista_participantes()->result();
     $data['title']="Grupoparticipante";
     $this->load->view('template/page_header');		
     $this->load->view('grupoparticipante_record',$data);
@@ -193,7 +193,7 @@ public function elultimo()
   	$data['tipogrupoparticipantes']= $this->tipogrupoparticipante_model->lista_tipogrupoparticipantes()->result();
   if(!empty($data))
   {
-  	$data['perticipantes']= $this->perticipante_model->lista_perticipantes()->result();
+  	$data['participantes']= $this->participante_model->lista_participantes()->result();
     $data['title']="Grupoparticipante";
   
     $this->load->view('template/page_header');		
@@ -210,7 +210,7 @@ public function elultimo()
 public function siguiente(){
  // $data['grupoparticipante_list']=$this->grupoparticipante_model->lista_grupoparticipante()->result();
 	$data['grupoparticipante'] = $this->grupoparticipante_model->siguiente($this->uri->segment(3))->row_array();
-  	$data['perticipantes']= $this->perticipante_model->lista_perticipantes()->result();
+  	$data['participantes']= $this->participante_model->lista_participantes()->result();
   	$data['tipogrupoparticipantes']= $this->tipogrupoparticipante_model->lista_tipogrupoparticipantes()->result();
   $data['title']="Grupoparticipante";
 	$this->load->view('template/page_header');		
@@ -221,7 +221,7 @@ public function siguiente(){
 public function anterior(){
  // $data['grupoparticipante_list']=$this->grupoparticipante_model->lista_grupoparticipante()->result();
 	$data['grupoparticipante'] = $this->grupoparticipante_model->anterior($this->uri->segment(3))->row_array();
- 	$data['perticipantes']= $this->perticipante_model->lista_perticipantes()->result();
+ 	$data['participantes']= $this->participante_model->lista_participantes()->result();
   	$data['tipogrupoparticipantes']= $this->tipogrupoparticipante_model->lista_tipogrupoparticipantes()->result();
   $data['title']="Grupoparticipante";
 	$this->load->view('template/page_header');		
