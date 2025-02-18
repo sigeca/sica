@@ -13,7 +13,7 @@ public function index(){
   	if(isset($this->session->userdata['logged_in'])){
 			
   		$data['grupoparticipante']=$this->grupoparticipante_model->lista_grupoparticipantes()->row_array();
-  		$data['participantes']= $this->participante_model->listar_participante1()->result();
+  		$data['participantes']= $this->participante_model->listar_participante3()->result();
 			
 		$data['title']="Lista de grupoparticipantes";
 		$this->load->view('template/page_header');
@@ -31,7 +31,7 @@ public function index(){
 public function actual(){
  if(isset($this->session->userdata['logged_in'])){
         $data['grupoparticipante'] = $this->grupoparticipante_model->grupoparticipante($this->uri->segment(3))->row_array();
-        $data['participantes']= $this->participante_model->listar_participante1()->result();
+        $data['participantes']= $this->participante_model->listar_participante3()->result();
         $data['title']="Modulo de Telefonos";
         $this->load->view('template/page_header');		
         $this->load->view('grupoparticipante_record',$data);
@@ -57,7 +57,7 @@ public function add()
 
 	}else{
 
-		$data['participantes']= $this->participante_model->listar_participante1A()->result();
+		$data['participantes']= $this->participante_model->listar_participante3A()->result();
 	}
 
 
@@ -90,7 +90,7 @@ public function add()
 public function edit()
 {
 	 	$data['grupoparticipante'] = $this->grupoparticipante_model->grupoparticipante($this->uri->segment(3))->row_array();
-		$data['participantes']= $this->participante_model->listar_participante1A(0)->result();
+		$data['participantes']= $this->participante_model->listar_participante3A(0)->result();
   		$data['tipogrupoparticipantes']= $this->tipogrupoparticipante_model->lista_tipogrupoparticipantes()->result();
  	 	$data['title'] = "Actualizar Grupoparticipante";
  	 	$this->load->view('template/page_header');		
@@ -175,7 +175,7 @@ public function elprimero()
   	$data['tipogrupoparticipantes']= $this->tipogrupoparticipante_model->lista_tipogrupoparticipantes()->result();
   if(!empty($data))
   {
-  	$data['participantes']= $this->participante_model->listar_participante1()->result();
+  	$data['participantes']= $this->participante_model->listar_participante3()->result();
     $data['title']="Grupoparticipante";
     $this->load->view('template/page_header');		
     $this->load->view('grupoparticipante_record',$data);
@@ -193,7 +193,7 @@ public function elultimo()
   	$data['tipogrupoparticipantes']= $this->tipogrupoparticipante_model->lista_tipogrupoparticipantes()->result();
   if(!empty($data))
   {
-  	$data['participantes']= $this->participante_model->listar_participante1()->result();
+  	$data['participantes']= $this->participante_model->listar_participante3()->result();
     $data['title']="Grupoparticipante";
   
     $this->load->view('template/page_header');		
@@ -210,7 +210,7 @@ public function elultimo()
 public function siguiente(){
  // $data['grupoparticipante_list']=$this->grupoparticipante_model->lista_grupoparticipante()->result();
 	$data['grupoparticipante'] = $this->grupoparticipante_model->siguiente($this->uri->segment(3))->row_array();
-  	$data['participantes']= $this->participante_model->listar_participante1()->result();
+  	$data['participantes']= $this->participante_model->listar_participante3()->result();
   	$data['tipogrupoparticipantes']= $this->tipogrupoparticipante_model->lista_tipogrupoparticipantes()->result();
   $data['title']="Grupoparticipante";
 	$this->load->view('template/page_header');		
@@ -221,7 +221,7 @@ public function siguiente(){
 public function anterior(){
  // $data['grupoparticipante_list']=$this->grupoparticipante_model->lista_grupoparticipante()->result();
 	$data['grupoparticipante'] = $this->grupoparticipante_model->anterior($this->uri->segment(3))->row_array();
- 	$data['participantes']= $this->participante_model->listar_participante1()->result();
+ 	$data['participantes']= $this->participante_model->listar_participante3()->result();
   	$data['tipogrupoparticipantes']= $this->tipogrupoparticipante_model->lista_tipogrupoparticipantes()->result();
   $data['title']="Grupoparticipante";
 	$this->load->view('template/page_header');		
