@@ -39,7 +39,7 @@ if(isset($grupoparticipante))
  
  
 <div class="form-group row">
-    <label class="col-md-2 col-form-label"> <?php echo anchor('participante/actual/'.$row['idparticipante'], 'Participante:') ?> </label>
+    <label class="col-md-2 col-form-label"> <?php echo anchor('participante/actual/'.$grupoparticipante['idparticipante'], 'Participante:') ?> </label>
 	<div class="col-md-10">
      	<?php 
 
