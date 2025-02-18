@@ -410,7 +410,7 @@ $data=$data.'</div>
 foreach($grupos as $rowj){
             if(isset($rowj[$row->idparticipante]['idparticipante'])){     
 
-            $data=$data.'<b>'.$rowj[$row->idparticipante]['nombre'] .': </b><span style="color:red">'.$rowj[$row->idparticipante]['horadesde'].'-'.$rowj[$row->idparticipante]['fechahasta'].'</span>';
+            $data=$data.'<b>'.$rowj[$row->idparticipante]['nombre'] .': </b><span style="color:red">'.$rowj[$row->idparticipante]['fechadesde'].'-'.$rowj[$row->idparticipante]['fechahasta'].'</span>';
 
             }   
         }
