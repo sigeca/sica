@@ -45,10 +45,19 @@ class Participante_model extends CI_model {
 		 return $participante;
 	}
 
-	function listar_participante3(){
+
+	function listar_participante3($idevento){
+		 if($idevento>0)
+                {
+                $this->db->where('idevento='.$idevento);
+                }
+
 		 $participante= $this->db->get('participante3');
 		 return $participante;
 	}
+
+
+
 
 
 
