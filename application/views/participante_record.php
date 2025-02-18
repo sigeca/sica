@@ -192,7 +192,7 @@ echo form_input('idnivelparticipante',$options[$participante['idnivelparticipant
 
 
 <div class="form-group row">
-    <label class="col-md-2 col-form-label"> <?php echo anchor('grupoparticipante/add/'.$participante['idparticipante'], 'Participane:'); ?>:</label>
+    <label class="col-md-2 col-form-label"> <?php echo anchor('grupoparticipante/add/'.$participante['idparticipante'], 'Participante:'); ?></label>
 	<div class="col-md-10">
 	<?php
  	$options = array();
