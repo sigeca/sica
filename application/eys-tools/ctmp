@@ -1,72 +1,103 @@
 <?php
 
-class Articuloreglamento extends CI_Controller{
+class Horasasignatura extends CI_Controller{
 
   public function __construct(){
       parent::__construct();
-      $this->load->model('articuloreglamento_model');
-  	  $this->load->model('institucion_model');
-     $this->load->model('reglamento_model');
+      $this->load->model('horasasignatura_model');
+  	  $this->load->model('asignatura_model');
+  	  $this->load->model('tipohorasasignatura_model');
 }
 
 public function index(){
-	if(isset($this->session->userdata['logged_in'])){
-	  	$data['articuloreglamento']=$this->articuloreglamento_model->elultimo();
-  		$data['instituciones']= $this->institucion_model->lista_instituciones()->result();
-		$data['reglamentos']= $this->reglamento_model->lista_reglamentos()->result();
-  		$data['title']="Lista de Artiulos";
-			$this->load->view('template/page_header');		
-  		$this->load->view('articuloreglamento_record',$data);
-			$this->load->view('template/page_footer');
+
+  	if(isset($this->session->userdata['logged_in'])){
+			
+  		$data['horasasignatura']=$this->horasasignatura_model->lista_horasasignaturas()->row_array();
+  		$data['asignaturas']= $this->asignatura_model->lista_asignaturas()->result();
+  		$data['tipohorasasignaturas']= $this->tipohorasasignatura_model->lista_tipohorasasignaturas()->result();
+			
+		$data['title']="Lista de horasasignaturas";
+		$this->load->view('template/page_header');
+		$this->load->view('horasasignatura_record',$data);
+		$this->load->view('template/page_footer');
 	}else{
 	 	$this->load->view('template/page_header.php');
 		$this->load->view('login_form');
 	 	$this->load->view('template/page_footer.php');
 	}
+
+ }
+
+
+public function actual(){
+ if(isset($this->session->userdata['logged_in'])){
+        $data['horasasignatura'] = $this->horasasignatura_model->horasasignatura($this->uri->segment(3))->row_array();
+        $data['asignaturas']= $this->asignatura_model->lista_asignaturas()->result();
+        $data['tipohorasasignaturas']= $this->tipohorasasignatura_model->lista_tipohorasasignaturas()->result();
+        $data['title']="Modulo de Telefonos";
+        $this->load->view('template/page_header');		
+        $this->load->view('horasasignatura_record',$data);
+        $this->load->view('template/page_footer');
+   }else{
+        $this->load->view('template/page_header.php');
+        $this->load->view('login_form');
+        $this->load->view('template/page_footer.php');
+   }
 }
+
+
+
+
 
 
 public function add()
 {
-  		$data['instituciones']= $this->institucion_model->lista_instituciones()->result();
-		$data['reglamentos']= $this->reglamento_model->lista_reglamentos()->result();
-		$data['title']="Nuevo Artículo";
+
+	if($this->uri->segment(3))
+	{
+		$data['asignaturas']= $this->asignatura_model->asignaturas1($this->uri->segment(3))->result();
+
+	}else{
+
+		$data['asignaturas']= $this->asignatura_model->lista_asignaturasA()->result();
+	}
+
+
+  	$data['tipohorasasignaturas']= $this->tipohorasasignatura_model->lista_tipohorasasignaturas()->result();
+		$data['title']="Nueva Horasasignatura";
 	 	$this->load->view('template/page_header');		
-	 	$this->load->view('articuloreglamento_form',$data);
+	 	$this->load->view('horasasignatura_form',$data);
 	 	$this->load->view('template/page_footer');
+
+
 }
 
 
-public function  save()
+	public function  save()
 	{
 	 	$array_item=array(
-	 	'idarticuloreglamento' => $this->input->post('idarticuloreglamento'),
-	 	'contenido' => $this->input->post('contenido'),
-		'idreglamento' => $this->input->post('idreglamento'),
-	 	'titulo' => $this->input->post('titulo'),
-	 	'numero' => $this->input->post('numero'),
+		 	
+		 	'idhorasasignatura' => $this->input->post('idhorasasignatura'),
+		 	'cantidad' => $this->input->post('cantidad'),
+			'idasignatura' => $this->input->post('idasignatura'),
+			'idtipohorasasignatura' => $this->input->post('idtipohorasasignatura'),
 	 	);
-	 	$result=$this->articuloreglamento_model->save($array_item);
-	 	if($result == FALSE)
-		{
-			echo "<script language='JavaScript'> alert('formato ya existe ya existe'); </script>";
-			echo "<script language='JavaScript'> window.history.go(-2);</script>";
-		}else{
-			echo "<script language='JavaScript'> window.history.go(-2);</script>";
-		}
-
+	 	$this->horasasignatura_model->save($array_item);
+	 	//redirect('horasasignatura');
+		echo "<script  language='JavaScript'>window.history.go(-2);</script>";
  	}
 
 
 
 public function edit()
 {
-	 	$data['articuloreglamento'] = $this->articuloreglamento_model->articuloreglamento($this->uri->segment(3))->row_array();
-  		$data['instituciones']= $this->institucion_model->lista_instituciones()->result();
-		$data['reglamentos']= $this->reglamento_model->lista_reglamentos()->result();
- 	 	$data['title'] = "Actualizar Articuloarticuloreglamento";
+	 	$data['horasasignatura'] = $this->horasasignatura_model->horasasignatura($this->uri->segment(3))->row_array();
+		$data['asignaturas']= $this->asignatura_model->lista_asignaturasA(0)->result();
+  		$data['tipohorasasignaturas']= $this->tipohorasasignatura_model->lista_tipohorasasignaturas()->result();
+ 	 	$data['title'] = "Actualizar Horasasignatura";
  	 	$this->load->view('template/page_header');		
- 	 	$this->load->view('articuloreglamento_edit',$data);
+ 	 	$this->load->view('horasasignatura_edit',$data);
 	 	$this->load->view('template/page_footer');
  
 }
@@ -74,42 +105,52 @@ public function edit()
 
 	public function  save_edit()
 	{
-		$id=$this->input->post('idarticuloreglamento');
+		$id=$this->input->post('idhorasasignatura');
 	 	$array_item=array(
 		 	
-		 	'idarticuloreglamento' => $this->input->post('idarticuloreglamento'),
-		 	'contenido' => $this->input->post('contenido'),
-		'idreglamento' => $this->input->post('idreglamento'),
-	 	'titulo' => $this->input->post('titulo'),
-	 	'numero' => $this->input->post('numero')
+		 	'idhorasasignatura' => $this->input->post('idhorasasignatura'),
+		 	'cantidad' => $this->input->post('cantidad'),
+			'idasignatura' => $this->input->post('idasignatura'),
+			'idtipohorasasignatura' => $this->input->post('idtipohorasasignatura'),
 	 	);
-	 	$this->articuloreglamento_model->update($id,$array_item);
-	 	redirect('articuloreglamento/actual/'.$id);
+	 	$this->horasasignatura_model->update($id,$array_item);
+	 	//redirect('horasasignatura');
+		echo "<script  language='JavaScript'>window.history.go(-2);</script>";
  	}
 
+
+ 	public function delete()
+ 	{
+ 		$data=$this->horasasignatura_model->delete($this->uri->segment(3));
+ 		echo json_encode($data);
+	 	redirect('horasasignatura/elprimero');
+	//	$db['default']['db_debug']=FALSE
+ 	}
 
 
 public function listar()
 {
 	
-  $data['title']="Articuloarticuloreglamento";
+  $data['title']="Horasasignaturas";
 	$this->load->view('template/page_header');		
-  $this->load->view('articuloreglamento_list',$data);
+  $this->load->view('horasasignatura_list',$data);
 	$this->load->view('template/page_footer');
 }
 
-function articuloreglamento_data()
+
+
+function horasasignatura_data()
 {
 		$draw= intval($this->input->get("draw"));
 		$draw= intval($this->input->get("start"));
 		$draw= intval($this->input->get("length"));
 
 
-	 	$data0 = $this->articuloreglamento_model->lista_articuloreglamentos();
+	 	$data0 = $this->horasasignatura_model->lista_horasasignaturasA();
 		$data=array();
 		foreach($data0->result() as $r){
-			$data[]=array($r->idarticuloreglamento,$r->nombre,$r->contenido,
-				$r->href='<a href="javascript:void(0);" class="btn btn-info btn-sm item_ver"  data-retorno="'.site_url('articuloreglamento/actual').'"  data-idarticuloreglamento="'.$r->idarticuloreglamento.'">Ver</a>');
+			$data[]=array($r->idhorasasignatura,$r->area,$r->malla,$r->laasignatura,$r->descripcion,$r->cantidad,
+			$r->href='<a href="javascript:void(0);" class="btn btn-info btn-sm item_ver" data-retorno="'.site_url('horasasignatura/actual').'"  data-idhorasasignatura="'.$r->idhorasasignatura.'">Ver</a>');
 		}	
 		$output=array( "draw"=>$draw,
 			"recordsTotal"=> $data0->num_rows(),
@@ -118,109 +159,11 @@ function articuloreglamento_data()
 		);
 		echo json_encode($output);
 		exit();
+	
+			
+
 }
 
-
-
-
-	function ubicacion_data()
-	{
-			$draw= intval($this->input->get("draw"));
-			$draw= intval($this->input->get("start"));
-			$draw= intval($this->input->get("length"));
-
-			$idarticuloreglamento=$this->input->get('idarticuloreglamento');
-			$data0 =$this->ubicacionarticuloreglamento_model->ubicacionarticuloreglamentosA($idarticuloreglamento);
-			$data=array();
-			foreach($data0->result() as $r){
-				$data[]=array($r->idubicacionarticuloreglamento,$r->idarticuloreglamento,$r->launidad,$r->lapersona,$r->fecha,
-				$r->href='<a href="javascript:void(0);" class="btn btn-info btn-sm item_ver"  data-retorno="'.site_url('ubicacionarticuloreglamento/actual').'"    data-idubicacionarticuloreglamento="'.$r->idubicacionarticuloreglamento.'">Ver</a><a href="javascript:void(0);" class="btn btn-info btn-sm item_ver"  data-retorno="'.site_url('ubicacionarticuloreglamento/edit').'"    data-idubicacionarticuloreglamento="'.$r->idubicacionarticuloreglamento.'">edit</a>');
-			}	
-			$output=array( "draw"=>$draw,
-				"recordsTotal"=> $data0->num_rows(),
-				"recordsFiltered"=> $data0->num_rows(),
-				"data"=>$data
-			);
-			echo json_encode($output);
-			exit();
-	}
-
-
-
-
-
-
-
-
-	function prestamo_data()
-	{
-			$draw= intval($this->input->get("draw"));
-			$draw= intval($this->input->get("start"));
-			$draw= intval($this->input->get("length"));
-
-			$idarticuloreglamento=$this->input->get('idarticuloreglamento');
-			$data0 =$this->prestamoarticuloreglamento_model->prestamoarticuloreglamentosA($idarticuloreglamento);
-			$data=array();
-			foreach($data0->result() as $r){
-				$data[]=array($r->idprestamoarticuloreglamento,$r->idarticuloreglamento,$r->lapersona,$r->fechaprestamo,$r->horaprestamo,$r->fechadevolucion,$r->horadevolucion,
-				$r->href='<a href="javascript:void(0);" class="btn btn-info btn-sm item_ver"  data-retorno="'.site_url('prestamoarticuloreglamento/actual').'"    data-idprestamoarticuloreglamento="'.$r->idprestamoarticuloreglamento.'">Ver</a><a href="javascript:void(0);" class="btn btn-info btn-sm item_ver"  data-retorno="'.site_url('prestamoarticuloreglamento/edit').'"    data-idprestamoarticuloreglamento="'.$r->idprestamoarticuloreglamento.'">edit</a>');
-			}	
-			$output=array( "draw"=>$draw,
-				"recordsTotal"=> $data0->num_rows(),
-				"recordsFiltered"=> $data0->num_rows(),
-				"data"=>$data
-			);
-			echo json_encode($output);
-			exit();
-	}
-
-
-
-
-public function genpagina()
-{
-	$iddistributivo=0;
-
-	$numerorpt=0;
-	if($this->uri->segment(3))
-	{
-		$idreglamento=$this->uri->segment(3);
-	 	$data['articuloreglamentos']= $this->articuloreglamento_model->articuloreglamentoA($idreglamento)->result();
-		$arreglo=array();
-		$i=0;
-		$data['prestamoarticuloreglamento']=array();
-		echo "<br> jornadadocnete<br>" ;
-
-		$this->load->view('articuloreglamento_genpagina',$data);
-	}
-}
-
-
-
-
-
-
-
-
-
-
-public function actual()
-{
-	$data['articuloreglamento'] = $this->articuloreglamento_model->articuloreglamento($this->uri->segment(3))->row_array();
- 	$data['instituciones']= $this->institucion_model->lista_instituciones()->result();
-		$data['reglamentos']= $this->reglamento_model->lista_reglamentos()->result();
-  if(!empty($data))
-  {
-    $data['title']="Articuloarticuloreglamento";
-    $this->load->view('template/page_header');		
-    $this->load->view('articuloreglamento_record',$data);
-    $this->load->view('template/page_footer');
-  }else{
-    $this->load->view('template/page_header');		
-    $this->load->view('registro_vacio');
-    $this->load->view('template/page_footer');
-  }
- }
 
 
 
@@ -230,14 +173,14 @@ public function actual()
 
 public function elprimero()
 {
-	$data['articuloreglamento'] = $this->articuloreglamento_model->elprimero();
- 	$data['instituciones']= $this->institucion_model->lista_instituciones()->result();
-		$data['reglamentos']= $this->reglamento_model->lista_reglamentos()->result();
+	$data['horasasignatura'] = $this->horasasignatura_model->elprimero();
+  	$data['tipohorasasignaturas']= $this->tipohorasasignatura_model->lista_tipohorasasignaturas()->result();
   if(!empty($data))
   {
-    $data['title']="Articuloarticuloreglamento";
+  	$data['asignaturas']= $this->asignatura_model->lista_asignaturas()->result();
+    $data['title']="Horasasignatura";
     $this->load->view('template/page_header');		
-    $this->load->view('articuloreglamento_record',$data);
+    $this->load->view('horasasignatura_record',$data);
     $this->load->view('template/page_footer');
   }else{
     $this->load->view('template/page_header');		
@@ -248,15 +191,15 @@ public function elprimero()
 
 public function elultimo()
 {
-	  $data['articuloreglamento'] = $this->articuloreglamento_model->elultimo();
- 	$data['instituciones']= $this->institucion_model->lista_instituciones()->result();
-		$data['reglamentos']= $this->reglamento_model->lista_reglamentos()->result();
+	$data['horasasignatura'] = $this->horasasignatura_model->elultimo();
+  	$data['tipohorasasignaturas']= $this->tipohorasasignatura_model->lista_tipohorasasignaturas()->result();
   if(!empty($data))
   {
-    $data['title']="Articuloarticuloreglamento";
+  	$data['asignaturas']= $this->asignatura_model->lista_asignaturas()->result();
+    $data['title']="Horasasignatura";
   
     $this->load->view('template/page_header');		
-    $this->load->view('articuloreglamento_record',$data);
+    $this->load->view('horasasignatura_record',$data);
     $this->load->view('template/page_footer');
   }else{
 
@@ -267,34 +210,26 @@ public function elultimo()
 }
 
 public function siguiente(){
- // $data['articuloreglamento_list']=$this->articuloreglamento_model->lista_articuloreglamento()->result();
-	$data['articuloreglamento'] = $this->articuloreglamento_model->siguiente($this->uri->segment(3))->row_array();
- 	$data['instituciones']= $this->institucion_model->lista_instituciones()->result();
-		$data['reglamentos']= $this->reglamento_model->lista_reglamentos()->result();
-  $data['title']="Articuloarticuloreglamento";
+ // $data['horasasignatura_list']=$this->horasasignatura_model->lista_horasasignatura()->result();
+	$data['horasasignatura'] = $this->horasasignatura_model->siguiente($this->uri->segment(3))->row_array();
+  	$data['asignaturas']= $this->asignatura_model->lista_asignaturas()->result();
+  	$data['tipohorasasignaturas']= $this->tipohorasasignatura_model->lista_tipohorasasignaturas()->result();
+  $data['title']="Horasasignatura";
 	$this->load->view('template/page_header');		
-  $this->load->view('articuloreglamento_record',$data);
+  $this->load->view('horasasignatura_record',$data);
 	$this->load->view('template/page_footer');
 }
 
 public function anterior(){
- // $data['articuloreglamento_list']=$this->articuloreglamento_model->lista_articuloreglamento()->result();
-	$data['articuloreglamento'] = $this->articuloreglamento_model->anterior($this->uri->segment(3))->row_array();
-$data['reglamentos']= $this->reglamento_model->lista_reglamentos()->result();
-  $data['title']="Articuloarticuloreglamento";
+ // $data['horasasignatura_list']=$this->horasasignatura_model->lista_horasasignatura()->result();
+	$data['horasasignatura'] = $this->horasasignatura_model->anterior($this->uri->segment(3))->row_array();
+ 	$data['asignaturas']= $this->asignatura_model->lista_asignaturas()->result();
+  	$data['tipohorasasignaturas']= $this->tipohorasasignatura_model->lista_tipohorasasignaturas()->result();
+  $data['title']="Horasasignatura";
 	$this->load->view('template/page_header');		
-  $this->load->view('articuloreglamento_record',$data);
+  $this->load->view('horasasignatura_record',$data);
 	$this->load->view('template/page_footer');
 }
-
-
-
-
-	public function articuloreglamento_280()
-	{
-	  $this->load->view('reglamentos/articuloreglamento-280');
-	}
-
 
 
 
