@@ -45,6 +45,11 @@ class Participante_model extends CI_model {
 		 return $participante;
 	}
 
+	function listar_participante3(){
+		 $participante= $this->db->get('participante3');
+		 return $participante;
+	}
+
 
 
 	function listar_participanteB($idevento){
