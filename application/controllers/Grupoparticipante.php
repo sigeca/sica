@@ -61,7 +61,7 @@ public function add()
 
 	}else{
 
-		$data['participantes']= $this->participante_model->listar_participante3A()->result();
+		$data['participantes']= $this->participante_model->listar_participante3(50)->result();
 	}
 
 
