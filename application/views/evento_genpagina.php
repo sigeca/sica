@@ -405,12 +405,12 @@ $data=$data.'</div>
 
             <div class="card-body">
               <b>Participante : </b>'.$row->nombres.'.<br>
-              <b>Grupo : </b> '.$row->grupoletra.'.<br>';
+              <b>Grupos donde participa: </b> <br>';
 
 foreach($grupos as $rowj){
             if(isset($rowj[$row->idparticipante]['idparticipante'])){     
 
-            $data=$data.'<b>'.$rowj[$row->idparticipante]['nombre'] .': </b><span style="color:red">'.$rowj[$row->idparticipante]['fechadesde'].'-'.$rowj[$row->idparticipante]['fechahasta'].'</span>';
+            $data=$data.'<b>'.$rowj[$row->idparticipante]['nombre'] .': </b><span style="color:red">'.$rowj[$row->idparticipante]['fechadesde'].'-'.$rowj[$row->idparticipante]['fechahasta'].'</span><br>';
 
             }   
         }
