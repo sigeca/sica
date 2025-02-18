@@ -20,8 +20,8 @@ class Grupoparticipante_model extends CI_model {
  	}
 
 
- 	function grupoparticipantesA( $idasignatura){
- 		$grupoparticipante = $this->db->query('select * from grupoparticipante1 where idasignatura="'. $idasignatura.'"');
+ 	function grupoparticipantesA( $idevento){
+ 		$grupoparticipante = $this->db->query('select * from grupoparticipante1 where idvento="'. $idevento.'"');
  		return $grupoparticipante;
  	}
 

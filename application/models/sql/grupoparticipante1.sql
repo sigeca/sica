@@ -1,0 +1,2 @@
+use educayso_facae;
+create view grupoparticipante1 as select grpa.idgrupoparticipante,grpa.nombre,grpa.idparticipante,part.idpersona, concat(COALESCE(pers.apellidos,''),"  ",COALESCE(pers.nombres,'')) as elparticipante,part.idevento,grpa.fechadesde,grpa.fechahasta from grupoparticipante grpa,persona pers, participante part  where  grpa.idparticipante=part.idparticipante and part.idpersona=pers.idpersona ;
