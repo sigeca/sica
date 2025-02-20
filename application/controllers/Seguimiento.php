@@ -445,7 +445,7 @@ public function send()
 
         $this->load->library('email');
         $nome = $this->input->post('nome');
-        $msg = str_replace("tecnologiasdelainformacion@utelvt.edu.ec",$mailto, $this->input->post('msg'));
+        $msg = str_replace("educaysoft@gmail.com",$mailto, $this->input->post('msg'));
         $secure = $this->input->post('secure');
 	$email= $this->input->post('correode');
 
@@ -478,7 +478,7 @@ public function send()
         $config['smtp_port'] = "465";
         $config['smtp_timeout'] = "7";
         $config['smtp_user'] =$email; // $this->settings['smtp_email'];
-	if(strpos($email,"stalin.francis")!=false){
+	if(strpos($email,"educaysoft")!=false){
         $config['smtp_pass'] ="PIwiIB.2@3#"; //  $this->settings['smtp_password'];
 	}else{
         $config['smtp_pass'] ="PIwiIB.2@3#"; //  $this->settings['smtp_password'];
