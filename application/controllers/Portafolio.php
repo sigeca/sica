@@ -4,10 +4,10 @@ class Portafolio extends CI_Controller{
 
   public function __construct(){
       parent::__construct();
-  	$this->load->model('persona_model');
-  	$this->load->model('documento_model');
-  	$this->load->model('periodoacademico_model');
-  	$this->load->model('portafolio_model');
+  	    $this->load->model('persona_model');
+  	    $this->load->model('documento_model');
+  	    $this->load->model('periodoacademico_model');
+  	    $this->load->model('portafolio_model');
       	$this->load->model('ordenador_model');
       	$this->load->model('directorio_model');
       	$this->load->model('institucion_model');
@@ -40,13 +40,13 @@ public function index(){
 
 	public function add()
 	{
-			$data['personas']= $this->persona_model->lista_personasA()->result();
-			$data['periodoacademicos']= $this->periodoacademico_model->lista_periodoacademicos()->result();
-			$data['ordenadores']=  $this->ordenador_model->lista_ordenadores()->result();
-			$data['title']="Nueva Portafolio";
-			$this->load->view('template/page_header');		
-			$this->load->view('portafolio_form',$data);
-			$this->load->view('template/page_footer');
+		$data['personas']= $this->persona_model->lista_personasA()->result();
+		$data['periodoacademicos']= $this->periodoacademico_model->lista_periodoacademicos()->result();
+		$data['ordenadores']=  $this->ordenador_model->lista_ordenadores()->result();
+		$data['title']="Nueva Portafolio";
+		$this->load->view('template/page_header');		
+		$this->load->view('portafolio_form',$data);
+		$this->load->view('template/page_footer');
 
 
 	}

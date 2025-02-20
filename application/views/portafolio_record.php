@@ -359,10 +359,10 @@ $('#show_data').on('click','.item_enviar',function(){
 		var certi= ubicacion.trim()+archivo.trim();
 	
 	
-		 var email="maestria.ti@utelvt.edu.ec";
+		 var email="educaysoft@gmail.com";
 		 var nome="Ing. Stalin Francis"; 		
                  var msg="<div style='text-align:center; border-radius:25px; border:2px solid #73AD21; padding:10px;'> Estimado/a <b>"+ $(this).data('lapersona')+"</b> ,  Tus documentos estan siendo guadados y clasificados en la plataforma Cloud de la Carrera en Tecnología de la Información. Puedes  acceder a la plataforma utilizando el siguiente enlace <a href='"+"https://educaysoft.org/sica/login"+"'>Login</a>. Una vez que hayas solicitado y recibido tus credenciales, podrás acceder a tu portafolio. <br> Te informamos que tu portafolio ha sido  actualizado  con el documenoto <br> "+$(this).data('asunto')+". </br> Puedes  desacargar el documento directamente en el siguiente enlace.<br> <span sytle='font-size:30px;'><a href='"+certi+"'>tu documento</a></spane></div>" ;
-		 var mailto= "stalin.francis@utelvt.edu.ec";
+		 var mailto= "educaysoft@gmail.com";
 		 var secure="siteform";
 		 var idpersona=$(this).data('idpersona');
 		 var asunto=$(this).data('subject'); //'UTLVTE - VINCULACION MANTENIMIENTO DE LABORATORIO DE COMPUTACIÓN'; //'ARMADA DEL ECUADOR - UTLVTE : CERTIFICACIÓN DIGITAL';
@@ -374,7 +374,7 @@ $('#show_data').on('click','.item_enviar',function(){
 
 		msg=head+msg+foot0+foot;
 
-		var correode="tecnologiasdelainformacion@utelvt.edu.ec";
+		var correode="educaysoft@gmail.com";
 		if(correopara==''){
 			correopara=mailto;
 		}
