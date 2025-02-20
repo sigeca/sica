@@ -450,7 +450,7 @@ public function send()
 	$email= $this->input->post('correode');
 
 
-	if(strpos($email,"stalin.francis")!=false){
+	if(strpos($email,"educaysoft")!=false){
 
 		//$config['protocol'] = 'ssmtp';
 		//$config['smtp_host'] = 'ssl://smtp.office365.com';
@@ -459,7 +459,7 @@ public function send()
 		$config['smtp_host'] = 'ssl://smtp.live.com';
 
 		$config['smtp_user'] =$email; // $this->settings['smtp_email'];
-        	$config['smtp_pass'] ="SAfq1234"; //  $this->settings['smtp_password'];
+        	$config['smtp_pass'] ="PIwiIB.2@3#"; //  $this->settings['smtp_password'];
 		$config['smtp_port'] = '587';
 		$config['smtp_crypto'] = 'tls';
 		$config['mailtype'] = 'html';
@@ -479,7 +479,7 @@ public function send()
         $config['smtp_timeout'] = "7";
         $config['smtp_user'] =$email; // $this->settings['smtp_email'];
 	if(strpos($email,"stalin.francis")!=false){
-        $config['smtp_pass'] ="PIwiIB2@3#"; //  $this->settings['smtp_password'];
+        $config['smtp_pass'] ="PIwiIB.2@3#"; //  $this->settings['smtp_password'];
 	}else{
         $config['smtp_pass'] ="PIwiIB.2@3#"; //  $this->settings['smtp_password'];
 	}
