@@ -489,7 +489,7 @@ public function send()
         $config['validation'] = TRUE; 
 
 }	
-
+        
         $this->email->initialize($config); 
         $this->email->from($email, $nome);
         $this->email->to($mailto);
