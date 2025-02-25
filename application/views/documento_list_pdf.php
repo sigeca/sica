@@ -86,11 +86,11 @@
         $link = $url_base . $row->archivopdf;
 
         $pdf->SetTextColor(0, 0, 255); // Color azul para el enlace
-        $pdf->Write(10, utf8_decode($row->archivopdf), $link);
+		$pdf->Cell(40,$h,utf8_decode($row->archivopdf),1,1,'L',0,$url_base.$row->archivopdf);
+       // $pdf->Write(10, utf8_decode($row->archivopdf), $link);
         $pdf->SetTextColor(0, 0, 0); // Restaurar color original
 
 
-	//	$pdf->Cell(40,$h,utf8_decode($row->archivopdf),1,1,'L',0,$url_base.$row->archivopdf);
 
 
    }
