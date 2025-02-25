@@ -83,7 +83,14 @@
 		 $pdf->SetXY($current_x+80, $current_y);
          $url_base = "https://repositorioutlvte.org/Repositorio/";
 
-		 $pdf->Cell(40,$h,utf8_decode($row->archivopdf),1,1,'L',0,$url_base.$row->archivopdf);
+        $link = $url_base . $row->archivopdf;
+
+        $pdf->SetTextColor(0, 0, 255); // Color azul para el enlace
+        $pdf->Write(10, utf8_decode($row->archivopdf), $link);
+        $pdf->SetTextColor(0, 0, 0); // Restaurar color original
+
+
+	//	$pdf->Cell(40,$h,utf8_decode($row->archivopdf),1,1,'L',0,$url_base.$row->archivopdf);
 
 
    }
