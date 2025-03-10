@@ -17,7 +17,7 @@ class Documento_model extends CI_model {
 
   public function get_documentos($idtipodocu) {
         $this->db->where('idtipodocu', $idtipodocu);
-        $query = $this->db->get('documentos'); // Suponiendo que la tabla se llama 'documentos'
+        $query = $this->db->get('documento'); // Suponiendo que la tabla se llama 'documentos'
         return $query->result_array(); // Devolver array de documentos
     }
 
