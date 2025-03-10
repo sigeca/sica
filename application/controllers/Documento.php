@@ -168,6 +168,24 @@ class Documento extends CI_Controller{
 		$this->load->view('template/page_footer');
 	}
 
+
+
+
+
+ public function documento_dataflutter() {
+        $idtipodocu = $this->input->get('idtipodocu'); // Obtener parámetro GET
+
+        if (!$idtipodocu) {
+            echo json_encode(['error' => 'Falta el parámetro idtipodocu']);
+            return;
+        }
+
+        $documentos = $this->Documento_model->get_documentos($idtipodocu); // Obtener datos del modelo
+
+        echo json_encode(['data' => $documentos]); // Devolver datos en formato JSON
+    }
+
+
 	function documento_data()
 	{
         $this->load_model('documento_model');
