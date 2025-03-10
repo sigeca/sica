@@ -172,7 +172,7 @@ class Documento extends CI_Controller{
 
 
 
- public function documento_dataflutter() {
+      function documento_dataflutter() {
         $idtipodocu = $this->input->get('idtipodocu'); // Obtener parámetro GET
 
         if (!$idtipodocu) {
