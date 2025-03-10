@@ -180,7 +180,7 @@ class Documento extends CI_Controller{
             return;
         }
 
-        $documentos = $this->Documento_model->get_documentos($idtipodocu); // Obtener datos del modelo
+        $documentos = $this->documento_model->get_documentos($idtipodocu); // Obtener datos del modelo
 
         echo json_encode(['data' => $documentos]); // Devolver datos en formato JSON
     }
