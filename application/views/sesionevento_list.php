@@ -39,7 +39,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
 	<?php
 		$options= array(0=>'--Select--');
 		foreach ($eventos as $row){
-			$options[$row->idevento]= $row->titulo;
+			$options[$row->idevento]=$row->idevento.' - '. $row->titulo;
 		}
 	?>
 
@@ -120,7 +120,7 @@ function filtra_evento()
 {
 
        var idevento = $('select[name=idevento]').val();
-
+       alert(idevento); 
 var mytabla= $('#mydatac').DataTable({destroy: true,"ajax": {url: '<?php echo site_url('sesionevento/sesionevento_data')?>', type: 'GET',data:{idevento:idevento}},});
 }
 
