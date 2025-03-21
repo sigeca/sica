@@ -414,7 +414,7 @@ foreach($grupos as $rowj){
 
             }   
         }
-$data=$data.'<b>Total participaciones + : </b> '. str_repeat('⭐', $tparticipacionpositiva).str_repeat('🔴', $tparticipacionnegativa).'".<br>';
+$data=$data.'<b>Participaciones : </b> '. str_repeat('⭐', $tparticipacionpositiva).str_repeat('🔴', $tparticipacionnegativa).'".<br>';
 
 
 
