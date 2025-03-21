@@ -414,7 +414,8 @@ foreach($grupos as $rowj){
 
             }   
         }
-
+$data=$data.'<b>Total participaciones + : </b> '.$tparticipacionpositiva.'".<br>
+              <b>Total participaciones - : </b> '.$tparticipacionnegativa.'".<br>';
 
 
 

@@ -120,7 +120,6 @@ function filtra_evento()
 {
 
        var idevento = $('select[name=idevento]').val();
-       alert(idevento); 
 var mytabla= $('#mydatac').DataTable({destroy: true,"ajax": {url: '<?php echo site_url('sesionevento/sesionevento_data')?>', type: 'GET',data:{idevento:idevento}},});
 }
 
