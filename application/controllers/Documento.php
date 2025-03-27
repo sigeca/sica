@@ -119,6 +119,59 @@ class Documento extends CI_Controller{
 
 
 
+
+public function genpagina()
+{
+	$idtipodocu=0;
+
+	$ordenrpt=0;
+	if($this->uri->segment(3))
+	{
+		$idtipodocu=$this->uri->segment(3);
+	 	$data['documentos']= $this->documento_model->lista_documentosxtipo($idtipodocu,0)->result();
+		$arreglo=array();
+		$i=0;
+//		foreach($data['formatoinstitucionals'] as $row){
+//		$idformatoinstitucional=$row->idformatoinstitucional;
+
+//		$xx=array($this->prestamoformatoinstitucional_model->prestamoformatoinstitucionalsA($idformatoinstitucional)->result_array());
+//		if(count($xx[0]) > 0){
+//		foreach($xx as $row2){
+//			foreach($row2 as $row3)
+//			 {
+//				$arreglo+=array($i=>array($row->idformatoinstitucional=>$row3));
+//				$i=$i+1;
+//			}
+///			}
+//		}
+//		}
+		$data['prestamoformatoinstitucional']=array();
+//		$data['prestamoformatoinstitucional']=$arreglo; 
+		echo "<br> jornadadocnete<br>" ;
+
+		$this->load->view('documento_genpagina',$data);
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	public function actual(){
 
         $this->load_model('documento_model');
