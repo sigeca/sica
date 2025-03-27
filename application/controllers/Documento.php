@@ -122,6 +122,7 @@ class Documento extends CI_Controller{
 
 public function genpagina()
 {
+	    $this->load_model('documento_model');
 	$idtipodocu=0;
 
 	$ordenrpt=0;
