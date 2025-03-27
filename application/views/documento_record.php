@@ -390,6 +390,13 @@ function uploadImage(nombre,idx) {
 }
 
 
+function getUploadUrl() {
+    var selectElement = document.getElementById("idordenador");
+    var url = "https://repositorioutlvte.org";
+    return url.endsWith("/") ? url + "cargaimagenportada.php" : url + "/cargaimagenportada.php";
+}
+
+
 
 
 
