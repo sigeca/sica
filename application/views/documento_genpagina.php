@@ -395,7 +395,7 @@ $data=$data.'<div class="col">
 		  <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/>';
 
 // Remote file url
-$remoteFile = "https://repositorioutlvte.org/Repositorio/documento/documento".trim($row->iddocumento).".jpg";
+$remoteFile = "https://repositorioutlvte.org/Repositorio/documento/".pathinfo(trim($row->archivopdf),PATHINFO_FILENAME).".jpg";
 
 $file_headers = @get_headers($remoteFile);
 
