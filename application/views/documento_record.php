@@ -284,7 +284,7 @@ echo form_input('iddocumento_estado',$options[$documento['iddocumento_estado']],
 <div class="form-group row">
     <label class="col-md-2 col-form-label"> Portada:</label>
 	<div class="col-md-10">
- <img src="https://repositorioutlvte.org/Repositorio/portadas/<?php echo $documento['archivopdf']; ?>.jpg" alt="portada del documento"  height="400"> 
+ <img src="https://repositorioutlvte.org/Repositorio/portadas/<?php echo pathinfo($documento['archivopdf'],PATHINFO_FILENAME); ?>.jpg" alt="portada del documento"  height="400"> 
   
 
 	</div> 
