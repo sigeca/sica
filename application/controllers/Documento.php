@@ -863,6 +863,10 @@ public function get_documentoA() {
 
 
 
+	public function documento_104()
+	{
+	  $this->load->view('web/documento-104');
+	}
 
 
 
