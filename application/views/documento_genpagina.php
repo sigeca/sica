@@ -377,7 +377,7 @@ foreach($documentos as $row){
 		</div>
       		<div >
         	<h1 class="fw-light">'.$row->idtipodocu.'</h1>  
-        	<p class="lead text-muted">Institución:'.$row->idinstitucion.' :: '.$row->idtipoduco.'.</p>
+        	<p class="lead text-muted">Institución:'.$row->idtipodocu.' :: '.$row->idtipodocu.'.</p>
         	<p style="font-size:2em; color:#6c757d;text-shadow: 1px 1px 2px #000, -1px -1px 2px #fff;">Formatos institucionales</p>
       		</div>
     		</div>
