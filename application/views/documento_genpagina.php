@@ -395,7 +395,7 @@ $data=$data.'<div class="col">
 		  <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/>';
 
 // Remote file url
-$remoteFile = "https://repositorioutlvte.org/Repositorio/documento/".pathinfo(trim($row->archivopdf),PATHINFO_FILENAME).".jpg";
+$remoteFile = "https://repositorioutlvte.org/Repositorio/portadas/".pathinfo(trim($row->archivopdf),PATHINFO_FILENAME).".jpg";
 
 $file_headers = @get_headers($remoteFile);
 
@@ -411,7 +411,7 @@ $data=$data.' <input type="file" id="fileInput'.trim($row->iddocumento).'" accep
 
 }else{
 
-$data=$data.'<image  class="thumbnail" href="https://repositorioutlvte.org/Repositorio/documento/documento'.trim($row->iddocumento).'.jpg" alt="No hay programación" height="100%" width="100%"  onclick="mostrarImagen(\'https://repositorioutlvte.org/Repositorio/documento/documento'.trim($row->iddocumento).'.jpg\')" /> </svg>
+$data=$data.'<image  class="thumbnail" href="https://repositorioutlvte.org/Repositorio/portadas/'.pathinfo(trim($row->archivopdf),PATHINFO_FILENAME).'.jpg" alt="No hay programación" height="100%" width="100%"  onclick="mostrarImagen(\'https://repositorioutlvte.org/Repositorio/portadas/'.pathinfo(trim($row->archivopdf),PATHINFO_FILENAME).'.jpg\')" /> </svg>
 <div class="img-contenedor w3-card-4" style="position:absolute"; top:0px;right:0px; border: 2px solid green; border-radius: 50%; width: 30%; display:flex; justify-content: center; align-items: center;">';
 
 
