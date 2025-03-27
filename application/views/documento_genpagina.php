@@ -378,7 +378,7 @@ foreach($documentos as $row){
       		<div >
         	<h1 class="fw-light">'.$row->idtipodocu.'</h1>  
         	<p class="lead text-muted">Institución:'.$row->idtipodocu.' :: '.$row->idtipodocu.'.</p>
-        	<p style="font-size:2em; color:#6c757d;text-shadow: 1px 1px 2px #000, -1px -1px 2px #fff;">Formatos institucionales</p>
+        	<p style="font-size:2em; color:#6c757d;text-shadow: 1px 1px 2px #000, -1px -1px 2px #fff;">Documentos </p>
       		</div>
     		</div>
   		</section>
@@ -431,11 +431,10 @@ $data=$data.'
 
 
         <div class="card-body" style="background-color:'.'red'.'"  >
-        <div style="font-size:20px;  color:#333;  margin-top:10px;" > <b>Proceso:</b><br> <span  style="color:#6c757d;text-shadow: 1px 1px 2px #000, -1px -1px 2px #fff;" >'.$row->archivopdf.' </span></div>
-        <div style="font-size:20px;  color:#333;  margin-top:10px;" > <b>::Nombre del  Formato:</b><br> <span  style="color:#6c757d;text-shadow: 1px 1px 2px #000, -1px -1px 2px #fff;" >'.$row->archivopdf.'</span> </div>
-        <div style="font-size:20px;  color:#333;  margin-top:10px;" > <b>Código:</b> '.$row->iddocumento.' </div>
-        <div style="font-size:14px;  color:#333;  margin-top:10px;" ><b>Detalle:</b><br> '.$row->asunto.' </div>
-        <div style="font-size:14px;  color:#333;  margin-top:10px;" ><b> Archivo:</b>  <a href="'.$row->archivopdf.'"> '.$row->archivopdf.'</a> </div>'
+        <div style="font-size:20px;  color:#333;  margin-top:10px;" > <b>Cóðigo:</b><br> <span  style="color:#6c757d;text-shadow: 1px 1px 2px #000, -1px -1px 2px #fff;" >'.$row->iddocumento.' </span></div>
+        <div style="font-size:20px;  color:#333;  margin-top:10px;" > <b>::Nombre :</b><br> <span  style="color:#6c757d;text-shadow: 1px 1px 2px #000, -1px -1px 2px #fff;" >'.$row->asunto.'</span> </div>
+        <div style="font-size:14px;  color:#333;  margin-top:10px;" ><b>Detalle:</b><br> '.$row->detalle.' </div>
+        <div style="font-size:14px;  color:#333;  margin-top:10px;" ><b> Archivo:</b>  <a href="https://repositorioutlvte.org/Repositorio/'.$row->archivopdf.'"> '.$row->archivopdf.'</a> </div>'
         ;	
 
 
