@@ -378,7 +378,7 @@ foreach($documentos as $row){
       		<div >
         	<h1 class="fw-light">'.$row->idtipodocu.'</h1>  
         	<p class="lead text-muted">Institución:'.$row->idtipodocu.' :: '.$row->idtipodocu.'.</p>
-        	<p style="font-size:2em; color:#6c757d;text-shadow: 1px 1px 2px #000, -1px -1px 2px #fff;">Documentos </p>
+        	<p style="font-size:2em; color:#6c757d;text-shadow: 1px 1px 2px #000, -1px -1px 2px #fff;">Documentos :'.$row->eltipodocu.'</p>
       		</div>
     		</div>
   		</section>
@@ -433,7 +433,7 @@ $data=$data.'
         <div class="card-body" style="background-color:'.'red'.'"  >
         <div style="font-size:20px;  color:#333;  margin-top:10px;" > <b>Cóðigo:</b><br> <span  style="color:#6c757d;text-shadow: 1px 1px 2px #000, -1px -1px 2px #fff;" >'.$row->iddocumento.' </span></div>
         <div style="font-size:20px;  color:#333;  margin-top:10px;" > <b>::Nombre :</b><br> <span  style="color:#6c757d;text-shadow: 1px 1px 2px #000, -1px -1px 2px #fff;" >'.$row->asunto.'</span> </div>
-        <div style="font-size:14px;  color:#333;  margin-top:10px;" ><b>Detalle:</b><br> '.$row->detalle.' </div>
+        <div style="font-size:14px;  color:#333;  margin-top:10px;" ><b>Autor:</b><br> '.$row->autor.' </div>
         <div style="font-size:14px;  color:#333;  margin-top:10px;" ><b> Archivo:</b>  <a href="https://repositorioutlvte.org/Repositorio/'.$row->archivopdf.'"> '.$row->archivopdf.'</a> </div>'
         ;	
 
