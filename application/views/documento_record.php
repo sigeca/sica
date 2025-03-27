@@ -56,6 +56,8 @@ if(isset($documento))
         <li> <?php echo "<a onclick='verpdf()'>Ver PDF</a>" ?></li>
 		<li> <?php echo anchor('documento/reportepdf/'.$documento['idtipodocu'],'reportepdf'); ?></li>
 
+        <li> <?php echo anchor('documento/genpagina/'.$documento['idtipodocu'],'generar web'); ?></li>
+        <li> <?php echo anchor('documento/formatoinstitucional_'.$documento['idtipodocu'],'Web'); ?></li>
 
 <?php 
 }else{
