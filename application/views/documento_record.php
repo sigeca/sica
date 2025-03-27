@@ -284,7 +284,7 @@ echo form_input('iddocumento_estado',$options[$documento['iddocumento_estado']],
 <div class="form-group row">
     <label class="col-md-2 col-form-label"> Portada:</label>
 	<div class="col-md-10">
- <img src="https://repositorioutlvte.org/Repositorio/portadas/<?php echo pathinfo($documento['archivopdf'],PATHINFO_FILENAME); ?>.jpg" alt="portada del documento"  height="400"> 
+ <img src="https://repositorioutlvte.org/Repositorio/portadas/<?php echo pathinfo(trim($documento['archivopdf']),PATHINFO_FILENAME); ?>.jpg" alt="portada del documento"  height="400"> 
   
 
 	</div> 
@@ -292,7 +292,7 @@ echo form_input('iddocumento_estado',$options[$documento['iddocumento_estado']],
 
 
  <input type="file" id="fileInput<?php echo trim($documento['iddocumento']); ?>" accept="image/*">
-  <button onclick="uploadImage('<?php echo trim($documento['archivopdf']); ?>.jpg','<?php echo trim($documento['iddocumento']); ?>')">Subir Imagen</button>
+  <button onclick="uploadImage('<?php echo pathinfo(trim($documento['archivopdf']),PATHINFO_FILENAME); ?>.jpg','<?php echo trim($documento['iddocumento']); ?>')">Subir Imagen</button>
   <p id="status<?php echo trim($documento['iddocumento']); ?>"></p> </div>';
 
 
