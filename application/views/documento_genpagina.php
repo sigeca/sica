@@ -436,16 +436,16 @@ $data=$data.'
 
 <div class="mb-3">
         <h5 class="text-primary">Código:</h5>
-        <span class="text-success fw-bold text-shadow"><?= htmlspecialchars($row->iddocumento) ?></span>
+        <span class="text-success fw-bold text-shadow"><?= htmlspecialchars('.$row->iddocumento. ') ?></span>
     </div>
  <div class="mb-3">
         <h5 class="text-primary">Nombre:</h5>
-        <span class="text-secondary fw-bold text-shadow"><?= htmlspecialchars($row->asunto) ?></span>
+        <span class="text-secondary fw-bold text-shadow"><?= htmlspecialchars('.$row->asunto.') ?></span>
     </div>
 
 <div class="mb-3">
         <h6 class="text-dark"><b>Autor:</b></h6>
-        <p class="mb-0"><?= htmlspecialchars($row->autor) ?></p>
+        <p class="mb-0"><?= htmlspecialchars('.$row->autor.') ?></p>
     </div>
 
 
