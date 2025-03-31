@@ -197,15 +197,12 @@ function uploadImage(nombre,idx) {
     return;
   }
 
-
   var formData = new FormData();
 
 		// Read selected files
     		for (var index = 0; index < totalFiles; index++) {
       			formData.append("files[]", filesInput.files[index]);
     		}
-
-
 
       formData.append("nombrearchivo",nombre);
 		var uploadUrl = getUploadUrl();
