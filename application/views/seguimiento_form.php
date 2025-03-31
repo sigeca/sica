@@ -601,7 +601,7 @@ $("#btn_update").on("click", function(){
 
 	 if(correode.includes('gmail.com') || correode.includes('utelvt.edu.ec'))
 	 {
-
+       alert("lo manda por gmail "+correode);
 	    $.ajax({
 		url: "<?php echo site_url('seguimiento/send') ?>",
 		data: {nome:nome, correode:correode, msg:msg, correopara:correopara, secure:secure,asunto:asunto},
