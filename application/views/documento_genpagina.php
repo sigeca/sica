@@ -430,11 +430,11 @@ $data=$data.'
 
 
 
-        <div class="card-body" style="background-color:'.'#DFF6E2'.'"  >
-        <div style="font-size:20px;  color:#333;  margin-top:10px;" > <b>Cóðigo:</b><br> <span  style="color:#6c757d;text-shadow: 1px 1px 2px #000, -1px -1px 2px #fff;" >'.$row->iddocumento.' </span></div>
+        <div class="card-body bg-light" >
+        <div style="font-size:20px;  color:#333;  margin-top:10px;" > <b>Código:</b><br> <span  style="color:#6c757d;text-shadow: 1px 1px 2px #000, -1px -1px 2px #fff;" >'.$row->iddocumento.' </span></div>
         <div style="font-size:20px;  color:#333;  margin-top:10px;" > <b>::Nombre :</b><br> <span  style="color:#6c757d;text-shadow: 1px 1px 2px #000, -1px -1px 2px #fff;" >'.$row->asunto.'</span> </div>
         <div style="font-size:14px;  color:#333;  margin-top:10px;" ><b>Autor:</b><br> '.$row->autor.' </div>
-        <div style="font-size:14px;  color:#333;  margin-top:10px;" ><b> Archivo:</b>  <a href="https://repositorioutlvte.org/Repositorio/'.$row->archivopdf.'"> '.$row->archivopdf.'</a> </div>'
+        <div style="font-size:14px;  color:#333;  margin-top:10px;" ><b> Archivo:</b>  <a href="https://repositorioutlvte.org/Repositorio/'.$row->archivopdf.'"> class="btn btn-outline-primary btn-sm" Descargar Archivo</a> </div>'
         ;	
 
 
