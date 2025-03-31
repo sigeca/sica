@@ -431,10 +431,27 @@ $data=$data.'
 
 
         <div class="card-body bg-light" >
-        <div style="font-size:20px;  color:#333;  margin-top:10px;" > <b>Código:</b><br> <span  style="color:#6c757d;text-shadow: 1px 1px 2px #000, -1px -1px 2px #fff;" >'.$row->iddocumento.' </span></div>
-        <div style="font-size:20px;  color:#333;  margin-top:10px;" > <b>::Nombre :</b><br> <span  style="color:#6c757d;text-shadow: 1px 1px 2px #000, -1px -1px 2px #fff;" >'.$row->asunto.'</span> </div>
-        <div style="font-size:14px;  color:#333;  margin-top:10px;" ><b>Autor:</b><br> '.$row->autor.' </div>
-        <div style="font-size:14px;  color:#333;  margin-top:10px;" ><b> Archivo:</b>  <a href="https://repositorioutlvte.org/Repositorio/'.$row->archivopdf.'" class="btn btn-outline-primary btn-sm" target="_blank">  Descargar Archivo</a> </div>'
+
+
+
+<div class="mb-3">
+        <h5 class="text-primary">Código:</h5>
+        <span class="text-success fw-bold text-shadow"><?= htmlspecialchars($row->iddocumento) ?></span>
+    </div>
+ <div class="mb-3">
+        <h5 class="text-primary">Nombre:</h5>
+        <span class="text-secondary fw-bold text-shadow"><?= htmlspecialchars($row->asunto) ?></span>
+    </div>
+
+<div class="mb-3">
+        <h6 class="text-dark"><b>Autor:</b></h6>
+        <p class="mb-0"><?= htmlspecialchars($row->autor) ?></p>
+    </div>
+
+
+        <div > 
+        <h6 class="text-dark"><b>Archivo:</b></h6>
+         <a href="https://repositorioutlvte.org/Repositorio/'.$row->archivopdf.'" class="btn btn-outline-primary btn-sm" target="_blank">  Descargar Archivo</a> </div>'
         ;	
 
 
