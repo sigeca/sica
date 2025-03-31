@@ -217,7 +217,7 @@ $data1='</div>
     <p class="float-end mb-1">
       <a href="#">Back to top</a>
     </p>
-     <p class="mb-1">Este sitio web que presenta <xxxx>/<yyyy> clases, es parte del producto del <b>PROYECTO DE AULA</b> titulado <a href="https://repositorioutlvte.org/Repositorio/2024-01-15-FQSA-01627.pdf"> <b> "Diseño y Desarrollo de una plataforma web para la Gestión de la información Académica"</b></a> </p>
+     <p class="mb-1">Este sitio web que presenta material de lectura de acceso gratuito, es parte del producto del <b>PROYECTO DE AULA</b> titulado <a href="https://repositorioutlvte.org/Repositorio/2024-01-15-FQSA-01627.pdf"> <b> "Diseño y Desarrollo de una plataforma web para la Gestión de la información Académica"</b></a> </p>
     <p class="mb-0">El proyecto fue realizado con la participación de <a href="https://educaysoft.org/sica/evento/participantes/350"> 4-B Base de Datos I</a> ,<a href="https://educaysoft.org/sica/evento/participantes/356"> 5to-A</a> y <a href="https://educaysoft.org/sica/evento/participantes/357">5to-B</a>  Ingenieria de Software I en el periodo 2023-1S, cuyo tutor fue el Ing. Stalin Francis Msc., Docente de las Asignaturas.</p>
   </div>
 </footer>
@@ -376,9 +376,9 @@ foreach($documentos as $row){
 		<img src="https://repositorioutlvte.org/Repositorio/qr/documento-'.$row->idtipodocu.'-'.$row->idtipodocu.'.png" height="150px">
 		</div>
       		<div >
+        	<p class="lead text-muted">Tipo de documento</p>
         	<h1 class="fw-light">'.$row->idtipodocu.'</h1>  
-        	<p class="lead text-muted">Institución:'.$row->idtipodocu.' :: '.$row->idtipodocu.'.</p>
-        	<p style="font-size:2em; color:#6c757d;text-shadow: 1px 1px 2px #000, -1px -1px 2px #fff;">Documentos :'.$row->eltipodocu.'</p>
+        	<p style="font-size:2em; color:#6c757d;text-shadow: 1px 1px 2px #000, -1px -1px 2px #fff;">'.$row->eltipodocu.'</p>
       		</div>
     		</div>
   		</section>
