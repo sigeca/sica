@@ -318,7 +318,7 @@ function uploadImage(nombre,idx) {
 function getUploadUrl() {
     var selectElement = document.getElementById("idordenador");
     var url = "https://repositorioutlvte.org";
-    return url.endsWith("/") ? url + "cargaimagen.php" : url + "/cargaimagen.php";
+    return url.endsWith("/") ? url + "cargaportada.php" : url + "/cargaportada.php";
 }
 
 
@@ -406,7 +406,7 @@ if($file_headers[0] == 'HTTP/1.1 404 Not Found') {
 
 
 $data=$data.' <input type="file" id="fileInput'.trim($row->iddocumento).'" accept="image/*">
-  <button onclick="uploadImage(\'documento'.trim($row->iddocumento).'.jpg\',\''.trim($row->iddocumento).'\')">Subir Imagen</button>
+  <button onclick="uploadImage(\''.pathinfo(trim($row->archivopdf),PATHINFO_FILENAME).'.jpg\',\''.trim($row->iddocumento).'\')">Subir Imagen</button>
   <p id="status'.trim($row->iddocumento).'"></p> </div>';
 
 }else{
