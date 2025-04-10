@@ -361,7 +361,7 @@ foreach($documentos as $row){
         	<meta property="og:image" content="https://educaysoft.org/sica/images/logoeys.png" />
         	<meta property="og:image:width" content="400" />
         	<meta property="og:image:height" content="400" />
-    		<title> EDUCACION Y SOFTWARE </title>
+    		<title> EDUCACIÓN Y SOFTWARE </title>
     		<link rel="educaysoft" href="https://congresoutlvte.org/faci/">
     		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
 		<link rel="stylesheet" type="text/css"  href="<?php echo base_url(); ?>assets/dist/css/bootstrap.min.css" />';
