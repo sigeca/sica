@@ -357,11 +357,11 @@ foreach($documentos as $row){
     		<meta name="description" content="">
     		<meta name="author" content="Stalin Francis Quinde">
     		<meta name="generator" content="Hugo 0.101.0">
-        	<meta property="og:site_name" content="Carrera en Tecnología de la Información" />
-        	<meta property="og:image" content="https://repositorioutlvte.org/Repositorio/logos/logocti.png" />
+        	<meta property="og:site_name" content="Educaysoft" />
+        	<meta property="og:image" content="https://educaysoft.org/sica/images/logoeys.png" />
         	<meta property="og:image:width" content="400" />
         	<meta property="og:image:height" content="400" />
-    		<title> Carrera: TECNOLOGIA DE LA INFORMACION </title>
+    		<title> EDUCACION Y SOFTWARE </title>
     		<link rel="educaysoft" href="https://congresoutlvte.org/faci/">
     		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
 		<link rel="stylesheet" type="text/css"  href="<?php echo base_url(); ?>assets/dist/css/bootstrap.min.css" />';
