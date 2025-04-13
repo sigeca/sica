@@ -23,7 +23,7 @@ class Asistencia_model extends CI_model {
 
 
 
-	function get_asitencia1($idevento,$fecha){
+	function get_asistencia1($idevento,$fecha){
 		 if($idevento>0)
                 {
                 $this->db->where('idevento='.$idevento);
