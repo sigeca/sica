@@ -238,6 +238,28 @@ class Asistencia extends CI_Controller{
 		$this->load->view('template/page_footer');
 	}
 
+
+      function asistencia_dataflutter() {
+        $idevento = $this->input->get('idevento'); // Obtener parámetro GET
+        $fecha = $this->input->get('fecha'); // Obtener parámetro GET
+
+        if (!$idevento) {
+            echo json_encode(['error' => 'Falta el parámetro idevento']);
+            return;
+        }
+
+        $asistencia = $this->asistencia_model->get_asistencia1($idevento,$fecha); // Obtener datos del modelo
+
+        echo json_encode(['data' => $asistencia]); // Devolver datos en formato JSON
+    }
+
+
+
+
+
+
+
+
 	function asistencia_data()
 	{
 			$draw= intval($this->input->get("draw"));
