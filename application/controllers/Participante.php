@@ -226,6 +226,25 @@ public function listar()
 }
 
 
+      function participante_dataflutter() {
+        $idevento = $this->input->get('idevento'); // Obtener parámetro GET
+
+        if (!$idevento) {
+            echo json_encode(['error' => 'Falta el parámetro idevento']);
+            return;
+        }
+
+        $participante = $this->participante_model->get_participante3($idevento); // Obtener datos del modelo
+
+        echo json_encode(['data' => $documentos]); // Devolver datos en formato JSON
+    }
+
+
+
+
+
+
+
 
 function participante_data()
 {
