@@ -236,7 +236,7 @@ public function listar()
 
         $participante = $this->participante_model->get_participante3($idevento); // Obtener datos del modelo
 
-        echo json_encode(['data' => $documentos]); // Devolver datos en formato JSON
+        echo json_encode(['data' => $participante]); // Devolver datos en formato JSON
     }
 
 
