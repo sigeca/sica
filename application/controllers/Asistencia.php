@@ -223,7 +223,6 @@ class Asistencia extends CI_Controller{
 
 
 
-    }
 
 
  	public function delete()
