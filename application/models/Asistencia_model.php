@@ -224,7 +224,19 @@ class Asistencia_model extends CI_model {
  		$this->db->update('asistencia',$array_item);
 	}
  
+ 	function update_flutter($id,$idtipoasistencia)
+ 	{
+ 		$this->db->where('idasistencia',$id);
+ 		$this->db->update('asistencia',[idtipoasistencia=>$idtipoasistencia];
+   		if($this->db->affected_rows()==1)
+			$result=true;
+		else
+			$result=false;
+		return $result;
 
+
+	}
+ 
 
 
    function delete($id)

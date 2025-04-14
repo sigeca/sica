@@ -214,6 +214,16 @@ class Asistencia extends CI_Controller{
 	 	redirect('asistencia');
  	}
 
+    public function update_flutter()
+    {
+		$idasistencia=$this->input->get('idasistencia');
+		$idtipoasistencia=$this->input->get('idtipoasistencia');
+	 	$this->asistencia_model->update_flutter($id,$idtipoasistencia);
+ 	}
+
+
+
+    }
 
 
  	public function delete()
@@ -250,7 +260,7 @@ class Asistencia extends CI_Controller{
 
         $asistencia = $this->asistencia_model->get_asistencia1($idevento,$fecha); // Obtener datos del modelo
 
-        echo json_encode(['data' => $asistencia]); // Devolver datos en formato JSON
+        echo json_encode(['data' => $participante]); // Devolver datos en formato JSON
     }
 
 
