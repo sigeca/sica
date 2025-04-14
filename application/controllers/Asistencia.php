@@ -216,8 +216,8 @@ class Asistencia extends CI_Controller{
 
     public function update_flutter()
     {
-		$idasistencia=$this->input->post('idasistencia');
-		$idtipoasistencia=$this->input->post('idtipoasistencia');
+		$idasistencia=$this->input->get('idasistencia');
+		$idtipoasistencia=$this->input->get('idtipoasistencia');
 	 	$this->asistencia_model->update_flutter($idasistencia,$idtipoasistencia);
  	}
 
