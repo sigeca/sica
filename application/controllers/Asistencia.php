@@ -259,7 +259,7 @@ class Asistencia extends CI_Controller{
 
         $asistencia = $this->asistencia_model->get_asistencia1($idevento,$fecha); // Obtener datos del modelo
 
-        echo json_encode(['data' => $participante]); // Devolver datos en formato JSON
+        echo json_encode(['data' => $asistencia]); // Devolver datos en formato JSON
     }
 
 
