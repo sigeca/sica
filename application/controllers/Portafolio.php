@@ -167,7 +167,7 @@ function portafolio_data()
 
    public function portafolio_flutter()
     {
-		$idpersona=$this->input->post('idpersona');
+		$idpersona=$this->input->get('idpersona');
 	 	$this->evento_model->get_protafolio_flutter($idpersona);
  	}
 
