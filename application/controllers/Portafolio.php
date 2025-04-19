@@ -167,7 +167,7 @@ function portafolio_data()
 
    public function portafolio_flutter()
     {
-		$idpersona=$this->input->post('idpersona');
+		$idpersona=$this->input->get('idpersona');
 	 	$portafolios=$this->portafolio_model->get_portafolio_flutter($idpersona);
         echo json_encode(['data' => $portafolios]); // Devolver datos en formato JSON
  	}
