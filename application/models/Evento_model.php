@@ -61,7 +61,25 @@ Class Evento_model extends CI_model {
 
 
 
+ 	function get_evento_flutter($idpersona,$estado)
+ 	{
+		 if($idpersona>0)
+                {
+                $this->db->where('idpersona='.$idpersona);
+                $this->db->where('estado="'.$estado.'"');
+                $query = $this->db->get('eventoP'); // Suponiendo que la tabla se llama 'documentos'
+        return $query->result_array(); // Devolver array de documentos
+         }else{
 
+        return 0;
+
+         }
+
+
+
+
+	}
+ 
 
 
 

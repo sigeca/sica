@@ -45,6 +45,24 @@ class Portafolio_model extends CI_model {
 
 
 
+ 	function get_portafolio_flutter($idpersona)
+ 	{
+		 if($idpersona>0)
+                {
+                $this->db->where('idpersona='.$idpersona);
+                $query = $this->db->get('portafolio1'); // Suponiendo que la tabla se llama 'documentos'
+        return $query->result_array(); // Devolver array de documentos
+         }else{
+
+        return 0;
+
+         }
+
+
+
+
+	}
+ 
 
 
 
