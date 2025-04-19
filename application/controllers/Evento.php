@@ -354,8 +354,8 @@ public function cumplimiento(){
 
    public function evento_flutter()
     {
-		$idpersona=$this->input->post('idpersona');
-		$estado=$this->input->post('estado');
+		$idpersona=$this->input->get('idpersona');
+		$estado=$this->input->ge('estado');
 	 	$this->evento_model->get_evento_flutter($idpersona,$estado);
  	}
 
