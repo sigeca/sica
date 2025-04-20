@@ -442,6 +442,17 @@ function sesionevento_data()
 }
 
 
+ public function sesionevento_dataflutter()
+    {
+		$idpersona=$this->input->get('idevento');
+	 	$sesioneventos=$this->sesionevento_model->get_sesionevento_flutter($idevento);
+        echo json_encode(['data' => $sesioneventos]); // Devolver datos en formato JSON
+ 	}
+
+
+
+
+
 
 
 	public function reportepdf()
