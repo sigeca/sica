@@ -25,6 +25,27 @@ class Sesionevento_model extends CI_model {
 
 
 
+ 	function get_sesionevento_flutter($idevento)
+ 	{
+		 if($idevento>0)
+                {
+                $this->db->where('idevento='.$idevento);
+                $query = $this->db->get('sesionevento'); // Suponiendo que la tabla se llama 'documentos'
+        return $query->result_array(); // Devolver array de documentos
+         }else{
+
+        return 0;
+
+         }
+
+
+
+
+	}
+ 
+
+
+
  	function sesioneventos1( $id){
  		$sesionevento = $this->db->query('select * from sesionevento1 where idevento="'. $id.'" order by fecha');
  		return $sesionevento;
