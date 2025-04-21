@@ -248,6 +248,18 @@ class Asistencia extends CI_Controller{
 	}
 
 
+ public function asistencia_personafflutter()
+    {
+		$idevento=$this->input->get('idevento');
+		$idpersona=$this->input->get('idpersona');
+	 	$asistencias=$this->sesionevento_model->get_asistenciapersona($idevento,$idpersona);
+        echo json_encode(['data' => $asistencias]); // Devolver datos en formato JSON
+ 	}
+
+
+
+
+
       function asistencia_dataflutter() {
         $idevento = $this->input->get('idevento'); // Obtener parámetro GET
         $fecha = $this->input->get('fecha'); // Obtener parámetro GET
