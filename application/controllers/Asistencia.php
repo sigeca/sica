@@ -248,11 +248,11 @@ class Asistencia extends CI_Controller{
 	}
 
 
- public function asistencia_personafflutter()
+ public function asistencia_personaflutter()
     {
 		$idevento=$this->input->get('idevento');
 		$idpersona=$this->input->get('idpersona');
-	 	$asistencias=$this->sesionevento_model->get_asistenciapersona($idevento,$idpersona);
+	 	$asistencias=$this->asistencia_model->get_asistenciapersona($idevento,$idpersona);
         echo json_encode(['data' => $asistencias]); // Devolver datos en formato JSON
  	}
 
