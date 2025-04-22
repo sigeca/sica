@@ -11,6 +11,23 @@ class Participacion_model extends CI_model {
 	}
 
 
+	function get_participacionpersona($idevento,$idpersona){
+		 if($idevento>0)
+                {
+                $this->db->where('idevento='.$idevento);
+                $this->db->where('idpersona="'.$idpersona.'"');
+                $query = $this->db->get('participacion1'); // Suponiendo que la tabla se llama 'documentos'
+        return $query->result_array(); // Devolver array de documentos
+         }else{
+
+        return 0;
+
+         }
+	}
+
+
+
+
 
 	function ParticipacionxPersonaPositiva($idevento){
 		$this->db->select("idpersona,count(fecha) AS 'totalparticipacion'");
