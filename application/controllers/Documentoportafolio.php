@@ -171,7 +171,7 @@ public function listar()
 
 
       function documentoportafolio_dataflutter() {
-        $idportafolio = $this->input->get('idportafolio'); // Obtener parámetro GET
+        $idportafolio = $this->input->post('idportafolio'); // Obtener parámetro GET
 
         if (!$idportafolio) {
             echo json_encode(['error' => 'Falta el parámetro idtipodocu']);
