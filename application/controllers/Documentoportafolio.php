@@ -171,7 +171,6 @@ public function listar()
 
 
       function documentoportafolio_dataflutter() {
-	    $this->load_model('documentoportafolio_model');
         $idtipodocu = $this->input->get('idportafolio'); // Obtener parámetro GET
 
         if (!$idportafolio) {
