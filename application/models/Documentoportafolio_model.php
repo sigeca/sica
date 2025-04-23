@@ -35,7 +35,7 @@ class Documentoportafolio_model extends CI_model {
 
   public function get_documentosportafolio($idportafolio) {
         $this->db->where('idportafolio', $idportafolio);
-        $query = $this->db->get('documentoportafolio'); // Suponiendo que la tabla se llama 'documentos'
+        $query = $this->db->get('documentoportafolio2'); // Suponiendo que la tabla se llama 'documentos'
         return $query->result_array(); // Devolver array de documentos
     }
 
