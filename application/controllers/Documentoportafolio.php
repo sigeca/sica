@@ -170,6 +170,27 @@ public function listar()
 
 
 
+      function documentoportafolio_dataflutter() {
+	    $this->load_model('documentoportafolio_model');
+        $idtipodocu = $this->input->get('idportafolio'); // Obtener parámetro GET
+
+        if (!$idportafolio) {
+            echo json_encode(['error' => 'Falta el parámetro idtipodocu']);
+            return;
+        }
+
+        $documentosportafolio = $this->documentoportafolio_model->get_documentosportafolio($idportafolio); // Obtener datos del modelo
+
+        echo json_encode(['data' => $documentosportafolio]); // Devolver datos en formato JSON
+    }
+
+
+
+
+
+
+
+
 function documentoportafolio_data()
 {
 		$draw= intval($this->input->get("draw"));
