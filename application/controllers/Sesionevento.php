@@ -214,7 +214,6 @@ class Sesionevento extends CI_Controller{
 		 	'horafin' => $this->input->post('horafin'),
 		 	'secuencia' => $this->input->post('secuencia'),
 		 	'idmodoevaluacion' => $this->input->post('idmodoevaluacion'),
-		 	'idcumplimientosesion' => $this->input->post('idcumplimientosesion'),
 	                'idusuario'=>$idusuario,
 			'fechacreacion'=>$fecha,
 			'horacreacion'=>$hora
@@ -325,6 +324,7 @@ class Sesionevento extends CI_Controller{
 		 	'numerosesion' => $this->input->post('numerosesion'),
 		 	'secuencia' => $this->input->post('secuencia'),
 		 	'idmodoevaluacion' => $this->input->post('idmodoevaluacion'),
+		 	'idcumplimientosesion' => $this->input->post('idcumplimientosesion'),
 	 	);
 	 	$idtema =$this->tema_model->save($array_item2);
 		}
