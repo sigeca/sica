@@ -16,7 +16,23 @@ class Participacion_model extends CI_model {
                 {
                 $this->db->where('idevento='.$idevento);
                 $this->db->where('idpersona="'.$idpersona.'"');
-                $query = $this->db->get('participacion1'); // Suponiendo que la tabla se llama 'documentos'
+                $this->db->where('idmodoevaluacion=1');
+                $query = $this->db->get('participacion2'); // Suponiendo que la tabla se llama 'documentos'
+        return $query->result_array(); // Devolver array de documentos
+         }else{
+
+        return 0;
+
+         }
+	}
+
+	function get_participacionpersona2($idevento,$idpersona){
+		 if($idevento>0)
+                {
+                $this->db->where('idevento='.$idevento);
+                $this->db->where('idpersona="'.$idpersona.'"');
+                $this->db->where('idmodoevaluacion>1');
+                $query = $this->db->get('participacion2'); // Suponiendo que la tabla se llama 'documentos'
         return $query->result_array(); // Devolver array de documentos
          }else{
 

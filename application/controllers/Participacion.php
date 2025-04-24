@@ -199,6 +199,16 @@ function participacion_data()
         echo json_encode(['data' => $participaciones]); // Devolver datos en formato JSON
  	}
 
+ public function participacion_persona2flutter()
+    {
+		$idevento=$this->input->post('idevento');
+		$idpersona=$this->input->post('idpersona');
+	 	$participaciones=$this->participacion_model->get_participacionpersona2($idevento,$idpersona);
+        echo json_encode(['data' => $participaciones]); // Devolver datos en formato JSON
+ 	}
+
+
+
 
 
 
