@@ -1,7 +1,7 @@
 <?php
 class Cumplimientosesion_model extends CI_model {
 
-	function lista_cumplimientosesions(){
+	function lista_cumplimientosesiones(){
 		 $cumplimientosesion= $this->db->get('cumplimientosesion');
 		 return $cumplimientosesion;
 	}
