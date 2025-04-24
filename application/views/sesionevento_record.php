@@ -220,7 +220,19 @@ echo form_input('idmodoevaluacion',$options[$sesionevento['idmodoevaluacion']],a
 </div>
 
 
+<div class="form-group row">
+    <label class="col-md-2 col-form-label"> Cumplimiento: </label>
+	<div class="col-md-10">
+     <?php 
+$options= array("NADA");
+foreach ($cumplientosesiones as $row){
+	$options[$row->idcumplimiento]= $row->nombre;
+}
 
+echo form_input('idcumplimientosesion',$options[$sesionevento['idcumplimientosesion']],array("disabled"=>"disabled",'style'=>'width:500px;')); 
+		?>
+	</div> 
+</div>
 
 
 

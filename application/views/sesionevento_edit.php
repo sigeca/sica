@@ -300,6 +300,26 @@ echo form_dropdown("idmodoevaluacion",$options, $sesionevento['idmodoevaluacion'
 
 
 
+<div class="form-group row">
+<label class="col-md-2 col-form-label">Cumplimiento:</label>
+<div class="col-md-10">
+<?php
+
+     
+$options= array('--Select--');
+foreach ($cumplimientosesiones as $row){
+	$options[$row->idcumplimientosesion]= $row->nombre;
+}
+
+echo form_dropdown("idcumplimientosesion",$options, $sesionevento['idcumplimientosesion']);
+
+?>
+</div>
+</div>
+
+
+
+
 
 
 <div style="border:solid 1px red; padding:10px 5px 5px 20px; margin:5px 50px 5px -20px; background-color:#F0F8FF;">

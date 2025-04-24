@@ -1,45 +1,33 @@
+<!--Arhivo: modeevaluacion_form.php -->
+<!--Modulo: modoevaluacion -->
+<!--Descripción: vista que permite ingresar nueva información del modo de evaluacion -->
+<!--Autor: Stalin Francis -->
+<!--Fecha: Ultima evaluación: Sabado 4 febrero 2023 -->
+
+
 <h2> <?php echo $title; ?> </h2>
 <hr/>
-<?php echo form_open("horasasignatura/save") ?>
-<?php echo form_hidden("idhorasasignatura")  ?>
+<?php echo form_open("modoevaluacion/save") ?>
+<?php echo form_hidden("idmodoevaluacion")  ?>
 <table>
 
 
-<tr>
-<td> Asignatura: </td>
-<td><?php 
-
-$options= array('--Select--');
-foreach ($asignaturas as $row){
-	$options[$row->idasignatura]=$row->malla." - ".$row->area." - ".$row->nombre;
-}
-
- echo form_dropdown("idasignatura",$options, set_select('--Select--','default_value'));  ?></td>
-</tr>
-
 
 
 
 <tr>
-<td> Tipo de horas: </td>
-<td><?php 
-
-$options= array('--Select--');
-foreach ($tipohorasasignaturas as $row){
-	$options[$row->idtipohorasasignatura]=$row->nombre;
-
-}
-
- echo form_dropdown("idtipohorasasignatura",$options, set_select('--Select--','default_value'));  ?></td>
+<td> Nombre </td>
+<td><?php echo form_input("nombre","", array("placeholder"=>"Nombre de modoevaluacion"))  ?></td>
 </tr>
 
 <tr>
-<td> Cantidad de horas: </td>
-<td><?php echo form_input("cantidad","", array("placeholder"=>"Cantidad de horas(float)"))  ?></td>
+<td> Ponderacion </td>
+<td><?php echo form_input("ponderacion","", array("placeholder"=>"Ponderación del modoevaluacion"))  ?></td>
 </tr>
 
+
 <tr>
-<td colspan="2"> <hr><?php echo form_submit("submit", "Guardar"); ?><?php echo anchor("horasasignatura","Atras") ?> </td>
+<td colspan="2"> <hr><?php echo form_submit("submit", "Guardar"); ?><?php echo anchor("modoevaluacion","Atras") ?> </td>
 </tr>
 
 </table>
