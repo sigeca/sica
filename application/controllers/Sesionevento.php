@@ -341,6 +341,7 @@ class Sesionevento extends CI_Controller{
 		 	'horafin' => $this->input->post('horafin'),
 		 	'secuencia' => $this->input->post('secuencia'),
 		 	'idmodoevaluacion' => $this->input->post('idmodoevaluacion'),
+		 	'idcumplimientosesion' => $this->input->post('idcumplimientosesion'),
 	 	);
 	 	$result=$this->sesionevento_model->update($id,$array_item);
 	}else{
