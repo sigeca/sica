@@ -214,7 +214,7 @@ class Sesionevento extends CI_Controller{
 		 	'horafin' => $this->input->post('horafin'),
 		 	'secuencia' => $this->input->post('secuencia'),
 		 	'idmodoevaluacion' => $this->input->post('idmodoevaluacion'),
-		 	'idcumplientosesion' => $this->input->post('idcumplimientosesion'),
+		 	'idcumplimientosesion' => $this->input->post('idcumplimientosesion'),
 	                'idusuario'=>$idusuario,
 			'fechacreacion'=>$fecha,
 			'horacreacion'=>$hora
