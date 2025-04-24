@@ -1,49 +1,33 @@
 <?php
-class Grupoparticipante_model extends CI_model {
+class Cumplimientosesion_model extends CI_model {
 
-	function lista_horasasignaturas(){
-		 $horasasignatura= $this->db->get('horasasignatura');
-		 return $horasasignatura;
+	function lista_modoevaluacions(){
+		 $modoevaluacion= $this->db->get('modoevaluacion');
+		 return $modoevaluacion;
 	}
 
-
-	function lista_horasasignaturasA(){
-		 $horasasignatura= $this->db->get('horasasignatura1');
-		 return $horasasignatura;
-	}
-
-
-
- 	function horasasignatura( $id){
- 		$horasasignatura = $this->db->query('select * from horasasignatura where idhorasasignatura="'. $id.'"');
- 		return $horasasignatura;
+ 	function modoevaluacion( $id){
+ 		$modoevaluacion = $this->db->query('select * from modoevaluacion where idmodoevaluacion="'. $id.'"');
+ 		return $modoevaluacion;
  	}
-
-
- 	function horasasignaturasA( $idasignatura){
- 		$horasasignatura = $this->db->query('select * from horasasignatura1 where idasignatura="'. $idasignatura.'"');
- 		return $horasasignatura;
- 	}
-
-
 
  	function save($array)
  	{
-		$this->db->insert("horasasignatura", $array);
+		$this->db->insert("modoevaluacion", $array);
  	}
 
  	function update($id,$array_item)
  	{
- 		$this->db->where('idhorasasignatura',$id);
- 		$this->db->update('horasasignatura',$array_item);
+ 		$this->db->where('idmodoevaluacion',$id);
+ 		$this->db->update('modoevaluacion',$array_item);
 	}
  
 
 
  	public function delete($id)
 	{
- 		$this->db->where('idhorasasignatura',$id);
-		$this->db->delete('horasasignatura');
+ 		$this->db->where('idmodoevaluacion',$id);
+		$this->db->delete('modoevaluacion');
     		if($this->db->affected_rows()==1)
 			$result=true;
 		else
@@ -54,7 +38,7 @@ class Grupoparticipante_model extends CI_model {
 
 	function elprimero()
 	{
-		$query=$this->db->order_by("idhorasasignatura")->get('horasasignatura');
+		$query=$this->db->order_by("idmodoevaluacion")->get('modoevaluacion');
 		if($query->num_rows()>0)
 		{
 			return $query->first_row('array');
@@ -67,7 +51,7 @@ class Grupoparticipante_model extends CI_model {
 // Para ir al último registro
 	function elultimo()
 	{
-		$query=$this->db->order_by("idhorasasignatura")->get('horasasignatura');
+		$query=$this->db->order_by("idmodoevaluacion")->get('modoevaluacion');
 		if($query->num_rows()>0)
 		{
 			return $query->last_row('array');
@@ -79,37 +63,37 @@ class Grupoparticipante_model extends CI_model {
 
 	// Para moverse al siguiente registro
  	function siguiente($id){
- 		$horasasignatura = $this->db->select("idhorasasignatura")->order_by("idhorasasignatura")->get('horasasignatura')->result_array();
-		$arr=array("idhorasasignatura"=>$id);
-		$clave=array_search($arr,$horasasignatura);
-	   if(array_key_exists($clave+1,$horasasignatura))
+ 		$modoevaluacion = $this->db->select("idmodoevaluacion")->order_by("idmodoevaluacion")->get('modoevaluacion')->result_array();
+		$arr=array("idmodoevaluacion"=>$id);
+		$clave=array_search($arr,$modoevaluacion);
+	   if(array_key_exists($clave+1,$modoevaluacion))
 		 {
 
- 		$horasasignatura = $this->db->query('select * from horasasignatura where idhorasasignatura="'. $horasasignatura[$clave+1]["idhorasasignatura"].'"');
+ 		$modoevaluacion = $this->db->query('select * from modoevaluacion where idmodoevaluacion="'. $modoevaluacion[$clave+1]["idmodoevaluacion"].'"');
 		 }else{
 
- 		$horasasignatura = $this->db->query('select * from horasasignatura where idhorasasignatura="'. $id.'"');
+ 		$modoevaluacion = $this->db->query('select * from modoevaluacion where idmodoevaluacion="'. $id.'"');
 		 }
 		 	
- 		return $horasasignatura;
+ 		return $modoevaluacion;
  	}
 
 
 // Para moverse al anterior registro
  	function anterior($id){
- 		$horasasignatura = $this->db->select("idhorasasignatura")->order_by("idhorasasignatura")->get('horasasignatura')->result_array();
-		$arr=array("idhorasasignatura"=>$id);
-		$clave=array_search($arr,$horasasignatura);
-	   if(array_key_exists($clave-1,$horasasignatura))
+ 		$modoevaluacion = $this->db->select("idmodoevaluacion")->order_by("idmodoevaluacion")->get('modoevaluacion')->result_array();
+		$arr=array("idmodoevaluacion"=>$id);
+		$clave=array_search($arr,$modoevaluacion);
+	   if(array_key_exists($clave-1,$modoevaluacion))
 		 {
 
- 		$horasasignatura = $this->db->query('select * from horasasignatura where idhorasasignatura="'. $horasasignatura[$clave-1]["idhorasasignatura"].'"');
+ 		$modoevaluacion = $this->db->query('select * from modoevaluacion where idmodoevaluacion="'. $modoevaluacion[$clave-1]["idmodoevaluacion"].'"');
 		 }else{
 
- 		$horasasignatura = $this->db->query('select * from horasasignatura where idhorasasignatura="'. $id.'"');
+ 		$modoevaluacion = $this->db->query('select * from modoevaluacion where idmodoevaluacion="'. $id.'"');
 		 }
 		 	
- 		return $horasasignatura;
+ 		return $modoevaluacion;
  	}
 
 

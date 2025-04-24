@@ -1,25 +1,25 @@
 <?php
 /*----------------------------------------------------------------------------------
-	Arhivo: Modoevaluacion.php -->
-	Modulo: modoevaluacion -->
+	Arhivo: Cumplimientosesion.php -->
+	Modulo: cumplimientosesion -->
 	Descripción: permite administrar la información del modo de evaluacion -->
 	Autor: Stalin Francis -->
 	Fecha: Ultima evaluación: Sabado 4 febrero 2023 -->
 -----------------------------------------------------*/
 
-class Modoevaluacion extends CI_Controller{
+class Cumplimientosesion extends CI_Controller{
 
   public function __construct(){
       parent::__construct();
-      $this->load->model('modoevaluacion_model');
+      $this->load->model('cumplimientosesion_model');
 }
 
 public function index(){
 	if(isset($this->session->userdata['logged_in'])){
-		$data['modoevaluacion']=$this->modoevaluacion_model->modoevaluacion(1)->row_array();
-		$data['title']="Lista de modoevaluaciones";
+		$data['cumplimientosesion']=$this->cumplimientosesion_model->cumplimientosesion(1)->row_array();
+		$data['title']="Lista de cumplimientosesiones";
 		$this->load->view('template/page_header');
-		$this->load->view('modoevaluacion_record',$data);
+		$this->load->view('cumplimientosesion_record',$data);
 		$this->load->view('template/page_footer');
 	}else{
 	 	$this->load->view('template/page_header.php');
@@ -31,9 +31,9 @@ public function index(){
 
 public function add()
 {
-		$data['title']="Nueva modoevaluacion";
+		$data['title']="Nueva cumplimientosesion";
 	 	$this->load->view('template/page_header');		
-	 	$this->load->view('modoevaluacion_form',$data);
+	 	$this->load->view('cumplimientosesion_form',$data);
 	 	$this->load->view('template/page_footer');
 }
 
@@ -41,22 +41,22 @@ public function add()
 public function  save()
 	{
 	 	$array_item=array(
-	 	'idmodoevaluacion' => $this->input->post('idmodoevaluacion'),
+	 	'idcumplimientosesion' => $this->input->post('idcumplimientosesion'),
 	 	'nombre' => $this->input->post('nombre'),
 	 	'ponderacion' => $this->input->post('ponderacion'),
 	 	);
-	 	$this->modoevaluacion_model->save($array_item);
-	 	redirect('modoevaluacion');
+	 	$this->cumplimientosesion_model->save($array_item);
+	 	redirect('cumplimientosesion');
  	}
 
 
 
 public function edit()
 {
-	 	$data['modoevaluacion'] = $this->modoevaluacion_model->modoevaluacion($this->uri->segment(3))->row_array();
- 	 	$data['title'] = "Actualizar modoevaluacion";
+	 	$data['cumplimientosesion'] = $this->cumplimientosesion_model->cumplimientosesion($this->uri->segment(3))->row_array();
+ 	 	$data['title'] = "Actualizar cumplimientosesion";
  	 	$this->load->view('template/page_header');		
- 	 	$this->load->view('modoevaluacion_edit',$data);
+ 	 	$this->load->view('cumplimientosesion_edit',$data);
 	 	$this->load->view('template/page_footer');
  
 }
@@ -64,23 +64,23 @@ public function edit()
 
 	public function  save_edit()
 	{
-		$id=$this->input->post('idmodoevaluacion');
+		$id=$this->input->post('idcumplimientosesion');
 	 	$array_item=array(
 		 	
-		 	'idmodoevaluacion' => $this->input->post('idmodoevaluacion'),
+		 	'idcumplimientosesion' => $this->input->post('idcumplimientosesion'),
 		 	'nombre' => $this->input->post('nombre'),
 	 		'ponderacion' => $this->input->post('ponderacion'),
 	 	);
-	 	$this->modoevaluacion_model->update($id,$array_item);
-	 	redirect('modoevaluacion');
+	 	$this->cumplimientosesion_model->update($id,$array_item);
+	 	redirect('cumplimientosesion');
  	}
 
 
  	public function delete()
  	{
- 		$data=$this->modoevaluacion_model->delete($this->uri->segment(3));
+ 		$data=$this->cumplimientosesion_model->delete($this->uri->segment(3));
  		echo json_encode($data);
-	 	redirect('modoevaluacion/elprimero');
+	 	redirect('cumplimientosesion/elprimero');
 	//	$db['default']['db_debug']=FALSE
  	}
 
@@ -88,26 +88,26 @@ public function edit()
 public function listar()
 {
 	
-  $data['title']="Modoevaluacion";
+  $data['title']="Cumplimientosesion";
 	$this->load->view('template/page_header');		
-  $this->load->view('modoevaluacion_list',$data);
+  $this->load->view('cumplimientosesion_list',$data);
 	$this->load->view('template/page_footer');
 }
 
 
 
-function modoevaluacion_data()
+function cumplimientosesion_data()
 {
 		$draw= intval($this->input->get("draw"));
 		$draw= intval($this->input->get("start"));
 		$draw= intval($this->input->get("length"));
 
 
-	 	$data0 = $this->modoevaluacion_model->lista_modoevaluacions();
+	 	$data0 = $this->cumplimientosesion_model->lista_cumplimientosesions();
 		$data=array();
 		foreach($data0->result() as $r){
-			$data[]=array($r->idmodoevaluacion,$r->numero,$r->nombre,
-				$r->href='<a href="javascript:void(0);" class="btn btn-info btn-sm item_ver"  data-retorno="'.site_url('modoevaluacion/actual').'"     data-idmodoevaluacion="'.$r->idmodoevaluacion.'">Ver</a>');
+			$data[]=array($r->idcumplimientosesion,$r->numero,$r->nombre,
+				$r->href='<a href="javascript:void(0);" class="btn btn-info btn-sm item_ver"  data-retorno="'.site_url('cumplimientosesion/actual').'"     data-idcumplimientosesion="'.$r->idcumplimientosesion.'">Ver</a>');
 		}	
 		$output=array( "draw"=>$draw,
 			"recordsTotal"=> $data0->num_rows(),
@@ -125,12 +125,12 @@ function modoevaluacion_data()
 
 public function actual()
 {
-	$data['modoevaluacion'] = $this->modoevaluacion_model->modoevaluacion($this->uri->segment(3))->row_array();
+	$data['cumplimientosesion'] = $this->cumplimientosesion_model->cumplimientosesion($this->uri->segment(3))->row_array();
   if(!empty($data))
   {
-    $data['title']="Modoevaluacion";
+    $data['title']="Cumplimientosesion";
     $this->load->view('template/page_header');		
-    $this->load->view('modoevaluacion_record',$data);
+    $this->load->view('cumplimientosesion_record',$data);
     $this->load->view('template/page_footer');
   }else{
     $this->load->view('template/page_header');		
@@ -152,12 +152,12 @@ public function actual()
 
 public function elprimero()
 {
-	$data['modoevaluacion'] = $this->modoevaluacion_model->elprimero();
+	$data['cumplimientosesion'] = $this->cumplimientosesion_model->elprimero();
   if(!empty($data))
   {
-    $data['title']="Modoevaluacion";
+    $data['title']="Cumplimientosesion";
     $this->load->view('template/page_header');		
-    $this->load->view('modoevaluacion_record',$data);
+    $this->load->view('cumplimientosesion_record',$data);
     $this->load->view('template/page_footer');
   }else{
     $this->load->view('template/page_header');		
@@ -168,13 +168,13 @@ public function elprimero()
 
 public function elultimo()
 {
-	$data['modoevaluacion'] = $this->modoevaluacion_model->elultimo();
+	$data['cumplimientosesion'] = $this->cumplimientosesion_model->elultimo();
   if(!empty($data))
   {
-    $data['title']="Modoevaluacion";
+    $data['title']="Cumplimientosesion";
   
     $this->load->view('template/page_header');		
-    $this->load->view('modoevaluacion_record',$data);
+    $this->load->view('cumplimientosesion_record',$data);
     $this->load->view('template/page_footer');
   }else{
 
@@ -185,20 +185,20 @@ public function elultimo()
 }
 
 public function siguiente(){
- // $data['modoevaluacion_list']=$this->modoevaluacion_model->lista_modoevaluacion()->result();
-	$data['modoevaluacion'] = $this->modoevaluacion_model->siguiente($this->uri->segment(3))->row_array();
-  $data['title']="Modoevaluacion";
+ // $data['cumplimientosesion_list']=$this->cumplimientosesion_model->lista_cumplimientosesion()->result();
+	$data['cumplimientosesion'] = $this->cumplimientosesion_model->siguiente($this->uri->segment(3))->row_array();
+  $data['title']="Cumplimientosesion";
 	$this->load->view('template/page_header');		
-  $this->load->view('modoevaluacion_record',$data);
+  $this->load->view('cumplimientosesion_record',$data);
 	$this->load->view('template/page_footer');
 }
 
 public function anterior(){
- // $data['modoevaluacion_list']=$this->modoevaluacion_model->lista_modoevaluacion()->result();
-	$data['modoevaluacion'] = $this->modoevaluacion_model->anterior($this->uri->segment(3))->row_array();
-  $data['title']="Modoevaluacion";
+ // $data['cumplimientosesion_list']=$this->cumplimientosesion_model->lista_cumplimientosesion()->result();
+	$data['cumplimientosesion'] = $this->cumplimientosesion_model->anterior($this->uri->segment(3))->row_array();
+  $data['title']="Cumplimientosesion";
 	$this->load->view('template/page_header');		
-  $this->load->view('modoevaluacion_record',$data);
+  $this->load->view('cumplimientosesion_record',$data);
 	$this->load->view('template/page_footer');
 }
 
