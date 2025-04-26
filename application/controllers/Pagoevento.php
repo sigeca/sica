@@ -153,6 +153,20 @@ public function listar()
 	$this->load->view('template/page_footer');
 }
 
+
+
+ public function pagoevento_personaflutter()
+    {
+		$idevento=$this->input->post('idevento');
+		$idpersona=$this->input->post('idpersona');
+	 	$pagoeventos=$this->pagoevento_model->get_pagoeventopersona($idevento,$idpersona);
+        echo json_encode(['data' => $pagoeventos]); // Devolver datos en formato JSON
+ 	}
+
+
+
+
+
 function pagoevento_data()
 {
 		$draw= intval($this->input->get("draw"));
