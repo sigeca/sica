@@ -46,6 +46,25 @@ class Pagoevento_model extends CI_model {
  		return $pagoevento;
  	}
 
+
+
+	function get_pagoeventopersona($idevento,$idpersona){
+		 if($idevento>0)
+                {
+                $this->db->where('idevento='.$idevento);
+                $this->db->where('idpersona="'.$idpersona.'"');
+                $query = $this->db->get('pagoevento1'); // Suponiendo que la tabla se llama 'documentos'
+        return $query->result_array(); // Devolver array de documentos
+         }else{
+
+        return 0;
+
+         }
+	}
+
+
+
+
  	function save($array_item)
  	{
  		$this->db->where('idevento',$array_item['idevento']);
