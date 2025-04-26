@@ -356,7 +356,7 @@ public function cumplimiento(){
     {
 		$idpersona=$this->input->post('idpersona');
 		$estado=$this->input->post('estado');
-	 	$eventos=$this->evento_model->get_evento_flutter($idpersona,$estado);
+	 	$eventos=$this->evento_model->get_evento_flutter($idpersona);
         echo json_encode(['data' => $eventos]); // Devolver datos en formato JSON
  	}
 
