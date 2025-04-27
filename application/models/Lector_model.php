@@ -65,7 +65,7 @@ class Lector_model extends CI_model {
 
 	function elprimero()
 	{
-		$query=$this->db->order_by("idlector")->get('lector');
+		$query=$this->db->order_by("idlector")->get('lector1');
 		if($query->num_rows()>0)
 		{
 			return $query->first_row('array');
@@ -78,7 +78,7 @@ class Lector_model extends CI_model {
 // Para ir al último registro
 	function elultimo()
 	{
-		$query=$this->db->order_by("idlector")->get('lector');
+		$query=$this->db->order_by("idlector")->get('lector1');
 		if($query->num_rows()>0)
 		{
 			return $query->last_row('array');
@@ -90,7 +90,7 @@ class Lector_model extends CI_model {
 
 	// Para moverse al siguiente registro
  	function siguiente($id){
- 		$lector = $this->db->select("idlector")->order_by("idlector")->get('lector')->result_array();
+ 		$lector = $this->db->select("idlector")->order_by("idlector")->get('lector1')->result_array();
 		$arr=array("idlector"=>$id);
 		$clave=array_search($arr,$lector);
 	   if(array_key_exists($clave+1,$lector))
@@ -108,7 +108,7 @@ class Lector_model extends CI_model {
 
 // Para moverse al anterior registro
  	function anterior($id){
- 		$lector = $this->db->select("idlector")->order_by("idlector")->get('lector')->result_array();
+ 		$lector = $this->db->select("idlector")->order_by("idlector")->get('lector1')->result_array();
 		$arr=array("idlector"=>$id);
 		$clave=array_search($arr,$lector);
 	   if(array_key_exists($clave-1,$lector))
