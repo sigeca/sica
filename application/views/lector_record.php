@@ -56,13 +56,13 @@ if(isset($lector))
 
 
 <div class="form-group row">
-    <label class="col-md-2 col-form-label"> <?php echo anchor('tipolector/actual/'.$lector['idtipolector'], 'Documento'); ?></label>
+    <label class="col-md-2 col-form-label"> <?php echo anchor('tipolector/actual/'.$lector['idtipolector'], 'Tipolector'); ?></label>
 
 	<div class="col-md-10">
 		<?php
 	$options= array("NADA");
 	foreach ($tipolectors as $row){
-		$options[$row->idtipolector]= $row->asunto;
+		$options[$row->idtipolector]= $row->nombre;
 	}
 
 $textarea_options = array('class' => 'form-control','rows' => '4',  "disabled"=>"disabled", 'cols' => '20', 'style'=> 'width:500px;height:100px;');    
