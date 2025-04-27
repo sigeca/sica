@@ -88,12 +88,9 @@ $textarea_options = array('class' => 'form-control','rows' => '4',  "disabled"=>
     <label class="col-md-2 col-form-label"> Persona:</label>
 	<div class="col-md-10">
 		<?php
-$options= array("NADA");
-foreach ($trabajointegracioncurriculars as $row){
-	$options[$row->idtrabajointegracioncurricular]= $row->nombres;
-}
-echo form_input('nombre',$options[$lector['idtrabajointegracioncurricular']],array("disabled"=>"disabled"));
-		?>
+
+      echo form_input('ellector',$lector['ellector'],array("disabled"=>"disabled",'placeholder'=>'Idlectors'));
+	?>
 	</div> 
 </div>
  
