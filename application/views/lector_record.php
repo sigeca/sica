@@ -46,27 +46,27 @@ if(isset($lector))
 
 
 <div class="form-group row">
-    <label class="col-md-2 col-form-label"> Id Documento:</label>
+    <label class="col-md-2 col-form-label"> Id Docente:</label>
 	<div class="col-md-10">
 		<?php
-      echo form_input('iddocumento',$lector['iddocumento'],array("disabled"=>"disabled",'placeholder'=>'Iddocumentos'));
+      echo form_input('iddocente',$lector['iddocente'],array("id"=>"iddocente","disabled"=>"disabled",'placeholder'=>'Iddocentes'));
 		?>
 	</div> 
 </div>
 
 
 <div class="form-group row">
-    <label class="col-md-2 col-form-label"> <?php echo anchor('documento/actual/'.$lector['iddocumento'], 'Documento'); ?></label>
+    <label class="col-md-2 col-form-label"> <?php echo anchor('tipolector/actual/'.$lector['idtipolector'], 'Documento'); ?></label>
 
 	<div class="col-md-10">
 		<?php
 	$options= array("NADA");
-	foreach ($documentos as $row){
-		$options[$row->iddocumento]= $row->asunto;
+	foreach ($tipolectors as $row){
+		$options[$row->idtipolector]= $row->asunto;
 	}
 
 $textarea_options = array('class' => 'form-control','rows' => '4',  "disabled"=>"disabled", 'cols' => '20', 'style'=> 'width:500px;height:100px;');    
- echo form_textarea('iddocumento',$options[$lector['iddocumento']],$textarea_options); 
+ echo form_textarea('idtipolector',$options[$lector['idtipolector']],$textarea_options); 
 		?>
 	</div> 
 </div>
@@ -89,25 +89,17 @@ $textarea_options = array('class' => 'form-control','rows' => '4',  "disabled"=>
 	<div class="col-md-10">
 		<?php
 $options= array("NADA");
-foreach ($personas as $row){
-	$options[$row->idpersona]= $row->nombres;
+foreach ($trabajointegracioncurriculars as $row){
+	$options[$row->idtrabajointegracioncurricular]= $row->nombres;
 }
-echo form_input('nombre',$options[$lector['idpersona']],array("disabled"=>"disabled"));
+echo form_input('nombre',$options[$lector['idtrabajointegracioncurricular']],array("disabled"=>"disabled"));
 		?>
 	</div> 
 </div>
  
   
 
-<div class="form-group row">
-    <label class="col-md-2 col-form-label"> Detalle:</label>
-	<div class="col-md-10">
-		<?php
-$textarea_options = array('class' => 'form-control','rows' => '4',  "disabled"=>"disabled",   'cols' => '20', 'style'=> 'width:500px;height:100px;');    
- echo form_textarea('detalle',$lector['detalle'],$textarea_options); 
-		?>
-	</div> 
-</div>
+
 
 
 
