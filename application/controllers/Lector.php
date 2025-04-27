@@ -135,6 +135,7 @@ public function elprimero()
 	$data['lector'] = $this->lector_model->elprimero();
   if(!empty($data))
   {
+	$data['tipolectors']= $this->tipolector_model->lista_tipolector()->result();
   	$data['docentes']= $this->docente_model->lista_docentes()->result();
     $data['title']="Correo";
     $this->load->view('template/page_header');		
@@ -153,6 +154,7 @@ public function elultimo()
 	$data['lector'] = $this->lector_model->elultimo();
   if(!empty($data))
   {
+	$data['tipolectors']= $this->tipolector_model->lista_tipolector()->result();
   	$data['docentes']= $this->docente_model->lista_docentes()->result();
     $data['title']="Correo";
   
@@ -170,6 +172,7 @@ public function elultimo()
 public function siguiente(){
  // $data['lector_list']=$this->lector_model->lista_lector()->result();
   $data['trabajointegracioncurriculars']= $this->trabajointegracioncurricular_model->lista_trabajointegracioncurriculars()->result();
+	$data['tipolectors']= $this->tipolector_model->lista_tipolector()->result();
 	$data['lector'] = $this->lector_model->siguiente($this->uri->segment(3))->row_array();
   	$data['docentes']= $this->docente_model->lista_docentes()->result();
   $data['title']="Correo";
@@ -181,6 +184,7 @@ public function siguiente(){
 public function anterior(){
  // $data['lector_list']=$this->lector_model->lista_lector()->result();
   $data['trabajointegracioncurriculars']= $this->trabajointegracioncurricular_model->lista_trabajointegracioncurriculars()->result();
+	$data['tipolectors']= $this->tipolector_model->lista_tipolector()->result();
 	$data['lector'] = $this->lector_model->anterior($this->uri->segment(3))->row_array();
  	$data['docentes']= $this->docente_model->lista_docentes()->result();
   $data['title']="Correo";
