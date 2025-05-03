@@ -209,8 +209,8 @@ function participacion_data()
 
  public function participacion_persona3flutter()
     {
-		$idevento=$this->input->post('idevento');
-		$fecha=$this->input->post('fecha');
+		$idevento=$this->input->get('idevento');
+		$fecha=$this->input->get('fecha');
 	 	$participaciones=$this->participacion_model->get_participacionxeventoxfecha($idevento,$fecha);
         echo json_encode(['data' => $participaciones]); // Devolver datos en formato JSON
  	}
