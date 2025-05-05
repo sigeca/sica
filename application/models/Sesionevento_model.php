@@ -118,6 +118,7 @@ class Sesionevento_model extends CI_model {
     		$fecha = date("Y-m-d");
     		$hora= date("H:i:s");
 
+    // Verifica si ya existe una sesión con el mismo idevento y fecha
 		$condition ="idevento="."'". $array['idevento']."' and  fecha=". "'".$array['fecha']."'";
 		$this->db->select('*');
 		$this->db->from('sesionevento0');
@@ -130,19 +131,33 @@ class Sesionevento_model extends CI_model {
 			if($this->db->affected_rows()>0)
 			{
 			$idsesionevento=$this->db->insert_id();
-		$this->db->insert("vitacora", array("idusuario"=>$this->session->userdata['logged_in']['idusuario'],"fecha"=>$fecha,"hora"=>$hora,"tabla"=>"sesionevento","accion"=>"se creo una nueva sesion de evento con id=".$idsesionevento,"url"=>$_SERVER['REQUEST_URI']));
+            $this->db->insert("vitacora", array(
+                "idusuario"=>$this->session->userdata['logged_in']['idusuario'],
+                "fecha"=>$fecha,
+                "hora"=>$hora,
+                "tabla"=>"sesionevento",
+                "accion"=>"se creo una nueva sesion de evento con id=".$idsesionevento,
+                "url"=>$_SERVER['REQUEST_URI']));
 				return true;
 			}else{
 				return false;
 			}
 		}else{
+            // Ya existe se actualiza la sessión
 			$this->db->where('fecha',$array['fecha']);
 			$this->db->where('idevento',$array['idevento']);
 			$this->db->update('sesionevento',$array);
 
 			if($this->db->affected_rows()>0)
 			{
-		$this->db->insert("vitacora", array("idusuario"=>$this->session->userdata['logged_in']['idusuario'],"fecha"=>$fecha,"hora"=>$hora,"tabla"=>"sesionevento","accion"=>"se modifico la sesion evento con id=".$array['idsesionevento'],"url"=>$_SERVER['REQUEST_URI']));
+            //Registro en vitacora
+                $this->db->insert("vitacora", array(
+                    "idusuario"=>$this->session->userdata['logged_in']['idusuario'],
+                    "fecha"=>$fecha,
+                    "hora"=>$hora,
+                    "tabla"=>"sesionevento",
+                    "accion"=>"se modifico la sesion evento con id=".$array['idsesionevento'],
+                    "url"=>$_SERVER['REQUEST_URI']));
 
 				return true;
 			}else{
@@ -154,14 +169,20 @@ class Sesionevento_model extends CI_model {
  	function update($id,$array_item)
  	{
    		date_default_timezone_set('America/Guayaquil');
-    		$fecha = date("Y-m-d");
-    		$hora= date("H:i:s");
+    	$fecha = date("Y-m-d");
+    	$hora= date("H:i:s");
 
  		$this->db->where('idsesionevento',$id);
  		$this->db->update('sesionevento',$array_item);
 		if($this->db->affected_rows()>0)
 		{
-		$this->db->insert("vitacora", array("idusuario"=>$this->session->userdata['logged_in']['idusuario'],"fecha"=>$fecha,"hora"=>$hora,"tabla"=>"sesionevento","accion"=>"se modifico la sesion evento con id=".$id,"url"=>$_SERVER['REQUEST_URI']));
+            $this->db->insert("vitacora", array(
+                "idusuario"=>$this->session->userdata['logged_in']['idusuario'],
+                "fecha"=>$fecha,
+                "hora"=>$hora,
+                "tabla"=>"sesionevento",
+                "accion"=>"se modifico la sesion evento con id=".$id,
+                "url"=>$_SERVER['REQUEST_URI']));
 			return true;
 		}else{
 			return false;
