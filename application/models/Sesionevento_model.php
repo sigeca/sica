@@ -184,9 +184,9 @@ class Sesionevento_model extends CI_model {
                 "accion"=>"se modifico la sesion evento con id=".$id,
                 "url"=>$_SERVER['REQUEST_URI']));
 			return true;
-		}else{
-			return false;
 		}
+		return false;
+		
 	}
  
 
