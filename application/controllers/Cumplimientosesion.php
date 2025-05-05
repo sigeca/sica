@@ -43,7 +43,6 @@ public function  save()
 	 	$array_item=array(
 	 	'idcumplimientosesion' => $this->input->post('idcumplimientosesion'),
 	 	'nombre' => $this->input->post('nombre'),
-	 	'ponderacion' => $this->input->post('ponderacion'),
 	 	);
 	 	$this->cumplimientosesion_model->save($array_item);
 	 	redirect('cumplimientosesion');
@@ -69,7 +68,6 @@ public function edit()
 		 	
 		 	'idcumplimientosesion' => $this->input->post('idcumplimientosesion'),
 		 	'nombre' => $this->input->post('nombre'),
-	 		'ponderacion' => $this->input->post('ponderacion'),
 	 	);
 	 	$this->cumplimientosesion_model->update($id,$array_item);
 	 	redirect('cumplimientosesion');
