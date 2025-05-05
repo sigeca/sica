@@ -303,7 +303,6 @@ class Sesionevento extends CI_Controller{
 
 	if($this->input->post('temasilabo')==1)
 	{
-
 		if($idtema>0){
 		$array_tema=array(
 	 		'nombrecorto' => $this->input->post('temacorto'),
@@ -344,7 +343,6 @@ class Sesionevento extends CI_Controller{
 	 	);
 	 	$result=$this->sesionevento_model->update($id,$array_item);
 	}else{
-
 	 	$array_item=array(
 		 	'idevento' => $this->input->post('idevento'),
 		 	'fecha' => $this->input->post('fecha'),
@@ -356,9 +354,8 @@ class Sesionevento extends CI_Controller{
 		 	'idmodoevaluacion' => $this->input->post('idmodoevaluacion'),
 		 	'idcumplimientosesion' => $this->input->post('idcumplimientosesion'),
 	 	);
+        print_r($array_item); die();
 	 	$result=$this->sesionevento_model->update($id,$array_item);
-
-
 
 	}
 	 	if($result==false)
