@@ -175,16 +175,12 @@ class Sesionevento_model extends CI_model {
  		$this->db->where('idsesionevento',$id);
  		$this->db->update('sesionevento',$array_item);
 		if($this->db->affected_rows()>0)
-		{
-            $this->db->insert("vitacora", array(
-                "idusuario"=>$this->session->userdata['logged_in']['idusuario'],
-                "fecha"=>$fecha,
-                "hora"=>$hora,
-                "tabla"=>"sesionevento",
-                "accion"=>"se modifico la sesion evento con id=".$id,
-                "url"=>$_SERVER['REQUEST_URI']));
-			return true;
+			{
+            $this->registrar_vitacora("sesionevento", "Se modificó la sesión de evento con id = $id");
+		    return true;
 		}
+        die("no esta grabando");
+
 		return false;
 		
 	}
@@ -231,7 +227,20 @@ class Sesionevento_model extends CI_model {
  	}
 
 
+private function registrar_vitacora($tabla, $accion)
+{
+    $fecha = date("Y-m-d");
+    $hora  = date("H:i:s");
 
+    $this->db->insert("vitacora", array(
+        "idusuario" => $this->session->userdata['logged_in']['idusuario'],
+        "fecha"     => $fecha,
+        "hora"      => $hora,
+        "tabla"     => $tabla,
+        "accion"    => $accion,
+        "url"       => $_SERVER['REQUEST_URI']
+    ));
+}
 
 
 
