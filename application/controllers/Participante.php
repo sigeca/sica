@@ -227,7 +227,7 @@ public function listar()
 
 
       function participante_dataflutter() {
-        $idevento = $this->input->gets('idevento'); // Obtener parámetro GET
+        $idevento = $this->input->get('idevento'); // Obtener parámetro GET
 
         if (!$idevento) {
             echo json_encode(['error' => 'Falta el parámetro idevento']);
