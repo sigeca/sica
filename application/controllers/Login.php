@@ -530,8 +530,8 @@ public function save_geolocalizacion()
 
  public function login_flutter()
     {
-		$email=$this->input->get('email');
-		$password=$this->input->get('password');
+		$email=$this->input->post('email');
+		$password=$this->input->post('password');
 	 	$login=$this->login_model->get_accesoflutter($email,$password);
         echo json_encode(['data' => $login]); // Devolver datos en formato JSON
  	}
