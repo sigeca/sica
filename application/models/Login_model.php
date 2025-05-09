@@ -68,6 +68,15 @@ Class Login_model extends CI_Model {
 
 	}
 
+	function get_accesoflutter($email,$password){
+                $this->db->where('email='.$email);
+                $this->db->where('password="'.$password.'"');
+                $this->db->where('onoff=1');
+                $query = $this->db->get('password1'); // Suponiendo que la tabla se llama 'documentos'
+        return $query->result_array(); // Devolver array de documentos
+
+	}
+
 
 
 
