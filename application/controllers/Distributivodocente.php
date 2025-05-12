@@ -336,7 +336,6 @@ echo "El script tardó " . $tiempoEjecucion . " segundos en ejecutarse toas las 
 
 		$data['ordenrpt']= $this->input->get("orden") ;	
 		$ordenrpt= $this->input->get("orden");
-        die("llego aqui");
 	 	$data['asignaturadocentes']= $this->asignaturadocente_model->asignaturadocentexdistributivo2($iddistributivo,$ordenrpt)->result();
 		$this->load->view('distributivodocente_genpagina',$data);
 		}	
