@@ -118,7 +118,7 @@ class Asignaturadocente_model extends CI_model {
 
 			}
 	if($orden==3){
- 			$asignaturadocente = $this->db->query('select * from asignaturadocente4 where iddistributivo="'. $id.'" order by fechainicia');
+ 			$asignaturadocente = $this->db->query('select * from asignaturadocente4 where iddistributivo="'. $id.'" order by fechainicia desc');
 
 			}
 		}else{
