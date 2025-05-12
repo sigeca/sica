@@ -527,7 +527,6 @@ $data='
 
 		$qridx='-'.$ordenrpt;
 		}
-die();
 
 
 
