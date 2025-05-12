@@ -515,6 +515,7 @@ $data='
 		}else{
 			if($ordenrpt==3){
 				$elorden=" ordenado por fecha ";
+                echo $elorden;
 
             }
 			if($ordenrpt==1){
@@ -526,7 +527,7 @@ $data='
 
 		$qridx='-'.$ordenrpt;
 		}
-
+die();
 
 
 
