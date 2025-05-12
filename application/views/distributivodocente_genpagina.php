@@ -513,13 +513,15 @@ $data='
 		$qridx='';
 		$elorden=" ordenado por nivel";
 		}else{
+			if($ordenrpt==3){
+				$elorden=" ordenado por fecha ";
 
+            }
 			if($ordenrpt==1){
 				$elorden=" ordenado por docente";
-			}else{
+            }
+			if($ordenrpt==2){
 				$elorden=" ordenado por asignatura";
-
-
 			}
 
 		$qridx='-'.$ordenrpt;
