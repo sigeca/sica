@@ -264,6 +264,7 @@ public function genpagina()
 {
 	$iddistributivo=0;
 
+
 	$ordenrpt=0;
 	if($this->uri->segment(3))
 	{
@@ -331,10 +332,10 @@ echo "El script tardó " . $tiempoEjecucion . " segundos en ejecutarse toas las 
 		$this->load->view('distributivodocente_genpagina',$data);
 		}
 
-		if($this->input->get("orden")==2){
+		if($this->input->get("orden")>1){
 
-		$data['ordenrpt']=2;	
-		$ordenrpt=2;
+		$data['ordenrpt']= $this->input->get("orden") ;	
+		$ordenrpt= $this->input->get("orden");
 	 	$data['asignaturadocentes']= $this->asignaturadocente_model->asignaturadocentexdistributivo2($iddistributivo,$ordenrpt)->result();
 		$this->load->view('distributivodocente_genpagina',$data);
 		}	
