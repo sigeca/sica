@@ -546,9 +546,9 @@ $data=$data.'
       </div>
     </div>
   </section>
+';
 
-
-
+/*
 <button class="toggle-btn" onclick="toggleContenido(this)">+</button>Estadística de cumplimiento.
 <div class="contenido" id="contenedor1">
 <div class="col">
@@ -573,6 +573,7 @@ $data=$data.'
    	</div>
 </div>
  </div>';
+ */
 
 $data=$data.'<br><button class="toggle-btn" onclick="toggleContenido(this)">+</button>'.$row->nivel.'.
 <div class="contenido">
