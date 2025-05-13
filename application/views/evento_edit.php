@@ -171,7 +171,16 @@ foreach ($silabos as $row){
  echo form_textarea($textarea_options); ?></td>
   </tr>
 
-   
+
+<tr>
+  <td>Aula virtual:</td>
+  <td><?php 
+  
+$textarea_options = array('class' => 'form-control','rows' => '4',   'cols' => '20', 'style'=> 'width:50%;height:100px;', "placeholder"=>"Aula virtual" );    
+echo form_textarea('aulavirtual',$evento['aulavirtual'],$textarea_options ); ?></td>
+ </tr>
+
+
 
 </table>
 <?php echo form_close(); ?>

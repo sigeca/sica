@@ -357,6 +357,17 @@ echo form_input($arrdatos) ?>
 </div>
 
 
+<div class="form-group row">
+    <label class="col-md-2 col-form-label"> Aula virtual:</label>
+	<div class="col-md-10">
+      <?php
+	$textarea_options = array('class' => 'form-control','rows' => '4',   'cols' => '20',"disabled"=>"disabled", 'style'=> 'width:600px;height:100px;');    
+    echo form_textarea('aulavirtual',$evento['aulavirtual'],$textarea_options);
+	?>
+	</div> 
+</div>
+
+
 
 
 <div class="form-group row">

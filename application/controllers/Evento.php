@@ -131,6 +131,7 @@ public function cumplimiento(){
 			'idsilabo' => $this->input->post('idsilabo'),
 			'codigoclassroom' => $this->input->post('codigoclassroom'),
 			'totalinscritos' => $this->input->post('totalinscritos'),
+			'aulavirtual' => $this->input->post('aulavirtual'),
 			'idasignaturadocente' => $this->input->post('idasignaturadocente'),
 			'idcalendarioacademico' => $this->input->post('idcalendarioacademico'),
 	 	);	 
@@ -215,6 +216,7 @@ public function cumplimiento(){
 			'idsilabo' => $this->input->post('idsilabo'),
 			'codigoclassroom' => $this->input->post('codigoclassroom'),
 			'totalinscritos' => $this->input->post('totalinscritos'),
+			'aulavirtual' => $this->input->post('aulavirtual'),
 			'idasignaturadocente' => $this->input->post('idasignaturadocente'),
 			'idcalendarioacademico' => $this->input->post('idcalendarioacademico'),
 	 	);

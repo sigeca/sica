@@ -893,16 +893,27 @@ $data=$data.'</div>
 
 
 
-
-
+$mostraraulavirtual=0;
 foreach($jornadadocente as $rowj){
 			if(isset($rowj[$row->idasignaturadocente]['idasignaturadocente'])){		
+
+
+                if($rowj[$row->idasignaturadocente]['elaula']=="VIRTUAL"){
+                    $mostraraulavirtual=1;
+                }
 
 			$data=$data.'<b>'.$rowj[$row->idasignaturadocente]['nombre'] .': </b><span style="color:red">'.$rowj[$row->idasignaturadocente]['horainicio'].'('.$rowj[$row->idasignaturadocente]['duracionminutos'].'),</span> - aula:<a href="https://repositorioutlvte.org/Repositorio/aulas/aula'.$rowj[$row->idasignaturadocente]['idaula'].'.jpg"> <i class="fas fa-map-marker-alt" style="font-size:24px" ></i> ' .$rowj[$row->idasignaturadocente]['elaula'].'</a><br>';
 
 		$k=$k+$rowj[$row->idasignaturadocente]['duracionminutos']/60;
 			}	
 		}
+
+            if($mostraraulavirtual==1){
+                
+            $data=$data.' <b>Aulavirtual : </b><br><span style="color:red">'.$row->aulavirtual.'.</span><br>';
+
+            }
+
 
 
 			$disabled='';
