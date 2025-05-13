@@ -370,8 +370,8 @@ CHANGE COLUMN fechacalendario fechadesde DATE NOT NULL,
 ADD COLUMN fechahasta DATE NOT NULL;
 */
 
-
+/*
 alter table sesionevento add column  idcumplimientosesion int default 1; 
+*/
 
-
-
+alter table evento add column aulavirtual text not null;
