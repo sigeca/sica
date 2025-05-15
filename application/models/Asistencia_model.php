@@ -25,6 +25,7 @@ class Asistencia_model extends CI_model {
 	function get_asistenciapersona($idevento,$idpersona){
 		 if($idevento>0)
                 {
+		        $this->db->order_by("fecha desc");
                 $this->db->where('idevento='.$idevento);
                 $this->db->where('idpersona="'.$idpersona.'"');
                 $query = $this->db->get('asistencia1'); // Suponiendo que la tabla se llama 'documentos'
