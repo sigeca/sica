@@ -214,7 +214,7 @@ async function get_estado() {
                     idparalelo: $('select[name=idparalelo]').val()
             },
             method: 'POST',
-            dataType : 'json',
+            dataType: 'json',
         });
         console.log(response);
         let html='';
