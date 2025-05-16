@@ -357,7 +357,103 @@ $(document).ready(function(){
 
 
 
+ $('#show_data').on('click', '#tuElementoDisparador', function() { // Reemplaza '#tuElementoDisparador' con el selector real del elemento que dispara esta función
 
+        const $this = $(this); // Almacena la referencia a $(this) en una variable
+
+        const periodoAcademico = $this.data('elperiodoacademico');
+        const asignatura = $this.data('laasignatura');
+        const paralelo = $this.data('paralelo');
+        const idPeriodoAcademico = $this.data('idperiodoacademico');
+        const idDocente = $this.data('iddocente');
+        const idPersona = $this.data('idpersona');
+        const idAsignatura = $this.data('idasignatura');
+        const idAsignaturaDocente = $this.data('idasignaturadocente');
+
+        const nombre = `${periodoAcademico} - ${asignatura}`;
+        const titulo = `${periodoAcademico} - P${paralelo} - ${asignatura}`;
+        const descripcion = nombre; // Ya que parece ser igual a nombre
+        const duracionSilabo = "4 meses";
+        const linkDetalle = "";
+        let idSilabo = 0;
+        let idCalendarioAcademico = 0;
+        let fechaInicia = "";
+        let fechaFinaliza = "";
+
+        $.ajax({
+            url: '<?php echo site_url('silabo/save')?>',
+            method: 'POST',
+            data: {
+                nombre: nombre,
+                descripcion: descripcion,
+                idperiodoacademico: idPeriodoAcademico,
+                iddocente: idDocente,
+                idasignatura: idAsignatura,
+                duracion: duracionSilabo,
+                linkdetalle: linkDetalle
+            },
+            dataType: 'json',
+            success: function(data) {
+                idSilabo = data.idsilabo;
+                idCalendarioAcademico = data.idcalendarioacademico;
+                fechaInicia = data.fechainicio;
+                fechaFinaliza = data.fechafin;
+
+                // Llamada AJAX para evento después de completar la primera
+                const idTipoEvento = 2; // CURSOS DE MALLA
+                const idEventoEstado = 2; // INSCRIPCION
+                const idInstitucion = 1; // Universidad Tecnica Luis Vargas Torres
+                const detalleEvento = titulo;
+                const idUsuario = 0;
+                const fechaEvento = new Date();
+                const duracionEvento = 0;
+                const costoEvento = 0;
+                const codigoClassroom = "";
+
+                $.ajax({
+                    url: '<?php echo site_url('evento/save')?>',
+                    method: 'POST',
+                    data: {
+                        idtipoevento: idTipoEvento,
+                        idevento_estado: idEventoEstado,
+                        idinstitucion: idInstitucion,
+                        titulo: titulo,
+                        fechainicia: fechaInicia,
+                        fechafinaliza: fechaFinaliza,
+                        detalle: detalleEvento,
+                        idusuario: idUsuario,
+                        fecha: fechaEvento.toISOString(), // Formatea la fecha para la petición
+                        duracion: duracionEvento,
+                        costo: costoEvento,
+                        idsilabo: idSilabo,
+                        codigoclassroom: codigoClassroom,
+                        idasignaturadocente: idAsignaturaDocente,
+                        idcalendarioacademico: idCalendarioAcademico,
+                        idpersona: idPersona
+                    },
+                    success: function(dataEvento) {
+                        // Manejar la respuesta de la segunda llamada AJAX si es necesario
+                        console.log("Evento guardado:", dataEvento);
+                    },
+                    error: function(xhrEvento, ajaxOptionsEvento, thrownErrorEvento) {
+                        console.error("Error al guardar evento:", xhrEvento.status, thrownErrorEvento);
+                        alert(`Error al guardar evento: ${xhrEvento.status} - ${thrownErrorEvento}`);
+                    }
+                });
+
+            },
+            error: function(xhr, ajaxOptions, thrownError) {
+                console.error("Error al guardar sílabo:", xhr.status, thrownError);
+                alert(`Error al guardar sílabo: ${xhr.status} - ${thrownError}`);
+            }
+        });
+
+    });
+
+
+
+
+/*
 
 $('#show_data').on('click','.item_gesi',function(){
 var nombre= $(this).data('elperiodoacademico')+" - "+$(this).data('laasignatura') ;
@@ -394,9 +490,9 @@ $.ajax({url: '<?php echo site_url('silabo/save')?>',
 
 	    })
 
-	var idtipoevento=2; // CURSOS DE MALLA
-	var idevento_estado=2; //INSCRIPCION
-	var idinstitucion=1;  //Universidad Tecnica Luis Vargas Torres
+	var idtipoevento=2; 
+	var idevento_estado=2; 
+	var idinstitucion=1;  
 	var detalle =titulo;
 	var idusuario=0;
 	var fecha= new Date();
@@ -420,7 +516,7 @@ $.ajax({url: '<?php echo site_url('evento/save')?>',
 
 	});
 
-
+*/
 
 
 
