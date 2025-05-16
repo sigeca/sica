@@ -206,7 +206,7 @@ function get_docentes() {
 
 async function get_estado() {
         try{
-        const response= await $.ajax({:
+        const response= await $.ajax({
             url: "<?php echo site_url('asignaturadocente/get_estado') ?>",
             data: {
                     iddistributivo: $('select[name=iddistributivo]').val(),
