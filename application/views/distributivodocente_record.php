@@ -357,7 +357,7 @@ $(document).ready(function(){
 
 
 
- $('#show_data').on('click', '#tuElementoDisparador', function() { // Reemplaza '#tuElementoDisparador' con el selector real del elemento que dispara esta función
+ $('#show_data').on('click', '.item_gesi', function() { // Reemplaza '#tuElementoDisparador' con el selector real del elemento que dispara esta función
 
         const $this = $(this); // Almacena la referencia a $(this) en una variable
 
