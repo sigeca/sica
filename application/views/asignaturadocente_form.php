@@ -175,7 +175,7 @@ function get_docentes() {
 
 
 
-function get_asignaturas() {
+  function get_asignaturas() {
 	var idmalla = $('select[name=idmalla]').val();
     $.ajax({
         url: "<?php echo site_url('asignaturadocente/get_asignaturas') ?>",
@@ -204,8 +204,7 @@ function get_asignaturas() {
 
 
 
-function get_estado() {
-
+async function get_estado() {
         try{
         const response= await $.ajax({:
             url: "<?php echo site_url('asignaturadocente/get_estado') ?>",
