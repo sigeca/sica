@@ -205,41 +205,32 @@ function get_asignaturas() {
 
 
 function get_estado() {
-	var iddistributivo = $('select[name=iddistributivo]').val();
-//	var iddistributivodocente = $('select[name=iddistributivodocente]').val();
-	var idasignatura = $('select[name=idasignatura]').val();
-	var idparalelo = $('select[name=idparalelo]').val();
-	alert(iddistributivo);
-	alert(idasignatura);
-	alert(idparalelo);
-    $.ajax({
-        url: "<?php echo site_url('asignaturadocente/get_estado') ?>",
-        data: {iddistributivo:iddistributivo,idasignatura:idasignatura,idparalelo:idparalelo},
-        method: 'POST',
-	async : false,
-        dataType : 'json',
-        success: function(data){
-		console.log(data);
-        var html = '';
-        var i=0;
-        for(i=0; i<data.length; i++){
-        html += '<option value='+data[i].idestadoasignaturadocente+'>'+data[i].estado+'</option>';
-        }
-	if(i==0)
-	{
 
-        html += '<option value=1>'+'VACANTE'+'</option>';
-	}
-        $('#idestadoasignaturadocente').html(html);
-
-
-        },
-      error: function (xhr, ajaxoptions, thrownerror) {
-        alert(xhr.status);
-        alert(thrownerror);
+        try{
+        const response= await $.ajax({:
+            url: "<?php echo site_url('asignaturadocente/get_estado') ?>",
+            data: {
+                    iddistributivo: $('select[name=iddistributivo]').val(),
+                    idasignatura: $('select[name=idasignatura]').val(),
+                    idparalelo: $('select[name=idparalelo]').val()
+            },
+            method: 'POST',
+            dataType : 'json',
+        });
+        console.log(response);
+        let html='';
+        response.forEach(item=>{
+                html += '<option value="${item.idestadoasignaturadocente}">${item.estado}</option>';
+            });
+            if(response.length===0)
+            {
+                html += '<option value="1">VACANTE</option>';
+            }
+            $('#idestadoasignaturadocente').html(html);
+      } catch(error){ 
+            alert(error.status);
+            alert(error.responseText);
       }
-    })
-
 }
 
 
