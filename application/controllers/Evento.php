@@ -144,8 +144,23 @@ public function cumplimiento(){
 			'grupoletra' => "Docente",
 		);
 
-	 	$this->evento_model->save($array_item,$array_participante1);
-	 	redirect('evento');
+	 	$save_result = $this->evento_model->save($array_item,$array_participante1);
+
+     if ($save_result) {
+        redirect('evento'); // Redirige solo si el guardado fue exitoso
+    } else {
+        // Log the error or send a JSON response indicating failure
+        log_message('error', 'Error al guardar evento desde el controlador.');
+        $this->output
+            ->set_status_header(500)
+            ->set_content_type('application/json')
+            ->set_output(json_encode(['error' => 'Error al guardar el evento en la base de datos.']));
+    }
+
+
+
+
+
  	}
 
 

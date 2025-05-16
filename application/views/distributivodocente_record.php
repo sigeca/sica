@@ -409,6 +409,7 @@ $(document).ready(function(){
                 const duracionEvento = 0;
                 const costoEvento = 0;
                 const codigoClassroom = "";
+                const aulavirtual = "";
 
                 $.ajax({
                     url: '<?php echo site_url('evento/save')?>',
@@ -427,6 +428,7 @@ $(document).ready(function(){
                         costo: costoEvento,
                         idsilabo: idSilabo,
                         codigoclassroom: codigoClassroom,
+                        aulavirtual: aulavirtual,
                         idasignaturadocente: idAsignaturaDocente,
                         idcalendarioacademico: idCalendarioAcademico,
                         idpersona: idPersona
