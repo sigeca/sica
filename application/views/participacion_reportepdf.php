@@ -1,272 +1,582 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
-require_once 'plantilla2.php'; // Asumiendo que plantilla2.php está en application/libraries/
+	include 'plantilla2.php';
+//	require 'conexion.php';
+	
+//	$query = "SELECT e.estado, m.id_municipio, m.municipio FROM t_municipio AS m INNER JOIN t_estado AS e ON m.id_estado=e.id_estado";
+//	$resultado = $mysqli->query($query);
 
-class Reporte_Notas extends CI_Controller {
-
-    public function __construct() {
-        parent::__construct();
-        $this->load->database();
-        $this->load->helper('form');
-        // También puedes cargar modelos aquí si los usas para obtener datos
-        // $this->load->model('evento_model');
-        // $this->load->model('participacion_model');
-    }
-
-    public function generar_reporte() {
-        // 1. Obtención de datos (idealmente desde modelos, NO consultas directas aquí)
-        $idparticipanteestado = $this->input->get('idparticipanteestado', TRUE) ? $this->input->get('idparticipanteestado', TRUE) : 0;
-        $idpersona = $this->input->get('idpersona', TRUE) ? $this->input->get('idpersona', TRUE) : 0;
-
-        // ** Asume que estas variables ya están cargadas con datos **
-        // ** (Aquí deberías llamar a tus modelos para obtenerlas) **
-        $evento = ['titulo' => 'Reporte de Notas del Curso XYZ', 'fechainicia' => '2024-01-15', 'fechafinaliza' => '2024-05-15']; // Ejemplo
-        $asignatura = [(object)['nombre' => 'Programación Web I']]; // Ejemplo
-        $distributivodocente = [(object)['eldocente' => 'Ing. Juan Pérez']]; // Ejemplo
-        $calendarioacademico = [(object)['nombre' => 'Periodo Académico 2024-2025', 'fechadesde' => '2024-01-01', 'fechahasta' => '2024-12-31']]; // Ejemplo
-        $fechacorte = ['2024-03-31', '2024-06-30']; // Ejemplo, debería ser un array de objetos o solo fechas
-        $asistencias = []; // Rellenar con tus datos reales
-        $jornadadocente = []; // Rellenar con tus datos reales
-        $sesiondictada = []; // Rellenar con tus datos reales
-        $sesioneventos = []; // Rellenar con tus datos reales
-        $participacion = []; // Rellenar con tus datos reales
-        $nivelrpt = 0; // Ejemplo
-
-        // --- PRE-CARGA DE DATOS PARA EVITAR MÚLTIPLES CONSULTAS EN BUCLUES ---
-        $participacion2_data_sum = []; // Para sum(porcentaje)
-        $participacion2_data_count = []; // Para count(porcentaje)
-
-        // Ajusta esta consulta para que sea lo más eficiente posible
-        $query_p2 = $this->db->query("SELECT idpersona, idevento, fecha, porcentaje FROM participacion2 WHERE idmodoevaluacion=1");
-        foreach ($query_p2->result() as $p2_row) {
-            $key = $p2_row->idpersona . '_' . $p2_row->idevento . '_' . $p2_row->fecha;
-            if (!isset($participacion2_data_sum[$key])) {
-                $participacion2_data_sum[$key] = 0;
-                $participacion2_data_count[$key] = 0;
-            }
-            $participacion2_data_sum[$key] += $p2_row->porcentaje;
-            $participacion2_data_count[$key]++;
-        }
-        // --- FIN PRE-CARGA ---
-
-        // Inicializar PDF
-        $pdf = new PDF();
-        $pdf->SetMargins(23, 10, 11.7);
-        $pdf->SetAutoPageBreak(true, 40);
-
-        // Set header information
-        $pdf->institucion = 'UNIVERSIDAD TÉCNICA LUIS VARGAS TORRES DE ESMERALDAS';
-        $pdf->unidad = 'FACULTAD DE INGENIERIAS (FACI)';
-        $pdf->departamento = 'CARRERA EN TECNOLOGÍA DE LA INFORMACIÓN';
-        $pdf->titulo = $evento['titulo'];
-        $pdf->asignatura = "Asignatura: " . $asignatura[0]->nombre;
-        $pdf->docente = "Docente: " . $distributivodocente[0]->eldocente;
-        $pdf->mes = "Periodo: " . $calendarioacademico[0]->nombre;
-
-        $pdf->AliasNbPages();
-        $pdf->AddPage('L'); // Horizontal orientation
-
-        // --- Impresión del Encabezado (dentro de la página, si no lo manejas en Header() de plantilla2.php) ---
-        // Si tu plantilla2.php ya tiene un Header() personalizado que usa estas variables, no dupliques esto aquí.
-        // Esto es un ejemplo de cómo lo harías si no estuviera en Header()
-        $pdf->SetFont('Arial','B',12);
-        $pdf->Cell(0,6,utf8_decode($pdf->institucion),0,1,'C');
-        $pdf->SetFont('Arial','',10);
-        $pdf->Cell(0,5,utf8_decode($pdf->unidad),0,1,'C');
-        $pdf->SetFont('Arial','',9);
-        $pdf->Cell(0,5,utf8_decode($pdf->departamento),0,1,'C');
-        $pdf->Ln(5);
-        $pdf->SetFont('Arial','B',11);
-        $pdf->Cell(0,5,utf8_decode($pdf->titulo),0,1,'C');
-        $pdf->Ln(3);
-        $pdf->SetFont('Arial','',8);
-        $pdf->Cell(0,4,utf8_decode($pdf->asignatura),0,1,'L');
-        $pdf->Cell(0,4,utf8_decode($pdf->docente),0,1,'L');
-        $pdf->Cell(0,4,utf8_decode($pdf->mes),0,1,'L');
-        $pdf->Ln(5);
-        // --- Fin Impresión Encabezado ---
+	    $this->load->database();
+	    $this->load->helper('form');
 
 
-        // ... (resto de tus inicializaciones) ...
-        $aprobados = 0;
-        $reprobados = 0;
-        $desertores = 0;
-        $parcial = array();
-        $nnotas = array();
-        foreach ($fechacorte as $p => $fc) {
-            $parcial[$p] = 0;
-            $nnotas[$p] = 0;
-        }
-        $nparcial = 0;
-        $pdf->SetFont('Arial', '', 7);
-        $id = 0;
-        $i = 0;
-
-        // ... (Lógica para calcular $arrasistencia y $sesiontotal) ...
-        // Esta parte es compleja y se mantiene como está, asumiendo que funciona.
-
-        // Encabezado de la tabla
-        $pdf->SetFillColor(232, 232, 232);
-        $pdf->SetFont('Arial', 'B', 8);
-
-        // Define anchos de columna para mejor control visual
-        $col_num = 5;
-        $col_participante = 55;
-        $col_ge = 5;
-        $col_co = 5;
-        $col_sesion = 8; // Para temacorto
-        $col_parcial = 10;
-        $col_asistencia = 12;
-        $col_promedio = 10;
-        $col_as_total = 12;
+	if(isset($_GET["idparticipanteestado"]))
+	{
+		$idparticipanteestado=$_GET["idparticipanteestado"];
+	}else{
+		$idparticipanteestado=0;
+	}
+        
 
 
-        $pdf->Cell($col_num, 5, '#', 1, 0, 'C', 1);
-        $pdf->Cell($col_participante, 5, 'Participante', 1, 0, 'C', 1);
-        $pdf->Cell($col_ge, 5, 'GE', 1, 0, 'C', 1);
-        $pdf->Cell($col_co, 5, 'CO', 1, 0, 'C', 1);
-        foreach ($sesioneventos as $row) {
-            $pdf->Cell($col_sesion, 5, $row->temacorto, 1, 0, 'C', 1);
-        }
-        $pdf->Cell($col_parcial, 5, 'P1', 1, 0, 'C', 1);
-        $pdf->Cell($col_asistencia, 5, 'As1('. ($sesiontotal[0] ?? 0) .')', 0, 'C', 1);
-        $pdf->Cell($col_parcial, 5, 'P2', 1, 0, 'C', 1);
-        $pdf->Cell($col_asistencia, 5, 'As2('. ($sesiontotal[1] ?? 0) .')', 0, 'C', 1);
-        $pdf->Cell($col_promedio, 5, 'Prom', 1, 0, 'C', 1);
-        $asT = ($sesiontotal[0] ?? 0) + ($sesiontotal[1] ?? 0);
-        $pdf->Cell($col_as_total, 5, 'AsT('. $asT .')', 1, 1, 'C', 1);
+	if(isset($_GET["idpersona"]))
+	{
+		$idpersona=$_GET["idpersona"];
+	}else{
+		$idpersona=0;
+	}
+        
 
-        // Data processing and table rows
-        $arrparticipacion = array();
-        $arrgenero1 = array(); $arrgenero2 = array();
-        $arrcolegio1 = array(); $arrcolegio2 = array();
-        $arrayuda = array();
-        $xparti = array();
-        $datag = array();
-        $datac = array();
-        $fill = false; // Para alternar colores de fila
+	$pdf = new PDF();
 
-        foreach ($participacion as $row) {
-            if (($idparticipanteestado == $row->idparticipanteestado || $idparticipanteestado == 0) && ($idpersona == $row->idpersona || $idpersona == 0)) {
-                if ($id != $row->idpersona) {
-                    if ($id > 0) { // Si no es el primer participante, imprime el anterior
-                        $i++;
-                        $pdf->SetFillColor($fill ? 240 : 255, $fill ? 240 : 255, $fill ? 240 : 255); // Gris claro/Blanco
-                        $pdf->Cell($col_num,5,$i,1,0,'R',1);
-                        $pdf->Cell($col_participante,5,utf8_decode($arrparticipacion[$id]),1,0,'L',1);
-                        $pdf->Cell($col_ge,5,utf8_decode($arrgenero1[$id]),1,0,'L',1);
-                        $pdf->Cell($col_co,5,utf8_decode($arrcolegio1[$id]),1,0,'L',1);
+	$pdf->SetMargins(23, 10, 11.7);
+	$pdf->SetAutoPageBreak(true,40); //page created doesn't have template attached
+	$pdf->institucion='UNIVERSIDAD TÉCNICA LUIS VARGAS TORRES DE ESMERALDAS';
+	$pdf->unidad='FACULTAD DE INGENIERIAS (FACI)';
+	$pdf->departamento='CARRERA EN TECNOLOGÍA DE LA INFORMACIÓN';
+	$pdf->titulo=$evento['titulo'];
+	
 
-                        $fecha1_loop = $calendarioacademico[0]->fechadesde;
-                        foreach ($sesioneventos as $row1) {
-                            $key_p2 = $id . '_' . $row1->idevento . '_' . $row1->fecha;
-                            $vp = $participacion2_data_sum[$key_p2] ?? 0;
-                            $cmp = $participacion2_data_count[$key_p2] ?? 1;
-
-                            $ponderacion = ($nivelrpt == 2 || $nivelrpt == 1) ? 1 : $row1->ponderacion;
-                            $current_participacion = $arrparticipacion[$row1->fecha] ?? 0;
-                            $current_ayuda = $arrayuda[$row1->fecha] ?? 0;
-
-                            if ($current_ayuda > 0) {
-                                $pdf->SetTextColor(3,18,249); // Azul para ayuda
-                                $xparti_val = (100 - ($current_participacion + $current_ayuda)) * ($vp / (100 * $cmp));
-                                $pdf->Cell($col_sesion,5,round(($current_participacion + $current_ayuda + $xparti_val) * $ponderacion,2),1,0,'R',1);
-                            } else {
-                                $xparti_val = (100 - ($current_participacion + $current_ayuda)) * ($vp / (100 * $cmp));
-                                $pdf->Cell($col_sesion,5,round(($current_participacion + $current_ayuda + $xparti_val) * $ponderacion,2),1,0,'R',1);
-                            }
-                            $pdf->SetTextColor(0,0,0); // Restaura el color
-                            $fecha1_loop = $row1->fecha;
-
-                            $salir_inner = 0;
-                            foreach ($fechacorte as $p_inner => $fc_inner) {
-                                if (strtotime($row1->fecha) <= strtotime($fc_inner)) {
-                                    $parcial[$p_inner] += round(($current_participacion + $current_ayuda + $xparti_val) * $ponderacion, 2);
-                                    $nnotas[$p_inner]++;
-                                    $nparcial = $p_inner;
-                                    $salir_inner = 1;
-                                }
-                                if ($salir_inner == 1) { break; }
-                            }
-                        }
-
-                        // ... (Impresión de parciales, promedios y asistencia, manteniendo la lógica existente) ...
-                        // Asegúrate de usar $fill para el color de fondo de estas celdas también
-                        // Example for partials:
-                        $k=0; $sum=0;
-                        foreach($parcial as $sp) {
-                            if (isset($nnotas[$k]) && $nnotas[$k] >= 1) {
-                                $sum += round($sp,0);
-                                $pdf->Cell($col_parcial,5,round($sp,0),1,0,'R',1); // With fill
-                                $pdf->Cell($col_asistencia,5,round((100*($arrasistencia[$id][$k] ?? 0)/($sesiontotal[$k] ?? 1)),0).'%',1,0,'R',1); // With fill
-                                $k++;
-                            } elseif ($sp > 0) {
-                                $sum += round($sp,0);
-                                $k++;
-                            }
-                        }
-                        // ... (logic for $k==1 and $resu calculation) ...
-                        // Apply fill color to average cell
-                        if ($resu < 7) {
-                            if ($resu < 5) {
-                                $pdf->setFillColor(253,194,224); $pdf->Cell($col_promedio,5,$resu,1,0,'R',1);
-                                $desertores++;
-                            } else {
-                                $pdf->setFillColor(245,249,3); $pdf->Cell($col_promedio,5,$resu,1,0,'R',1);
-                                $reprobados++;
-                            }
-                        } else {
-                            $pdf->setFillColor(7,195,250); $pdf->Cell($col_promedio,5,$resu,1,0,'R',1);
-                            $aprobados++;
-                        }
-                        $pdf->Cell($col_as_total,5,round(100*((($arrasistencia[$id][0] ?? 0)+($arrasistencia[$id][1] ?? 0))/(($sesiontotal[0] ?? 1)+($sesiontotal[1] ?? 1))),0).'%',1,1,'R',1);
+    	$pdf->asignatura="Asignatura: ".$asignatura[0]->nombre; 
+    	$pdf->docente="Docente:  ".$distributivodocente[0]->eldocente; 
+    	$pdf->mes="Periodo:  ".$calendarioacademico[0]->nombre; 
 
 
-                        // Reiniciar para el próximo participante
-                        foreach ($fechacorte as $p_reset => $fc_reset) {
-                            $parcial[$p_reset] = 0;
-                            $nnotas[$p_reset] = 0;
-                        }
-                        $nparcial = 0;
-                        $sum = 0;
-                        $fill = !$fill; // Alternar color para la próxima fila
-                    }
-                    // ... (almacenamiento de datos del nuevo participante) ...
-                } else {
-                    // ... (actualización de datos para el mismo participante) ...
-                }
-            }
-        }
-        // ... (lógica para imprimir el último participante, similar a la de arriba, usando $fill) ...
 
-        // ... (Sección de Estadísticas, se mantiene similar, asegurando uso de utf8_decode() en labels si es necesario) ...
-        $pdf->AddPage('L');
-        $pdf->SetFont("Arial", "", 12);
-        $pdf->Cell(0, 5, utf8_decode('Estadísticas de promovidos y no promovidos'), 0, 1);
-        $pdf->Ln(8);
 
-        $data_promovidos = array('Aprobados' => $aprobados, "Reprobados" => $reprobados, "Desertores" => $desertores);
-        $pdf->SetFont('Arial', '', 10);
-        $valX = $pdf->GetX();
-        $valY = $pdf->GetY();
-        foreach ($data_promovidos as $label => $value) {
-            $pdf->Cell(30, 5, utf8_decode($label)); // Decode label
-            $pdf->Cell(15, 5, $value, 0, 0, 'R');
-            $pdf->Ln();
-        }
-        $pdf->Ln(8);
+	$pdf->AliasNbPages();
+	$pdf->AddPage('L');
+	
+	$aprobados=0;
+	$reprobados=0;
+	$desertores=0;
+	 
+ 
+	$sum=0;
+	$can=0;
 
-        $pdf->SetXY(90, $valY);
-        $col1 = array(7, 195, 250); // celeste
-        $col2 = array(245, 249, 3); // amarillo
-        $col3 = array(253, 194, 224); // rosado
-        $pdf->PieChart(100, 35, $data_promovidos, '%l : %v (%p)', array($col1, $col2, $col3));
-        $pdf->SetXY($valX, $valY + 40);
+	$parcial=array();
+	$nnotas=array();
 
-        // ... (resto de gráficos) ...
+	foreach($fechacorte as $p=>$fc)
+	{
+	$parcial[$p]=0;
+	$nnotas[$p]=0;
+	}
+	$nparcial=0;
+	$pdf->SetFont('Arial','',7);
+	$id=0;
+	$persona="";
+	$i=0;
 
-        // Buffer clean y Output al final
-        ob_clean();
-        $pdf->Output();
-    }
+	$arrasistencia=array();
+	foreach ($asistencias as $row){  //Recorre todas las asistencias
+		$salir=0;
+		foreach($fechacorte as $p=>$fc)
+		{
+	      		if($row->fecha<=$fc)
+			{
+				if(isset($arrasistencia[$row->idpersona][$p])){
+				   $arrasistencia[$row->idpersona][$p]=$arrasistencia[$row->idpersona][$p]+1;
+				  }else{
+				   $arrasistencia[$row->idpersona][$p]=1;
+				  }
+					$salir=1;
+			 }
+			      if($salir==1){ break;}
+		}
+
+ 	}
+
+   
+ $dias = array('Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado');
+// Calcular la cantidad de sesionea hasta la fecha
+   date_default_timezone_set('America/Guayaquil');
+    $fecha = date("Y-m-d");
+    $horai= date("H:i:s");
+
+	$sesionactual=0;
+	$sesiontotal=array();
+
+	$f = strtotime($evento['fechainicia']);
+
+    $d = date( "j", $f);
+    $m = date("n", $f);
+    $a = date("Y", $f);
+
+if(checkdate($m,$d,$a)){
+ $fechasesion= $evento['fechainicia'];
+
+	$f = strtotime($evento['fechafinaliza']);   //Chequendo que la fecha de finalizacion estes ingresada
+
+    	$d = date( "j", $f);
+    	$m = date("n", $f);
+    	$a = date("Y", $f);
+
+	if(checkdate($m,$d,$a)){
+		 $fechahasta= $evento['fechafinaliza'];
+	}else{
+
+		 $fechahasta= $calendarioacademico[0]->fechahasta; // sin no esta la fecha de fin en el evento se toma del calendario
+	}
+
+	}else{   // sin no estan ingresadas las fecha en el evento se toma del calendario asignado
+ 		$fechasesion=$calendarioacademico[0]->fechadesde;
+ 		$fechahasta=$calendarioacademico[0]->fechahasta;
 }
+
+
+//	$fecha1=$fechasesion;
+ //   	$fecha2=$fechasesion;
+
+
+
+
+		foreach($fechacorte as $p=>$fc)
+		{
+		
+ 	$sesiones=array();  //Arreglo para guardar las fechas de cada sesion
+     $i=1;
+    do{
+	
+	foreach ($jornadadocente as $row){   
+    		$dia = $dias[date('w', strtotime($fechasesion))];
+		if($row->nombre==$dia ){    //verifica si la fecha esta en el horario.
+			$lahorai=$row->horainicio;
+			$lahoraf=strtotime(' + 2 hours',strtotime($lahorai));
+			$lahoraf=date("H:i:s",$lahoraf);
+			array_push($sesiones,array("sesion"=>$i,"fecha"=>$fechasesion,"dia"=>$dia,"horainicio"=>$lahorai,"horafin"=>$lahoraf));
+			if($sesionactual==0){
+			if(!isset($sesiondictada[$fechasesion]))
+			{
+				$fecha=$fechasesion;
+			}}
+			
+			if(strtotime($fechasesion)==strtotime($fecha)){
+				$sesionactual=$i;
+			}
+			if(isset($sesiontotal[$p])){
+				$sesiontotal[$p]=$sesiontotal[$p]+1;
+			}else{
+				$sesiontotal[$p]=1;
+			}
+
+			$i=$i+1;
+		}
+	}
+		$fechasesion=date("Y-m-d",strtotime($fechasesion."+ 1 days")); 
+    }while(strtotime($fechasesion)<=strtotime($fc));
+    }
+			if(!isset($sesiontotal[1])){
+				$sesiontotal[1]=0;
+			}
+
+
+
+	$pdf->SetFillColor(232,232,232);
+	$pdf->SetFont('Arial','B',8);
+
+
+	$pdf->Cell(5,5,'#',1,0,'C',1);
+	$pdf->Cell(55,5,'Participante',1,0,'C',1);
+	$pdf->Cell(5,5,'GE',1,0,'C',1);
+	$pdf->Cell(5,5,'CO',1,0,'C',1);
+	foreach ($sesioneventos as $row){
+		$pdf->Cell(8,5,$row->temacorto,1,0,'C',1);
+	}
+	$pdf->Cell(10,5,'P1',1,0,'C',1);
+	$pdf->Cell(12,5,'As1('.$sesiontotal[0].')',0,'C',1);
+	$pdf->Cell(10,5,'P2',1,0,'C',1);
+	$pdf->Cell(12,5,'As2('.$sesiontotal[1].')',0,'C',1);
+	$pdf->Cell(10,5,'Prom',1,0,'C',1);
+	$asT=$sesiontotal[0]+$sesiontotal[1];
+	$pdf->Cell(12,5,'AsT('.$asT.')',1,1,'C',1);
+ 
+
+
+
+
+
+
+	foreach ($participacion as $row){  //Recorre todas la participaciones realizadas por los participantes
+
+		$fecha1=$calendarioacademico[0]->fechadesde; //En cada fila reincia la fecha a la fecha de inicio del ciclo
+
+	  if($idparticipanteestado==$row->idparticipanteestado || $idparticipanteestado==0){ // En caso de que solo quiere un estado de aprticipancion    
+	  if($idpersona==$row->idpersona || $idpersona==0){ // En caso de que solo quiere el de un estudiante    
+	  if($id!=$row->idpersona)
+	  {
+	   if($id>0){    //Antes de comenzar a imprimir primero debe llenar registro
+
+		    $i=$i+1;
+		    $pdf->Cell(5,5,$i,1,0,'R',0); 
+		    $pdf->Cell(55,5,utf8_decode($arrparticipacion[$id]),1,0,'L',0);
+		    $pdf->Cell(5,5,utf8_decode($arrgenero1[$id]),1,0,'L',0);
+		    $pdf->Cell(5,5,utf8_decode($arrcolegio1[$id]),1,0,'L',0);
+		    foreach ($sesioneventos as $row1){     //Recorre todas las fecha programadas en el evento
+		      if(isset($arrparticipacion[$row1->fecha])){    //Si el participante tuvo participacion en esa fecha
+			$fecha2=$row1->fecha;
+			$q1=$this->db->query("select idpersona, count(porcentaje) as cantidad from participacion2 where idevento=".$row1->idevento." and idmodoevaluacion=1 and (fecha between '". $fecha1. "' and '". $fecha2."')  group by idpersona order by cantidad desc limit 1");
+			if($q1->num_rows()>0){
+			 $cmp=$q1->result()[0]->cantidad;
+		      }else{
+			$cmp=1;}
+			$q2=$this->db->query("select idpersona, sum(porcentaje) as total from participacion2 where idpersona=".$id. " and idmodoevaluacion=1  and  idevento=".$row1->idevento." and (fecha between '". $fecha1. "' and '". $fecha2."') group by idpersona limit 1");
+			if($q2->num_rows()>0){
+			 $vp=$q2->result()[0]->total;
+		      }else{
+			$vp=0;}
+
+			      if($nivelrpt==2 || $nivelrpt==1)
+			      { 
+				   $ponderacion=1;
+			      }else{
+				   $ponderacion=$row1->ponderacion;
+			      }
+			      if($arrayuda[$row1->fecha]>0){
+				$pdf->SetTextColor(3,18,249);
+				$xparti[$row1->fecha]=(100-($arrparticipacion[$row1->fecha]+$arrayuda[$row1->fecha]))*($vp/(100*$cmp));
+				$pdf->Cell(8,5,round(($arrparticipacion[$row1->fecha]+$arrayuda[$row1->fecha]+$xparti[$row1->fecha])*$ponderacion,2),1,0,'R',0);
+			      }else{
+				$xparti[$row1->fecha]=(100-($arrparticipacion[$row1->fecha]+$arrayuda[$row1->fecha]))*($vp/(100*$cmp));
+				$pdf->Cell(8,5,round(($arrparticipacion[$row1->fecha]+$arrayuda[$row1->fecha]+$xparti[$row1->fecha])*$ponderacion,2),1,0,'R',0);
+			      }
+			       $fecha1=$row1->fecha;	
+			$pdf->SetTextColor(0,0,0);
+			$salir=0;
+			foreach($fechacorte as $p=>$fc)
+			{
+			      if($row1->fecha<=$fc)
+				{
+				$parcial[$p]=$parcial[$p]+ round(($arrparticipacion[$row1->fecha]+$arrayuda[$row1->fecha]+$xparti[$row1->fecha])*$ponderacion,2);
+				$nnotas[$p]=$nnotas[$p]+1;
+				$nparcial=$p;
+				$salir=1;
+			      }
+			      if($salir==1){ break;}
+			}  
+		      }else{     //Si no tuvo participacion en esa fecha
+
+			$pdf->Cell(8,5,'0',1,0,'R',0);
+			foreach($fechacorte as $p=>$fc)
+			{
+			      if($row1->fecha<=$fc)
+				{
+				$parcial[$p]=$parcial[$p]+ 0; 	$nnotas[$p]=$nnotas[$p]+1; $nparcial=$p;
+					break;
+			      }
+			}  
+		      }
+		  }
+	    $k=0;
+	    $sum=0;
+	    foreach($parcial as $sp)   //---Imprime los totales de cada parcial
+	    {
+	       if($nnotas[$k]>=1){
+		$sum=$sum+round($sp,0);
+    		$pdf->Cell(10,5,round($sp,0),1,0,'R',0);
+    		$pdf->Cell(12,5,round((100*$arrasistencia[$id][$k]/$sesiontotal[$k]),0).'%',1,0,'R',0);
+		$k=$k+1;
+	       }else{
+		 if($sp>0){
+			$sum=$sum+round($sp,0);
+			$k=$k+1;
+
+			 }
+	       }
+	    } 
+		if($k==1){
+    		$pdf->Cell(10,5,0,1,0,'R',0);
+    		$pdf->Cell(12,5,round((100*$arrasistencia[$id][$k]/$sesiontotal[$k]),0).'%',1,0,'R',0);
+
+
+		}
+
+
+
+
+		//-- Imprime los promedios llenado de color seguon el rango
+
+		$resu=round($sum/$k,0);
+		if ($resu<7){
+			if ($resu<5){
+				$pdf->setFillColor(253,194,224);	$pdf->Cell(10,5,$resu,1,0,'R',1);
+				$desertores=$desertores+1;
+			}else{	
+				$pdf->setFillColor(245,249,3);		$pdf->Cell(10,5,$resu,1,0,'R',1);
+				$reprobados=$reprobados+1;
+			}
+		}else{
+			$pdf->setFillColor(7,195,250); 	$pdf->Cell(10,5,$resu,1,0,'R',1);
+			$aprobados=$aprobados+1;
+		}
+		//--Imprime la asistencia
+		$pdf->Cell(12,5,round(100*(($arrasistencia[$id][0]+$arrasistencia[$id][1])/($sesiontotal[0]+$sesiontotal[1])),0).'%',1,1,'R',0);
+		//--INicializa para el proximo participante
+		foreach($fechacorte as $p=>$fc)
+		{
+			$parcial[$p]=0;
+			$nnotas[$p]=0;
+		}
+		$nparcial=0;
+		$sum=0;
+   }
+	  //print_r($row);
+
+	$arrparticipacion=array(); 	$arrgenero1=array(); 	$arrgenero2=array(); 	$arrcolegio1=array(); 	$arrcolegio2=array(); 	$arrayuda=array();
+	$xparti=array();
+	$id=$row->idpersona;
+	$arrparticipacion[$row->idpersona]=$row->nombres;
+	$arrgenero1[$row->idpersona]=$row->idsexo; 
+	$arrgenero2[$row->idpersona]=$row->sexo; 
+	$arrcolegio1[$row->idpersona]=$row->idinstitucion; 
+	$arrcolegio2[$row->idpersona]=$row->colegio; 
+	$arrparticipacion[$row->fecha]=$row->porcentaje;
+	$xparti[$row->fecha]=0;
+// echo "\n";
+
+//	   print_r($arrparticipacion);
+
+    	if($nivelrpt==2){	
+	    $arrayuda[$row->fecha]=0;
+	}else{
+   	    $arrayuda[$row->fecha]=$row->ayuda;
+	}
+
+
+
+	if(isset($datag[$row->sexo])){
+		$datag[$row->sexo]=$datag[$row->sexo]+1;
+	}else{
+		$datag[$row->sexo]=1;
+	}
+
+	if(isset($datac[$row->colegio])){
+		$datac[$row->colegio]=$datac[$row->colegio]+1;
+	}else{
+		$datac[$row->colegio]=1;
+	}
+
+  }else{   //--Cuando 
+    	$arrparticipacion[$row->fecha]=$row->porcentaje;
+	$xparti[$row->fecha]=0;
+        if($nivelrpt==2){	
+	    $arrayuda[$row->fecha]=0;
+	}else{
+   	    $arrayuda[$row->fecha]= $row->ayuda;
+	}
+
+  }
+  }
+  }
+}
+  $i=$i+1;
+    $pdf->Cell(5,5,$i,1,0,'R',0); 
+    $pdf->Cell(55,5,utf8_decode($arrparticipacion[$id]),1,0,'L',0);
+    $pdf->Cell(5,5,utf8_decode($arrgenero1[$id]),1,0,'L',0);
+    $pdf->Cell(5,5,utf8_decode($arrcolegio1[$id]),1,0,'L',0);
+    foreach ($sesioneventos as $row1){
+      if(isset($arrparticipacion[$row1->fecha])){
+			$fecha2=$row1->fecha;
+			$q1=$this->db->query("select idpersona, count(porcentaje) as cantidad from participacion2 where idevento=".$row1->idevento." and idmodoevaluacion=1 and (fecha between '". $fecha1. "' and '". $fecha2."')  group by idpersona order by cantidad desc limit 1");
+			if($q1->num_rows()>0){
+			 $cmp=$q1->result()[0]->cantidad;
+		      }else{
+			$cmp=1;}
+			$q2=$this->db->query("select idpersona, sum(porcentaje) as total from participacion2 where idpersona=".$id. " and idmodoevaluacion=1  and  idevento=".$row1->idevento." and (fecha between '". $fecha1. "' and '". $fecha2."') group by idpersona limit 1");
+			if($q2->num_rows()>0){
+			 $vp=$q2->result()[0]->total;
+		      }else{
+			$vp=0;}
+	      if($nivelrpt==2 || $nivelrpt==1)
+	      { 
+		      $ponderacion=1;
+		}else{
+
+		$ponderacion=$row1->ponderacion;
+	     }
+
+
+			      if($arrayuda[$row1->fecha]>0){
+				$pdf->SetTextColor(3,18,249);
+				$xparti[$row1->fecha]=(100-($arrparticipacion[$row1->fecha]+$arrayuda[$row1->fecha]))*($vp/(100*$cmp));
+				$pdf->Cell(8,5,round(($arrparticipacion[$row1->fecha]+$arrayuda[$row1->fecha]+$xparti[$row1->fecha])*$ponderacion,2),1,0,'R',0);
+			      }else{
+				$xparti[$row1->fecha]=(100-($arrparticipacion[$row1->fecha]+$arrayuda[$row1->fecha]))*($vp/(100*$cmp));
+				$pdf->Cell(8,5,round(($arrparticipacion[$row1->fecha]+$arrayuda[$row1->fecha]+$xparti[$row1->fecha])*$ponderacion,2),1,0,'R',0);
+			      }
+			       $fecha1=$row1->fecha;	
+	$pdf->SetTextColor(0,0,0);
+
+	$salir=0;
+	foreach($fechacorte as $p=>$fc)
+	{
+	      if($row1->fecha<=$fc)
+		{
+  			$parcial[$p]=$parcial[$p]+ round(($arrparticipacion[$row1->fecha]+$arrayuda[$row1->fecha]+$xparti[$row1->fecha])*$ponderacion,2);
+			$nnotas[$p]=$nnotas[$p]+1;
+			$nparcial=$p;
+			$salir=1;
+	      }
+	      if($salir==1){break;}
+	}  
+
+      }else{
+         $pdf->Cell(8,5,'0',1,0,'R',0);
+
+	foreach($fechacorte as $p=>$fc)
+	{
+	      if($row1->fecha<=$fc)
+		{
+  			$parcial[$p]=$parcial[$p]+ 0;
+			$nnotas[$p]=$nnotas[$p]+1;
+			$nparcial=$p;
+			break;
+	      }
+
+	}  
+      }
+    }
+
+    $k=0;
+    $sum=0;
+
+
+    foreach($parcial as $sp)
+    {
+	       if($nnotas[$k]>=1){
+		$sum=$sum+round($sp,0);
+    		$pdf->Cell(10,5,round($sp,0),1,0,'R',0);
+    		$pdf->Cell(12,5,round((100*$arrasistencia[$id][$k]/$sesiontotal[$k]),0).'%',1,0,'R',0);
+		$k=$k+1;
+	       }else{
+		 if($sp>0){
+			$sum=$sum+round($sp,0);
+			$k=$k+1;
+
+			 }
+	       }
+    }
+		if($k==1){
+    		$pdf->Cell(10,5,0,1,0,'R',0);
+    		$pdf->Cell(12,5,round((100*$arrasistencia[$id][$k]/$sesiontotal[$k]),0).'%',1,0,'R',0);
+
+
+		}
+
+
+
+    $resu=round($sum/$k,0);
+
+    if ($resu<7){
+    	if ($resu<5){
+
+	 $pdf->setFillColor(255,194,224);
+      	 $pdf->Cell(10,5,$resu,1,0,'R',1);
+	 $desertores=$desertores+1;
+	}else{	
+	 $pdf->setFillColor(245,249,3);
+      	 $pdf->Cell(10,5,$resu,1,0,'R',1);
+	 $reprobados=$reprobados+1;
+	}
+    }else{
+	 $pdf->setFillColor(7,195,250);   //celeste
+     	 $pdf->Cell(10,5,$resu,1,0,'R',1);
+	 $aprobados=$aprobados+1;
+    }
+ 
+
+		//--Imprime la asistencia
+		$pdf->Cell(12,5,round(100*(($arrasistencia[$id][0]+$arrasistencia[$id][1])/($sesiontotal[0]+$sesiontotal[1])),0).'%',1,1,'R',0);
+
+
+	foreach($fechacorte as $p=>$fc)
+	{
+	$parcial[$p]=0;
+
+	}
+	$nparcial=0;
+
+
+	$sum=0;
+	$can=0;
+
+       $pdf->AddPage('L');
+
+	$data=array('Aprobados'=>$aprobados, "Reprobados"=>$reprobados, "Desertores"=>$desertores);
+
+	$pdf->SetFont("Arial", "",12);
+	$pdf->Cell(0,5,'Estadisticas de promovidos y no promovidos',0,1);
+	$pdf->Ln(8);
+
+	$pdf->SetFont('Arial','', 10);
+	$valX=$pdf->GetX();
+	$valY=$pdf->GetY();
+	foreach($data as $lg=>$vg){
+	$pdf->Cell(30,5,$l);
+	$pdf->Cell(15,5,$c,0,0,'R');
+	$pdf->Ln();
+	}
+	$pdf->Ln(8);
+
+	$pdf->SetXY(90,$valY);
+	$col1=array(7,195,250);  //celeste
+	$col2=array(245,249,3);   //amarillo
+	$col3=array(253,194,224);  //rosado
+	$pdf->PieChart(100,35,$data, '%l : %v (%p)', array($col1,$col2,$col3));
+	$pdf->SetXY($valX, $valY +40);
+
+
+
+
+
+
+
+
+	$pdf->SetFont("Arial", "BIU",12);
+	$pdf->Cell(0,5,'Estadisticas de Generos',0,1);
+	$pdf->Ln(8);
+
+	$pdf->SetFont('Arial','', 10);
+	$valX=$pdf->GetX();
+	$valY=$pdf->GetY();
+
+	foreach($datag as $lg=>$vg){
+	$pdf->Cell(30,5,$l);
+	$pdf->Cell(15,5,$c,0,0,'R');
+	$pdf->Ln();
+	}
+
+
+	$pdf->Ln(8);
+
+	$pdf->SetXY(90,$valY);
+	$col1=array(7,195,250);  //celeste
+	$col2=array(245,249,3);   //amarillo
+	$pdf->PieChart(100,35,$datag, '%l : %v (%p)', array($col1,$col2));
+	$pdf->SetXY($valX, $valY +40);
+
+
+       $pdf->AddPage('L');
+
+	$pdf->SetFont("Courier", "BIU",8);
+	$pdf->Cell(0,5,'Estadísticas de Colegios',0,1);
+	$pdf->Ln(8);
+
+
+
+	$valX=$pdf->GetX();
+	$valY=$pdf->GetY();
+
+	$pdf->BarDiagram(200,100,$datac, '%l : %v (%p)', array(255,175,100));
+	$pdf->SetXY($valX, $valY +80);
+
+
+
+
+
+
+
+
+
+	$pdf->Output();
+?>
