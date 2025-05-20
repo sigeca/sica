@@ -60,6 +60,7 @@ class Participante_model extends CI_model {
 	function get_participante3($idevento){
 		 if($idevento>0)
                 {
+		        $this->db->order_by("nombres asc");;
                 $this->db->where('idevento='.$idevento);
                 $query = $this->db->get('participante1'); // Suponiendo que la tabla se llama 'documentos'
         return $query->result_array(); // Devolver array de documentos
