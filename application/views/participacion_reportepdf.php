@@ -1,6 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-require_once APPPATH . 'libraries/plantilla2.php'; // Asumiendo que plantilla2.php está en application/libraries/
+require_once 'plantilla2.php'; // Asumiendo que plantilla2.php está en application/libraries/
 
 class Reporte_Notas extends CI_Controller {
 
