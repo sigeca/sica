@@ -119,41 +119,23 @@ echo form_input('nombre',$options[$pagoevento['idpersona']],array("disabled"=>"d
   
 
 <div class="form-group row">
-    <label class="col-md-2 col-form-label"> Tipo de pagoevento:</label>
+    <label class="col-md-2 col-form-label"> Comentario:</label>
 	<div class="col-md-10">
 		<?php
-$options= array("NADA");
-foreach ($tipopagoeventos as $row){
-	$options[$row->idtipopagoevento]= $row->nombre;
-}
-if(!isset($pagoevento['idtipopagoevento'])){
-echo form_input('nombre',"",array("disabled"=>"disabled")) ;
-}else{
-echo form_input('nombre',$options[$pagoevento['idtipopagoevento']],array("disabled"=>"disabled",'style'=>'width:500px;'));
-}
-
-		?>
-	</div> 
-</div>
-
-<div class="form-group row">
-    <label class="col-md-2 col-form-label"> %Participacióm:</label>
-	<div class="col-md-10">
-		<?php
-      		 echo form_input('porcentaje',$pagoevento['porcentaje'],array('type'=>'text','placeholder'=>'porcentaje','style'=>'width:500px;')) 
+	$textarea_options = array('class' => 'form-control','rows' => '4', 'id'=>'comentario',  'cols' => '20',"disabled"=>"disabled", 'style'=> 'width:600px;height:100px;');    
+	echo form_textarea('comentario',$tema['comentario'],$textarea_options);
 		?>
 	</div> 
 </div>
 
 
-<div class="form-group row">
-    <label class="col-md-2 col-form-label"> %Ayuda:</label>
-	<div class="col-md-10">
-		<?php
-      		 echo form_input('ayuda',$pagoevento['ayuda'],array('type'=>'text','placeholder'=>'ayuda','style'=>'width:500px;')) 
-		?>
-	</div> 
-</div>
+
+
+
+
+
+
+
 
 
 
