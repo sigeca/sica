@@ -123,7 +123,7 @@ echo form_input('nombre',$options[$pagoevento['idpersona']],array("disabled"=>"d
 	<div class="col-md-10">
 		<?php
 	$textarea_options = array('class' => 'form-control','rows' => '4', 'id'=>'comentario',  'cols' => '20',"disabled"=>"disabled", 'style'=> 'width:600px;height:100px;');    
-	echo form_textarea('comentario',$tema['comentario'],$textarea_options);
+	echo form_textarea('comentario',$pageoevento['comentario'],$textarea_options);
 		?>
 	</div> 
 </div>
