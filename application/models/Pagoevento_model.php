@@ -11,6 +11,24 @@ class Pagoevento_model extends CI_model {
 	}
 
 
+	function get_pagoeventoxeventoxfecha($idevento,$fecha){
+		 if($idevento>0)
+                {
+		        $this->db->order_by("nombres asc");
+                $this->db->where('idevento='.$idevento);
+                $this->db->where('fecha="'.$fecha.'"');
+                $query = $this->db->get('pageoevento1'); // Suponiendo que la tabla se llama 'documentos'
+                return $query->result_array(); // Devolver array de documentos
+         }else{
+
+        return 0;
+
+         }
+	}
+
+
+
+
 	function listar_pagoevento(){
 		 $pagoevento= $this->db->get('pagoevento');
 		 return $pagoevento;
