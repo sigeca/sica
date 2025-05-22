@@ -29,7 +29,7 @@ class Sesionevento_model extends CI_model {
  	{
 		 if($idevento>0)
                 {
-		        $this->db->order_by("idsesionevento asc");
+		        $this->db->order_by("fecha asc");
                 $this->db->where('idevento='.$idevento);
                 $query = $this->db->get('sesionevento1'); // Suponiendo que la tabla se llama 'documentos'
         return $query->result_array(); // Devolver array de documentos
