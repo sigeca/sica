@@ -191,7 +191,7 @@ public function listar()
 
    public function persona_flutter()
     {
-		$idpersona=$this->input->post('idpersona');
+		$idpersona=$this->input->get('idpersona');
 	 	$personas=$this->evento_model->get_persona_flutter($idpersona);
         echo json_encode(['data' => $personas]); // Devolver datos en formato JSON
  	}
