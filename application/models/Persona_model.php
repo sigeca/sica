@@ -30,7 +30,7 @@ function get_persona_flutter($idpersona)
                 {
                 $this->db->where('idpersona='.$idpersona);
             //    $this->db->where('estado="'.$estado.'"');
-                $query = $this->db->get('persona2'); // Suponiendo que la tabla se llama 'documentos'
+                $query = $this->db->get('persona1'); // Suponiendo que la tabla se llama 'documentos'
         return $query->result_array(); // Devolver array de documentos
          }else{
 
