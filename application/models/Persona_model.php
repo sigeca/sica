@@ -24,6 +24,26 @@ class Persona_model extends CI_model {
 
 
 
+function get_persona_flutter($idpersona)
+ 	{
+		 if($idpersona>0)
+                {
+                $this->db->where('idpersona='.$idpersona);
+            //    $this->db->where('estado="'.$estado.'"');
+                $query = $this->db->get('persona2'); // Suponiendo que la tabla se llama 'documentos'
+        return $query->result_array(); // Devolver array de documentos
+         }else{
+
+        return 0;
+
+         }
+	}
+ 
+
+
+
+
+
 
 	function persona( $id){
 		$persona = $this->db->query('select * from persona0 where idpersona="'. $id.'"');
