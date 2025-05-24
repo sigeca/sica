@@ -156,7 +156,7 @@ public function listar()
 
  public function pagoevento_flutter()
     {
-		$idevento=$this->input->get('idevento');
+		$idevento=$this->input->post('idevento');
 	 	$pagoeventos=$this->pagoevento_model->get_pagoeventopersona($idevento,0);
         echo json_encode(['data' => $pagoeventos]); // Devolver datos en formato JSON
  	}
