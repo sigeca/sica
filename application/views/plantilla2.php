@@ -19,86 +19,7 @@ class PDF extends PDF_Sector
 	var $sum;
 	var $NbVal;
 
-  // ... (otras propiedades y métodos que ya tengas en tu clase PDF, por ejemplo:
-    // public $institucion;
-    // function Header() { ... }
-    // function Footer() { ... }
-    // )
-
-    /**
-     * Calcula el número de líneas que ocupará un MultiCell de ancho $w.
-     * Esto es necesario para determinar la altura de la fila antes de dibujarla.
-     *
-     * @param float $w Ancho del MultiCell.
-     * @param string $txt Texto a evaluar.
-     * @return int El número de líneas que ocupará el texto.
-     */
-    function NbLines($w, $txt)
-    {
-        // Obtiene el ancho de los caracteres de la fuente actual
-        $cw = &$this->CurrentFont['cw'];
-        if($w==0) // Si el ancho es 0, usa el ancho restante de la página
-            $w = $this->w-$this->rMargin-$this->x;
-        // Calcula el ancho máximo de texto que cabe en una línea (en unidades de fuente)
-        $wmax = ($w-2*$this->cMargin)*1000/$this->FontSize;
-        // Reemplaza retornos de carro para un conteo consistente
-        $s = str_replace("\r",'',$txt);
-        $nb = strlen($s); // Longitud del texto
-        if($nb==0) // Si el texto está vacío, 0 líneas
-            return 0;
-        $sep = -1; // Índice del último espacio encontrado
-        $i = 0;    // Puntero actual en el texto
-        $j = 0;    // Puntero del inicio de la línea actual
-        $l = 0;    // Ancho acumulado de la línea actual
-        $nl = 1;   // Contador de líneas (empieza en 1)
-
-        while($i<$nb)
-        {
-            $c = $s[$i]; // Carácter actual
-            if($c=="\n") // Si encuentra un salto de línea explícito
-            {
-                $i++;
-                $sep = -1;
-                $j = $i;
-                $l = 0;
-                $nl++; // Incrementa el contador de líneas
-                continue;
-            }
-            if($c==' ') // Si encuentra un espacio, lo marca como posible punto de corte
-                $sep = $i;
-            // Suma el ancho del carácter actual al ancho de la línea
-            // Nota: $cw[$c] da el ancho del carácter en unidades de fuente
-            if (isset($cw[$c])) { // Asegura que el carácter exista en el mapa de anchos de la fuente
-                $l += $cw[$c];
-            } else {
-                // Manejo de caracteres no definidos en la fuente, si es necesario
-                // Por ejemplo, podrías sumar un ancho predeterminado o ignorarlo.
-                // Para UTF-8, asegúrate de que la fuente soporte los caracteres.
-            }
-
-
-            if($l>$wmax) // Si el ancho de la línea excede el máximo permitido
-            {
-                if($sep==-1) // No hay espacios, la palabra es demasiado larga
-                {
-                    if($i==$j) // Si no se ha movido desde el inicio de la línea (palabra muy larga)
-                        $i++;
-                }
-                else // Hay un espacio, corta la línea en el último espacio
-                    $i = $sep+1;
-                $sep = -1;
-                $j = $i;
-                $l = 0;
-                $nl++; // Incrementa el contador de líneas
-            }
-            else
-                $i++; // Continúa al siguiente carácter
-        }
-        return $nl; // Devuelve el número total de líneas
-    }
-
-
-
+ 
 
 
 
@@ -157,6 +78,100 @@ class PDF extends PDF_Sector
 		$this->SetFont('Arial','I',8);
 		$this->Cell(0,10,'Pagina '.$this->PageNo().'/{nb}',0,0,'C');
 	}
+
+
+
+    * Calcula el número de líneas que ocupará un MultiCell de ancho $w.
+     * Esto es necesario para determinar la altura de la fila antes de dibujarla.
+     *
+     * @param float $w Ancho del MultiCell.
+     * @param string $txt Texto a evaluar. (Ya debe estar en ISO-8859-1 o compatible con FPDF)
+     * @return int El número de líneas que ocupará el texto.
+     */
+    function NbLines($w, $txt)
+    {
+        // Obtiene el ancho de los caracteres de la fuente actual
+        $cw = &$this->CurrentFont['cw'];
+        if($w==0) // Si el ancho es 0, usa el ancho restante de la página
+            $w = $this->w-$this->rMargin-$this->x;
+        // Calcula el ancho máximo de texto que cabe en una línea (en unidades de fuente)
+        $wmax = ($w-2*$this->cMargin)*1000/$this->FontSize;
+        // Reemplaza retornos de carro para un conteo consistente
+        $s = str_replace("\r",'',$txt);
+        $nb = strlen($s); // Longitud del texto
+        if($nb==0) // Si el texto está vacío, 0 líneas
+            return 0;
+        $sep = -1; // Índice del último espacio encontrado
+        $i = 0;    // Puntero actual en el texto
+        $j = 0;    // Puntero del inicio de la línea actual
+        $l = 0;    // Ancho acumulado de la línea actual
+        $nl = 1;   // Contador de líneas (empieza en 1)
+
+        while($i<$nb)
+        {
+            $c = $s[$i]; // Carácter actual
+            if($c=="\n") // Si encuentra un salto de línea explícito
+            {
+                $i++;
+                $sep = -1;
+                $j = $i;
+                $l = 0;
+                $nl++; // Incrementa el contador de líneas
+                continue;
+            }
+            if($c==' ') // Si encuentra un espacio, lo marca como posible punto de corte
+                $sep = $i;
+            // Suma el ancho del carácter actual al ancho de la línea
+            if (isset($cw[$c])) {
+                $l += $cw[$c];
+            } else {
+                // Si el carácter no está en el mapa de anchos de la fuente,
+                // podría ser un carácter no imprimible o no soportado.
+                // Podrías asignarle un ancho predeterminado o ignorarlo.
+                // Para UTF-8, asegúrate de que la fuente soporte los caracteres.
+                // Por ahora, lo ignoramos si no está definido para evitar errores.
+            }
+
+            if($l>$wmax) // Si el ancho de la línea excede el máximo permitido
+            {
+                if($sep==-1) // No hay espacios, la palabra es demasiado larga
+                {
+                    if($i==$j) // Si no se ha movido desde el inicio de la línea (palabra muy larga)
+                        $i++;
+                }
+                else // Hay un espacio, corta la línea en el último espacio
+                    $i = $sep+1;
+                $sep = -1;
+                $j = $i;
+                $l = 0;
+                $nl++; // Incrementa el contador de líneas
+            }
+            else
+                $i++; // Continúa al siguiente carácter
+        }
+        return $nl; // Devuelve el número total de líneas
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
