@@ -97,7 +97,7 @@
                 $horafin = isset($row->horafin) ? (string)$row->horafin : '';
                 $numeasis = isset($row->numeasis) ? (int)$row->numeasis : 0;
                 $numalum = isset($row->numalum) ? (int)$row->numalum : 0;
-                $temacorto = isset($row->temacorto) ? (string)$row->temacorto : '';
+                $tema = isset($row->tema) ? (string)$row->tema : '';
 
                 // Celda 1: #sesion
                 $pdf->SetXY($current_x_pos, $current_row_y_start);
@@ -145,10 +145,10 @@
                 $y_positions_after_cells[] = $pdf->GetY();
                 $current_x_pos += 15;
 
-                // Celda 8: Tema (temacorto)
+                // Celda 8: Tema (tema)
                 $pdf->SetXY($current_x_pos, $current_row_y_start);
-                $tema_corto_limpio = preg_replace('/[\r\n]+/', ' ', $temacorto);
-                $pdf->MultiCell(120, $line_height, utf8_decode($tema_corto_limpio), 1, 'L');
+                $tema_limpio = preg_replace('/[\r\n]+/', ' ', $tema);
+                $pdf->MultiCell(120, $line_height, utf8_decode($tema_limpio), 1, 'L');
                 $y_positions_after_cells[] = $pdf->GetY();
                 $current_x_pos += 120;
 
