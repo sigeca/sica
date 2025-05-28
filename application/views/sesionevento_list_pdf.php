@@ -53,53 +53,46 @@
     $pdf->Cell(18, 5, 'Control', 1, 1, 'C', 1); // El '1' al final indica salto de línea
 
     // --- Contenido de la tabla ---
-    $pdf->SetFont('Arial', '', 7); // Fuente normal para el contenido de la tabla
-    $line_height = 5; // Altura base para las filas de la tabla
+ $pdf->SetFont('Arial', '', 7); // Fuente normal para el contenido de la tabla
+    $line_height = 5.2; // <-- AJUSTE AQUÍ: Aumenta ligeramente la altura base de línea, por ejemplo a 5.2 o 5.5
 
-    $table_body_start_x = $pdf->GetX(); // Posición X inicial de la tabla (margen izquierdo)
-    $current_row_y_start = $pdf->GetY(); // Posición Y inicial para la primera fila de datos
+    $table_body_start_x = $pdf->GetX();
+    $current_row_y_start = $pdf->GetY();
 
-    $page_break_bottom_margin = 40; // Margen inferior para el salto de página automático
+    $page_break_bottom_margin = 40;
 
     if (isset($sesioneventos) && is_array($sesioneventos)) {
         foreach ($sesioneventos as $idx => $row) {
             $fecha_actual_row = isset($row->fecha) ? $row->fecha : null;
             if (!$fecha_actual_row) {
-                continue; // Saltar la fila si la fecha no está definida
+                continue;
             }
             $nmes_actual = date('m', strtotime($fecha_actual_row));
 
-            // Filtra por mes si $mesnumero está definido y no es 0 (todos los meses)
             if ((isset($mesnumero) && ($nmes_actual == $mesnumero || $mesnumero == 0)) || !isset($mesnumero) ) {
 
-                // 1. Prepara el texto del campo 'tema' para FPDF (eliminar \r, mantener \n, decodificar)
                 $tema_original = isset($row->tema) ? (string)$row->tema : '';
-                // Eliminar el retorno de carro (\r) para que solo quede \n como salto de línea
                 $tema_formateado_fpdf = str_replace("\r", "", $tema_original);
-                // Decodificar a ISO-8859-1 para FPDF
                 $tema_formateado_fpdf = utf8_decode($tema_formateado_fpdf);
 
-                // 2. Calcular la altura de la fila basándose en el campo 'tema'
+                // Calcular el número de líneas para la celda "Tema"
                 $num_lines_tema = $pdf->NbLines(120, $tema_formateado_fpdf);
-                $row_height = $num_lines_tema * $line_height;
+                $row_height = $num_lines_tema * $line_height; // Usamos el line_height ajustado
 
                 // Asegurar que la altura mínima de la fila sea la altura de línea base
                 if ($row_height < $line_height) {
                     $row_height = $line_height;
                 }
 
-                // *** AJUSTE CLAVE: Añadir un pequeño padding vertical extra para evitar recortes
-                // Esto es especialmente útil si el texto del tema ocupa múltiples líneas
+                // *** AJUSTE CLAVE AQUÍ: Aumenta el padding vertical extra para evitar recortes
+                // Puedes probar con valores como 1, 1.2, 1.5 por línea
                 if ($num_lines_tema > 1) {
-                    $row_height += ($num_lines_tema * 0.5); // Añade 0.5mm por cada línea adicional
-                                                           // Puedes ajustar este valor (ej. 0.7, 1)
+                    $row_height += ($num_lines_tema * 0.7); // <-- AJUSTE AQUÍ: Prueba con 0.7 o más
                 }
 
-                // Comprobar si la fila actual excederá el límite de la página
-                if ($current_row_y_start + $row_height > ($pdf->GetPageHeight() - $page_break_bottom_margin)) {
-                    $pdf->AddPage('L'); // Añadir una nueva página en orientación horizontal
 
-                    // Redibujar la cabecera de la tabla en la nueva página
+                if ($current_row_y_start + $row_height > ($pdf->GetPageHeight() - $page_break_bottom_margin)) {
+                    $pdf->AddPage('L');
                     $pdf->SetFillColor(232,232,232);
                     $pdf->SetFont('Arial','B',8);
                     $pdf->Cell(10,5,'#sesion',1,0,'C',1);
@@ -112,38 +105,34 @@
                     $pdf->Cell(120,5,'Tema',1,0,'C',1);
                     $pdf->Cell(18,5,'Control',1,1,'C',1);
                     $pdf->SetFont('Arial','',7);
-
-                    // Restablecer las posiciones de inicio para la nueva página
                     $current_row_y_start = $pdf->GetY();
                     $table_body_start_x = $pdf->GetX();
                 }
 
-                // 3. Determinar el color de fondo de la fila
+                // ... (el resto del código de la fila, incluyendo el pintado del Rect y las MultiCells)
+                // Asegúrate de que todas las llamadas a MultiCell tengan el último parámetro en `false`
+                // para que el relleno del Rect sea el único que se aplique.
+
+                // Determinar el color de fondo de la fila
                 $idmodoevaluacion = isset($row->idmodoevaluacion) ? (int)$row->idmodoevaluacion : 0;
                 $fill_color_r = 255;
                 $fill_color_g = 255;
-                $fill_color_b = 255; // Por defecto, blanco
+                $fill_color_b = 255;
 
                 if ($idmodoevaluacion > 1) {
-                    $fill_color_r = 255; // Amarillo claro
+                    $fill_color_r = 255;
                     $fill_color_g = 255;
                     $fill_color_b = 204;
                 }
-
-                // *** SOLUCIÓN CLAVE PARA EL COLOR DE FONDO: Dibuja un rectángulo para toda la fila
+                
                 $pdf->SetFillColor($fill_color_r, $fill_color_g, $fill_color_b);
                 $pdf->Rect($table_body_start_x, $current_row_y_start, 10 + (15 * 6) + 120 + 18, $row_height, 'F');
                 
-                // Restablece el color de relleno a blanco para las próximas celdas individuales
-                // Esto es importante para que el borde se dibuje sobre el fondo y no se vea extraño.
-                $pdf->SetFillColor(255, 255, 255);
+                $pdf->SetFillColor(255, 255, 255); // Reset a blanco
 
-                $current_x_pos = $table_body_start_x; // Reiniciar la posición X para la fila actual
 
-                // 4. Dibujar las celdas de la fila
-                // Nota: El último parámetro `fill` en MultiCell ahora es `false`,
-                // porque el fondo ya lo pintamos con el Rect anterior.
-
+                $current_x_pos = $table_body_start_x;
+                
                 // Celda 1: #sesion
                 $pdf->SetXY($current_x_pos, $current_row_y_start);
                 $pdf->MultiCell(10, $row_height, utf8_decode(isset($row->numerosesion) ? (string)$row->numerosesion : ''), 1, 'R', false);
@@ -194,14 +183,11 @@
                 $pdf->SetXY($current_x_pos, $current_row_y_start);
                 $pdf->MultiCell(18, $row_height, utf8_decode("X SISTEMA"), 1, 'C', false);
 
-                // Actualizar la posición Y para la siguiente fila
                 $current_row_y_start = $current_row_y_start + $row_height;
-                // Volver a la posición X inicial de la tabla para la próxima fila
                 $pdf->SetX($table_body_start_x);
             }
         }
     }
 
-    // Generar la salida del PDF
     $pdf->Output();
-?>
+?> 
