@@ -167,25 +167,46 @@ class Sesionevento_model extends CI_model {
 		}
  	}
 
- 	function update($id,$array_item)
- 	{
-   		date_default_timezone_set('America/Guayaquil');
-    	$fecha = date("Y-m-d");
-    	$hora= date("H:i:s");
+function update($id, $array_item)
+{
+    date_default_timezone_set('America/Guayaquil');
+    // Las variables $fecha y $hora no se usan en la operación de actualización aquí,
+    // asegúrate de que $array_item ya incluya estos campos si son necesarios para la DB.
 
- 		$this->db->where('idsesionevento',$id);
- 		$this->db->update('sesionevento',$array_item);
-		if($this->db->affected_rows()>0)
-			{
-            $this->registrar_vitacora("sesionevento", "Se modificó la sesión de evento con id = $id");
-		    return true;
-		}
-        die("no esta grabando");
+    $this->db->where('idsesionevento', $id);
+    $this->db->update('sesionevento', $array_item);
 
-		return false;
-		
-	}
- 
+    // Verificar si la actualización fue exitosa y si se afectó alguna fila
+    if ($this->db->affected_rows() > 0) {
+        $this->registrar_vitacora("sesionevento", "Se modificó la sesión de evento con id = $id");
+        return [
+            'success' => true,
+            'message' => "La sesión de evento con ID $id fue actualizada exitosamente."
+        ];
+    } else {
+        // Si affected_rows() es 0, puede ser que el registro no exista o los datos sean los mismos.
+        // Si hay un error de base de datos, lo capturamos.
+        $db_error = $this->db->error(); // Obtiene el último error de la base de datos
+
+        if ($db_error['code'] != 0) {
+            // Hubo un error real de la base de datos
+            // Opcional: registrar el error en un archivo de log (ver Opción 2)
+            // log_message('error', 'Error al actualizar sesionevento ID ' . $id . ': ' . $db_error['message']);
+            return [
+                'success' => false,
+                'message' => "Error en la base de datos al actualizar la sesión de evento: " . $db_error['message'],
+                'error_code' => $db_error['code']
+            ];
+        } else {
+            // No se afectaron filas, pero no hubo un error de DB (e.g., ID no existe o datos idénticos)
+            return [
+                'success' => false,
+                'message' => "No se realizó ninguna actualización para la sesión de evento con ID $id. El registro no existe o los datos son idénticos a los actuales."
+            ];
+        }
+    }
+}
+
 
 
 
