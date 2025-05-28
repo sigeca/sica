@@ -80,7 +80,7 @@ class PDF extends PDF_Sector
 	}
 
 
-
+/*
     * Calcula el número de líneas que ocupará un MultiCell de ancho $w.
      * Esto es necesario para determinar la altura de la fila antes de dibujarla.
      *
