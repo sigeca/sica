@@ -80,8 +80,8 @@
                 $num_lines_tema = $pdf->NbLines(120 - (2 * $cell_padding_x), $tema_formateado_fpdf); // Ancho para el texto real
                 
                 // Calculamos la altura necesaria para el MultiCell.
-                // Multiplicamos por FontSize y un factor para espacio de línea.
-                $calculated_tema_height = $num_lines_tema * $pdf->FontSize * 1.2; // 1.2 es un factor común para espacio de línea
+                // Multiplicamos por GetFontSize() y un factor para espacio de línea.
+                $calculated_tema_height = $num_lines_tema * $pdf->GetFontSize() * 1.2; // AQUI el cambio
                 
                 // Asegurar que la altura mínima de la fila sea la altura base_cell_height
                 $row_height = max($base_cell_height, $calculated_tema_height + (2 * $cell_padding_y)); // Altura mínima + padding
@@ -161,8 +161,8 @@
                     $pdf->SetXY($current_x_pos + $cell_padding_x, $current_row_y_start + $cell_padding_y);
                     
                     // Imprime el texto con MultiCell, sin borde y sin relleno (ya dibujados)
-                    // La altura de MultiCell puede ser base_cell_height o 0, para que FPDF gestione el texto
-                    $pdf->MultiCell($col['width'] - (2 * $cell_padding_x), $pdf->FontSize * 1.2, $col['text'], 0, $col['align'], false);
+                    // La altura del MultiCell es ahora GetFontSize() * 1.2 para el espaciado de línea.
+                    $pdf->MultiCell($col['width'] - (2 * $cell_padding_x), $pdf->GetFontSize() * 1.2, $col['text'], 0, $col['align'], false); // AQUI el cambio
                     
                     // Mueve el cursor X a la siguiente columna, Y sigue en la posición actual de la fila
                     $current_x_pos += $col['width'];
