@@ -48,7 +48,7 @@
     $pdf->Cell(18, 5, 'Control', 1, 1, 'C', 1);
 
     $pdf->SetFont('Arial', '', 7);
-    $line_height = 5;
+    $line_height = 5; // Altura de línea base para las celdas
 
     $table_body_start_x = $pdf->GetX();
     $current_row_y_start = $pdf->GetY();
@@ -67,13 +67,18 @@
 
             if ((isset($mesnumero) && ($nmes_actual == $mesnumero || $mesnumero == 0)) || !isset($mesnumero) ) {
 
-                // Calcula la altura de la celda "Tema" primero
+                // Calcula el número de líneas para la celda "Tema"
                 $tema_limpio = isset($row->tema) ? (string)$row->tema : '';
-                $tema_limpio = preg_replace('/[\r\n]+/', ' ', $tema_limpio);
-                $calculated_height = $pdf->GetStringHeight(120, $tema_limpio); // 120 es el ancho de la celda Tema
+                $tema_limpio = preg_replace('/[\r\n]+/', ' ', $tema_limpio); // Limpiar saltos de línea adicionales
+                $num_lines_tema = $pdf->NbLines(120, utf8_decode($tema_limpio)); // 120 es el ancho de la celda Tema
 
-                // Asegúrate de que la altura mínima sea $line_height
-                $row_height = max($line_height, $calculated_height);
+                // Calcula la altura total de la fila basada en el número de líneas del tema
+                $row_height = $num_lines_tema * $line_height;
+
+                // Asegúrate de que la altura mínima sea $line_height si el tema es corto
+                if ($row_height < $line_height) {
+                    $row_height = $line_height;
+                }
 
                 if ($current_row_y_start + $row_height > ($pdf->GetPageHeight() - $page_break_bottom_margin)) {
                     // Add a new page with the same Landscape orientation
@@ -109,9 +114,16 @@
                 // Guardar la posición Y inicial de la fila
                 $start_y_for_row = $pdf->GetY();
 
+                // Dibuja el fondo de la fila completa antes de las celdas
+                // Asegúrate de que la fila se rellene con el color correcto
+                $pdf->Rect($table_body_start_x, $current_row_y_start, 23 + 15*6 + 120 + 18, $row_height, 'F'); // Ancho total de la tabla (10+15*6+120+18 = 258)
+                // Restablecer el color de relleno si no hay relleno específico para la celda individual
+                $pdf->SetFillColor(255, 255, 255); // Restablecer a blanco para las celdas si no se rellenan individualmente
+
+
                 // Celda 1: #sesion
                 $pdf->SetXY($current_x_pos, $current_row_y_start);
-                $pdf->MultiCell(10, $row_height, utf8_decode(isset($row->numerosesion) ? (string)$row->numerosesion : ''), 1, 'R', $fill);
+                $pdf->MultiCell(10, $row_height, utf8_decode(isset($row->numerosesion) ? (string)$row->numerosesion : ''), 1, 'R', $fill); // $fill para el borde y el relleno
                 $current_x_pos += 10;
 
                 // Celda 2: Dia
@@ -152,7 +164,6 @@
 
                 // Celda 8: Tema (tema)
                 $pdf->SetXY($current_x_pos, $current_row_y_start);
-                // Utiliza $row_height para esta celda también
                 $pdf->MultiCell(120, $row_height, utf8_decode($tema_limpio), 1, 'L', $fill);
                 $current_x_pos += 120;
 
@@ -161,8 +172,8 @@
                 $pdf->MultiCell(18, $row_height, utf8_decode("X SISTEMA"), 1, 'C', $fill);
 
                 // Actualizar la posición Y para la siguiente fila
-                $current_row_y_start = $pdf->GetY();
-                $pdf->SetX($table_body_start_x);
+                $current_row_y_start = $start_y_for_row + $row_height; // Mueve la posición Y por la altura calculada de la fila
+                $pdf->SetX($table_body_start_x); // Vuelve al inicio de la tabla para la siguiente fila
             }
         }
     }
