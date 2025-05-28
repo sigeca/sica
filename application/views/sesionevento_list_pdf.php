@@ -54,7 +54,7 @@
 
     // --- Contenido de la tabla ---
  $pdf->SetFont('Arial', '', 7); // Fuente normal para el contenido de la tabla
-    $line_height = 5.2; // <-- AJUSTE AQUÍ: Aumenta ligeramente la altura base de línea, por ejemplo a 5.2 o 5.5
+    $line_height = 6; // <-- AJUSTE AQUÍ: Aumenta ligeramente la altura base de línea, por ejemplo a 5.2 o 5.5
 
     $table_body_start_x = $pdf->GetX();
     $current_row_y_start = $pdf->GetY();
@@ -73,7 +73,7 @@
 
                 $tema_original = isset($row->tema) ? (string)$row->tema : '';
                 $tema_formateado_fpdf = str_replace("\r", "", $tema_original);
-                $tema_formateado_fpdf = utf8_decode($tema_original);
+                $tema_formateado_fpdf = utf8_decode($tema_formateado_fpdf);
 
                 // Calcular el número de líneas para la celda "Tema"
                 $num_lines_tema = $pdf->NbLines(120, $tema_formateado_fpdf);
@@ -87,7 +87,7 @@
                 // *** AJUSTE CLAVE AQUÍ: Aumenta el padding vertical extra para evitar recortes
                 // Puedes probar con valores como 1, 1.2, 1.5 por línea
                 if ($num_lines_tema > 1) {
-                    $row_height += ($num_lines_tema * 0.7); // <-- AJUSTE AQUÍ: Prueba con 0.7 o más
+                    $row_height += ($num_lines_tema * 0.8); // <-- AJUSTE AQUÍ: Prueba con 0.7 o más
                 }
 
 
