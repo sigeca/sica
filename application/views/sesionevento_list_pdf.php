@@ -1,9 +1,10 @@
 <?php
 
-    include 'plantilla2.php'; // Asumo que aquí está la definición de tu clase PDF
+    include 'plantilla2.php'; 
 
     $pdf = new PDF();
     $pdf->SetMargins(23, 10, 11.7);
+    // The '40' here is the bottom margin for auto page break.
     $pdf->SetAutoPageBreak(true, 40); 
 
     $pdf->institucion = 'UNIVERSIDAD TÉCNICA LUIS VARGAS TORRES DE ESMERALDAS';
@@ -48,24 +49,22 @@
     $pdf->SetFont('Arial', '', 7);
     $line_height = 5; 
 
-    // Posición X inicial para la primera celda de datos.
-    // Se obtiene después de que la cabecera de la tabla ha sido dibujada,
-    // ya que la última celda de la cabecera usa el parámetro para un salto de línea (1),
-    // lo que coloca el cursor X en el margen izquierdo (o la posición X actual).
-    $table_body_start_x = $pdf->GetX(); // CORREGIDO: Esta línea es la que se usa.
-
+    $table_body_start_x = $pdf->GetX();
     $current_row_y_start = $pdf->GetY(); 
+
+    // Define the bottom margin value used in SetAutoPageBreak directly
+    $page_break_bottom_margin = 40;
 
     if (isset($sesioneventos) && is_array($sesioneventos)) {
         foreach ($sesioneventos as $idx => $row) {
             $nmes_actual = date('m', strtotime($row->fecha));
             if ((isset($mesnumero) && ($nmes_actual == $mesnumero || $mesnumero == 0)) || !isset($mesnumero) ) {
 
-                // Comprobar si se necesita una nueva página ANTES de dibujar la fila.
-                // Usamos GetBMargin() para acceder al margen inferior.
-                if ($current_row_y_start + $line_height > ($pdf->GetPageHeight() - $pdf->GetBMargin())) { // CORREGIDO AQUÍ
+                // Pre-emptive check for page break.
+                // This uses the $page_break_bottom_margin defined above.
+                if ($current_row_y_start + $line_height > ($pdf->GetPageHeight() - $page_break_bottom_margin)) { // MODIFIED HERE
                     $pdf->AddPage($pdf->CurOrientation);
-                    // Redibujar cabeceras si es necesario
+                    // Redraw headers if your PDF class's Header() method doesn't do it automatically.
                     $pdf->SetFillColor(232,232,232);
                     $pdf->SetFont('Arial','B',8);
                     $pdf->Cell(10,5,'#sesion',1,0,'C',1);
@@ -132,10 +131,10 @@
                 $y_positions_after_cells[] = $pdf->GetY();
                 $current_x_pos += 15;
 
-                // Celda 8: Tema (tema)
+                // Celda 8: Tema (temacorto)
                 $pdf->SetXY($current_x_pos, $current_row_y_start);
-                $tema_limpio = preg_replace('/[\r\n]+/', ' ', $row->tema);
-                $pdf->MultiCell(120, $line_height, utf8_decode($tema_limpio), 1, 'L');
+                $tema_corto_limpio = preg_replace('/[\r\n]+/', ' ', (string)$row->temacorto); // Added (string) cast for safety
+                $pdf->MultiCell(120, $line_height, utf8_decode($tema_corto_limpio), 1, 'L');
                 $y_positions_after_cells[] = $pdf->GetY();
                 $current_x_pos += 120;
 
