@@ -73,7 +73,7 @@
 
                 $tema_original = isset($row->tema) ? (string)$row->tema : '';
                 $tema_formateado_fpdf = str_replace("\r", "", $tema_original);
-                $tema_formateado_fpdf = utf8_decode($tema_formateado_fpdf);
+                $tema_formateado_fpdf = utf8_decode($tema_original);
 
                 // Calcular el número de líneas para la celda "Tema"
                 $num_lines_tema = $pdf->NbLines(120, $tema_formateado_fpdf);
