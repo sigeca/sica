@@ -61,6 +61,7 @@
 
     $page_break_bottom_margin = 40;
 
+
     if (isset($sesioneventos) && is_array($sesioneventos)) {
         foreach ($sesioneventos as $idx => $row) {
             $fecha_actual_row = isset($row->fecha) ? $row->fecha : null;
@@ -75,21 +76,16 @@
                 $tema_formateado_fpdf = str_replace("\r", "", $tema_original);
                 $tema_formateado_fpdf = utf8_decode($tema_formateado_fpdf);
 
-                // Calcular el número de líneas para la celda "Tema"
                 $num_lines_tema = $pdf->NbLines(120, $tema_formateado_fpdf);
-                $row_height = $num_lines_tema * $line_height; // Usamos el line_height ajustado
+                $row_height = $num_lines_tema * $line_height;
 
-                // Asegurar que la altura mínima de la fila sea la altura de línea base
                 if ($row_height < $line_height) {
                     $row_height = $line_height;
                 }
 
-                // *** AJUSTE CLAVE AQUÍ: Aumenta el padding vertical extra para evitar recortes
-                // Puedes probar con valores como 1, 1.2, 1.5 por línea
                 if ($num_lines_tema > 1) {
-                    $row_height += ($num_lines_tema * 0.8); // <-- AJUSTE AQUÍ: Prueba con 0.7 o más
+                    $row_height += ($num_lines_tema * 0.7); // Ajusta el padding si es necesario
                 }
-
 
                 if ($current_row_y_start + $row_height > ($pdf->GetPageHeight() - $page_break_bottom_margin)) {
                     $pdf->AddPage('L');
@@ -109,10 +105,6 @@
                     $table_body_start_x = $pdf->GetX();
                 }
 
-                // ... (el resto del código de la fila, incluyendo el pintado del Rect y las MultiCells)
-                // Asegúrate de que todas las llamadas a MultiCell tengan el último parámetro en `false`
-                // para que el relleno del Rect sea el único que se aplique.
-
                 // Determinar el color de fondo de la fila
                 $idmodoevaluacion = isset($row->idmodoevaluacion) ? (int)$row->idmodoevaluacion : 0;
                 $fill_color_r = 255;
@@ -126,6 +118,7 @@
                 }
                 
                 $pdf->SetFillColor($fill_color_r, $fill_color_g, $fill_color_b);
+                // Dibuja el fondo de la fila completa
                 $pdf->Rect($table_body_start_x, $current_row_y_start, 10 + (15 * 6) + 120 + 18, $row_height, 'F');
                 
                 $pdf->SetFillColor(255, 255, 255); // Reset a blanco
@@ -133,7 +126,7 @@
 
                 $current_x_pos = $table_body_start_x;
                 
-                // Celda 1: #sesion
+                // Celda 1: #sesion (MultiCell con altura de fila completa, alineación vertical al centro por defecto)
                 $pdf->SetXY($current_x_pos, $current_row_y_start);
                 $pdf->MultiCell(10, $row_height, utf8_decode(isset($row->numerosesion) ? (string)$row->numerosesion : ''), 1, 'R', false);
                 $current_x_pos += 10;
@@ -174,15 +167,29 @@
                 $pdf->MultiCell(15, $row_height, utf8_decode($no_conect_val), 1, 'C', false);
                 $current_x_pos += 15;
 
-                // Celda 8: Tema
-                $pdf->SetXY($current_x_pos, $current_row_y_start);
-                $pdf->MultiCell(120, $row_height, $tema_formateado_fpdf, 1, 'L', false);
-                $current_x_pos += 120;
+                // --- CAMBIO CLAVE AQUÍ PARA LA CELDA 'TEMA' ---
+                // Para alinear verticalmente arriba:
+                // 1. Dibuja el borde de la celda con la altura total de la fila.
+                $pdf->Rect($current_x_pos, $current_row_y_start, 120, $row_height, 'D'); // 'D' para dibujar solo el borde
+                
+                // 2. Reposiciona el cursor a la esquina superior izquierda de esta celda
+                // con un pequeño padding vertical (ej. 0.5mm) para que el texto no quede pegado al borde.
+                $pdf->SetXY($current_x_pos + 0.5, $current_row_y_start + 0.5); // Ajusta 0.5 según necesites
 
-                // Celda 9: Control
-                $pdf->SetXY($current_x_pos, $current_row_y_start);
+                // 3. Imprime el texto del tema usando MultiCell con una altura de línea (line_height),
+                // y sin bordes ni relleno, ya que el Rect ya dibujó el borde y el fondo.
+                // El `MultiCell` avanzará el cursor `Y` por sí mismo.
+                $pdf->MultiCell(120 - 1, $line_height, $tema_formateado_fpdf, 0, 'L', false); // Resta 1 a width para el padding X
+
+                // 4. Mueve el cursor X a la posición final de esta celda para la siguiente columna.
+                // La posición Y debe volver al inicio de la fila actual para la última celda.
+                $current_x_pos += 120; // Ancho de la celda Tema
+                $pdf->SetXY($current_x_pos, $current_row_y_start); // Vuelve a la Y de inicio de la fila para la siguiente celda
+
+                // Celda 9: Control (MultiCell con altura de fila completa, alineación vertical al centro por defecto)
                 $pdf->MultiCell(18, $row_height, utf8_decode("X SISTEMA"), 1, 'C', false);
 
+                // Actualizar la posición Y para la siguiente fila
                 $current_row_y_start = $current_row_y_start + $row_height;
                 $pdf->SetX($table_body_start_x);
             }
@@ -190,4 +197,4 @@
     }
 
     $pdf->Output();
-?> 
+?>
