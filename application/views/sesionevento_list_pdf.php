@@ -26,7 +26,6 @@
     if (isset($mesnumero) && $mesnumero > 0 && isset($mesletra) && isset($mesletra[$mesnumero])) {
         $pdf->mes = "Mes:  " . $mesletra[$mesnumero];
     } else {
-        // Consider if $mesnumero === 0 means "all months" or if it should also be handled as "(Todos)"
         $pdf->mes = "Mes: (Todos)";
     }
 
@@ -57,31 +56,36 @@
 
     if (isset($sesioneventos) && is_array($sesioneventos)) {
         foreach ($sesioneventos as $idx => $row) {
-            // Ensure $row is an object and properties exist before accessing
             $fecha_actual_row = isset($row->fecha) ? $row->fecha : null;
             if (!$fecha_actual_row) {
-                // Skip this row or handle error if date is missing
                 continue;
             }
             $nmes_actual = date('m', strtotime($fecha_actual_row));
 
             if ((isset($mesnumero) && ($nmes_actual == $mesnumero || $mesnumero == 0)) || !isset($mesnumero) ) {
 
-                // Calcula el número de líneas para la celda "Tema"
+                // Preparar el texto del tema y decodificarlo para FPDF
                 $tema_limpio = isset($row->tema) ? (string)$row->tema : '';
-                $tema_limpio = preg_replace('/[\r\n]+/', ' ', $tema_limpio); // Limpiar saltos de línea adicionales
-                $num_lines_tema = $pdf->NbLines(120, utf8_decode($tema_limpio)); // 120 es el ancho de la celda Tema
+                $tema_limpio_decoded = utf8_decode(preg_replace('/[\r\n]+/', ' ', $tema_limpio));
 
-                // Calcula la altura total de la fila basada en el número de líneas del tema
+                // Calcular el número de líneas para la celda "Tema"
+                // Añadimos un pequeño margen extra a la altura calculada para evitar recortes
+                $num_lines_tema = $pdf->NbLines(120, $tema_limpio_decoded);
                 $row_height = $num_lines_tema * $line_height;
 
-                // Asegúrate de que la altura mínima sea $line_height si el tema es corto
+                // Asegurar que la altura mínima de la fila sea la altura de línea base
                 if ($row_height < $line_height) {
                     $row_height = $line_height;
                 }
+                
+                // *** Ajuste clave aquí: Añade un pequeño padding vertical si el texto es multilinea
+                // Esto ayuda a que el texto no quede "pegado" al borde y evita recortes
+                if ($num_lines_tema > 1) {
+                    $row_height += 1; // Añade 1mm extra por cada línea adicional
+                }
+
 
                 if ($current_row_y_start + $row_height > ($pdf->GetPageHeight() - $page_break_bottom_margin)) {
-                    // Add a new page with the same Landscape orientation
                     $pdf->AddPage('L');
                     $pdf->SetFillColor(232,232,232);
                     $pdf->SetFont('Arial','B',8);
@@ -99,81 +103,88 @@
                     $table_body_start_x = $pdf->GetX();
                 }
 
-                $current_x_pos = $table_body_start_x;
-
                 // Determinar el color de fondo de la fila
                 $idmodoevaluacion = isset($row->idmodoevaluacion) ? (int)$row->idmodoevaluacion : 0;
+                $fill_color_r = 255;
+                $fill_color_g = 255;
+                $fill_color_b = 255;
+                $apply_fill = false; // Bandera para controlar si se aplica el color de fondo
+
                 if ($idmodoevaluacion > 1) {
-                    $pdf->SetFillColor(255, 255, 204); // Amarillo claro
-                    $fill = true;
-                } else {
-                    $pdf->SetFillColor(255, 255, 255); // Blanco
-                    $fill = false;
+                    $fill_color_r = 255; // Amarillo claro
+                    $fill_color_g = 255;
+                    $fill_color_b = 204;
+                    $apply_fill = true;
                 }
+                
+                // *** Solución para el color de fondo: Dibuja un rectángulo para toda la fila
+                // Esto asegura que el color de fondo cubra toda la fila de manera consistente
+                $pdf->SetFillColor($fill_color_r, $fill_color_g, $fill_color_b);
+                $pdf->Rect($table_body_start_x, $current_row_y_start, 10 + (15 * 6) + 120 + 18, $row_height, 'F'); // Ancho total de la tabla (258)
+                
+                // Restablece el color de relleno a blanco y no uses $fill en MultiCell para evitar superposiciones
+                $pdf->SetFillColor(255, 255, 255); 
 
-                // Guardar la posición Y inicial de la fila
-                $start_y_for_row = $pdf->GetY();
 
-                // Dibuja el fondo de la fila completa antes de las celdas
-                // Asegúrate de que la fila se rellene con el color correcto
-                $pdf->Rect($table_body_start_x, $current_row_y_start, 23 + 15*6 + 120 + 18, $row_height, 'F'); // Ancho total de la tabla (10+15*6+120+18 = 258)
-                // Restablecer el color de relleno si no hay relleno específico para la celda individual
-                $pdf->SetFillColor(255, 255, 255); // Restablecer a blanco para las celdas si no se rellenan individualmente
+                $current_x_pos = $table_body_start_x;
 
-
+                // Ahora dibuja las celdas SIN el parámetro $fill (o con false)
+                // El relleno ya lo hicimos con el Rect anterior.
+                // MultiCell(width, height, text, border, align, fill_flag)
+                
                 // Celda 1: #sesion
                 $pdf->SetXY($current_x_pos, $current_row_y_start);
-                $pdf->MultiCell(10, $row_height, utf8_decode(isset($row->numerosesion) ? (string)$row->numerosesion : ''), 1, 'R', $fill); // $fill para el borde y el relleno
+                $pdf->MultiCell(10, $row_height, utf8_decode(isset($row->numerosesion) ? (string)$row->numerosesion : ''), 1, 'R', false); // false para no rellenar aquí
                 $current_x_pos += 10;
 
                 // Celda 2: Dia
                 $pdf->SetXY($current_x_pos, $current_row_y_start);
                 $dias = array('Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado');
                 $dia_semana = $dias[date('w', strtotime($fecha_actual_row))];
-                $pdf->MultiCell(15, $row_height, utf8_decode($dia_semana), 1, 'L', $fill);
+                $pdf->MultiCell(15, $row_height, utf8_decode($dia_semana), 1, 'L', false);
                 $current_x_pos += 15;
 
                 // Celda 3: Fecha
                 $pdf->SetXY($current_x_pos, $current_row_y_start);
-                $pdf->MultiCell(15, $row_height, utf8_decode($fecha_actual_row), 1, 'L', $fill);
+                $pdf->MultiCell(15, $row_height, utf8_decode($fecha_actual_row), 1, 'L', false);
                 $current_x_pos += 15;
 
                 // Celda 4: Inicio
                 $pdf->SetXY($current_x_pos, $current_row_y_start);
-                $pdf->MultiCell(15, $row_height, utf8_decode(isset($row->horainicio) ? (string)$row->horainicio : ''), 1, 'L', $fill);
+                $pdf->MultiCell(15, $row_height, utf8_decode(isset($row->horainicio) ? (string)$row->horainicio : ''), 1, 'L', false);
                 $current_x_pos += 15;
 
                 // Celda 5: Termino
                 $pdf->SetXY($current_x_pos, $current_row_y_start);
-                $pdf->MultiCell(15, $row_height, utf8_decode(isset($row->horafin) ? (string)$row->horafin : ''), 1, 'L', $fill);
+                $pdf->MultiCell(15, $row_height, utf8_decode(isset($row->horafin) ? (string)$row->horafin : ''), 1, 'L', false);
                 $current_x_pos += 15;
 
                 // Celda 6: Conect
                 $pdf->SetXY($current_x_pos, $current_row_y_start);
                 $numeasis = isset($row->numeasis) ? (int)$row->numeasis : 0;
                 $conect_val = ($numeasis > 0) ? (string)$numeasis : " ";
-                $pdf->MultiCell(15, $row_height, utf8_decode($conect_val), 1, 'C', $fill);
+                $pdf->MultiCell(15, $row_height, utf8_decode($conect_val), 1, 'C', false);
                 $current_x_pos += 15;
 
                 // Celda 7: NoConect
                 $pdf->SetXY($current_x_pos, $current_row_y_start);
                 $numalum = isset($row->numalum) ? (int)$row->numalum : 0;
                 $no_conect_val = ($numeasis > 0) ? (string)($numalum - $numeasis) : " ";
-                $pdf->MultiCell(15, $row_height, utf8_decode($no_conect_val), 1, 'C', $fill);
+                $pdf->MultiCell(15, $row_height, utf8_decode($no_conect_val), 1, 'C', false);
                 $current_x_pos += 15;
 
                 // Celda 8: Tema (tema)
                 $pdf->SetXY($current_x_pos, $current_row_y_start);
-                $pdf->MultiCell(120, $row_height, utf8_decode($tema_limpio), 1, 'L', $fill);
+                $pdf->MultiCell(120, $row_height, $tema_limpio_decoded, 1, 'L', false); // Usa la versión decodificada
                 $current_x_pos += 120;
 
                 // Celda 9: Control
                 $pdf->SetXY($current_x_pos, $current_row_y_start);
-                $pdf->MultiCell(18, $row_height, utf8_decode("X SISTEMA"), 1, 'C', $fill);
+                $pdf->MultiCell(18, $row_height, utf8_decode("X SISTEMA"), 1, 'C', false);
 
                 // Actualizar la posición Y para la siguiente fila
-                $current_row_y_start = $start_y_for_row + $row_height; // Mueve la posición Y por la altura calculada de la fila
-                $pdf->SetX($table_body_start_x); // Vuelve al inicio de la tabla para la siguiente fila
+                $current_row_y_start = $current_row_y_start + $row_height;
+                $pdf->SetX($table_body_start_x);
             }
         }
     }
