@@ -48,20 +48,34 @@
         // 1. Calcular la altura máxima de la fila
         $max_height = 10; // Altura mínima inicial para la fila (para el campo HORA y celdas vacías)
 
-        // Calcula la altura para cada celda que pueda tener contenido extenso
-        $lunes_height = isset($dia['Lunes']) ? $pdf->GetStringHeight($cell_width, utf8_decode($dia['Lunes'])) * $line_height : $line_height;
-        $martes_height = isset($dia['Martes']) ? $pdf->GetStringHeight($cell_width, utf8_decode($dia['Martes'])) * $line_height : $line_height;
-        $miercoles_height = isset($dia['Miercoles']) ? $pdf->GetStringHeight($cell_width, utf8_decode($dia['Miercoles'])) * $line_height : $line_height;
-        $jueves_height = isset($dia['Jueves']) ? $pdf->GetStringHeight($cell_width, utf8_decode($dia['Jueves'])) * $line_height : $line_height;
-        $viernes_height = isset($dia['Viernes']) ? $pdf->GetStringHeight($cell_width, utf8_decode($dia['Viernes'])) * $line_height : $line_height;
+        // Para calcular la altura de un MultiCell de forma precisa, necesitamos una función
+        // que simule el comportamiento de MultiCell sin dibujarlo.
+        // FPDF no tiene GetStringHeight() directamente para MultiCell.
+        // Podemos usar una aproximación o extender la clase FPDF.
+        // Aquí vamos a usar un método auxiliar para calcular la altura necesaria.
+        
+        // Función auxiliar para calcular la altura de un texto en MultiCell
+        // Esta función podría ser un método en tu clase PDF (plantilla.php)
+        // o una función auxiliar definida en este archivo.
+        function calculateMultiCellHeight($pdf_instance, $width, $text, $line_height) {
+            $current_font_size = $pdf_instance->FontSizePt; // Obtener el tamaño de fuente actual
+            $width_in_points = $width * (72 / 25.4); // Convertir mm a puntos (1 pulgada = 25.4 mm = 72 puntos)
+            
+            // Simular el cálculo de líneas
+            $lines = $pdf_instance->WordWrap($text, $width);
+            $num_lines = count($lines);
+            return $num_lines * $line_height;
+        }
+
+        $lunes_height = isset($dia['Lunes']) ? calculateMultiCellHeight($pdf, $cell_width, utf8_decode($dia['Lunes']), $line_height) : $line_height;
+        $martes_height = isset($dia['Martes']) ? calculateMultiCellHeight($pdf, $cell_width, utf8_decode($dia['Martes']), $line_height) : $line_height;
+        $miercoles_height = isset($dia['Miercoles']) ? calculateMultiCellHeight($pdf, $cell_width, utf8_decode($dia['Miercoles']), $line_height) : $line_height;
+        $jueves_height = isset($dia['Jueves']) ? calculateMultiCellHeight($pdf, $cell_width, utf8_decode($dia['Jueves']), $line_height) : $line_height;
+        $viernes_height = isset($dia['Viernes']) ? calculateMultiCellHeight($pdf, $cell_width, utf8_decode($dia['Viernes']), $line_height) : $line_height;
         
         // Obtiene la altura máxima entre todas las celdas
         $max_height = max($max_height, $lunes_height, $martes_height, $miercoles_height, $jueves_height, $viernes_height);
         
-        // Ajusta la altura si es un MultiCell (el * $line_height anterior es una estimación)
-        // Para ser más preciso, podrías llamar a GetStringHeight() aquí de nuevo después de determinar el número de líneas reales
-        // pero para la mayoría de los casos, la estimación anterior es suficiente.
-
         $start_x = $pdf->GetX(); // Posición X inicial para la fila actual
         $current_y = $pdf->GetY(); // Posición Y inicial para la fila actual
 
@@ -72,35 +86,44 @@
         $pdf->SetXY($start_x + 12, $current_y);
 
         if(isset($dia['Lunes'])){
+            // Para asegurar que MultiCell se ajusta a la altura máxima,
+            // si el texto es corto, la celda seguirá teniendo la altura max_height
+            // El truco es que MultiCell avanzará el Y, luego SetXY lo ajusta.
             $pdf->MultiCell($cell_width, $line_height, utf8_decode($dia['Lunes']), 1, 'L', 0);
+            $pdf->SetXY($start_x + 12 + $cell_width, $current_y); // Mover X para la siguiente celda
         } else {
             $pdf->Cell($cell_width, $max_height, "", 1, 0, 'L', 0);
+            $pdf->SetXY($start_x + 12 + $cell_width, $current_y); // Mover X para la siguiente celda
         }
-        $pdf->SetXY($start_x + 12 + $cell_width, $current_y); // Mover X para la siguiente celda
 
         if(isset($dia['Martes'])){
             $pdf->MultiCell($cell_width, $line_height, utf8_decode($dia['Martes']), 1, 'L', 0);
+            $pdf->SetXY($start_x + 12 + ($cell_width * 2), $current_y);
         } else {
             $pdf->Cell($cell_width, $max_height, "", 1, 0, 'L', 0);
+            $pdf->SetXY($start_x + 12 + ($cell_width * 2), $current_y);
         }
-        $pdf->SetXY($start_x + 12 + ($cell_width * 2), $current_y);
 
         if(isset($dia['Miercoles'])){
             $pdf->MultiCell($cell_width, $line_height, utf8_decode($dia['Miercoles']), 1, 'L', 0);
+            $pdf->SetXY($start_x + 12 + ($cell_width * 3), $current_y);
         } else {
             $pdf->Cell($cell_width, $max_height, "", 1, 0, 'L', 0);
+            $pdf->SetXY($start_x + 12 + ($cell_width * 3), $current_y);
         }
-        $pdf->SetXY($start_x + 12 + ($cell_width * 3), $current_y);
 
         if(isset($dia['Jueves'])){
             $pdf->MultiCell($cell_width, $line_height, utf8_decode($dia['Jueves']), 1, 'L', 0);
+            $pdf->SetXY($start_x + 12 + ($cell_width * 4), $current_y);
         } else {
             $pdf->Cell($cell_width, $max_height, "", 1, 0, 'L', 0);
+            $pdf->SetXY($start_x + 12 + ($cell_width * 4), $current_y);
         }
-        $pdf->SetXY($start_x + 12 + ($cell_width * 4), $current_y);
 
         if(isset($dia['Viernes'])){
             $pdf->MultiCell($cell_width, $line_height, utf8_decode($dia['Viernes']), 1, 'L', 0);
+            // No SetXY aquí porque es la última celda de la fila y queremos que el cursor avance automáticamente
+            // o lo ajustamos manualmente en la siguiente línea.
         } else {
             $pdf->Cell($cell_width, $max_height, "", 1, 0, 'L', 0);
         }
