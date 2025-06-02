@@ -184,7 +184,7 @@ if(checkdate($m,$d,$a)){
 		$pdf->Cell(8,5,$row->temacorto,1,0,'C',1);
 	}
 	$pdf->Cell(10,5,'P1',1,0,'C',1);
-	$pdf->Cell(12,5,'As1('.$sesiontotal[0].')'.1,0,'C',1);
+	$pdf->Cell(12,5,'As1('.$sesiontotal[0].')',1,0,'C',1);
 	$pdf->Cell(10,5,'P2',1,0,'C',1);
 	$pdf->Cell(12,5,'As2('.$sesiontotal[1].')',1,0,'C',1);
 	$pdf->Cell(10,5,'Prom',1,0,'C',1);
