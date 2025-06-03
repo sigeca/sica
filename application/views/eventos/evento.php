@@ -138,7 +138,7 @@
 
      <?php if(isset($this->session->userdata['logged_in']['cedula'])) { ?>
 
-     <img src="'<?php echo 'http://repositorioutlvte.org/Repositorio/fotos/'.$this->session->userdata['logged_in']['cedula']; ?>".jpg class="img-fluid mb-3" style="max-width: 250px;" alt="Logo Educaysoft">
+     <img src="'<?php echo 'https://repositorioutlvte.org/Repositorio/fotos/'.$this->session->userdata['logged_in']['cedula']; ?>".jpg class="img-fluid mb-3" style="max-width: 250px;" alt="Logo Educaysoft">
     <?php }else{ ?>
         <img src="http://repositorioutlvte.org/sica/images/LogoEducCont.png" class="img-fluid mb-3" style="max-width: 250px;" alt="Logo Educaysoft">
     <?php } ?>
