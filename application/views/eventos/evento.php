@@ -135,7 +135,15 @@
 
 <header class="hero-image">
     <div class="hero-text">
-        <img src="http://educaysoft.org/sica/images/LogoEducCont.png" class="img-fluid mb-3" style="max-width: 250px;" alt="Logo Educaysoft">
+
+     <?php if(isset($this->session->userdata['logged_in']['cedula'])) { ?>
+
+     <img src="'<?php echo 'http://repositorioutlvte.org/Repositorios/fotos/'.$this->session->userdata['logged_in']['cedula']; ?>".jpg class="img-fluid mb-3" style="max-width: 250px;" alt="Logo Educaysoft">
+    <?php }else{ ?>
+        <img src="http://repositorioutlvte.org/sica/images/LogoEducCont.png" class="img-fluid mb-3" style="max-width: 250px;" alt="Logo Educaysoft">
+    <?php } ?>
+
+
         <h1 class="display-4"><?php echo $evento['titulo']; ?></h1>
         <div class="d-flex justify-content-center flex-wrap">
             <a href="<?php echo 'https://repositorioutlvte.org/Repositorio/'.$silabo['archivopdf']; ?>" class="btn btn-outline-light mx-2 mb-2">
@@ -246,10 +254,10 @@
                                 <td>
                                     <?php if(trim($row->linkpresentacion) != '') { ?>
                                         <a href="<?php echo $row->linkpresentacion; ?>" target="_blank" class="text-decoration-none">
-                                            <?php echo $row->nombrecorto; ?> <i class="fa-solid fa-external-link-alt fa-xs"></i>
+                                            <?php echo $row->nombrelargo; ?> <i class="fa-solid fa-external-link-alt fa-xs"></i>
                                         </a>
                                     <?php } else { ?>
-                                        <?php echo $row->nombrecorto; ?>
+                                        <?php echo $row->nombrelargo; ?>
                                     <?php } ?>
                                 </td>
                                 <td class="text-center">
