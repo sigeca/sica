@@ -48,6 +48,7 @@ class Participacion_model extends CI_model {
 	function get_participacionpersona2($idevento,$idpersona){
 		 if($idevento>0)
                 {
+                $this->db->order_by('idmodoevaluacion');
                 $this->db->where('idevento='.$idevento);
                 $this->db->where('idpersona="'.$idpersona.'"');
                 $this->db->where('idmodoevaluacion>1');
