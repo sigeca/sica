@@ -515,6 +515,9 @@ class ReporteParticipacionPDF
 $this->load->database(); // Carga la conexión a la base de datos (asumiendo CodeIgniter)
 $this->load->helper('form'); // El helper 'form' no parece usarse en la lógica principal del PDF.
 
+print_r($evento);
+die();
+
 // Datos de ejemplo (reemplaza con tus datos reales)
 //$evento = ['titulo' => 'Reporte de Prácticas', 'fechainicia' => '2024-01-01', 'fechafinaliza' => '2024-06-30'];
 $asignatura = [ (object)['nombre' => 'Programación Web'] ];
