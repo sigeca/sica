@@ -109,10 +109,7 @@ class ReporteParticipacionPDF
             error_log('Fechas de inicio o fin no definidas para el cálculo de sesiones.');
             return [];
         }
-        print_r(fechacorte);
-        echo "\n\n";
-        echo $fechaSesion;
-        die();
+        
         foreach ($fechacorte as $p => $fc) {
             $currentDate = $fechaSesion;
             $count = 0;
