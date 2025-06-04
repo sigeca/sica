@@ -12,15 +12,32 @@ class ReporteParticipacionPDF
     private $db; // Asumimos que $this->load->database() te da acceso a una conexión de base de datos.
     private $idParticipanteEstado;
     private $idPersona;
-
+  private $eventoData;
+    private $asignaturaData;
+    private $distributivoDocenteData;
+    private $calendarioAcademicoData;
     /**
      * Constructor de la clase.
      *
      * @param object $db Conexión a la base de datos (por ejemplo, CodeIgniter DB object).
      */
-    public function __construct($db)
+    public function __construct(
+        $db,
+        array $evento, // <-- Aquí recibes el array $evento
+        array $asignatura,
+        array $distributivodocente,
+        array $calendarioacademico
+    
+    )
     {
         $this->db = $db; // Asignamos la conexión a la base de datos
+ // Almacenas los datos como propiedades de la instancia de la clase
+        $this->eventoData = $evento;
+        $this->asignaturaData = $asignatura;
+        $this->distributivoDocenteData = $distributivodocente;
+        $this->calendarioAcademicoData = $calendarioacademico;
+
+
         $this->initializePdf();
         $this->loadInputParameters();
     }
@@ -38,19 +55,21 @@ class ReporteParticipacionPDF
         // Por la forma en que accedes a estas variables ($evento['titulo'], $asignatura[0]->nombre),
         // asumo que estas son variables globales o propiedades de una clase controladora
         // que las hace disponibles aquí. Si no es así, deberían pasarse al constructor.
-        global $evento, $asignatura, $distributivodocente, $calendarioacademico;
+//        global $evento, $asignatura, $distributivodocente, $calendarioacademico;
 
 
-        print_r($evento);
-        die();
+ //       print_r($evento);
+ //       die();
 
         $this->pdf->institucion = 'UNIVERSIDAD TÉCNICA LUIS VARGAS TORRES DE ESMERALDAS';
         $this->pdf->unidad = 'FACULTAD DE INGENIERIAS (FACI)';
         $this->pdf->departamento = 'CARRERA EN TECNOLOGÍA DE LA INFORMACIÓN';
-        $this->pdf->titulo = $evento['titulo'] ?? 'Título del Evento No Disponible';
-        $this->pdf->asignatura = "Asignatura: " . ($asignatura[0]->nombre ?? 'N/A');
-        $this->pdf->docente = "Docente: " . ($distributivodocente[0]->eldocente ?? 'N/A');
-        $this->pdf->mes = "Periodo: " . ($calendarioacademico[0]->nombre ?? 'N/A');
+
+ $this->pdf->titulo = $this->eventoData['titulo'] ?? 'Título del Evento No Disponible';
+        $this->pdf->asignatura = "Asignatura: " . ($this->asignaturaData[0]->nombre ?? 'N/A');
+        $this->pdf->docente = "Docente: " . ($this->distributivoDocenteData[0]->eldocente ?? 'N/A');
+        $this->pdf->mes = "Periodo: " . ($this->calendarioAcademicoData[0]->nombre ?? 'N/A');
+
 
         $this->pdf->AliasNbPages();
         $this->pdf->AddPage('L');
@@ -522,9 +541,9 @@ $this->load->helper('form'); // El helper 'form' no parece usarse en la lógica 
 
 // Datos de ejemplo (reemplaza con tus datos reales)
 //$evento = ['titulo' => 'Reporte de Prácticas', 'fechainicia' => '2024-01-01', 'fechafinaliza' => '2024-06-30'];
-$asignatura = [ (object)['nombre' => 'Programación Web'] ];
-$distributivodocente = [ (object)['eldocente' => 'Dr. Juan Pérez'] ];
-$calendarioacademico = [ (object)['fechadesde' => '2024-01-01', 'fechahasta' => '2024-06-30', 'nombre' => 'Periodo 2024-1'] ];
+//$asignatura = [ (object)['nombre' => 'Programación Web'] ];
+//$distributivodocente = [ (object)['eldocente' => 'Dr. Juan Pérez'] ];
+//$calendarioacademico = [ (object)['fechadesde' => '2024-01-01', 'fechahasta' => '2024-06-30', 'nombre' => 'Periodo 2024-1'] ];
 
 // Ejemplo de datos de participación, asistencias, etc.
 // En un entorno real, estos vendrían de tus modelos de CodeIgniter.
@@ -537,7 +556,15 @@ $nivelRpt = 1; // Define el nivel de reporte (1, 2, etc.)
 
 
 // Instanciar y generar el reporte
-$reportGenerator = new ReporteParticipacionPDF($this->db); // Pasamos la conexión a la base de datos
+$reportGenerator = new ReporteParticipacionPDF(
+    $this->db,
+  $evento, // Pasa la variable $evento que cargaste en el controlador
+  $asignatura,
+  $distributivodocente,
+  $calendarioacademico
+
+
+); // Pasamos la conexión a la base de datos
 $reportGenerator->generateReport(
     $participacion,
     $sesionEventos,
