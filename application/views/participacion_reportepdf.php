@@ -38,7 +38,7 @@ class ReporteParticipacionPDF
         // Por la forma en que accedes a estas variables ($evento['titulo'], $asignatura[0]->nombre),
         // asumo que estas son variables globales o propiedades de una clase controladora
         // que las hace disponibles aquí. Si no es así, deberían pasarse al constructor.
-   //     global $evento, $asignatura, $distributivodocente, $calendarioacademico;
+        global $evento, $asignatura, $distributivodocente, $calendarioacademico;
 
         $this->pdf->institucion = 'UNIVERSIDAD TÉCNICA LUIS VARGAS TORRES DE ESMERALDAS';
         $this->pdf->unidad = 'FACULTAD DE INGENIERIAS (FACI)';
@@ -515,8 +515,6 @@ class ReporteParticipacionPDF
 $this->load->database(); // Carga la conexión a la base de datos (asumiendo CodeIgniter)
 $this->load->helper('form'); // El helper 'form' no parece usarse en la lógica principal del PDF.
 
-print_r($evento);
-die();
 
 // Datos de ejemplo (reemplaza con tus datos reales)
 //$evento = ['titulo' => 'Reporte de Prácticas', 'fechainicia' => '2024-01-01', 'fechafinaliza' => '2024-06-30'];
