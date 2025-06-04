@@ -547,12 +547,12 @@ $this->load->helper('form'); // El helper 'form' no parece usarse en la lógica 
 
 // Ejemplo de datos de participación, asistencias, etc.
 // En un entorno real, estos vendrían de tus modelos de CodeIgniter.
-$participacion = []; // Carga tus datos de participación aquí
-$sesionEventos = []; // Carga tus datos de sesiones de eventos aquí
-$fechacorte = ['2024-03-31', '2024-06-30']; // Ejemplo de fechas de corte
-$jornadadocente = []; // Carga tus datos de jornada docente aquí
-$asistencias = []; // Carga tus datos de asistencias aquí
-$nivelRpt = 1; // Define el nivel de reporte (1, 2, etc.)
+//$participacion = []; // Carga tus datos de participación aquí
+//$sesionEventos = []; // Carga tus datos de sesiones de eventos aquí
+//$fechacorte = ['2024-03-31', '2024-06-30']; // Ejemplo de fechas de corte
+//$jornadadocente = []; // Carga tus datos de jornada docente aquí
+//$asistencias = []; // Carga tus datos de asistencias aquí
+//$nivelRpt = 1; // Define el nivel de reporte (1, 2, etc.)
 
 
 // Instanciar y generar el reporte
