@@ -461,7 +461,7 @@ class ReporteParticipacionPDF
         $valX = $this->pdf->GetX();
         $valY = $this->pdf->GetY();
 
-        $this->pdf->BarDiagram(200, 100, $datac, '%l : %v (%p)', [255, 175, 100]);
+      //  $this->pdf->BarDiagram(200, 100, $datac, '%l : %v (%p)', [255, 175, 100]);
         $this->pdf->SetXY($valX, $valY + 80);
     }
 
