@@ -40,6 +40,10 @@ class ReporteParticipacionPDF
         // que las hace disponibles aquí. Si no es así, deberían pasarse al constructor.
         global $evento, $asignatura, $distributivodocente, $calendarioacademico;
 
+
+        print_r($evento);
+        die();
+
         $this->pdf->institucion = 'UNIVERSIDAD TÉCNICA LUIS VARGAS TORRES DE ESMERALDAS';
         $this->pdf->unidad = 'FACULTAD DE INGENIERIAS (FACI)';
         $this->pdf->departamento = 'CARRERA EN TECNOLOGÍA DE LA INFORMACIÓN';
