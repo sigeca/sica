@@ -412,7 +412,7 @@ class ReporteParticipacionPDF
         $col1 = [7, 195, 250];  // celeste
         $col2 = [245, 249, 3];  // amarillo
         $col3 = [253, 194, 224]; // rosado
-        $this->pdf->PieChart(100, 35, $data, '%l : %v (%p)', [$col1, $col2, $col3]);
+    //    $this->pdf->PieChart(100, 35, $data, '%l : %v (%p)', [$col1, $col2, $col3]);
         $this->pdf->SetXY($valX, $valY + 40);
     }
 
