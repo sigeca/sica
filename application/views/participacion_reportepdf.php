@@ -567,7 +567,7 @@ $reportGenerator = new ReporteParticipacionPDF(
 ); // Pasamos la conexión a la base de datos
 $reportGenerator->generateReport(
     $participacion,
-    $sesionEventos,
+    $sesioneventos,
     $fechacorte,
     $jornadadocente,
     $evento,
