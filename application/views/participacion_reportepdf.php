@@ -575,7 +575,7 @@ $reportGenerator->generateReport(
     $distributivodocente,
     $calendarioacademico,
     $asistencias,
-    $nivelRpt
+    $nivelrpt
 );
 
 ?>
