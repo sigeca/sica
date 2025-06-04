@@ -554,6 +554,8 @@ $this->load->helper('form'); // El helper 'form' no parece usarse en la lógica 
 //$asistencias = []; // Carga tus datos de asistencias aquí
 //$nivelRpt = 1; // Define el nivel de reporte (1, 2, etc.)
 
+print_r($fechacorte);
+die();
 
 // Instanciar y generar el reporte
 $reportGenerator = new ReporteParticipacionPDF(
