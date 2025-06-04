@@ -494,7 +494,6 @@ class ReporteParticipacionPDF
         // Estas variables se asumen globales o pasadas de alguna manera a la clase.
         // Si no son globales, deberías pasarlas al constructor o a este método.
         // Las he puesto aquí para que el ejemplo sea autocontenido, pero lo ideal es pasarlas.
-        global $evento, $asignatura, $distributivodocente, $calendarioacademico;
 
         $sesionTotal = $this->calculateTotalSessions($fechacorte, $jornadadocente, $evento, $calendarioacademico);
         $this->generateTableHeader($sesionEventos, $sesionTotal);
