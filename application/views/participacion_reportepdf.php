@@ -304,7 +304,7 @@ class ReporteParticipacionPDF
 
         $parcialScores = array_fill(0, count($fechacorte), 0);
         $numNotes = array_fill(0, count($fechacorte), 0);
-        $fecha1 = $calendarioAcademico[0]->fechadesde ?? null; // Reiniciar fecha para cada participante
+        $fecha1 = $calendarioAcademico[0]->fechahasta ?? null; // Reiniciar fecha para cada participante
 
         foreach ($sesionEventos as $row1) {
             if (isset($participantData['participaciones'][$row1->fecha])) {
