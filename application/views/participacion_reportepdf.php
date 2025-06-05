@@ -331,6 +331,8 @@ class ReporteParticipacionPDF
                 $this->pdf->Cell(8, 5, $score, 1, 0, 'R', 0);
                 $this->pdf->SetTextColor(0, 0, 0); // Siempre restaurar el color después de imprimir una celda
 
+                print_r($fechacorte);
+
                 foreach ($fechacorte as $p => $fc) {
                     if (strtotime($row1->fecha) <= strtotime($fc)) {
                        if($row1->idmodoevaluacion==4||$row1->idmodoevaluacion==8){ 
