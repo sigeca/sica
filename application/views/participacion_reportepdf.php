@@ -333,7 +333,12 @@ class ReporteParticipacionPDF
 
                 foreach ($fechacorte as $p => $fc) {
                     if (strtotime($row1->fecha) <= strtotime($fc)) {
-                        $parcialScores[$p] += $score;
+                       if($row1->idmodoevaluacion==4||$row1->idmodoevaluacion==8){ 
+                           $parcialScores[$p] += $score;
+                       }else{
+
+                           $parcialScores[$p] += $score/2;
+                       }
                         $numNotes[$p]++;
                         break;
                     }
