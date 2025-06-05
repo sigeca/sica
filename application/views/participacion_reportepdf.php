@@ -332,6 +332,7 @@ class ReporteParticipacionPDF
                 $this->pdf->SetTextColor(0, 0, 0); // Siempre restaurar el color después de imprimir una celda
 
                 print_r($fechacorte);
+                die();
 
                 foreach ($fechacorte as $p => $fc) {
                     if (strtotime($row1->fecha) <= strtotime($fc)) {
