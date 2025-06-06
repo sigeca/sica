@@ -322,7 +322,7 @@ echo "El script tardó " . $tiempoEjecucion . " segundos en ejecutarse toas las 
 		if(!$this->input->get("orden")){
 			$data['ordenrpt']=0;	
 			$data['title']="Evento";
-			$this->load->view('distributivodocente_genpagina',$data);
+			$this->load->view('distributivodocente_genpaginagpt',$data);
 		}else{
 			echo $this->input->get("orden"); 
 		if($this->input->get("orden")==1){
