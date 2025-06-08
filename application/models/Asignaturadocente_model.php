@@ -60,7 +60,7 @@ class Asignaturadocente_model extends CI_model {
 
         // Obtener los docentes que tienen asignaturas en el distributivo especificado
         $this->db->select('d.iddocente, ad.eldocente, d.cedula, ad.archivopdf');
-        $this->db->from('asignaturadocente ad, docente d');
+        $this->db->from('asignaturadocente3 ad, docente d');
         $this->db->where('ad.iddocente = d.iddocente');
         $this->db->where('ad.iddistributivo', $iddistributivo);
         $this->db->group_by('d.iddocente, ad.eldocente, d.cedula, ad.archivopdf'); // Agrupar para obtener docentes únicos
