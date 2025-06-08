@@ -150,7 +150,13 @@ ${asignatura.laasignatura} ${asignatura.paralelo ? `(${asignatura.paralelo})` : 
                                 } else {
                                     html += `<li>No hay asignaturas asignadas.</li>`;
                                 }
-                           });
+                                html += `
+                                            </ul>
+                                        </div>
+                                        
+                                    </div>
+                                `;
+                            });
                         } else {
                             html = '<p class="info-message">No se encontró información de distributivos.</p>';
                         }
