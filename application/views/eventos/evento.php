@@ -137,8 +137,17 @@
     <div class="hero-text">
 
      <?php if(isset($this->session->userdata['logged_in']['cedula'])) { ?>
+        
+     <?php if(isset($cedula)) { ?>
+
+     <img src="<?php echo 'https://repositorioutlvte.org/Repositorio/fotos/'.$cedula; ?>.jpg"  class="img-fluid mb-3" style="max-width: 250px;" alt="Logo Educaysoft">
+    <?php }else{ ?>
 
      <img src="<?php echo 'https://repositorioutlvte.org/Repositorio/fotos/'.$this->session->userdata['logged_in']['cedula']; ?>.jpg"  class="img-fluid mb-3" style="max-width: 250px;" alt="Logo Educaysoft">
+
+    <?php } ?>
+
+
     <?php }else{ ?>
         <img src="http://repositorioutlvte.org/sica/images/LogoEducCont.png" class="img-fluid mb-3" style="max-width: 250px;" alt="Logo Educaysoft">
     <?php } ?>
@@ -210,7 +219,15 @@
                 </div>
                 <div class="col-md-8">
                     <?php if(isset($this->session->userdata['logged_in']['idpersona'])) { ?>
+
+                    <?php if(isset($eldocente])) { ?>
+                        <span><?php echo "".$eldocente."";?></span>
+                    <?php } else { ?>
                         <span><?php echo $this->session->userdata['logged_in']['elusuario'] ." -- (". $this->session->userdata['logged_in']['email'].")";?></span>
+
+                    <?php } ?>
+
+
                     <?php } else { ?>
                         <span>Anónimo -- (Sin correo)</span>
                     <?php } ?>
