@@ -1066,6 +1066,24 @@ $r->href='<a href="javascript:void(0);" class="btn btn-info btn-outline-primary 
 
 	public function detalle()
 	{
+    
+        if($this->input->get('cedula')){
+
+            $data['cedula']=$this->input->get('cedula');
+
+        }
+
+
+        if($this->input->get('eldocente')){
+
+            $data['eldocente']=$this->input->get('eldocente');
+
+        }
+
+
+
+
+
 		$data['evento'] = $this->evento_model->evento($this->uri->segment(3))->row_array();
 		$data['sesioneventos'] = $this->sesionevento_model->sesioneventos1($this->uri->segment(3))->result();
 		$data['temas'] = $this->tema_model->temase($this->uri->segment(3))->result();
