@@ -68,8 +68,8 @@ class Asignaturadocente_model extends CI_model {
 
         foreach ($docentes as $docente) {
             // Para cada docente, obtener las asignaturas específicas de ese distributivo
-            $this->db->select('ad.laasignatura, ad.paralelo');
-            $this->db->from('asignaturadocente2 ad');
+            $this->db->select('ad.laasignatura, ad.paralelo,ad.idvento');
+            $this->db->from('asignaturadocente3 ad');
             $this->db->join('asignatura1 a', 'ad.idasignatura = a.idasignatura');
             $this->db->where('ad.iddocente', $docente['iddocente']);
             $this->db->where('ad.iddistributivo', $iddistributivo);
