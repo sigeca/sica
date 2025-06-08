@@ -79,7 +79,7 @@ class Asignaturadocente_model extends CI_model {
                 'iddocente' => $docente['iddocente'],
                 'eldocente' => $docente['eldocente'],
                 // Asume que 'cedula_imagen_path' guarda la ruta relativa.
-                'cedula' => base_url($docente['cedula_imagen_path']),
+                'cedula' => base_url($docente['cedula']),
                 'archivopdf' => $docente['archivopdf'],
                 'asignaturas' => $asignaturas
             ];
