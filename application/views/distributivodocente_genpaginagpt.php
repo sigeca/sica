@@ -85,7 +85,7 @@ function checkIfImageExists(url) {
 }
 
             // Function to fetch and display data
-            function loadDistributivoData() {
+     async       function loadDistributivoData() {
                 $.ajax({
                     url: '<?php echo site_url('distributivodocente/dist/25'); ?>', // Your AJAX endpoint
                     type: 'GET',
