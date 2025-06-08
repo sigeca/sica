@@ -49,6 +49,47 @@ class Asignaturadocente_model extends CI_model {
 
 
 
+/**
+     * Obtiene datos de docentes y sus asignaturas para un distributivo específico.
+     *
+     * @param int $iddistributivo El ID del distributivo por el que filtrar.
+     * @return array Un array de arrays con la estructura especificada.
+     */
+    public function getDocentesAsignaturasByDistributivo($iddistributivo) {
+        $result = [];
+
+        // Obtener los docentes que tienen asignaturas en el distributivo especificado
+        $this->db->select('d.iddocente, ad.eldocente, d.cedula, ad.archivopdf');
+        $this->db->from('asignaturadocente ad, docente d');
+        $this->db->where('ad.iddocente = d.iddocente');
+        $this->db->where('ad.iddistributivo', $iddistributivo);
+        $this->db->group_by('d.iddocente, ad.eldocente, d.cedula, ad.archivopdf'); // Agrupar para obtener docentes únicos
+        $docentes = $this->db->get()->result_array();
+
+        foreach ($docentes as $docente) {
+            // Para cada docente, obtener las asignaturas específicas de ese distributivo
+            $this->db->select('a.laasignatura, a.codigo');
+            $this->db->from('asignaturadocente ad');
+            $this->db->join('asignatura1 a', 'ad.idasignatura = a.idasignatura');
+            $this->db->where('ad.iddocente', $docente['iddocente']);
+            $this->db->where('ad.iddistributivo', $iddistributivo);
+            $asignaturas = $this->db->get()->result_array();
+
+            $result[] = [
+                'iddocente' => $docente['iddocente'],
+                'eldocente' => $docente['eldocente'],
+                // Asume que 'cedula_imagen_path' guarda la ruta relativa.
+                'cedula' => base_url($docente['cedula_imagen_path']),
+                'archivopdf' => $docente['archivopdf'],
+                'asignaturas' => $asignaturas
+            ];
+        }
+
+        return $result;
+    }
+
+
+
 
 
 
