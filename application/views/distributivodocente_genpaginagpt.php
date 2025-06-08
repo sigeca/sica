@@ -139,7 +139,7 @@ const docentePhoto = "https://repositorioutlvte.org/Repositorio/fotos/"+item.ced
                                             <ul>`;
                                 if (item.asignaturas && item.asignaturas.length > 0) {
                                     $.each(item.asignaturas, function(i, asignatura) {
-                                        html += `<li>${asignatura.laasignatura} ${asignatura.codigo ? `(${asignatura.codigo})` : ''}</li>`;
+                                        html += `<li>${asignatura.laasignatura} ${asignatura.paralelo ? `(${asignatura.paralelo})` : ''}</li>`;
                                     });
                                 } else {
                                     html += `<li>No hay asignaturas asignadas.</li>`;
