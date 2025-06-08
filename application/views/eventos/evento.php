@@ -220,7 +220,7 @@
                 <div class="col-md-8">
                     <?php if(isset($this->session->userdata['logged_in']['idpersona'])) { ?>
 
-                    <?php if(isset($eldocente])) { ?>
+                    <?php if(isset($eldocente)) { ?>
                         <span><?php echo "".$eldocente."";?></span>
                     <?php } else { ?>
                         <span><?php echo $this->session->userdata['logged_in']['elusuario'] ." -- (". $this->session->userdata['logged_in']['email'].")";?></span>

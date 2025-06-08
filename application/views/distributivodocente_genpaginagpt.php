@@ -141,7 +141,7 @@ const docentePhoto = "https://repositorioutlvte.org/Repositorio/fotos/"+item.ced
                                 if (item.asignaturas && item.asignaturas.length > 0) {
                                     $.each(item.asignaturas, function(i, asignatura) {
                                            //  const eventDetailUrl = `<?php echo base_url('evento/detalle/'); ?>${asignatura.idevento}?cedula= ${item.cedula}& eldocente= ${item.eldocente} `;
-                                            const eventDetailUrl = `<?php echo base_url('evento/detalle/'); ?>${asignatura.idevento}?cedula=${item.cedula}&eldocente=${encodeURIComponent(item.eldocente)}`;
+                                            const eventDetailUrl = `<?php echo base_url('evento/detalle/'); ?>${asignatura.idevento}?cedula=${item.cedula}&eldocente="${encodeURIComponent(item.eldocente)}"`;
 
                                         html += `<li><a href="${eventDetailUrl}" target="_blank" class="event-link" title="Ver detalle del evento">
                                 <i class="fas fa-info-circle"></i> </a>
