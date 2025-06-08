@@ -705,7 +705,7 @@ public function dist() {
         }
 //	 	$data['asignaturadocentes']= $this->asignaturadocente_model->getDocentesAsignaturasByDistributivo($iddistributivo);
 // Llama a la función del modelo para obtener los datos filtrados
-        $data_for_json = $this->AsignaturaDocente_model->getDocentesAsignaturasByDistributivo($iddistributivo);
+        $data_for_json = $this->asignaturadocente_model->getDocentesAsignaturasByDistributivo($iddistributivo);
 
 
     print_r($data_for_json);    
