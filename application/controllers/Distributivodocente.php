@@ -690,86 +690,23 @@ public function paginaweb()
 
 
 
- public function dist() {
-        // Fetch data from your model
-        // Example: $data_from_db = $this->distributivodocente_model->get_all_distributivos_with_asignaturas();
-
-        // --- Mock Data Structure (Replace this with your actual data fetching and formatting) ---
-        // This is crucial: Your actual model should return data that you can format like this.
-        $raw_data = [
-            [
-                'id' => 1,
-                'nombre' => 'Dr. Juan Pérez',
-                'foto' => base_url('assets/images/docente1.jpg'), // Replace with actual path or fetch from DB
-                'asignaturas' => [
-                    ['nombre_asignatura' => 'Matemáticas Avanzadas', 'codigo' => 'MA101'],
-                    ['nombre_asignatura' => 'Física Cuántica', 'codigo' => 'FQ201'],
-                ],
-                'documento_pdf_url' => base_url('assets/pdfs/juan_perez_distributivo.pdf') // Replace with actual path or fetch from DB
-            ],
-            [
-                'id' => 2,
-                'nombre' => 'Ing. María García',
-                'foto' => base_url('assets/images/docente2.jpg'), // Replace with actual path or fetch from DB
-                'asignaturas' => [
-                    ['nombre_asignatura' => 'Programación Orientada a Objetos', 'codigo' => 'POO301'],
-                    ['nombre_asignatura' => 'Bases de Datos I', 'codigo' => 'BD101'],
-                ],
-                'documento_pdf_url' => null // Example for a teacher with no PDF
-            ],
-            [
-                'id' => 3,
-                'nombre' => 'Lic. Carlos Sánchez',
-                'foto' => base_url('assets/images/docente3.jpg'),
-                'asignaturas' => [
-                    ['nombre_asignatura' => 'Literatura Clásica'],
-                    ['nombre_asignatura' => 'Historia del Arte', 'codigo' => 'HA300'],
-                ],
-                'documento_pdf_url' => base_url('assets/pdfs/carlos_sanchez_distributivo.pdf')
+public function dist() {
+    $dummy_data = [
+        [
+            'id' => 1,
+            'docente_name' => 'Profesor Prueba',
+            'docente_photo' => '<?php echo base_url("assets/images/default_avatar.png"); ?>',
+            'pdf_url' => '#',
+            'asignaturas' => [
+                ['name' => 'Prueba A', 'code' => 'PA01'],
+                ['name' => 'Prueba B', 'code' => 'PB02']
             ]
-        ];
-
-        // Format data for DataTables
-        $formatted_data = [];
-        foreach ($raw_data as $row) {
-            $asignaturas_text = [];
-            foreach ($row['asignaturas'] as $asignatura) {
-                $text = $asignatura['nombre_asignatura'];
-                if (!empty($asignatura['codigo'])) {
-                    $text .= ' (' . $asignatura['codigo'] . ')';
-                }
-                $asignaturas_text[] = $text;
-            }
-
-            $pdf_url = !empty($row['documento_pdf_url']) ? $row['documento_pdf_url'] : '#';
-            $pdf_button_class = ($pdf_url === '#') ? 'btn-secondary disabled' : 'btn-info'; // Using btn-info for PDF
-            $pdf_button_text = ($pdf_url === '#') ? '<i class="fas fa-file-pdf"></i> Sin PDF' : '<i class="fas fa-file-pdf"></i> Ver PDF';
-
-
-            // Generate HTML for actions column
-            $acciones_html = '<div class="btn-group" role="group" aria-label="Acciones">';
-            $acciones_html .= '<button type="button" class="btn ' . $pdf_button_class . ' btn-view-pdf btn-sm" data-pdf-url="' . $pdf_url . '" ' . ($pdf_url === '#' ? 'aria-disabled="true"' : '') . '>' . $pdf_button_text . '</button>';
-            // Add other action buttons here if you need them (e.g., Edit, Delete)
-            // $acciones_html .= '<button type="button" class="btn btn-primary btn-edit btn-sm" data-id="' . $row['id'] . '"><i class="fas fa-edit"></i> Editar</button>';
-            // $acciones_html .= '<button type="button" class="btn btn-danger btn-delete btn-sm" data-id="' . $row['id'] . '"><i class="fas fa-trash"></i> Eliminar</button>';
-            $acciones_html .= '</div>';
-
-            $formatted_data[] = [
-                'id_distributivodocente' => $row['id'],
-                'nombres_docente' => $row['nombre'],
-                'asignaturas_texto' => implode('<br>', $asignaturas_text), // Use <br> for new lines in table cell
-                'acciones_html' => $acciones_html
-            ];
-        }
-
-        // Send the JSON response
-        $this->output
-             ->set_content_type('application/json')
-             ->set_output(json_encode(['data' => $formatted_data]));
-    }
-
-
-
+        ]
+    ];
+    $this->output
+         ->set_content_type('application/json')
+         ->set_output(json_encode(['data' => $dummy_data]));
+}
 
 
 
