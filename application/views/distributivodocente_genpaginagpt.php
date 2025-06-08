@@ -69,6 +69,21 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function(){
+
+/**
+ * Verifica si una URL de imagen existe intentando cargarla.
+ * @param {string} url La URL de la imagen a verificar.
+ * @returns {Promise<boolean>} Una promesa que resuelve a `true` si la imagen existe, `false` en caso contrario.
+ */
+function checkIfImageExists(url) {
+    return new Promise((resolve) => {
+        const img = new Image(); // Crea un nuevo elemento Image en memoria
+        img.onload = () => resolve(true); // Si la imagen se carga, existe
+        img.onerror = () => resolve(false); // Si hay un error al cargar, no existe
+        img.src = url; // Asigna la URL para iniciar la carga
+    });
+}
+
             // Function to fetch and display data
             function loadDistributivoData() {
                 $.ajax({
@@ -84,12 +99,29 @@
                         if (response.data && response.data.length > 0) {
                             $.each(response.data, function(index, item) {
                                 // Default photo if not provided or empty
-                                const docentePhoto = item.docente_photo && item.docente_photo !== ''
-                                    ? item.docente_photo
-                                    : '<?php echo base_url("assets/images/default_avatar.png"); ?>'; // Make sure this path is correct
+                          //      const docentePhoto = item.docente_photo && item.docente_photo !== ''
+                            //        ? item.docente_photo
+                              //      : '<?php echo base_url("assets/images/default_avatar.png"); ?>'; // Make sure this path is correct
+
+// Remote file url
+const docentePhoto = "https://repositorioutlvte.org/Repositorio/fotos/"+item.cedula+".jpg";
+
+
+ const docentePhotoExists = await checkIfImageExists(docentePhoto);
+    if (!docentePhotoExists) {
+
+     const docentePhoto =   "https://repositorioutlvte.org/Repositorio/fotos/perfil.jpg" ;
+
+}
+
+
+
+
+
+
 
                                 // PDF URL handling
-                                const pdfUrl = item.pdf_url && item.pdf_url !== '' ? item.pdf_url : '#';
+                                const pdfUrl = item.archivopdf && item.archivopdf !== '' ? item.archivopdf : '#';
                                 const pdfButtonClass = (pdfUrl === '#') ? 'btn-secondary disabled' : 'btn-primary';
                                 const pdfButtonText = (pdfUrl === '#') ? 'Sin PDF' : 'Ver PDF';
 
