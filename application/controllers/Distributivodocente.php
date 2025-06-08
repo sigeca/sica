@@ -694,11 +694,21 @@ public function dist() {
 
 
 		$iddistributivo=$this->uri->segment(3);
-	 	$data['asignaturadocentes']= $this->asignaturadocente_model->getDocentesAsignaturasByDistributivo($iddistributivo);
 
 
-        
-    $dummy_data = $data['asignaturadocentes'];
+        // Verifica si el iddistributivo es válido (opcional pero recomendado)
+        if (empty($iddistributivo) || !is_numeric($iddistributivo)) {
+            $this->output
+                ->set_content_type('application/json')
+                ->set_output(json_encode(['error' => 'ID de distributivo inválido o no proporcionado.']));
+            return; // Termina la ejecución si el ID no es válido
+        }
+//	 	$data['asignaturadocentes']= $this->asignaturadocente_model->getDocentesAsignaturasByDistributivo($iddistributivo);
+// Llama a la función del modelo para obtener los datos filtrados
+        $data_for_json = $this->AsignaturaDocente_model->getDocentesAsignaturasByDistributivo($iddistributivo);
+
+
+    print_r($data_for_json);    
    /* $dummy_data = [
         [
             'iddocente' => 1,
@@ -714,7 +724,8 @@ public function dist() {
     */
     $this->output
          ->set_content_type('application/json')
-         ->set_output(json_encode(['data' => $dummy_data]));
+         ->set_output(json_encode(['data' => $data_for_json])); // 'data' es la clave que contendrá tu array de docentes/asignaturas
+
 }
 
 
