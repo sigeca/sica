@@ -271,6 +271,7 @@ public function genpagina()
         $inicio = microtime(true);
         $data['inicio']=$inicio;
 		$iddistributivo=$this->uri->segment(3);
+		$data['iddistributivo']=$this->uri->segment(3);
 	 	$data['asignaturadocentes']= $this->asignaturadocente_model->asignaturadocentexdistributivoweb($iddistributivo,$ordenrpt)->result();
         $fin = microtime(true);
 
