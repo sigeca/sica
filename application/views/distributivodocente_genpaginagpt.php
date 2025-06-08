@@ -106,7 +106,7 @@ function checkIfImageExists(url) {
 const docentePhoto = "https://repositorioutlvte.org/Repositorio/fotos/"+item.cedula+".jpg";
 
 
- const docentePhotoExists = await checkIfImageExists(docentePhoto);
+ const docentePhotoExists =  checkIfImageExists(docentePhoto);
     if (!docentePhotoExists) {
 
      const docentePhoto =   "https://repositorioutlvte.org/Repositorio/fotos/perfil.jpg" ;
