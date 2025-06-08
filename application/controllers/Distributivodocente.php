@@ -691,18 +691,27 @@ public function paginaweb()
 
 
 public function dist() {
-    $dummy_data = [
+
+
+		$iddistributivo=$this->uri->segment(3);
+	 	$data['asignaturadocentes']= $this->asignaturadocente_model->getDocentesAsignaturasByDistributivo($iddistributivo);
+
+
+        
+    $dummy_data = $data['asignaturadocentes'];
+   /* $dummy_data = [
         [
-            'id' => 1,
-            'docente_name' => 'Profesor Prueba',
-            'docente_photo' => '<?php echo base_url("assets/images/default_avatar.png"); ?>',
-            'pdf_url' => '#',
+            'iddocente' => 1,
+            'eldocente' => 'Profesor Prueba',
+            'cedula' => '<?php echo base_url("assets/images/default_avatar.png"); ?>',
+            'archivopdf' => '#',
             'asignaturas' => [
-                ['name' => 'Prueba A', 'code' => 'PA01'],
-                ['name' => 'Prueba B', 'code' => 'PB02']
+                ['laasignatura' => 'Prueba A', 'codigo' => 'PA01'],
+                ['laasignatura' => 'Prueba B', 'codigo' => 'PB02']
             ]
         ]
     ];
+    */
     $this->output
          ->set_content_type('application/json')
          ->set_output(json_encode(['data' => $dummy_data]));

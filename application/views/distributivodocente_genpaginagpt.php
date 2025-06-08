@@ -97,17 +97,17 @@
                                     <div class="distributivo-card">
                                         <div class="docente-info">
                                             <div class="docente-photo-container">
-                                                <img src="${docentePhoto}" alt="Foto de ${item.docente_name}" class="docente-photo">
+                                                <img src="${docentePhoto}" alt="Foto de ${item.eldocentee}" class="docente-photo">
                                             </div>
-                                            <h3>${item.docente_name}</h3>
-                                            ${item.id ? `<p class="docente-id">ID: ${item.id}</p>` : ''}
+                                            <h3>${item.eldocente}</h3>
+                                            ${item.id ? `<p class="docente-id">ID: ${item.iddocente}</p>` : ''}
                                         </div>
                                         <div class="asignaturas-list">
                                             <h4>Asignaturas:</h4>
                                             <ul>`;
                                 if (item.asignaturas && item.asignaturas.length > 0) {
                                     $.each(item.asignaturas, function(i, asignatura) {
-                                        html += `<li>${asignatura.name} ${asignatura.code ? `(${asignatura.code})` : ''}</li>`;
+                                        html += `<li>${asignatura.laasignatura} ${asignatura.codigo ? `(${asignatura.codigo})` : ''}</li>`;
                                     });
                                 } else {
                                     html += `<li>No hay asignaturas asignadas.</li>`;
