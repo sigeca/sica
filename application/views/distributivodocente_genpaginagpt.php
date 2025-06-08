@@ -72,7 +72,7 @@
             // Function to fetch and display data
             function loadDistributivoData() {
                 $.ajax({
-                    url: '<?php echo site_url('distributivodocente/dist'); ?>', // Your AJAX endpoint
+                    url: '<?php echo site_url('distributivodocente/dist/25'); ?>', // Your AJAX endpoint
                     type: 'GET',
                     dataType: 'json',
                     beforeSend: function() {
