@@ -162,11 +162,6 @@ $calificaciones2p = <calificaciones2p>; // Ejemplo de porcentaje de informes fin
 ?>
 
 
-
-
-
-
-
 </main>
 
 <footer class="text-muted py-5">
@@ -273,16 +268,6 @@ $calificaciones2p = <calificaciones2p>; // Ejemplo de porcentaje de informes fin
 
 
 
-
-
-
-
-
-
-
-
-
-
         // Configuración del gráfico de Informes Finales
         const ctxInformeFinal = document.getElementById("planessemestralesChart").getContext("2d");
         const planessemestralesChart = new Chart(ctxInformeFinal, {
@@ -361,32 +346,6 @@ $calificaciones2p = <calificaciones2p>; // Ejemplo de porcentaje de informes fin
             }
         });
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -624,9 +583,6 @@ if($file_headers[0] == 'HTTP/1.1 404 Not Found') {
     $data=$data.'<image href="https://repositorioutlvte.org/Repositorio/eventos/sinimagen.png"  height="100%" width="100%"/> </svg></a>';
 
 }
-
-
-
 
 
 
