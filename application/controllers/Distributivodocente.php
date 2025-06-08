@@ -708,7 +708,6 @@ public function dist() {
         $data_for_json = $this->asignaturadocente_model->getDocentesAsignaturasByDistributivo($iddistributivo);
 
 
-    print_r($data_for_json);    
    /* $dummy_data = [
         [
             'iddocente' => 1,
