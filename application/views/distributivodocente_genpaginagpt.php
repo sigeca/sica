@@ -122,9 +122,9 @@ const docentePhoto = "https://repositorioutlvte.org/Repositorio/fotos/"+item.ced
 
 
                                 // PDF URL handling
-                                const pdfUrl = item.archivopdf && item.archivopdf !== '' ? item.archivopdf : '#';
-                                const pdfButtonClass = (pdfUrl === '#') ? 'btn-secondary disabled' : 'btn-primary';
-                                const pdfButtonText = (pdfUrl === '#') ? 'Sin PDF' : 'Ver PDF';
+                            //    const pdfUrl = item.archivopdf && item.archivopdf !== '' ? item.archivopdf : '#';
+                              //  const pdfButtonClass = (pdfUrl === '#') ? 'btn-secondary disabled' : 'btn-primary';
+                                //const pdfButtonText = (pdfUrl === '#') ? 'Sin PDF' : 'Ver PDF';
 
                                 html += `
                                     <div class="distributivo-card">
@@ -150,15 +150,7 @@ ${asignatura.laasignatura} ${asignatura.paralelo ? `(${asignatura.paralelo})` : 
                                 } else {
                                     html += `<li>No hay asignaturas asignadas.</li>`;
                                 }
-                                html += `
-                                            </ul>
-                                        </div>
-                                        <div class="card-actions">
-                                            <a href="javascript:void(0);" class="btn ${pdfButtonClass} btn-view-pdf" data-pdf-url="${pdfUrl}" ${pdfUrl === '#' ? 'aria-disabled="true"' : ''}>${pdfButtonText}</a>
-                                            </div>
-                                    </div>
-                                `;
-                            });
+                           });
                         } else {
                             html = '<p class="info-message">No se encontró información de distributivos.</p>';
                         }
