@@ -68,7 +68,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script type="text/javascript">
-
+ 
+const iddistributivo='<?php echo $iddistributivo;  ?>';
 /**
  * Verifica si una URL de imagen existe intentando cargarla.
  * @param {string} url La URL de la imagen a verificar.
@@ -86,7 +87,7 @@ function checkIfImageExists(url) {
             // Function to fetch and display data
      async       function loadDistributivoData() {
                 $.ajax({
-                    url: '<?php echo site_url('distributivodocente/dist/25'); ?>', // Your AJAX endpoint
+                    url: `<?php echo site_url('distributivodocente/dist/'); ?>${iddistributivo}`, // Your AJAX endpoint
                     type: 'GET',
                     dataType: 'json',
                     beforeSend: function() {
