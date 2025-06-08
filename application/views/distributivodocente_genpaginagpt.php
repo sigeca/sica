@@ -68,7 +68,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script type="text/javascript">
-        $(document).ready(function(){
 
 /**
  * Verifica si una URL de imagen existe intentando cargarla.
@@ -178,7 +177,7 @@ const docentePhoto = "https://repositorioutlvte.org/Repositorio/fotos/"+item.ced
                     }
                 });
             }
-
+$(document).ready(function() {
             // Initial load of data when the page is ready
             loadDistributivoData();
         });
