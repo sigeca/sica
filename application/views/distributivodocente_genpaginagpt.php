@@ -93,7 +93,7 @@ function checkIfImageExists(url) {
                         // Show a loading message
                         $('#distributivo-cards').html('<p class="loading-message">Cargando información del distributivo...</p>');
                     },
-                    success: function(response) {
+                    success: async function(response) {
                         let html = '';
                         if (response.data && response.data.length > 0) {
                             $.each(response.data, function(index, item) {
