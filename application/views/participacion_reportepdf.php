@@ -115,8 +115,8 @@ class ReporteParticipacionPDF
             return [];
         }
         
-        foreach ($fechacorte as $p => $fc) {
             $currentDate = $fechaSesion;
+        foreach ($fechacorte as $p => $fc) {
             $count = 0;
             while (strtotime($currentDate) <= strtotime($fc)) {
                 $dia = $dias[date('w', strtotime($currentDate))];
