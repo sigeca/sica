@@ -99,12 +99,6 @@ class ReporteParticipacionPDF
         date_default_timezone_set('America/Guayaquil');
 
 
-        print_r($fechacorte);
-        echo "Jornadas";
-        print_r($jornadadocente);
-        echo "calendario";
-        print_r($calendarioacademico);
-        die();
 
 
 
