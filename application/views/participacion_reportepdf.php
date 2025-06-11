@@ -624,7 +624,7 @@ public function generateCollegeStats(array $datac)
 //   $this->pdf->SetY(max($this->pdf->GetY(), $this->pdf->GetY() + $chartHeight + 20));
 
 
-   $this->pdf->SetY(max($this->pdf->GetY(), $chartY + $chartHeight + 40));
+   $this->pdf->SetY(max($this->pdf->GetY(), $chartY + $chartHeight + 100));
 }
  
  
