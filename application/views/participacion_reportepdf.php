@@ -300,7 +300,7 @@ class ReporteParticipacionPDF
         $this->pdf->Cell(5, 5, $i, 1, 0, 'R', 0);
         $this->pdf->Cell(55, 5, utf8_decode($participantData['nombres']), 1, 0, 'L', 0);
         $this->pdf->Cell(5, 5, utf8_decode($participantData['idsexo']), 1, 0, 'L', 0);
-        $this->pdf->Cell(5, 5, utf8_decode($participantData['idinstitucion']), 1, 0, 'L', 0);
+       // $this->pdf->Cell(5, 5, utf8_decode($participantData['idinstitucion']), 1, 0, 'L', 0);
 
         $parcialScores = array_fill(0, count($fechacorte), 0);
         $numNotes = array_fill(0, count($fechacorte), 0);
