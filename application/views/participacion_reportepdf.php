@@ -569,8 +569,8 @@ public function generateCollegeStats(array $datac)
  
 
         // Posicionar el gráfico
-        $chartX = 150;
-        $chartY = 100;
+        $chartX = 100;
+        $chartY = 150;
 
     // ---
     // Configuración para el gráfico de pastel
