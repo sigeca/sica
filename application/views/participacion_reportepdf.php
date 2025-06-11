@@ -454,7 +454,7 @@ class ReporteParticipacionPDF
      */
     public function generateGenderStats(array $datag)
     {
-        $this->AddPage(); // Nueva página para este gráfico si lo deseas
+        $this->AddPage('L'); // Nueva página para este gráfico si lo deseas
         $this->SetFont("Arial", "B", 16);
         $this->SetTextColor(30, 70, 120);
         $this->Cell(0, 10, utf8_decode('Estadísticas por Género'), 0, 1, 'C');
