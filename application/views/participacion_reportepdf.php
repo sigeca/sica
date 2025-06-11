@@ -513,8 +513,8 @@ class ReporteParticipacionPDF
         $this->pdf->Ln(8);
 
         // Posicionar el gráfico
-        $chartX = 120;
-        $chartY = 50;
+        $chartX = 150;
+        $chartY = 100;
         $chartWidth = 100;
         $chartHeight = 45;
 
