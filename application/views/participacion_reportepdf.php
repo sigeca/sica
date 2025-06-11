@@ -570,9 +570,14 @@ public function generateCollegeStats(array $datac)
     // ---
 
     // Posicionar el gráfico de pastel
-    $chartX = 200; // Ajusta la posición X para el centro del pastel
-    $chartY = 90;  // Ajusta la posición Y para el centro del pastel
-    $radius = 40;  // Radio del gráfico de pastel
+    // Para PieChart, especificas el ancho y alto del "área" del gráfico.
+    // La posición X e Y se definen por SetX() y SetY() antes de la llamada.
+    $chartWidth = 100; // Ancho del área del gráfico
+    $chartHeight = 80; // Alto del área del gráfico
+
+    // Mueve el cursor a donde quieres que inicie el gráfico
+    $this->pdf->SetX(180); // Ajusta la posición X de inicio
+    $this->pdf->SetY(50);  // Ajusta la posición Y de inicio (esto es importante)
 
     // Generar colores dinámicamente para cada sección del pastel
     $colors = [];
@@ -586,26 +591,17 @@ public function generateCollegeStats(array $datac)
         $hue += 60; // Incrementar el matiz para el siguiente color
     }
 
-    $this->pdf->SetXY($chartX - ($radius + 20), $chartY - ($radius + 20)); // Ajustar posición para el título del gráfico
     $this->pdf->SetFont('Arial', 'B', 10);
-    $this->pdf->Cell(0, 5, utf8_decode('Distribución de Estudiantes por Colegio'), 0, 1, 'C');
-    $this->pdf->SetXY($chartX, $chartY + 7); // Restablecer la posición si es necesario
+    $this->pdf->Cell($chartWidth, 5, utf8_decode('Distribución de Estudiantes por Colegio'), 0, 1, 'C');
+    $this->pdf->Ln(2); // Espacio después del título del gráfico
 
-    // Asegúrate de que tu método PieDiagram exista y pueda manejar el array de datos, el radio y los colores
-    // Los parámetros comunes para PieDiagram suelen ser:
-    // PieDiagram(array $data, float $x, float $y, float $radius, array $colors, string $format = '%l: %v (%p%%)')
-    // Donde:
-    // - $data: Array asociativo de etiquetas y valores (ej: ['Colegio A' => 10, 'Colegio B' => 20])
-    // - $x, $y: Coordenadas X e Y del centro del gráfico
-    // - $radius: Radio del gráfico
-    // - $colors: Array de arrays RGB para cada sección ([R, G, B])
-    // - $format: Opcional, formato del texto de la leyenda.
+    // La función PieChart usa las coordenadas actuales (GetX(), GetY())
+    // para dibujar el gráfico. Por eso es importante el SetX/SetY anterior.
+    $this->pdf->PieChart($chartWidth, $chartHeight, $datac, '%l: %v (%p%%)', $colors);
 
-    $this->pdf->PieDiagram($datac, $chartX, $chartY, $radius, $colors, '%l: %v');
-
-    $this->pdf->SetY(max($this->pdf->GetY(), $chartY + $radius + 20));
-} 
- 
+    // Ajusta la posición Y para el contenido siguiente, asegurándote de que no se superponga
+    $this->pdf->SetY(max($this->pdf->GetY(), $this->pdf->GetY() + $chartHeight + 20));
+}
  
  
     /**
