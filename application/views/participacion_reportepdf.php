@@ -566,7 +566,7 @@ class ReporteParticipacionPDF
         $barColor = [118, 180, 220]; // Un tono de azul para las barras
 
         // Posicionar el gráfico de barras
-        $chartX = 120;
+        $chartX = 180;
         $chartY = 50;
         $chartWidth = 150; // Ancho para el gráfico de barras
         $chartHeight = 100; // Alto para el gráfico de barras
