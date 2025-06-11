@@ -539,53 +539,72 @@ class ReporteParticipacionPDF
      * @param array $datac Estadísticas por colegio.
      */
  
-  public function generateCollegeStats(array $datac)
-    {
-        $this->pdf->AddPage('L');
-        $this->pdf->SetFont("Arial", "B", 16);
-        $this->pdf->SetTextColor(30, 70, 120);
-        $this->pdf->Cell(0, 10, utf8_decode('Estadísticas por Colegio'), 0, 1, 'C');
-        $this->pdf->Ln(10);
+ 
+public function generateCollegeStats(array $datac)
+{
+    $this->pdf->AddPage('L');
+    $this->pdf->SetFont("Arial", "B", 16);
+    $this->pdf->SetTextColor(30, 70, 120);
+    $this->pdf->Cell(0, 10, utf8_decode('Estadísticas por Colegio'), 0, 1, 'C');
+    $this->pdf->Ln(10);
 
-        $this->pdf->SetFont('Arial', '', 12);
-        $this->pdf->SetTextColor(50, 50, 50);
+    $this->pdf->SetFont('Arial', '', 12);
+    $this->pdf->SetTextColor(50, 50, 50);
 
-        // Título de la sección de datos
-        $this->pdf->SetFont('Arial', 'BU', 12);
-        $this->pdf->Cell(0, 7, utf8_decode('Detalle Numérico:'), 0, 1);
-        $this->pdf->Ln(2);
+    // Título de la sección de datos
+    $this->pdf->SetFont('Arial', 'BU', 12);
+    $this->pdf->Cell(0, 7, utf8_decode('Detalle Numérico:'), 0, 1);
+    $this->pdf->Ln(2);
 
-        // Mostrar los datos en formato de tabla para los colegios
-        $this->pdf->SetFont('Arial', '', 11);
-        foreach ($datac as $label => $value) {
-            $this->pdf->Cell(100, 7, utf8_decode($label), 0);
-            $this->pdf->Cell(20, 7, $value, 0, 0, 'R');
-            $this->pdf->Ln();
-        }
-        $this->pdf->Ln(8);
+    // Mostrar los datos en formato de tabla para los colegios
+    $this->pdf->SetFont('Arial', '', 11);
+    foreach ($datac as $label => $value) {
+        $this->pdf->Cell(100, 7, utf8_decode($label), 0);
+        $this->pdf->Cell(20, 7, $value, 0, 0, 'R');
+        $this->pdf->Ln();
+    }
+    $this->pdf->Ln(8);
 
-        // Colores para las barras (puedes definir un gradiente o colores individuales si tu BarDiagram lo permite)
-        $barColor = [118, 180, 220]; // Un tono de azul para las barras
+    // ---
+    // Configuración para el gráfico de pastel
+    // ---
 
-        // Posicionar el gráfico de barras
-        $chartX = 180;
-        $chartY = 50;
-        $chartWidth = 150; // Ancho para el gráfico de barras
-        $chartHeight = 100; // Alto para el gráfico de barras
+    // Posicionar el gráfico de pastel
+    $chartX = 200; // Ajusta la posición X para el centro del pastel
+    $chartY = 90;  // Ajusta la posición Y para el centro del pastel
+    $radius = 40;  // Radio del gráfico de pastel
 
-        $this->pdf->SetXY($chartX, $chartY);
-        $this->pdf->SetFont('Arial', 'B', 10);
-        $this->pdf->Cell(0, 5, utf8_decode('Distribución de Estudiantes por Colegio'), 0, 1, 'C');
-        $this->pdf->SetXY($chartX, $chartY + 7);
-
-        // Asegúrate de que tu método BarDiagram pueda manejar el array de datos y el color
-        $this->pdf->BarDiagram($chartWidth, $chartHeight, $datac, '%l : %v', $barColor, $chartX, $chartY + 12);
-
-        $this->pdf->SetY(max($this->pdf->GetY(), $chartY + $chartHeight + 20));
+    // Generar colores dinámicamente para cada sección del pastel
+    $colors = [];
+    $hue = 0;
+    foreach ($datac as $label => $value) {
+        // Generar un color RGB basado en un matiz que cambia
+        $r = (int)(sin(0.024 * $hue + 0) * 127 + 128);
+        $g = (int)(sin(0.024 * $hue + 2) * 127 + 128);
+        $b = (int)(sin(0.024 * $hue + 4) * 127 + 128);
+        $colors[] = [$r, $g, $b];
+        $hue += 60; // Incrementar el matiz para el siguiente color
     }
 
- 
- 
+    $this->pdf->SetXY($chartX - ($radius + 20), $chartY - ($radius + 20)); // Ajustar posición para el título del gráfico
+    $this->pdf->SetFont('Arial', 'B', 10);
+    $this->pdf->Cell(0, 5, utf8_decode('Distribución de Estudiantes por Colegio'), 0, 1, 'C');
+    $this->pdf->SetXY($chartX, $chartY + 7); // Restablecer la posición si es necesario
+
+    // Asegúrate de que tu método PieDiagram exista y pueda manejar el array de datos, el radio y los colores
+    // Los parámetros comunes para PieDiagram suelen ser:
+    // PieDiagram(array $data, float $x, float $y, float $radius, array $colors, string $format = '%l: %v (%p%%)')
+    // Donde:
+    // - $data: Array asociativo de etiquetas y valores (ej: ['Colegio A' => 10, 'Colegio B' => 20])
+    // - $x, $y: Coordenadas X e Y del centro del gráfico
+    // - $radius: Radio del gráfico
+    // - $colors: Array de arrays RGB para cada sección ([R, G, B])
+    // - $format: Opcional, formato del texto de la leyenda.
+
+    $this->pdf->PieDiagram($datac, $chartX, $chartY, $radius, $colors, '%l: %v');
+
+    $this->pdf->SetY(max($this->pdf->GetY(), $chartY + $radius + 20));
+} 
  
  
  
