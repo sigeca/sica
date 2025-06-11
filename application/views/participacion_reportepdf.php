@@ -565,6 +565,12 @@ public function generateCollegeStats(array $datac)
     }
     $this->pdf->Ln(8);
 
+        // Posicionar el gráfico
+        $chartX = 150;
+        $chartY = 100;
+ 
+
+
     // ---
     // Configuración para el gráfico de pastel
     // ---
@@ -597,7 +603,10 @@ public function generateCollegeStats(array $datac)
 
     // La función PieChart usa las coordenadas actuales (GetX(), GetY())
     // para dibujar el gráfico. Por eso es importante el SetX/SetY anterior.
-    $this->pdf->PieChart($chartWidth, $chartHeight, $datac, '%l: %v (%p%%)', $colors);
+//    $this->pdf->PieChart($chartWidth, $chartHeight, $datac, '%l: %v (%p%%)', $colors);
+
+
+    $this->pdf->PieChart($chartWidth, $chartHeight, $datac, '%l : %v (%p)', $colors, $chartX, $chartY + 12);
 
     // Ajusta la posición Y para el contenido siguiente, asegurándote de que no se superponga
     $this->pdf->SetY(max($this->pdf->GetY(), $this->pdf->GetY() + $chartHeight + 20));
