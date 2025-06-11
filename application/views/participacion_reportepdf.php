@@ -578,12 +578,12 @@ public function generateCollegeStats(array $datac)
     // Posicionar el gráfico de pastel
     // Para PieChart, especificas el ancho y alto del "área" del gráfico.
     // La posición X e Y se definen por SetX() y SetY() antes de la llamada.
-    $chartWidth = 100; // Ancho del área del gráfico
-    $chartHeight = 80; // Alto del área del gráfico
+ //   $chartWidth = 100; // Ancho del área del gráfico
+ //   $chartHeight = 80; // Alto del área del gráfico
 
     // Mueve el cursor a donde quieres que inicie el gráfico
-    $this->pdf->SetX(180); // Ajusta la posición X de inicio
-    $this->pdf->SetY(50);  // Ajusta la posición Y de inicio (esto es importante)
+    $this->pdf->SetX(100); // Ajusta la posición X de inicio
+    $this->pdf->SetY(80);  // Ajusta la posición Y de inicio (esto es importante)
 
     // Generar colores dinámicamente para cada sección del pastel
     $colors = [];
@@ -603,16 +603,16 @@ public function generateCollegeStats(array $datac)
 
     // La función PieChart usa las coordenadas actuales (GetX(), GetY())
     // para dibujar el gráfico. Por eso es importante el SetX/SetY anterior.
-//    $this->pdf->PieChart($chartWidth, $chartHeight, $datac, '%l: %v (%p%%)', $colors);
+    $this->pdf->PieChart($chartWidth, $chartHeight, $datac, '%l: %v (%p%%)', $colors);
 
 
-    $this->pdf->PieChart($chartWidth, $chartHeight, $datac, '%l : %v (%p)', $colors, $chartX, $chartY + 12);
+//    $this->pdf->PieChart($chartWidth, $chartHeight, $datac, '%l : %v (%p)', $colors, $chartX, $chartY + 12);
 
     // Ajusta la posición Y para el contenido siguiente, asegurándote de que no se superponga
-   // $this->pdf->SetY(max($this->pdf->GetY(), $this->pdf->GetY() + $chartHeight + 20));
+   $this->pdf->SetY(max($this->pdf->GetY(), $this->pdf->GetY() + $chartHeight + 20));
 
 
-    $this->pdf->SetY(max($this->pdf->GetY(), $chartY + $chartHeight + 20));
+ //   $this->pdf->SetY(max($this->pdf->GetY(), $chartY + $chartHeight + 20));
 }
  
  
