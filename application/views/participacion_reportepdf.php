@@ -618,7 +618,7 @@ public function generateCollegeStats(array $datac)
 //    $this->pdf->PieChart($chartWidth, $chartHeight, $datac, '%l: %v (%p%%)', $colors);
 
 
-    $this->pdf->PieChart($chartWidth, $chartHeight, $datac, '%l : %v (%p)', $colors, $chartX, $chartY + 0);
+    $this->pdf->PieChart($chartWidth, $chartHeight, $datac, '%l : %v (%p)', $colors);
 
     // Ajusta la posición Y para el contenido siguiente, asegurándote de que no se superponga
 //   $this->pdf->SetY(max($this->pdf->GetY(), $this->pdf->GetY() + $chartHeight + 20));
