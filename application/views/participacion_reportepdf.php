@@ -445,35 +445,62 @@ class ReporteParticipacionPDF
         $this->pdf->SetXY($valX, $valY + 40);
     }
 
-    /**
+
+/**
      * Genera las estadísticas por género en el PDF.
+     * Utiliza un gráfico de pastel para mostrar la distribución.
      *
-     * @param array $datag Estadísticas por género.
+     * @param array $datag Estadísticas por género (Ej: ['Hombres' => 100, 'Mujeres' => 120]).
      */
-    private function generateGenderStats(array $datag)
+    public function generateGenderStats(array $datag)
     {
-        $this->pdf->SetFont("Arial", "BIU", 12);
-        $this->pdf->Cell(0, 5, utf8_decode('Estadísticas de Géneros'), 0, 1);
-        $this->pdf->Ln(8);
+        $this->AddPage(); // Nueva página para este gráfico si lo deseas
+        $this->SetFont("Arial", "B", 16);
+        $this->SetTextColor(30, 70, 120);
+        $this->Cell(0, 10, utf8_decode('Estadísticas por Género'), 0, 1, 'C');
+        $this->Ln(10);
 
-        $this->pdf->SetFont('Arial', '', 10);
-        $valX = $this->pdf->GetX();
-        $valY = $this->pdf->GetY();
+        $this->SetFont('Arial', '', 12);
+        $this->SetTextColor(50, 50, 50);
 
+        // Definir colores más adecuados para género
+        $colors = [
+            'Hombres' => [93, 165, 218], // Azul claro
+            'Mujeres' => [255, 172, 206]  // Rosa suave
+        ];
+
+        // Título de la sección de datos
+        $this->SetFont('Arial', 'BU', 12);
+        $this->Cell(0, 7, utf8_decode('Detalle Numérico:'), 0, 1);
+        $this->Ln(2);
+
+        // Mostrar los datos en formato de tabla simple
+        $this->SetFont('Arial', '', 11);
         foreach ($datag as $label => $value) {
-            $this->pdf->Cell(30, 5, utf8_decode($label));
-            $this->pdf->Cell(15, 5, $value, 0, 0, 'R');
-            $this->pdf->Ln();
+            $this->Cell(60, 7, utf8_decode($label), 0);
+            $this->Cell(20, 7, $value, 0, 0, 'R');
+            $this->Ln();
         }
+        $this->Ln(8);
 
-        $this->pdf->Ln(8);
+        // Posicionar el gráfico
+        $chartX = 120;
+        $chartY = 50;
+        $chartWidth = 100;
+        $chartHeight = 45;
 
-        $this->pdf->SetXY(90, $valY);
-        $col1 = [7, 195, 250];  // celeste
-        $col2 = [245, 249, 3];  // amarillo
-        $this->pdf->PieChart(100, 35, $datag, '%l : %v (%p)', [$col1, $col2]);
-        $this->pdf->SetXY($valX, $valY + 40);
+        $this->SetXY($chartX, $chartY);
+        $this->SetFont('Arial', 'B', 10);
+        $this->Cell(0, 5, utf8_decode('Distribución de Géneros'), 0, 1, 'C');
+        $this->SetXY($chartX, $chartY + 7);
+
+        $pieColors = array_values($colors);
+        $this->PieChart($chartWidth, $chartHeight, $datag, '%l : %v (%p)', $pieColors, $chartX, $chartY + 12);
+
+        $this->SetY(max($this->GetY(), $chartY + $chartHeight + 20));
     }
+
+
 
     /**
      * Genera las estadísticas por colegio en el PDF.
