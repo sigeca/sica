@@ -552,7 +552,7 @@ public function generateCollegeStats(array $datac)
     $this->pdf->SetTextColor(50, 50, 50);
 
     // Título de la sección de datos
-    $this->pdf->SetFont('Arial', 'BU', 12);
+/*    $this->pdf->SetFont('Arial', 'BU', 12);
     $this->pdf->Cell(0, 7, utf8_decode('Detalle Numérico:'), 0, 1);
     $this->pdf->Ln(2);
 
@@ -563,8 +563,9 @@ public function generateCollegeStats(array $datac)
         $this->pdf->Cell(20, 7, $value, 0, 0, 'R');
         $this->pdf->Ln();
     }
+ 
     $this->pdf->Ln(8);
-
+ */
  
 
 
