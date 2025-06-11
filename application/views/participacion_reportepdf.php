@@ -589,8 +589,8 @@ public function generateCollegeStats(array $datac)
 
         $this->pdf->SetXY($chartX, $chartY);
         $this->pdf->SetFont('Arial', 'B', 10);
-        $this->pdf->Cell(0, 5, utf8_decode('Distribución de Géneros'), 0, 1, 'C');
-        $this->pdf->SetXY($chartX, $chartY + 7);
+//        $this->pdf->Cell(0, 5, utf8_decode('Distribución de Géneros'), 0, 1, 'C');
+ //       $this->pdf->SetXY($chartX, $chartY + 7);
 
  
 
