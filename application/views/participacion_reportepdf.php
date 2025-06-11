@@ -454,14 +454,14 @@ class ReporteParticipacionPDF
      */
     public function generateGenderStats(array $datag)
     {
-        $this->AddPage('L'); // Nueva página para este gráfico si lo deseas
-        $this->SetFont("Arial", "B", 16);
-        $this->SetTextColor(30, 70, 120);
-        $this->Cell(0, 10, utf8_decode('Estadísticas por Género'), 0, 1, 'C');
-        $this->Ln(10);
+        $this->pdf->AddPage('L'); // Nueva página para este gráfico si lo deseas
+        $this->pdf->SetFont("Arial", "B", 16);
+        $this->pdf->SetTextColor(30, 70, 120);
+        $this->pdf->Cell(0, 10, utf8_decode('Estadísticas por Género'), 0, 1, 'C');
+        $this->pdf->Ln(10);
 
-        $this->SetFont('Arial', '', 12);
-        $this->SetTextColor(50, 50, 50);
+        $this->pdf->SetFont('Arial', '', 12);
+        $this->pdf->SetTextColor(50, 50, 50);
 
         // Definir colores más adecuados para género
         $colors = [
@@ -470,18 +470,18 @@ class ReporteParticipacionPDF
         ];
 
         // Título de la sección de datos
-        $this->SetFont('Arial', 'BU', 12);
-        $this->Cell(0, 7, utf8_decode('Detalle Numérico:'), 0, 1);
-        $this->Ln(2);
+        $this->pdf->SetFont('Arial', 'BU', 12);
+        $this->pdf->Cell(0, 7, utf8_decode('Detalle Numérico:'), 0, 1);
+        $this->pdf->Ln(2);
 
         // Mostrar los datos en formato de tabla simple
-        $this->SetFont('Arial', '', 11);
+        $this->pdf->SetFont('Arial', '', 11);
         foreach ($datag as $label => $value) {
-            $this->Cell(60, 7, utf8_decode($label), 0);
-            $this->Cell(20, 7, $value, 0, 0, 'R');
-            $this->Ln();
+            $this->pdf->Cell(60, 7, utf8_decode($label), 0);
+            $this->pdf->Cell(20, 7, $value, 0, 0, 'R');
+            $this->pdf->Ln();
         }
-        $this->Ln(8);
+        $this->pdf->Ln(8);
 
         // Posicionar el gráfico
         $chartX = 120;
@@ -489,15 +489,15 @@ class ReporteParticipacionPDF
         $chartWidth = 100;
         $chartHeight = 45;
 
-        $this->SetXY($chartX, $chartY);
-        $this->SetFont('Arial', 'B', 10);
-        $this->Cell(0, 5, utf8_decode('Distribución de Géneros'), 0, 1, 'C');
-        $this->SetXY($chartX, $chartY + 7);
+        $this->pdf->SetXY($chartX, $chartY);
+        $this->pdf->SetFont('Arial', 'B', 10);
+        $this->pdf->Cell(0, 5, utf8_decode('Distribución de Géneros'), 0, 1, 'C');
+        $this->pdf->SetXY($chartX, $chartY + 7);
 
         $pieColors = array_values($colors);
-        $this->PieChart($chartWidth, $chartHeight, $datag, '%l : %v (%p)', $pieColors, $chartX, $chartY + 12);
+        $this->pdf->PieChart($chartWidth, $chartHeight, $datag, '%l : %v (%p)', $pieColors, $chartX, $chartY + 12);
 
-        $this->SetY(max($this->GetY(), $chartY + $chartHeight + 20));
+        $this->pdf->SetY(max($this->pdf->GetY(), $chartY + $chartHeight + 20));
     }
 
 
