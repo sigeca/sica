@@ -413,37 +413,66 @@ class ReporteParticipacionPDF
      *
      * @param array $stats Estadísticas de aprobados, reprobados y desertores.
      */
-    private function generatePromotionStats(array $stats)
+ public function generatePromotionStats(array $stats)
     {
-        $this->pdf->AddPage('L');
-        $this->pdf->SetFont("Arial", "", 12);
-        $this->pdf->Cell(0, 5, utf8_decode('Estadísticas de promovidos y no promovidos'), 0, 1);
-        $this->pdf->Ln(8);
+      
+        $this->pdf->AddPage('L'); // Página en orientación horizontal
+        $this->pdf->SetFont("Arial", "B", 16);
+        $this->pdf->SetTextColor(30, 70, 120); // Color azul oscuro para el título
+        $this->pdf->Cell(0, 10, utf8_decode('Estadísticas de Promoción Académica'), 0, 1, 'C');
+        $this->pdf->Ln(10);
 
-        $this->pdf->SetFont('Arial', '', 10);
-        $valX = $this->pdf->GetX();
-        $valY = $this->pdf->GetY();
+        $this->pdf->SetFont('Arial', '', 12);
+        $this->pdf->SetTextColor(50, 50, 50); // Color gris oscuro para el texto
 
         $data = [
-            'Aprobados' => $stats['aprobados'],
+            'Aprobados'  => $stats['aprobados'],
             'Reprobados' => $stats['reprobados'],
             'Desertores' => $stats['desertores']
         ];
 
+        // Definir colores más modernos y distintivos
+        $colors = [
+            'Aprobados'  => [102, 194, 165], // Verde esmeralda
+            'Reprobados' => [252, 141, 98],  // Naranja quemado
+            'Desertores' => [141, 160, 203]  // Azul grisáceo
+        ];
+
+        // Título de la sección de datos
+        $this->pdf->SetFont('Arial', 'BU', 12);
+        $this->pdf->Cell(0, 7, utf8_decode('Detalle Numérico:'), 0, 1);
+        $this->pdf->Ln(2);
+
+        // Mostrar los datos en formato de tabla simple
+        $this->pdf->SetFont('Arial', '', 11);
         foreach ($data as $label => $value) {
-            $this->pdf->Cell(30, 5, utf8_decode($label));
-            $this->pdf->Cell(15, 5, $value, 0, 0, 'R');
+            $this->pdf->Cell(60, 7, utf8_decode($label), 0);
+            $this->pdf->Cell(20, 7, $value, 0, 0, 'R');
             $this->pdf->Ln();
         }
         $this->pdf->Ln(8);
 
-        $this->pdf->SetXY(90, $valY);
-        $col1 = [7, 195, 250];  // celeste
-        $col2 = [245, 249, 3];  // amarillo
-        $col3 = [253, 194, 224]; // rosado
-    //    $this->pdf->PieChart(100, 35, $data, '%l : %v (%p)', [$col1, $col2, $col3]);
-        $this->pdf->SetXY($valX, $valY + 40);
+        // Posicionar el gráfico
+        $chartX = 120; // Ajusta según el diseño de tu página
+        $chartY = 50;  // Ajusta según el diseño de tu página
+        $chartWidth = 100;
+        $chartHeight = 45;
+
+        $this->pdf->SetXY($chartX, $chartY);
+        $this->pdf->SetFont('Arial', 'B', 10);
+        $this->pdf->Cell(0, 5, utf8_decode('Distribución de Resultados'), 0, 1, 'C'); // Título del gráfico
+        $this->pdf->SetXY($chartX, $chartY + 7); // Posiciona debajo del título del gráfico
+
+        // Convertir el array de colores asociativo a indexado para el PieChart si tu método lo requiere
+        $pieColors = array_values($colors);
+        $this->pdf->PieChart($chartWidth, $chartHeight, $data, '%l : %v (%p)', $pieColors, $chartX, $chartY + 12); // Pasa los colores al método
+
+        $this->pdf->SetY(max($this->pdf->GetY(), $chartY + $chartHeight + 20)); // Asegura que el siguiente contenido esté debajo del gráfico
     }
+
+
+
+
 
 
 /**
