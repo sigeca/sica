@@ -507,20 +507,57 @@ class ReporteParticipacionPDF
      *
      * @param array $datac Estadísticas por colegio.
      */
-    private function generateCollegeStats(array $datac)
+ 
+  public function generateCollegeStats(array $datac)
     {
         $this->pdf->AddPage('L');
-        $this->pdf->SetFont("Courier", "BIU", 8);
-        $this->pdf->Cell(0, 5, utf8_decode('Estadísticas de Colegios'), 0, 1);
+        $this->pdf->SetFont("Arial", "B", 16);
+        $this->pdf->SetTextColor(30, 70, 120);
+        $this->pdf->Cell(0, 10, utf8_decode('Estadísticas por Colegio'), 0, 1, 'C');
+        $this->pdf->Ln(10);
+
+        $this->pdf->SetFont('Arial', '', 12);
+        $this->pdf->SetTextColor(50, 50, 50);
+
+        // Título de la sección de datos
+        $this->pdf->SetFont('Arial', 'BU', 12);
+        $this->pdf->Cell(0, 7, utf8_decode('Detalle Numérico:'), 0, 1);
+        $this->pdf->Ln(2);
+
+        // Mostrar los datos en formato de tabla para los colegios
+        $this->pdf->SetFont('Arial', '', 11);
+        foreach ($datac as $label => $value) {
+            $this->pdf->Cell(100, 7, utf8_decode($label), 0);
+            $this->pdf->Cell(20, 7, $value, 0, 0, 'R');
+            $this->pdf->Ln();
+        }
         $this->pdf->Ln(8);
 
-        $valX = $this->pdf->GetX();
-        $valY = $this->pdf->GetY();
+        // Colores para las barras (puedes definir un gradiente o colores individuales si tu BarDiagram lo permite)
+        $barColor = [118, 180, 220]; // Un tono de azul para las barras
 
-      //  $this->pdf->BarDiagram(200, 100, $datac, '%l : %v (%p)', [255, 175, 100]);
-        $this->pdf->SetXY($valX, $valY + 80);
+        // Posicionar el gráfico de barras
+        $chartX = 120;
+        $chartY = 50;
+        $chartWidth = 150; // Ancho para el gráfico de barras
+        $chartHeight = 100; // Alto para el gráfico de barras
+
+        $this->pdf->SetXY($chartX, $chartY);
+        $this->pdf->SetFont('Arial', 'B', 10);
+        $this->pdf->Cell(0, 5, utf8_decode('Distribución de Estudiantes por Colegio'), 0, 1, 'C');
+        $this->pdf->SetXY($chartX, $chartY + 7);
+
+        // Asegúrate de que tu método BarDiagram pueda manejar el array de datos y el color
+        $this->pdf->BarDiagram($chartWidth, $chartHeight, $datac, '%l : %v', $barColor, $chartX, $chartY + 12);
+
+        $this->pdf->SetY(max($this->pdf->GetY(), $chartY + $chartHeight + 20));
     }
-
+}
+ 
+ 
+ 
+ 
+ 
     /**
      * Ejecuta la generación del reporte.
      *
