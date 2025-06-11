@@ -565,9 +565,6 @@ public function generateCollegeStats(array $datac)
     }
     $this->pdf->Ln(8);
 
-        // Posicionar el gráfico
-        $chartX = 150;
-        $chartY = 100;
  
 
 
@@ -582,7 +579,7 @@ public function generateCollegeStats(array $datac)
     $chartHeight = 80; // Alto del área del gráfico
 
     // Mueve el cursor a donde quieres que inicie el gráfico
-    $this->pdf->SetX(200); // Ajusta la posición X de inicio
+    $this->pdf->SetX(300); // Ajusta la posición X de inicio
     $this->pdf->SetY(80);  // Ajusta la posición Y de inicio (esto es importante)
 
     // Generar colores dinámicamente para cada sección del pastel
