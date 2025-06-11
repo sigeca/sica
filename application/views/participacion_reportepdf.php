@@ -450,11 +450,11 @@ class ReporteParticipacionPDF
             $this->pdf->Cell(20, 7, $value, 0, 0, 'R');
             $this->pdf->Ln();
         }
-        $this->pdf->Ln(38);
+        $this->pdf->Ln(28);
 
         // Posicionar el gráfico
         $chartX = 120; // Ajusta según el diseño de tu página
-        $chartY = 50;  // Ajusta según el diseño de tu página
+        $chartY = 150;  // Ajusta según el diseño de tu página
         $chartWidth = 100;
         $chartHeight = 45;
 
