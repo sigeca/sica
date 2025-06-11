@@ -583,8 +583,8 @@ public function generateCollegeStats(array $datac)
     $chartHeight = 80; // Alto del área del gráfico
 
     // Mueve el cursor a donde quieres que inicie el gráfico
-    $this->pdf->SetX(100); // Ajusta la posición X de inicio
-    $this->pdf->SetY(100);  // Ajusta la posición Y de inicio (esto es importante)
+//    $this->pdf->SetX(100); // Ajusta la posición X de inicio
+//    $this->pdf->SetY(100);  // Ajusta la posición Y de inicio (esto es importante)
 
 
         $this->pdf->SetXY($chartX, $chartY);
@@ -624,7 +624,7 @@ public function generateCollegeStats(array $datac)
 //   $this->pdf->SetY(max($this->pdf->GetY(), $this->pdf->GetY() + $chartHeight + 20));
 
 
-   $this->pdf->SetY(max($this->pdf->GetY(), $chartY + $chartHeight + 20));
+   $this->pdf->SetY(max($this->pdf->GetY(), $chartY + $chartHeight + 40));
 }
  
  
