@@ -115,7 +115,6 @@ class ReporteParticipacionPDF
             return [];
         }
         
-            $currentDate = $fechaSesion;
         foreach ($fechacorte as $p => $fc) {
             $count = 0;
             while (strtotime($currentDate) <= strtotime($fc)) {
@@ -418,86 +417,189 @@ class ReporteParticipacionPDF
      *
      * @param array $stats Estadísticas de aprobados, reprobados y desertores.
      */
-    private function generatePromotionStats(array $stats)
+  
+   public function generatePromotionStats(array $stats)
     {
-        $this->pdf->AddPage('L');
-        $this->pdf->SetFont("Arial", "", 12);
-        $this->pdf->Cell(0, 5, utf8_decode('Estadísticas de promovidos y no promovidos'), 0, 1);
-        $this->pdf->Ln(8);
+        $this->AddPage('L'); // Página en orientación horizontal
+        $this->SetFont("Arial", "B", 16);
+        $this->SetTextColor(30, 70, 120); // Color azul oscuro para el título
+        $this->Cell(0, 10, utf8_decode('Estadísticas de Promoción Académica'), 0, 1, 'C');
+        $this->Ln(10);
 
-        $this->pdf->SetFont('Arial', '', 10);
-        $valX = $this->pdf->GetX();
-        $valY = $this->pdf->GetY();
+        $this->SetFont('Arial', '', 12);
+        $this->SetTextColor(50, 50, 50); // Color gris oscuro para el texto
 
         $data = [
-            'Aprobados' => $stats['aprobados'],
+            'Aprobados'  => $stats['aprobados'],
             'Reprobados' => $stats['reprobados'],
             'Desertores' => $stats['desertores']
         ];
 
+        // Definir colores más modernos y distintivos
+        $colors = [
+            'Aprobados'  => [102, 194, 165], // Verde esmeralda
+            'Reprobados' => [252, 141, 98],  // Naranja quemado
+            'Desertores' => [141, 160, 203]  // Azul grisáceo
+        ];
+
+        // Título de la sección de datos
+        $this->SetFont('Arial', 'BU', 12);
+        $this->Cell(0, 7, utf8_decode('Detalle Numérico:'), 0, 1);
+        $this->Ln(2);
+
+        // Mostrar los datos en formato de tabla simple
+        $this->SetFont('Arial', '', 11);
         foreach ($data as $label => $value) {
-            $this->pdf->Cell(30, 5, utf8_decode($label));
-            $this->pdf->Cell(15, 5, $value, 0, 0, 'R');
-            $this->pdf->Ln();
+            $this->Cell(60, 7, utf8_decode($label), 0);
+            $this->Cell(20, 7, $value, 0, 0, 'R');
+            $this->Ln();
         }
-        $this->pdf->Ln(8);
+        $this->Ln(8);
 
-        $this->pdf->SetXY(90, $valY);
-        $col1 = [7, 195, 250];  // celeste
-        $col2 = [245, 249, 3];  // amarillo
-        $col3 = [253, 194, 224]; // rosado
-    //    $this->pdf->PieChart(100, 35, $data, '%l : %v (%p)', [$col1, $col2, $col3]);
-        $this->pdf->SetXY($valX, $valY + 40);
+        // Posicionar el gráfico
+        $chartX = 120; // Ajusta según el diseño de tu página
+        $chartY = 50;  // Ajusta según el diseño de tu página
+        $chartWidth = 100;
+        $chartHeight = 45;
+
+        $this->SetXY($chartX, $chartY);
+        $this->SetFont('Arial', 'B', 10);
+        $this->Cell(0, 5, utf8_decode('Distribución de Resultados'), 0, 1, 'C'); // Título del gráfico
+        $this->SetXY($chartX, $chartY + 7); // Posiciona debajo del título del gráfico
+
+        // Convertir el array de colores asociativo a indexado para el PieChart si tu método lo requiere
+        $pieColors = array_values($colors);
+        $this->PieChart($chartWidth, $chartHeight, $data, '%l : %v (%p)', $pieColors, $chartX, $chartY + 12); // Pasa los colores al método
+
+        $this->SetY(max($this->GetY(), $chartY + $chartHeight + 20)); // Asegura que el siguiente contenido esté debajo del gráfico
     }
-
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
     /**
      * Genera las estadísticas por género en el PDF.
      *
      * @param array $datag Estadísticas por género.
      */
-    private function generateGenderStats(array $datag)
+   
+    public function generateGenderStats(array $datag)
     {
-        $this->pdf->SetFont("Arial", "BIU", 12);
-        $this->pdf->Cell(0, 5, utf8_decode('Estadísticas de Géneros'), 0, 1);
-        $this->pdf->Ln(8);
+        $this->AddPage(); // Nueva página para este gráfico si lo deseas
+        $this->SetFont("Arial", "B", 16);
+        $this->SetTextColor(30, 70, 120);
+        $this->Cell(0, 10, utf8_decode('Estadísticas por Género'), 0, 1, 'C');
+        $this->Ln(10);
 
-        $this->pdf->SetFont('Arial', '', 10);
-        $valX = $this->pdf->GetX();
-        $valY = $this->pdf->GetY();
+        $this->SetFont('Arial', '', 12);
+        $this->SetTextColor(50, 50, 50);
 
+        // Definir colores más adecuados para género
+        $colors = [
+            'Hombres' => [93, 165, 218], // Azul claro
+            'Mujeres' => [255, 172, 206]  // Rosa suave
+        ];
+
+        // Título de la sección de datos
+        $this->SetFont('Arial', 'BU', 12);
+        $this->Cell(0, 7, utf8_decode('Detalle Numérico:'), 0, 1);
+        $this->Ln(2);
+
+        // Mostrar los datos en formato de tabla simple
+        $this->SetFont('Arial', '', 11);
         foreach ($datag as $label => $value) {
-            $this->pdf->Cell(30, 5, utf8_decode($label));
-            $this->pdf->Cell(15, 5, $value, 0, 0, 'R');
-            $this->pdf->Ln();
+            $this->Cell(60, 7, utf8_decode($label), 0);
+            $this->Cell(20, 7, $value, 0, 0, 'R');
+            $this->Ln();
         }
+        $this->Ln(8);
 
-        $this->pdf->Ln(8);
+        // Posicionar el gráfico
+        $chartX = 120;
+        $chartY = 50;
+        $chartWidth = 100;
+        $chartHeight = 45;
 
-        $this->pdf->SetXY(90, $valY);
-        $col1 = [7, 195, 250];  // celeste
-        $col2 = [245, 249, 3];  // amarillo
-        $this->pdf->PieChart(100, 35, $datag, '%l : %v (%p)', [$col1, $col2]);
-        $this->pdf->SetXY($valX, $valY + 40);
+        $this->SetXY($chartX, $chartY);
+        $this->SetFont('Arial', 'B', 10);
+        $this->Cell(0, 5, utf8_decode('Distribución de Géneros'), 0, 1, 'C');
+        $this->SetXY($chartX, $chartY + 7);
+
+        $pieColors = array_values($colors);
+        $this->PieChart($chartWidth, $chartHeight, $datag, '%l : %v (%p)', $pieColors, $chartX, $chartY + 12);
+
+        $this->SetY(max($this->GetY(), $chartY + $chartHeight + 20));
     }
-
+   
+   
+   
+   
+   
+   
     /**
      * Genera las estadísticas por colegio en el PDF.
+     * Utiliza un diagrama de barras para mostrar la cantidad de estudiantes por colegio.
      *
-     * @param array $datac Estadísticas por colegio.
+     * @param array $datac Estadísticas por colegio (Ej: ['Colegio A' => 50, 'Colegio B' => 75]).
      */
-    private function generateCollegeStats(array $datac)
+
+
+
+public function generateCollegeStats(array $datac)
     {
-        $this->pdf->AddPage('L');
-        $this->pdf->SetFont("Courier", "BIU", 8);
-        $this->pdf->Cell(0, 5, utf8_decode('Estadísticas de Colegios'), 0, 1);
-        $this->pdf->Ln(8);
+        $this->AddPage('L');
+        $this->SetFont("Arial", "B", 16);
+        $this->SetTextColor(30, 70, 120);
+        $this->Cell(0, 10, utf8_decode('Estadísticas por Colegio'), 0, 1, 'C');
+        $this->Ln(10);
 
-        $valX = $this->pdf->GetX();
-        $valY = $this->pdf->GetY();
+        $this->SetFont('Arial', '', 12);
+        $this->SetTextColor(50, 50, 50);
 
-      //  $this->pdf->BarDiagram(200, 100, $datac, '%l : %v (%p)', [255, 175, 100]);
-        $this->pdf->SetXY($valX, $valY + 80);
+        // Título de la sección de datos
+        $this->SetFont('Arial', 'BU', 12);
+        $this->Cell(0, 7, utf8_decode('Detalle Numérico:'), 0, 1);
+        $this->Ln(2);
+
+        // Mostrar los datos en formato de tabla para los colegios
+        $this->SetFont('Arial', '', 11);
+        foreach ($datac as $label => $value) {
+            $this->Cell(100, 7, utf8_decode($label), 0);
+            $this->Cell(20, 7, $value, 0, 0, 'R');
+            $this->Ln();
+        }
+        $this->Ln(8);
+
+        // Colores para las barras (puedes definir un gradiente o colores individuales si tu BarDiagram lo permite)
+        $barColor = [118, 180, 220]; // Un tono de azul para las barras
+
+        // Posicionar el gráfico de barras
+        $chartX = 120;
+        $chartY = 50;
+        $chartWidth = 150; // Ancho para el gráfico de barras
+        $chartHeight = 100; // Alto para el gráfico de barras
+
+        $this->SetXY($chartX, $chartY);
+        $this->SetFont('Arial', 'B', 10);
+        $this->Cell(0, 5, utf8_decode('Distribución de Estudiantes por Colegio'), 0, 1, 'C');
+        $this->SetXY($chartX, $chartY + 7);
+
+        // Asegúrate de que tu método BarDiagram pueda manejar el array de datos y el color
+        $this->BarDiagram($chartWidth, $chartHeight, $datac, '%l : %v', $barColor, $chartX, $chartY + 12);
+
+        $this->SetY(max($this->GetY(), $chartY + $chartHeight + 20));
     }
+
+
+
+
+
 
     /**
      * Ejecuta la generación del reporte.
