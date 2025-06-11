@@ -578,11 +578,11 @@ public function generateCollegeStats(array $datac)
     // Posicionar el gráfico de pastel
     // Para PieChart, especificas el ancho y alto del "área" del gráfico.
     // La posición X e Y se definen por SetX() y SetY() antes de la llamada.
- //   $chartWidth = 100; // Ancho del área del gráfico
- //   $chartHeight = 80; // Alto del área del gráfico
+    $chartWidth = 100; // Ancho del área del gráfico
+    $chartHeight = 80; // Alto del área del gráfico
 
     // Mueve el cursor a donde quieres que inicie el gráfico
-    $this->pdf->SetX(100); // Ajusta la posición X de inicio
+    $this->pdf->SetX(200); // Ajusta la posición X de inicio
     $this->pdf->SetY(80);  // Ajusta la posición Y de inicio (esto es importante)
 
     // Generar colores dinámicamente para cada sección del pastel
