@@ -552,7 +552,7 @@ class ReporteParticipacionPDF
 
         $this->pdf->SetY(max($this->pdf->GetY(), $chartY + $chartHeight + 20));
     }
-}
+
  
  
  
