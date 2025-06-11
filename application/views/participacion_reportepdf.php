@@ -586,6 +586,17 @@ public function generateCollegeStats(array $datac)
     $this->pdf->SetX(100); // Ajusta la posición X de inicio
     $this->pdf->SetY(100);  // Ajusta la posición Y de inicio (esto es importante)
 
+
+        $this->pdf->SetXY($chartX, $chartY);
+        $this->pdf->SetFont('Arial', 'B', 10);
+        $this->pdf->Cell(0, 5, utf8_decode('Distribución de Géneros'), 0, 1, 'C');
+        $this->pdf->SetXY($chartX, $chartY + 7);
+
+ 
+
+
+
+
     // Generar colores dinámicamente para cada sección del pastel
     $colors = [];
     $hue = 0;
@@ -598,9 +609,9 @@ public function generateCollegeStats(array $datac)
         $hue += 60; // Incrementar el matiz para el siguiente color
     }
 
-    $this->pdf->SetFont('Arial', 'B', 10);
-    $this->pdf->Cell($chartWidth, 5, utf8_decode('Distribución de Estudiantes por Colegio'), 0, 1, 'C');
-    $this->pdf->Ln(2); // Espacio después del título del gráfico
+//    $this->pdf->SetFont('Arial', 'B', 10);
+//    $this->pdf->Cell($chartWidth, 5, utf8_decode('Distribución de Estudiantes por Colegio'), 0, 1, 'C');
+//    $this->pdf->Ln(2); // Espacio después del título del gráfico
 
     // La función PieChart usa las coordenadas actuales (GetX(), GetY())
     // para dibujar el gráfico. Por eso es importante el SetX/SetY anterior.
@@ -610,10 +621,10 @@ public function generateCollegeStats(array $datac)
     $this->pdf->PieChart($chartWidth, $chartHeight, $datac, '%l : %v (%p)', $colors, $chartX, $chartY + 12);
 
     // Ajusta la posición Y para el contenido siguiente, asegurándote de que no se superponga
-   $this->pdf->SetY(max($this->pdf->GetY(), $this->pdf->GetY() + $chartHeight + 20));
+//   $this->pdf->SetY(max($this->pdf->GetY(), $this->pdf->GetY() + $chartHeight + 20));
 
 
- //   $this->pdf->SetY(max($this->pdf->GetY(), $chartY + $chartHeight + 20));
+   $this->pdf->SetY(max($this->pdf->GetY(), $chartY + $chartHeight + 20));
 }
  
  
