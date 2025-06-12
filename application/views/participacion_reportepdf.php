@@ -321,6 +321,7 @@ class ReporteParticipacionPDF
             $aprobados++;
         }
         $this->pdf->Cell(10, 5, $finalResult, 1, 0, 'R', 1);
+            $this->pdf->setFillColor(255, 255, 255);
 
         $totalSessionsCombined = ($sesionTotal[0] ?? 0) + ($sesionTotal[1] ?? 0);
         $totalAttendanceCombined = ($arrAsistencia[$participantData['idpersona']][0] ?? 0) + ($arrAsistencia[$participantData['idpersona'][1] ?? 0]);
