@@ -625,7 +625,7 @@ public function generateCollegeStats(array $datac)
         // Las he puesto aquí para que el ejemplo sea autocontenido, pero lo ideal es pasarlas.
 
         $sesionTotal = $this->calculateTotalSessions($fechacorte, $jornadadocente, $evento, $calendarioacademico);
-        $this->generateTableHeader($sesionEventos, $sesionTotal);
+    //    $this->generateTableHeader($sesionEventos, $sesionTotal);
         $stats = $this->processParticipantData($participacion, $sesionEventos, $fechacorte, $sesionTotal, $asistencias, $nivelRpt, $calendarioacademico);
 
         // Generar estadísticas
