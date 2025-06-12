@@ -248,7 +248,7 @@ class ReporteParticipacionPDF
              //   }
 
 
-                $this->pdf->Cell(8, 5, $score, 1, 0, 'R', 0);
+                $this->pdf->Cell(8, 5, $score*4, 1, 0, 'R', 0);
                 $this->pdf->SetTextColor(0, 0, 0);
 
                 if(($nivelRpt==2 || $nivelRpt==1) and $score<=70)
