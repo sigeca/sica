@@ -271,7 +271,7 @@ class ReporteParticipacionPDF
             } else {
 
                 $this->pdf->setFillColor(255, 165,0);  //Color naranja de poner cuidado
-                $this->pdf->Cell(8, 5, '0', 1, 0, 'R', 0);
+                $this->pdf->Cell(8, 5, '0', 1, 0, 'R', true);
                 $this->pdf->setFillColor(255, 255,255);  // volver al fondo blanco
                 foreach ($fechacorte as $p => $fc) {
                     if (strtotime($row1->fecha) <= strtotime($fc)) {
