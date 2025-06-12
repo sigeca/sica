@@ -1,7 +1,7 @@
 <?php
 
 // Incluimos la plantilla de la clase PDF
-require_once 'plantilla2.php';
+require_once 'plantilla2tbl.php';
 
 /**
  * Clase para generar el reporte de participación y asistencias en PDF.
