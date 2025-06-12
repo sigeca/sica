@@ -135,35 +135,6 @@ class ReporteParticipacionPDF
     }
 
     /**
-     * Genera el encabezado de la tabla del PDF.
-     *
-     * @param array $sesionEventos Array de sesiones de eventos.
-     * @param array $sesionTotal Array con el total de sesiones.
-     */
-    private function generateTableHeader(array $sesionEventos, array $sesionTotal)
-    {
-        $this->pdf->SetFillColor(232, 232, 232);
-        $this->pdf->SetFont('Arial', 'B', 8);
-
-        $this->pdf->Cell(5, 5, '#', 1, 0, 'C', 1);
-        $this->pdf->Cell(55, 5, 'Participante', 1, 0, 'C', 1);
-        $this->pdf->Cell(5, 5, 'GE', 1, 0, 'C', 1); // Género
-        $this->pdf->Cell(5, 5, 'CO', 1, 0, 'C', 1); // Colegio
-
-        foreach ($sesionEventos as $row) {
-            $this->pdf->Cell(8, 5, $row->temacorto, 1, 0, 'C', 1);
-        }
-
-        $this->pdf->Cell(10, 5, 'P1', 1, 0, 'C', 1);
-        $this->pdf->Cell(12, 5, 'As1(' . ($sesionTotal[0] ?? 0) . ')', 1, 0, 'C', 1);
-        $this->pdf->Cell(10, 5, 'P2', 1, 0, 'C', 1);
-        $this->pdf->Cell(12, 5, 'As2(' . ($sesionTotal[1] ?? 0) . ')', 1, 0, 'C', 1);
-        $this->pdf->Cell(10, 5, 'Prom', 1, 0, 'C', 1);
-        $asT = ($sesionTotal[0] ?? 0) + ($sesionTotal[1] ?? 0);
-        $this->pdf->Cell(12, 5, 'AsT(' . $asT . ')', 1, 1, 'C', 1);
-    }
-
-    /**
      * Procesa y genera las filas de datos para cada participante.
      *
      * @param array $participacion Datos de participación.
@@ -583,8 +554,6 @@ public function generateCollegeStats(array $datac)
     $chartHeight = 80; // Alto del área del gráfico
 
     // Mueve el cursor a donde quieres que inicie el gráfico
-//    $this->pdf->SetX(100); // Ajusta la posición X de inicio
-//    $this->pdf->SetY(100);  // Ajusta la posición Y de inicio (esto es importante)
 
 
         $this->pdf->SetXY($chartX, $chartY);
@@ -609,9 +578,6 @@ public function generateCollegeStats(array $datac)
         $hue += 60; // Incrementar el matiz para el siguiente color
     }
 
-//    $this->pdf->SetFont('Arial', 'B', 10);
-//    $this->pdf->Cell($chartWidth, 5, utf8_decode('Distribución de Estudiantes por Colegio'), 0, 1, 'C');
-//    $this->pdf->Ln(2); // Espacio después del título del gráfico
 
     // La función PieChart usa las coordenadas actuales (GetX(), GetY())
     // para dibujar el gráfico. Por eso es importante el SetX/SetY anterior.
