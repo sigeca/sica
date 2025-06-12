@@ -50,7 +50,7 @@ class ReporteParticipacionPDF
         $this->pdf->SetAutoPageBreak(true, 40);
 
         $this->pdf->institucion = 'UNIVERSIDAD TÉCNICA LUIS VARGAS TORRES DE ESMERALDAS';
-        $this->pdf->unidad = 'FACULTAD DE INGENIERIAS (FACI)';
+        $this->pdf->unidad = 'FACULTAD DE INGENIERIAS -  (FACI)';
         $this->pdf->departamento = 'CARRERA EN TECNOLOGÍA DE LA INFORMACIÓN';
 
         $this->pdf->titulo = $this->eventoData['titulo'] ?? 'Título del Evento No Disponible';
