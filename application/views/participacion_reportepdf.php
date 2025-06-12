@@ -242,9 +242,19 @@ class ReporteParticipacionPDF
 
                 $xparti = (100 - ($participantData['participaciones'][$row1->fecha] + $participantData['ayudas'][$row1->fecha])) * ($vp / (100 * $cmp));
                 $score = round(($participantData['participaciones'][$row1->fecha] + $participantData['ayudas'][$row1->fecha] + $xparti) * $ponderacion, 2);
+                if(($nivelRpt==2 || $nivelRpt==1) and $score<=70)
+                {
+                    $this->pdf->setFillColor(255, 165,0);  //Color naranja de poner cuidado
+                }
+
+
                 $this->pdf->Cell(8, 5, $score, 1, 0, 'R', 0);
                 $this->pdf->SetTextColor(0, 0, 0);
 
+                if(($nivelRpt==2 || $nivelRpt==1) and $score<=70)
+                {
+                    $this->pdf->setFillColor(255, 255,255);  //Color naranja de poner cuidado
+                }
 
                 foreach ($fechacorte as $p => $fc) {
                     if (strtotime($row1->fecha) <= strtotime($fc)) {
@@ -259,7 +269,10 @@ class ReporteParticipacionPDF
                 }
                 $fecha1 = $row1->fecha;
             } else {
+
+                $this->pdf->setFillColor(255, 165,0);  //Color naranja de poner cuidado
                 $this->pdf->Cell(8, 5, '0', 1, 0, 'R', 0);
+                $this->pdf->setFillColor(255, 255,255);  // volver al fondo blanco
                 foreach ($fechacorte as $p => $fc) {
                     if (strtotime($row1->fecha) <= strtotime($fc)) {
                         $numNotes[$p]++;
