@@ -242,13 +242,13 @@ class ReporteParticipacionPDF
 
                 $xparti = (100 - ($participantData['participaciones'][$row1->fecha] + $participantData['ayudas'][$row1->fecha])) * ($vp / (100 * $cmp));
                 $score = round(($participantData['participaciones'][$row1->fecha] + $participantData['ayudas'][$row1->fecha] + $xparti) * $ponderacion, 2);
-              //  if(($nivelRpt==2 || $nivelRpt==1) and $score<=70)
-             //   {
+                if(($nivelRpt==2 || $nivelRpt==1) and $score<=70)
+                {
                     $this->pdf->setFillColor(255, 165,0);  //Color naranja de poner cuidado
-             //   }
+                }
 
 
-                $this->pdf->Cell(8, 5, $score*4, 1, 0, 'R', 0);
+                $this->pdf->Cell(8, 5, $score, 1, 0, 'R',true);
                 $this->pdf->SetTextColor(0, 0, 0);
 
                 if(($nivelRpt==2 || $nivelRpt==1) and $score<=70)
