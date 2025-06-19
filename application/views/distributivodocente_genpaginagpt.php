@@ -17,6 +17,25 @@
     <link rel="stylesheet" href="<?php echo base_url('assets/css/style.css'); ?>">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<style>
+        /* Estilos adicionales para el enlace de Drive */
+        .drive-link {
+            display: inline-flex;
+            align-items: center;
+            color: #28a745; /* Color verde de éxito de Bootstrap */
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 5px;
+            transition: color 0.3s ease;
+        }
+        .drive-link:hover {
+            color: #218838; /* Tono más oscuro al pasar el ratón */
+            text-decoration: underline;
+        }
+        .drive-link i {
+            margin-right: 5px;
+        }
+    </style>
 </head>
 <body>
     <header class="main-header">
@@ -32,7 +51,7 @@
 
     <main class="container content-area">
         <section class="distributivo-list">
-        <h2>Lista de Docentes y Asignaturas <br>  Periodo: <?php echo $elperiodoacademico; ?> </h2>
+        <h2>Lista de Docentes y Asignaturas <br> Periodo: <?php echo $elperiodoacademico; ?> </h2>
 
             <div class="card-grid" id="distributivo-cards">
                 <p class="loading-message">Cargando información del distributivo...</p>
@@ -98,51 +117,40 @@ function checkIfImageExists(url) {
                     success: async function(response) {
                         let html = '';
                         if (response.data && response.data.length > 0) {
-                            $.each(response.data, function(index, item) {
+                            for (const item of response.data) { // Usamos for...of para poder usar await
                                 // Default photo if not provided or empty
-                          //      const docentePhoto = item.docente_photo && item.docente_photo !== ''
-                            //        ? item.docente_photo
-                              //      : '<?php echo base_url("assets/images/default_avatar.png"); ?>'; // Make sure this path is correct
+                                const docentePhotoUrlBase = "https://repositorioutlvte.org/Repositorio/fotos/";
+                                let docentePhoto = `${docentePhotoUrlBase}${item.cedula}.jpg`;
+                                let finalDocentePhoto = '';
 
-// Remote file url
-const docentePhoto = "https://repositorioutlvte.org/Repositorio/fotos/"+item.cedula+".jpg";
+                                const photoExists = await checkIfImageExists(docentePhoto);
+                                if (photoExists) {
+                                    finalDocentePhoto = docentePhoto;
+                                } else {
+                                    finalDocentePhoto = `${docentePhotoUrlBase}perfil.jpg`;
+                                }
 
-
- const docentePhotoExists =  checkIfImageExists(docentePhoto);
-    if (!docentePhotoExists) {
-
-     const docentePhoto =   "https://repositorioutlvte.org/Repositorio/fotos/perfil.jpg" ;
-
-}
-
-
-
-
-
-
-
-                                // PDF URL handling
-                            //    const pdfUrl = item.archivopdf && item.archivopdf !== '' ? item.archivopdf : '#';
-                              //  const pdfButtonClass = (pdfUrl === '#') ? 'btn-secondary disabled' : 'btn-primary';
-                                //const pdfButtonText = (pdfUrl === '#') ? 'Sin PDF' : 'Ver PDF';
+                                // Determinar si mostrar el enlace de Drive
+                                const driveLinkHtml = (item.portafoliodrive && item.portafoliodrive !== null && item.portafoliodrive !== '') ?
+                                    `<a href="${item.portafoliodrive}" target="_blank" class="drive-link" title="Ver Portafolio en Google Drive">
+                                        <i class="fab fa-google-drive"></i> Portafolio
+                                    </a>` : '';
 
                                 html += `
                                     <div class="distributivo-card">
                                         <div class="docente-info">
                                             <div class="docente-photo-container">
-                                                <img src="${docentePhoto}" alt="Foto de ${item.eldocente}" class="docente-photo">
+                                                <img src="${finalDocentePhoto}" alt="Foto de ${item.eldocente}" class="docente-photo">
                                             </div>
                                             <h3>${item.eldocente}</h3>
-                                            ${item.id ? `<p class="docente-id">ID: ${item.iddocente}</p>` : ''}
-                                        </div>
+                                            ${item.iddocente ? `<p class="docente-id">ID: ${item.iddocente}</p>` : ''}
+                                            ${driveLinkHtml} </div>
                                         <div class="asignaturas-list">
                                             <h4>Asignaturas:</h4>
                                             <ul>`;
                                 if (item.asignaturas && item.asignaturas.length > 0) {
                                     $.each(item.asignaturas, function(i, asignatura) {
-                                           //  const eventDetailUrl = `<?php echo base_url('evento/detalle/'); ?>${asignatura.idevento}?cedula= ${item.cedula}& eldocente= ${item.eldocente} `;
                                             const eventDetailUrl = `<?php echo base_url('evento/detalle/'); ?>${asignatura.idevento}?cedula=${item.cedula}&eldocente="${encodeURIComponent(item.eldocente)}"`;
-
                                         html += `<li><a href="${eventDetailUrl}" target="_blank" class="event-link" title="Ver detalle del evento">
                                 <i class="fas fa-info-circle"></i> </a>
 ${asignatura.laasignatura} ${asignatura.paralelo ? `(${asignatura.paralelo})` : ''}</li>`;
@@ -156,7 +164,7 @@ ${asignatura.laasignatura} ${asignatura.paralelo ? `(${asignatura.paralelo})` : 
                                         
                                     </div>
                                 `;
-                            });
+                            } // Fin del for...of
                         } else {
                             html = '<p class="info-message">No se encontró información de distributivos.</p>';
                         }
