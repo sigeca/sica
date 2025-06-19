@@ -27,6 +27,12 @@ body {font-family: Arial, Helvetica, sans-serif;}
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"  />
 
+<div id="eys-nav-i">
+	<ul>
+		<li> <?php echo anchor('documento', 'Home'); ?></li>
+	</ul>
+</div>
+
 
 
 <div class="form-group row">
