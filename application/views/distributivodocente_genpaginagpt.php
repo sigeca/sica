@@ -32,7 +32,7 @@
 
     <main class="container content-area">
         <section class="distributivo-list">
-        <h2>Lista de Docentes y Asignaturas <br>  Periodo: <?php echo $elperiodolectivo; ?> </h2>
+        <h2>Lista de Docentes y Asignaturas <br>  Periodo: <?php echo $elperiodoacademico; ?> </h2>
 
             <div class="card-grid" id="distributivo-cards">
                 <p class="loading-message">Cargando información del distributivo...</p>
