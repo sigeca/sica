@@ -59,11 +59,12 @@ class Asignaturadocente_model extends CI_model {
         $result = [];
 
         // Obtener los docentes que tienen asignaturas en el distributivo especificado
-        $this->db->select('d.iddocente, ad.eldocente, d.cedula' );
-        $this->db->from('asignaturadocente4 ad, docente1 d');
+        $this->db->select('d.iddocente, ad.eldocente, d.cedula, dd.portafoliodrive' );
+        $this->db->from('asignaturadocente4 ad, docente1 d, distributivodocente dd');
         $this->db->where('ad.iddocente = d.iddocente');
         $this->db->where('ad.iddistributivo', $iddistributivo);
-        $this->db->group_by('d.iddocente, ad.eldocente, d.cedula'); // Agrupar para obtener docentes únicos
+        $this->db->where('dd.iddistributivo', $iddistributivo);
+        $this->db->group_by('d.iddocente, ad.eldocente, d.cedula, dd.portafoliodrive'); // Agrupar para obtener docentes únicos
         $docentes = $this->db->get()->result_array();
 
         foreach ($docentes as $docente) {
@@ -80,6 +81,7 @@ class Asignaturadocente_model extends CI_model {
                 'eldocente' => $docente['eldocente'],
                 // Asume que 'cedula_imagen_path' guarda la ruta relativa.
                 'cedula' => $docente['cedula'],
+                'portafoliodrive' => $docente['portafoliodrive'],
                 'asignaturas' => $asignaturas
             ];
         }
