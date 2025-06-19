@@ -64,6 +64,7 @@ class Asignaturadocente_model extends CI_model {
         $this->db->where('ad.iddocente = d.iddocente');
         $this->db->where('ad.iddistributivo', $iddistributivo);
         $this->db->where('dd.iddistributivo', $iddistributivo);
+        $this->db->where('dd.iddocente= d.iddocente);
         $this->db->group_by('d.iddocente, ad.eldocente, d.cedula, dd.portafoliodrive'); // Agrupar para obtener docentes únicos
         $docentes = $this->db->get()->result_array();
 
