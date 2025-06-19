@@ -169,12 +169,12 @@ function portafolio_data()
 
         $this->load_model('documento_model');
 
-		if($asunto=$this->input->get('asunto')){
-		    $data['documentos'] = $this->documento_model->documentosxtipo($this->uri->segment(3),$asunto)->result();
-    }else{
+		$idperiodoacademico=$this->input->get('idperiodoacademico');
+		$idpersona=$this->input->get('idpersona');
 
-		    $data['documentos'] = $this->documento_model->documentosxtipo($this->uri->segment(3),"")->result();
-    }
+	    $data['documentos'] = $this->documento_model->documentosxtipo($idpersona,$idperiodoacademico);
+	    $data['documentos'] = $this->portafolio_model->portafolioxpersonayperiodo($idpersona,$idperiodoacademico);
+
 
 		$data['title']="Evento";
 		$this->load->view('portafolio_list_pdf',$data);

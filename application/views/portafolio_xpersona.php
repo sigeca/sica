@@ -29,7 +29,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
 
 <div id="eys-nav-i">
 	<ul>
-		<li> <?php echo anchor('documento', 'Home'); ?></li>
+		<li> <?php echo anchor('portafolio/reportepdf?idpersona=8&idperiodoacademico=20', 'Reportepdf'); ?></li>
 	</ul>
 </div>
 
