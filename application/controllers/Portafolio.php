@@ -167,7 +167,6 @@ function portafolio_data()
 	public function reportepdf()
 	{
 
-        $this->load_model('documento_model');
 
 		$idperiodoacademico=$this->input->get('idperiodoacademico');
 		$idpersona=$this->input->get('idpersona');
