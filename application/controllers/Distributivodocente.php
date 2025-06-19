@@ -273,6 +273,7 @@ public function genpagina()
 		$iddistributivo=$this->uri->segment(3);
 		$data['iddistributivo']=$this->uri->segment(3);
 	 	$data['asignaturadocentes']= $this->asignaturadocente_model->asignaturadocentexdistributivoweb($iddistributivo,$ordenrpt)->result();
+        $data['elperiodoacademico']=$data['asignaturadocentes'][0]->elperiodoacademico;
         $fin = microtime(true);
 
 // Calcular la diferencia en segundos
