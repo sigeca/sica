@@ -171,8 +171,8 @@ function portafolio_data()
 		$idperiodoacademico=$this->input->get('idperiodoacademico');
 		$idpersona=$this->input->get('idpersona');
 
-	    $data['documentos'] = $this->documento_model->documentosxtipo($idpersona,$idperiodoacademico);
-	    $data['documentos'] = $this->portafolio_model->portafolioxpersonayperiodo($idpersona,$idperiodoacademico);
+	 //   $data['documentos'] = $this->documento_model->documentosxtipo($idpersona,$idperiodoacademico);
+	    $data['documentos'] = $this->portafolio_model->portafolioxpersonayperiodo($idpersona,$idperiodoacademico)->result();
 
 
 		$data['title']="Evento";
