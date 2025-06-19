@@ -164,6 +164,28 @@ function portafolio_data()
 }
 
 
+	public function reportepdf()
+	{
+
+        $this->load_model('documento_model');
+
+		if($asunto=$this->input->get('asunto')){
+		    $data['documentos'] = $this->documento_model->documentosxtipo($this->uri->segment(3),$asunto)->result();
+    }else{
+
+		    $data['documentos'] = $this->documento_model->documentosxtipo($this->uri->segment(3),"")->result();
+    }
+
+		$data['title']="Evento";
+		$this->load->view('portafolio_list_pdf',$data);
+	
+	}
+
+
+
+
+
+
 
    public function portafolio_flutter()
     {
