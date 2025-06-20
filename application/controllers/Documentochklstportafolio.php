@@ -5,12 +5,12 @@ class Documentochklstportafolio extends CI_Controller{
       		parent::__construct();
       		$this->load->model('documentochklstportafolio_model');
       		$this->load->model('persona_model');
-      		$this->load->model('silabo_model');
+      		$this->load->model('chklstportafolio_model');
       		$this->load->model('tema_model');
 	}
 
 	public function index(){
-  		$data['silabos']= $this->silabo_model->lista_silabos()->result();
+  		$data['chklstportafolios']= $this->chklstportafolio_model->lista_chklstportafolios()->result();
   		$data['personas']= $this->persona_model->lista_personas()->result();
 		$data['documentochklstportafolio'] = $this->documentochklstportafolio_model->elultimo();
 
@@ -30,7 +30,7 @@ class Documentochklstportafolio extends CI_Controller{
 
 		$data['documentochklstportafolio'] = $this->documentochklstportafolio_model->documentochklstportafolioss(1);
         }
-		$data['title']="Nueva unidades del silabo";
+		$data['title']="Nueva unidades del chklstportafolio";
 	 	$this->load->view('template/page_header');		
 	 	$this->load->view('documentochklstportafolio_form',$data);
 	 	$this->load->view('template/page_footer');
@@ -40,7 +40,7 @@ class Documentochklstportafolio extends CI_Controller{
 	public function  save()
 	{
 	 	$array_item=array(
-		 	'idsilabo' => $this->input->post('idsilabo'),
+		 	'idchklstportafolio' => $this->input->post('idchklstportafolio'),
 		 	'nombre' => $this->input->post('nombre'),
 		 	'unidad' => $this->input->post('unidad'),
 	 	);
@@ -53,7 +53,7 @@ class Documentochklstportafolio extends CI_Controller{
 	public function edit()
 	{
 	 	$data['documentochklstportafolio'] = $this->documentochklstportafolio_model->documentochklstportafolio($this->uri->segment(3))->row_array();
-		$data['silabos']= $this->silabo_model->lista_silabos()->result();
+		$data['chklstportafolios']= $this->chklstportafolio_model->lista_chklstportafolios()->result();
 		$data['personas']= $this->persona_model->lista_personas()->result();
  	 	$data['title'] = "Actualizar Documentochklstportafolio";
  	 	$this->load->view('template/page_header');		
@@ -68,7 +68,7 @@ class Documentochklstportafolio extends CI_Controller{
 	 	$array_item=array(
 		 	'nombre' => $this->input->post('nombre'),
 		 	'unidad' => $this->input->post('unidad'),
-		 	'idsilabo' => $this->input->post('idsilabo'),
+		 	'idchklstportafolio' => $this->input->post('idchklstportafolio'),
 	 	);
 	 	$this->documentochklstportafolio_model->update($id,$array_item);
 	 	redirect('documentochklstportafolio/actual/'.$id);
@@ -78,7 +78,7 @@ class Documentochklstportafolio extends CI_Controller{
 	{
 		$id=$this->input->post('iddocumentochklstportafolio');
 	 	$array_item=array(
-		 	'idsilabo' => $this->input->post('idsilabo'),
+		 	'idchklstportafolio' => $this->input->post('idchklstportafolio'),
 		 	'idpersona' => $this->input->post('idpersona'),
 	 	);
 	 	echo $this->documentochklstportafolio_model->update($id,$array_item);
@@ -98,7 +98,7 @@ class Documentochklstportafolio extends CI_Controller{
 	public function listar()
 	{
 		
-		$data['title']="Unidades del silabo";
+		$data['title']="Unidades del chklstportafolio";
 		$this->load->view('template/page_header');		
 		$this->load->view('documentochklstportafolio_list',$data);
 		$this->load->view('template/page_footer');
@@ -116,7 +116,7 @@ class Documentochklstportafolio extends CI_Controller{
 			$data0 = $this->documentochklstportafolio_model->listar_documentochklstportafolio1();
 			$data=array();
 			foreach($data0->result() as $r){
-				$data[]=array($r->iddocumentochklstportafolio,$r->idsilabo,$r->unidad,$r->launidad,$r->href='<a href="javascript:void(0);" class="btn btn-info btn-sm item_ver"  data-idsilabo="'.$r->iddocumentochklstportafolio.'">Ver</a>');
+				$data[]=array($r->iddocumentochklstportafolio,$r->idchklstportafolio,$r->unidad,$r->launidad,$r->href='<a href="javascript:void(0);" class="btn btn-info btn-sm item_ver"  data-idchklstportafolio="'.$r->iddocumentochklstportafolio.'">Ver</a>');
 			}	
 			$output=array( "draw"=>$draw,
 				"recordsTotal"=> $data0->num_rows(),
@@ -165,7 +165,7 @@ class Documentochklstportafolio extends CI_Controller{
 		$data['documentochklstportafolio'] = $this->documentochklstportafolio_model->documentochklstportafolio($this->uri->segment(3))->row_array();
 	  if(!empty($data))
 	  {
-			$data['silabos']= $this->silabo_model->lista_silabos()->result();
+			$data['chklstportafolios']= $this->chklstportafolio_model->lista_chklstportafolios()->result();
 
 		$data['personas']= $this->persona_model->lista_personas()->result();
 	    $data['title']="Documentochklstportafolio del videotutorial";
@@ -190,7 +190,7 @@ class Documentochklstportafolio extends CI_Controller{
 		$data['documentochklstportafolio'] = $this->documentochklstportafolio_model->elprimero();
 	  if(!empty($data))
 	  {
-			$data['silabos']= $this->silabo_model->lista_silabos()->result();
+			$data['chklstportafolios']= $this->chklstportafolio_model->lista_chklstportafolios()->result();
 
 		$data['personas']= $this->persona_model->lista_personas()->result();
 	    $data['title']="Documentochklstportafolio del videotutorial";
@@ -209,7 +209,7 @@ class Documentochklstportafolio extends CI_Controller{
 		$data['documentochklstportafolio'] = $this->documentochklstportafolio_model->elultimo();
 	  if(!empty($data))
 	  {
-			$data['silabos']= $this->silabo_model->lista_silabos()->result();
+			$data['chklstportafolios']= $this->chklstportafolio_model->lista_chklstportafolios()->result();
 		$data['personas']= $this->persona_model->lista_personas()->result();
 	    $data['title']="Documentochklstportafolio del videotutorial";
 	  
@@ -228,7 +228,7 @@ class Documentochklstportafolio extends CI_Controller{
 	 // $data['documentochklstportafolio_list']=$this->documentochklstportafolio_model->lista_documentochklstportafolio()->result();
 		$data['documentochklstportafolio'] = $this->documentochklstportafolio_model->siguiente($this->uri->segment(3))->row_array();
 		$data['personas']= $this->persona_model->lista_personas()->result();
-		$data['silabos']= $this->silabo_model->lista_silabos()->result();
+		$data['chklstportafolios']= $this->chklstportafolio_model->lista_chklstportafolios()->result();
 	    $data['title']="Documentochklstportafolio del videotutorial";
 	 // $data['title']="Correo";
 		$this->load->view('template/page_header');		
@@ -240,7 +240,7 @@ class Documentochklstportafolio extends CI_Controller{
 	 // $data['documentochklstportafolio_list']=$this->documentochklstportafolio_model->lista_documentochklstportafolio()->result();
 	$data['documentochklstportafolio'] = $this->documentochklstportafolio_model->anterior($this->uri->segment(3))->row_array();
 	$data['personas']= $this->persona_model->lista_personas()->result();
-	$data['silabos']= $this->silabo_model->lista_silabos()->result();
+	$data['chklstportafolios']= $this->chklstportafolio_model->lista_chklstportafolios()->result();
 	 // $data['title']="Correo";
 	    $data['title']="Documentochklstportafolio del videotutorial";
 		$this->load->view('template/page_header');		
