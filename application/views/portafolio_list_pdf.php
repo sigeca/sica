@@ -42,7 +42,7 @@
 
 
 	$pdf->Cell(5,5,'#',1,0,'C',1);
-	$pdf->Cell(45,5,'Categoría de documento',1,0,'C',1);
+	$pdf->Cell(45,5,utf8_decode('Categoría de documento'),1,0,'C',1);
 	$pdf->Cell(80,5,'Documento subido',1,0,'C',1);
 	$pdf->Cell(40,5,'codigo',1,1,'C',1);
  
@@ -67,7 +67,7 @@
 
 		    if($elchklstdocumento != $row->elchklstdocumento){
 		    $i=$i+1;
-		    $pdf->Cell(5,$h,$i,1,0,'R',0); 
+		    $pdf->Cell(5,$h,$row->orden,1,0,'R',0); 
 		    $pdf->Cell(45,$h,utf8_decode($row->elchklstdocumento),1,0,'L',0);
 		    $elchklstdocumento=$row->elchklstdocumento;
 		    }else{
