@@ -53,91 +53,6 @@ if(isset($chklstportafolio))
 </div> 
 
 
-<div class="form-group row">
-    <label class="col-md-2 col-form-label"> Descripción:</label>
-	<div class="col-md-10">
-		<?php
-       echo form_input('descripcion',$chklstportafolio['descripcion'],array('placeholder'=>'Descripción del chklstportafolio','style'=>'width:500px;'));
-		?>
-	</div> 
-</div>
-
-
-
- <div class="form-group row">
-    <label class="col-md-2 col-form-label"> duración:</label>
-	<div class="col-md-10">
-		<?php
-       		echo form_input('duracion',$chklstportafolio['duracion'],array('placeholder'=>'Duracion en horas','style'=>'width:500px;'));		?>
-	</div> 
-</div>  
-
-
-<div class="form-group row">
-    <label class="col-md-2 col-form-label"> Asignatura: ( <?php echo anchor('asignatura/actual/'.$chklstportafolio['idasignatura'], 'Ver'); ?>):</label>
-
-	<div class="col-md-10">
-     <td><?php 
-    $options= array("NADA");
-    foreach ($asignaturas as $row){
-	      $options[$row->idasignatura]=$row->area." - ". $row->nombre;
-    }
-    echo form_input('idasignatura',$options[$chklstportafolio['idasignatura']],array("disabled"=>"disabled",'style'=>'width:500px;')); 
-		?>
-	</div> 
-</div>
-
-
-
-<div class="form-group row">
-    <label class="col-md-2 col-form-label"> Periodo: ( <?php echo anchor('periodoacademico/actual/'.$chklstportafolio['idperiodoacademico'], 'Ver'); ?>):</label>
-
-	<div class="col-md-10">
-     <td><?php 
-    $options= array("NADA");
-    foreach ($periodoacademicos as $row){
-	      $options[$row->idperiodoacademico]= $row->nombrecorto;
-    }
-    echo form_input('idperiodoacademico',$options[$chklstportafolio['idperiodoacademico']],array("disabled"=>"disabled",'style'=>'width:500px;')); 
-		?>
-	</div> 
-</div>
-
-
-
-
-<div class="form-group row">
-    <label class="col-md-2 col-form-label"> Docente: ( <?php echo anchor('docente/actual/'.$chklstportafolio['iddocente'], 'Ver'); ?>):</label>
-
-	<div class="col-md-10">
-     <td><?php 
-    $options= array("NADA");
-    foreach ($docentes as $row){
-	      $options[$row->iddocente]= $row->eldocente;
-    }
-    echo form_input('iddocente',$options[$chklstportafolio['iddocente']],array("disabled"=>"disabled",'style'=>'width:500px;')); 
-		?>
-	</div> 
-</div>
-
-
-<div class="form-group row">
-    <label class="col-md-2 col-form-label">Documento:</label>
-	<div class="col-md-10">
-     <?php 
-   // print_r($chklstportafolio);
-//die();
-
-
-    
-    
-    $options= array("NADA");
-foreach ($documentos as $row){
-	$options[$row->iddocumento]= $row->asunto;
-}
-echo form_input('iddocumento',$options[$chklstportafolio['iddocumento']],array("id"=>"iddocumento","disabled"=>"disabled", "style"=>"width:500px")); ?>
-	</div> 
-</div>
 
 
 
@@ -145,23 +60,11 @@ echo form_input('iddocumento',$options[$chklstportafolio['iddocumento']],array("
 
 
 
-<div class="form-group row">
-    <label class="col-md-2 col-form-label"> <?php echo anchor('documentochklstportafolio/add/'.$chklstportafolio['idchklstportafolio'], 'Documentos:') ?> </label>
-     	<?php 
-	$options=array();
-    $arractu=array();
-  	foreach ($documentochklstportafolios as $row){
-		$options[$row->iddocumentochklstportafolio]=$row->eldocumento;
-		$arractu[$row->iddocumentochklstportafolio]= base_url().'documentochklstportafolio/actual/'.$row->iddocumentochklstportafolio;
-	}
-	?>
-	<div class="col-md-10">
-		<?php
 
- echo form_multiselect('documentochklstportafolio[]',$options,(array)set_value('iddocumento', ''), array('style'=>'width:500px','name'=>'iddocumentochklstportafolio','id'=>'iddocumentochklstportafolio','onChange'=>'editardocumentochklstportafolio()')); 
-		?>
-	</div> 
-</div>
+
+
+
+
 
 
 
@@ -296,11 +199,9 @@ echo form_input('iddocumento',$options[$chklstportafolio['iddocumento']],array("
 
 $(document).ready(function(){
 	var idchklstportafolio=document.getElementById("idchklstportafolio").value;
-	var mytablaf= $('#mydatac').DataTable({"ajax": {url: '<?php echo site_url('chklstportafolio/unidadchklstportafolio_data')?>', type: 'GET',data:{idchklstportafolio:idchklstportafolio}},});
+	var mytablaf= $('#mydatac').DataTable({"ajax": {url: '<?php echo site_url('chklstportafolio/documentochklstportafolio_data')?>', type: 'GET',data:{idchklstportafolio:idchklstportafolio}},});
 
 
-	var mytablaf= $('#mydatae').DataTable({"ajax": {url: '<?php echo site_url('chklstportafolio/evento_data')?>', type: 'GET',data:{idchklstportafolio:idchklstportafolio}},});
-	var mytablaf= $('#mydatas').DataTable({"ajax": {url: '<?php echo site_url('chklstportafolio/seguimientochklstportafolio_data')?>', type: 'GET',data:{idchklstportafolio:idchklstportafolio}},});
 
 });
 
