@@ -44,13 +44,6 @@ class Chklstportafolio extends CI_Controller{
 	{
 	 	$array_item=array(
 	 	'nombre' => $this->input->post('nombre'),
-	 	'descripcion' => $this->input->post('descripcion'),
-	 	'duracion' => $this->input->post('duracion'),
-	 	'idasignatura' => $this->input->post('idasignatura'),
-	 	'iddocente' => $this->input->post('iddocente'),
-	 	'iddocumento' => $this->input->post('iddocumento'),
-	 	'idperiodoacademico' => $this->input->post('idperiodoacademico'),
-	 	'linkdetalle' => $this->input->post('linkdetalle'),
 	 	);
 	 	$data=$this->chklstportafolio_model->save($array_item);
 		header("Content-type: application/json; charset=utf-8");
