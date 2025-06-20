@@ -15,7 +15,7 @@ class Documentoportafolio_model extends CI_model {
 
 
  	function documentoportafolio( $id){
- 		$documentoportafolio = $this->db->query('select * from documentoportafolio where iddocumentoportafolio="'. $id.'"');
+ 		$documentoportafolio = $this->db->query('select * from documentoportafolio1 where iddocumentoportafolio="'. $id.'"');
  		return $documentoportafolio;
  	}
 
