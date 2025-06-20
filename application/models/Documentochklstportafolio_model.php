@@ -26,7 +26,7 @@ class Documentochklstportafolio_model extends CI_model {
  		return $documentochklstportafolio;
  	}
 
- 	function lista_unidades( $id){
+ 	function lista_documentochklstportafolio( $id){
 		$documentochklstportafolio = $this->db->query('select * from documentochklstportafolio1 where idchklstportafolio="'. $id.'"');
  		return $documentochklstportafolio;
  	}
