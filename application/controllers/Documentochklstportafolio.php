@@ -1,9 +1,9 @@
 <?php
-class Unidadsilabo extends CI_Controller{
+class Documentochklstportafolio extends CI_Controller{
 
 	public function __construct(){
       		parent::__construct();
-      		$this->load->model('unidadsilabo_model');
+      		$this->load->model('documentochklstportafolio_model');
       		$this->load->model('persona_model');
       		$this->load->model('silabo_model');
       		$this->load->model('tema_model');
@@ -12,12 +12,12 @@ class Unidadsilabo extends CI_Controller{
 	public function index(){
   		$data['silabos']= $this->silabo_model->lista_silabos()->result();
   		$data['personas']= $this->persona_model->lista_personas()->result();
-		$data['unidadsilabo'] = $this->unidadsilabo_model->elultimo();
+		$data['documentochklstportafolio'] = $this->documentochklstportafolio_model->elultimo();
 
- 		// print_r($data['unidadsilabo_list']);
-  		$data['title']="Lista de Unidadsilaboes";
+ 		// print_r($data['documentochklstportafolio_list']);
+  		$data['title']="Lista de Documentochklstportafolioes";
 		$this->load->view('template/page_header');		
-  		$this->load->view('unidadsilabo_record',$data);
+  		$this->load->view('documentochklstportafolio_record',$data);
 		$this->load->view('template/page_footer');
 	}
 
@@ -26,10 +26,10 @@ class Unidadsilabo extends CI_Controller{
 	{
 		$data['personas']= $this->persona_model->lista_personas()->result();
 		$data['silabos']= $this->silabo_model->silabo($this->uri->segment(3))->result();
-		$data['unidadsilabo'] = $this->unidadsilabo_model->unidadsilaboss($this->uri->segment(3));
+		$data['documentochklstportafolio'] = $this->documentochklstportafolio_model->documentochklstportafolioss($this->uri->segment(3));
 		$data['title']="Nueva unidades del silabo";
 	 	$this->load->view('template/page_header');		
-	 	$this->load->view('unidadsilabo_form',$data);
+	 	$this->load->view('documentochklstportafolio_form',$data);
 	 	$this->load->view('template/page_footer');
 	}
 
@@ -41,53 +41,53 @@ class Unidadsilabo extends CI_Controller{
 		 	'nombre' => $this->input->post('nombre'),
 		 	'unidad' => $this->input->post('unidad'),
 	 	);
-	 	$this->unidadsilabo_model->save($array_item);
-	 	redirect('unidadsilabo');
+	 	$this->documentochklstportafolio_model->save($array_item);
+	 	redirect('documentochklstportafolio');
  	}
 
 
 
 	public function edit()
 	{
-	 	$data['unidadsilabo'] = $this->unidadsilabo_model->unidadsilabo($this->uri->segment(3))->row_array();
+	 	$data['documentochklstportafolio'] = $this->documentochklstportafolio_model->documentochklstportafolio($this->uri->segment(3))->row_array();
 		$data['silabos']= $this->silabo_model->lista_silabos()->result();
 		$data['personas']= $this->persona_model->lista_personas()->result();
- 	 	$data['title'] = "Actualizar Unidadsilabo";
+ 	 	$data['title'] = "Actualizar Documentochklstportafolio";
  	 	$this->load->view('template/page_header');		
- 	 	$this->load->view('unidadsilabo_edit',$data);
+ 	 	$this->load->view('documentochklstportafolio_edit',$data);
 	 	$this->load->view('template/page_footer');
 	}
 
 
 	public function  save_edit()
 	{
-		$id=$this->input->post('idunidadsilabo');
+		$id=$this->input->post('iddocumentochklstportafolio');
 	 	$array_item=array(
 		 	'nombre' => $this->input->post('nombre'),
 		 	'unidad' => $this->input->post('unidad'),
 		 	'idsilabo' => $this->input->post('idsilabo'),
 	 	);
-	 	$this->unidadsilabo_model->update($id,$array_item);
-	 	redirect('unidadsilabo/actual/'.$id);
+	 	$this->documentochklstportafolio_model->update($id,$array_item);
+	 	redirect('documentochklstportafolio/actual/'.$id);
  	}
 
 	public function  save_edit2()
 	{
-		$id=$this->input->post('idunidadsilabo');
+		$id=$this->input->post('iddocumentochklstportafolio');
 	 	$array_item=array(
 		 	'idsilabo' => $this->input->post('idsilabo'),
 		 	'idpersona' => $this->input->post('idpersona'),
 	 	);
-	 	echo $this->unidadsilabo_model->update($id,$array_item);
+	 	echo $this->documentochklstportafolio_model->update($id,$array_item);
  	}
 
 
 
  	public function delete()
  	{
- 		$data=$this->unidadsilabo_model->delete($this->uri->segment(3));
+ 		$data=$this->documentochklstportafolio_model->delete($this->uri->segment(3));
  		echo json_encode($data);
-	 	redirect('unidadsilabo/elprimero');
+	 	redirect('documentochklstportafolio/elprimero');
 	//	$db['default']['db_debug']=FALSE
  	}
 
@@ -97,23 +97,23 @@ class Unidadsilabo extends CI_Controller{
 		
 		$data['title']="Unidades del silabo";
 		$this->load->view('template/page_header');		
-		$this->load->view('unidadsilabo_list',$data);
+		$this->load->view('documentochklstportafolio_list',$data);
 		$this->load->view('template/page_footer');
 	}
 
 
 
-	function unidadsilabo_data()
+	function documentochklstportafolio_data()
 	{
 			$draw= intval($this->input->get("draw"));
 			$draw= intval($this->input->get("start"));
 			$draw= intval($this->input->get("length"));
 
 
-			$data0 = $this->unidadsilabo_model->listar_unidadsilabo1();
+			$data0 = $this->documentochklstportafolio_model->listar_documentochklstportafolio1();
 			$data=array();
 			foreach($data0->result() as $r){
-				$data[]=array($r->idunidadsilabo,$r->idsilabo,$r->unidad,$r->launidad,$r->href='<a href="javascript:void(0);" class="btn btn-info btn-sm item_ver"  data-idsilabo="'.$r->idunidadsilabo.'">Ver</a>');
+				$data[]=array($r->iddocumentochklstportafolio,$r->idsilabo,$r->unidad,$r->launidad,$r->href='<a href="javascript:void(0);" class="btn btn-info btn-sm item_ver"  data-idsilabo="'.$r->iddocumentochklstportafolio.'">Ver</a>');
 			}	
 			$output=array( "draw"=>$draw,
 				"recordsTotal"=> $data0->num_rows(),
@@ -134,11 +134,11 @@ class Unidadsilabo extends CI_Controller{
 			$draw= intval($this->input->get("start"));
 			$draw= intval($this->input->get("length"));
 
-			$idunidadsilabo=$this->input->get('idunidadsilabo');
-			$data0 =$this->tema_model->temas2($idunidadsilabo);
+			$iddocumentochklstportafolio=$this->input->get('iddocumentochklstportafolio');
+			$data0 =$this->tema_model->temas2($iddocumentochklstportafolio);
 			$data=array();
 			foreach($data0->result() as $r){
-				$data[]=array($r->idunidadsilabo,$r->idtema,$r->unidad,$r->numerosesion,$r->nombrecorto,$r->duracionminutos,$r->idvideotutorial,
+				$data[]=array($r->iddocumentochklstportafolio,$r->idtema,$r->unidad,$r->numerosesion,$r->nombrecorto,$r->duracionminutos,$r->idvideotutorial,
 				$r->href='<a href="javascript:void(0);" class="btn btn-info btn-sm item_ver"  data-retorno="'.site_url('tema/actual').'"    data-idtema="'.$r->idtema.'">Ver</a>');
 			}	
 			$output=array( "draw"=>$draw,
@@ -159,15 +159,15 @@ class Unidadsilabo extends CI_Controller{
 
 	public function actual()
 	{
-		$data['unidadsilabo'] = $this->unidadsilabo_model->unidadsilabo($this->uri->segment(3))->row_array();
+		$data['documentochklstportafolio'] = $this->documentochklstportafolio_model->documentochklstportafolio($this->uri->segment(3))->row_array();
 	  if(!empty($data))
 	  {
 			$data['silabos']= $this->silabo_model->lista_silabos()->result();
 
 		$data['personas']= $this->persona_model->lista_personas()->result();
-	    $data['title']="Unidadsilabo del videotutorial";
+	    $data['title']="Documentochklstportafolio del videotutorial";
 	    $this->load->view('template/page_header');		
-	    $this->load->view('unidadsilabo_record',$data);
+	    $this->load->view('documentochklstportafolio_record',$data);
 	    $this->load->view('template/page_footer');
 	  }else{
 	    $this->load->view('template/page_header');		
@@ -184,15 +184,15 @@ class Unidadsilabo extends CI_Controller{
 
 	public function elprimero()
 	{
-		$data['unidadsilabo'] = $this->unidadsilabo_model->elprimero();
+		$data['documentochklstportafolio'] = $this->documentochklstportafolio_model->elprimero();
 	  if(!empty($data))
 	  {
 			$data['silabos']= $this->silabo_model->lista_silabos()->result();
 
 		$data['personas']= $this->persona_model->lista_personas()->result();
-	    $data['title']="Unidadsilabo del videotutorial";
+	    $data['title']="Documentochklstportafolio del videotutorial";
 	    $this->load->view('template/page_header');		
-	    $this->load->view('unidadsilabo_record',$data);
+	    $this->load->view('documentochklstportafolio_record',$data);
 	    $this->load->view('template/page_footer');
 	  }else{
 	    $this->load->view('template/page_header');		
@@ -203,15 +203,15 @@ class Unidadsilabo extends CI_Controller{
 
 	public function elultimo()
 	{
-		$data['unidadsilabo'] = $this->unidadsilabo_model->elultimo();
+		$data['documentochklstportafolio'] = $this->documentochklstportafolio_model->elultimo();
 	  if(!empty($data))
 	  {
 			$data['silabos']= $this->silabo_model->lista_silabos()->result();
 		$data['personas']= $this->persona_model->lista_personas()->result();
-	    $data['title']="Unidadsilabo del videotutorial";
+	    $data['title']="Documentochklstportafolio del videotutorial";
 	  
 	    $this->load->view('template/page_header');		
-	    $this->load->view('unidadsilabo_record',$data);
+	    $this->load->view('documentochklstportafolio_record',$data);
 	    $this->load->view('template/page_footer');
 	  }else{
 
@@ -222,26 +222,26 @@ class Unidadsilabo extends CI_Controller{
 	}
 
 	public function siguiente(){
-	 // $data['unidadsilabo_list']=$this->unidadsilabo_model->lista_unidadsilabo()->result();
-		$data['unidadsilabo'] = $this->unidadsilabo_model->siguiente($this->uri->segment(3))->row_array();
+	 // $data['documentochklstportafolio_list']=$this->documentochklstportafolio_model->lista_documentochklstportafolio()->result();
+		$data['documentochklstportafolio'] = $this->documentochklstportafolio_model->siguiente($this->uri->segment(3))->row_array();
 		$data['personas']= $this->persona_model->lista_personas()->result();
 		$data['silabos']= $this->silabo_model->lista_silabos()->result();
-	    $data['title']="Unidadsilabo del videotutorial";
+	    $data['title']="Documentochklstportafolio del videotutorial";
 	 // $data['title']="Correo";
 		$this->load->view('template/page_header');		
-	  $this->load->view('unidadsilabo_record',$data);
+	  $this->load->view('documentochklstportafolio_record',$data);
 		$this->load->view('template/page_footer');
 	}
 
 	public function anterior(){
-	 // $data['unidadsilabo_list']=$this->unidadsilabo_model->lista_unidadsilabo()->result();
-	$data['unidadsilabo'] = $this->unidadsilabo_model->anterior($this->uri->segment(3))->row_array();
+	 // $data['documentochklstportafolio_list']=$this->documentochklstportafolio_model->lista_documentochklstportafolio()->result();
+	$data['documentochklstportafolio'] = $this->documentochklstportafolio_model->anterior($this->uri->segment(3))->row_array();
 	$data['personas']= $this->persona_model->lista_personas()->result();
 	$data['silabos']= $this->silabo_model->lista_silabos()->result();
 	 // $data['title']="Correo";
-	    $data['title']="Unidadsilabo del videotutorial";
+	    $data['title']="Documentochklstportafolio del videotutorial";
 		$this->load->view('template/page_header');		
-	  $this->load->view('unidadsilabo_record',$data);
+	  $this->load->view('documentochklstportafolio_record',$data);
 		$this->load->view('template/page_footer');
 	}
 

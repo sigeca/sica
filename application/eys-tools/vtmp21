@@ -1,33 +1,54 @@
-<!--Arhivo: modeevaluacion_form.php -->
-<!--Modulo: modoevaluacion -->
-<!--Descripción: vista que permite ingresar nueva información del modo de evaluacion -->
-<!--Autor: Stalin Francis -->
-<!--Fecha: Ultima evaluación: Sabado 4 febrero 2023 -->
 
-
+<div style="margin-top:5cm;">
 <h2> <?php echo $title; ?> </h2>
+</div>
 <hr/>
-<?php echo form_open("modoevaluacion/save") ?>
-<?php echo form_hidden("idmodoevaluacion")  ?>
+<?php echo form_open("unidadsilabo/save") ?>
+
+
+<div class="form-group row">
+    <label class="col-md-2 col-form-label"> Silabo:</label>
+	<div class="col-md-10">
+		<?php
+	$options= array('--Select--');
+	foreach ($silabos as $row){
+		$options[$row->idsilabo]= $row->nombre;
+	}
+
+	 echo form_dropdown("idsilabo",$options, set_select('--Select--','default_value'));  
+		?>
+	</div> 
+</div> 
+
+
+
+ 
+
+
+<div class="form-group row">
+    <label class="col-md-2 col-form-label">No de la unidad:</label>
+	<div class="col-md-10">
+	<?php
+	 echo form_input(array("name"=>"unidad","id"=>"unidad"));  
+		?>
+	</div> 
+</div> 
+
+
+<div class="form-group row">
+    <label class="col-md-2 col-form-label">Nombre de la unidad:</label>
+	<div class="col-md-10">
+	<?php
+	echo form_input(array("name"=>"nombre","id"=>"nombre"));  
+		?>
+	</div> 
+</div> 
+
+
 <table>
 
-
-
-
-
 <tr>
-<td> Nombre </td>
-<td><?php echo form_input("nombre","", array("placeholder"=>"Nombre de modoevaluacion"))  ?></td>
-</tr>
-
-<tr>
-<td> Ponderacion </td>
-<td><?php echo form_input("ponderacion","", array("placeholder"=>"Ponderación del modoevaluacion"))  ?></td>
-</tr>
-
-
-<tr>
-<td colspan="2"> <hr><?php echo form_submit("submit", "Guardar"); ?><?php echo anchor("modoevaluacion","Atras") ?> </td>
+<td colspan="2"> <hr><?php echo form_submit("submit", "Guardar"); ?><?php echo anchor("unidadsilabo","Atrás") ?> </td>
 </tr>
 
 </table>
