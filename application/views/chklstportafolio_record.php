@@ -79,7 +79,7 @@ if(isset($chklstportafolio))
 <div class="row" style="background-color:lightgray; padding-top:0.5cm; padding-bottom:0.5cm; border-bottom:0.5cm solid white;">
     <div class="col-lg-12 margin-tb">
         <div class="pull-left">
-            <b>Unidades : ( <?php echo anchor('unidadchklstportafolio/add/'.$chklstportafolio['idchklstportafolio'], 'New'); ?>):  </b>
+            <b>Documentos : ( <?php echo anchor('unidadchklstportafolio/add/'.$chklstportafolio['idchklstportafolio'], 'New'); ?>):  </b>
         </div>
         
     </div>
@@ -89,11 +89,10 @@ if(isset($chklstportafolio))
 	<table class="table table-striped table-bordered table-hover" id="mydatac">
 	 <thead>
 	 <tr>
-	 <th>idchklstportafolio</th>
-	 <th>idunidadchklstportafolio</th>
-	 <th>Unidad</th>
-	 <th>nombre</th>
-	 <th>sesiones</th>
+	 <th>idchklst</th>
+	 <th>iddocumentochklst</th>
+	 <th>Orden</th>
+	 <th>documento</th>
 	 <th style="text-align: right;">Actions</th>
 	 </tr>
 	 </thead>
@@ -109,80 +108,11 @@ if(isset($chklstportafolio))
 
 
 
-<div class="form-group row">
-	<div class="col-md-10">
-	<div class="row justify-content-left">
-      	<!-- Page Heading -->
- 	<div class="row">
-  	<div class="col-12" style="border:solid;" >
-
-<div class="row" style="background-color:lightgray; padding-top:0.5cm; padding-bottom:0.5cm; border-bottom:0.5cm solid white;">
-    <div class="col-lg-12 margin-tb">
-	<div class="pull-left"> 
-	 <b>Eventos dictados: ( <?php echo anchor('evento/add', 'New'); ?>):</b>
-        </div>
-        
-    </div>
-</div>
-
-	<table class="table table-striped table-bordered table-hover" id="mydatae">
-	 <thead>
-	 <tr>
-	 <th>idchklstportafolio</th>
-	 <th>idevento</th>
-	 <th>evento</th>
-	 <th style="text-align: right;">Actions</th>
-	 </tr>
-	 </thead>
-	 <tbody id="show_data1">
-	 </tbody>
-	</table>
-	</div>
-	</div>
-	</div>
-	</div> 
-</div>
 
 
 
-<div class="form-group row">
-	<div class="col-md-10">
-	<div class="row justify-content-left">
-      	<!-- Page Heading -->
- 	<div class="row">
-  	<div class="col-12" style="border:solid;" >
 
-<div class="row" style="background-color:lightgray; padding-top:0.5cm; padding-bottom:0.5cm; border-bottom:0.5cm solid white;">
-    <div class="col-lg-12 margin-tb">
-	<div class="pull-left"> 
-	 <b>Seguimiento chklstportafolio: ( <?php echo anchor('seguimientochklstportafolio/add/'.$chklstportafolio['idchklstportafolio'], 'New'); ?>):</b>
-        </div>
 
-<div class="pull-right">
-<a class="btn btn-danger" href="<?php echo base_url('chklstportafolio/exportarxls/'.$chklstportafolio['idperiodoacademico']) ?>">Informe excel</a>
-        </div>
-
-    </div>
-</div>
-
-	<table class="table table-striped table-bordered table-hover" id="mydatas">
-	 <thead>
-	 <tr>
-	 <th>idseguimientochklstportafolio</th>
-	 <th>idchklstportafolio</th>
-	 <th>Criterio de evaluación</th>
-	 <th>Nivel cumplimiento</th>
-	 <th style="text-align: right;">Actions</th>
-	 </tr>
-	 </thead>
-	 <tbody id="show_data2">
-	 </tbody>
-	</table>
-	</div>
-	</div>
-	</div>
-	</div> 
-</div>
 
 
 
