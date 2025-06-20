@@ -279,7 +279,7 @@ function documentoportafolio_data()
 public function actual()
 {
 	$data['documentoportafolio'] = $this->documentoportafolio_model->documentoportafolio($this->uri->segment(3))->row_array();
-  	$data['documentochklstportafolios']= $this->documentochklstportafolio_model->lista_documentochklstportafolios($data['documentoportafolio']['idchklstportafolio'])->result();
+  	$data['documentochklstportafolios']= $this->documentochklstportafolio_model->lista_documentochklstportafolio($data['documentoportafolio']['idchklstportafolio'])->result();
   	$data['documentos']= $this->documento_model->lista_documentosA(0)->result();
   	$data['portafolios']= $this->portafolio_model->lista_portafoliosA(0)->result();
 	$data['docenteactividadacademicas']=$this->docenteactividadacademica_model->lista_docenteactividadacademicasA(0)->result();
