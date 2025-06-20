@@ -16,7 +16,7 @@ class Documentochklstportafolio_model extends CI_model {
 
  
 	function documentochklstportafolioss( $idchklstportafolio){
- 		$documentochklstportafolio = $this->db->query('select * from documentochklstportafolio where idchklstportafolio="'. $idchklstportafolio.'"');
+ 		$documentochklstportafolio = $this->db->query('select * from documentochklstportafolio1 where idchklstportafolio="'. $idchklstportafolio.'"');
  		return $documentochklstportafolio;
  	}
 
