@@ -1,148 +1,154 @@
 <?php
-/*----------------------------------------------------------------------------------
-	Arhivo: Cumplimientosesion.php -->
-	Modulo: modoevaluacion -->
-	Descripción: permite administrar la información del modo de evaluacion -->
-	Autor: Stalin Francis -->
-	Fecha: Ultima evaluación: Sabado 4 febrero 2023 -->
------------------------------------------------------*/
+class Documentochklstportafolio extends CI_Controller{
 
-class Cumplimientosesion extends CI_Controller{
-
-  public function __construct(){
-      parent::__construct();
-      $this->load->model('modoevaluacion_model');
-}
-
-public function index(){
-	if(isset($this->session->userdata['logged_in'])){
-		$data['modoevaluacion']=$this->modoevaluacion_model->modoevaluacion(1)->row_array();
-		$data['title']="Lista de modoevaluaciones";
-		$this->load->view('template/page_header');
-		$this->load->view('modoevaluacion_record',$data);
-		$this->load->view('template/page_footer');
-	}else{
-	 	$this->load->view('template/page_header.php');
-		$this->load->view('login_form');
-	 	$this->load->view('template/page_footer.php');
+	public function __construct(){
+      		parent::__construct();
+      		$this->load->model('unidadsilabo_model');
+      		$this->load->model('persona_model');
+      		$this->load->model('silabo_model');
+      		$this->load->model('tema_model');
 	}
-}
+
+	public function index(){
+  		$data['silabos']= $this->silabo_model->lista_silabos()->result();
+  		$data['personas']= $this->persona_model->lista_personas()->result();
+		$data['unidadsilabo'] = $this->unidadsilabo_model->elultimo();
+
+ 		// print_r($data['unidadsilabo_list']);
+  		$data['title']="Lista de Documentochklstportafolioes";
+		$this->load->view('template/page_header');		
+  		$this->load->view('unidadsilabo_record',$data);
+		$this->load->view('template/page_footer');
+	}
 
 
-public function add()
-{
-		$data['title']="Nueva modoevaluacion";
+	public function add()
+	{
+		$data['personas']= $this->persona_model->lista_personas()->result();
+		$data['silabos']= $this->silabo_model->silabo($this->uri->segment(3))->result();
+		$data['unidadsilabo'] = $this->unidadsilabo_model->unidadsilaboss($this->uri->segment(3));
+		$data['title']="Nueva unidades del silabo";
 	 	$this->load->view('template/page_header');		
-	 	$this->load->view('modoevaluacion_form',$data);
+	 	$this->load->view('unidadsilabo_form',$data);
 	 	$this->load->view('template/page_footer');
-}
+	}
 
 
-public function  save()
+	public function  save()
 	{
 	 	$array_item=array(
-	 	'idmodoevaluacion' => $this->input->post('idmodoevaluacion'),
-	 	'nombre' => $this->input->post('nombre'),
-	 	'ponderacion' => $this->input->post('ponderacion'),
+		 	'idsilabo' => $this->input->post('idsilabo'),
+		 	'nombre' => $this->input->post('nombre'),
+		 	'unidad' => $this->input->post('unidad'),
 	 	);
-	 	$this->modoevaluacion_model->save($array_item);
-	 	redirect('modoevaluacion');
+	 	$this->unidadsilabo_model->save($array_item);
+	 	redirect('unidadsilabo');
  	}
 
 
 
-public function edit()
-{
-	 	$data['modoevaluacion'] = $this->modoevaluacion_model->modoevaluacion($this->uri->segment(3))->row_array();
- 	 	$data['title'] = "Actualizar modoevaluacion";
+	public function edit()
+	{
+	 	$data['unidadsilabo'] = $this->unidadsilabo_model->unidadsilabo($this->uri->segment(3))->row_array();
+		$data['silabos']= $this->silabo_model->lista_silabos()->result();
+		$data['personas']= $this->persona_model->lista_personas()->result();
+ 	 	$data['title'] = "Actualizar Documentochklstportafolio";
  	 	$this->load->view('template/page_header');		
- 	 	$this->load->view('modoevaluacion_edit',$data);
+ 	 	$this->load->view('unidadsilabo_edit',$data);
 	 	$this->load->view('template/page_footer');
- 
-}
+	}
 
 
 	public function  save_edit()
 	{
-		$id=$this->input->post('idmodoevaluacion');
+		$id=$this->input->post('idunidadsilabo');
 	 	$array_item=array(
-		 	
-		 	'idmodoevaluacion' => $this->input->post('idmodoevaluacion'),
 		 	'nombre' => $this->input->post('nombre'),
-	 		'ponderacion' => $this->input->post('ponderacion'),
+		 	'unidad' => $this->input->post('unidad'),
+		 	'idsilabo' => $this->input->post('idsilabo'),
 	 	);
-	 	$this->modoevaluacion_model->update($id,$array_item);
-	 	redirect('modoevaluacion');
+	 	$this->unidadsilabo_model->update($id,$array_item);
+	 	redirect('unidadsilabo/actual/'.$id);
  	}
+
+	public function  save_edit2()
+	{
+		$id=$this->input->post('idunidadsilabo');
+	 	$array_item=array(
+		 	'idsilabo' => $this->input->post('idsilabo'),
+		 	'idpersona' => $this->input->post('idpersona'),
+	 	);
+	 	echo $this->unidadsilabo_model->update($id,$array_item);
+ 	}
+
 
 
  	public function delete()
  	{
- 		$data=$this->modoevaluacion_model->delete($this->uri->segment(3));
+ 		$data=$this->unidadsilabo_model->delete($this->uri->segment(3));
  		echo json_encode($data);
-	 	redirect('modoevaluacion/elprimero');
+	 	redirect('unidadsilabo/elprimero');
 	//	$db['default']['db_debug']=FALSE
  	}
 
 
-public function listar()
-{
-	
-  $data['title']="Cumplimientosesion";
-	$this->load->view('template/page_header');		
-  $this->load->view('modoevaluacion_list',$data);
-	$this->load->view('template/page_footer');
-}
+	public function listar()
+	{
+		
+		$data['title']="Unidades del silabo";
+		$this->load->view('template/page_header');		
+		$this->load->view('unidadsilabo_list',$data);
+		$this->load->view('template/page_footer');
+	}
 
 
 
-function modoevaluacion_data()
-{
-		$draw= intval($this->input->get("draw"));
-		$draw= intval($this->input->get("start"));
-		$draw= intval($this->input->get("length"));
+	function unidadsilabo_data()
+	{
+			$draw= intval($this->input->get("draw"));
+			$draw= intval($this->input->get("start"));
+			$draw= intval($this->input->get("length"));
 
 
-	 	$data0 = $this->modoevaluacion_model->lista_modoevaluacions();
-		$data=array();
-		foreach($data0->result() as $r){
-			$data[]=array($r->idmodoevaluacion,$r->numero,$r->nombre,
-				$r->href='<a href="javascript:void(0);" class="btn btn-info btn-sm item_ver"  data-retorno="'.site_url('modoevaluacion/actual').'"     data-idmodoevaluacion="'.$r->idmodoevaluacion.'">Ver</a>');
-		}	
-		$output=array( "draw"=>$draw,
-			"recordsTotal"=> $data0->num_rows(),
-			"recordsFiltered"=> $data0->num_rows(),
-			"data"=>$data
-		);
-		echo json_encode($output);
-		exit();
-	
-			
-
-}
-
-
-
-public function actual()
-{
-	$data['modoevaluacion'] = $this->modoevaluacion_model->modoevaluacion($this->uri->segment(3))->row_array();
-  if(!empty($data))
-  {
-    $data['title']="Cumplimientosesion";
-    $this->load->view('template/page_header');		
-    $this->load->view('modoevaluacion_record',$data);
-    $this->load->view('template/page_footer');
-  }else{
-    $this->load->view('template/page_header');		
-    $this->load->view('registro_vacio');
-    $this->load->view('template/page_footer');
-  }
- }
+			$data0 = $this->unidadsilabo_model->listar_unidadsilabo1();
+			$data=array();
+			foreach($data0->result() as $r){
+				$data[]=array($r->idunidadsilabo,$r->idsilabo,$r->unidad,$r->launidad,$r->href='<a href="javascript:void(0);" class="btn btn-info btn-sm item_ver"  data-idsilabo="'.$r->idunidadsilabo.'">Ver</a>');
+			}	
+			$output=array( "draw"=>$draw,
+				"recordsTotal"=> $data0->num_rows(),
+				"recordsFiltered"=> $data0->num_rows(),
+				"data"=>$data
+			);
+			echo json_encode($output);
+			exit();
+	}
 
 
 
 
 
+	function tema_data()
+	{
+			$draw= intval($this->input->get("draw"));
+			$draw= intval($this->input->get("start"));
+			$draw= intval($this->input->get("length"));
+
+			$idunidadsilabo=$this->input->get('idunidadsilabo');
+			$data0 =$this->tema_model->temas2($idunidadsilabo);
+			$data=array();
+			foreach($data0->result() as $r){
+				$data[]=array($r->idunidadsilabo,$r->idtema,$r->unidad,$r->numerosesion,$r->nombrecorto,$r->duracionminutos,$r->idvideotutorial,
+				$r->href='<a href="javascript:void(0);" class="btn btn-info btn-sm item_ver"  data-retorno="'.site_url('tema/actual').'"    data-idtema="'.$r->idtema.'">Ver</a>');
+			}	
+			$output=array( "draw"=>$draw,
+				"recordsTotal"=> $data0->num_rows(),
+				"recordsFiltered"=> $data0->num_rows(),
+				"data"=>$data
+			);
+			echo json_encode($output);
+			exit();
+	}
 
 
 
@@ -150,56 +156,94 @@ public function actual()
 
 
 
-public function elprimero()
-{
-	$data['modoevaluacion'] = $this->modoevaluacion_model->elprimero();
-  if(!empty($data))
-  {
-    $data['title']="Cumplimientosesion";
-    $this->load->view('template/page_header');		
-    $this->load->view('modoevaluacion_record',$data);
-    $this->load->view('template/page_footer');
-  }else{
-    $this->load->view('template/page_header');		
-    $this->load->view('registro_vacio');
-    $this->load->view('template/page_footer');
-  }
- }
 
-public function elultimo()
-{
-	$data['modoevaluacion'] = $this->modoevaluacion_model->elultimo();
-  if(!empty($data))
-  {
-    $data['title']="Cumplimientosesion";
-  
-    $this->load->view('template/page_header');		
-    $this->load->view('modoevaluacion_record',$data);
-    $this->load->view('template/page_footer');
-  }else{
+	public function actual()
+	{
+		$data['unidadsilabo'] = $this->unidadsilabo_model->unidadsilabo($this->uri->segment(3))->row_array();
+	  if(!empty($data))
+	  {
+			$data['silabos']= $this->silabo_model->lista_silabos()->result();
 
-    $this->load->view('template/page_header');		
-    $this->load->view('registro_vacio');
-    $this->load->view('template/page_footer');
-  }
-}
+		$data['personas']= $this->persona_model->lista_personas()->result();
+	    $data['title']="Documentochklstportafolio del videotutorial";
+	    $this->load->view('template/page_header');		
+	    $this->load->view('unidadsilabo_record',$data);
+	    $this->load->view('template/page_footer');
+	  }else{
+	    $this->load->view('template/page_header');		
+	    $this->load->view('registro_vacio');
+	    $this->load->view('template/page_footer');
+	  }
+	}
 
-public function siguiente(){
- // $data['modoevaluacion_list']=$this->modoevaluacion_model->lista_modoevaluacion()->result();
-	$data['modoevaluacion'] = $this->modoevaluacion_model->siguiente($this->uri->segment(3))->row_array();
-  $data['title']="Cumplimientosesion";
-	$this->load->view('template/page_header');		
-  $this->load->view('modoevaluacion_record',$data);
-	$this->load->view('template/page_footer');
-}
 
-public function anterior(){
- // $data['modoevaluacion_list']=$this->modoevaluacion_model->lista_modoevaluacion()->result();
-	$data['modoevaluacion'] = $this->modoevaluacion_model->anterior($this->uri->segment(3))->row_array();
-  $data['title']="Cumplimientosesion";
-	$this->load->view('template/page_header');		
-  $this->load->view('modoevaluacion_record',$data);
-	$this->load->view('template/page_footer');
-}
+
+
+
+
+
+	public function elprimero()
+	{
+		$data['unidadsilabo'] = $this->unidadsilabo_model->elprimero();
+	  if(!empty($data))
+	  {
+			$data['silabos']= $this->silabo_model->lista_silabos()->result();
+
+		$data['personas']= $this->persona_model->lista_personas()->result();
+	    $data['title']="Documentochklstportafolio del videotutorial";
+	    $this->load->view('template/page_header');		
+	    $this->load->view('unidadsilabo_record',$data);
+	    $this->load->view('template/page_footer');
+	  }else{
+	    $this->load->view('template/page_header');		
+	    $this->load->view('registro_vacio');
+	    $this->load->view('template/page_footer');
+	  }
+	}
+
+	public function elultimo()
+	{
+		$data['unidadsilabo'] = $this->unidadsilabo_model->elultimo();
+	  if(!empty($data))
+	  {
+			$data['silabos']= $this->silabo_model->lista_silabos()->result();
+		$data['personas']= $this->persona_model->lista_personas()->result();
+	    $data['title']="Documentochklstportafolio del videotutorial";
+	  
+	    $this->load->view('template/page_header');		
+	    $this->load->view('unidadsilabo_record',$data);
+	    $this->load->view('template/page_footer');
+	  }else{
+
+	    $this->load->view('template/page_header');		
+	    $this->load->view('registro_vacio');
+	    $this->load->view('template/page_footer');
+	  }
+	}
+
+	public function siguiente(){
+	 // $data['unidadsilabo_list']=$this->unidadsilabo_model->lista_unidadsilabo()->result();
+		$data['unidadsilabo'] = $this->unidadsilabo_model->siguiente($this->uri->segment(3))->row_array();
+		$data['personas']= $this->persona_model->lista_personas()->result();
+		$data['silabos']= $this->silabo_model->lista_silabos()->result();
+	    $data['title']="Documentochklstportafolio del videotutorial";
+	 // $data['title']="Correo";
+		$this->load->view('template/page_header');		
+	  $this->load->view('unidadsilabo_record',$data);
+		$this->load->view('template/page_footer');
+	}
+
+	public function anterior(){
+	 // $data['unidadsilabo_list']=$this->unidadsilabo_model->lista_unidadsilabo()->result();
+	$data['unidadsilabo'] = $this->unidadsilabo_model->anterior($this->uri->segment(3))->row_array();
+	$data['personas']= $this->persona_model->lista_personas()->result();
+	$data['silabos']= $this->silabo_model->lista_silabos()->result();
+	 // $data['title']="Correo";
+	    $data['title']="Documentochklstportafolio del videotutorial";
+		$this->load->view('template/page_header');		
+	  $this->load->view('unidadsilabo_record',$data);
+		$this->load->view('template/page_footer');
+	}
+
 
 }
