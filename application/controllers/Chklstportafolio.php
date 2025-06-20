@@ -33,10 +33,6 @@ class Chklstportafolio extends CI_Controller{
 
 	public function add()
 	{
-  		$data['periodoacademicos']= $this->periodoacademico_model->lista_periodoacademicos()->result();
-		$data['documentos']= $this->documento_model->lista_documentosxdestino(0)->result();
-  		$data['asignaturas']= $this->asignatura_model->lista_asignaturasA()->result();
-  		$data['docentes']= $this->docente_model->lista_docentesA(0)->result();
 		$data['title']="Nueva chklstportafolio";
 		$this->load->view('template/page_header');
 		$this->load->view('chklstportafolio_form',$data);
