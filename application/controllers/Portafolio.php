@@ -73,7 +73,7 @@ public function edit()
 	 	$data['portafolio'] = $this->portafolio_model->portafolio($this->uri->segment(3))->row_array();
 		$data['personas']= $this->persona_model->lista_personasA()->result();
   		$data['periodoacademicos']= $this->periodoacademico_model->lista_periodoacademicos()->result();
-  		$data['chklstportafolio']= $this->chklstportafolio_model->lista_chklstportafolios()->result();
+  		$data['chklstportafolios']= $this->chklstportafolio_model->lista_chklstportafolios()->result();
 		$data['ordenadores']=  $this->ordenador_model->lista_ordenadores()->result();
 		$data['directorios'] = $this->directorio_model->lista_directoriosxordenador($data['portafolio']['idordenador'])->result();
  	 	$data['title'] = "Actualizar Portafolio";
