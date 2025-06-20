@@ -205,7 +205,7 @@ echo form_input('iddocumento',$options[$portafolio['iddocumento']],array("id"=>"
 	<?php 
 	$options= array("NADA");
 	foreach ($chklstportafolios as $row){
-		$options[$row->idchklstportafolio]=$row->nombrecorto.' - '.$row->nombrelargo;
+		$options[$row->idchklstportafolio]=$row->nombre;
 	}
 	echo form_input('idchklstportafolio',$options[$portafolio['idchklstportafolio']],array("id"=>"idchklstportafolio","disabled"=>"disabled", "style"=>"width:600px")); 
 	?>
