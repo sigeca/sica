@@ -30,7 +30,7 @@
 	$pdf->institucion='UNIVERSIDAD TÉCNICA LUIS VARGAS TORRES DE ESMERALDAS';
 	$pdf->unidad='FACULTAD DE INGENIERIAS (FACI)';
 	$pdf->departamento='CARRERA EN TECNOLOGÍA DE LA INFORMACIÓN';
-	$pdf->titulo=$documentos[0]->elperiodo;
+	$pdf->titulo="PORTAFOLIO DE ".$documentos[0]->lapersona." Periodo: ".$documentos[0]->elperiodo;
 	
 
 
@@ -42,8 +42,8 @@
 
 
 	$pdf->Cell(5,5,'#',1,0,'C',1);
-	$pdf->Cell(45,5,'documento',1,0,'C',1);
-	$pdf->Cell(80,5,'Asunto/tema',1,0,'C',1);
+	$pdf->Cell(45,5,'Categoría de documento',1,0,'C',1);
+	$pdf->Cell(80,5,'Documento subido',1,0,'C',1);
 	$pdf->Cell(40,5,'codigo',1,1,'C',1);
  
 	 
