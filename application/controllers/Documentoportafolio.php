@@ -140,6 +140,7 @@ public function edit()
 			'idportafolio' => $this->input->post('idportafolio'),
 			'iddocenteactividadacademica' => $this->input->post('iddocenteactividadacademica'),
 			'minutosocupados' => $this->input->post('minutosocupados'),
+			'iddocumentochklstportafolio' => $this->input->post('iddocumentochklstportafolio'),
 	 	);
 	$result =	$this->documentoportafolio_model->update($id,$array_item);
 	if($result == FALSE)
