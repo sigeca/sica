@@ -20,7 +20,7 @@ public function index(){
   	$data['documentoportafolio']=$this->documentoportafolio_model->elultimo();
 	$data['documentos']= $this->documento_model->lista_documentosA(0)->result();
 	$data['docente']= $this->docente_model->docentespersona($data['documentoportafolio']['idpersona'])->row_array();
-  	$data['documentochklstportafolio']= $this->documentochklstportafolio_model->lista_documentochklstportafoliosA($data['documentoportafolio']['iddocumentochklstportafolio'])->row_array();
+  	$data['documentochklstportafolios']= $this->documentochklstportafolio_model->lista_documentochklstportafoliosA($data['documentoportafolio']['iddocumentochklstportafolio'])->row_array();
   	$data['portafolio']= $this->portafolio_model->lista_portafoliosA($data['documentoportafolio']['idportafolio'])->row_array();
   	$data['portafolios']= $this->portafolio_model->lista_portafoliosA(0)->result();
 	if(isset($data['docente']['iddocente']))
