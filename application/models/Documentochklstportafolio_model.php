@@ -15,8 +15,8 @@ class Documentochklstportafolio_model extends CI_model {
 	}
 
  
-	function documentochklstportafolioss( $idsilabo){
- 		$documentochklstportafolio = $this->db->query('select * from documentochklstportafolio where idsilabo="'. $idsilabo.'"');
+	function documentochklstportafolioss( $idchklstportafolio){
+ 		$documentochklstportafolio = $this->db->query('select * from documentochklstportafolio where idchklstportafolio="'. $idchklstportafolio.'"');
  		return $documentochklstportafolio;
  	}
 
@@ -27,7 +27,7 @@ class Documentochklstportafolio_model extends CI_model {
  	}
 
  	function lista_unidades( $id){
-		$documentochklstportafolio = $this->db->query('select * from documentochklstportafolio1 where idsilabo="'. $id.'"');
+		$documentochklstportafolio = $this->db->query('select * from documentochklstportafolio1 where idchklstportafolio="'. $id.'"');
  		return $documentochklstportafolio;
  	}
 

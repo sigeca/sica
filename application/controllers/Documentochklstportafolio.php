@@ -24,9 +24,12 @@ class Documentochklstportafolio extends CI_Controller{
 
 	public function add()
 	{
-		$data['personas']= $this->persona_model->lista_personas()->result();
-		$data['silabos']= $this->silabo_model->silabo($this->uri->segment(3))->result();
+        if($this->uri->segment(3)){
 		$data['documentochklstportafolio'] = $this->documentochklstportafolio_model->documentochklstportafolioss($this->uri->segment(3));
+        }else{
+
+		$data['documentochklstportafolio'] = $this->documentochklstportafolio_model->documentochklstportafolioss(1);
+        }
 		$data['title']="Nueva unidades del silabo";
 	 	$this->load->view('template/page_header');		
 	 	$this->load->view('documentochklstportafolio_form',$data);
