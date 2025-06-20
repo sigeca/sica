@@ -24,6 +24,7 @@ class Documentochklstportafolio extends CI_Controller{
 
 	public function add()
 	{
+  		$data['chklstportafolios']= $this->chklstportafolio_model->lista_chklstportafolios()->result();
         if($this->uri->segment(3)){
 		$data['documentochklstportafolio'] = $this->documentochklstportafolio_model->documentochklstportafolioss($this->uri->segment(3));
         }else{
