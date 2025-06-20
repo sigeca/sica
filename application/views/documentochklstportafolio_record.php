@@ -71,7 +71,7 @@ echo form_input('idchklstportafolio',$options[$documentochklstportafolio['idchkl
 
 
 <div class="form-group row">
-    <label class="col-md-2 col-form-label"> id Unidad:</label>
+    <label class="col-md-2 col-form-label"> id chklst portafolio:</label>
 	<div class="col-md-10">
 	<?php
       echo form_input('iddocumentochklstportafolio',$documentochklstportafolio['iddocumentochklstportafolio'],array("id"=>"iddocumentochklstportafolio","disabled"=>"disabled",'placeholder'=>'unidad','style'=>'width:500px;'));
@@ -83,16 +83,16 @@ echo form_input('idchklstportafolio',$options[$documentochklstportafolio['idchkl
 
 
 <div class="form-group row">
-    <label class="col-md-2 col-form-label"> No. de la unidad:</label>
+    <label class="col-md-2 col-form-label"> nombre del chklstportafolio:</label>
 	<div class="col-md-10">
 	<?php
-      echo form_input('unidad',$documentochklstportafolio['unidad'],array("disabled"=>"disabled",'placeholder'=>'unidad','style'=>'width:500px;'));
+      echo form_input('unidad',$documentochklstportafolio['orden'],array("disabled"=>"disabled",'placeholder'=>'unidad','style'=>'width:500px;'));
 		?>
 	</div> 
 </div>
 
 <div class="form-group row">
-    <label class="col-md-2 col-form-label"> Nombre Unidad:</label>
+    <label class="col-md-2 col-form-label"> Nombre del documento:</label>
 	<div class="col-md-10">
 	<?php
 
