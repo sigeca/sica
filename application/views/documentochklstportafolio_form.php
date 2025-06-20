@@ -29,7 +29,7 @@
     <label class="col-md-2 col-form-label">Orden del documento:</label>
 	<div class="col-md-10">
 	<?php
-	 echo form_input(array("name"=>"orden","id"=>"orden));  
+	 echo form_input(array("name"=>"orden","id"=>"orden"));  
 		?>
 	</div> 
 </div> 
