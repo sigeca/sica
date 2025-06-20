@@ -1,0 +1,2 @@
+use educayso_facae;
+create view documentochklstportafolio1 as select documentochklstportafolio.iddocumentochklstportafolio,documentochklstportafolio.idchklstportafolio,chklstportafolio.nombre as elchklstportafolio,documentochklstportafolio.orden,documentochklstportafolio.nombre as eldocumento from documentochklstportafolio,chklstportafolio where  documentochklstportafolio.idchklstportafolio=chklstportafolio.idchklstportafolio;
