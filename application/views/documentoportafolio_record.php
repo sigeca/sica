@@ -114,6 +114,21 @@ foreach ($docenteactividadacademicas as $row){
 </div>
 
 
+<div class="form-group row">
+    <label class="col-md-2 col-form-label"><a href= "<?php echo base_url(); ?>documentochklstportafolio/actual/<?php echo $documentoportafolio['iddocumentochklstportafolio']; ?> "   >documentochklstPortafolio: &#x1F448;</a>  </label>
+	<div class="col-md-10">
+  
+     <?php 
+$options= array("NADA");
+foreach ($documentochklstportafolios as $row){
+	$options[$row->iddocumentochklstportafolio]= $row->elchklstportafolio." - ".$row->eldocumento;
+}
+echo form_input('iddocumentochklstportafolio',$options[$documentoportafolio['iddocumentochklstportafolio']],array("id"=>"iddocumentochklstportafolio","disabled"=>"disabled", "style"=>"width:500px")); ?>
+	</div> 
+</div>
+
+
+
 
 
 <?php echo form_close(); ?>

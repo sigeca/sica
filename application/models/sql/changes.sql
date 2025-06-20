@@ -379,8 +379,11 @@ alter table evento add column aulavirtual text not null;
 */
 
 
+/*
 alter table portafolio add column  idchklstportafolio int default 1; 
+*/
 
 
+alter table documentoportafolio add column  iddocumentochklstportafolio int default 1; 
 
 
