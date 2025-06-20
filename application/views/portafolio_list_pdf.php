@@ -51,7 +51,7 @@
 
 	$pdf->SetFont('Arial','',7);
 
-	$autor='';
+	$elchklstdocumento='';
 	$persona="";
 	$h=5;
 	$i=0;
@@ -65,11 +65,11 @@
 		   	$h=5;
 		   }			   
 
-		    if($autor != $row->autor){
+		    if($elchklstdocumento != $row->elchklstdocumento){
 		    $i=$i+1;
 		    $pdf->Cell(5,$h,$i,1,0,'R',0); 
 		    $pdf->Cell(45,$h,utf8_decode($row->elchklstdocumento),1,0,'L',0);
-		    $autor=$row->autor;
+		    $elchklstdocumento=$row->elchklstdocumento;
 		    }else{
 
 		    $pdf->Cell(5,$h,"",1,0,'R',0); 
