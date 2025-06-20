@@ -199,6 +199,23 @@ echo form_input('iddocumento',$options[$portafolio['iddocumento']],array("id"=>"
 </div>
 
 
+<div class="form-group row">
+    <label class="col-md-2 col-form-label"><?php echo anchor('chklstportafolio/actual/'.$portafolio['idchklstportafolio'], 'Periodo académico:'); ?></label>
+	<div class="col-md-10">
+	<?php 
+	$options= array("NADA");
+	foreach ($chklstportafolios as $row){
+		$options[$row->idchklstportafolio]=$row->nombrecorto.' - '.$row->nombrelargo;
+	}
+	echo form_input('idchklstportafolio',$options[$portafolio['idchklstportafolio']],array("id"=>"idchklstportafolio","disabled"=>"disabled", "style"=>"width:600px")); 
+	?>
+
+	</div> 
+</div>
+
+
+
+
 
 <div class="form-group row">
 

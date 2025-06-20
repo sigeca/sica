@@ -13,6 +13,7 @@ class Portafolio extends CI_Controller{
       	$this->load->model('institucion_model');
       	$this->load->model('participante_model');
       	$this->load->model('periodoacademico_model');
+      	$this->load->model('chklstportafolio_model');
 }
 
 public function index(){
@@ -72,6 +73,7 @@ public function edit()
 	 	$data['portafolio'] = $this->portafolio_model->portafolio($this->uri->segment(3))->row_array();
 		$data['personas']= $this->persona_model->lista_personasA()->result();
   		$data['periodoacademicos']= $this->periodoacademico_model->lista_periodoacademicos()->result();
+  		$data['chklstportafolio']= $this->chklstportafolio_model->lista_chklstportafolios()->result();
 		$data['ordenadores']=  $this->ordenador_model->lista_ordenadores()->result();
 		$data['directorios'] = $this->directorio_model->lista_directoriosxordenador($data['portafolio']['idordenador'])->result();
  	 	$data['title'] = "Actualizar Portafolio";
@@ -92,6 +94,7 @@ public function edit()
 			'idperiodoacademico' => $this->input->post('idperiodoacademico'),
 			'idordenador' => $this->input->post('idordenador'),
 			'iddirectorio' => $this->input->post('iddirectorio'),
+			'idchklstportafolio' => $this->input->post('idchklstportafolio'),
 	 	);
 	 	$this->portafolio_model->update($id,$array_item);
 	 	redirect('portafolio');
