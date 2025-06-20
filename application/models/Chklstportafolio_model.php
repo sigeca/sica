@@ -87,127 +87,43 @@ class Chklstportafolio_model extends CI_model {
 
 
 
- 	function save($array)
- 	{
-	   	$this->db->trans_begin();
-		$condition1 = "idasignatura =" . "'" . $array['idasignatura'] . "'";
-		$condition2 = "idperiodoacademico =" . "'" . $array['idperiodoacademico'] . "'";
-		$condition3 = "iddocente =" . "'" . $array['iddocente'] . "'";
-		$this->db->select('*');
-		$this->db->from('chklstportafolio');
-		$this->db->where($condition1);
-		$this->db->where($condition2);
-		$this->db->where($condition3);
-		$this->db->order_by('idchklstportafolio',"DESC");
-		$this->db->limit(1);
-		$query = $this->db->get();
-		if ($query->num_rows() == 0) {
-			$this->db->insert("chklstportafolio", $array);
-  			if( $this->db->affected_rows()>0){
-				$idchklstportafolio=$this->db->insert_id();
-				// Se crea las unidades del chklstportafolio
-				for($i=1;$i<=4;$i++){
-					$arrayunidad=array();
-					$arrayunidad['idchklstportafolio']=$idchklstportafolio;
-					$arrayunidad['unidad']=$i;
-					$arrayunidad['nombre']="Unidad #".$i ;
-					$this->db->insert('unidadchklstportafolio',$arrayunidad);
-				}	
-				//Se busca la asignacion del docente a esta asignatura
-	   		}else{
-			   $this->db->trans_rollback();
-			   $idchklstportafolio=0;
-		//	return false;
-		   }
-		}else{
-			$idchklstportafolio=$query->result()[0]->idchklstportafolio;
-			$this->db->trans_rollback();
-			//return false;
- 	}
 
+function save($array)
+{
+    // Inicia una transacción para asegurar la atomicidad de la operación
+    $this->db->trans_begin();
 
-	if($idchklstportafolio>0){
+    // Intenta insertar los datos en la tabla "chklstportafolio"
+    $this->db->insert("chklstportafolio", $array);
 
-		$condition1 = "idperiodoacademico =" . $array['idperiodoacademico'] ;
-		$this->db->select('*');
-		$this->db->from('periodoacademico');
-		$this->db->where($condition1);
-		$this->db->limit(1);
-		$query = $this->db->get();
-		if ($query->num_rows() > 0) {
-			$fechainicio=$query->result()[0]->fechainicio;
-			$fechafin=$query->result()[0]->fechafin;
-		}else{
-			$fechainicio="";
-			$fechafin="";
-		}
-		$condition1 = "idperiodoacademico =" . $array['idperiodoacademico'] ;
-		$this->db->select('*');
-		$this->db->from('calendarioacademico');
-		$this->db->where($condition1);
-		$this->db->limit(1);
-		$query = $this->db->get();
-		if ($query->num_rows() > 0) {
-			$idcalendarioacademico=$query->result()[0]->idcalendarioacademico;
-		}else{
-			$idcalendarioacademico=0;
-		}
-		$condition1 = "idperiodoacademico =" .  $array['idperiodoacademico'] ;
-		$this->db->select('*');
-		$this->db->from('distributivo');
-		$this->db->where($condition1);
-		$this->db->limit(1);
-		$query = $this->db->get();
-		if ($query->num_rows() > 0) {
-			$iddistributivo=$query->result()[0]->iddistributivo;
-		}else{
-			$iddistributivo=0;
-		}
-		$condition1 = "iddistributivo =" . $iddistributivo ;
-		$condition2 = "iddocente =" . $array['iddocente'] ;
-		$this->db->select('*');
-		$this->db->from('distributivodocente');
-		$this->db->where($condition1);
-		$this->db->where($condition2);
-		$this->db->limit(1);
-		$query = $this->db->get();
-		if ($query->num_rows() > 0) {
-			$iddistributivodocente=$query->result()[0]->iddistributivodocente;
-		}else{
-			$iddistributivodocente=0;
-		}	
+    // Obtiene el ID de la última inserción. Esto es crucial para verificar el éxito.
+    // Asumiendo que 'insert_id()' es el método correcto para tu framework/ORM (ej. CodeIgniter)
+    $idchklstportafolio = $this->db->insert_id();
 
-		$condition1 = "iddistributivodocente =" .  $iddistributivodocente ;
-		$condition2 = "idasignatura =" .  $array['idasignatura'] ;
-		$this->db->select('*');
-		$this->db->from('asignaturadocente');
-		$this->db->where($condition1);
-		$this->db->where($condition2);
-		$this->db->limit(1);
-		$query= $this->db->get();
-		if ($query->num_rows() > 0) {
-			$idasignaturadocente=$query->result()[0]->idasignaturadocente;
-		}else{
-			$idasignaturadocente=0;
-		}
+    // Inicializa la variable $data
+    $data = ['successful' => false];
 
- 
+    // Verifica si la inserción fue exitosa y si hay filas afectadas por la consulta.
+    // Un ID de inserción mayor que 0 generalmente indica éxito.
+    // También es buena práctica verificar el estado de la transacción de la base de datos.
+    if ($idchklstportafolio > 0 && $this->db->trans_status() === TRUE) {
+        // Si la inserción fue exitosa, confirma la transacción
+        $this->db->trans_commit();
+        $data = [
+            'successful' => true,
+            'id' => $idchklstportafolio // Opcional: devuelve el ID insertado
+        ];
+    } else {
+        // Si la inserción falló o hubo algún problema en la transacción, revierte los cambios
+        $this->db->trans_rollback();
+        // El valor de 'successful' ya es false por defecto
+        // Puedes agregar más detalles de error si es necesario
+        // $data['error_message'] = $this->db->error(); // Si tu framework/ORM lo permite
+    }
 
-			$this->db->trans_commit();
-	//	return $query->first_row('array');
-		$data = array("idchklstportafolio"=>$idchklstportafolio,"idcalendarioacademico"=>$idcalendarioacademico,"idasignaturadocente"=>$idasignaturadocente,"fechainicio"=>$fechainicio,"fechafin"=>$fechafin,"successfull"=>true);
-
-	}else{
-
-		$data = array("successfull"=>false);
-
-	}
-
-
-		return $data;
-
-
- 	}
+    // Retorna el resultado de la operación
+    return $data;
+}
 
 
 
