@@ -5,20 +5,7 @@ class Chklstportafolio extends CI_Controller{
   public function __construct(){
       parent::__construct();
       $this->load->model('chklstportafolio_model');
-      $this->load->model('unidadchklstportafolio_model');
-      $this->load->model('tema_model');
       $this->load->model('documentochklstportafolio_model');
-      $this->load->model('documento_model');
-  	$this->load->model('asignatura_model');
-  	$this->load->model('periodoacademico_model');
-  	$this->load->model('evento_model');
-  	$this->load->model('docente_model');
-  	$this->load->model('malla_model');
-  	$this->load->model('seguimientochklstportafolio_model');
-  	$this->load->model('departamento_model');
-  	$this->load->model('calendarioacademico_model');
-      $this->load->model('metodoaprendizajetema_model');
-      $this->load->model('criterioseguimientochklstportafolio_model');
   }
 
 //=========================================================
@@ -32,10 +19,6 @@ class Chklstportafolio extends CI_Controller{
 
     //print_r($data['chklstportafolio']);
 //			die();
-  			$data['asignaturas']= $this->asignatura_model->lista_asignaturasA()->result();
-  			$data['docentes']= $this->docente_model->lista_docentesA(0)->result();
- 			$data['periodoacademicos']= $this->periodoacademico_model->lista_periodoacademicos()->result();
-			$data['documentos']= $this->documento_model->lista_documentos()->result();
 			$data['title']="Lista de chklstportafolioes";
 			$this->load->view('template/page_header');
 			$this->load->view('chklstportafolio_record',$data);
