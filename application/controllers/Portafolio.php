@@ -318,6 +318,7 @@ public function actual()
 public function elprimero()
 {
   	$data['periodoacademicos']= $this->periodoacademico_model->lista_periodoacademicos()->result();
+  		$data['chklstportafolios']= $this->chklstportafolio_model->lista_chklstportafolios()->result();
   	$data['personas']= $this->persona_model->lista_personasA()->result();
 	$data['portafolio'] = $this->portafolio_model->elprimero();
 	$data['ordenadores'] = $this->ordenador_model->lista_ordenadores()->result();
@@ -341,6 +342,7 @@ public function elultimo()
 	$data['portafolio'] = $this->portafolio_model->elultimo();
   	$data['personas']= $this->persona_model->lista_personasA()->result();
   	$data['periodoacademicos']= $this->periodoacademico_model->lista_periodoacademicos()->result();
+  		$data['chklstportafolios']= $this->chklstportafolio_model->lista_chklstportafolios()->result();
 		$data['ordenadores'] = $this->ordenador_model->lista_ordenadores()->result();
 		$data['directorios'] = $this->directorio_model->lista_directorios()->result();
   if(!empty($data))
@@ -363,6 +365,7 @@ public function siguiente(){
 	$data['portafolio'] = $this->portafolio_model->siguiente($this->uri->segment(3))->row_array();
   	$data['personas']= $this->persona_model->lista_personasA()->result();
   	$data['periodoacademicos']= $this->periodoacademico_model->lista_periodoacademicos()->result();
+  		$data['chklstportafolios']= $this->chklstportafolio_model->lista_chklstportafolios()->result();
 		$data['ordenadores'] = $this->ordenador_model->lista_ordenadores()->result();
 		$data['directorios'] = $this->directorio_model->lista_directorios()->result();
   
@@ -378,6 +381,7 @@ public function anterior(){
 	$data['portafolio'] = $this->portafolio_model->anterior($this->uri->segment(3))->row_array();
   	$data['personas']= $this->persona_model->lista_personasA()->result();
   	$data['periodoacademicos']= $this->periodoacademico_model->lista_periodoacademicos()->result();
+  		$data['chklstportafolios']= $this->chklstportafolio_model->lista_chklstportafolios()->result();
 	$data['ordenadores'] = $this->ordenador_model->lista_ordenadores()->result();
 	$data['directorios'] = $this->directorio_model->lista_directorios()->result();
   	$data['title']="Portafolio";
