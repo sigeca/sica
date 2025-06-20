@@ -15,11 +15,11 @@ echo form_input($eys_arrinput); ?></td>
 
 
 <tr>
-     <td>No. Unidad:</td>
+     <td>Orden:</td>
      <td><?php 
 
 
-$eys_arrinput=array('name'=>'unidad','value'=>$documentochklstportafolio['unidad'], "style"=>"width:500px");
+$eys_arrinput=array('name'=>'orden','value'=>$documentochklstportafolio['orden'], "style"=>"width:500px");
 echo form_input($eys_arrinput); ?></td>
   </tr>
 
@@ -38,11 +38,11 @@ echo form_input($eys_arrinput); ?></td>
 <td> Silabo:</td>
 <td><?php
 $options= array('--Select--');
-foreach ($silabos as $row){
-	$options[$row->idsilabo]= $row->nombre;
+foreach ($chklstportafolios as $row){
+	$options[$row->idchklstportafolio]= $row->nombre;
 }
 
- echo form_dropdown("idsilabo",$options, $documentochklstportafolio['idsilabo']);  ?></td>
+ echo form_dropdown("idchklstportafolio",$options, $documentochklstportafolio['idchklstportafolio']);  ?></td>
 </tr>
 
  
