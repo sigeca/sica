@@ -68,7 +68,7 @@ class Documentochklstportafolio extends CI_Controller{
 		$id=$this->input->post('iddocumentochklstportafolio');
 	 	$array_item=array(
 		 	'nombre' => $this->input->post('nombre'),
-		 	'orden' => $this->input->post('unidad'),
+		 	'orden' => $this->input->post('orden'),
 		 	'idchklstportafolio' => $this->input->post('idchklstportafolio'),
 	 	);
 	 	$this->documentochklstportafolio_model->update($id,$array_item);
