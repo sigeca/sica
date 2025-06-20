@@ -26,10 +26,10 @@
 
 
 <div class="form-group row">
-    <label class="col-md-2 col-form-label">No de la unidad:</label>
+    <label class="col-md-2 col-form-label">Orden del documento:</label>
 	<div class="col-md-10">
 	<?php
-	 echo form_input(array("name"=>"unidad","id"=>"unidad"));  
+	 echo form_input(array("name"=>"orden","id"=>"orden));  
 		?>
 	</div> 
 </div> 

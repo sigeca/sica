@@ -43,7 +43,7 @@ class Documentochklstportafolio extends CI_Controller{
 	 	$array_item=array(
 		 	'idchklstportafolio' => $this->input->post('idchklstportafolio'),
 		 	'nombre' => $this->input->post('nombre'),
-		 	'unidad' => $this->input->post('unidad'),
+		 	'orden' => $this->input->post('orden'),
 	 	);
 	 	$this->documentochklstportafolio_model->save($array_item);
 	 	redirect('documentochklstportafolio');
