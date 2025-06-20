@@ -37,29 +37,29 @@ if(isset($documentochklstportafolio))
 <br>
 
 
-<?php echo form_hidden('idsilabo',$documentochklstportafolio['idsilabo']) ?>
+<?php echo form_hidden('idchklstportafolio',$documentochklstportafolio['idchklstportafolio']) ?>
 
 
 
 <div class="form-group row">
-    <label class="col-md-2 col-form-label"> Id silabo: ( <?php echo anchor('silabo/actual/'.$documentochklstportafolio['idsilabo'], 'Ver'); ?>):</label>
+    <label class="col-md-2 col-form-label"> Id chklstportafolio: ( <?php echo anchor('chklstportafolio/actual/'.$documentochklstportafolio['idchklstportafolio'], 'Ver'); ?>):</label>
 	<div class="col-md-10">
 	<?php
-      echo form_input('idsilabo',$documentochklstportafolio['idsilabo'],array("disabled"=>"disabled",'placeholder'=>'Idsilabos','style'=>'width:500px;'));
+      echo form_input('idchklstportafolio',$documentochklstportafolio['idchklstportafolio'],array("disabled"=>"disabled",'placeholder'=>'Idchklstportafolios','style'=>'width:500px;'));
 		?>
 	</div> 
 </div> 
 
 
 <div class="form-group row">
-    <label class="col-md-2 col-form-label"> Nombre del silabo:</label>
+    <label class="col-md-2 col-form-label"> Nombre del chklstportafolio:</label>
 	<div class="col-md-10">
 	<?php
 $options= array("NADA");
-foreach ($silabos as $row){
-	$options[$row->idsilabo]= $row->nombre;
+foreach ($chklstportafolios as $row){
+	$options[$row->idchklstportafolio]= $row->nombre;
 }
-echo form_input('idsilabo',$options[$documentochklstportafolio['idsilabo']],array("disabled"=>"disabled",'style'=>'width:500px;'));
+echo form_input('idchklstportafolio',$options[$documentochklstportafolio['idchklstportafolio']],array("disabled"=>"disabled",'style'=>'width:500px;'));
 		?>
 	</div> 
 </div> 
