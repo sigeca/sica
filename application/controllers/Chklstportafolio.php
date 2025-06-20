@@ -145,18 +145,18 @@ function chklstportafolio_data()
 }
 
 
-	function unidadchklstportafolio_data()
+	function documentochklstportafolio_data()
 	{
 			$draw= intval($this->input->get("draw"));
 			$draw= intval($this->input->get("start"));
 			$draw= intval($this->input->get("length"));
 
 			$idchklstportafolio=$this->input->get('idchklstportafolio');
-			$data0 =$this->unidadchklstportafolio_model->lista_unidades($idchklstportafolio);
+			$data0 =$this->documentochklstportafolio_model->lista_unidades($idchklstportafolio);
 			$data=array();
 			foreach($data0->result() as $r){
-				$data[]=array($r->idchklstportafolio,$r->idunidadchklstportafolio,$r->unidad,$r->launidad,$r->sesiones,
-				$r->href='<a href="javascript:void(0);" class="btn btn-info btn-sm item_ver"  data-retorno="'.site_url('unidadchklstportafolio/actual').'"    data-idunidadchklstportafolio="'.$r->idunidadchklstportafolio.'">Ver</a>');
+				$data[]=array($r->idchklstportafolio,$r->iddocumentochklstportafolio,$r->orden,$r->eldocumento,
+				$r->href='<a href="javascript:void(0);" class="btn btn-info btn-sm item_ver"  data-retorno="'.site_url('documentochklstportafolio/actual').'"    data-iddocumentochklstportafolio="'.$r->iddocumentochklstportafolio.'">Ver</a>');
 			}	
 			$output=array( "draw"=>$draw,
 				"recordsTotal"=> $data0->num_rows(),
