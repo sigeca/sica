@@ -61,7 +61,7 @@ foreach ($docenteactividadacademicas as $row){
 <td><?php
 $options= array('--Select--');
 foreach ($documentochklstportafolios as $row){
-	$options[$row->iddocumentochklstportafolio]= $row->elperiodo." - ".$row->eldocumento;
+	$options[$row->iddocumentochklstportafolio]= $row->elchklstportafolio." - ".$row->eldocumento;
 }
 
  echo form_dropdown("iddocumentochklstportafolio",$options, $documentoportafolio['iddocumentochklstportafolio']);  ?></td>
