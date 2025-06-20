@@ -42,7 +42,7 @@
 
 
 	$pdf->Cell(5,5,'#',1,0,'C',1);
-	$pdf->Cell(45,5,'Autor',1,0,'C',1);
+	$pdf->Cell(45,5,'documento',1,0,'C',1);
 	$pdf->Cell(80,5,'Asunto/tema',1,0,'C',1);
 	$pdf->Cell(40,5,'codigo',1,1,'C',1);
  
@@ -68,7 +68,7 @@
 		    if($autor != $row->autor){
 		    $i=$i+1;
 		    $pdf->Cell(5,$h,$i,1,0,'R',0); 
-		    $pdf->Cell(45,$h,utf8_decode($row->autor),1,0,'L',0);
+		    $pdf->Cell(45,$h,utf8_decode($row->elchklstdocumento),1,0,'L',0);
 		    $autor=$row->autor;
 		    }else{
 
