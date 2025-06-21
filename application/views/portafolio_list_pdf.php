@@ -78,22 +78,25 @@ $pdf->Cell($colWidth_code, 7, 'Enlace', 1, 1, 'C', 1); // Changed 'codigo' to 'E
 // --- Table Content ---
 $pdf->SetFont('Arial', '', 7);
 $elchklstdocumento = '';
-
-// Base URL for documents
 $url_base = "https://repositorioutlvte.org/Repositorio/";
 
 foreach ($documentos as $row) {
-    // Calculate the height required for the 'asunto' MultiCell
-    // This is crucial for preventing text cutoff and ensuring row height adjusts dynamically.
-    // Temporarily set font to calculate height without affecting current drawing.
-    $pdf->SetFont('Arial', '', 7);
-    $asunto_height = $pdf->MultiCell($colWidth_document, 5, utf8_decode($row->asunto), 0, 'L', 0, true); // true for calculate height only
-    $pdf->SetFont('Arial', '', 7); // Reset font after calculation
+    // 1. Calculate the required height for the 'asunto' MultiCell
+    //    We temporarily use MultiCell with the 'true' parameter as the last argument
+    //    This tells FPDF to calculate the height without actually printing anything.
+    $pdf->SetFont('Arial', '', 7); // Ensure font is set for correct calculation
+    $asunto_content = utf8_decode($row->asunto);
+    $asunto_height = $pdf->MultiCell($colWidth_document, 5, $asunto_content, 0, 'L', 0, true);
+    // The '5' here is the line height for the MultiCell, not the total cell height.
+    // The 'true' parameter is crucial for height calculation only.
 
-    // Ensure a minimum height for the row
-    $rowHeight = max($asunto_height, 6); // Minimum height of 6mm per row
+    // 2. Determine the maximum height needed for the current row
+    //    Ensure a minimum height for visually consistent rows, e.g., 6mm.
+    $rowHeight = max($asunto_height, 6); // Set a minimum height for the row
 
-    // Check if the current category is different from the previous one
+    // --- Draw the cells for the current row using the calculated $rowHeight ---
+
+    // Category Column: Only print if different from the previous row
     if ($elchklstdocumento != $row->elchklstdocumento) {
         $pdf->Cell($colWidth_num, $rowHeight, $row->orden, 1, 0, 'R', 0);
         $pdf->Cell($colWidth_category, $rowHeight, utf8_decode($row->elchklstdocumento), 1, 0, 'L', 0);
@@ -104,37 +107,27 @@ foreach ($documentos as $row) {
     }
 
     // Store current X and Y positions before MultiCell
+    // This is vital because MultiCell advances the Y pointer to the next line.
     $current_x = $pdf->GetX();
     $current_y = $pdf->GetY();
 
-    // MultiCell for 'asunto' to handle long text and wrap it
-    $pdf->MultiCell($colWidth_document, 5, utf8_decode($row->asunto), 1, 'L', 0); // Changed fill to 0 as it's part of the row
+    // Document Subido (Asunto) Column: Use MultiCell to wrap long text
+    // The '1' for border will draw the border around the MultiCell content.
+    $pdf->MultiCell($colWidth_document, 5, $asunto_content, 1, 'L', 0);
 
-    // Set position back after MultiCell for the next cell
+    // After MultiCell, the Y pointer is on a new line.
+    // To draw the 'Enlace' cell on the same "row", we need to reset the position.
     $pdf->SetXY($current_x + $colWidth_document, $current_y);
 
     // Link Column
     $link = $url_base . $row->archivopdf;
-
     $pdf->SetTextColor(0, 0, 255); // Blue color for the link
     $pdf->SetFont('Arial', 'U', 7); // Underline font for the link
-
-    // Display "Ver Documento" or a small icon for the link
-    // For a simple text link:
     $pdf->Cell($colWidth_code, $rowHeight, 'Ver Documento', 1, 1, 'C', 0, $link);
-
-    // If you want to use an icon, you'd need to extend your PDF class
-    // to include an image method or use FPDF's Image method directly
-    // and potentially layer it. For simplicity, "Ver Documento" is used.
-    // Example for an icon (requires an image file and proper positioning):
-    // $icon_path = 'path/to/your/icon.png';
-    // $pdf->Cell($colWidth_code, $rowHeight, '', 1, 0, 'C', 0); // Empty cell
-    // $pdf->Image($icon_path, $pdf->GetX() - $colWidth_code + ($colWidth_code / 2) - 2.5, $pdf->GetY() + ($rowHeight / 2) - 2.5, 5, 5, '', $link); // Adjust x, y, width, height
-    // $pdf->Ln($rowHeight); // Move to next line
-
     $pdf->SetTextColor(0, 0, 0); // Restore black color
     $pdf->SetFont('Arial', '', 7); // Restore normal font
 }
+
 
 // --- Signature Section (Improved Presentation) ---
 $pdf->Ln(20); // Add some space before signatures
