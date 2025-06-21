@@ -13,42 +13,6 @@ $idpersona = isset($_GET["idpersona"]) ? $_GET["idpersona"] : 0;
 // --- Data for the PDF (Mock Data for demonstration, replace with your actual data fetching) ---
 // You would typically fetch $documentos from a database here.
 // For this example, let's create some dummy data to make the PDF generation runnable.
-$documentos = [
-    (object)[
-        'lapersona' => 'JOHN DOE',
-        'elperiodo' => '2024-2025',
-        'orden' => 1,
-        'elchklstdocumento' => 'Acta de Aprobación',
-        'asunto' => 'Acta de aprobación del proyecto final de grado "Desarrollo de un sistema de gestión académica para la Universidad Técnica Luis Vargas Torres de Esmeraldas". Este es un texto de ejemplo bastante largo para probar el ajuste de texto.',
-        'archivopdf' => 'documentos/acta_aprobacion_john_doe.pdf'
-    ],
-    (object)[
-        'lapersona' => 'JOHN DOE',
-        'elperiodo' => '2024-2025',
-        'orden' => 2,
-        'elchklstdocumento' => 'Informe de Seguimiento',
-        'asunto' => 'Primer informe de seguimiento del avance del proyecto durante el mes de Octubre de 2024.',
-        'archivopdf' => 'documentos/informe_seguimiento_octubre.pdf'
-    ],
-    (object)[
-        'lapersona' => 'JOHN DOE',
-        'elperiodo' => '2024-2025',
-        'orden' => 3,
-        'elchklstdocumento' => 'Informe de Seguimiento', // Same category to test your logic
-        'asunto' => 'Segundo informe de seguimiento del avance del proyecto durante el mes de Noviembre de 2024.',
-        'archivopdf' => 'documentos/informe_seguimiento_noviembre.pdf'
-    ],
-    (object)[
-        'lapersona' => 'JOHN DOE',
-        'elperiodo' => '2024-2025',
-        'orden' => 4,
-        'elchklstdocumento' => 'Certificado de Culminación',
-        'asunto' => 'Certificado de culminación de prácticas pre-profesionales en la empresa XYZ S.A. durante 160 horas.',
-        'archivopdf' => 'documentos/certificado_culminacion_john_doe.pdf'
-    ],
-];
-// End of Mock Data
-
 // --- PDF Initialization ---
 $pdf = new PDF();
 $pdf->SetMargins(23, 10, 11.7);
