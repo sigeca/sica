@@ -186,6 +186,29 @@ class ReporteParticipacionPDF
         foreach ($asistencias as $row) {
             foreach ($fechacorte as $p => $fc) {
                 if (strtotime($row->fecha) <= strtotime($fc)) {
+                    switch($row->idtipoasistencia){
+                        case 1:
+                    $arrAsistencia[$row->idpersona][$p] = ($arrAsistencia[$row->idpersona][$p] ?? 0) + 1;
+                    break;
+                        case 2:
+                    $arrAsistencia[$row->idpersona][$p] = ($arrAsistencia[$row->idpersona][$p] ?? 0) + 0.5;
+                    break;
+                        case 3:
+                    $arrAsistencia[$row->idpersona][$p] = ($arrAsistencia[$row->idpersona][$p] ?? 0) + 0.25;
+                    break;
+                        case 4:
+                    $arrAsistencia[$row->idpersona][$p] = ($arrAsistencia[$row->idpersona][$p] ?? 0) + 0;
+                    break;
+                        default:
+                    $arrAsistencia[$row->idpersona][$p] = ($arrAsistencia[$row->idpersona][$p] ?? 0) + 0;
+                    break;
+
+
+
+
+                    }
+
+
                     $arrAsistencia[$row->idpersona][$p] = ($arrAsistencia[$row->idpersona][$p] ?? 0) + 1;
                     break;
                 }
