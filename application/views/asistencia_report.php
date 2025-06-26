@@ -78,7 +78,7 @@ echo "<br>";
 
 
 print_r($jornadadocente);
-die();
+echo "<br>";
 
  $sesiones=array();
      $i=1;
@@ -108,7 +108,8 @@ die();
 		$fechasesion=date("Y-m-d",strtotime($fechasesion."+ 1 days")); 
 
     }while(strtotime($fechasesion)<=strtotime($fechahasta));
-
+print_r($sesiones);
+die();
 ?>
 
 
