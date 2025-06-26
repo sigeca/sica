@@ -183,10 +183,10 @@ class ReporteParticipacionPDF
      */
     private function calculateParticipantAttendance(array $asistencias, array $fechacorte): array
     {
-
-
-
         $arrAsistencia = [];
+        print_r($asistencias);
+        echo "<br>";
+
         foreach ($asistencias as $row) {
             foreach ($fechacorte as $p => $fc) {
                 if (strtotime($row->fecha) <= strtotime($fc)) {
