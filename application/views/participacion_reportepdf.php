@@ -83,8 +83,8 @@ class ReporteParticipacionPDF
             return [];
         }
         
-        foreach ($fechacorte as $p => $fc) {
             $currentDate = $fechaSesion;
+        foreach ($fechacorte as $p => $fc) {
             $count = 0;
             while (strtotime($currentDate) <= strtotime($fc)) {
                 $dia = $dias[date('w', strtotime($currentDate))];
@@ -261,7 +261,7 @@ class ReporteParticipacionPDF
                 foreach ($fechacorte as $p => $fc) {
                     if (strtotime($row1->fecha) <= strtotime($fc)) {
                        if($row1->idmodoevaluacion==5||$row1->idmodoevaluacion== 9){ 
-                           $parcialScores[$p] += $score;
+                           $parcialScores[$p] += $score;     //Examen del primero o del segundo
                        }else{
                            $parcialScores[$p] += $score/2;
                        }
@@ -325,6 +325,7 @@ class ReporteParticipacionPDF
         $this->pdf->Cell(10, 5, $finalResult, 1, 0, 'R', 1);
             $this->pdf->setFillColor(255, 255, 255);
 
+        echo 
         $totalSessionsCombined = ($sesionTotal[0] ?? 0) + ($sesionTotal[1] ?? 0);
         $totalAttendanceCombined = ($arrAsistencia[$participantData['idpersona']][0] ?? 0) + ($arrAsistencia[$participantData['idpersona'][1] ?? 0]);
         $overallAttendancePercentage = ($totalSessionsCombined > 0) ? round(100 * ($totalAttendanceCombined / $totalSessionsCombined), 0) . '%' : '0%';
