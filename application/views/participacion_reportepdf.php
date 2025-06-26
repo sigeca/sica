@@ -356,6 +356,7 @@ class ReporteParticipacionPDF
 
 
       //  $overallAttendancePercentage = ($totalSessionsCombined > 0) ? round(100 * ($totalAttendanceCombined / $totalSessionsCombined), 0) . '%' : '0%';
+        $overallAttendancePercentage = ($overallAttendancePercentaje > 0) ? $overallAttendancePercentaje . '%' : '0%';
         $this->pdf->Cell(12, 5, $overallAttendancePercentage, 1, 1, 'R', 0);
     }
 
