@@ -348,10 +348,10 @@ class ReporteParticipacionPDF
         $this->pdf->Cell(10, 5, $finalResult, 1, 0, 'R', 1);
             $this->pdf->setFillColor(255, 255, 255);
 
-        echo 
+        
         $totalSessionsCombined = ($sesionTotal[0] ?? 0) + ($sesionTotal[1] ?? 0);
         $totalAttendanceCombined = ($arrAsistencia[$participantData['idpersona']][0] ?? 0) + ($arrAsistencia[$participantData['idpersona'][1] ?? 0]);
-        $overallAttendancePercentage = ($totalSessionsCombined > 0) ? round(100 * ($totalAttendanceCombined ), 0) . '%' : '0%';
+        $overallAttendancePercentage = ($totalSessionsCombined > 0) ? round(100 * ($totalAttendanceCombined / $totalSessionsCombined), 0) . '%' : '0%';
         $this->pdf->Cell(12, 5, $overallAttendancePercentage, 1, 1, 'R', 0);
     }
 
