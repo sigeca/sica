@@ -209,7 +209,6 @@ class ReporteParticipacionPDF
                     }
 
 
-                    $arrAsistencia[$row->idpersona][$p] = ($arrAsistencia[$row->idpersona][$p] ?? 0) + 1;
                     break;
                 }
             }
