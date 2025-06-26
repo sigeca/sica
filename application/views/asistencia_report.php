@@ -77,7 +77,7 @@ echo $fechahasta;
 echo "<br>";
 
 
-print_r($jornadadocente as $row);
+print_r($jornadadocente);
 die();
 
  $sesiones=array();
