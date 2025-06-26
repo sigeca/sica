@@ -126,6 +126,8 @@ class ReporteParticipacionPDF
         $datac = [];
 
         $arrAsistencia = $this->calculateParticipantAttendance($asistencias, $fechacorte);
+        print_r($arrAsistencia);
+        die();
 
         $id = 0;
         $i = 0;
@@ -181,6 +183,9 @@ class ReporteParticipacionPDF
      */
     private function calculateParticipantAttendance(array $asistencias, array $fechacorte): array
     {
+
+
+
         $arrAsistencia = [];
         foreach ($asistencias as $row) {
             foreach ($fechacorte as $p => $fc) {
