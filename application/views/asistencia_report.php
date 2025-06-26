@@ -69,6 +69,17 @@ if(checkdate($m,$d,$a)){
  $fechasesion=$calendarioacademico[0]->fechadesde;
  $fechahasta=$calendarioacademico[0]->fechahasta;
 }
+
+echo $fechasesion;
+echo "<br>";
+echo $fechahasta;
+
+echo "<br>";
+
+
+print_r($jornadadocente as $row);
+die();
+
  $sesiones=array();
      $i=1;
     do {

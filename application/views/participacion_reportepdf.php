@@ -245,6 +245,8 @@ class ReporteParticipacionPDF
                 if(($nivelRpt==2 || $nivelRpt==1) and $score<=70)
                 {
                     $this->pdf->setFillColor(255, 165,0);  //Color naranja de poner cuidado
+                }else{
+                    $this->pdf->setFillColor(255, 255,255);  //Color naranja de poner cuidado
                 }
 
 
