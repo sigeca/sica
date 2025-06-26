@@ -27,7 +27,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
 </style>
 
 <?php
- $dias = array('Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado');
+ $dias = array('Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sabado');
    date_default_timezone_set('America/Guayaquil');
     $fecha = date("Y-m-d");
     $horai= date("H:i:s");
@@ -70,27 +70,14 @@ if(checkdate($m,$d,$a)){
  $fechahasta=$calendarioacademico[0]->fechahasta;
 }
 
-echo $fechasesion;
-echo "<br>";
-echo $fechahasta;
 
-echo "<br>";
-
-
-print_r($jornadadocente);
-echo "<br>";
 
  $sesiones=array();
      $i=1;
     do {
 	foreach ($jornadadocente as $row){
     		$dia = $dias[date('w', strtotime($fechasesion))];
-            echo $dia;
-            echo "<br>";
 		if($row->nombre==$dia ){    //verifica si la fecha esta en el horario.
-            echo $row->nombre; 
-            echo "<br>";
-            echo "<br>";
 
 
 			$lahorai=$row->horainicio;
@@ -115,8 +102,6 @@ echo "<br>";
 		$fechasesion=date("Y-m-d",strtotime($fechasesion."+ 1 days")); 
 
     }while(strtotime($fechasesion)<=strtotime($fechahasta));
-print_r($sesiones);
-die();
 ?>
 
 
