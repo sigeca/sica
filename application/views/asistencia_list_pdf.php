@@ -18,7 +18,7 @@
     	$pdf->mes="Periodo:  ".$calendarioacademico[0]->nombre; 
 
 
- $dias = array('Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado');
+ $dias = array('Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sabado');
    date_default_timezone_set('America/Guayaquil');
     $fecha = date("Y-m-d");
     $horai= date("H:i:s");
