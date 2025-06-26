@@ -85,10 +85,11 @@ echo "<br>";
     do {
 	foreach ($jornadadocente as $row){
     		$dia = $dias[date('w', strtotime($fechasesion))];
+            echo $dia;
+            echo "<br>";
 		if($row->nombre==$dia ){    //verifica si la fecha esta en el horario.
             echo $row->nombre; 
             echo "<br>";
-            echo $dia;
             echo "<br>";
 
 
