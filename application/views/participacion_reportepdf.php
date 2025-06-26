@@ -309,12 +309,14 @@ class ReporteParticipacionPDF
 
         $totalSum = 0;
         $actualPartials = 0;
+        $overallAttendancePercentage = 0;
         foreach ($parcialScores as $k => $score) {
             if (($numNotes[$k] ?? 0) >= 1) {
                 $totalSum += round($score, 0);
                 $this->pdf->Cell(10, 5, round($score, 0), 1, 0, 'R', 0);
                 $attendancePercentage = ($sesionTotal[$k] > 0) ? round((100 * ($arrAsistencia[$participantData['idpersona']][$k] ?? 0) / $sesionTotal[$k]), 0) . '%' : '0%';
                 $this->pdf->Cell(12, 5, $attendancePercentage, 1, 0, 'R', 0);
+                $overallAttendancePercentage += $attendancePercentage;
                 $actualPartials++;
             } else {
                 if ($score > 0) {
@@ -349,8 +351,10 @@ class ReporteParticipacionPDF
             $this->pdf->setFillColor(255, 255, 255);
 
         
-        $totalSessionsCombined = ($sesionTotal[0] ?? 0) + ($sesionTotal[1] ?? 0);
-        $totalAttendanceCombined = ($arrAsistencia[$participantData['idpersona']][0] ?? 0) + ($arrAsistencia[$participantData['idpersona'][1] ?? 0]);
+  //      $totalSessionsCombined = ($sesionTotal[0] ?? 0) + ($sesionTotal[1] ?? 0);
+   //     $totalAttendanceCombined = ($arrAsistencia[$participantData['idpersona']][0] ?? 0) + ($arrAsistencia[$participantData['idpersona'][1] ?? 0]);
+
+
         $overallAttendancePercentage = ($totalSessionsCombined > 0) ? round(100 * ($totalAttendanceCombined / $totalSessionsCombined), 0) . '%' : '0%';
         $this->pdf->Cell(12, 5, $overallAttendancePercentage, 1, 1, 'R', 0);
     }
