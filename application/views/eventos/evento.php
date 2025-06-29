@@ -105,6 +105,22 @@
         .sticky-footer a:hover {
             color: #f8d7da; /* Lighter red on hover */
         }
+
+.img-moderna-redonda {
+    border-radius: 50%; /* Esto hará la imagen completamente circular si es cuadrada, o un óvalo si no lo es */
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2); /* Sombra sutil para un efecto moderno */
+    transition: transform 0.3s ease-in-out; /* Animación al pasar el mouse */
+    object-fit: cover; /* Asegura que la imagen cubra el área sin distorsionarse */
+    border: 3px solid #ffffff; /* Contorno blanco (puedes cambiar el color) */
+}
+
+.img-moderna-redonda:hover {
+    transform: scale(1.05); /* Ligeramente más grande al pasar el mouse */
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3); /* Sombra más pronunciada al pasar el mouse */
+}
+
+
+
     </style>
 </head>
 <body>
@@ -135,34 +151,29 @@
 
 <header class="hero-image">
     <div class="hero-text">
-
-     <?php if(isset($this->session->userdata['logged_in']['cedula'])) { ?>
-        
-     <?php if(isset($cedula)) { ?>
-
-     <img src="<?php echo 'https://repositorioutlvte.org/Repositorio/fotos/'.$cedula; ?>.jpg"  class="img-fluid mb-3" style="max-width: 250px;" alt="Logo Educaysoft">
+    <?php if(isset($this->session->userdata['logged_in']['cedula'])) { ?>
+        <?php if(isset($cedula)) { ?>
+            <img src="<?php echo 'https://repositorioutlvte.org/Repositorio/fotos/'.$cedula; ?>.jpg" class="img-fluid mb-3 img-moderna-redonda" style="max-width: 250px;" alt="Logo Educaysoft">
+        <?php }else{ ?>
+            <img src="<?php echo 'https://repositorioutlvte.org/Repositorio/fotos/'.$this->session->userdata['logged_in']['cedula']; ?>.jpg" class="img-fluid mb-3 img-moderna-redonda" style="max-width: 250px;" alt="Logo Educaysoft">
+        <?php } ?>
     <?php }else{ ?>
-
-     <img src="<?php echo 'https://repositorioutlvte.org/Repositorio/fotos/'.$this->session->userdata['logged_in']['cedula']; ?>.jpg"  class="img-fluid mb-3" style="max-width: 250px;" alt="Logo Educaysoft">
-
+        <img src="http://repositorioutlvte.org/sica/images/LogoEducCont.png" class="img-fluid mb-3 img-moderna-redonda" style="max-width: 250px;" alt="Logo Educaysoft">
     <?php } ?>
 
-
-    <?php }else{ ?>
-        <img src="http://repositorioutlvte.org/sica/images/LogoEducCont.png" class="img-fluid mb-3" style="max-width: 250px;" alt="Logo Educaysoft">
-    <?php } ?>
-
-
-        <h1 class="display-4"><?php echo $evento['titulo']; ?></h1>
-        <div class="d-flex justify-content-center flex-wrap">
-            <a href="<?php echo 'https://repositorioutlvte.org/Repositorio/'.$silabo['archivopdf']; ?>" class="btn btn-outline-light mx-2 mb-2">
-                <i class="fa-solid fa-book me-2"></i>Sílabo
-            </a>
-            <a href="<?php echo 'https://repositorioutlvte.org/Repositorio/'.$silabo['elplandeclasepdf']; ?>" class="btn btn-outline-light mx-2 mb-2">
-                <i class="fa-solid fa-calendar-alt me-2"></i>Plan de Clase
-            </a>
-        </div>
+    <h1 class="display-4"><?php echo $evento['titulo']; ?></h1>
+    <div class="d-flex justify-content-center flex-wrap">
+        <a href="<?php echo 'https://repositorioutlvte.org/Repositorio/'.$silabo['archivopdf']; ?>" class="btn btn-outline-light mx-2 mb-2">
+            <i class="fa-solid fa-book me-2"></i>Sílabo
+        </a>
+        <a href="<?php echo 'https://repositorioutlvte.org/Repositorio/'.$silabo['elplandeclasepdf']; ?>" class="btn btn-outline-light mx-2 mb-2">
+            <i class="fa-solid fa-calendar-alt me-2"></i>Plan de Clase
+        </a>
+        <a href="<?php echo 'https://repositorioutlvte.org/Repositorio/'.$silabo['elplandeclasepdf']; ?>" class="btn btn-outline-light mx-2 mb-2">
+            <i class="fa-solid fa-calendar-alt me-2"></i>Proyecto de aula
+        </a>
     </div>
+</div>
 </header>
 
 <main class="container section-padding">
