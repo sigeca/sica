@@ -429,7 +429,7 @@ public function cumplimiento(){
 			$data['persona']=$this->persona_model->persona($this->uri->segment(3))->result();
 		    $data['filtro']= $idpersona; //$data['participante']['idparticipante'];
 		}
-        print_r($data['persona'];
+        print_r($data['persona']);
         die();
 		$data['title']="Evento";
 		$this->load->view('page_header',array('session_data' => $this->session->userdata())  );		
