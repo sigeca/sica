@@ -1,0 +1,114 @@
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    /* Main Header */
+    .main-header {
+        padding: 10px;
+    }
+
+    .main-header .logo {
+        height: 35px;
+    }
+
+    /* Public Header */
+    .public-header {
+        flex-direction: column;
+        text-align: center;
+        padding: 15px;
+    }
+
+    .public-nav ul {
+        flex-direction: column;
+        margin-top: 15px;
+        gap: 10px;
+    }
+
+    /* Sidebar */
+    .sidebar {
+        width: 0; /* Initially hidden on small screens */
+        min-width: 0;
+        transform: translateX(-100%); /* Slide out of view */
+        padding-top: 50px; /* Adjust for header height */
+    }
+
+    .sidebar.open {
+        width: 70%; /* Open up to a certain width */
+        min-width: 200px;
+        transform: translateX(0); /* Slide into view */
+        box-shadow: 2px 0 10px rgba(0,0,0,0.3);
+    }
+
+    .sidebar .menu-text {
+        display: inline; /* Always show text when sidebar is open on mobile */
+    }
+
+    .sidebar .menu-icon {
+        margin-right: 10px;
+    }
+
+    /* Main Content Area */
+    .main-content-wrapper {
+        margin-left: 0; /* No offset for sidebar */
+        width: 100%; /* Full width */
+    }
+
+    /* Toggle buttons for mobile */
+    .menu-toggle {
+        display: block; /* Ensure toggle button is visible */
+        position: absolute;
+        right: 15px;
+    }
+
+    .menu-toggle.close-btn {
+        display: none; /* Hide close button by default */
+        z-index: 1001; /* Above sidebar */
+    }
+
+    /* When sidebar is open, show close button and push content slightly if needed */
+    body.sidebar-open .menu-toggle.close-btn {
+        display: block;
+    }
+    body.sidebar-open .menu-toggle#abrir {
+        display: none;
+    }
+
+    /* Adjust main content if sidebar is open and overlays */
+    body.sidebar-open .main-content-wrapper {
+        /* You might want a slight overlay or dimming here */
+    }
+
+    /* General padding adjustments for smaller screens */
+    .content-area, .content-wrapper {
+        padding: 10px;
+        margin: 10px;
+    }
+}
+
+/* Further adjustments for extra small screens/phones */
+@media (max-width: 480px) {
+    .main-header {
+        flex-wrap: wrap; /* Allow items to wrap */
+        justify-content: center;
+    }
+    .main-header .logo-container {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+    .menu-toggle {
+        position: static;
+        margin: 0 5px;
+    }
+
+    .public-nav ul {
+        gap: 5px;
+    }
+
+    /* DataTables specific adjustments on small screens */
+    .dataTables_wrapper .dataTables_filter,
+    .dataTables_wrapper .dataTables_length,
+    .dataTables_wrapper .dataTables_info,
+    .dataTables_wrapper .dataTables_paginate {
+        text-align: center;
+        margin-bottom: 10px;
+    }
+}

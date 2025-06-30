@@ -1,0 +1,168 @@
+/* General Body Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f7f6;
+    color: #333;
+    display: flex;
+    flex-direction: column; /* For general layout of header, main, footer */
+    min-height: 100vh; /* Ensure footer sticks to bottom */
+}
+
+/* Main Header for logged-in users */
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #007bff; /* Primary blue */
+    color: white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: sticky; /* Make header sticky */
+    top: 0;
+    z-index: 1000;
+}
+
+.main-header .logo {
+    height: 40px; /* Adjust logo size */
+}
+
+.menu-toggle {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: block; /* Visible by default on all screens */
+}
+
+.menu-toggle.close-btn {
+    display: none; /* Hidden by default */
+}
+
+/* Public Header for not-logged-in users (landing page) */
+.public-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.public-header .logo {
+    height: 50px;
+}
+
+.public-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 25px;
+}
+
+.public-nav .nav-link {
+    text-decoration: none;
+    color: #007bff;
+    font-weight: bold;
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.public-nav .nav-link:hover {
+    background-color: #e9f5ff;
+}
+
+/* Sidebar Navigation */
+.sidebar {
+    width: 15%; /* Default width when open */
+    min-width: 200px;
+    background-color: #343a40; /* Dark background */
+    color: white;
+    height: 100vh; /* Full viewport height */
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding-top: 60px; /* Space for fixed header */
+    transition: width 0.3s ease, min-width 0.3s ease, transform 0.3s ease;
+    overflow-x: hidden; /* Hide horizontal scrollbar */
+    z-index: 999;
+}
+
+.sidebar .menu-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar .menu-item {
+    padding: 10px 15px;
+    border-bottom: 1px solid #495057;
+}
+
+.sidebar .menu-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+    font-size: 1.1rem;
+    white-space: nowrap; /* Prevent wrapping */
+    transition: background-color 0.3s ease;
+}
+
+.sidebar .menu-link:hover {
+    background-color: #495057;
+}
+
+.sidebar .menu-icon {
+    width: 30px; /* Icon size */
+    height: 30px;
+    margin-right: 10px;
+    flex-shrink: 0; /* Prevent shrinking */
+}
+
+/* Main Content Area */
+.main-content-wrapper {
+    margin-left: 15%; /* Offset for sidebar */
+    width: 85%; /* Remaining width */
+    transition: margin-left 0.3s ease, width 0.3s ease;
+    flex-grow: 1; /* Allows main content to take remaining space */
+}
+
+.content-area {
+    padding: 20px;
+}
+
+/* General Content Wrapper for views like persona_record */
+.content-wrapper {
+    background-color: #fff;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.08);
+}
+
+/* Footer */
+footer {
+    background-color: #343a40;
+    color: white;
+    text-align: center;
+    padding: 15px 20px;
+    margin-top: auto; /* Pushes footer to the bottom */
+}
+
+/* Utility for hidden elements */
+.d-none {
+    display: none !important;
+}
+
+/* Styles for the "album" section on public view */
+.public-hero-section {
+    padding: 60px 0;
+    background-color: #f8f9fa;
+}
+
+/* Card styles from Bootstrap are assumed, ensure Bootstrap CSS is loaded */
