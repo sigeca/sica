@@ -8,8 +8,6 @@
 //
 //
 
-        echo $persona['nombres'] ;
-        die();
 
 $idpersona = isset($persona['idpersona']) ? $persona['idpersona'] : 'unknown';
 $person_name = isset($persona['nombres']) && isset($persona['apellidos']) ? $persona['nombres'] . ' ' . $persona['apellidos'] : 'Persona Desconocida';
