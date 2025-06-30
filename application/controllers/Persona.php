@@ -99,7 +99,7 @@ class Persona extends CI_Controller {
         $data['persona'] = $persona;
         $data['tipopersonas'] = $this->Tipopersona_model->lista_tipopersonas()->result();
         $data['sexos'] = $this->Sexo_model->lista_sexos()->result();
-        $data['direccions'] = $this->Direccion_model->direccions_persona($idpersona)->result();
+        $data['direccions'] = $this->Direccion_model->direccionspersona($idpersona)->result();
         $data['correos'] = $this->Correo_model->correos_persona($idpersona)->result();
         $data['telefonos'] = $this->Telefono_model->telefonos_persona($idpersona)->result();
         $data['nacionalidadpersonas'] = $this->Nacionalidadpersona_model->nacionalidadpersonas_persona($idpersona)->result();
