@@ -87,7 +87,7 @@ class Persona extends CI_Controller {
             }
         }
 
-        $persona = $this->Persona_model->persona($idpersona);
+        $persona = $this->Persona_model->elultimo($idpersona);
 
         if (!$persona) {
             // Handle case where person is not found, maybe show an error or redirect
