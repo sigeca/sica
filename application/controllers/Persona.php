@@ -77,7 +77,7 @@ class Persona extends CI_Controller {
         // Determine the person ID to display
         if ($idpersona === null) {
             // If no ID is provided, try to get the last one or redirect to list/add
-            $last_person = $this->Persona_model->lastPersona();
+            $last_person = $this->Persona_model->elultimo();
             if ($last_person) {
                 $idpersona = $last_person['idpersona'];
             } else {
