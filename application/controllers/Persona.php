@@ -101,10 +101,10 @@ class Persona extends CI_Controller {
         $data['sexos'] = $this->Sexo_model->lista_sexos()->result();
         $data['direccions'] = $this->Direccion_model->direccionspersona($idpersona)->result();
         $data['correos'] = $this->Correo_model->correospersona($idpersona)->result();
-        $data['telefonos'] = $this->Telefono_model->telefonos_persona($idpersona)->result();
-        $data['nacionalidadpersonas'] = $this->Nacionalidadpersona_model->nacionalidadpersonas_persona($idpersona)->result();
-        $data['paispersonas'] = $this->Paispersona_model->paispersonas_persona($idpersona)->result();
-        $data['provinciapersonas'] = $this->Provinciapersona_model->provinciapersonas_persona($idpersona)->result();
+        $data['telefonos'] = $this->Telefono_model->telefonospersona($idpersona)->result();
+        $data['nacionalidadpersonas'] = $this->Nacionalidadpersona_model->nacionalidadpersonaspersona($idpersona)->result();
+        $data['paispersonas'] = $this->Paispersona_model->paispersonaspersona($idpersona)->result();
+        $data['provinciapersonas'] = $this->Provinciapersona_model->provinciapersonaspersona($idpersona)->result();
 
         // Prepare data for dynamic links for emails and phones
         $arractu_correo = [];
