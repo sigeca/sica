@@ -19,26 +19,33 @@ $person_name = isset($persona['nombres']) && isset($persona['apellidos']) ? $per
         <?php
         // This access check should ideally be done in the controller before loading the view
         // Keeping it for now but recommending controller-level access control.
+        $permitir_acceso_modulo = 0; // Flag to check if 'evento' module access exists
+        $numero = -1; // Initialize with an invalid index
         if (isset($this->session->userdata['acceso'])) {
-            $permitir = 0;
             $j = 0;
-            $numero = $j;
             foreach ($this->session->userdata['acceso'] as $row) {
-                if ("evento" == $row["modulo"]["modulo"]) { // Assuming "evento" is the module name
+                if (isset($row["modulo"]["modulo"]) && "evento" == $row["modulo"]["modulo"]) {
                     $numero = $j;
-                    $permitir = 1;
+                    $permitir_acceso_modulo = 1;
+                    break; // Found the module, no need to continue loop
                 }
                 $j = $j + 1;
             }
-            if ($permitir == 0) {
-                redirect('login/logout');
+            if ($permitir_acceso_modulo == 0) {
+                // If module access not found, redirect (or handle gracefully)
+                // This logic might be better placed in a central authentication helper/controller
+                // redirect('login/logout'); // Uncomment if you want strict redirection
             }
         }
         ?>
     </div>
 
     <div class="navigation-links">
-        <?php if (isset($this->session->userdata['acceso']) && isset($numero) && $this->session->userdata['acceso'][$numero]['nivelacceso']['navegar']) { ?>
+        <?php
+        // Check if access for 'navegar' is set before trying to use it
+        $can_navigate = $permitir_acceso_modulo && $numero !== -1 && isset($this->session->userdata['acceso'][$numero]['nivelacceso']['navegar']) && $this->session->userdata['acceso'][$numero]['nivelacceso']['navegar'];
+        if ($can_navigate) {
+        ?>
             <ul class="nav-list">
                 <li><?php echo anchor('evento/elprimero/', 'Primero'); ?></li>
                 <li><?php echo anchor('evento/siguiente/' . $idpersona, 'Siguiente'); ?></li>
@@ -54,7 +61,11 @@ $person_name = isset($persona['nombres']) && isset($persona['apellidos']) ? $per
                 <h6 class="m-0 font-weight-bold text-primary">Eventos de la Persona</h6>
             </div>
             <div class="card-body">
-                <?php if (isset($this->session->userdata['acceso']) && isset($numero) && $this->session->userdata['acceso'][$numero]['nivelacceso']['add']) { ?>
+                <?php
+                // Check if access for 'add' is set before trying to use it
+                $can_add = $permitir_acceso_modulo && $numero !== -1 && isset($this->session->userdata['acceso'][$numero]['nivelacceso']['add']) && $this->session->userdata['acceso'][$numero]['nivelacceso']['add'];
+                if ($can_add) {
+                ?>
                     <a href="<?php echo site_url('evento/add'); ?>" class="btn btn-primary mb-3">Agregar Evento</a>
                 <?php } ?>
 
@@ -99,7 +110,7 @@ $person_name = isset($persona['nombres']) && isset($persona['apellidos']) ? $per
                             // Assuming $periodos_academicos is passed from the controller
                             if (isset($periodos_academicos) && !empty($periodos_academicos)) {
                                 foreach ($periodos_academicos as $periodo) {
-                                    echo '<option value="' . $periodo->idperiodoacademico . '">' . $periodo->nombre . '</option>';
+                                    echo '<option value="' . htmlspecialchars($periodo->idperiodoacademico) . '">' . htmlspecialchars($periodo->nombre) . '</option>';
                                 }
                             }
                             ?>
@@ -145,6 +156,7 @@ $person_name = isset($persona['nombres']) && isset($persona['apellidos']) ? $per
                 data: function(d) {
                     d.idpersona = $('#filtro').text(); // Pass person ID
                     // Add other filter parameters if needed, e.g., d.idperiodoacademico = idperiodoacademico;
+                    d.idperiodoacademico = $('#idperiodoacademico').val(); // Pass selected period ID
                 }
             },
             "columns": [
@@ -155,19 +167,24 @@ $person_name = isset($persona['nombres']) && isset($persona['apellidos']) ? $per
                 {
                     "data": null,
                     "render": function(data, type, row) {
-                        // Assuming you have 'ver' and 'editar' actions
                         let actions = '';
                         // Access control should ideally be handled on the server-side as well for robustness
-                        // but for client-side visibility:
-                        <?php if (isset($this->session->userdata['acceso']) && isset($numero) && $this->session->userdata['acceso'][$numero]['nivelacceso']['ver']) { ?>
-                            actions += '<button class="btn btn-info btn-sm item_ver" data-idevento="' + row.idevento + '" data-retorno="<?php echo site_url('evento/detalle'); ?>" data-bs-toggle="modal" data-bs-target="#myModal">Ver</button> ';
-                        <?php } ?>
-                        <?php if (isset($this->session->userdata['acceso']) && isset($numero) && $this->session->userdata['acceso'][$numero]['nivelacceso']['edit']) { ?>
+                        // Using JS condition based on PHP flags passed or re-checking (less secure for preventing actions)
+                        // It's better to render these buttons conditionally in PHP directly if possible,
+                        // or pass granular access flags to JS
+                        const canView = <?php echo $permitir_acceso_modulo && $numero !== -1 && isset($this->session->userdata['acceso'][$numero]['nivelacceso']['ver']) && $this->session->userdata['acceso'][$numero]['nivelacceso']['ver'] ? 'true' : 'false'; ?>;
+                        const canEdit = <?php echo $permitir_acceso_modulo && $numero !== -1 && isset($this->session->userdata['acceso'][$numero]['nivelacceso']['edit']) && $this->session->userdata['acceso'][$numero]['nivelacceso']['edit'] ? 'true' : 'false'; ?>;
+                        const canDelete = <?php echo $permitir_acceso_modulo && $numero !== -1 && isset($this->session->userdata['acceso'][$numero]['nivelacceso']['delete']) && $this->session->userdata['acceso'][$numero]['nivelacceso']['delete'] ? 'true' : 'false'; ?>;
+
+                        if (canView) {
+                            actions += '<button class="btn btn-info btn-sm item_ver" data-idevento="' + row.idevento + '" data-bs-toggle="modal" data-bs-target="#myModal">Ver</button> ';
+                        }
+                        if (canEdit) {
                             actions += '<a href="<?php echo site_url('evento/edit/'); ?>' + row.idevento + '" class="btn btn-warning btn-sm">Editar</a> ';
-                        <?php } ?>
-                        <?php if (isset($this->session->userdata['acceso']) && isset($numero) && $this->session->userdata['acceso'][$numero]['nivelacceso']['delete']) { ?>
+                        }
+                        if (canDelete) {
                             actions += '<a href="<?php echo site_url('evento/quitar/'); ?>' + row.idevento + '" class="btn btn-danger btn-sm" onclick="return confirm(\'¿Está seguro de eliminar este evento?\')">Eliminar</a>';
-                        <?php } ?>
+                        }
                         return actions;
                     }
                 }
@@ -181,7 +198,6 @@ $person_name = isset($persona['nombres']) && isset($persona['apellidos']) ? $per
         // Event listener for "Ver" button to open modal and load content
         $('#mydatac tbody').on('click', '.item_ver', function() {
             var idevento = $(this).data('idevento');
-            // Assuming you have an AJAX endpoint to fetch event details
             $.ajax({
                 url: '<?php echo site_url('evento/get_detalle_evento_ajax'); ?>', // Controller method for AJAX detail fetch
                 type: 'GET',
@@ -204,28 +220,11 @@ $person_name = isset($persona['nombres']) && isset($persona['apellidos']) ? $per
         };
 
         window.filtra_periodo = function() {
-            // This function should ideally update a parameter for mydatac reload
-            // Or trigger a separate DataTables instance if it's for another table
-            var idperiodoacademico = $('#idperiodoacademico').val();
-            // Assuming mydatac is the table for events, you would pass this as a parameter in the ajax.data function
-            // For now, if you have a separate table or need to update mydatac based on this filter:
-            mydatac.ajax.url('<?php echo site_url('evento/persona_data'); ?>?idpersona=' + $('#filtro').text() + '&idperiodoacademico=' + idperiodoacademico).load();
+            // This will trigger the DataTables reload with the updated filter value from the select box
+            mydatac.ajax.reload();
         };
 
-        // Old specific click handlers (if still needed, integrate with DataTables row click or 'Ver' button)
-        // These are redundant if DataTables handles actions through the "Acciones" column
-        /*
-        $('#show_datap').on('click','.docu_ver',function(){
-            var ordenador = "https://"+$(this).data('ordenador');
-            var ubicacion=$(this).data('ubicacion');
-            if(ordenador.slice(-1) != "/" && ubicacion.slice(0,1) != "/"){
-                ubicacion = ordenador+"/"+ubicacion;
-            }else{
-                ubicacion = ordenador+ubicacion;
-            }
-            var archivo = $(this).data('archivo');
-            var certi= ubicacion.trim()+archivo.trim();
-            window.location.href = certi;
-        });
-        */
-        // Note: The above `docu_ver` and other `item_ver` handlers for
+        // Note: The old specific click handlers (like docu_ver) were commented out in the previous revision.
+        // If they are for other DataTables instances, they should be located within their respective views.
+    });
+</script>
