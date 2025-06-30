@@ -90,6 +90,7 @@ body {
     transition: width 0.3s ease, min-width 0.3s ease, transform 0.3s ease;
     overflow-x: hidden; /* Hide horizontal scrollbar */
     z-index: 999;
+        box-shadow: 2px 0 5px rgba(0,0,0,0.2); /* Add subtle shadow */
 }
 
 .sidebar .menu-list {
@@ -130,6 +131,7 @@ body {
     width: 85%; /* Remaining width */
     transition: margin-left 0.3s ease, width 0.3s ease;
     flex-grow: 1; /* Allows main content to take remaining space */
+        box-sizing: border-box; /* Include padding/border in element's total width */
 }
 
 .content-area {
@@ -143,7 +145,27 @@ body {
     margin: 20px;
     border-radius: 8px;
     box-shadow: 0 0 15px rgba(0,0,0,0.08);
+ /* Ensure it takes available width, remove max-width if any was implied */
+    width: auto; /* Allow it to naturally fill its parent's width */
+    min-height: 500px; /* Example: ensure some minimum height */
 }
+
+
+
+/* Add or adjust these styles for a more flexible main area when sidebar is collapsed */
+body.sidebar-collapsed .main-content-wrapper {
+    margin-left: 5%; /* When sidebar is collapsed to 5% */
+    width: 95%; /* Take up more width */
+}
+
+body.sidebar-collapsed .sidebar {
+    width: 5%;
+    min-width: 60px;
+}
+
+
+
+
 
 /* Footer */
 footer {

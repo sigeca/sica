@@ -17,19 +17,22 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Initial state setup and responsive adjustments
-    function initializeSidebar() {
+function initializeSidebar() {
         if (window.innerWidth <= 768) {
             ocultar(); // Default to hidden on smaller screens
-            if (sidebar) sidebar.classList.remove('open'); // Ensure 'open' class is removed
-            if (closeBtn) closeBtn.style.display = "none";
+            document.body.classList.remove('sidebar-open'); // Ensure class is removed
             if (openBtn) openBtn.style.display = "block"; // Make sure open button is visible
+            if (closeBtn) closeBtn.style.display = "none";
         } else {
             abrir(); // Default to open on larger screens
-            if (sidebar) sidebar.classList.add('open'); // Ensure 'open' class is added
-            if (closeBtn) closeBtn.style.display = "inline";
+            document.body.classList.add('sidebar-open'); // Ensure class is added
             if (openBtn) openBtn.style.display = "none";
+            if (closeBtn) closeBtn.style.display = "inline";
         }
     }
+
+
+
 
     initializeSidebar(); // Call on page load
 

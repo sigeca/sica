@@ -81,7 +81,55 @@
         padding: 10px;
         margin: 10px;
     }
+
+ /* Sidebar (on mobile, it slides off-screen) */
+    .sidebar {
+        width: 0;
+        min-width: 0;
+        transform: translateX(-100%);
+        /* When open, it should be a reasonable width */
+        position: fixed; /* Ensure it stays fixed */
+        top: 0; /* Align to top */
+        bottom: 0; /* Full height */
+        overflow-y: auto; /* Allow scrolling if menu is long */
+    }
+
+    .sidebar.open {
+        width: 70%; /* A good width for mobile sidebar */
+        min-width: 200px; /* Ensure readability */
+        transform: translateX(0);
+    }
+
+    /* Main Content Area (on mobile, it takes full width) */
+    .main-content-wrapper {
+        margin-left: 0; /* No offset */
+        width: 100%; /* Full width */
+        padding-left: 0; /* Reset any padding if inherited */
+        padding-right: 0;
+    }
+
+    /* Override body class for mobile to ensure main content takes full width */
+    body.sidebar-open .main-content-wrapper {
+        /* On mobile, you might want to overlay content or prevent scrolling if sidebar is open */
+        overflow: hidden; /* Prevent scrolling of content behind sidebar */
+    }
+
 }
+
+/* Additional media query for very large screens if needed */
+@media (min-width: 1200px) {
+    .main-content-wrapper {
+        /* You can adjust these if 15% sidebar is too small or too large */
+        margin-left: 15%;
+        width: 85%;
+    }
+    .sidebar {
+        width: 15%;
+        min-width: 200px;
+    }
+}
+
+
 
 /* Further adjustments for extra small screens/phones */
 @media (max-width: 480px) {
