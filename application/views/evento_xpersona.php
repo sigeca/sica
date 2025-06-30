@@ -4,7 +4,13 @@
 
 // The $title and $persona data should be passed from the controller (e.g., Evento controller)
 // just like in Persona.php for persona_record.php.
-// Ensure $idpersona is available, possibly passed from the controller or extracted from $persona array.
+// Ensure $idpersona is available, possibly passed from the controller or extracted from $persona array.    
+//
+//
+
+        print_r($persona);
+        die();
+
 $idpersona = isset($persona['idpersona']) ? $persona['idpersona'] : 'unknown';
 $person_name = isset($persona['nombres']) && isset($persona['apellidos']) ? $persona['nombres'] . ' ' . $persona['apellidos'] : 'Persona Desconocida';
 ?>
