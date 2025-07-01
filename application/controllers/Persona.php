@@ -418,11 +418,32 @@ public function actual(){
      * Retrieves person data for DataTables (AJAX endpoint).
      * This method is called via AJAX from the `persona_list.php` view.
      */
-    public function persona_data() {
-        $this->_check_access(); // Ensure access for AJAX calls as well
-        $data = $this->Persona_model->lista_personas(); // Assuming this returns data for DataTables
-        echo json_encode($data);
-    }
+ public function persona_data()
+{
+		$draw= intval($this->input->get("draw"));
+		$draw= intval($this->input->get("start"));
+		$draw= intval($this->input->get("length"));
+
+
+	 	$data0 = $this->persona_model->lista_personas();
+		$data=array();
+		foreach($data0->result() as $r){
+			$data[]=array($r->idpersona,$r->cedula,$r->apellidos,$r->nombres,$r->fechanacimiento,
+				$r->href='<a href="javascript:void(0);" class="btn btn-info btn-sm item_ver" data-retorno="'.site_url('persona/actual').'"    data-idpersona="'.$r->idpersona.'">Ver</a>');
+		}	
+		$output=array( "draw"=>$draw,
+			"recordsTotal"=> $data0->num_rows(),
+			"recordsFiltered"=> $data0->num_rows(),
+			"data"=>$data
+		);
+		echo json_encode($output);
+		exit();
+}
+
+
+
+
+
 
     /**
      * Retrieves document data for a specific person (AJAX endpoint).
