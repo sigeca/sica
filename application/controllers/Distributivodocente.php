@@ -575,13 +575,13 @@ public function actual()
 	  {
   		$data['docentes']= $this->docente_model->lista_docentesA(0)->result();
     		$data['title']="Distributivodocente";
-    		$this->load->view('template/page_header');		
+    		$this->load->view('page_header');		
     		$this->load->view('distributivodocente_record',$data);
-    		$this->load->view('template/page_footer');
+    		$this->load->view('page_footer');
   	}else{
-    		$this->load->view('template/page_header');		
+    		$this->load->view('page_header');		
     		$this->load->view('registro_vacio');
-    		$this->load->view('template/page_footer');
+    		$this->load->view('page_footer');
   	}
  }
 
