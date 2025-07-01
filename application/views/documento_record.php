@@ -27,11 +27,11 @@ if(isset($documento))
 ?>
 
         <li> <?php echo anchor('documento/elprimero/', 'primero','style="text-decoration:none; color:#007bff; font-weight:bold;"'); ?></li>
-        <li> <?php echo anchor('documento/siguiente/'.$documento['iddocumento'], 'siguiente'); ?></li>
-        <li> <?php echo anchor('documento/anterior/'.$documento['iddocumento'], 'anterior'); ?></li>
-        <li style="border-right:1px solid green"><?php echo anchor('documento/elultimo/', 'Último'); ?></li>
+        <li> <?php echo anchor('documento/siguiente/'.$documento['iddocumento'], 'siguiente', 'style="text-decoration:none; color:#007bff; font-weight:bold;"'); ?></li>
+        <li> <?php echo anchor('documento/anterior/'.$documento['iddocumento'], 'anterior', 'style="text-decoration:none; color:#007bff; font-weight:bold;"'); ?></li>
+        <li style="border-right:1px solid green"><?php echo anchor('documento/elultimo/', 'Último', 'style="text-decoration:none; color:#007bff; font-weight:bold;"'); ?></li>
 	<?php 	if($this->session->userdata['acceso'][$numero]['nivelacceso']['create']){ ?>
-        <li> <?php echo anchor('documento/add', 'Nuevo'); ?></li>
+        <li> <?php echo anchor('documento/add', 'Nuevo', 'style="text-decoration:none; color:#28a745; font-weight:bold;"'); ?></li>
 	<?php } ?>
 
 
