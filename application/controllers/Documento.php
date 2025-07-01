@@ -278,9 +278,9 @@ public function genpagina()
   		$data['destinodocumentos']= $this->destinodocumento_model->lista_destinodocumento()->result();
   		$data['filtro']= $this->uri->segment(3);
   		$data['title']="Documento";
-		$this->load->view('template/page_header');		
+		$this->load->view('page_header');		
   		$this->load->view('documento_list',$data);
-		$this->load->view('template/page_footer');
+		$this->load->view('page_footer');
 	}
 
 
