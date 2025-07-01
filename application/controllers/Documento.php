@@ -7,13 +7,13 @@ class Documento extends CI_Controller{
       parent::__construct();
 
         // Load necessary models
-	    $this->load_model('documento_model');
-	    $this->load_model('documento_estado_model');
-	    $this->load_model('tipodocumentodocumento_model');
-	    $this->load_model('tipodocu_model');
-	    $this->load_model('destinodocumento_model');
-	    $this->load_model('ordenador_model');
-	    $this->load_model('directorio_model');
+	    $this->load->model('documento_model');
+	    $this->load->model('documento_estado_model');
+	    $this->load->model('tipodocumentodocumento_model');
+	    $this->load->model('tipodocu_model');
+	    $this->load->model('destinodocumento_model');
+	    $this->load->model('ordenador_model');
+	    $this->load->model('directorio_model');
 
 
 
@@ -118,12 +118,12 @@ class Documento extends CI_Controller{
 
 	public function add()
 	{
-        $this->load_model('documento_model');
-        $this->load_model('documento_estado_model');
-	    $this->load_model('persona_model');
-	    $this->load_model('tipodocu_model');
-	    $this->load_model('destinodocumento_model');
-	    $this->load_model('ordenador_model');
+        $this->load->model('documento_model');
+        $this->load->model('documento_estado_model');
+	    $this->load->model('persona_model');
+	    $this->load->model('tipodocu_model');
+	    $this->load->model('destinodocumento_model');
+	    $this->load->model('ordenador_model');
 
 		$data['title']="Usted esta Creando un nuevo Documento";
 		$data['tipodocus']= $this->tipodocu_model->lista_tipodocu()->result();
@@ -142,7 +142,7 @@ class Documento extends CI_Controller{
 // ==============================================
 	public function  save()
 	{
-        $this->load_model('documento_model');
+        $this->load->model('documento_model');
 	 	$array_item=array(
 		 	
 		 	'iddocumento' => $this->input->post('iddocumento'),
@@ -170,7 +170,7 @@ class Documento extends CI_Controller{
 	public function get_parametros()
 	{
 
-        $this->load_model('documento_model');
+        $this->load->model('documento_model');
  	$iddocumento = $this->input->get('iddocumento');
 	header("Content-type: application/json; charset=utf-8");
  	echo json_encode($this->documento_model->parametros_documento($iddocumento));
@@ -183,7 +183,7 @@ class Documento extends CI_Controller{
 
 public function genpagina()
 {
-	    $this->load_model('documento_model');
+	    $this->load->model('documento_model');
 	$idtipodocu=0;
 
 	$ordenrpt=0;
@@ -236,14 +236,14 @@ public function genpagina()
 
 	public function actual(){
 
-        $this->load_model('documento_model');
-	    $this->load_model('documento_estado_model');
-	    $this->load_model('tipodocumentodocumento_model');
-	    $this->load_model('persona_model');
-	    $this->load_model('tipodocu_model');
-	    $this->load_model('destinodocumento_model');
-	    $this->load_model('ordenador_model');
-	    $this->load_model('directorio_model');
+        $this->load->model('documento_model');
+	    $this->load->model('documento_estado_model');
+	    $this->load->model('tipodocumentodocumento_model');
+	    $this->load->model('persona_model');
+	    $this->load->model('tipodocu_model');
+	    $this->load->model('destinodocumento_model');
+	    $this->load->model('ordenador_model');
+	    $this->load->model('directorio_model');
 
 
 	 // $data['documento_list']=$this->documento_model->lista_documento()->result();
@@ -267,10 +267,10 @@ public function genpagina()
 /////////////////////////////////
 	public function listar()
 	{
-        $this->load_model('documento_model');
-	    $this->load_model('portafolio_model');
-	    $this->load_model('tipodocu_model');
-	    $this->load_model('destinodocumento_model');
+        $this->load->model('documento_model');
+	    $this->load->model('portafolio_model');
+	    $this->load->model('tipodocu_model');
+	    $this->load->model('destinodocumento_model');
 	
   		$data['documentos'] = $this->documento_model->lista_documentos1()->result();
   		$data['tipodocus']= $this->tipodocu_model->lista_tipodocu()->result();
@@ -288,7 +288,7 @@ public function genpagina()
 
 
       function documento_dataflutter() {
-	    $this->load_model('documento_model');
+	    $this->load->model('documento_model');
         $idtipodocu = $this->input->get('idtipodocu'); // Obtener parámetro GET
 
         if (!$idtipodocu) {
@@ -304,7 +304,7 @@ public function genpagina()
 
 	function documento_data()
 	{
-        $this->load_model('documento_model');
+        $this->load->model('documento_model');
 		$draw= intval($this->input->get("draw"));
 		$draw= intval($this->input->get("start"));
 		$draw= intval($this->input->get("length"));
@@ -364,8 +364,8 @@ public function genpagina()
 	public function listarxtipodocu()
 
 	{
-        $this->load_model('documento_model');
-	    $this->load_model('tipodocu_model');
+        $this->load->model('documento_model');
+	    $this->load->model('tipodocu_model');
 	
   		$data['documento'] = $this->documento_model->lista_documentos()->result();
   		$data['tipodocus']= $this->tipodocu_model->lista_tipodocu()->result();
@@ -407,7 +407,7 @@ public function genpagina()
 	public function reportepdf()
 	{
 
-        $this->load_model('documento_model');
+        $this->load->model('documento_model');
 
 		if($asunto=$this->input->get('asunto')){
 		    $data['documentos'] = $this->documento_model->documentosxtipo($this->uri->segment(3),$asunto)->result();
@@ -431,13 +431,13 @@ public function genpagina()
 
 public function elprimero()
 {
-        $this->load_model('documento_model');
-	    $this->load_model('tipodocumentodocumento_model');
-	    $this->load_model('documento_estado_model');
-	    $this->load_model('tipodocu_model');
-	    $this->load_model('destinodocumento_model');
-	    $this->load_model('ordenador_model');
-	    $this->load_model('directorio_model');
+        $this->load->model('documento_model');
+	    $this->load->model('tipodocumentodocumento_model');
+	    $this->load->model('documento_estado_model');
+	    $this->load->model('tipodocu_model');
+	    $this->load->model('destinodocumento_model');
+	    $this->load->model('ordenador_model');
+	    $this->load->model('directorio_model');
 
 	$data['documento'] = $this->documento_model->elprimero();
   if(!empty($data))
@@ -470,13 +470,13 @@ public function elprimero()
 public function elultimo()
 {
 
-        $this->load_model('documento_model');
-	    $this->load_model('tipodocumentodocumento_model');
-	    $this->load_model('documento_estado_model');
-	    $this->load_model('tipodocu_model');
-	    $this->load_model('destinodocumento_model');
-	    $this->load_model('ordenador_model');
-	    $this->load_model('directorio_model');
+        $this->load->model('documento_model');
+	    $this->load->model('tipodocumentodocumento_model');
+	    $this->load->model('documento_estado_model');
+	    $this->load->model('tipodocu_model');
+	    $this->load->model('destinodocumento_model');
+	    $this->load->model('ordenador_model');
+	    $this->load->model('directorio_model');
 	$data['documento'] = $this->documento_model->elultimo();
   if(!empty($data))
   {
@@ -514,13 +514,13 @@ public function elultimo()
 public function siguiente(){
 
 
-        $this->load_model('documento_model');
-	    $this->load_model('tipodocumentodocumento_model');
-	    $this->load_model('documento_estado_model');
-	    $this->load_model('tipodocu_model');
-	    $this->load_model('destinodocumento_model');
-	    $this->load_model('ordenador_model');
-	    $this->load_model('directorio_model');
+        $this->load->model('documento_model');
+	    $this->load->model('tipodocumentodocumento_model');
+	    $this->load->model('documento_estado_model');
+	    $this->load->model('tipodocu_model');
+	    $this->load->model('destinodocumento_model');
+	    $this->load->model('ordenador_model');
+	    $this->load->model('directorio_model');
 
  // $data['documento_list']=$this->documento_model->lista_documento()->result();
 	$data['documento'] = $this->documento_model->siguiente($this->uri->segment(3))->row_array();
@@ -542,13 +542,13 @@ public function siguiente(){
 public function anterior(){
 
 
-        $this->load_model('documento_model');
-	    $this->load_model('tipodocumentodocumento_model');
-	    $this->load_model('documento_estado_model');
-	    $this->load_model('tipodocu_model');
-	    $this->load_model('destinodocumento_model');
-	    $this->load_model('ordenador_model');
-	    $this->load_model('directorio_model');
+        $this->load->model('documento_model');
+	    $this->load->model('tipodocumentodocumento_model');
+	    $this->load->model('documento_estado_model');
+	    $this->load->model('tipodocu_model');
+	    $this->load->model('destinodocumento_model');
+	    $this->load->model('ordenador_model');
+	    $this->load->model('directorio_model');
 
  // $data['documento_list']=$this->documento_model->lista_documento()->result();
 	$data['documento'] = $this->documento_model->anterior($this->uri->segment(3))->row_array();
@@ -577,13 +577,13 @@ public function anterior(){
 	public function edit()
 	{
 
-        $this->load_model('documento_model');
-	    $this->load_model('tipodocumentodocumento_model');
-	    $this->load_model('documento_estado_model');
-	    $this->load_model('tipodocu_model');
-	    $this->load_model('destinodocumento_model');
-	    $this->load_model('ordenador_model');
-	    $this->load_model('directorio_model');
+        $this->load->model('documento_model');
+	    $this->load->model('tipodocumentodocumento_model');
+	    $this->load->model('documento_estado_model');
+	    $this->load->model('tipodocu_model');
+	    $this->load->model('destinodocumento_model');
+	    $this->load->model('ordenador_model');
+	    $this->load->model('directorio_model');
     		$data['documento'] = $this->documento_model->documento($this->uri->segment(3))->row_array();
     		$data['tipodocus']= $this->tipodocu_model->lista_tipodocu()->result();
     		$data['destinodocumentos']= $this->destinodocumento_model->lista_destinodocumento()->result();
@@ -602,7 +602,7 @@ public function anterior(){
 
 	public function  save_edit()
 	{
-        $this->load_model('documento_model');
+        $this->load->model('documento_model');
 		$id=$this->input->post('iddocumento');
 	 	$array_item=array(
 		 	
@@ -679,7 +679,7 @@ public function anterior(){
 
  	public function delete()
  	{
-        $this->load_model('documento_model');
+        $this->load->model('documento_model');
  		$data=$this->documento_model->delete($this->uri->segment(3));
  		echo json_encode($data);
 	 	redirect('documento/elprimero');
