@@ -312,9 +312,9 @@ public function cumplimiento(){
 
 
 
-		$this->load->view('template/page_header');		
+		$this->load->view('page_header');		
 		$this->load->view('evento_record',$data);
-		$this->load->view('template/page_footer');
+		$this->load->view('page_footer');
 	}
 
 
