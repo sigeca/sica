@@ -4,21 +4,8 @@ class Documento extends CI_Controller{
 
   public function __construct(){
       parent::__construct();
-    $this->load->database();
-    $this->load->helper('form');
-	}
 
-
-// Método para cargar un modelo solo cuando sea necesario
-    private function load_model($model_name) {
-        if (!isset($this->$model_name)) {
-            $this->load->model($model_name);
-        }
-    }
-
-
-	public function index(){
-
+        // Load necessary models
 	    $this->load_model('documento_model');
 	    $this->load_model('documento_estado_model');
 	    $this->load_model('tipodocumentodocumento_model');
@@ -27,8 +14,81 @@ class Documento extends CI_Controller{
 	    $this->load_model('ordenador_model');
 	    $this->load_model('directorio_model');
 
- 		if(isset($this->session->userdata['logged_in'])){
-			$data['documento'] = $this->documento_model->elultimo();
+
+
+
+
+        $this->load->database();
+        $this->load->helper('form');
+        $this->load->helper('url');
+	}
+
+
+
+    /**
+     * Checks user access permissions.
+     * Redirects to login if access is not permitted for 'persona' module.
+     */
+    private function _check_access() {
+        if (!isset($this->session->userdata['acceso'])) {
+            redirect('login/logout');
+        }
+
+        $has_access = false;
+        foreach ($this->session->userdata['acceso'] as $module_access) {
+            if (isset($module_access['modulo']['modulo']) && $module_access['modulo']['modulo'] === 'documento') {
+                $has_access = true;
+                break;
+            }
+        }
+
+        if (!$has_access) {
+            redirect('login/logout');
+        }
+    }
+
+
+
+
+
+	public function index($iddocumento = null){
+        $this->_check_access(); // Ensure user has access
+
+        $data = [];
+        $data['title'] = "Gestión Documental";
+
+
+        if ($iddocumento === null) {
+            // If no ID is provided, try to get the last one or redirect to list/add
+            $documento = $this->documento_model->elultimo();
+            if ($documento) {
+                $iddocumento = $documento['iddocumento'];
+            } else {
+                // If no persons exist, redirect to add new
+                redirect('documento/add');
+                return;
+            }
+        }
+
+
+    //    $documento = $this->documento_model->elultimo();
+
+        if (!$documento) {
+            // Handle case where person is not found, maybe show an error or redirect
+            log_message('error', 'Persona with ID ' . $iddocumento . ' not found.');
+            show_404(); // Or redirect to a list view with a message
+            return;
+        }
+
+        $data['documento'] = $documento;
+ 
+
+
+
+            
+
+
+
 		    $data['tipodocumentodocumentos'] =$this->tipodocumentodocumento_model->tipodocumentodocumento1($data['documento']['iddocumento'])->result();
 			$data['tipodocus']= $this->tipodocu_model->lista_tipodocu()->result();
 			$data['destinodocumentos']= $this->destinodocumento_model->lista_destinodocumento()->result();
@@ -39,14 +99,14 @@ class Documento extends CI_Controller{
 
   	$data['documento_estados']= $this->documento_estado_model->lista_documento_estado()->result();
 			$data['title']="Usted esta visualizando el documento No: ";
-			$this->load->view('template/page_header');		
+			$this->load->view('page_header');		
 			$this->load->view('documento_record',$data);
-			$this->load->view('template/page_footer');
-   		}else{
-			$this->load->view('template/page_header.php');
-			$this->load->view('login_form');
-			$this->load->view('template/page_footer.php');
-   		}
+			$this->load->view('page_footer');
+  // 		}else{
+//			$this->load->view('template/page_header.php');
+//			$this->load->view('login_form');
+//			$this->load->view('template/page_footer.php');
+  // 		}
 	}
 
 
