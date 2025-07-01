@@ -323,7 +323,11 @@ $(document).ready(function(){
     var idpersona = document.getElementById("idpersona").innerHTML;
 
     // Initialize DataTables for each table
-    $('#mydatac').DataTable({
+ var mydatac =   $('#mydatac').DataTable({
+         "processing": true,
+            "serverSide": true, // If using server-side processing for large datasets
+
+
         "ajax": {
             url: '<?php echo site_url('persona/documento_data')?>',
             type: 'GET',
