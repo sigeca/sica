@@ -147,7 +147,7 @@ $person_name = isset($persona['nombres']) && isset($persona['apellidos']) ? $per
 
 <script type="text/javascript">
     // Make BASE_URL available if not already globally defined in scripts.js
-    const BASE_URL = '<?php echo base_url(); ?>';
+//    const BASE_URL = '<?php echo base_url(); ?>';
 
     $(document).ready(function() {
         // Initialize DataTables
