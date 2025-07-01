@@ -361,6 +361,10 @@ $(document).ready(function(){
                     }
 }
             ],
+   "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "Todos"]], // Define las opciones de registros por página
+        "pageLength": 10, // Muestra 10 registros por defecto
+        "responsive": true, // Habilita la funcionalidad responsive
+        "scrollX": true, // Habilita el scroll horizontal si la tabla es más ancha que el contenedor
             // Language configuration for DataTables
             "language": {
                 "url": "//cdn.datatables.net/plug-ins/1.13.4/i18n/es-ES.json"
