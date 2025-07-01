@@ -33,8 +33,8 @@ class Persona extends CI_Controller {
         $this->load->model('Nacionalidadpersona_model');
         $this->load->model('Paispersona_model');
         $this->load->model('Provinciapersona_model');
-        $this->load->model('Estudio_model'); // Assuming this model exists for studies
-        $this->load->model('Documento_model'); // Assuming this model exists for documents
+        $this->load->model('estudio_model'); // Assuming this model exists for studies
+        $this->load->model('documento_model'); // Assuming this model exists for documents
 
         // Helper for form and URL
         $this->load->helper('form');
