@@ -143,9 +143,9 @@ class Distributivo extends CI_Controller{
 		$data['distributivos'] = $this->distributivo_model->lista_distributivos1(0)->result();
 	  	$data['title']="Distributivo";
   		$data['filtro']= $this->uri->segment(3);
-		$this->load->view('template/page_header');		
+		$this->load->view('page_header');		
 	  	$this->load->view('distributivo_list',$data);
-		$this->load->view('template/page_footer');
+		$this->load->view('page_footer');
 	}
 
 
