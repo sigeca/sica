@@ -384,11 +384,11 @@ $(document).ready(function(){
             data: {idpersona: idpersona}
         },
  "columns": [
-                { "data": "iddocumento" },
-                { "data": "idpersona" }, // Example field, adjust to actual column names
+                { "data": "idpersona" },
+                { "data": "idestudio" }, // Example field, adjust to actual column names
+                { "data": "lainstitucion" },
+                { "data": "nivel" },
                 { "data": "titulo" },
-                { "data": "fechaelaboracion" },
-                { "data": "archivopdf" },
                 {
                    "data": null,
                     "render": function(data, type, row) {
