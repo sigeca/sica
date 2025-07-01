@@ -328,7 +328,45 @@ $(document).ready(function(){
             url: '<?php echo site_url('persona/documento_data')?>',
             type: 'GET',
             data: {idpersona: idpersona}
-        }
+        },
+
+ "columns": [
+                { "data": "iddocumento" },
+                { "data": "idpersona" }, // Example field, adjust to actual column names
+                { "data": "titulo" },
+                { "data": "fechaelaboracion" },
+                { "data": "archivopdf" },
+                {
+                   "data": null,
+                    "render": function(data, type, row) {
+                        let actions = '';
+                        const canView = <?php echo $permitir_acceso_modulo ? 'true' : 'false'; ?>;
+                        const canEdit = <?php echo $permitir_acceso_modulo ? 'true' : 'false'; ?>;
+                        const canDelete = <?php echo $permitir_acceso_modulo ? 'true' : 'false'; ?>;
+
+                        if (canView) {
+                            actions += '<button class="btn btn-info btn-sm item_ver" data-idevento="' + row.iddocumento + '" data-bs-toggle="modal" data-bs-target="#myModal">Ver</button> ';
+                        }
+                        if (canEdit) {
+                            actions += '<a href="<?php echo site_url('evento/edit/'); ?>' + row.iddocumento + '" class="btn btn-warning btn-sm">Editar</a> ';
+                        }
+                        if (canDelete) {
+                            actions += '<a href="<?php echo site_url('evento/quitar/'); ?>' + row.iddocumento + '" class="btn btn-danger btn-sm" onclick="return confirm(\'¿Está seguro de eliminar este evento?\')">Eliminar</a>';
+                        }
+                        return actions;
+                    }
+}
+            ],
+            // Language configuration for DataTables
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.13.4/i18n/es-ES.json"
+            }
+
+
+
+
+
+
     });
 
     $('#mydatae').DataTable({
