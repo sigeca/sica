@@ -13,6 +13,7 @@
 
 <div id="eys-nav-i">
 	<div style="text-align: left; font-size:large"> <?php echo $title  ?></div>
+    <span style="font-size:large; margin-left:10px;" id="idevento"><?php echo $evento['idevento']; ?></span>
 	
 <?php
 if(isset($evento))
