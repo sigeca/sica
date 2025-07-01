@@ -356,13 +356,13 @@ public function actual()
   if(!empty($data))
   {
     $data['title']="Distributivo";
-    $this->load->view('template/page_header');		
+    $this->load->view('page_header');		
     $this->load->view('distributivo_record',$data);
-    $this->load->view('template/page_footer');
+    $this->load->view('page_footer');
   }else{
-    $this->load->view('template/page_header');		
+    $this->load->view('page_header');		
     $this->load->view('registro_vacio');
-    $this->load->view('template/page_footer');
+    $this->load->view('page_footer');
   }
  }
 
