@@ -15,9 +15,9 @@ if(isset($documento))
 			{
 				$numero=$j; //el inidice del arreglo donde estan los permisos
 				$permitir=1; //indicador de que si se encontro permisos
-			}		
+			}
 			$j=$j+1;
-	    	} 
+	    	}
 	}
 	if($permitir==0){
 		redirect('login/logout');
@@ -46,7 +46,7 @@ if(isset($documento))
 
         <li  style="border-right:1px solid #ccc; padding-right:15px;" > <?php echo anchor('documento/delete/'.$documento['iddocumento'],'Delete', 'style="text-decoration:none; color:#dc3545; font-weight:bold;"'); ?></li>
 	<?php } ?>
-	
+
 	<?php
 	if($this->session->userdata['acceso'][$numero]['nivelacceso']['read']){ ?>
 		<li> <?php echo anchor('documento/listar/','Listar'); ?></li>
@@ -60,7 +60,7 @@ if(isset($documento))
         <li> <?php echo anchor('documento/genpagina/'.$documento['idtipodocu'],'generar web', 'style="text-decoration:none; color:#007bff; font-weight:bold;"'); ?></li>
         <li> <?php echo anchor('documento/documento_'.$documento['idtipodocu'],'Web', 'style="text-decoration:none; color:#007bff; font-weight:bold;"'); ?></li>
 
-<?php 
+<?php
 }else{
 ?>
 
@@ -80,7 +80,7 @@ if(isset($documento))
 
 <div class="form-group row">
     <label class="col-md-2 col-form-label"> <?php echo anchor('tipodocu/elprimero/', 'Tipo documento'); ?> :</label>
-     	<?php 
+     	<?php
 	$options= array("NADA");
 	foreach ($tipodocus as $row){
 		$options[$row->idtipodocu]= $row->descripcion;
@@ -89,10 +89,10 @@ if(isset($documento))
 	?>
 	<div class="col-md-10">
 		<?php
-			echo form_input($arrdatos) 
+			echo form_input($arrdatos)
 		?>
-	</div> 
-</div> 
+	</div>
+</div>
 
 
 <div class="form-group row">
@@ -105,17 +105,17 @@ if(isset($documento))
 		$options[$row->idtipodocumentodocumento]=$row->nombre;
 		$arrurl2[$row->idtipodocumentodocumento]= base_url().'tipodocumentodocumento/actual/'.$row->idtipodocumentodocumento;
 	}
- echo form_multiselect('tipodocumentodocumento[]',$options,(array)set_value('idtipodocumentodocumento', ''), array('style'=>'width:500px','name'=>'idtipodocumentodocumento','id'=> 'idtipodocumentodocumento','onChange'=>'editartipodocumento()')); 
+ echo form_multiselect('tipodocumentodocumento[]',$options,(array)set_value('idtipodocumentodocumento', ''), array('style'=>'width:500px','name'=>'idtipodocumentodocumento','id'=> 'idtipodocumentodocumento','onChange'=>'editartipodocumento()'));
 
 	?>
-	</div> 
+	</div>
 </div>
 
 
 
 <div class="form-group row">
     <label class="col-md-2 col-form-label"> <?php echo anchor('destinodocumento/elprimero/', 'Destino documento'); ?> :</label>
-     	<?php 
+     	<?php
 	$options= array("NADA");
 	foreach ($destinodocumentos as $row){
 		$options[$row->iddestinodocumento]= $row->nombre;
@@ -124,9 +124,9 @@ if(isset($documento))
 	?>
 	<div class="col-md-10">
 		<?php
-			echo form_input($arrdatos) 
+			echo form_input($arrdatos)
 		?>
-	</div> 
+	</div>
 </div>
 
 
@@ -137,9 +137,9 @@ if(isset($documento))
     <label class="col-md-2 col-form-label"> Fecha de creación:</label>
 	<div class="col-md-10">
 		<?php
-      		 echo form_input('fechaelaboracion',$documento['fechaelaboracion'],array('type'=>'date','placeholder'=>'fechaelaboracion','style'=>'width:500px;')) 
+      		 echo form_input('fechaelaboracion',$documento['fechaelaboracion'],array('type'=>'date','placeholder'=>'fechaelaboracion','style'=>'width:500px;'))
 		?>
-	</div> 
+	</div>
 </div>
 
 
@@ -147,16 +147,16 @@ if(isset($documento))
     <label class="col-md-2 col-form-label"> Fecha de subida:</label>
 	<div class="col-md-10">
 		<?php
-      		 echo form_input('fechasubida',$documento['fechasubida'],array('type'=>'date','placeholder'=>'fecha de carga','style'=>'width:500px;')) 
+      		 echo form_input('fechasubida',$documento['fechasubida'],array('type'=>'date','placeholder'=>'fecha de carga','style'=>'width:500px;'))
 		?>
-	</div> 
+	</div>
 </div>
 
 
 
 <div class="form-group row">
     <label class="col-md-2 col-form-label"> <?php echo anchor('emisor/add/'.$documento['iddocumento'], 'Emisor/emisores:') ?> </label>
-     	<?php 
+     	<?php
 
 	$options = array();
     $arractu=array();
@@ -168,15 +168,15 @@ if(isset($documento))
 	?>
 	<div class="col-md-10">
 		<?php
-			 echo form_multiselect('idemisor[]',$options,(array)set_value('idemisor', ''), array('style'=>'width:500px','name'=>'idemisor','id'=>'idemisor','onChange'=>'editaremisor()')); 
+			 echo form_multiselect('idemisor[]',$options,(array)set_value('idemisor', ''), array('style'=>'width:500px','name'=>'idemisor','id'=>'idemisor','onChange'=>'editaremisor()'));
 		?>
-	</div> 
+	</div>
 </div>
 
 
 <div class="form-group row">
     <label class="col-md-2 col-form-label"> <?php echo anchor('destinatario/add/'.$documento['iddocumento'], 'Destinatarios/as:') ?> </label>
-     	<?php 
+     	<?php
 	$options=array();
   	foreach ($destinatarios as $row){
 		$options[$row->idpersona]=$row->eldestinatario;
@@ -184,9 +184,9 @@ if(isset($documento))
 	?>
 	<div class="col-md-10">
 		<?php
- 			echo form_multiselect('iddestinatario[]',$options,(array)set_value('iddestinatario',''), array('style'=>'width:500px;')); 
+ 			echo form_multiselect('iddestinatario[]',$options,(array)set_value('iddestinatario',''), array('style'=>'width:500px;'));
 		?>
-	</div> 
+	</div>
 </div>
 
 
@@ -196,10 +196,10 @@ if(isset($documento))
     <label class="col-md-2 col-form-label"> Asunto:</label>
 	<div class="col-md-10">
 		<?php
-$textarea_options = array('class' => 'form-control','rows' => '4',"disabled"=>"disabled", 'cols' => '20', 'style'=> 'width:500px;height:100px;');    
- echo form_textarea('asunto',$documento['asunto'],$textarea_options); 
+$textarea_options = array('class' => 'form-control','rows' => '4',"disabled"=>"disabled", 'cols' => '20', 'style'=> 'width:500px;height:100px;');
+ echo form_textarea('asunto',$documento['asunto'],$textarea_options);
 		?>
-	</div> 
+	</div>
 </div>
 
 
@@ -207,10 +207,10 @@ $textarea_options = array('class' => 'form-control','rows' => '4',"disabled"=>"d
     <label class="col-md-2 col-form-label"> Descripción:</label>
 	<div class="col-md-10">
 		<?php
-$textarea_options = array('class' => 'form-control','rows' => '4',"disabled"=>"disabled", 'cols' => '20', 'style'=> 'width:500px;height:100px;');    
- echo form_textarea('descripcion',$documento['descripcion'],$textarea_options); 
+$textarea_options = array('class' => 'form-control','rows' => '4',"disabled"=>"disabled", 'cols' => '20', 'style'=> 'width:500px;height:100px;');
+ echo form_textarea('descripcion',$documento['descripcion'],$textarea_options);
 		?>
-	</div> 
+	</div>
 </div>
 
 
@@ -219,17 +219,17 @@ $textarea_options = array('class' => 'form-control','rows' => '4',"disabled"=>"d
     <label class="col-md-2 col-form-label"> <a href="<?php echo base_url(); ?>index.php/documento/show_pdf/<?php echo $documento['iddocumento']; ?>">Archivo_Pdf</a>   </label>
 	<div class="col-md-10">
 		<?php
-      echo form_input('archivopdf',$documento['archivopdf'],array("id"=>"archivopdf","disabled"=>"disabled",'placeholder'=>'Archivo php','style'=>'width:500px;')); 
- 
+      echo form_input('archivopdf',$documento['archivopdf'],array("id"=>"archivopdf","disabled"=>"disabled",'placeholder'=>'Archivo php','style'=>'width:500px;'));
+
 		?>
-	</div> 
+	</div>
 </div>
 
 
 
 <div class="form-group row">
     <label class="col-md-2 col-form-label"> Ordenador:</label>
-     	<?php 
+     	<?php
 	$options= array("NADA");
 	foreach ($ordenadores as $row){
 		$options[$row->idordenador]= $row->nombre;
@@ -240,14 +240,14 @@ $textarea_options = array('class' => 'form-control','rows' => '4',"disabled"=>"d
 		<?php
 			echo form_input('idordenador',$options[$documento['idordenador']],array("id"=>"idordenador","disabled"=>"disabled"));
 		?>
-	</div> 
+	</div>
 </div>
 
 
 
 <div class="form-group row">
     <label class="col-md-2 col-form-label"> Directorio:</label>
-     	<?php 
+     	<?php
 	$options= array("NADA");
 	foreach ($directorios as $row){
 		$options[$row->iddirectorio]= $row->ruta;
@@ -255,16 +255,16 @@ $textarea_options = array('class' => 'form-control','rows' => '4',"disabled"=>"d
 	?>
 	<div class="col-md-10">
 		<?php
-		echo form_input('iddirectorio',$options[$documento['iddirectorio']],array("id"=>"iddirectorio", "disabled"=>"disabled")); 
+		echo form_input('iddirectorio',$options[$documento['iddirectorio']],array("id"=>"iddirectorio", "disabled"=>"disabled"));
 		?>
-	</div> 
+	</div>
 </div>
 
 
 
 <div class="form-group row">
     <label class="col-md-2 col-form-label"> Estado del documento:</label>
-     	<?php 
+     	<?php
 $options= array("NADA");
 foreach ($documento_estados as $row){
 	$options[$row->iddocumento_estado]= $row->nombre;
@@ -275,9 +275,9 @@ foreach ($documento_estados as $row){
 		<?php
 
 
-echo form_input('iddocumento_estado',$options[$documento['iddocumento_estado']],array('id'=>'iddocumento_estado', "disabled"=>"disabled", 'style'=>"background-color:yellow;")); 
+echo form_input('iddocumento_estado',$options[$documento['iddocumento_estado']],array('id'=>'iddocumento_estado', "disabled"=>"disabled", 'style'=>"background-color:yellow;"));
 		?>
-	</div> 
+	</div>
 </div>
 
 
@@ -285,10 +285,10 @@ echo form_input('iddocumento_estado',$options[$documento['iddocumento_estado']],
 <div class="form-group row">
     <label class="col-md-2 col-form-label"> Portada:</label>
 	<div class="col-md-10">
- <img src="https://repositorioutlvte.org/Repositorio/portadas/<?php echo pathinfo(trim($documento['archivopdf']),PATHINFO_FILENAME); ?>.jpg" alt="portada del documento"  height="400"> 
-  
+ <img src="https://repositorioutlvte.org/Repositorio/portadas/<?php echo pathinfo(trim($documento['archivopdf']),PATHINFO_FILENAME); ?>.jpg" alt="portada del documento"  height="400">
 
-	</div> 
+
+	</div>
 <div class="img-contenedor w3-card-4" style="position:relative; width:100%; height:100%; display:flex; justify-content: center; align-items: center;">
 
 
@@ -299,9 +299,12 @@ echo form_input('iddocumento_estado',$options[$documento['iddocumento_estado']],
 
 </div>
 
-
-
-   
+<div class="form-group row">
+    <label class="col-md-2 col-form-label"> Previsualización del Documento:</label>
+    <div class="col-md-10">
+        <iframe id="pdfPreview" style="width: 100%; height: 600px; border: none;"></iframe>
+    </div>
+</div>
 
 <?php echo form_close(); ?>
 
@@ -350,7 +353,7 @@ function editaremisor()
 
 
 function uploadImage(nombre,idx) {
-  var fI="fileInput"+idx; 
+  var fI="fileInput"+idx;
   var st="status"+idx;
   var filesInput = document.getElementById(fI);
   var status = document.getElementById(st);
@@ -397,10 +400,15 @@ function getUploadUrl() {
     return url.endsWith("/") ? url + "cargaimagenportada.php" : url + "/cargaimagenportada.php";
 }
 
-
-
-
-
+// Function to load PDF into the iframe for preview
+document.addEventListener('DOMContentLoaded', function() {
+    var pdfFileName = "<?php echo $documento['archivopdf']; ?>";
+    var pdfViewer = document.getElementById('pdfPreview');
+    if (pdfFileName) {
+        var pdfUrl = "https://educaysoft.org/repositorioeys/" + pdfFileName.trim();
+        pdfViewer.src = pdfUrl;
+    }
+});
 
 </script>
 
