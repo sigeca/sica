@@ -436,7 +436,7 @@ class Persona extends CI_Controller {
         $idpersona = $this->input->get('idpersona');
         if ($idpersona) {
             // Assuming a method in Documento_model or a new model for received documents
-            $data = $this->Documento_model->documentosreci($idpersona);
+            $data = $this->documento_model->documentosreci($idpersona);
 
         // Prepara la respuesta
         $response = array(
