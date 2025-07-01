@@ -280,7 +280,7 @@ public function genpagina()
 $tiempoEjecucion = $fin - $inicio;
 
 // Mostrar el tiempo de ejecución
-echo "El script tardó " . $tiempoEjecucion . " segundos en ejecutarse asignaturadocente.";
+// echo "El script tardó " . $tiempoEjecucion . " segundos en ejecutarse asignaturadocente.";
 
 		$arreglo=array();
 		$arreglo2=array();
