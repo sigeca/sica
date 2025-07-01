@@ -38,7 +38,7 @@ if(isset($evento))
 ?>
 
 <?php 	if($this->session->userdata['acceso'][$numero]['nivelacceso']['navegar']){ ?>
-<ul>
+    <ul style="list-style:none; padding:0; display:flex; gap:15px; background-color:#f2f2f2; padding:10px; border-radius:5px; margin-top:15px;">
 	<li> <?php echo anchor('evento/elprimero/', 'primero'); ?></li>
         <li> <?php echo anchor('evento/siguiente/'.$evento['idevento'], 'siguiente'); ?></li>
         <li> <?php echo anchor('evento/anterior/'.$evento['idevento'], 'anterior'); ?></li>
