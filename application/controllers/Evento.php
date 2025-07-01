@@ -439,6 +439,39 @@ public function cumplimiento(){
 
 
 
+public function persona_data1() {
+        // Asegúrate de validar y sanitizar $idpersona
+        $idpersona = $this->input->get('idpersona'); // O $this->input->get() si es un GET
+
+        if (empty($idpersona)) {
+            // Manejar error si idpersona no se proporciona
+            $response = array(
+                'status' => 'error',
+                'message' => 'ID de persona no proporcionado.'
+            );
+            $this->output
+                ->set_content_type('application/json')
+                ->set_output(json_encode($response));
+            return;
+        }
+
+        // Llama a la función del modelo
+        $eventos = $this->evento_model->lista_eventosP($idpersona);
+
+        // Prepara la respuesta
+        $response = array(
+            'status' => 'success',
+            'data' => $eventos
+        );
+
+        // Establece la cabecera Content-Type y envía la respuesta JSON
+        $this->output
+            ->set_content_type('application/json')
+            ->set_output(json_encode($response));
+    }
+
+
+
 
 	function persona_data()
 	{
