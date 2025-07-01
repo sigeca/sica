@@ -66,9 +66,9 @@ public function add()
   		$data['estadoasignaturadocentes']= $this->estadoasignaturadocente_model->lista_estadoasignaturadocentes()->result();
   	$data['periodoacademicos']= $this->periodoacademico_model->lista_periodoacademicos()->result();
 	$data['title']="Nueva Asignaturadocente";
- 	$this->load->view('template/page_header');		
+ 	$this->load->view('page_header');		
  	$this->load->view('asignaturadocente_form',$data);
- 	$this->load->view('template/page_footer');
+ 	$this->load->view('page_footer');
 
 
 }
