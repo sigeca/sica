@@ -155,7 +155,7 @@ $person_name = isset($persona['nombres']) && isset($persona['apellidos']) ? $per
             "processing": true,
             "serverSide": true, // If using server-side processing for large datasets
             "ajax": {
-                url: '<?php echo site_url('evento/persona_data'); ?>',
+                url: '<?php echo site_url('evento/persona_data1'); ?>',
                 type: 'GET',
                 data: function(d) {
                     d.idpersona = $('#filtro').text(); // Pass person ID
@@ -164,6 +164,7 @@ $person_name = isset($persona['nombres']) && isset($persona['apellidos']) ? $per
                 }
             },
             "columns": [
+                { "data": "idevento" },
                 { "data": "titulo" }, // Example field, adjust to actual column names
                 { "data": "fechainicia" },
                 { "data": "fechafinaliza" },
