@@ -333,7 +333,7 @@ $(document).ready(function(){
  "columns": [
                 { "data": "iddocumento" },
                 { "data": "idpersona" }, // Example field, adjust to actual column names
-                { "data": "titulo" },
+                { "data": "asunto" },
                 { "data": "fechaelaboracion" },
                 { "data": "archivopdf" },
                 {
