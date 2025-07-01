@@ -1,6 +1,7 @@
 <div id="eys-nav-i">
 	<h3 style="text-align: left; margin-top:-10px;"> <?php echo $title;  ?><idem style="font-size:large" id="iddocumento"><?php echo $documento['iddocumento']; ?></idem></h3>
-	    <ul>
+
+    <ul style="list-style:none; padding:0; display:flex; gap:15px; background-color:#f2f2f2; padding:10px; border-radius:5px; margin-top:15px;">
 <?php
 if(isset($documento))
 {
