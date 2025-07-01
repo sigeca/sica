@@ -379,7 +379,7 @@ $(document).ready(function(){
 
     $('#mydatae').DataTable({
         "ajax": {
-            url: '<?php echo site_url('docente/estudio_data')?>',
+            url: '<?php echo site_url('docente/estudio_data1')?>',
             type: 'GET',
             data: {idpersona: idpersona}
         },
