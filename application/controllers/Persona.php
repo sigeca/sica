@@ -405,7 +405,8 @@ class Persona extends CI_Controller {
         $this->_check_access();
         $idpersona = $this->input->get('idpersona');
         if ($idpersona) {
-            $data = $this->Documento_model->documentos_by_persona($idpersona);
+            //$data = $this->documento_model->ldocumentos_by_persona($idpersona);
+            $data = $this->documento_model->lista_documentosC($idpersona);
             echo json_encode(['data' => $data]); // DataTables expects 'data' key
         } else {
             echo json_encode(['data' => []]);
