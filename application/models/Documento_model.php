@@ -149,7 +149,7 @@ class Documento_model extends CI_model {
 		$this->db->where('idpersona='.$idpersona);
 		$documento=$this->db->order_by("fechaelaboracion")->get('documentoreci');
 		}
-		 return $documento;
+		 return $documento->result_array();
 	}
 
 
