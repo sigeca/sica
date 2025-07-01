@@ -164,7 +164,6 @@ $person_name = isset($persona['nombres']) && isset($persona['apellidos']) ? $per
                 }
             },
             "columns": [
-                { "data": "idevento" },
                 { "data": "titulo" }, // Example field, adjust to actual column names
                 { "data": "fechainicia" },
                 { "data": "fechafinaliza" },
