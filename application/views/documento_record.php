@@ -44,7 +44,7 @@ if(isset($documento))
 	<?php
 	if($this->session->userdata['acceso'][$numero]['nivelacceso']['delete']){ ?>
 
-        <li style="border-right:1px solid green"> <?php echo anchor('documento/delete/'.$documento['iddocumento'],'Delete', 'style="text-decoration:none; color:#dc3545; font-weight:bold;"'); ?></li>
+        <li  style="border-right:1px solid #ccc; padding-right:15px;" > <?php echo anchor('documento/delete/'.$documento['iddocumento'],'Delete', 'style="text-decoration:none; color:#dc3545; font-weight:bold;"'); ?></li>
 	<?php } ?>
 	
 	<?php
@@ -54,11 +54,11 @@ if(isset($documento))
 
 
 
-        <li> <?php echo "<a onclick='verpdf()'>Ver PDF</a>" ?></li>
-		<li> <?php echo anchor('documento/reportepdf/'.$documento['idtipodocu'],'reportepdf'); ?></li>
+        <li style="border-right:1px solid #ccc; padding-right:15px;"   > <?php echo "<a onclick='verpdf()'>Ver PDF</a>" ?></li>
+		<li> <?php echo anchor('documento/reportepdf/'.$documento['idtipodocu'],'reportepdf', 'style="text-decoration:none; color:#007bff; font-weight:bold;"'); ?></li>
 
-        <li> <?php echo anchor('documento/genpagina/'.$documento['idtipodocu'],'generar web'); ?></li>
-        <li> <?php echo anchor('documento/documento_'.$documento['idtipodocu'],'Web'); ?></li>
+        <li> <?php echo anchor('documento/genpagina/'.$documento['idtipodocu'],'generar web', 'style="text-decoration:none; color:#007bff; font-weight:bold;"'); ?></li>
+        <li> <?php echo anchor('documento/documento_'.$documento['idtipodocu'],'Web', 'style="text-decoration:none; color:#007bff; font-weight:bold;"'); ?></li>
 
 <?php 
 }else{
