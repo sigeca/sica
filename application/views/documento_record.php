@@ -26,7 +26,7 @@ if(isset($documento))
 
 ?>
 
-        <li> <?php echo anchor('documento/elprimero/', 'primero'); ?></li>
+        <li> <?php echo anchor('documento/elprimero/', 'primero','style="text-decoration:none; color:#007bff; font-weight:bold;"'); ?></li>
         <li> <?php echo anchor('documento/siguiente/'.$documento['iddocumento'], 'siguiente'); ?></li>
         <li> <?php echo anchor('documento/anterior/'.$documento['iddocumento'], 'anterior'); ?></li>
         <li style="border-right:1px solid green"><?php echo anchor('documento/elultimo/', 'Último'); ?></li>
