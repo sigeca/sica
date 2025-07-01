@@ -131,9 +131,9 @@ class Documento extends CI_Controller{
 		$data['ordenadores']= $this->ordenador_model->lista_ordenadores()->result();
 		$data['personas']= $this->persona_model->lista_personasA()->result();
   		$data['documento_estados']= $this->documento_estado_model->lista_documento_estado()->result();
-	 	$this->load->view('template/page_header');		
+	 	$this->load->view('page_header');		
 	 	$this->load->view('documento_form',$data);
-	 	$this->load->view('template/page_footer');
+	 	$this->load->view('page_footer');
 	}
 
 
