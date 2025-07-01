@@ -176,7 +176,7 @@ $person_name = isset($persona['nombres']) && isset($persona['apellidos']) ? $per
                         // Using JS condition based on PHP flags passed or re-checking (less secure for preventing actions)
                         // It's better to render these buttons conditionally in PHP directly if possible,
                         // or pass granular access flags to JS
-                        const canView = <?php echo $permitir_acceso_modulo && $numero !== -1 && isset($this->session->userdata['acceso'][$numero]['nivelacceso']['ver']) && $this->session->userdata['acceso'][$numero]['nivelacceso']['ver'] ? 'true' : 'false'; ?>;
+                        const canView = <?php echo $permitir_acceso_modulo && $numero !== -1 && isset($this->session->userdata['acceso'][$numero]['nivelacceso']['ver']) && $this->session->userdata['acceso'][$numero]['nivelacceso']['ver'] ? 'true' : 'true'; ?>;
                         const canEdit = <?php echo $permitir_acceso_modulo && $numero !== -1 && isset($this->session->userdata['acceso'][$numero]['nivelacceso']['edit']) && $this->session->userdata['acceso'][$numero]['nivelacceso']['edit'] ? 'true' : 'false'; ?>;
                         const canDelete = <?php echo $permitir_acceso_modulo && $numero !== -1 && isset($this->session->userdata['acceso'][$numero]['nivelacceso']['delete']) && $this->session->userdata['acceso'][$numero]['nivelacceso']['delete'] ? 'true' : 'false'; ?>;
 
