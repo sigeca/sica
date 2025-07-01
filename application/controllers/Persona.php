@@ -125,6 +125,34 @@ class Persona extends CI_Controller {
         $this->load->view('page_footer', $data);
     }
 
+
+public function actual(){
+ if(isset($this->session->userdata['logged_in'])){
+	$data['persona']=$this->persona_model->persona($this->uri->segment(3))->row_array();
+	$data['correos'] =$this->correo_model->correospersona($data['persona']['idpersona'])->result();
+	$data['direccions'] =$this->direccion_model->direccionspersona($data['persona']['idpersona'])->result();
+	$data['telefonos'] =$this->telefono_model->telefonospersona($data['persona']['idpersona'])->result();
+  	$data["sexos"]= $this->sexo_model->lista_sexos()->result();
+  	$data["tipopersonas"]= $this->tipopersona_model->lista_tipopersonas()->result();
+  	$data["paispersonas"]= $this->paispersona_model->lista_paispersonas1($data['persona']['idpersona'])->result();
+  	$data["nacionalidadpersonas"]= $this->nacionalidadpersona_model->lista_nacionalidadpersonas1($data['persona']['idpersona'])->result();
+  	$data["provinciapersonas"]= $this->provinciapersona_model->lista_provinciapersonas1($data['persona']['idpersona'])->result();
+	$data['title']="Usted esta visualizando la persona No : ";
+	$this->load->view('page_header');		
+	$this->load->view('persona_record',$data);
+	$this->load->view('page_footer');
+   }else{
+	$this->load->view('page_header.php');
+	$this->load->view('login_form');
+	$this->load->view('page_footer.php');
+   }
+}
+
+
+
+
+
+
     /**
      * Display the first person record.
      */
