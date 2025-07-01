@@ -11,6 +11,30 @@ class Docente extends CI_Controller{
   	  $this->load->model('silabo_model');
 }
 
+    /**
+     * Checks user access permissions.
+     * Redirects to login if access is not permitted for 'persona' module.
+     */
+    private function _check_access() {
+        if (!isset($this->session->userdata['acceso'])) {
+            redirect('login/logout');
+        }
+
+        $has_access = false;
+        foreach ($this->session->userdata['acceso'] as $module_access) {
+            if (isset($module_access['modulo']['modulo']) && $module_access['modulo']['modulo'] === 'persona') {
+                $has_access = true;
+                break;
+            }
+        }
+
+        if (!$has_access) {
+            redirect('login/logout');
+        }
+    }
+
+
+
 public function index(){
 
   	if(isset($this->session->userdata['logged_in'])){
