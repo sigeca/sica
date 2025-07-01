@@ -202,6 +202,36 @@ public function actual(){
 
 
 
+    public function estudio_data1() {
+        $this->_check_access();
+        $idpersona = $this->input->get('idpersona');
+        if ($idpersona) {
+            //$data = $this->documento_model->ldocumentos_by_persona($idpersona);
+			$data =$this->estudio_model->estudios($idpersona);
+        // Prepara la respuesta
+        $response = array(
+            'status' => 'success',
+            'data' => $data
+        );
+
+        // Establece la cabecera Content-Type y envía la respuesta JSON
+        $this->output
+            ->set_content_type('application/json')
+            ->set_output(json_encode($response));
+ 
+
+
+        } else {
+            echo json_encode(['data' => []]);
+        }
+    }
+
+
+
+
+
+
+
 	function estudio_data()
 	{
 			$draw= intval($this->input->get("draw"));
