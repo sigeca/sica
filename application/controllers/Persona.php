@@ -24,15 +24,15 @@ class Persona extends CI_Controller {
     public function __construct() {
         parent::__construct();
         // Load necessary models
-        $this->load->model('Persona_model');
-        $this->load->model('Tipopersona_model');
-        $this->load->model('Sexo_model');
-        $this->load->model('Correo_model');
-        $this->load->model('Telefono_model');
-        $this->load->model('Direccion_model');
-        $this->load->model('Nacionalidadpersona_model');
-        $this->load->model('Paispersona_model');
-        $this->load->model('Provinciapersona_model');
+        $this->load->model('persona_model');
+        $this->load->model('tipopersona_model');
+        $this->load->model('sexo_model');
+        $this->load->model('correo_model');
+        $this->load->model('telefono_model');
+        $this->load->model('direccion_model');
+        $this->load->model('nacionalidadpersona_model');
+        $this->load->model('paispersona_model');
+        $this->load->model('provinciapersona_model');
         $this->load->model('estudio_model'); // Assuming this model exists for studies
         $this->load->model('documento_model'); // Assuming this model exists for documents
 
