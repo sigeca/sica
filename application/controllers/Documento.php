@@ -373,9 +373,9 @@ public function genpagina()
   		$data['destinatarios'] = $this->documento_model->destinatarios(1)->result();
   		$data['title']="Documento";
   		$data['filtro']= $this->uri->segment(3);
-		$this->load->view('template/page_header');		
+		$this->load->view('page_header');		
   		$this->load->view('documento_listxtipodocu',$data);
-		$this->load->view('template/page_footer');
+		$this->load->view('page_footer');
 	}
 
 	function documento_dataxtipodocu()
