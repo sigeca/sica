@@ -321,7 +321,6 @@ $permitir_acceso_modulo=true;
 <script type="text/javascript">
 $(document).ready(function(){
     var idpersona = document.getElementById("idpersona").innerHTML;
-   alert(idpersona);
     // Initialize DataTables for each table
  var mydatac =   $('#mydatac').DataTable({
          "processing": true,
