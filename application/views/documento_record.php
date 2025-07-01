@@ -294,7 +294,7 @@ echo form_input('iddocumento_estado',$options[$documento['iddocumento_estado']],
 
  <input type="file" id="fileInput<?php echo trim($documento['iddocumento']); ?>" accept="image/*">
   <button onclick="uploadImage('<?php echo pathinfo(trim($documento['archivopdf']),PATHINFO_FILENAME); ?>.jpg','<?php echo trim($documento['iddocumento']); ?>')">Subir Imagen</button>
-  <p id="status<?php echo trim($documento['iddocumento']); ?>"></p> </div>'
+  <p id="status<?php echo trim($documento['iddocumento']); ?>"></p> </div>
 
 
 </div>
