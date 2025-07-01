@@ -151,7 +151,7 @@ $person_name = isset($persona['nombres']) && isset($persona['apellidos']) ? $per
 
     $(document).ready(function() {
         // Initialize DataTables
-        var mydatac = $('#mydatac').DataTable({
+        var mytabla = $('#mydatac').DataTable({
             "processing": true,
             "serverSide": true, // If using server-side processing for large datasets
             "ajax": {
@@ -165,9 +165,9 @@ $person_name = isset($persona['nombres']) && isset($persona['apellidos']) ? $per
             },
             "columns": [
                 { "data": "idevento" },
-                { "data": "nombre_evento" }, // Example field, adjust to actual column names
-                { "data": "fecha_inicio" },
-                { "data": "fecha_fin" },
+                { "data": "titulo" }, // Example field, adjust to actual column names
+                { "data": "fechainicia" },
+                { "data": "fechafinaliza" },
                 {
                     "data": null,
                     "render": function(data, type, row) {
