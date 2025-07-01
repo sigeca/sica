@@ -50,13 +50,13 @@ public function index(){
 
 
 
-	$this->load->view('template/page_header');		
+	$this->load->view('page_header');		
 	$this->load->view('evento_record',$data);
-	$this->load->view('template/page_footer');
+	$this->load->view('page_footer');
    }else{
-	$this->load->view('template/page_header.php');
+	$this->load->view('page_header.php');
 	$this->load->view('login_form');
-	$this->load->view('template/page_footer.php');
+	$this->load->view('page_footer.php');
    }
 }
 
