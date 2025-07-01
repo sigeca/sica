@@ -8,6 +8,7 @@
     </div>
 
     <?php
+$permitir_acceso_modulo=true; 
     if(isset($persona)) {
         $permitir=0;
         $j=0;
