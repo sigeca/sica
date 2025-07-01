@@ -407,7 +407,19 @@ class Persona extends CI_Controller {
         if ($idpersona) {
             //$data = $this->documento_model->ldocumentos_by_persona($idpersona);
             $data = $this->documento_model->lista_documentosC($idpersona);
-            echo json_encode(['data' => $data]); // DataTables expects 'data' key
+        // Prepara la respuesta
+        $response = array(
+            'status' => 'success',
+            'data' => $data
+        );
+
+        // Establece la cabecera Content-Type y envía la respuesta JSON
+        $this->output
+            ->set_content_type('application/json')
+            ->set_output(json_encode($response));
+ 
+
+
         } else {
             echo json_encode(['data' => []]);
         }
@@ -424,8 +436,18 @@ class Persona extends CI_Controller {
         $idpersona = $this->input->get('idpersona');
         if ($idpersona) {
             // Assuming a method in Documento_model or a new model for received documents
-            $data = $this->Documento_model->documentos_recibidos_by_persona($idpersona);
-            echo json_encode(['data' => $data]);
+            $data = $this->Documento_model->documentosreci($idpersona);
+
+        // Prepara la respuesta
+        $response = array(
+            'status' => 'success',
+            'data' => $data
+        );
+
+        // Establece la cabecera Content-Type y envía la respuesta JSON
+        $this->output
+            ->set_content_type('application/json')
+            ->set_output(json_encode($response));
         } else {
             echo json_encode(['data' => []]);
         }
