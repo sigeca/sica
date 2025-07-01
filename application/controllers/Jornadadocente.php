@@ -26,13 +26,13 @@ public function index(){
 		$data['asignaturas']= $this->asignatura_model->lista_asignaturas()->result();
 			
 		$data['title']="Lista de jornadadocentes";
-		$this->load->view('template/page_header');
+		$this->load->view('page_header');
 		$this->load->view('jornadadocente_record',$data);
-		$this->load->view('template/page_footer');
+		$this->load->view('page_footer');
 	}else{
-	 	$this->load->view('template/page_header.php');
+	 	$this->load->view('page_header.php');
 		$this->load->view('login_form');
-	 	$this->load->view('template/page_footer.php');
+	 	$this->load->view('page_footer.php');
 	}
 
  }
@@ -53,9 +53,9 @@ public function add()
   	$data['diasemanas']= $this->diasemana_model->lista_diasemanas()->result();
   	$data['aulas']= $this->aula_model->lista_aulas()->result();
 	$data['title']="Nueva Jornadadocente";
- 	$this->load->view('template/page_header');		
+ 	$this->load->view('page_header');		
  	$this->load->view('jornadadocente_form',$data);
- 	$this->load->view('template/page_footer');
+ 	$this->load->view('page_footer');
 
 
 }
