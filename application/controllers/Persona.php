@@ -414,6 +414,22 @@ public function actual(){
         $this->load->view('page_footer', $data);
     }
 
+
+   public function persona_flutter()
+    {
+		$idpersona=$this->input->post('idpersona');
+	 	$personas=$this->persona_model->get_persona_flutter($idpersona);
+        echo json_encode(['data' => $personas]); // Devolver datos en formato JSON
+ 	}
+
+
+
+
+
+
+
+
+
     /**
      * Retrieves person data for DataTables (AJAX endpoint).
      * This method is called via AJAX from the `persona_list.php` view.
