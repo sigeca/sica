@@ -331,7 +331,8 @@ echo "El script tardó " . $tiempoEjecucion . " segundos en ejecutarse toas las 
 		$data['ordenrpt']=1;	
 		$ordenrpt=1;
 	 	$data['asignaturadocentes']= $this->asignaturadocente_model->asignaturadocentexdistributivo2($iddistributivo,$ordenrpt)->result();
-		$this->load->view('distributivodocente_genpagina',$data);
+			$this->load->view('distributivodocente_genpaginagpt',$data);
+	//	$this->load->view('distributivodocente_genpagina',$data);
 		}
 
 		if($this->input->get("orden")>1){
@@ -339,7 +340,8 @@ echo "El script tardó " . $tiempoEjecucion . " segundos en ejecutarse toas las 
 		$data['ordenrpt']= $this->input->get("orden") ;	
 		$ordenrpt= $this->input->get("orden");
 	 	$data['asignaturadocentes']= $this->asignaturadocente_model->asignaturadocentexdistributivo2($iddistributivo,$ordenrpt)->result();
-		$this->load->view('distributivodocente_genpagina',$data);
+	//	$this->load->view('distributivodocente_genpagina',$data);
+			$this->load->view('distributivodocente_genpaginagpt',$data);
 		}	
 	}
 	}
