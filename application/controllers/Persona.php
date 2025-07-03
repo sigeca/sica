@@ -219,7 +219,7 @@ public function actual(){
     public function add() {
         $this->_check_access();
         $data['title'] = "Nueva Persona";
-        $data['tipopersonas'] = $this->Tipopersona_model->lista_tipopersonas()->result();
+        $data['tipopersonas'] = $this->tipopersona_model->lista_tipopersonas()->result();
         $data['sexos'] = $this->Sexo_model->lista_sexos()->result();
 
         // Validation rules for adding a new person
@@ -291,7 +291,7 @@ public function actual(){
             return;
         }
 
-        $data['tipopersonas'] = $this->Tipopersona_model->lista_tipopersonas()->result();
+        $data['tipopersonas'] = $this->tipopersona_model->lista_tipopersonas()->result();
         $data['sexos'] = $this->Sexo_model->lista_sexos()->result();
 
         // Validation rules for editing
