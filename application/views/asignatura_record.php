@@ -1,18 +1,18 @@
 <div id="eys-nav-i">
     <h3 style="text-align: left; margin-top:-10px;"> <?php echo $title;  ?></h3>
-    <ul>
+    <ul style="list-style:none; padding:0; display:flex; gap:15px; background-color:#f2f2f2; padding:10px; border-radius:5px; margin-top:15px;">
 <?php
 if(isset($asignatura))
 {
 ?>
-        <li> <?php echo anchor('asignatura/elprimero/', 'primero'); ?></li>
-        <li> <?php echo anchor('asignatura/siguiente/'.$asignatura['idasignatura'], 'siguiente'); ?></li>
-        <li> <?php echo anchor('asignatura/anterior/'.$asignatura['idasignatura'], 'anterior'); ?></li>
-        <li style="border-right:1px solid green"><?php echo anchor('asignatura/elultimo/', 'Último'); ?></li>
-        <li> <?php echo anchor('asignatura/add', 'Nuevo'); ?></li>
-        <li> <?php echo anchor('asignatura/edit/'.$asignatura['idasignatura'],'Edit'); ?></li>
-        <li style="border-right:1px solid green"> <?php echo anchor('asignatura/quitar/'.$asignatura['idasignatura'],'Quitar'); ?></li>
-        <li> <?php echo anchor('asignatura/listar/','Listar'); ?></li>
+        <li> <?php echo anchor('asignatura/elprimero/', 'primero', 'style="text-decoration:none; color:#007bff; font-weight:bold;"'); ?></li>
+        <li> <?php echo anchor('asignatura/siguiente/'.$asignatura['idasignatura'], 'siguiente', 'style="text-decoration:none; color:#007bff; font-weight:bold;"'); ?></li>
+        <li> <?php echo anchor('asignatura/anterior/'.$asignatura['idasignatura'], 'anterior', 'style="text-decoration:none; color:#007bff; font-weight:bold;"'); ?></li>
+        <li  style="border-right:1px solid #ccc; padding-right:15px;"><?php echo anchor('asignatura/elultimo/', 'Último', 'style="text-decoration:none; color:#007bff; font-weight:bold;"'); ?></li>
+        <li> <?php echo anchor('asignatura/add', 'Nuevo', 'style="text-decoration:none; color:#28a745; font-weight:bold;"'); ?></li>
+        <li> <?php echo anchor('asignatura/edit/'.$asignatura['idasignatura'],'Edit', 'style="text-decoration:none; color:#ffc107; font-weight:bold;"'); ?></li>
+        <li style="border-right:1px solid green"> <?php echo anchor('asignatura/quitar/'.$asignatura['idasignatura'],'Quitar', 'style="text-decoration:none; color:#dc3545; font-weight:bold;"'); ?></li>
+        <li> <?php echo anchor('asignatura/listar/','Listar', 'style="text-decoration:none; color:#17a2b8; font-weight:bold;"'); ?></li>
 	<li> <?php echo anchor('asignatura/reportepdf/'.$asignatura['idmalla'],'reportepdf'); ?></li>
 <?php 
 }else{
