@@ -2,7 +2,7 @@
 
 <h3 style="text-align: left; margin-top:-10px;"> <?php echo $title;  ?></h3>
 <?php echo form_open('Asistencia/save_edit') ?>
-    <ul>
+    <ul style="list-style:none; padding:0; display:flex; gap:15px; background-color:#f2f2f2; padding:10px; border-radius:5px; margin-top:15px;">
 <?php
 if(isset($Asistencia))
 {
@@ -11,10 +11,10 @@ if(isset($Asistencia))
         <li> <?php echo anchor('Asistencia/elprimero/', 'primero'); ?></li>
         <li> <?php echo anchor('Asistencia/anterior/'.$Asistencia['idAsistencia'], 'anterior'); ?></li>
         <li> <?php echo anchor('Asistencia/siguiente/'.$Asistencia['idAsistencia'], 'siguiente'); ?></li>
-        <li style="border-right:1px solid green"><?php echo anchor('Asistencia/elultimo/', 'Último'); ?></li>
-        <li> <?php echo anchor('Asistencia/add', 'Nuevo'); ?></li>
-        <li> <?php echo anchor('Asistencia/edit/'.$Asistencia['idAsistencia'],'Edit'); ?></li>
-        <li style="border-right:1px solid green"> <?php echo anchor('Asistencia/delete/'.$Asistencia['idAsistencia'],'Delete'); ?></li>
+        <li style="border-right:1px solid green"><?php echo anchor('Asistencia/elultimo/', 'Último', 'style="text-decoration:none; color:#007bff; font-weight:bold;"'); ?></li>
+        <li> <?php echo anchor('Asistencia/add', 'Nuevo', 'style="text-decoration:none; color:#28a745; font-weight:bold;"'); ?></li>
+        <li> <?php echo anchor('Asistencia/edit/'.$Asistencia['idAsistencia'],'Edit', 'style="text-decoration:none; color:#ffc107; font-weight:bold;"'); ?></li>
+        <li style="border-right:1px solid green"> <?php echo anchor('Asistencia/delete/'.$Asistencia['idAsistencia'],'Delete', 'style="text-decoration:none; color:#dc3545; font-weight:bold;"'); ?></li>
         <li> <?php echo anchor('Asistencia/listar/','Listar'); ?></li>
 
     </ul>
