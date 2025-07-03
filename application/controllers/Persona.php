@@ -276,6 +276,81 @@ public function actual(){
         return TRUE;
     }
 
+
+
+	public function  save()
+	{
+
+   			date_default_timezone_set('America/Guayaquil');
+    			$fecha = date("Y-m-d");
+    			$hora= date("H:i:s");
+			$idusuario=$this->session->userdata['logged_in']['idusuario'];
+
+	 	$array_item=array(
+		 	
+		 	'idpersona' => $this->input->post('idpersona'),
+      			'cedula' => $this->input->post('cedula'),
+		 	'nombres' => $this->input->post('nombres'),
+			'apellidos' => $this->input->post('apellidos'),
+			'fechanacimiento' => $this->input->post('fechanacimiento'),
+			'descripcion' => $this->input->post('descripcion'),
+			'idsexo' => $this->input->post('idsexo'),
+			'idtipopersona' => $this->input->post('idtipopersona'),
+			'foto' => $this->input->post('foto'),
+	                'idusuario'=>$idusuario,
+			'fechacreacion'=>$fecha,
+			'horacreacion'=>$hora
+		);
+	
+		$array_correo=array(
+			'idpersona'=>0,
+			'nombre'=>$this->input->post('correo'),
+			'idcorreo_estado'=>1,
+	                'idusuario'=>$this->session->userdata['logged_in']['idusuario'],
+			'fechacreacion'=>$fecha,
+			'horacreacion'=>$hora
+		);
+			
+		$array_telefono=array(
+			'idpersona'=>0,
+			'numero'=>$this->input->post('telefono'),
+			'idoperadora'=>1,
+			'idtelefono_estado'=>1,
+	                'idusuario'=>$this->session->userdata['logged_in']['idusuario'],
+			'fechacreacion'=>$fecha,
+			'horacreacion'=>$hora
+		);
+		$result=$this->persona_model->save($array_item,$array_correo,$array_telefono);
+	 	if($result == FALSE)
+		{
+			echo "<script language='JavaScript'> alert('Persona ya existe'); </script>";
+			echo "<script language='JavaScript'> window.history.go(-2);</script>";
+		}else{
+			echo "<script language='JavaScript'> window.history.go(-2);</script>";
+		}
+ 	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     /**
      * Edit an existing person record.
      *
