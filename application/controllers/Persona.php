@@ -220,7 +220,7 @@ public function actual(){
         $this->_check_access();
         $data['title'] = "Nueva Persona";
         $data['tipopersonas'] = $this->tipopersona_model->lista_tipopersonas()->result();
-        $data['sexos'] = $this->Sexo_model->lista_sexos()->result();
+        $data['sexos'] = $this->sexo_model->lista_sexos()->result();
 
         // Validation rules for adding a new person
         $this->form_validation->set_rules('cedula', 'Cédula', 'required|is_unique[persona.cedula]|min_length[10]|max_length[10]');
@@ -292,7 +292,7 @@ public function actual(){
         }
 
         $data['tipopersonas'] = $this->tipopersona_model->lista_tipopersonas()->result();
-        $data['sexos'] = $this->Sexo_model->lista_sexos()->result();
+        $data['sexos'] = $this->sexo_model->lista_sexos()->result();
 
         // Validation rules for editing
         // 'cedula' rule should allow current unique value, or be unique for other records
