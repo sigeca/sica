@@ -114,7 +114,7 @@ if(isset($documento)){
 		$options[$row->idtipodocumentodocumento]=$row->nombre;
 		$arrurl2[$row->idtipodocumentodocumento]= base_url().'tipodocumentodocumento/actual/'.$row->idtipodocumentodocumento;
 	}
- echo form_multiselect('tipodocumentodocumento[]',$options,(array)set_value('idtipodocumentodocumento', ''), array('style'=>'width:500px','name'=>'idtipodocumentodocumento','id'=> 'idtipodocumentodocumento','onChange'=>'editartipodocumento()'));
+ echo form_multiselect('tipodocumentodocumento[]',$options,(array)set_value('idtipodocumentodocumento', ''), array('style'=>'width:100%','name'=>'idtipodocumentodocumento','id'=> 'idtipodocumentodocumento','onChange'=>'editartipodocumento()'));
 
 	?>
 	</div>
@@ -129,7 +129,7 @@ if(isset($documento)){
 	foreach ($destinodocumentos as $row){
 		$options[$row->iddestinodocumento]= $row->nombre;
 	}
-	$arrdatos=array('name'=>'iddestinodocumento','value'=>$options[$documento['iddestinodocumento']],"disabled"=>"disabled","style"=>"width:500px");
+	$arrdatos=array('name'=>'iddestinodocumento','value'=>$options[$documento['iddestinodocumento']],"disabled"=>"disabled","style"=>"width:100%");
 	?>
 	<div class="col-md-10">
 		<?php
@@ -146,7 +146,7 @@ if(isset($documento)){
     <label class="col-md-2 col-form-label"> Fecha de creación:</label>
 	<div class="col-md-10">
 		<?php
-      		 echo form_input('fechaelaboracion',$documento['fechaelaboracion'],array('type'=>'date','placeholder'=>'fechaelaboracion','style'=>'width:500px;'))
+      		 echo form_input('fechaelaboracion',$documento['fechaelaboracion'],array('type'=>'date','placeholder'=>'fechaelaboracion','style'=>'width:100%;'))
 		?>
 	</div>
 </div>
@@ -156,7 +156,7 @@ if(isset($documento)){
     <label class="col-md-2 col-form-label"> Fecha de subida:</label>
 	<div class="col-md-10">
 		<?php
-      		 echo form_input('fechasubida',$documento['fechasubida'],array('type'=>'date','placeholder'=>'fecha de carga','style'=>'width:500px;'))
+      		 echo form_input('fechasubida',$documento['fechasubida'],array('type'=>'date','placeholder'=>'fecha de carga','style'=>'width:100%;'))
 		?>
 	</div>
 </div>
@@ -177,7 +177,7 @@ if(isset($documento)){
 	?>
 	<div class="col-md-10">
 		<?php
-			 echo form_multiselect('idemisor[]',$options,(array)set_value('idemisor', ''), array('style'=>'width:500px','name'=>'idemisor','id'=>'idemisor','onChange'=>'editaremisor()'));
+			 echo form_multiselect('idemisor[]',$options,(array)set_value('idemisor', ''), array('style'=>'width:100%','name'=>'idemisor','id'=>'idemisor','onChange'=>'editaremisor()'));
 		?>
 	</div>
 </div>
@@ -193,7 +193,7 @@ if(isset($documento)){
 	?>
 	<div class="col-md-10">
 		<?php
- 			echo form_multiselect('iddestinatario[]',$options,(array)set_value('iddestinatario',''), array('style'=>'width:500px;'));
+ 			echo form_multiselect('iddestinatario[]',$options,(array)set_value('iddestinatario',''), array('style'=>'width:100%;'));
 		?>
 	</div>
 </div>
@@ -205,7 +205,7 @@ if(isset($documento)){
     <label class="col-md-2 col-form-label"> Asunto:</label>
 	<div class="col-md-10">
 		<?php
-$textarea_options = array('class' => 'form-control','rows' => '4',"disabled"=>"disabled", 'cols' => '20', 'style'=> 'width:500px;height:100px;');
+$textarea_options = array('class' => 'form-control','rows' => '4',"disabled"=>"disabled", 'cols' => '20', 'style'=> 'width:100%;height:100px;');
  echo form_textarea('asunto',$documento['asunto'],$textarea_options);
 		?>
 	</div>
@@ -216,7 +216,7 @@ $textarea_options = array('class' => 'form-control','rows' => '4',"disabled"=>"d
     <label class="col-md-2 col-form-label"> Descripción:</label>
 	<div class="col-md-10">
 		<?php
-$textarea_options = array('class' => 'form-control','rows' => '4',"disabled"=>"disabled", 'cols' => '20', 'style'=> 'width:500px;height:100px;');
+$textarea_options = array('class' => 'form-control','rows' => '4',"disabled"=>"disabled", 'cols' => '20', 'style'=> 'width:100%;height:100px;');
  echo form_textarea('descripcion',$documento['descripcion'],$textarea_options);
 		?>
 	</div>
@@ -228,7 +228,7 @@ $textarea_options = array('class' => 'form-control','rows' => '4',"disabled"=>"d
     <label class="col-md-2 col-form-label"> <a href="<?php echo base_url(); ?>index.php/documento/show_pdf/<?php echo $documento['iddocumento']; ?>">Archivo_Pdf</a>   </label>
 	<div class="col-md-10">
 		<?php
-      echo form_input('archivopdf',$documento['archivopdf'],array("id"=>"archivopdf","disabled"=>"disabled",'placeholder'=>'Archivo php','style'=>'width:500px;'));
+      echo form_input('archivopdf',$documento['archivopdf'],array("id"=>"archivopdf","disabled"=>"disabled",'placeholder'=>'Archivo php','style'=>'width:100%;'));
 
 		?>
 	</div>
