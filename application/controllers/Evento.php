@@ -1101,21 +1101,12 @@ $r->href='<a href="javascript:void(0);" class="btn btn-info btn-outline-primary 
 	{
     
         if($this->input->get('cedula')){
-
             $data['cedula']=$this->input->get('cedula');
-
         }
-
 
         if($this->input->get('eldocente')){
-
             $data['eldocente']=$this->input->get('eldocente');
-
         }
-
-
-
-
 
 		$data['evento'] = $this->evento_model->evento($this->uri->segment(3))->row_array();
 		$data['sesioneventos'] = $this->sesionevento_model->sesioneventos1($this->uri->segment(3))->result();
@@ -1123,39 +1114,36 @@ $r->href='<a href="javascript:void(0);" class="btn btn-info btn-outline-primary 
 
 		if(isset($this->session->userdata['logged_in']['idpersona']))
 		{
-		$data['asistencia'] = $this->asistencia_model->asistenciax( $data['evento']['idevento'] , $this->session->userdata['logged_in']['idpersona'])->result();
+    		$data['asistencia'] = $this->asistencia_model->asistenciax( $data['evento']['idevento'] , $this->session->userdata['logged_in']['idpersona'])->result();
 		}else{
 			$idpersona=4086; //Anomino
 			$data['asistencia'] = $this->asistencia_model->asistenciax( $data['evento']['idevento'] , $idpersona)->result();
 		}
 
-
 		if(isset($this->session->userdata['logged_in']['idpersona']))
 		{
-		$data['participacion'] = $this->participacion_model->participacionx($data['evento']['idevento'] , $this->session->userdata['logged_in']['idpersona'])->result();
-
+	    	$data['participacion'] = $this->participacion_model->participacionx($data['evento']['idevento'] , $this->session->userdata['logged_in']['idpersona'])->result();
 		}else{
 			$idpersona=4086; //Anomino
-		$data['participacion'] = $this->participacion_model->participacionx($data['evento']['idevento'] , $idpersona)->result();
+		    $data['participacion'] = $this->participacion_model->participacionx($data['evento']['idevento'] , $idpersona)->result();
 		}
-
 
 		if(isset($this->session->userdata['logged_in']['idpersona']))
 		{
-		$data['pagoevento'] = $this->pagoevento_model->pagoeventox($data['evento']['idevento'] , $this->session->userdata['logged_in']['idpersona'])->result();
-
+		    $data['pagoevento'] = $this->pagoevento_model->pagoeventox($data['evento']['idevento'] , $this->session->userdata['logged_in']['idpersona'])->result();
 		}else{
 			$idpersona=4086; //Anomino
 			$data['pagoevento'] = $this->pagoevento_model->pagoeventox($data['evento']['idevento'] , $idpersona)->result();
 		}
 
 
-
 		$data['silabo']=$this->silabo_model->silabo1($data['evento']['idsilabo'])->row_array();
 		$data['asignatura']=$this->asignatura_model->asignatura($data['silabo']['idasignatura'])->row_array();
 //		$this->load->view('template/page_header');		
 //		unset($this->session->userdata['logged_in']);
+	    $this->load->view('page_header');
 		$this->load->view('eventos/evento',$data);
+	    $this->load->view('page_footer');
 	}
 
 
