@@ -39,41 +39,31 @@
 </head>
 <body>
     <?php if (isset($this->session->userdata['logged_in'])) : ?>
-        <header class="main-header">
-            <button class="menu-toggle" id="abrir" aria-label="Abrir menú">
-                <i class="fas fa-bars"></i>
-            </button>
-            <button class="menu-toggle close-btn" id="cerrar" aria-label="Cerrar menú">
-                <i class="fas fa-times"></i>
-            </button>
- 
-            <div class="logo-container">
-                <a href="<?php echo base_url('index.php/mti'); ?>">
-                    <img src="<?php echo base_url('images/logoeysutlvt.png'); ?>" alt="Logo CTI" class="logo">
-                </a>
-            </div>
-<div class="user-profile">
-    <div class="profile-avatar">
-        <img 
-            id="foto" 
-            src="<?= 'https://educaysoft.org/repositorioeys/' . $this->session->userdata['logged_in']['foto'] ?>" 
-            alt="Foto de perfil" 
-            class="avatar"
-            onerror="this.onerror=null; this.src='<?= base_url('fotos/perfil.jpg') ?>';">
+
+
+<header class="main-header">
+    <button class="menu-toggle" id="abrir" aria-label="Abrir menú">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div class="search-bar">
+        <i class="fas fa-search"></i> <input type="text" placeholder="Buscar aplicaciones y juegos">
     </div>
-    <div class="profile-info">
-        <p class="user-name"><?= $this->session->userdata['logged_in']['elusuario'] ?></p>
-        <p class="user-email"><?= $this->session->userdata['logged_in']['email'] ?></p>
-    </div>
-    <div class="profile-actions">
-    <!--    <button class="action-button" onclick="window.location.href='<?= base_url('index.php/upfoto') ?>'">Subir foto</button> -->
-        <button class="action-button logout" onclick="window.location.href='<?= base_url('index.php/login/logout') ?>'">Salir</button>
-    </div>
-</div>
+
+    <div class="user-profile">
+        <div class="profile-avatar">
+            <img 
+                id="foto" 
+                src="<?= 'https://educaysoft.org/repositorioeys/' . $this->session->userdata['logged_in']['foto'] ?>" 
+                alt="Foto de perfil" 
+                class="avatar" 
+                onerror="this.onerror=null; this.src='<?= base_url('fotos/perfil.jpg') ?>';">
+        </div>
+        </div>
+</header>
 
 
 
-       </header>
 
         <aside class="sidebar" id="sidebar">
             <nav class="main-nav">
