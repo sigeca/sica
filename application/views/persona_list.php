@@ -84,7 +84,10 @@ body {font-family: Arial, Helvetica, sans-serif;}
 
 $(document).ready(function(){
 
-	var mytabla= $('#mydatac').DataTable({"ajax": {url: '<?php echo site_url('persona/persona_data')?>', type: 'GET'},});
+    var mytabla= $('#mydatac').DataTable({
+            "processing": true,
+            "serverSide": true, // If using server-side processing for large datasets
+            "ajax": {url: '<?php echo site_url('persona/persona_data')?>', type: 'GET'},});
 
 });
 
