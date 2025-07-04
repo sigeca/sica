@@ -72,9 +72,9 @@
 <div class="container d-flex justify-content-center align-items-center min-vh-100">
     <div class="card login-card">
         <header class="login-header">
-            <p>SISTEMA INTEGRADO DE CONTROL ACADÉMICO - SICA </p>
+            <p>SISTEMA INTEGRADO DE CONTROL ACADÉMICO  </p>
             <h3>(SICA) </h3>
-            <p>(Proyecto de Aula)</p>
+            <p>(Proyecto Tecnológico de Aula)</p>
         </header>
         <div class="card-body login-body">
             <?php
