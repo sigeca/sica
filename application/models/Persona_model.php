@@ -31,7 +31,7 @@ class Persona_model extends CI_model {
 
 
 
-	function lista_personasix(){
+	function lista_personas0(){
 		 $this->db->order_by("apellidos","asc");
 		 $persona= $this->db->get('persona0');
 		 return $persona;
