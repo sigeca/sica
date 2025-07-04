@@ -1,7 +1,37 @@
 <?php
 class Persona_model extends CI_model {
 
-	function lista_personas(){
+
+
+// Método para obtener la lista de personas paginada
+    public function lista_personas($start, $length)
+    {
+        $this->db->select('idpersona, cedula, apellidos, nombres, fechanacimiento'); // Selecciona tus columnas
+        $this->db->from('persona0'); // Reemplaza 'tu_tabla_de_personas' con el nombre real de tu tabla
+
+        // Aplica el LIMIT y OFFSET solo si $length no es -1 (que significa "todos los registros")
+        if ($length != -1) {
+            $this->db->limit($length, $start);
+        }
+
+        // Si tuvieras ordenamiento o búsqueda, irían aquí (usando $this->db->order_by, $this->db->like, etc.)
+        // Puedes pasar los parámetros de orden y búsqueda desde el controlador si los necesitas.
+
+        $query = $this->db->get();
+        return $query;
+    }
+
+
+// Método para contar el total de registros en la tabla
+    public function contar_total_personas()
+    {
+        return $this->db->count_all('persona0'); // Reemplaza 'tu_tabla_de_personas'
+    }
+
+
+
+
+	function lista_personasix(){
 		 $this->db->order_by("apellidos","asc");
 		 $persona= $this->db->get('persona0');
 		 return $persona;
