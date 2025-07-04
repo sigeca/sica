@@ -1,6 +1,6 @@
 <div id="eys-nav-i">
 	<h3 style="text-align: left; margin-top:-10px;"> <?php echo $title;  ?></h3>
-	<ul>
+    <ul style="list-style:none; padding:0; display:flex; gap:15px; background-color:#f2f2f2; padding:10px; border-radius:5px; margin-top:15px;">
 <?php
 if(isset($emisor))
 {
@@ -41,7 +41,7 @@ if(isset($emisor))
     <label class="col-md-2 col-form-label"> Id emisor:</label>
 	<div class="col-md-10">
 	<?php
-      echo form_input('idemisor',$emisor['idemisor'],array("disabled"=>"disabled",'placeholder'=>'Idemisors'));
+      echo form_input('idemisor',$emisor['idemisor'],array("disabled"=>"disabled",'placeholder'=>'Idemisors','style'=>'width:100%;'));
 	?>
 	</div> 
 </div> 
@@ -51,7 +51,7 @@ if(isset($emisor))
     <label class="col-md-2 col-form-label"> Id documento:</label>
 	<div class="col-md-10">
 	<?php
-      echo form_input('iddocumento',$emisor['iddocumento'],array("disabled"=>"disabled",'placeholder'=>'Iddocumentos'));
+      echo form_input('iddocumento',$emisor['iddocumento'],array("disabled"=>"disabled",'placeholder'=>'Iddocumentos','style'=>'width:100%;'));
 	?>
 	</div> 
 </div> 
@@ -59,14 +59,14 @@ if(isset($emisor))
 
 
 <div class="form-group row">
-    <label class="col-md-2 col-form-label"> <?php echo anchor('documento/actual/'.$emisor['iddocumento'], 'Documento:'); ?></label>
+    <label class="col-md-2 col-form-label"> <?php echo anchor('documento/actual/'.$emisor['iddocumento'], 'Documento:','style'=>'width:100%;'); ?></label>
 	<div class="col-md-10">
 	<?php
 $options= array("NADA");
 foreach ($documentos as $row){
 	$options[$row->iddocumento]= $row->asunto;
 }
-echo form_input('iddocumento',$options[$emisor['iddocumento']],array("disabled"=>"disabled"));
+echo form_input('iddocumento',$options[$emisor['iddocumento']],array("disabled"=>"disabled",'style'=>'width:100%;'));
 	?>
 	</div> 
 </div> 
@@ -76,7 +76,7 @@ echo form_input('iddocumento',$options[$emisor['iddocumento']],array("disabled"=
     <label class="col-md-2 col-form-label"> Id persona:</label>
 	<div class="col-md-10">
 	<?php
-     	 echo form_input('idpersona',$emisor['idpersona'],array("disabled"=>"disabled",'placeholder'=>'Idemisores'));
+     	 echo form_input('idpersona',$emisor['idpersona'],array("disabled"=>"disabled",'placeholder'=>'Idemisores','style'=>'width:100%;'));
 	?>
 	</div> 
 </div> 
@@ -91,7 +91,7 @@ $options= array("NADA");
 foreach ($personas as $row){
 	$options[$row->idpersona]= $row->apellidos." ".$row->nombres;
 }
-echo form_input('idpersona',$options[$emisor['idpersona']],array("disabled"=>"disabled"));
+echo form_input('idpersona',$options[$emisor['idpersona']],array("disabled"=>"disabled",'style'=>'width:100%;'));
 	?>
 	</div> 
 </div> 
