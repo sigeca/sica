@@ -96,7 +96,12 @@ $(document).ready(function(){
             { "width": "15%" },  // Columna 3
             { "width": "15%" },  // Columna 3
             { "width": "5%" }  // Columna 3
-]
+],
+"lengthMenu": [ // Define las opciones del desplegable
+            [10, 25, 50, -1], // Valores reales
+            ['10', '25', '50', 'All'] // Texto que se muestra
+        ],
+        "pageLength": 10 // Establece 10 registros por defecto al cargar
 });
 
 });
