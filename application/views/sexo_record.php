@@ -2,7 +2,7 @@
 
 <h3 style="text-align: left; margin-top:-10px;"> <?php echo $title;  ?></h3>
 <?php echo form_open('sexo/save_edit') ?>
-    <ul>
+    <ul style="list-style:none; padding:0; display:flex; gap:15px; background-color:#f2f2f2; padding:10px; border-radius:5px; margin-top:15px;">
         <li> <?php echo anchor('sexo/elprimero/', 'primero'); ?></li>
         <li> <?php echo anchor('sexo/anterior/'.$sexo['idsexo'], 'anterior'); ?></li>
         <li> <?php echo anchor('sexo/siguiente/'.$sexo['idsexo'], 'siguiente'); ?></li>
@@ -23,7 +23,7 @@
     <label class="col-md-2 col-form-label"> Id:</label>
 	<div class="col-md-10">
 
-     <?php echo form_input('idsexo',$sexo['idsexo'],array("disabled"=>"disabled",'placeholder'=>'Idsexos')) ?>
+     <?php echo form_input('idsexo',$sexo['idsexo'],array("disabled"=>"disabled",'placeholder'=>'Idsexos','style'=>'width:100%;')) ?>
  
 	</div> 
 </div> 
@@ -32,7 +32,7 @@
     <label class="col-md-2 col-form-label"> Nombre:</label>
 	<div class="col-md-10">
  
-     <?php echo form_input('nombre',$sexo['nombre'],array("disabled"=>"disabled",'placeholder'=>'nombre')) ?>
+     <?php echo form_input('nombre',$sexo['nombre'],array("disabled"=>"disabled",'placeholder'=>'nombre','style'=>'width:100%;')) ?>
 
 	</div> 
 </div> 

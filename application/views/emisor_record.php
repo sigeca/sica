@@ -31,9 +31,7 @@ if(isset($emisor))
 <br>
 <br>
 
-<?php echo form_open('emisor/save_edit') ?>
 <?php echo form_hidden('iddocumento',$emisor['iddocumento']) ?>
-<table>
 
 
 
