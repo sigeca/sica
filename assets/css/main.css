@@ -170,10 +170,10 @@ body.sidebar-collapsed .sidebar {
      display: flex;
      align-items: center;
      background-color: #f5f5f5; /* Fondo suave */
-     padding: 10px 20px;
+   /*  padding: 10px 20px; */
      border-radius: 8px; /* Bordes redondeados */
      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra sutil */
-     gap: 15px;
+   /*  gap: 15px; */
  }
  
  .profile-avatar {
