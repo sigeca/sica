@@ -49,14 +49,14 @@
  
             <div class="logo-container">
                 <a href="<?php echo base_url('index.php/mti'); ?>">
-                    <img src="<?php echo base_url('images/logo-cti.png'); ?>" alt="Logo CTI" class="logo">
+                    <img src="<?php echo base_url('images/logoeysutlvt.png'); ?>" alt="Logo CTI" class="logo">
                 </a>
             </div>
 <div class="user-profile">
     <div class="profile-avatar">
         <img 
             id="foto" 
-            src="<?= 'https://repositorioutlvte.org/Repositorio/' . $this->session->userdata['logged_in']['foto'] ?>" 
+            src="<?= 'https://educaysoft.org/repositorioeys/' . $this->session->userdata['logged_in']['foto'] ?>" 
             alt="Foto de perfil" 
             class="avatar"
             onerror="this.onerror=null; this.src='<?= base_url('fotos/perfil.jpg') ?>';">
