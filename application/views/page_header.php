@@ -105,7 +105,7 @@
                 </ul>
             </nav>
         </header>
+        <div class="main-content-wrapper" id="eys-principal">
         <main class="public-content">
             
     <?php endif; ?>
-    <div id="eys-contenido-g" class="content-wrapper">
