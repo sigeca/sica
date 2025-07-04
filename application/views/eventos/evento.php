@@ -153,9 +153,9 @@
     <div class="hero-text">
     <?php if(isset($this->session->userdata['logged_in']['cedula'])) { ?>
         <?php if(isset($cedula)) { ?>
-            <img src="<?php echo 'https://repositorioutlvte.org/Repositorio/fotos/'.$cedula; ?>.jpg" class="img-fluid mb-3 img-moderna-redonda" style="max-width: 250px;" alt="Logo Educaysoft">
+            <img src="<?php echo 'https://educaysoft.org/repositorioeys/fotos/'.$cedula; ?>.jpg" class="img-fluid mb-3 img-moderna-redonda" style="max-width: 250px;" alt="Logo Educaysoft">
         <?php }else{ ?>
-            <img src="<?php echo 'https://repositorioutlvte.org/Repositorio/fotos/'.$this->session->userdata['logged_in']['cedula']; ?>.jpg" class="img-fluid mb-3 img-moderna-redonda" style="max-width: 250px;" alt="Logo Educaysoft">
+            <img src="<?php echo 'https://educaysoft.org/repositorioeys/fotos/'.$this->session->userdata['logged_in']['cedula']; ?>.jpg" class="img-fluid mb-3 img-moderna-redonda" style="max-width: 250px;" alt="Logo Educaysoft">
         <?php } ?>
     <?php }else{ ?>
         <img src="http://repositorioutlvte.org/sica/images/LogoEducCont.png" class="img-fluid mb-3 img-moderna-redonda" style="max-width: 250px;" alt="Logo Educaysoft">
@@ -163,13 +163,13 @@
 
     <h1 class="display-4"><?php echo $evento['titulo']; ?></h1>
     <div class="d-flex justify-content-center flex-wrap">
-        <a href="<?php echo 'https://repositorioutlvte.org/Repositorio/'.$silabo['archivopdf']; ?>" class="btn btn-outline-light mx-2 mb-2">
+        <a href="<?php echo 'https://educaysoft.org/repositorioeys/'.$silabo['archivopdf']; ?>" class="btn btn-outline-light mx-2 mb-2">
             <i class="fa-solid fa-book me-2"></i>Sílabo
         </a>
-        <a href="<?php echo 'https://repositorioutlvte.org/Repositorio/'.$silabo['elplandeclasepdf']; ?>" class="btn btn-outline-light mx-2 mb-2">
+        <a href="<?php echo 'https://educaysoft.org/repositorioeys/'.$silabo['elplandeclasepdf']; ?>" class="btn btn-outline-light mx-2 mb-2">
             <i class="fa-solid fa-calendar-alt me-2"></i>Plan de Clase
         </a>
-        <a href="<?php echo 'https://repositorioutlvte.org/Repositorio/'.$silabo['elplandeclasepdf']; ?>" class="btn btn-outline-light mx-2 mb-2">
+        <a href="<?php echo 'https://educaysoft.org/repositorioeys/'.$silabo['elplandeclasepdf']; ?>" class="btn btn-outline-light mx-2 mb-2">
             <i class="fa-solid fa-calendar-alt me-2"></i>Proyecto de aula
         </a>
     </div>
