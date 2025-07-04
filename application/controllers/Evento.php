@@ -1141,9 +1141,9 @@ $r->href='<a href="javascript:void(0);" class="btn btn-info btn-outline-primary 
 		$data['asignatura']=$this->asignatura_model->asignatura($data['silabo']['idasignatura'])->row_array();
 //		$this->load->view('template/page_header');		
 //		unset($this->session->userdata['logged_in']);
-	    $this->load->view('page_header');
+	 //   $this->load->view('page_header');
 		$this->load->view('eventos/evento',$data);
-	    $this->load->view('page_footer');
+	 //   $this->load->view('page_footer');
 	}
 
 
