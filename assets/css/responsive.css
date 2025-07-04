@@ -2,7 +2,7 @@
 @media (max-width: 768px) {
     /* Main Header */
     .main-header {
-        padding: 10px;
+        padding: 0px;
     }
 
     .main-header .logo {
