@@ -137,7 +137,7 @@ public function elultimo()
 	$data['emisor'] = $this->emisor_model->elultimo();
   if(!empty($data))
   {
-  	$data['personas']= $this->persona_model->lista_personas()->result();
+  	$data['personas']= $this->persona_model->lista_personas0()->result();
     $data['title']="Emisor del documento";
   
     $this->load->view('template/page_header');		
