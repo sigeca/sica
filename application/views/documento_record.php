@@ -1,10 +1,19 @@
 <div id="eys-nav-i">
-	<h3 style="text-align: left; margin-top:-10px;"> <?php echo $title;  ?><idem style="font-size:large" id="iddocumento"><?php echo $documento['iddocumento']; ?></idem></h3>
 
-    <ul style="list-style:none; padding:0; display:flex; gap:15px; background-color:#f2f2f2; padding:10px; border-radius:5px; margin-top:15px;">
+<div style="display:flex;flex-direction:row; justify-content:space-between; align-items:center;">
+        <span style="text-align: left; font-size:x-large; font-weight:bold;">
+            <?php echo $title;  ?>
+            <span style="font-size:large; margin-left:10px;" id="iddocumento"><?php echo $documento['iddocumento']; ?></span>
+        </span>
+        <?php echo ($documento['eliminado']==1)? '<span style="font-size:large; color:red; font-weight:bold;"> - ELIMINADO</span>':'<span style="font-size:large; color:green; font-weight:bold;"> - ACTIVO</span>'; ?>
+    </div>
+
+
+
+
 <?php
-if(isset($documento))
-{
+$permitir_acceso_modulo=true; 
+if(isset($documento)){
 	$permitir=0;
 	$j=0;
 	$numero=$j;
@@ -23,9 +32,9 @@ if(isset($documento))
 		redirect('login/logout');
 	}
 
-
 ?>
 
+    <ul style="list-style:none; padding:0; display:flex; gap:15px; background-color:#f2f2f2; padding:10px; border-radius:5px; margin-top:15px;">
         <li> <?php echo anchor('documento/elprimero/', 'primero','style="text-decoration:none; color:#007bff; font-weight:bold;"'); ?></li>
         <li> <?php echo anchor('documento/siguiente/'.$documento['iddocumento'], 'siguiente', 'style="text-decoration:none; color:#007bff; font-weight:bold;"'); ?></li>
         <li> <?php echo anchor('documento/anterior/'.$documento['iddocumento'], 'anterior', 'style="text-decoration:none; color:#007bff; font-weight:bold;"'); ?></li>
@@ -85,7 +94,7 @@ if(isset($documento))
 	foreach ($tipodocus as $row){
 		$options[$row->idtipodocu]= $row->descripcion;
 	}
-	$arrdatos=array('name'=>'idtipodocu','value'=>$options[$documento['idtipodocu']],"disabled"=>"disabled","style"=>"width:500px");
+	$arrdatos=array('name'=>'idtipodocu','value'=>$options[$documento['idtipodocu']],"disabled"=>"disabled","style"=>"width:100%");
 	?>
 	<div class="col-md-10">
 		<?php
