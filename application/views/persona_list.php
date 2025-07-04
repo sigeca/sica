@@ -88,7 +88,8 @@ $(document).ready(function(){
             "processing": true,
             "serverSide": true, // If using server-side processing for large datasets
 "ajax": {url: '<?php echo site_url('persona/persona_data')?>', type: 'GET'},
-"responsie": true 
+
+        "scrollX": true // Habilita el desplazamiento horizontal
 });
 
 });
