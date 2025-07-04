@@ -66,7 +66,7 @@
         <p class="user-email"><?= $this->session->userdata['logged_in']['email'] ?></p>
     </div>
     <div class="profile-actions">
-        <button class="action-button" onclick="window.location.href='<?= base_url('index.php/upfoto') ?>'">Subir foto</button>
+    <!--    <button class="action-button" onclick="window.location.href='<?= base_url('index.php/upfoto') ?>'">Subir foto</button> -->
         <button class="action-button logout" onclick="window.location.href='<?= base_url('index.php/login/logout') ?>'">Salir</button>
     </div>
 </div>
