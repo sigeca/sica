@@ -106,29 +106,6 @@
             </nav>
         </header>
         <main class="public-content">
-            <div class="album py-5 bg-light public-hero-section">
-                <div class="container">
-                    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                        <div class="col">
-                            <div class="card shadow-sm">
-                                <a href='http://congresoutlvte.org/informatica/PeriodoAcademico.php'>
-                                    <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><image href="<?php echo base_url(); ?>/images/PeriodoAcademico.jpg" height="100%" width="100%"/>  </svg>
-                                </a>
-                                <div class="card-body">
-                                    <p class="card-text"><font color="blue">Periodos Académicos .</font><br><b>"Carrera en Tecnología de la Información".</b></p>
-                                    <p>Director de carrera:<a href="http://www.utelvt.edu.ec/sitioweb/index.php/decano-ingenieria-y-tecnologias">  Ing. Stalin Francis.</a></p>
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div class="btn-group">
-                                            <button type="button" class="btn btn-sm btn-outline-secondary">Ver</button>
-                                            <button type="button" class="btn btn-sm btn-outline-secondary">Editar</button>
-                                        </div>
-                                        <small class="text-muted">9 mins</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        </div>
-                </div>
-            </div>
+            
     <?php endif; ?>
     <div id="eys-contenido-g" class="content-wrapper">
