@@ -76,8 +76,6 @@ function showpassword(){
 }
 
 
-
-
  async function get_evento() {	
 	
 	var correo = $('select[name=correo]').val();
