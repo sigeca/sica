@@ -102,14 +102,3 @@ echo form_input('idpersona',$options[$emisor['idpersona']],array("disabled"=>"di
 
 
 
-</body>
-
-
-
-
-
-
-
-
-
-</html>
