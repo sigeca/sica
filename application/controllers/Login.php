@@ -20,9 +20,9 @@ parent::__construct();
 public function index() {
 	$this->load_model('evento_model');
 	 $data['eventos']= $this->evento_model->lista_eventos_open(0)->result();
-	 $this->load->view('page_header.php');
+	// $this->load->view('page_header.php');
 	 $this->load->view('login_form',$data);
-	 $this->load->view('page_footer.php');
+	// $this->load->view('page_footer.php');
 }
 
 // Show registration page
@@ -498,9 +498,9 @@ public function logout() {
 
 	$this->session->unset_userdata('logged_in', $sess_array);
 	$data['message_display'] = 'Successfully Logout';
-	$this->load->view('template/page_header.php');
+	$this->load->view('page_header.php');
 	$this->load->view('login_form', $data);
-	$this->load->view('template/page_footer.php');
+	$this->load->view('page_footer.php');
 }
 
 public function carga_masiva(){
