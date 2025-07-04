@@ -72,7 +72,8 @@
 <div class="container d-flex justify-content-center align-items-center min-vh-100">
     <div class="card login-card">
         <header class="login-header">
-            <h1>CARRERA EN TECNOLOGÍA DE LA INFORMACIÓN</h1>
+            <h2>SISTEMA INTEGRADO DE CONTROL ACADÉMICO (SICA)</h2>
+            <h1>(SICA)</h1>
         </header>
         <div class="card-body login-body">
             <?php
