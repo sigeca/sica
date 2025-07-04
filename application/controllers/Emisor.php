@@ -16,9 +16,9 @@ class Emisor extends CI_Controller{
 		$data['emisor'] = $this->emisor_model->elprimero();
  		// print_r($data['usuario_list']);
   		$data['title']="Lista de Emisores";
-		$this->load->view('template/page_header');		
+		$this->load->view('page_header');		
   		$this->load->view('emisor_record',$data);
-		$this->load->view('template/page_footer');
+		$this->load->view('page_footer');
 	}
 
 
