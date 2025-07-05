@@ -426,7 +426,7 @@ public function cumplimiento(){
 		if($this->uri->segment(3))
 		{
 			$idpersona=$this->uri->segment(3);
-			$data['persona']=$this->persona_model->persona($this->uri->segment(3))->row_array();
+			$data['persona']=$this->persona_model->persona($this->uri->segment(3))->result();
 		    $data['filtro']= $idpersona; //$data['participante']['idparticipante'];
 		}
 		echo $this->uri->segment(3);
