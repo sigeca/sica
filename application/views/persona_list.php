@@ -101,14 +101,7 @@ $(document).ready(function(){
             [10, 25, 50, -1], // Valores reales
             ['10', '25', '50', 'All'] // Texto que se muestra
         ],
-        "pageLength": 10, 
- "dom": 'lfrtip' // 'l' asegura que el control de longitud esté presente
-                        // l: Length changing input control
-                        // f: Filtering input
-                        // r: Processing display element
-                        // t: The table
-                        // i: Table information summary
-                        // p: Pagination
+        "pageLength": 10 
 });
 
 });
