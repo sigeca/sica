@@ -1,5 +1,4 @@
 <div id="eys-nav-i">
-
 <div style="display:flex;flex-direction:row; justify-content:space-between; align-items:center;">
         <span style="text-align: left; font-size:x-large; font-weight:bold;">
             <?php echo $title;  ?>
@@ -7,9 +6,6 @@
         </span>
         <?php echo ($documento['eliminado']==1)? '<span style="font-size:large; color:red; font-weight:bold;"> - ELIMINADO</span>':'<span style="font-size:large; color:green; font-weight:bold;"> - ACTIVO</span>'; ?>
     </div>
-
-
-
 
 <?php
 $permitir_acceso_modulo=true; 
@@ -31,7 +27,6 @@ if(isset($documento)){
 	if($permitir==0){
 		redirect('login/logout');
 	}
-
 ?>
 
     <ul style="list-style:none; padding:0; display:flex; gap:15px; background-color:#f2f2f2; padding:10px; border-radius:5px; margin-top:15px;">
@@ -69,17 +64,20 @@ if(isset($documento)){
         <li> <?php echo anchor('documento/genpagina/'.$documento['idtipodocu'],'generar web', 'style="text-decoration:none; color:#007bff; font-weight:bold;"'); ?></li>
         <li> <?php echo anchor('documento/documento_'.$documento['idtipodocu'],'Web', 'style="text-decoration:none; color:#007bff; font-weight:bold;"'); ?></li>
 
+    </ul>
 <?php
 }else{
 ?>
 
+    <ul style="list-style:none; padding:0; display:flex; gap:15px; background-color:#f2f2f2; padding:10px; border-radius:5px; margin-top:15px;">
         <li> <?php echo anchor('evento_estado/add', 'Nuevo'); ?></li>
+    </ul>
 <?php
 }
 ?>
 
-    </ul>
 </div>
+<br>
 <br>
 
 
@@ -87,8 +85,9 @@ if(isset($documento)){
 <?php echo form_hidden('iddocumento',$documento['iddocumento']) ?>
 
 
-<div class="form-group row">
-    <label class="col-md-2 col-form-label"> <?php echo anchor('tipodocu/elprimero/', 'Tipo documento'); ?> :</label>
+<div class="container" style="max-width:900px; margin:auto; padding:20px; border:1px solid #ddd; border-radius:8px; box-shadow:0 0 10px rgba(0,0,0,0.1);">
+    <div class="form-group row mb-3">
+    <label class="col-md-3 col-form-label" style="font-weight:bold;"> <?php echo anchor('tipodocu/elprimero/', 'Tipo documento'); ?> :</label>
      	<?php
 	$options= array("NADA");
 	foreach ($tipodocus as $row){
@@ -315,6 +314,7 @@ echo form_input('iddocumento_estado',$options[$documento['iddocumento_estado']],
     </div>
 </div>
 
+</div>
 <?php echo form_close(); ?>
 
 
