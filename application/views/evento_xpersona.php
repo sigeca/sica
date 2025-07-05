@@ -1,234 +1,280 @@
-<?php
-// No direct access prevention is usually done in the controller or a common entry point
-// defined('BASEPATH') OR exit('No direct script access allowed');
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
 
-// The $title and $persona data should be passed from the controller (e.g., Evento controller)
-// just like in Persona.php for persona_record.php.
-// Ensure $idpersona is available, possibly passed from the controller or extracted from $persona array.    
-//
-//
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top:  0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"  />
 
 
-$idpersona = isset($persona['idpersona']) ? $persona['idpersona'] : 'unknown';
-$person_name = isset($persona['nombres']) && isset($persona['apellidos']) ? $persona['nombres'] . ' ' . $persona['apellidos'] : 'Persona Desconocida';
-?>
 
-<div class="content-wrapper">
-    <div class="header-section">
-        <h1 class="page-title">
-            <?php echo isset($title) ? $title : 'Eventos por Persona'; ?>
-            <span class="person-id">(ID: <span id="filtro"><?php echo $idpersona; ?></span>)</span>
-        </h1>
-        <p class="person-name">Persona: <?php echo $person_name; ?></p>
-        <?php
-        // This access check should ideally be done in the controller before loading the view
-        // Keeping it for now but recommending controller-level access control.
-        $permitir_acceso_modulo = 0; // Flag to check if 'evento' module access exists
-        $numero = -1; // Initialize with an invalid index
-        if (isset($this->session->userdata['acceso'])) {
-            $j = 0;
-            foreach ($this->session->userdata['acceso'] as $row) {
-                if (isset($row["modulo"]["modulo"]) && "evento" == $row["modulo"]["modulo"]) {
-                    $numero = $j;
-                    $permitir_acceso_modulo = 1;
-                    break; // Found the module, no need to continue loop
-                }
-                $j = $j + 1;
-            }
-            if ($permitir_acceso_modulo == 0) {
-                // If module access not found, redirect (or handle gracefully)
-                // This logic might be better placed in a central authentication helper/controller
-                // redirect('login/logout'); // Uncomment if you want strict redirection
-            }
-        }
-        ?>
-    </div>
 
-    <div class="navigation-links">
-        <?php
-        // Check if access for 'navegar' is set before trying to use it
-        $can_navigate = $permitir_acceso_modulo && $numero !== -1 && isset($this->session->userdata['acceso'][$numero]['nivelacceso']['navegar']) && $this->session->userdata['acceso'][$numero]['nivelacceso']['navegar'];
-        if ($can_navigate) {
-        ?>
-            <ul class="nav-list">
-                <li><?php echo anchor('evento/elprimero/', 'Primero'); ?></li>
-                <li><?php echo anchor('evento/siguiente/' . $idpersona, 'Siguiente'); ?></li>
-                <li><?php echo anchor('evento/anterior/' . $idpersona, 'Anterior'); ?></li>
-                <li><?php echo anchor('evento/elultimo/', 'Último'); ?></li>
-            </ul>
-        <?php } ?>
-    </div>
 
-    <div class="main-content-section">
-        <div class="card shadow mb-4">
-            <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Eventos de la Persona</h6>
-            </div>
-            <div class="card-body">
-                <?php
-                // Check if access for 'add' is set before trying to use it
-                $can_add = $permitir_acceso_modulo && $numero !== -1 && isset($this->session->userdata['acceso'][$numero]['nivelacceso']['add']) && $this->session->userdata['acceso'][$numero]['nivelacceso']['add'];
-                if ($can_add) {
-                ?>
-                    <a href="<?php echo site_url('evento/add'); ?>" class="btn btn-primary mb-3">Agregar Evento</a>
-                <?php } ?>
 
-                <div class="table-responsive">
-                    <table class="table table-bordered" id="mydatac" width="100%" cellspacing="0">
-                        <thead>
-                            <tr>
-                                <th>ID Evento</th>
-                                <th>Nombre Evento</th>
-                                <th>Fecha Inicio</th>
-                                <th>Fecha Fin</th>
-                                <th>Acciones</th>
-                            </tr>
-                        </thead>
-                        <tfoot>
-                            <tr>
-                                <th>ID Evento</th>
-                                <th>Nombre Evento</th>
-                                <th>Fecha Inicio</th>
-                                <th>Fecha Fin</th>
-                                <th>Acciones</th>
-                            </tr>
-                        </tfoot>
-                        <tbody>
-                            </tbody>
-                    </table>
-                </div>
-            </div>
+<div class="form-group row">
+	<div class="col-md-10">
+<div class="row justify-content-center">
+      <!-- Page Heading -->
+ <div class="row">
+  <div class="col-12" style="border:solid">
+
+
+<div class="row" style="background-color:#90EE90; padding-top:0.5cm; padding-bottom:0.5cm; border-bottom:0.5cm solid white;">
+ 
+    <div class="col-lg-12 margin-tb">
+        <div class="pull-left">
+	     <b >Lista de eventos activos dictados por:  <?php echo $persona[0]->apellidos; ?> <?php echo "  "; ?>  <?php echo $persona[0]->nombres; ?>    	</b>
         </div>
-
-        <div class="card shadow mb-4">
-            <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Filtros</h6>
-            </div>
-            <div class="card-body">
-                <div class="form-group row">
-                    <label for="idperiodoacademico" class="col-md-2 col-form-label">Periodo Académico:</label>
-                    <div class="col-md-4">
-                        <select id="idperiodoacademico" name="idperiodoacademico" class="form-control" onchange="filtra_periodo()">
-                            <option value="">Seleccione un Periodo</option>
-                            <?php
-                            // Assuming $periodos_academicos is passed from the controller
-                            if (isset($periodos_academicos) && !empty($periodos_academicos)) {
-                                foreach ($periodos_academicos as $periodo) {
-                                    echo '<option value="' . htmlspecialchars($periodo->idperiodoacademico) . '">' . htmlspecialchars($periodo->nombre) . '</option>';
-                                }
-                            }
-                            ?>
-                        </select>
-                    </div>
-                    <div class="col-md-6">
-                        <button type="button" class="btn btn-info" onclick="filtra_evento()">Aplicar Filtro Eventos</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+        
     </div>
 </div>
 
-<div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="myModalLabel">Detalles del Evento</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body" id="eys-modalbody">
-        </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-      </div>
-    </div>
-  </div>
+
+
+
+<div id="filtro" style="display:none"><?php echo $filtro; ?></div>
+<table class="table table-striped table-bordered table-hover" id="mydatac">
+ <thead>
+ <tr>
+ <th>ID</th>
+ <th>Evento - Curso</th>
+ <th>Inicio</th>
+ <th>Fin</th>
+ <th>Tutor</th>
+ <th style="text-align: right;">Actions</th>
+ </tr>
+ </thead>
+
+ <tbody id="show_data">
+
+ </tbody>
+</table>
 </div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="modal fade" id="Modal_pdf" tabindex="-1"  role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="height: 800px;">
+
+
+ <div class="modal-footer">
+<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+</div>
+
+ </div>
+
+
+
+
+
+<div class="form-group row">
+	<div class="col-md-10">
+<div class="row justify-content-center">
+      <!-- Page Heading -->
+ <div class="row">
+  <div class="col-12" style="border:solid">
+<div class="row" style="background-color:yellow; padding-top:0.5cm; padding-bottom:0.5cm; border-bottom:0.5cm solid white;">
+    <div class="col-lg-12 margin-tb">
+        <div class="pull-left">
+	     <b>Lista de eventos recibios por:  <?php echo $persona[0]->apellidos; ?> <?php echo "  "; ?>  <?php echo $persona[0]->nombres; ?>    	</b>
+        </div>
+        
+    </div>
+</div>
+
+<div id="filtro" style="display:none"><?php echo $filtro; ?></div>
+<table class="table table-striped table-bordered table-hover" id="mydatac_e">
+ <thead>
+ <tr>
+ <th>ID</th>
+ <th>Evento - Curso</th>
+ <th>Inicio</th>
+ <th>Fin</th>
+ <th>Tutor</th>
+ <th style="text-align: right;">Actions</th>
+ </tr>
+ </thead>
+
+ <tbody id="show_data_e">
+
+ </tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+<div class="form-group row">
+	<div class="col-md-10">
+<div class="row justify-content-center">
+      <!-- Page Heading -->
+ <div class="row">
+  <div class="col-12" style="border:solid">
+<div class="row" style="background-color:red; padding-top:0.5cm; padding-bottom:0.5cm; border-bottom:0.5cm solid white;">
+    <div class="col-lg-12 margin-tb">
+        <div class="pull-left" >
+	     <b style="color:white">Eventos recibidos y ditados ya terminados  :  <?php echo $persona[0]->apellidos; ?> <?php echo "  "; ?>  <?php echo $persona[0]->nombres; ?>    	</b>
+        </div>
+        
+    </div>
+</div>
+
+<div id="filtro" style="display:none"><?php echo $filtro; ?></div>
+<table class="table table-striped table-bordered table-hover" id="mydatac_t">
+ <thead>
+ <tr>
+ <th>ID</th>
+ <th>Evento - Curso</th>
+ <th>Inicio</th>
+ <th>Fin</th>
+ <th>Tutor</th>
+ <th style="text-align: right;">Actions</th>
+ </tr>
+ </thead>
+
+ <tbody id="show_data_t">
+
+ </tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
 
 <script type="text/javascript">
-    // Make BASE_URL available if not already globally defined in scripts.js
-//    const BASE_URL = '<?php echo base_url(); ?>';
 
-    $(document).ready(function() {
-        // Initialize DataTables
-        var mytabla = $('#mydatac').DataTable({
-            "processing": true,
-            "serverSide": true, // If using server-side processing for large datasets
-            "ajax": {
-                url: '<?php echo site_url('evento/persona_data1'); ?>',
-                type: 'GET',
-                data: function(d) {
-                    d.idpersona = $('#filtro').text(); // Pass person ID
-                    // Add other filter parameters if needed, e.g., d.idperiodoacademico = idperiodoacademico;
-                    d.idperiodoacademico = $('#idperiodoacademico').val(); // Pass selected period ID
-                }
-            },
-            "columns": [
-                { "data": "idevento" },
-                { "data": "titulo" }, // Example field, adjust to actual column names
-                { "data": "fechainicia" },
-                { "data": "fechafinaliza" },
-                {
-                    "data": null,
-                    "render": function(data, type, row) {
-                        let actions = '';
-                        // Access control should ideally be handled on the server-side as well for robustness
-                        // Using JS condition based on PHP flags passed or re-checking (less secure for preventing actions)
-                        // It's better to render these buttons conditionally in PHP directly if possible,
-                        // or pass granular access flags to JS
-                        const canView = <?php echo $permitir_acceso_modulo && $numero !== -1 && isset($this->session->userdata['acceso'][$numero]['nivelacceso']['ver']) && $this->session->userdata['acceso'][$numero]['nivelacceso']['ver'] ? 'true' : 'true'; ?>;
-                        const canEdit = <?php echo $permitir_acceso_modulo && $numero !== -1 && isset($this->session->userdata['acceso'][$numero]['nivelacceso']['edit']) && $this->session->userdata['acceso'][$numero]['nivelacceso']['edit'] ? 'true' : 'false'; ?>;
-                        const canDelete = <?php echo $permitir_acceso_modulo && $numero !== -1 && isset($this->session->userdata['acceso'][$numero]['nivelacceso']['delete']) && $this->session->userdata['acceso'][$numero]['nivelacceso']['delete'] ? 'true' : 'false'; ?>;
+$(document).ready(function(){
+	var idpersona = document.getElementById("filtro").innerHTML;
+	var idportafolio=0;
+	var idperiodoacademico=0;
+	var mytabla= $('#mydatac').DataTable({"ajax": {url: '<?php echo site_url('evento/persona_data')?>', type: 'GET',data:{idpersona:idpersona}},});
+	var mytabla_e= $('#mydatac_e').DataTable({"ajax": {url: '<?php echo site_url('evento/persona_data_e')?>', type: 'GET',data:{idpersona:idpersona}},});
+	var mytabla_e= $('#mydatac_t').DataTable({"ajax": {url: '<?php echo site_url('evento/persona_data_t')?>', type: 'GET',data:{idpersona:idpersona}},});
+	var mytablaf= $('#mydatap').DataTable({"ajax": {url: '<?php echo site_url('portafolio/documento_data')?>', type: 'GET',data:{idpersona:idpersona,idperiodoacademico:idperiodoacademico}},});
+});
 
-                        if (canView) {
-                            actions += '<button class="btn btn-info btn-sm item_ver" data-idevento="' + row.idevento + '" data-bs-toggle="modal" data-bs-target="#myModal">Ver</button> ';
-                        }
-                        if (canEdit) {
-                            actions += '<a href="<?php echo site_url('evento/edit/'); ?>' + row.idevento + '" class="btn btn-warning btn-sm">Editar</a> ';
-                        }
-                        if (canDelete) {
-                            actions += '<a href="<?php echo site_url('evento/quitar/'); ?>' + row.idevento + '" class="btn btn-danger btn-sm" onclick="return confirm(\'¿Está seguro de eliminar este evento?\')">Eliminar</a>';
-                        }
-                        return actions;
-                    }
-                }
-            ],
-            // Language configuration for DataTables
-            "language": {
-                "url": "//cdn.datatables.net/plug-ins/1.13.4/i18n/es-ES.json"
-            }
-        });
 
-        // Event listener for "Ver" button to open modal and load content
-        $('#mydatac tbody').on('click', '.item_ver', function() {
-            var idevento = $(this).data('idevento');
-            $.ajax({
-                url: '<?php echo site_url('evento/get_detalle_evento_ajax'); ?>', // Controller method for AJAX detail fetch
-                type: 'GET',
-                data: { idevento: idevento },
-                success: function(response) {
-                    $('#eys-modalbody').html(response); // Load HTML content into modal body
-                    $('#myModal').modal('show'); // Show the Bootstrap modal
-                },
-                error: function(xhr, status, error) {
-                    console.error("Error fetching event details:", error);
-                    $('#eys-modalbody').html('<p class="text-danger">Error al cargar los detalles del evento.</p>');
-                    $('#myModal').modal('show');
-                }
-            });
-        });
 
-        // Functions for filtering DataTables
-        window.filtra_evento = function() {
-            mydatac.ajax.reload(); // Reloads the DataTables with current filters
-        };
 
-        window.filtra_periodo = function() {
-            // This will trigger the DataTables reload with the updated filter value from the select box
-            mydatac.ajax.reload();
-        };
+$('#show_data').on('click','.item_ver',function(){
 
-        // Note: The old specific click handlers (like docu_ver) were commented out in the previous revision.
-        // If they are for other DataTables instances, they should be located within their respective views.
-    });
+	var id= $(this).data('idevento');
+	var retorno= $(this).data('retorno');
+	window.location.href = retorno+'/'+id;
+
+});
+
+$('#show_data_e').on('click','.item_ver',function(){
+
+	var id= $(this).data('idevento');
+	var retorno= $(this).data('retorno');
+	window.location.href = retorno+'/'+id;
+
+});
+
+$('#show_data_t').on('click','.item_ver3',function(){
+	var id= $(this).data('idevento3');
+	var retorno= $(this).data('retorno3');
+	window.location.href = retorno+'/'+id;
+
+});
+
+
+
+
+
+
+
+$('#show_data').on('click','.item_ver2',function(){
+
+	var id= $(this).data('idevento2');
+	var retorno= $(this).data('retorno2');
+	window.location.href = retorno+'/'+id;
+
+});
+
+
+
+
+var idevento_estado=0;
+function filtra_evento()
+{
+//       var idevento_estado = $('select[name=idevento_estado]').val();
+
+	var idpersona = document.getElementById("filtro").innerHTML;
+       
+var mytabla= $('#mydatac').DataTable({destroy: true,"ajax": {url: '<?php echo site_url('evento/persona_data')?>', type: 'GET',data:{idpersona:idpersona}},});
+}
+
+var idperiodoacademico=0;
+function filtra_periodo()
+{
+	var idpersona = document.getElementById("filtro").innerHTML;
+	idperiodoacademico = $('select[name=idperiodoacademico]').val();
+//	var mytabla= $('#mydatac').DataTable({destroy: true,"ajax": {url: '<?php echo site_url('documento/documento_dataxtipodocu')?>', type: 'GET',data:{idperiodoacaemico:idperiodoacademico}},});
+	var mytablaf= $('#mydatap').DataTable({destroy:true,"ajax": {url: '<?php echo site_url('portafolio/documento_data')?>', type: 'GET',data:{idpersona:idpersona,idperiodoacademico:idperiodoacademico}},});
+}
+
+
+$('#show_datap').on('click','.docu_ver',function(){
+
+var ordenador = "https://"+$(this).data('ordenador');
+var ubicacion = $(this).data('ubicacion');
+if(ordenador.slice(-1) != "/" && ubicacion.slice(0,1) != "/"){
+        ubicacion = ordenador+"/"+ubicacion;
+}else{
+	ubicacion = ordenador+ubicacion;
+}
+var archivo = $(this).data('archivo');
+var certi= ubicacion.trim()+archivo.trim();
+window.location.href = certi;
+
+});
+
+
+
+
+
 </script>
+
