@@ -547,7 +547,7 @@ public function persona_data()
     // 2. Llamar al modelo pasando los parámetros de paginación
     // También necesitas el total de registros para DataTables
     $total_records = $this->persona_model->contar_total_personas(); // Un nuevo método para contar todos
-    $data0 = $this->persona_model->lista_personas($start, $length); // Pasa start y length
+    $data0 = $this->persona_model->lista_personas0(); // Pasa start y length
 
     $data = array();
     foreach ($data0->result() as $r) {
