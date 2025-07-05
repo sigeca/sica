@@ -56,7 +56,7 @@ Class Evento_model extends CI_model {
         // `result_array()` si quieres un array de arrays asociativos
         // `result()` si quieres un array 
 
-		 return $evento->result_array();	
+		 return $evento;	
 		 //return $evento;	
 	}
 
