@@ -86,7 +86,6 @@ $(document).ready(function(){
 
     var mytabla= $('#mydatac').DataTable({
             "processing": true,
-            "serverSide": true, // If using server-side processing for large datasets
 "ajax": {url: '<?php echo site_url('persona/persona_data')?>', type: 'GET'},
     "autoWidth": false, // Desactiva el auto-ajuste de ancho
         "columns": [
@@ -96,12 +95,7 @@ $(document).ready(function(){
             { "width": "30%" },  // Columna 3
             { "width": "15%" },  // Columna 3
             { "width": "10%" }  // Columna 3
-],
-"lengthMenu": [ // Define las opciones del desplegable
-            [10, 25, 50, -1], // Valores reales
-            ['10', '25', '50', 'All'] // Texto que se muestra
-        ],
-        "pageLength": 10 
+]
 });
 
 });
