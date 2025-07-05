@@ -532,45 +532,29 @@ public function actual(){
 }
 
 
-public function persona_data()
+
+function persona_data()
 {
-    // 1. Asignar los parámetros a variables distintas y correctas
-    $draw   = intval($this->input->get("draw"));
-    $start  = intval($this->input->get("start"));
-    $length = intval($this->input->get("length"));
+		$draw= intval($this->input->get("draw"));
+		$draw= intval($this->input->get("start"));
+		$draw= intval($this->input->get("length"));
 
-    // Puedes añadir manejo para la búsqueda y ordenamiento aquí si los necesitas
-    // $search_value = $this->input->get("search")['value'];
-    // $order_column = $this->input->get("order")[0]['column'];
-    // $order_dir = $this->input->get("order")[0]['dir'];
 
-    // 2. Llamar al modelo pasando los parámetros de paginación
-    // También necesitas el total de registros para DataTables
-    $total_records = $this->persona_model->contar_total_personas(); // Un nuevo método para contar todos
-    $data0 = $this->persona_model->lista_personas0(); // Pasa start y length
-
-    $data = array();
-    foreach ($data0->result() as $r) {
-        $data[] = array(
-            $r->idpersona,
-            $r->cedula,
-            $r->apellidos,
-            $r->nombres,
-            $r->fechanacimiento,
-            '<a href="javascript:void(0);" class="btn btn-info btn-sm item_ver" data-retorno="' . site_url('persona/actual') . '" data-idpersona="' . $r->idpersona . '">Ver</a>'
-        );
-    }
-
-    $output = array(
-        "draw" => $draw,
-        "recordsTotal" => $data0->num_rows(), // Total de registros sin filtrar
-        "recordsFiltered" => $data0->num_rows(), // Si no hay filtros, es igual al total. Si hay filtros, debes calcularlo.
-        "data" => $data
-    );
-
-    echo json_encode($output);
-    exit();
+	 	$data0 = $this->persona_model->lista_personas();
+		$data=array();
+		foreach($data0->result() as $r){
+			$data[]=array($r->idpersona,$r->cedula,$r->apellidos,$r->nombres,$r->fechanacimiento,
+				$r->href='<a href="javascript:void(0);" class="btn btn-info btn-sm item_ver" data-retorno="'.site_url('persona/actual').'"    data-idpersona="'.$r->idpersona.'">Ver</a>');
+		}	
+		$output=array( "draw"=>$draw,
+			"recordsTotal"=> $data0->num_rows(),
+			"recordsFiltered"=> $data0->num_rows(),
+			"data"=>$data
+		);
+		echo json_encode($output);
+		exit();
 }
+
 
 
 
