@@ -563,8 +563,8 @@ public function persona_data()
 
     $output = array(
         "draw" => $draw,
-        "recordsTotal" => $total_records, // Total de registros sin filtrar
-        "recordsFiltered" => $total_records, // Si no hay filtros, es igual al total. Si hay filtros, debes calcularlo.
+        "recordsTotal" => $data0->num_rows(), // Total de registros sin filtrar
+        "recordsFiltered" => $data0->num_rows(), // Si no hay filtros, es igual al total. Si hay filtros, debes calcularlo.
         "data" => $data
     );
 
