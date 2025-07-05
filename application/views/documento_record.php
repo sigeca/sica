@@ -246,7 +246,7 @@ $textarea_options = array('class' => 'form-control','rows' => '4',"disabled"=>"d
 	?>
 	<div class="col-md-10">
 		<?php
-			echo form_input('idordenador',$options[$documento['idordenador']],array("id"=>"idordenador","disabled"=>"disabled"));
+			echo form_input('idordenador',$options[$documento['idordenador']],array("id"=>"idordenador","disabled"=>"disabled",'style'=>'width:100%;'));
 		?>
 	</div>
 </div>
@@ -263,7 +263,7 @@ $textarea_options = array('class' => 'form-control','rows' => '4',"disabled"=>"d
 	?>
 	<div class="col-md-10">
 		<?php
-		echo form_input('iddirectorio',$options[$documento['iddirectorio']],array("id"=>"iddirectorio", "disabled"=>"disabled"));
+		echo form_input('iddirectorio',$options[$documento['iddirectorio']],array("id"=>"iddirectorio", "disabled"=>"disabled",'style'=>'width:100%;'));
 		?>
 	</div>
 </div>
@@ -283,7 +283,7 @@ foreach ($documento_estados as $row){
 		<?php
 
 
-echo form_input('iddocumento_estado',$options[$documento['iddocumento_estado']],array('id'=>'iddocumento_estado', "disabled"=>"disabled", 'style'=>"background-color:yellow;"));
+echo form_input('iddocumento_estado',$options[$documento['iddocumento_estado']],array('id'=>'iddocumento_estado', "disabled"=>"disabled",'style'=>'width:100%;'));
 		?>
 	</div>
 </div>
