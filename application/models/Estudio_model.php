@@ -39,8 +39,6 @@ class Estudio_model extends CI_model {
  	}
 
 
-
-
  	function estudios( $idpersona){
  		$estudio = $this->db->query('select * from estudio1 where idpersona="'. $idpersona.'"');
  		return $estudio;
