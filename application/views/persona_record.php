@@ -14,7 +14,8 @@ $permitir_acceso_modulo=true;
         $j=0;
         $numero=$j;
         if(isset($this->session->userdata['acceso'])) {
-            foreach($this->session->userdata['acceso'] as $row) {
+            foreach($this->session->userdata['acceso'] as $row) 
+            {
                 if("persona"==$row["modulo"]["modulo"]) {
                     $numero=$j;
                     $permitir=1;
