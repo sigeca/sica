@@ -1,6 +1,6 @@
 <div id="eys-nav-i">
 <h3 style="text-align: left; margin-top:-10px;"> <?php echo $title;  ?></h3>
-	<ul>
+    <ul style="list-style:none; padding:0; display:flex; gap:15px; background-color:#f2f2f2; padding:10px; border-radius:5px; margin-top:15px;">
 <?php
 if(isset($docente))
 {
@@ -80,7 +80,7 @@ echo form_input('idpersona',$options[$docente['idpersona']],array("disabled"=>"d
 <div class="form-group row">
     <label class="col-md-2 col-form-label"> Foto:</label>
 	<div class="col-md-10">
- <img src="https://repositorioutlvte.org/Repositorio/fotos/<?php echo $docente['cedula']; ?>.jpg" alt="foto" width="400" height="300"> 
+ <img src="https://educaysoft.org/repositorioeys/fotos/<?php echo $docente['cedula']; ?>.jpg" alt="foto" width="400" height="300"> 
 	</div> 
 </div>
 
