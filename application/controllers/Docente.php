@@ -167,9 +167,9 @@ public function actual(){
 	public function listar()
 	{
 		$data['title']="Docentes";
-		$this->load->view('template/page_header');		
+		$this->load->view('page_header');		
 		$this->load->view('docente_list',$data);
-		$this->load->view('template/page_footer');
+		$this->load->view('page_footer');
 	}
 
 
