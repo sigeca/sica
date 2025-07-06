@@ -284,6 +284,114 @@ body {
     border-bottom-right-radius: 10px;
 }
 
+
+/* Estilos generales para el header */
+.main-header {
+    display: flex; /* Usa Flexbox para alinear elementos */
+    justify-content: space-between; /* Espacia los elementos a los extremos */
+    align-items: center; /* Centra verticalmente los elementos */
+    padding: 10px 20px; /* Espaciado interno */
+    background-color: #f8f8f8; /* Color de fondo, ajusta según tu diseño */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+    flex-wrap: wrap; /* Permite que los elementos se envuelvan a la siguiente línea si no hay espacio */
+}
+
+/* Contenedor del logo */
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    max-height: 50px; /* Ajusta el tamaño máximo del logo */
+    width: auto;
+}
+
+/* Menú hamburguesa (para móvil) */
+.menu-toggle {
+    display: none; /* Oculta los botones de menú por defecto en escritorio */
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 5px;
+}
+
+/* Estilos del perfil de usuario */
+.user-profile {
+    display: flex; /* Usa Flexbox para la imagen, info y botones */
+    align-items: center; /* Centra verticalmente */
+    gap: 15px; /* Espacio entre los elementos del perfil */
+    flex-wrap: wrap; /* Permite que los elementos del perfil se envuelvan */
+    justify-content: flex-end; /* Alinea a la derecha por defecto en escritorio */
+}
+
+.profile-avatar img {
+    width: 50px; /* Tamaño fijo para el avatar */
+    height: 50px;
+    border-radius: 50%; /* Para hacerlo redondo */
+    object-fit: cover; /* Asegura que la imagen cubra el área sin distorsionarse */
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: column; /* Apila el nombre y el email */
+}
+
+.user-name {
+    font-weight: bold;
+    margin: 0;
+}
+
+.user-email {
+    font-size: 0.9em;
+    color: #555;
+    margin: 0;
+}
+
+.profile-actions {
+    display: flex; /* Usa Flexbox para los botones */
+    gap: 10px; /* Espacio entre los botones */
+    flex-wrap: wrap; /* Permite que los botones se envuelvan */
+}
+
+.action-button {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+    white-space: nowrap; /* Evita que el texto del botón se rompa */
+}
+
+.action-button:not(.logout) {
+    background-color: #007bff; /* Color para "Subir foto" */
+    color: white;
+}
+
+.action-button.logout {
+    background-color: #dc3545; /* Color para "Salir" */
+    color: white;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* Responsive Adjustments */
 @media (max-width: 768px) {
     .main-header .container {

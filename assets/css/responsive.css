@@ -2,8 +2,54 @@
 @media (max-width: 768px) {
     /* Main Header */
     .main-header {
-        padding: 0px;
+        flex-direction: column;
+        align-item: flex-start;
+        padding: 10px;
     }
+
+  .logo-container {
+        width: 100%; /* El logo ocupa todo el ancho */
+        justify-content: center; /* Centra el logo */
+        margin-bottom: 10px; /* Espacio debajo del logo */
+    }
+
+ .user-profile {
+        width: 100%; /* El perfil ocupa todo el ancho */
+        flex-direction: column; /* Apila los elementos del perfil */
+        align-items: center; /* Centra los elementos del perfil */
+        text-align: center;
+        gap: 10px; /* Reduce el espacio entre elementos del perfil */
+    }
+ .profile-info {
+        align-items: center; /* Centra el nombre y el email */
+    }
+
+
+    .profile-actions {
+        width: 100%; /* Los botones ocupan todo el ancho */
+        flex-direction: column; /* Apila los botones */
+        gap: 8px; /* Espacio entre botones apilados */
+        margin-top: 10px;
+    }
+
+    .action-button {
+        width: 100%; /* Los botones ocupan todo el ancho disponible */
+        box-sizing: border-box; /* Incluye padding y borde en el ancho */
+    }
+
+    /* Mostrar los botones de menú hamburguesa y ocultar el botón de cierre inicialmente */
+    .menu-toggle#abrir {
+        display: block; /* Muestra el botón de abrir menú */
+        position: absolute; /* Posiciona el botón de menú */
+        top: 10px;
+        left: 10px;
+        z-index: 100;
+    }
+
+    .menu-toggle#cerrar {
+        display: none; /* Oculta el botón de cerrar menú por defecto */
+    }
+
 
     .main-header .logo {
         height: 35px;
@@ -133,6 +179,24 @@
 
 /* Further adjustments for extra small screens/phones */
 @media (max-width: 480px) {
+.logo {
+        max-height: 40px; /* Reduce un poco el tamaño del logo */
+    }
+
+    .profile-avatar img {
+        width: 40px;
+        height: 40px;
+    }
+
+    .user-name {
+        font-size: 0.95em;
+    }
+
+    .user-email {
+        font-size: 0.8em;
+    }
+
+
     .main-header {
         flex-wrap: wrap; /* Allow items to wrap */
         justify-content: center;
