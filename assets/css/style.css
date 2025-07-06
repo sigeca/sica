@@ -18,17 +18,23 @@ body {
 
 /* Header Styles */
 .main-header {
-    background-color: #0056b3; /* Darker blue */
+    background-color: #0056b3; /* Darker blue, primary header background */
     color: #fff;
-    padding: 20px 0;
+    padding: 20px 0; /* Adjust padding for better visual balance */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex; /* Use Flexbox for aligning elements */
+    justify-content: space-between; /* Space out elements to the ends */
+    align-items: center; /* Vertically center elements */
+    flex-wrap: wrap; /* Allows wrapping on smaller screens for responsiveness */
 }
 
 .main-header .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap; /* Allows wrapping on smaller screens for responsiveness */
+    flex-wrap: wrap;
+    width: 100%; /* Ensure container takes full width within header */
+    padding: 0 20px; /* Reapply padding for consistency */
 }
 
 .main-header h1 {
@@ -37,6 +43,18 @@ body {
     letter-spacing: 0.5px;
 }
 
+/* Logo container in header */
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    max-height: 50px; /* Adjust max size for logo */
+    width: auto;
+}
+
+/* Navigation Styles */
 .main-nav ul {
     list-style: none;
     margin: 0;
@@ -59,6 +77,90 @@ body {
 .main-nav ul li a:focus {
     color: #aed6f1; /* Lighter blue on hover */
     text-decoration: underline;
+}
+
+/* User Profile Styles */
+.user-profile {
+    display: flex; /* Use Flexbox for image, info, and buttons */
+    align-items: center; /* Vertically center */
+    gap: 15px; /* Space between profile elements */
+    flex-wrap: wrap; /* Allow profile elements to wrap */
+    justify-content: flex-end; /* Align to the right by default on desktop */
+    color: #fff; /* Ensure text color is white for consistency with header */
+}
+
+.profile-avatar img {
+    width: 50px; /* Fixed size for avatar */
+    height: 50px;
+    border-radius: 50%; /* Make it round */
+    object-fit: cover; /* Ensure image covers the area without distortion */
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: column; /* Stack name and email */
+}
+
+.user-name {
+    font-weight: bold;
+    margin: 0;
+}
+
+.user-email {
+    font-size: 0.9em;
+    color: #f0f0f0; /* Slightly lighter white for email */
+    margin: 0;
+}
+
+.profile-actions {
+    display: flex; /* Use Flexbox for buttons */
+    gap: 10px; /* Space between buttons */
+    flex-wrap: wrap; /* Allow buttons to wrap */
+}
+
+.action-button {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+    white-space: nowrap; /* Prevent button text from breaking */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.action-button:not(.logout) {
+    background-color: #007bff; /* Color for "Upload photo" */
+    color: white;
+}
+
+.action-button.logout {
+    background-color: #dc3545; /* Color for "Logout" */
+    color: white;
+}
+
+.action-button:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+}
+
+/* Hamburger menu (for mobile) - Hidden by default on desktop */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 5px;
+    color: #fff; /* White color for the toggle icon */
+}
+
+/* Specific states for open/close buttons (for mobile sidebar) */
+.menu-toggle#abrir {
+    display: none; /* Hidden by default on desktop, shown by media query */
+}
+
+.menu-toggle#cerrar {
+    display: none; /* Hidden by default, shown by media query when sidebar is open */
 }
 
 /* Content Area */
@@ -284,158 +386,6 @@ body {
     border-bottom-right-radius: 10px;
 }
 
-
-/* Estilos generales para el header */
-.main-header {
-    display: flex; /* Usa Flexbox para alinear elementos */
-    justify-content: space-between; /* Espacia los elementos a los extremos */
-    align-items: center; /* Centra verticalmente los elementos */
-    padding: 10px 20px; /* Espaciado interno */
-    background-color: #f8f8f8; /* Color de fondo, ajusta según tu diseño */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra sutil */
-    flex-wrap: wrap; /* Permite que los elementos se envuelvan a la siguiente línea si no hay espacio */
-}
-
-/* Contenedor del logo */
-.logo-container {
-    display: flex;
-    align-items: center;
-}
-
-.logo {
-    max-height: 50px; /* Ajusta el tamaño máximo del logo */
-    width: auto;
-}
-
-/* Menú hamburguesa (para móvil) */
-.menu-toggle {
-    display: none; /* Oculta los botones de menú por defecto en escritorio */
-    background: none;
-    border: none;
-    font-size: 24px;
-    cursor: pointer;
-    padding: 5px;
-}
-
-/* Estilos del perfil de usuario */
-.user-profile {
-    display: flex; /* Usa Flexbox para la imagen, info y botones */
-    align-items: center; /* Centra verticalmente */
-    gap: 15px; /* Espacio entre los elementos del perfil */
-    flex-wrap: wrap; /* Permite que los elementos del perfil se envuelvan */
-    justify-content: flex-end; /* Alinea a la derecha por defecto en escritorio */
-}
-
-.profile-avatar img {
-    width: 50px; /* Tamaño fijo para el avatar */
-    height: 50px;
-    border-radius: 50%; /* Para hacerlo redondo */
-    object-fit: cover; /* Asegura que la imagen cubra el área sin distorsionarse */
-}
-
-.profile-info {
-    display: flex;
-    flex-direction: column; /* Apila el nombre y el email */
-}
-
-.user-name {
-    font-weight: bold;
-    margin: 0;
-}
-
-.user-email {
-    font-size: 0.9em;
-    color: #555;
-    margin: 0;
-}
-
-.profile-actions {
-    display: flex; /* Usa Flexbox para los botones */
-    gap: 10px; /* Espacio entre los botones */
-    flex-wrap: wrap; /* Permite que los botones se envuelvan */
-}
-
-.action-button {
-    padding: 8px 12px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 0.9em;
-    white-space: nowrap; /* Evita que el texto del botón se rompa */
-}
-
-.action-button:not(.logout) {
-    background-color: #007bff; /* Color para "Subir foto" */
-    color: white;
-}
-
-.action-button.logout {
-    background-color: #dc3545; /* Color para "Salir" */
-    color: white;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* Responsive Adjustments */
-@media (max-width: 768px) {
-    .main-header .container {
-        flex-direction: column;
-        text-align: center;
-    }
-    .main-header h1 {
-        margin-bottom: 15px;
-    }
-    .main-nav ul {
-        flex-direction: column;
-        align-items: center;
-    }
-    .main-nav ul li {
-        margin: 5px 0;
-    }
-
-    .card-grid {
-        grid-template-columns: 1fr; /* Single column on small screens */
-    }
-
-    .distributivo-card {
-        padding: 20px;
-    }
-
-    .docente-photo-container {
-        width: 100px;
-        height: 100px;
-    }
-}
-
-@media (max-width: 480px) {
-    .container {
-        padding: 0 15px;
-    }
-    .distributivo-list h2 {
-        font-size: 1.8em;
-    }
-    .btn {
-        padding: 8px 15px;
-        font-size: 0.9em;
-    }
-}
-
 /* Message Styles (Loading, Info, Error) */
 .loading-message,
 .info-message,
@@ -463,4 +413,275 @@ body {
     color: #dc3545; /* Red color for errors */
     background-color: #f8d7da; /* Light red background */
     border: 1px solid #f5c6cb;
+}
+
+/* Responsive Adjustments (from responsive.css, merged and refined) */
+@media (max-width: 768px) {
+    /* Main Header */
+    .main-header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px;
+    }
+
+    .main-header h1 {
+        font-size: 1.5em; /* Example adjustment */
+        margin-bottom: 10px;
+    }
+
+    .main-header .container {
+        flex-direction: column;
+        text-align: center;
+        padding: 0 10px; /* Adjust container padding for smaller screens */
+    }
+
+    .logo-container {
+        width: 100%;
+        justify-content: center;
+        margin-bottom: 10px;
+    }
+
+    .logo { /* Overrides general .logo max-height */
+        max-height: 35px;
+    }
+
+    /* Navigation Menu */
+    .main-nav ul {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .main-nav ul li {
+        margin: 5px 0;
+    }
+
+    /* User Profile */
+    .user-profile {
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 10px;
+        margin-top: 15px;
+        justify-content: center; /* Ensures elements are centered within the column */
+    }
+
+    .profile-avatar img { /* Overrides general profile-avatar img size */
+        width: 50px;
+        height: 50px;
+    }
+
+    .profile-info {
+        align-items: center;
+    }
+
+    .profile-actions {
+        width: 100%;
+        flex-direction: column;
+        gap: 8px;
+        margin-top: 10px;
+        justify-content: center; /* Center action buttons */
+    }
+
+    .action-button {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    /* Mobile Menu Toggle Buttons */
+    .menu-toggle {
+        display: block; /* Show hamburger menu button on smaller screens */
+        position: absolute; /* Position relative to header */
+        top: 20px;
+        right: 20px;
+        font-size: 1.5em;
+    }
+
+    .menu-toggle#abrir {
+        display: block; /* Show open menu button by default */
+    }
+
+    .menu-toggle#cerrar {
+        display: none; /* Hide close menu button by default */
+        z-index: 1001; /* Ensure close button is above sidebar when open */
+    }
+
+    /* When sidebar is open */
+    body.sidebar-open .menu-toggle#abrir {
+        display: none;
+    }
+
+    body.sidebar-open .menu-toggle#cerrar {
+        display: block;
+    }
+
+    /* Public Header (if distinct from main-header) */
+    .public-header {
+        flex-direction: column;
+        text-align: center;
+        padding: 15px;
+    }
+
+    .public-nav ul {
+        flex-direction: column;
+        margin-top: 15px;
+        gap: 10px;
+    }
+
+    /* Sidebar */
+    .sidebar {
+        width: 0;
+        min-width: 0;
+        transform: translateX(-100%);
+        padding-top: 50px;
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        overflow-y: auto;
+        background-color: #f8f8f8;
+        box-shadow: 2px 0 10px rgba(0,0,0,0.3);
+        transition: transform 0.3s ease-in-out;
+        z-index: 1000;
+    }
+
+    .sidebar.open {
+        width: 70%;
+        min-width: 200px;
+        transform: translateX(0);
+    }
+
+    .sidebar .menu-text {
+        display: inline;
+    }
+
+    .sidebar .menu-icon {
+        margin-right: 10px;
+    }
+
+    /* Main Content Area */
+    .main-content-wrapper {
+        margin-left: 0;
+        width: 100%;
+        transition: margin-left 0.3s ease-in-out;
+    }
+
+    /* Adjust main content when sidebar is open (e.g., overlay/dimming) */
+    body.sidebar-open .main-content-wrapper {
+        overflow: hidden;
+    }
+
+    /* General padding adjustments for smaller screens */
+    .content-area, .content-wrapper {
+        padding: 10px;
+        margin: 10px;
+    }
+
+    /* Card Grid Layout */
+    .card-grid { /* Overrides general card-grid */
+        grid-template-columns: 1fr;
+    }
+
+    .distributivo-card { /* Overrides general distributivo-card padding */
+        padding: 20px;
+    }
+
+    .docente-photo-container { /* Overrides general docente-photo-container size */
+        width: 100px;
+        height: 100px;
+    }
+}
+
+/* Further adjustments for extra small screens/phones */
+@media (max-width: 480px) {
+    .container { /* Overrides previous media query container padding */
+        padding: 0 15px;
+    }
+
+    .logo { /* Overrides previous media query logo max-height */
+        max-height: 40px;
+    }
+
+    .profile-avatar img { /* Overrides previous media query avatar size */
+        width: 40px;
+        height: 40px;
+    }
+
+    .user-name {
+        font-size: 0.95em;
+    }
+
+    .user-email {
+        font-size: 0.8em;
+    }
+
+    /* Header for very small screens */
+    .main-header { /* Overrides previous media query header */
+        justify-content: center;
+        padding: 15px 0; /* Adjust header padding further */
+    }
+
+    .main-header .container {
+        padding: 0 15px; /* Consistent padding with .container */
+    }
+
+    .main-header .logo-container {
+        margin-bottom: 10px;
+    }
+
+    /* Adjust menu toggle position for very small screens if needed */
+    .menu-toggle { /* Overrides previous media query toggle position/size */
+        top: 15px;
+        right: 15px;
+        font-size: 1.3em;
+    }
+
+    .distributivo-list h2 { /* Consistent with previous media query */
+        font-size: 1.8em;
+    }
+
+    .btn { /* Overrides general btn padding/font-size */
+        padding: 8px 15px;
+        font-size: 0.9em;
+    }
+
+    .public-nav ul {
+        gap: 5px;
+    }
+
+    /* DataTables specific adjustments on small screens */
+    .dataTables_wrapper .dataTables_filter,
+    .dataTables_wrapper .dataTables_length,
+    .dataTables_wrapper .dataTables_info,
+    .dataTables_wrapper .dataTables_paginate {
+        text-align: center;
+        margin-bottom: 10px;
+    }
+}
+
+/* Additional media query for very large screens */
+@media (min-width: 1200px) {
+    .main-content-wrapper {
+        margin-left: 15%; /* Default margin for sidebar */
+        width: 85%; /* Default width for content */
+    }
+    .sidebar {
+        width: 15%; /* Default width for sidebar */
+        min-width: 200px;
+        position: fixed; /* Ensure it's fixed on larger screens */
+        height: 100%; /* Full height */
+        top: 0;
+        left: 0;
+        transform: translateX(0); /* Ensure it's visible */
+        box-shadow: none; /* No shadow needed as it's part of layout */
+        z-index: 1; /* Lower z-index than modal/header if needed */
+        padding-top: 20px; /* Adjust padding if main header is not fixed */
+    }
+    .menu-toggle {
+        display: none; /* Hide menu toggle on large screens */
+    }
+    body.sidebar-open .main-content-wrapper {
+        overflow: auto; /* Allow scrolling */
+    }
 }
