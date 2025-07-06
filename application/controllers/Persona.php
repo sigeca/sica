@@ -156,32 +156,65 @@ public function actual(){
     /**
      * Display the first person record.
      */
-    public function elprimero() {
-        $this->_check_access();
-        $persona = $this->Persona_model->elprimero();
-        if ($persona) {
-            redirect('persona/index/' . $persona['idpersona']);
-        } else {
-            // No persons found, redirect to add
-            redirect('persona/add');
-        }
-    }
+public function elprimero()
+{
 
-    /**
+	$data['persona'] = $this->persona_model->elprimero();
+	$data['correos'] =$this->correo_model->correospersona($data['persona']['idpersona'])->result();
+	$data['direccions'] =$this->direccion_model->direccionspersona($data['persona']['idpersona'])->result();
+	$data['telefonos'] =$this->telefono_model->telefonospersona($data['persona']['idpersona'])->result();
+  	$data["sexos"]= $this->sexo_model->lista_sexos()->result();
+  	$data["tipopersonas"]= $this->tipopersona_model->lista_tipopersonas()->result();
+  	$data["paispersonas"]= $this->paispersona_model->lista_paispersonas1($data['persona']['idpersona'])->result();
+  	$data["nacionalidadpersonas"]= $this->nacionalidadpersona_model->lista_nacionalidadpersonas1($data['persona']['idpersona'])->result();
+  	$data["provinciapersonas"]= $this->provinciapersona_model->lista_provinciapersonas1($data['persona']['idpersona'])->result();
+  if(!empty($data))
+  {
+	$data['title']="Usted esta visualizando la persona No : ";
+  
+    $this->load->view('template/page_header');		
+    $this->load->view('persona_record',$data);
+    $this->load->view('template/page_footer');
+  }else{
+
+    $this->load->view('template/page_header');		
+    $this->load->view('registro_vacio');
+    $this->load->view('template/page_footer');
+
+  }
+  
+  }
+
+
+
+
+
+
+/**
      * Display the next person record.
      *
      * @param int $idpersona The current person ID.
      */
-    public function siguiente($idpersona) {
-        $this->_check_access();
-        $persona = $this->Persona_model->siguiente($idpersona);
-        if ($persona) {
-            redirect('persona/index/' . $persona['idpersona']);
-        } else {
-            // Reached the last record, stay on current or go to first
-            redirect('persona/index/' . $idpersona);
-        }
-    }
+
+public function siguiente(){
+	$data['persona'] = $this->persona_model->siguiente($this->uri->segment(3))->row_array();
+	$data['correos'] =$this->correo_model->correospersona($data['persona']['idpersona'])->result();
+	$data['direccions'] =$this->direccion_model->direccionspersona($data['persona']['idpersona'])->result();
+	$data['telefonos'] =$this->telefono_model->telefonospersona($data['persona']['idpersona'])->result();
+  	$data["sexos"]= $this->sexo_model->lista_sexos()->result();
+  	$data["tipopersonas"]= $this->tipopersona_model->lista_tipopersonas()->result();
+  	$data["paispersonas"]= $this->paispersona_model->lista_paispersonas1($data['persona']['idpersona'])->result();
+  	$data["nacionalidadpersonas"]= $this->nacionalidadpersona_model->lista_nacionalidadpersonas1($data['persona']['idpersona'])->result();
+  	$data["provinciapersonas"]= $this->provinciapersona_model->lista_provinciapersonas1($data['persona']['idpersona'])->result();
+	$data['title']="Usted esta visualizando la persona No : ";
+	$this->load->view('page_header');		
+  	$this->load->view('persona_record',$data);
+	$this->load->view('page_footer');
+}
+
+
+
+
 
     /**
      * Display the previous person record.
