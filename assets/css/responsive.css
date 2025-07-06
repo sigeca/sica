@@ -3,59 +3,105 @@
     /* Main Header */
     .main-header {
         flex-direction: column;
-        align-item: flex-start;
+        align-items: flex-start; /* Corrected typo: align-item to align-items */
         padding: 10px;
     }
 
-  .logo-container {
-        width: 100%; /* El logo ocupa todo el ancho */
-        justify-content: center; /* Centra el logo */
-        margin-bottom: 10px; /* Espacio debajo del logo */
+    .main-header h1 {
+        /* Adjust header title for smaller screens if necessary,
+           but it's primarily handled in style.css */
+        font-size: 1.5em; /* Example adjustment */
+        margin-bottom: 10px;
     }
 
- .user-profile {
-        width: 100%; /* El perfil ocupa todo el ancho */
-        flex-direction: column; /* Apila los elementos del perfil */
-        align-items: center; /* Centra los elementos del perfil */
+    .logo-container {
+        width: 100%; /* Logo takes full width */
+        justify-content: center; /* Center the logo */
+        margin-bottom: 10px; /* Space below the logo */
+    }
+
+    .main-header .logo {
+        height: 35px; /* Adjust logo size for smaller screens */
+    }
+
+    /* Navigation Menu */
+    .main-nav ul {
+        flex-direction: column;
+        align-items: center;
+        width: 100%; /* Ensure navigation takes full width */
+        margin-top: 10px; /* Space from header elements */
+    }
+
+    .main-nav ul li {
+        margin: 5px 0; /* Adjust spacing between list items */
+    }
+
+    /* User Profile */
+    .user-profile {
+        width: 100%; /* Profile takes full width */
+        flex-direction: column; /* Stack profile elements */
+        align-items: center; /* Center profile elements */
         text-align: center;
-        gap: 10px; /* Reduce el espacio entre elementos del perfil */
-    }
- .profile-info {
-        align-items: center; /* Centra el nombre y el email */
+        gap: 10px; /* Reduce space between profile elements */
+        margin-top: 15px; /* Add some top margin to separate from nav */
     }
 
+    .profile-avatar img {
+        width: 50px; /* Maintain avatar size */
+        height: 50px;
+    }
+
+    .profile-info {
+        align-items: center; /* Center name and email */
+    }
 
     .profile-actions {
-        width: 100%; /* Los botones ocupan todo el ancho */
-        flex-direction: column; /* Apila los botones */
-        gap: 8px; /* Espacio entre botones apilados */
+        width: 100%; /* Buttons take full width */
+        flex-direction: column; /* Stack buttons */
+        gap: 8px; /* Space between stacked buttons */
         margin-top: 10px;
     }
 
     .action-button {
-        width: 100%; /* Los botones ocupan todo el ancho disponible */
-        box-sizing: border-box; /* Incluye padding y borde en el ancho */
+        width: 100%; /* Buttons take full available width */
+        box-sizing: border-box; /* Include padding and border in width */
     }
 
-    /* Mostrar los botones de menú hamburguesa y ocultar el botón de cierre inicialmente */
+    /* Mobile Menu Toggle Buttons */
+    .menu-toggle {
+        display: block; /* Ensure toggle button is visible */
+        position: absolute; /* Position relative to header */
+        top: 20px; /* Adjust vertical position */
+        right: 20px; /* Adjust horizontal position */
+        color: #fff; /* Assuming header is dark, make button visible */
+        font-size: 1.5em; /* Make icon larger */
+        background: none;
+        border: none;
+        cursor: pointer;
+        z-index: 100; /* Ensure it's above other elements */
+    }
+
+    /* Specific states for open/close buttons */
     .menu-toggle#abrir {
-        display: block; /* Muestra el botón de abrir menú */
-        position: absolute; /* Posiciona el botón de menú */
-        top: 10px;
-        left: 10px;
-        z-index: 100;
+        display: block; /* Show open menu button by default */
     }
 
     .menu-toggle#cerrar {
-        display: none; /* Oculta el botón de cerrar menú por defecto */
+        display: none; /* Hide close menu button by default */
+        z-index: 1001; /* Ensure close button is above sidebar when open */
+    }
+
+    /* When sidebar is open */
+    body.sidebar-open .menu-toggle#abrir {
+        display: none; /* Hide open button when sidebar is open */
+    }
+
+    body.sidebar-open .menu-toggle#cerrar {
+        display: block; /* Show close button when sidebar is open */
     }
 
 
-    .main-header .logo {
-        height: 35px;
-    }
-
-    /* Public Header */
+    /* Public Header (if distinct from main-header) */
     .public-header {
         flex-direction: column;
         text-align: center;
@@ -73,14 +119,21 @@
         width: 0; /* Initially hidden on small screens */
         min-width: 0;
         transform: translateX(-100%); /* Slide out of view */
-        padding-top: 50px; /* Adjust for header height */
+        padding-top: 50px; /* Adjust for header height if header is fixed */
+        position: fixed; /* Ensure it stays fixed */
+        top: 0; /* Align to top */
+        bottom: 0; /* Full height */
+        overflow-y: auto; /* Allow scrolling if menu is long */
+        background-color: #f8f8f8; /* Add a background color for visibility */
+        box-shadow: 2px 0 10px rgba(0,0,0,0.3); /* Add shadow for depth */
+        transition: transform 0.3s ease-in-out; /* Smooth transition */
+        z-index: 1000; /* Ensure sidebar is above content */
     }
 
     .sidebar.open {
         width: 70%; /* Open up to a certain width */
-        min-width: 200px;
+        min-width: 200px; /* Ensure readability */
         transform: translateX(0); /* Slide into view */
-        box-shadow: 2px 0 10px rgba(0,0,0,0.3);
     }
 
     .sidebar .menu-text {
@@ -95,31 +148,14 @@
     .main-content-wrapper {
         margin-left: 0; /* No offset for sidebar */
         width: 100%; /* Full width */
+        transition: margin-left 0.3s ease-in-out; /* Smooth transition */
     }
 
-    /* Toggle buttons for mobile */
-    .menu-toggle {
-        display: block; /* Ensure toggle button is visible */
-        position: absolute;
-        right: 15px;
-    }
-
-    .menu-toggle.close-btn {
-        display: none; /* Hide close button by default */
-        z-index: 1001; /* Above sidebar */
-    }
-
-    /* When sidebar is open, show close button and push content slightly if needed */
-    body.sidebar-open .menu-toggle.close-btn {
-        display: block;
-    }
-    body.sidebar-open .menu-toggle#abrir {
-        display: none;
-    }
-
-    /* Adjust main content if sidebar is open and overlays */
+    /* Adjust main content when sidebar is open (e.g., overlay/dimming) */
     body.sidebar-open .main-content-wrapper {
         /* You might want a slight overlay or dimming here */
+        /* For instance: filter: brightness(0.7); */
+        overflow: hidden; /* Prevent scrolling of content behind sidebar */
     }
 
     /* General padding adjustments for smaller screens */
@@ -128,59 +164,29 @@
         margin: 10px;
     }
 
- /* Sidebar (on mobile, it slides off-screen) */
-    .sidebar {
-        width: 0;
-        min-width: 0;
-        transform: translateX(-100%);
-        /* When open, it should be a reasonable width */
-        position: fixed; /* Ensure it stays fixed */
-        top: 0; /* Align to top */
-        bottom: 0; /* Full height */
-        overflow-y: auto; /* Allow scrolling if menu is long */
+    /* Card Grid Layout */
+    .card-grid {
+        grid-template-columns: 1fr; /* Single column on small screens */
     }
 
-    .sidebar.open {
-        width: 70%; /* A good width for mobile sidebar */
-        min-width: 200px; /* Ensure readability */
-        transform: translateX(0);
+    .distributivo-card {
+        padding: 20px;
     }
 
-    /* Main Content Area (on mobile, it takes full width) */
-    .main-content-wrapper {
-        margin-left: 0; /* No offset */
-        width: 100%; /* Full width */
-        padding-left: 0; /* Reset any padding if inherited */
-        padding-right: 0;
-    }
-
-    /* Override body class for mobile to ensure main content takes full width */
-    body.sidebar-open .main-content-wrapper {
-        /* On mobile, you might want to overlay content or prevent scrolling if sidebar is open */
-        overflow: hidden; /* Prevent scrolling of content behind sidebar */
-    }
-
-}
-
-/* Additional media query for very large screens if needed */
-@media (min-width: 1200px) {
-    .main-content-wrapper {
-        /* You can adjust these if 15% sidebar is too small or too large */
-        margin-left: 15%;
-        width: 85%;
-    }
-    .sidebar {
-        width: 15%;
-        min-width: 200px;
+    .docente-photo-container {
+        width: 100px;
+        height: 100px;
     }
 }
-
-
 
 /* Further adjustments for extra small screens/phones */
 @media (max-width: 480px) {
-.logo {
-        max-height: 40px; /* Reduce un poco el tamaño del logo */
+    .container {
+        padding: 0 15px; /* Further reduce container padding */
+    }
+
+    .logo {
+        max-height: 40px; /* Reduce logo size slightly more */
     }
 
     .profile-avatar img {
@@ -196,23 +202,33 @@
         font-size: 0.8em;
     }
 
-
+    /* Header for very small screens */
     .main-header {
-        flex-wrap: wrap; /* Allow items to wrap */
-        justify-content: center;
+        justify-content: center; /* Center items if they wrap */
     }
+
     .main-header .logo-container {
-        width: 100%;
-        text-align: center;
-        margin-bottom: 10px;
+        margin-bottom: 10px; /* Maintain space */
     }
+
+    /* Adjust menu toggle position for very small screens if needed */
     .menu-toggle {
-        position: static;
-        margin: 0 5px;
+        top: 15px;
+        right: 15px;
+        font-size: 1.3em;
+    }
+
+    .distributivo-list h2 {
+        font-size: 1.8em;
+    }
+
+    .btn {
+        padding: 8px 15px;
+        font-size: 0.9em;
     }
 
     .public-nav ul {
-        gap: 5px;
+        gap: 5px; /* Reduce gap between public nav items */
     }
 
     /* DataTables specific adjustments on small screens */
@@ -222,5 +238,31 @@
     .dataTables_wrapper .dataTables_paginate {
         text-align: center;
         margin-bottom: 10px;
+    }
+}
+
+/* Additional media query for very large screens */
+@media (min-width: 1200px) {
+    .main-content-wrapper {
+        margin-left: 15%; /* Default margin for sidebar */
+        width: 85%; /* Default width for content */
+    }
+    .sidebar {
+        width: 15%; /* Default width for sidebar */
+        min-width: 200px;
+        position: fixed; /* Ensure it's fixed on larger screens */
+        height: 100%; /* Full height */
+        top: 0;
+        left: 0;
+        transform: translateX(0); /* Ensure it's visible */
+        box-shadow: none; /* No shadow needed as it's part of layout */
+        z-index: 1; /* Lower z-index than modal/header if needed */
+        padding-top: 20px; /* Adjust padding if main header is not fixed */
+    }
+    .menu-toggle {
+        display: none; /* Hide menu toggle on large screens */
+    }
+    body.sidebar-open .main-content-wrapper {
+        overflow: auto; /* Allow scrolling */
     }
 }
