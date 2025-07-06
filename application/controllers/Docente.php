@@ -40,18 +40,18 @@ public function index(){
   	if(isset($this->session->userdata['logged_in'])){
 			
 		$data['docente']=$this->docente_model->elultimo();
-		$data['personas']= $this->persona_model->lista_personas()->result();
+		$data['personas']= $this->persona_model->lista_personas0()->result();
 		$data['departamentos']= $this->departamento_model->lista_departamentos()->result();
 		$data['estudios']= $this->estudio_model->estudios($data['docente']['idpersona'])->result();
 			
 		$data['title']="Lista de docentes";
-		$this->load->view('template/page_header');
+		$this->load->view('page_header');
 		$this->load->view('docente_record',$data);
-		$this->load->view('template/page_footer');
+		$this->load->view('page_footer');
 	}else{
-	 	$this->load->view('template/page_header.php');
+	 	$this->load->view('page_header.php');
 		$this->load->view('login_form');
-	 	$this->load->view('template/page_footer.php');
+	 	$this->load->view('page_footer.php');
 	}
 
  }
