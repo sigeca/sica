@@ -190,7 +190,7 @@ public function actual(){
      */
     public function anterior($idpersona) {
         $this->_check_access();
-        $persona = $this->Persona_model->anterior($idpersona);
+        $persona = $this->persona_model->anterior($idpersona);
         if ($persona) {
             redirect('persona/index/' . $persona['idpersona']);
         } else {
