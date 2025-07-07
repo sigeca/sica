@@ -2,11 +2,122 @@
 
 $this->load->helper('file');
 
-$data0 ='    <style>
-/* ... existing CSS styles ... */
 
-      /* Styles for the PDF viewer modal */
-      #pdfModal {
+$data0 ='    <style>
+
+.img-contenedor img {
+-webkit-transition:all .9s ease; /* Safari y Chrome */
+-moz-transition:all .9s ease; /* Firefox */
+-o-transition:all .9s ease; /* IE 9 */
+-ms-transition:all .9s ease; /* Opera */
+width:100%;
+}
+
+.img-contenedor:hover img {
+-webkit-transform:scale(1.25);
+-moz-transform:scale(1.25);
+-ms-transform:scale(1.25);
+-o-transform:scale(1.25);
+transform:scale(1.25);
+}
+
+.img-contenedor {/*Ancho y altura son modificables al requerimiento de cada uno*/
+/*width:300px;*/
+/*height:180px;*/
+overflow:hidden;
+}
+
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+        height: 3rem;
+        background-color: rgba(0, 0, 0, .1);
+        border: solid rgba(0, 0, 0, .15);
+        border-width: 1px 0;
+        box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+      }
+
+      .b-example-vr {
+        flex-shrink: 0;
+        width: 1.5rem;
+        height: 100vh;
+      }
+
+  .bi {
+        vertical-align: -.125em;
+        fill: currentColor;
+      }
+
+      .nav-scroller {
+        position: relative;
+        z-index: 2;
+        height: 2.75rem;
+        overflow-y: hidden;
+      }
+
+      .nav-scroller .nav {
+        display: flex;
+        flex-wrap: nowrap;
+        padding-bottom: 1rem;
+        margin-top: -1px;
+        overflow-x: auto;
+        text-align: center;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+      }
+   
+contenedor {
+  position: relative;
+  width: 600px;
+  height: 400px;
+  background-color: #f0f0f0;
+  margin: 50px auto;
+  padding: 20px;
+}
+
+.texto-transversal {
+  top: 50%;
+  left: 50%;
+  transform: translate(0%, 0%) rotate(-0deg);
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 20px;
+  color: white;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.texto-transversal h2 {
+  margin: 0;
+  padding: 0;
+  font-size: 24px;
+  text-transform: uppercase;
+}
+
+.texto-transversal p {
+  margin: 0;
+  padding: 0;
+  font-size: 18px;
+}
+
+
+ /* Estilos para la imagen en miniatura */
+    .thumbnail {
+     /*   width: 200px;
+        height: auto; */
+        cursor: pointer;
+    }
+    /* Estilos para la ventana emergente */
+    #modal {
         display: none;
         position: fixed;
         z-index: 1;
@@ -18,28 +129,82 @@ $data0 ='    <style>
         overflow: auto;
         background-color: rgb(0,0,0);
         background-color: rgba(0,0,0,0.9);
-      }
-
-      #pdfModal-content {
+    }
+    /* Estilos para la imagen en la ventana emergente */
+    #modal-content {
         margin: auto;
         display: block;
-        width: 90%; /* Adjust as needed */
-        max-width: 900px; /* Adjust as needed */
-        height: 80%; /* Adjust as needed */
-      }
+        width: 80%;
+        max-width: 700px;
+    }
+    /* Estilos para cerrar la ventana emergente */
+    .close {
+        position: absolute;
+        top: 15px;
+        right: 35px;
+        color: #f1f1f1;
+        font-size: 40px;
+        font-weight: bold;
+        transition: 0.3s;
+    }
+    .close:hover,
+    .close:focus {
+        color: #bbb;
+        text-decoration: none;
+        cursor: pointer;
+    }
 
-      #pdfViewer {
-        width: 100%;
-        height: 100%;
-        border: none;
-      }
+
+
+
+
+
+
+
 
  </style>
-
+    
   </head>
 
  <body>
+
+
+<header>
+  <div class="collapse bg-secondary" id="navbarHeader">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 col-md-7 py-4">
+          <h4 class="text-white"> <a href="https://educaysoft.org/repositorioeys/eventos/2023-11-29.jpeg" class="text-white">Acerca del Proyecto de Aula de Ingenieria de Software</a></h4>
+          <p class="text-light"> El proyecto de aula en Ingeniería de Software  implico la planificación, desarrollo y evaluación colaborativa de soluciones informáticas, fomentando el trabajo en equipo, la resolución de problemas y la aplicación práctica de conceptos técnicos. .</p>
+
+        </div>
+        <div class="col-sm-4 offset-md-1 py-4">
+          <h4 class="text-white">Contactanos</h4>
+          <ul class="list-unstyled">
+            <li><a href="https://educaysoft.org/sica/evento/participantes/356" class="text-white">5to-A Ingenieria de Software I</a></li>
+            <li><a href="https://educaysoft.org/sica/evento/participantes/357" class="text-white">5to-B Ingenieria de Softare I</a></li>
+            <li><a href="https://educaysoft.org/sica/evento/participantes/350" class="text-white">4to-B Base de Datos I</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="navbar navbar-light bg-light shadow-sm" aria-label="Light offcanvas navbar">
+    <div class="container">
+
+<a class="navbar-brand" href="https://www.utelvt.edu.ec/site/" target="_blank">
+      <img src="https://congresoutlvte.org/images/logoutlvte.png" alt="..." height="45">
+    </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+  </div>
+</header>
+<main>
 ';
+
 
 $data1='</div>
     </div>
@@ -57,6 +222,7 @@ $data1='</div>
   </div>
 </footer>
 
+<!-- MDB -->
 <script  type="text/javascript"
   src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.4.0/mdb.min.js"></script>
 
@@ -67,46 +233,45 @@ $data1='</div>
 
 <script type="text/javascript">
 
-$(document).ready(function() {
-  $(".submenu").click(function(){
-    $(this).children("ul").slideToggle();
-  });
 
-  $("ul").click(function(ev){
-    ev.stopPropagation();
-  });
+
+$(document).ready(function() {
+
+$(".submenu").click(function(){
+  $(this).children("ul").slideToggle();
+});
+
+$("ul").click(function(ev){
+  ev.stopPropagation();
+});
+
 });
 
 function cargarVideo(url){
-  document.getElementById("slider").src=url;
+        document.getElementById("slider").src=url;
 }
 
 // Función para mostrar la imagen en la ventana emergente
 function mostrarImagen(imagen) {
+    // Obtener la referencia de la imagen grande
     var modalImg = document.getElementById("modal-content");
+    // Asignar la imagen al src de la ventana emergente
     modalImg.src = imagen;
+    // Mostrar la ventana emergente
     document.getElementById(\'modal\').style.display = "block";
 }
 
 // Función para cerrar la ventana emergente
 function cerrarModal() {
+    // Ocultar la ventana emergente
     document.getElementById(\'modal\').style.display = "none";
 }
 
-// Function to open PDF in a modal
-function openPdfViewer(pdfUrl) {
-    document.getElementById(\'pdfViewer\').src = pdfUrl;
-    document.getElementById(\'pdfModal\').style.display = "block";
-}
 
-// Function to close PDF modal
-function closePdfModal() {
-    document.getElementById(\'pdfViewer\').src = ""; // Clear the src
-    document.getElementById(\'pdfModal\').style.display = "none";
-}
+
 
 function uploadImage(nombre,idx) {
-  var fI="fileInput"+idx;
+  var fI="fileInput"+idx; 
   var st="status"+idx;
   var filesInput = document.getElementById(fI);
   var status = document.getElementById(st);
@@ -161,10 +326,14 @@ function getUploadUrl() {
 
 </script>
     <script src="https://congresoutlvte.org/assets/dist/js/bootstrap.bundle.min.js"></script>
-
+      
   </body>
 </html>
+                                   
 ';
+
+
+
 
 $idareaconocimiento=0;
 $elperiodoacademico="";
@@ -174,6 +343,7 @@ $j=0;
 
 $arrcolor=array(1=>"#b4b2b2",2=>"#F5DA81",3=>"#A9F5A9",4=>"#A9F4F3",5=>"#CFCEF7",6=>"#D1A9F4",7=>"#F5A8F3",8=>"#80DBF5",9=>"#9BFE2F",10=>"#9BFE2F");
 foreach($documentos as $row){
+	
 
 	if($inicio==1)
 	{
@@ -197,6 +367,8 @@ foreach($documentos as $row){
 		<link rel="stylesheet" type="text/css"  href="<?php echo base_url(); ?>assets/dist/css/bootstrap.min.css" />';
 	 	$data=$data.$data0;
 
+
+
 	$data=$data.'
   		<section class="py-5 text-center container">
     		<div class="row py-lg-5" style="display:flex;  align-items:center; justify-content: center;" >
@@ -205,7 +377,7 @@ foreach($documentos as $row){
 		</div>
       		<div >
         	<p class="lead text-muted">Tipo de documento</p>
-        	<h1 class="fw-light">'.$row->idtipodocu.'</h1>
+        	<h1 class="fw-light">'.$row->idtipodocu.'</h1>  
         	<p style="font-size:2em; color:#6c757d;text-shadow: 1px 1px 2px #000, -1px -1px 2px #fff;">'.$row->eltipodocu.'</p>
       		</div>
     		</div>
@@ -215,6 +387,7 @@ foreach($documentos as $row){
       		<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">';
 	 	$inicio=0;
 		}
+
 
 
 $data=$data.'<div class="col">
@@ -252,7 +425,15 @@ $data=$data.'</div>
 }
 
 $data=$data.'
+
+
+
+
+
         <div class="card-body bg-light" >
+
+
+
 <div class="mb-3">
         <h5 class="text-primary">Código:</h5>
         <span class="text-success fw-bold text-shadow"><?= htmlspecialchars("'.$row->iddocumento. '") ?></span>
@@ -267,11 +448,11 @@ $data=$data.'
         <p class="mb-0"><?= htmlspecialchars("'.$row->autor.'") ?></p>
     </div>
 
-        <div >
+
+        <div > 
         <h6 class="text-dark"><b>Archivo:</b></h6>
-         <button class="btn btn-outline-primary btn-sm" onclick="openPdfViewer(\'https://educaysoft.org/repositorioeys/'.$row->archivopdf.'\')"> Leer Documento</button>
-         <a href="https://educaysoft.org/repositorioeys/'.$row->archivopdf.'" class="btn btn-outline-secondary btn-sm" target="_blank"> Descargar Archivo</a>
-        </div>';
+         <a href="https://educaysoft.org/repositorioeys/'.$row->archivopdf.'" class="btn btn-outline-primary btn-sm" target="_blank">  Descargar Archivo</a> </div>'
+        ;	
 
 
               	$data=$data.'<div class="d-flex justify-content-between align-items-center">
@@ -290,11 +471,13 @@ $data=$data.'
 
 			$file='application/views/web/documento-'.$row->idtipodocu.'.php';
 
+
 	if ( !write_file($file, $data)){
 	     echo 'Unable to write the file';
 	}else{
 	    echo $file."\n";
 	}
+
 
 
 echo "archivo generado<br>";
@@ -304,24 +487,45 @@ die();
 
 ?>
 
-<div id="pdfModal" class="modal">
-  <span class="close" onclick="closePdfModal()">&times;</span>
-  <div class="modal-content" id="pdfModal-content">
-    <iframe id="pdfViewer" src="" frameborder="0"></iframe>
-  </div>
-</div>
-
 <style>
-/* ... existing CSS for modals ... */
+
+body {font-family: Arial, Helvetica, sans-serif;}
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top:  0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
 </style>
 
 
 <div class="row justify-content-center">
-      <div class="row">
+      <!-- Page Heading -->
+ <div class="row">
   <div class="col-12">
              <div class="col-md-12">
-                 <h3>Lista de documentos
-                 </h3>
+                 <h3>Lista de documentos 
+                 <!-- <div class="float-right"><a href="javascript:void(0);" class="btn btn-primary" data-toggle="modal" data-target="#Modal_Add"><span class="fa fa-plus"></span> Add New</a></div>-->
+			  
+        	</h3>
        	     </div>
 
 
@@ -352,11 +556,18 @@ die();
 </div>
 
 <div class="modal fade" id="Modal_pdf" tabindex="-1"  role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="height: 800px;">
+
+
+
+
+
  <div class="modal-footer">
 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 </div>
 
  </div>
+
+
 
 <script type="text/javascript">
 
@@ -373,3 +584,4 @@ $('#show_data').on('click','.item_ver',function(){
 
 
 </script>
+
