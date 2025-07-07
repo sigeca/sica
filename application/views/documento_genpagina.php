@@ -174,7 +174,7 @@ contenedor {
     <div class="container">
       <div class="row">
         <div class="col-sm-8 col-md-7 py-4">
-          <h4 class="text-white"> <a href="https://repositorioutlvte.org/Repositorio/eventos/2023-11-29.jpeg" class="text-white">Acerca del Proyecto de Aula de Ingenieria de Software</a></h4>
+          <h4 class="text-white"> <a href="https://educaysoft.org/repositorioeys/eventos/2023-11-29.jpeg" class="text-white">Acerca del Proyecto de Aula de Ingenieria de Software</a></h4>
           <p class="text-light"> El proyecto de aula en Ingeniería de Software  implico la planificación, desarrollo y evaluación colaborativa de soluciones informáticas, fomentando el trabajo en equipo, la resolución de problemas y la aplicación práctica de conceptos técnicos. .</p>
 
         </div>
@@ -217,7 +217,7 @@ $data1='</div>
     <p class="float-end mb-1">
       <a href="#">Back to top</a>
     </p>
-     <p class="mb-1">Este sitio web que presenta material de lectura de acceso gratuito, es parte del producto del <b>PROYECTO DE AULA</b> titulado <a href="https://repositorioutlvte.org/Repositorio/2024-01-15-FQSA-01627.pdf"> <b> "Diseño y Desarrollo de una plataforma web para la Gestión de la información Académica"</b></a> </p>
+     <p class="mb-1">Este sitio web que presenta material de lectura de acceso gratuito, es parte del producto del <b>PROYECTO DE AULA</b> titulado <a href="https://educaysoft.org/repositorioeys/2024-01-15-FQSA-01627.pdf"> <b> "Diseño y Desarrollo de una plataforma web para la Gestión de la información Académica"</b></a> </p>
     <p class="mb-0">El proyecto fue realizado con la participación de <a href="https://educaysoft.org/sica/evento/participantes/350"> 4-B Base de Datos I</a> ,<a href="https://educaysoft.org/sica/evento/participantes/356"> 5to-A</a> y <a href="https://educaysoft.org/sica/evento/participantes/357">5to-B</a>  Ingenieria de Software I en el periodo 2023-1S, cuyo tutor fue el Ing. Stalin Francis Msc., Docente de las Asignaturas.</p>
   </div>
 </footer>
@@ -373,7 +373,7 @@ foreach($documentos as $row){
   		<section class="py-5 text-center container">
     		<div class="row py-lg-5" style="display:flex;  align-items:center; justify-content: center;" >
 		<div style=" flex-basis: 40%"  >
-		<img src="https://repositorioutlvte.org/Repositorio/qr/documento-'.$row->idtipodocu.'-'.$row->idtipodocu.'.png" height="150px">
+		<img src="https://educaysoft.org/repositorioeys/qr/documento-'.$row->idtipodocu.'-'.$row->idtipodocu.'.png" height="150px">
 		</div>
       		<div >
         	<p class="lead text-muted">Tipo de documento</p>
@@ -395,13 +395,13 @@ $data=$data.'<div class="col">
 		  <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/>';
 
 // Remote file url
-$remoteFile = "https://repositorioutlvte.org/Repositorio/portadas/".pathinfo(trim($row->archivopdf),PATHINFO_FILENAME).".jpg";
+$remoteFile = "https://educaysoft.org/repositorioeys/portadas/".pathinfo(trim($row->archivopdf),PATHINFO_FILENAME).".jpg";
 
 $file_headers = @get_headers($remoteFile);
 
 if($file_headers[0] == 'HTTP/1.1 404 Not Found') {
 
-    $data=$data.'<image href="https://repositorioutlvte.org/Repositorio/documento/documento0.jpg" alt="No hay programación" height="100%" width="100%"/> </svg>
+    $data=$data.'<image href="https://educaysoft.org/repositorioeys/documento/documento0.jpg" alt="No hay programación" height="100%" width="100%"/> </svg>
     <div class="img-contenedor w3-card-4" style="position:relative; width:100%; height:100%; display:flex; justify-content: center; align-items: center;">';
 
 
@@ -411,7 +411,7 @@ $data=$data.' <input type="file" id="fileInput'.trim($row->iddocumento).'" accep
 
 }else{
 
-$data=$data.'<image  class="thumbnail" href="https://repositorioutlvte.org/Repositorio/portadas/'.pathinfo(trim($row->archivopdf),PATHINFO_FILENAME).'.jpg" alt="No hay programación" height="100%" width="100%"  onclick="mostrarImagen(\'https://repositorioutlvte.org/Repositorio/portadas/'.pathinfo(trim($row->archivopdf),PATHINFO_FILENAME).'.jpg\')" /> </svg>
+$data=$data.'<image  class="thumbnail" href="https://educaysoft.org/repositorioeys/portadas/'.pathinfo(trim($row->archivopdf),PATHINFO_FILENAME).'.jpg" alt="No hay programación" height="100%" width="100%"  onclick="mostrarImagen(\'https://educaysoft.org/repositorioeys/portadas/'.pathinfo(trim($row->archivopdf),PATHINFO_FILENAME).'.jpg\')" /> </svg>
 <div class="img-contenedor w3-card-4" style="position:absolute"; top:0px;right:0px; border: 2px solid green; border-radius: 50%; width: 30%; display:flex; justify-content: center; align-items: center;">';
 
 
@@ -451,7 +451,7 @@ $data=$data.'
 
         <div > 
         <h6 class="text-dark"><b>Archivo:</b></h6>
-         <a href="https://repositorioutlvte.org/Repositorio/'.$row->archivopdf.'" class="btn btn-outline-primary btn-sm" target="_blank">  Descargar Archivo</a> </div>'
+         <a href="https://educaysoft.org/repositorioeys/'.$row->archivopdf.'" class="btn btn-outline-primary btn-sm" target="_blank">  Descargar Archivo</a> </div>'
         ;	
 
 
