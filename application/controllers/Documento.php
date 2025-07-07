@@ -734,7 +734,7 @@ $filename = $_POST('archivopdf');
 echo $filename;
 die();
 //La direccion debe ser la completa
-$target_dir =  $_SERVER["DOCUMENT_ROOT"]."/Repositorio/".$filename;
+$target_dir =  $_SERVER["DOCUMENT_ROOT"]."/repositorioeys/".$filename;
 //$target_dir =  base_url()."pdfs/".$filename;
 //$target_dir =  $_SERVER["DOCUMENT_ROOT"]."/facae/".trim($this->session->userdata['logged_in']['pdf']);  //"uploads/";
 $target_file =$target_dir; // $target_dir . basename($_FILES["fileToUpload"]["name"]);
@@ -787,7 +787,7 @@ function loadpdf3()
 	// Count total files
 	$countfiles = count($_FILES['files']['name']);
 
-	$upload_location =  $_SERVER["DOCUMENT_ROOT"]."/Repositorio/";
+	$upload_location =  $_SERVER["DOCUMENT_ROOT"]."/repositorioeys/";
 //	$upload_location =  base_url()."pdfs/";
 
 	// Upload directory
