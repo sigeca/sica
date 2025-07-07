@@ -11,7 +11,7 @@ class Beneficiario extends CI_Controller{
 
 	public function index(){
   		$data['documentos']= $this->documento_model->lista_documentos()->result();
-  		$data['personas']= $this->persona_model->lista_personas()->result();
+  		$data['personas']= $this->persona_model->lista_personas0()->result();
  		// $data['beneficiario']=$this->beneficiario_model->beneficiario(1)->row_array();
 		$data['beneficiario'] = $this->beneficiario_model->elprimero();
  		// print_r($data['usuario_list']);
