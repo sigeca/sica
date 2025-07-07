@@ -265,7 +265,7 @@ function uploadImage(nombre,idx) {
 
 function getUploadUrl() {
     // This function seems unrelated to the current page logic unless used elsewhere.
-    // Ensure 'idordenador' exists if this function is called.
+    // Ensure idordenador exists if this function is called.
     var selectElement = document.getElementById("idordenador");
     var url = "https://educaysoft.org";
     return url.endsWith("/") ? url + "cargaportada.php" : url + "/cargaportada.php";
