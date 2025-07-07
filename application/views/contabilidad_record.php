@@ -1,6 +1,6 @@
 <div id="eys-nav-i">
 <h3 style="text-align: left; margin-top:-10px;"> <?php echo $title;  ?></h3>
-	<ul>
+    <ul style="list-style:none; padding:0; display:flex; gap:15px; background-color:#f2f2f2; padding:10px; border-radius:5px; margin-top:15px;">
 <?php
 if(isset($contabilidad))
 {
@@ -8,10 +8,10 @@ if(isset($contabilidad))
         <li> <?php echo anchor('contabilidad/elprimero/', 'primero'); ?></li>
         <li> <?php echo anchor('contabilidad/anterior/'.$contabilidad['idcontabilidad'], 'anterior'); ?></li>
         <li> <?php echo anchor('contabilidad/siguiente/'.$contabilidad['idcontabilidad'], 'siguiente'); ?></li>
-        <li style="border-right:1px solid green"><?php echo anchor('contabilidad/elultimo/', 'Último'); ?></li>
-        <li> <?php echo anchor('contabilidad/add', 'Nuevo'); ?></li>
-        <li> <?php echo anchor('contabilidad/edit/'.$contabilidad['idcontabilidad'],'Edit'); ?></li>
-        <li style="border-right:1px solid green"> <?php echo anchor('contabilidad/delete/'.$contabilidad['idcontabilidad'],'Delete'); ?></li>
+        <li style="border-right:1px solid #ccc; padding-right:15px;"><?php echo anchor('contabilidad/elultimo/', 'Último'); ?></li>
+        <li> <?php echo anchor('contabilidad/add', 'Nuevo', 'style="text-decoration:none; color:#28a745; font-weight:bold;"'); ?></li>
+        <li> <?php echo anchor('contabilidad/edit/'.$contabilidad['idcontabilidad'],'Edit', 'style="text-decoration:none; color:#ffc107; font-weight:bold;"'); ?></li>
+        <li style="border-right:1px solid #ccc; padding-right:15px;"> <?php echo anchor('contabilidad/delete/'.$contabilidad['idcontabilidad'],'Delete', 'style="text-decoration:none; color:#dc3545; font-weight:bold;"'); ?></li>
         <li> <?php echo anchor('contabilidad/listar/','Listar'); ?></li>
 
 <?php 
