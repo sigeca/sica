@@ -265,7 +265,7 @@ function uploadImage(nombre,idx) {
 
 function getUploadUrl() {
     // This function seems unrelated to the current page logic unless used elsewhere.
-    // Ensure idordenador exists if this function is called.
+    // Ensure 'idordenador' exists if this function is called.
     var selectElement = document.getElementById("idordenador");
     var url = "https://educaysoft.org";
     return url.endsWith("/") ? url + "cargaportada.php" : url + "/cargaportada.php";
@@ -373,10 +373,10 @@ if($file_headers[0] == 'HTTP/1.1 404 Not Found') {
 $data.='
             </div>
             <div class="card-body d-flex flex-column">
-                <h5 class="card-title mb-2 text-primary">Código: <span class="text-success fw-bold">'.htmlspecialchars($row->iddocumento).'</span></h5>
-                <h5 class="card-title mb-2 text-primary">Nombre: <span class="text-secondary fw-bold">'.htmlspecialchars($row->asunto).'</span></h5>
+                <h5 class="card-title mb-2 text-primary">Código: <span class="text-success fw-bold">'.htmlspecialchars($row->iddocumento ?? '').'</span></h5>
+                <h5 class="card-title mb-2 text-primary">Nombre: <span class="text-secondary fw-bold">'.htmlspecialchars($row->asunto ?? '').'</span></h5>
                 <h6 class="text-dark mb-2"><b>Autor:</b></h6>
-                <p class="card-text flex-grow-1">'.htmlspecialchars($row->autor).'</p>
+                <p class="card-text flex-grow-1">'.htmlspecialchars($row->autor ?? '').'</p>
                 <div class="d-flex justify-content-between align-items-center mt-3">
                     <button class="btn btn-custom-primary btn-sm flex-fill me-2" onclick="openPdfViewer(\'https://educaysoft.org/repositorioeys/'.$row->archivopdf.'\')">
                         <i class="fas fa-book-open me-1"></i> Leer Documento
