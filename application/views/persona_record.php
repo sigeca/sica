@@ -354,9 +354,6 @@ $(document).ready(function(){
                         if (canEdit) {
                             actions += '<a href="<?php echo site_url('evento/edit/'); ?>' + row.iddocumento + '" class="btn btn-warning btn-sm">Editar</a> ';
                         }
-                        if (canDelete) {
-                            actions += '<a href="<?php echo site_url('evento/quitar/'); ?>' + row.iddocumento + '" class="btn btn-danger btn-sm" onclick="return confirm(\'¿Está seguro de eliminar este evento?\')">Eliminar</a>';
-                        }
                         return actions;
                     }
 }
