@@ -112,7 +112,7 @@ contenedor {
 
  /* Estilos para la imagen en miniatura */
     .thumbnail {
-     /*   width: 200px;
+     /* width: 200px;
         height: auto; */
         cursor: pointer;
     }
@@ -137,6 +137,29 @@ contenedor {
         width: 80%;
         max-width: 700px;
     }
+
+    /* Estilos para el PDF en la ventana emergente */
+    #pdf-modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgb(0,0,0);
+        background-color: rgba(0,0,0,0.9);
+    }
+
+    #pdf-modal-content {
+        margin: auto;
+        display: block;
+        width: 90%;
+        height: 90%;
+        max-width: 900px;
+    }
+
     /* Estilos para cerrar la ventana emergente */
     .close {
         position: absolute;
@@ -153,15 +176,6 @@ contenedor {
         text-decoration: none;
         cursor: pointer;
     }
-
-
-
-
-
-
-
-
-
  </style>
     
   </head>
@@ -222,7 +236,6 @@ $data1='</div>
   </div>
 </footer>
 
-<!-- MDB -->
 <script  type="text/javascript"
   src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.4.0/mdb.min.js"></script>
 
@@ -267,7 +280,19 @@ function cerrarModal() {
     document.getElementById(\'modal\').style.display = "none";
 }
 
+// Función para mostrar el PDF en la ventana emergente
+function mostrarPdf(pdfUrl) {
+    var pdfModal = document.getElementById("pdf-modal");
+    var pdfModalContent = document.getElementById("pdf-modal-content");
+    pdfModalContent.innerHTML = \'<embed src="\' + pdfUrl + \'#toolbar=0" type="application/pdf" width="100%" height="100%" />\';
+    pdfModal.style.display = "block";
+}
 
+// Función para cerrar la ventana emergente del PDF
+function cerrarPdfModal() {
+    document.getElementById(\'pdf-modal\').style.display = "none";
+    document.getElementById(\'pdf-modal-content\').innerHTML = ""; // Clear content on close
+}
 
 
 function uploadImage(nombre,idx) {
@@ -449,9 +474,12 @@ $data=$data.'
     </div>
 
 
-        <div > 
-        <h6 class="text-dark"><b>Archivo:</b></h6>
-         <a href="https://educaysoft.org/repositorioeys/'.$row->archivopdf.'" class="btn btn-outline-primary btn-sm" target="_blank">  Descargar Archivo</a> </div>'
+        <div class="d-flex justify-content-between align-items-center">
+            <div class="btn-group">
+                <a href="https://educaysoft.org/repositorioeys/'.$row->archivopdf.'" class="btn btn-outline-primary btn-sm" target="_blank">Descargar Archivo</a>
+                <button onclick="mostrarPdf(\'https://educaysoft.org/repositorioeys/'.$row->archivopdf.'\')" class="btn btn-outline-secondary btn-sm">Ver PDF</button>
+            </div>
+        </div>'
         ;	
 
 
@@ -468,6 +496,14 @@ $data=$data.'
 
 
 	 	$data=$data.$data1;
+
+            // Add the PDF modal structure at the end of the data1 string, before the closing </body> tag
+            $data .= '
+            <div id="pdf-modal" class="modal">
+              <span class="close" onclick="cerrarPdfModal()">&times;</span>
+              <div id="pdf-modal-content"></div>
+            </div>
+            ';
 
 			$file='application/views/web/documento-'.$row->idtipodocu.'.php';
 
@@ -518,14 +554,11 @@ body {font-family: Arial, Helvetica, sans-serif;}
 
 
 <div class="row justify-content-center">
-      <!-- Page Heading -->
- <div class="row">
+      <div class="row">
   <div class="col-12">
              <div class="col-md-12">
                  <h3>Lista de documentos 
-                 <!-- <div class="float-right"><a href="javascript:void(0);" class="btn btn-primary" data-toggle="modal" data-target="#Modal_Add"><span class="fa fa-plus"></span> Add New</a></div>-->
-			  
-        	</h3>
+                 </h3>
        	     </div>
 
 
@@ -584,4 +617,3 @@ $('#show_data').on('click','.item_ver',function(){
 
 
 </script>
-
