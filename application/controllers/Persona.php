@@ -419,54 +419,26 @@ public function elultimo()
      *
      * @param int $idpersona The ID of the person to edit.
      */
-    public function edit() {
-        $this->_check_access();
-        $data['title'] = "Editar Persona";
+
+	public function edit()
+	{
 		$data["persona"] = $this->persona_model->persona($this->uri->segment(3))->row_array();
-
-        if (!$data['persona']) {
-            show_404();
-            return;
-        }
-
-        $data['tipopersonas'] = $this->tipopersona_model->lista_tipopersonas()->result();
-        $data['sexos'] = $this->sexo_model->lista_sexos()->result();
+		$data["sexos"]= $this->sexo_model->lista_sexos()->result();
+		$data["tipopersonas"]= $this->tipopersona_model->lista_tipopersonas()->result();
   		$data["paispersonas"]= $this->paispersona_model->lista_paispersonas1($data['persona']['idpersona'])->result();
+  	$data["nacionalidadpersonas"]= $this->nacionalidadpersona_model->lista_nacionalidadpersonas1($data['persona']['idpersona'])->result();
+  	$data["provinciapersonas"]= $this->provinciapersona_model->lista_provinciapersonas1($data['persona']['idpersona'])->result();
+		$data["title"] = "Actualizar Persona";
+		$this->load->view('template/page_header');		
+		$this->load->view('persona_edit',$data);
+		$this->load->view('template/page_footer');
+	}
 
-        // Validation rules for editing
-        // 'cedula' rule should allow current unique value, or be unique for other records
-        $this->form_validation->set_rules('cedula', 'Cédula', 'required|min_length[10]|max_length[10]|callback_check_cedula_unique[' . $idpersona . ']');
-        $this->form_validation->set_rules('apellidos', 'Apellidos', 'required|max_length[100]');
-        $this->form_validation->set_rules('nombres', 'Nombres', 'required|max_length[100]');
-        $this->form_validation->set_rules('fechanacimiento', 'Fecha de Nacimiento', 'required|callback_valid_date');
-        $this->form_validation->set_rules('idsexo', 'Sexo', 'required|numeric');
-        $this->form_validation->set_rules('idtipopersona', 'Tipo de Persona', 'required|numeric');
-        $this->form_validation->set_rules('foto', 'Foto', 'trim|max_length[255]'); // Add validation for photo filename
 
-        if ($this->form_validation->run() === FALSE) {
-            // Validation failed or first load, show the form
-            $this->load->view('page_header', $data);
-            $this->load->view('persona_edit', $data); // Assuming a dedicated edit form or same form with different data
-            $this->load->view('page_footer', $data);
-        } else {
-            // Validation passed, save the data
-            $updated_persona_data = [
-                'idtipopersona' => $this->input->post('idtipopersona'),
-                'cedula' => $this->input->post('cedula'),
-                'apellidos' => $this->input->post('apellidos'),
-                'nombres' => $this->input->post('nombres'),
-                'fechanacimiento' => $this->input->post('fechanacimiento'),
-                'idsexo' => $this->input->post('idsexo'),
-                'descripcion' => $this->input->post('descripcion'),
-                'foto' => $this->input->post('foto'), // If photo filename is editable through form
-                'actualizacion' => date('Y-m-d H:i:s')
-            ];
 
-            $this->persona_model->update_persona($idpersona, $updated_persona_data);
-            $this->session->set_flashdata('success', 'Persona actualizada exitosamente.');
-            redirect('persona/index/' . $idpersona);
-        }
-    }
+
+
+
 
     /**
      * Custom validation callback to check if cedula is unique, allowing current record's cedula.
@@ -494,38 +466,26 @@ public function elultimo()
      * However, the recommended approach is to let the `edit($idpersona)` method handle both displaying the form
      * and processing the submission based on `form_validation->run()`.
      */
-    public function save_edit() {
-        $this->_check_access();
-        $idpersona = $this->input->post('idpersona');
 
-        if (!$idpersona) {
-            $this->session->set_flashdata('error', 'ID de persona no proporcionado para la edición.');
-            redirect('persona/listar'); // Or redirect to an error page
-        }
+	public function  save_edit()
+	{
+		$id=$this->input->post('idpersona');
+	 	$array_item=array(
+		 	
+		 	'idpersona' => $this->input->post('idpersona'),
+		 	'cedula' => $this->input->post('cedula'),
+     'nombres' => $this->input->post('nombres'),
+		 	'apellidos' => $this->input->post('apellidos'),
+			'fechanacimiento' => $this->input->post('fechanacimiento'),
+			'idsexo' => $this->input->post('idsexo'),
+			'idtipopersona' => $this->input->post('idtipopersona'),
+			'descripcion' => $this->input->post('descripcion'),
+	 	);
+	 	$this->persona_model->update($id,$array_item);
+	 	redirect('persona/actual/'.$id);
+ 	}
 
-        // The validation and update logic should ideally be in the `edit` method.
-        // For now, mirroring the simplified save logic if this is a direct POST target.
-        // It's better to refactor `edit` to handle this.
-        $array_item = [
-            'idtipopersona' => $this->input->post('idtipopersona'),
-            'cedula' => $this->input->post('cedula'),
-            'apellidos' => $this->input->post('apellidos'),
-            'nombres' => $this->input->post('nombres'),
-            'fechanacimiento' => $this->input->post('fechanacimiento'),
-            'idsexo' => $this->input->post('idsexo'),
-            'descripcion' => $this->input->post('descripcion'),
-            'foto' => $this->input->post('foto'),
-            'fechaactualizacion' => date('Y-m-d H:i:s')
-        ];
 
-	 	if($this->persona_model->update($idpersona,$array_item)){
-//        if ($this->persona_model->update_persona($idpersona, $updated_persona_data)) {
-            $this->session->set_flashdata('success', 'Persona actualizada exitosamente.');
-        } else {
-            $this->session->set_flashdata('error', 'Error al actualizar la persona.');
-        }
-        redirect('persona/index/' . $idpersona);
-    }
 
 
     /**
