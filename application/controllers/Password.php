@@ -126,9 +126,9 @@ public function edit()
 	
   		$data['usuarios']= $this->usuario_model->lista_usuarios1()->result();
   		$data['title']="Passwords";
-		$this->load->view('template/page_header');		
+		$this->load->view('page_header');		
   		$this->load->view('password_list',$data);
-		$this->load->view('template/page_footer');
+		$this->load->view('page_footer');
 	}
 
 
