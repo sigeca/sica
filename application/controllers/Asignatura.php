@@ -146,9 +146,9 @@ public function listar()
 {
 	
   $data['title']="Asignatura";
-	$this->load->view('template/page_header');		
+	$this->load->view('page_header');		
   $this->load->view('asignatura_list',$data);
-	$this->load->view('template/page_footer');
+	$this->load->view('page_footer');
 }
 
 function asignatura_data()
