@@ -188,7 +188,7 @@ contenedor {
         object-fit: cover; /* Ensures the image covers the circle area */
         border: 2px solid #fff; /* Optional: white border around the photo */
         box-shadow: 0 0 5px rgba(0, 0, 0, 0.5); /* Optional: subtle shadow */
-        z-index: 10; /* Ensure it's above the cover image */
+        z-index: 10; /* Ensure its above the cover image */
     }
  </style>
     
