@@ -431,6 +431,7 @@ public function elultimo()
 
         $data['tipopersonas'] = $this->tipopersona_model->lista_tipopersonas()->result();
         $data['sexos'] = $this->sexo_model->lista_sexos()->result();
+  		$data["paispersonas"]= $this->paispersona_model->lista_paispersonas1($data['persona']['idpersona'])->result();
 
         // Validation rules for editing
         // 'cedula' rule should allow current unique value, or be unique for other records
