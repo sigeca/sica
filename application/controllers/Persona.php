@@ -419,10 +419,10 @@ public function elultimo()
      *
      * @param int $idpersona The ID of the person to edit.
      */
-    public function edit($idpersona) {
+    public function edit() {
         $this->_check_access();
         $data['title'] = "Editar Persona";
-        $data['persona'] = $this->persona_model->persona($idpersona);
+		$data["persona"] = $this->persona_model->persona($this->uri->segment(3))->row_array();
 
         if (!$data['persona']) {
             show_404();
