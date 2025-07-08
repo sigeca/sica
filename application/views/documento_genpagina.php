@@ -455,7 +455,7 @@ $data=$data.' <input type="file" id="fileInput'.trim($row->iddocumento).'" accep
 }else{
 
 $data=$data.'<image  class="thumbnail" href="https://educaysoft.org/repositorioeys/portadas/'.pathinfo(trim($row->archivopdf),PATHINFO_FILENAME).'.jpg" alt="No hay programación" height="100%" width="100%"  onclick="mostrarImagen(\'https://educaysoft.org/repositorioeys/portadas/'.pathinfo(trim($row->archivopdf),PATHINFO_FILENAME).'.jpg\')" /> </svg>
-<div class="img-contenedor w3-card-4" style="position:absolute"; top:0px;right:0px; border: 2px solid green; border-radius: 50%; width: 30%; display:flex; justify-content: center; align-items: center;">';
+<div class="img-contenedor w3-card-4" style="position:relative"; top:0px;right:0px; border: 2px solid green; border-radius: 50%; width: 30%; display:flex; justify-content: center; align-items: center;">';
 
 echo '<img src="https://educaysoft.org/repositorioeys/fotos/'.$row->cedula.'.jpg" alt="Author Photo" class="author-photo">';
 
