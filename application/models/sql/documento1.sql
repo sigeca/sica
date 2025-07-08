@@ -7,7 +7,7 @@ WITH autor_info AS (
     SELECT 
         em.iddocumento,
         CONCAT(COALESCE(pe.apellidos, ''), ' ', COALESCE(pe.nombres, '')) AS autor,
-        pe.idpersona
+        pe.cedula,pe.idpersona
     FROM 
         emisor em
     INNER JOIN 
@@ -26,6 +26,7 @@ portafolio_info AS (
 SELECT 
     do.iddocumento,
     ai.autor,
+    ai.cedula,
     ai.idpersona,
     do.asunto,
     do.fechaelaboracion,
@@ -54,6 +55,7 @@ UNION
 SELECT 
     do.iddocumento,
     ai.autor,
+    ai.cedula,
     ai.idpersona,
     do.asunto,
     do.fechaelaboracion,
