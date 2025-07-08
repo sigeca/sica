@@ -16,7 +16,7 @@ public function index(){
   	if(isset($this->session->userdata['logged_in'])){
 			
   	$data['password']=$this->password_model->lista_passwords()->row_array();
-  	$data['personas']= $this->persona_model->lista_personas()->result();
+  	$data['personas']= $this->persona_model->lista_personas0()->result();
   	$data['usuarios']= $this->usuario_model->lista_usuarios1()->result();
   	$data['modulos']= $this->modulo_model->lista_modulos()->result();
   	$data['eventos']= $this->evento_model->lista_eventos()->result();
