@@ -313,7 +313,7 @@ public function elultimo()
                 'eliminado' => 0 // Default to not eliminated
             ];
 
-            $inserted_id = $this->Persona_model->add_persona($new_persona_data);
+            $inserted_id = $this->persona_model->add_persona($new_persona_data);
 
             if ($inserted_id) {
                 $this->session->set_flashdata('success', 'Persona creada exitosamente.');
@@ -422,7 +422,7 @@ public function elultimo()
     public function edit($idpersona) {
         $this->_check_access();
         $data['title'] = "Editar Persona";
-        $data['persona'] = $this->Persona_model->persona($idpersona);
+        $data['persona'] = $this->persona_model->persona($idpersona);
 
         if (!$data['persona']) {
             show_404();
@@ -461,7 +461,7 @@ public function elultimo()
                 'actualizacion' => date('Y-m-d H:i:s')
             ];
 
-            $this->Persona_model->update_persona($idpersona, $updated_persona_data);
+            $this->persona_model->update_persona($idpersona, $updated_persona_data);
             $this->session->set_flashdata('success', 'Persona actualizada exitosamente.');
             redirect('persona/index/' . $idpersona);
         }
@@ -517,7 +517,7 @@ public function elultimo()
             'actualizacion' => date('Y-m-d H:i:s')
         ];
 
-        if ($this->Persona_model->update_persona($idpersona, $updated_persona_data)) {
+        if ($this->persona_model->update_persona($idpersona, $updated_persona_data)) {
             $this->session->set_flashdata('success', 'Persona actualizada exitosamente.');
         } else {
             $this->session->set_flashdata('error', 'Error al actualizar la persona.');
@@ -533,7 +533,7 @@ public function elultimo()
      */
     public function quitar($idpersona) {
         $this->_check_access();
-        if ($this->Persona_model->quitar_persona($idpersona)) {
+        if ($this->persona_model->quitar_persona($idpersona)) {
             $this->session->set_flashdata('success', 'Persona marcada como eliminada exitosamente.');
         } else {
             $this->session->set_flashdata('error', 'Error al marcar la persona como eliminada.');
@@ -702,7 +702,7 @@ function persona_data()
     public function relacion($idpersona) {
         $this->_check_access();
         $data['title'] = "Relaciones de Persona";
-        $data['persona'] = $this->Persona_model->persona($idpersona);
+        $data['persona'] = $this->persona_model->persona($idpersona);
 
         if (!$data['persona']) {
             show_404();
