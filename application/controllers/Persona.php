@@ -445,7 +445,7 @@ public function elultimo()
         if ($this->form_validation->run() === FALSE) {
             // Validation failed or first load, show the form
             $this->load->view('page_header', $data);
-            $this->load->view('persona_edit_form', $data); // Assuming a dedicated edit form or same form with different data
+            $this->load->view('persona_edit', $data); // Assuming a dedicated edit form or same form with different data
             $this->load->view('page_footer', $data);
         } else {
             // Validation passed, save the data
