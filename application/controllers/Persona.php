@@ -505,7 +505,7 @@ public function elultimo()
         // The validation and update logic should ideally be in the `edit` method.
         // For now, mirroring the simplified save logic if this is a direct POST target.
         // It's better to refactor `edit` to handle this.
-        $updated_persona_data = [
+        $array_item = [
             'idtipopersona' => $this->input->post('idtipopersona'),
             'cedula' => $this->input->post('cedula'),
             'apellidos' => $this->input->post('apellidos'),
@@ -517,7 +517,8 @@ public function elultimo()
             'actualizacion' => date('Y-m-d H:i:s')
         ];
 
-        if ($this->persona_model->update_persona($idpersona, $updated_persona_data)) {
+	 	if($this->persona_model->update($idpersona,$array_item)){
+//        if ($this->persona_model->update_persona($idpersona, $updated_persona_data)) {
             $this->session->set_flashdata('success', 'Persona actualizada exitosamente.');
         } else {
             $this->session->set_flashdata('error', 'Error al actualizar la persona.');
