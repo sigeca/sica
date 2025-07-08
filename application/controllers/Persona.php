@@ -514,7 +514,7 @@ public function elultimo()
             'idsexo' => $this->input->post('idsexo'),
             'descripcion' => $this->input->post('descripcion'),
             'foto' => $this->input->post('foto'),
-            'actualizacion' => date('Y-m-d H:i:s')
+            'fechaactualizacion' => date('Y-m-d H:i:s')
         ];
 
 	 	if($this->persona_model->update($idpersona,$array_item)){
