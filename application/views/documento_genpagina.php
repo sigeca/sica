@@ -463,7 +463,7 @@ echo '<img src="https://educaysoft.org/repositorioeys/fotos/'.$row->cedula.'.jpg
 // Check if author photo exists
 if($author_photo_headers[0] != 'HTTP/1.1 404 Not Found') {
     echo " paso...";
-    die();
+//    die();
 
     $data .= '<img src="https://educaysoft.org/repositorioeys/fotos/'.$row->cedula.'.jpg" alt="Author Photo" class="author-photo">';
 }
