@@ -16,26 +16,7 @@
     <title>Distributivo Académico</title>
     <link rel="stylesheet" href="<?php echo base_url('assets/css/style.css'); ?>">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-<style>
-        /* Estilos adicionales para el enlace de Drive */
-        .drive-link {
-            display: inline-flex;
-            align-items: center;
-            color: #28a745; /* Color verde de éxito de Bootstrap */
-            text-decoration: none;
-            font-weight: bold;
-            margin-top: 5px;
-            transition: color 0.3s ease;
-        }
-        .drive-link:hover {
-            color: #218838; /* Tono más oscuro al pasar el ratón */
-            text-decoration: underline;
-        }
-        .drive-link i {
-            margin-right: 5px;
-        }
-    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
     <header class="main-header">
@@ -77,6 +58,20 @@
             </div>
 
         </section>
+
+        <section class="summary-section">
+            <h3>Resumen del Distributivo</h3>
+            <div class="summary-cards">
+                <div class="summary-card">
+                    <div class="count" id="totalDocentes">0</div>
+                    <div class="label">Total de Docentes</div>
+                </div>
+                <div class="summary-card">
+                    <div class="count" id="totalCursos">0</div>
+                    <div class="label">Total de Cursos Dictados</div>
+                </div>
+            </div>
+        </section>
     </main>
 
     <footer class="main-footer">
@@ -113,10 +108,17 @@ function checkIfImageExists(url) {
                     beforeSend: function() {
                         // Show a loading message
                         $('#distributivo-cards').html('<p class="loading-message">Cargando información del distributivo...</p>');
+                        $('#totalDocentes').text('0');
+                        $('#totalCursos').text('0');
                     },
                     success: async function(response) {
                         let html = '';
+                        let totalDocentes = 0;
+                        let totalCursos = 0;
+
                         if (response.data && response.data.length > 0) {
+                            totalDocentes = response.data.length; // Count of teachers
+
                             for (const item of response.data) { // Usamos for...of para poder usar await
                                 // Default photo if not provided or empty
                                 const docentePhotoUrlBase = "https://educaysoft.org/repositorioeys/fotos/";
@@ -149,6 +151,7 @@ function checkIfImageExists(url) {
                                             <h4>Asignaturas:</h4>
                                             <ul>`;
                                 if (item.asignaturas && item.asignaturas.length > 0) {
+                                    totalCursos += item.asignaturas.length; // Accumulate course count
                                     $.each(item.asignaturas, function(i, asignatura) {
                                             const eventDetailUrl = `<?php echo base_url('evento/detalle/'); ?>${asignatura.idevento}?cedula=${item.cedula}&eldocente="${encodeURIComponent(item.eldocente)}"`;
                                         html += `<li><a href="${eventDetailUrl}" target="_blank" class="event-link" title="Ver detalle del evento">
@@ -169,6 +172,8 @@ ${asignatura.laasignatura} ${asignatura.paralelo ? `(${asignatura.paralelo})` : 
                             html = '<p class="info-message">No se encontró información de distributivos.</p>';
                         }
                         $('#distributivo-cards').html(html);
+                        $('#totalDocentes').text(totalDocentes);
+                        $('#totalCursos').text(totalCursos);
 
                         // Attach PDF viewing functionality to newly created buttons
                         $('.btn-view-pdf').on('click', function() {
@@ -187,6 +192,8 @@ ${asignatura.laasignatura} ${asignatura.paralelo ? `(${asignatura.paralelo})` : 
                     error: function(xhr, status, error) {
                         console.error("Error al cargar los datos:", status, error);
                         $('#distributivo-cards').html('<p class="error-message">Error al cargar la información. Por favor, intente de nuevo más tarde.</p>');
+                        $('#totalDocentes').text('0');
+                        $('#totalCursos').text('0');
                     }
                 });
             }
