@@ -415,6 +415,63 @@ body {
     border: 1px solid #f5c6cb;
 }
 
+/* Estilos adicionales para el enlace de Drive */
+.drive-link {
+    display: inline-flex;
+    align-items: center;
+    color: #28a745; /* Color verde de éxito de Bootstrap */
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 5px;
+    transition: color 0.3s ease;
+}
+.drive-link:hover {
+    color: #218838; /* Tono más oscuro al pasar el ratón */
+    text-decoration: underline;
+}
+.drive-link i {
+    margin-right: 5px;
+}
+
+/* Estilos para el resumen al final */
+.summary-section {
+    background-color: #f8f9fa;
+    border-top: 1px solid #e9ecef;
+    padding: 20px 0;
+    margin-top: 30px;
+    text-align: center;
+}
+.summary-section h3 {
+    color: #343a40;
+    margin-bottom: 15px;
+}
+.summary-cards {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+.summary-card {
+    background-color: #ffffff;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    padding: 20px;
+    min-width: 200px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    text-align: center;
+}
+.summary-card .count {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #007bff;
+    margin-bottom: 5px;
+}
+.summary-card .label {
+    font-size: 1rem;
+    color: #6c757d;
+}
+
+
 /* Responsive Adjustments (from responsive.css, merged and refined) */
 @media (max-width: 768px) {
     /* Main Header */
