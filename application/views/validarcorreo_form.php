@@ -50,7 +50,6 @@
         /* Left Section: Event Presentation */
         #presentacion {
             flex: 1; /* Allows it to grow and shrink */
-            max-width: 300px; /* Minimum width before wrapping */
             width: 100%;
             background-color: #ffffff;
             padding: 20px;
