@@ -60,7 +60,7 @@
     flex-shrink: 1; /* Permite que se encoja si es necesario */
     flex-basis: auto; /* Establece el tamaño inicial basado en su contenido */
 
-
+margin:0 auto; 
 
     justify-content: center; /* Opcional: Centra #eys-registro dentro de #presentacion */
             background-color: #ffffff;
