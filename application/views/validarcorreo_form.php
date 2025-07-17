@@ -68,7 +68,6 @@ margin:0 auto;
             border-radius: 10px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
             box-sizing: border-box;
-            border: 20px  solid red;
             align-items: center;
         }
 
@@ -328,7 +327,7 @@ margin:0 auto;
 </head>
 <body>
 <section id="presentacion">
-    <div class="w3-container" id="eys-registro" style="border: 5px solid blue;">
+    <div class="w3-container" id="eys-registro" >
         <div style="flex: 1; padding:5px; ">
             <div class="w3-card-2">
                 <header>
