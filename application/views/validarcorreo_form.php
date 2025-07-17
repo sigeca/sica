@@ -12,10 +12,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro de Usuario - SICA-UTELVT</title>
+    <title>SICA - Registro de Usuario </title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
         /* General Body Styles */
+        body {
+            background-color: #f8f9fa; /* Light background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+/* 
         body {
             font-family: 'Roboto', sans-serif;
             background-color: #f4f7f6;
@@ -27,7 +36,7 @@
             min-height: 100vh;
             box-sizing: border-box;
         }
-
+*/
         /* Main Container for the form */
         #eys-registro {
             display: flex;
@@ -309,7 +318,7 @@
         <div style="flex: 1; padding:5px;">
             <div style="width:100%; height:auto;">
                 <header>
-                    <p id="titulo1">Sistema de registro para eventos académicos y de gestión <br> CTI-UTELVT</p>
+                    <p id="titulo1">Sistema de registro para eventos académicos y de gestión <br> SICA-UTELVT</p>
                 </header>
                 <div id="detalle">
                     <?php
