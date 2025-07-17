@@ -321,7 +321,7 @@
 </head>
 <body>
 <section id="presentacion">
-    <div class="w3-container" id="eys-registro">
+    <div class="w3-container" id="eys-registro" style="border: 5px solid blue;">
         <div style="flex: 1; padding:5px; ">
             <div class="w3-card-2">
                 <header>
