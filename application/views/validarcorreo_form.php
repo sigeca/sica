@@ -45,13 +45,11 @@
             max-width: 1200px; /* Limit overall width on large screens */
             gap: 20px; /* Space between columns */
             align-items: center;
-border: 2px solid red;
         }
 
         /* Left Section: Event Presentation */
         #presentacion {
             flex: 1; /* Allows it to grow and shrink */
-            min-width: 300px; /* Minimum width before wrapping */
             background-color: #ffffff;
             padding: 20px;
             border-radius: 10px;
