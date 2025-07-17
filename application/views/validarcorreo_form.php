@@ -53,7 +53,13 @@
             display: flex;
             flex-wrap: wrap; /* Allows columns to wrap on smaller screens */
 
-            width: 100%;
+    flex-grow: 0;   /* Evita que #presentacion crezca para ocupar espacio extra */
+    flex-shrink: 1; /* Permite que se encoja si es necesario */
+    flex-basis: auto; /* Establece el tamaño inicial basado en su contenido */
+
+
+
+    justify-content: center; /* Opcional: Centra #eys-registro dentro de #presentacion */
             background-color: #ffffff;
             padding: 20px;
             border-radius: 10px;
