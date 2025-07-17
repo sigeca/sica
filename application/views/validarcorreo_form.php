@@ -49,20 +49,18 @@
 
         /* Left Section: Event Presentation */
         #presentacion {
-             flex-grow: 0;   /* Evita que el item crezca para ocupar espacio extra */
-             flex-shrink: 1; /* Permite que el item se encoja si no hay suficiente espacio */
-            flex-basis: auto; /* Permite que el item tome el tamaño de su contenido inicial */
-    /* Puedes usar 'flex: 0 1 auto;' como una abreviatura para las tres propiedades anteriores */
     
-             width: auto; /* Asegura que el ancho se ajuste al contenido, no al 100% */
-    
+            display: flex;
+            flex-wrap: wrap; /* Allows columns to wrap on smaller screens */
 
+            width: 100%;
             background-color: #ffffff;
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
             box-sizing: border-box;
             border: 20px  solid red;
+            align-items: center;
         }
 
         #presentacion header {
