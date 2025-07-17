@@ -62,7 +62,7 @@ public function validarcorreo()
 	}
 	$this->load->view('page_header.php');
 	$this->load->view('validarcorreo_form',$data);
-//	$this->load->view('template/page_footer.php');
+	$this->load->view('page_footer.php');
 
 }
 
