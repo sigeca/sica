@@ -45,6 +45,9 @@
             max-width: 1200px; /* Limit overall width on large screens */
             gap: 20px; /* Space between columns */
             align-items: center;
+
+    /* Agrega esta línea para centrar horizontalmente a los ítems flex */
+    justify-content: center;
         }
 
         /* Left Section: Event Presentation */
