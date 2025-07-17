@@ -45,6 +45,7 @@
             max-width: 1200px; /* Limit overall width on large screens */
             gap: 20px; /* Space between columns */
             align-items: center;
+border: 2px solid red;
         }
 
         /* Left Section: Event Presentation */
@@ -315,7 +316,7 @@
 <body>
 <section id="presentacion">
     <div class="w3-container" id="eys-registro">
-        <div style="flex: 1; padding:5px; border: 2px solid red;">
+        <div style="flex: 1; padding:5px; ">
             <div style="width:100%; height:auto;">
                 <header>
                     <p id="titulo1">Sistema de registro para eventos académicos y de gestión <br> SICA-UTELVT</p>
