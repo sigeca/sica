@@ -75,8 +75,8 @@ public function add()
 			'idevento' => $this->input->post('idevento'),
 			'password' => "nuevo",
 			'fechain' => "",
-			onoff' =>1,
-			'fechaoff' => "",
+			'onoff' =>1,
+			'fechaoff' => ""
 	 	);
 	 	$this->password_model->save($array_item);
 	 	redirect('password');
