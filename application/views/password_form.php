@@ -33,17 +33,7 @@ foreach ($modulos as $row){
 </tr>
 
 
-<tr>
-<td> Nivelpassword: </td>
-<td><?php 
 
-$options= array('--Select--');
-foreach ($nivelpasswords as $row){
-	$options[$row->idnivelpassword]= $row->nombre;
-}
-
- echo form_dropdown("idnivelpassword",$options, set_select('--Select--','default_value'));  ?></td>
-</tr>
 
 
 
