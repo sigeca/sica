@@ -58,7 +58,7 @@ public function add()
 {
 	$data['personas']= $this->persona_model->lista_personas0()->result();
   	$data['usuarios']= $this->usuario_model->lista_usuarios1()->result();
-  	$data['modulos']= $this->modulo_model->lista_modulos()->result();
+  	$data['eventos']= $this->evento_model->lista_evento()->result();
 		$data['title']="Nueva Password";
 	 	$this->load->view('page_header');		
 	 	$this->load->view('password_form',$data);
@@ -72,7 +72,11 @@ public function add()
 	{
 	 	$array_item=array(
 			'idusuario' => $this->input->post('idusuario'),
-			'idmodulo' => $this->input->post('idmodulo'),
+			'idevento' => $this->input->post('idevento'),
+			'password' => "nuevo",
+			'fechain' => "",
+			onoff' =>1,
+			'fechaoff' => "",
 	 	);
 	 	$this->password_model->save($array_item);
 	 	redirect('password');

@@ -25,11 +25,11 @@ foreach ($usuarios as $row){
 <td><?php 
 
 $options= array('--Select--');
-foreach ($modulos as $row){
-	$options[$row->idmodulo]= $row->nombre;
+foreach ($eventos as $row){
+	$options[$row->idevento]= $row->nombre;
 }
 
- echo form_dropdown("idmodulo",$options, set_select('--Select--','default_value'));  ?></td>
+ echo form_dropdown("idevento",$options, set_select('--Select--','default_value'));  ?></td>
 </tr>
 
 
