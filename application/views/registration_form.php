@@ -194,3 +194,380 @@
         }
 
         .login-link-footer {
+            font-size: 1em;
+            padding-top: 15px;
+            text-align: center;
+        }
+
+        .login-link-footer a {
+            color: #f44336; /* Red color for emphasis */
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .login-link-footer a:hover {
+            color: #d32f2f;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            #titulo1 {
+                font-size: 24px;
+            }
+
+            .registration-form-column header {
+                font-size: 20px;
+            }
+
+            .form-content {
+                padding: 15px 20px;
+            }
+
+            .submit-button {
+                font-size: 16px;
+                padding: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            #eys-registro > div {
+                min-width: unset; /* Remove min-width to allow full flexibility */
+                width: 100%; /* Take full width on very small screens */
+            }
+
+            #titulo1 {
+                font-size: 20px;
+            }
+
+            .registration-form-column header {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<section id="presentacion">
+    <div class="w3-container" id="eys-registro">
+
+        <div class="event-details-column">
+            <header class="w3-container">
+                <p id="titulo1">Sistema de registro para eventos académicos y de gestión <br> CTI-UTELVT</p>
+            </header>
+            <div id="detalle">
+                <?php
+                $image_src = 'https://repositorioutlvte.org/Repositorio/eventos/' . $eventos[0]->idevento . '.png';
+                // Check if the image exists, otherwise use a default one
+                if (@getimagesize($image_src)) { // Using @ for brevity, better to use cURL or file_exists for production
+                    ?>
+                    <img src="<?php echo $image_src; ?>" id="imagenevento" alt="Imagen del evento">
+                <?php } else { ?>
+                    <img src="https://repositorioutlvte.org/Repositorio/eventos/sinimagen.png" id="imagenevento"
+                         alt="Imagen del evento por defecto">
+                <?php } ?>
+
+                <p>Para poder unirte a este evento sigue las instrucciones: </p><br>
+                <ol>
+                    <li> Verifica si el evento está en etapa de Inscripción.</li>
+                    <li> Ingresa tus datos personales y de contacto solicitados.</li>
+                    <li> <span class="red-text">Todos los datos deben ser ingresados.</span></li>
+                    <li> Finalmente guarda los datos y estás listo para ingresar a nuestra plataforma.</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="registration-form-column w3-card-2">
+            <header class="w3-container">
+                <p>Regístrate Aquí</p>
+            </header>
+            <div class="form-content">
+                <?php echo form_open('login/new_user_registration'); ?>
+
+                <div class="form-group">
+                    <?php if (sizeof($eventos) > 1) { ?>
+                        <label for="idevento">Evento:</label>
+                        <?php
+                        $options = ['' => '--Selecciona un evento--']; // Added a default empty option
+                        foreach ($eventos as $row) {
+                            $options[$row->idevento] = $row->titulo;
+                        }
+                        echo form_dropdown('idevento', $options, set_select('idevento', ''), ['class' => 'form-control', 'id' => 'idevento', 'onchange' => 'show_detalle()']);
+                        ?>
+                    <?php } else { ?>
+                        <div class="status-message <?php echo ($eventos[0]->idevento_estado == 2) ? 'status-open' : 'status-closed'; ?>">
+                            <?php echo ($eventos[0]->idevento_estado == 2) ? 'INSCRIPCIONES ABIERTAS' : 'INSCRIPCIONES CERRADAS'; ?>
+                        </div>
+                        <?php
+                        echo form_input(['name' => 'idevento', 'value' => $eventos[0]->idevento, 'type' => 'hidden']);
+                        $textarea_options = ['class' => 'form-control', 'disabled' => 'disabled', 'style' => 'height:100px !important;', 'id' => 'titulo'];
+                        echo form_textarea('titulo', $eventos[0]->titulo, $textarea_options);
+                    }
+                    ?>
+                </div>
+
+                <div class="form-group">
+                    <label for="cedula">Cédula:</label>
+                    <?php
+                    $cedula_attr = ['id' => 'cedula', 'name' => 'cedula', 'maxlength' => '10', 'class' => 'form-control'];
+                    if ($eventos[0]->idevento_estado != 2) {
+                        $cedula_attr['disabled'] = 'disabled';
+                    }
+                    echo form_input($cedula_attr);
+                    ?>
+                    <?php if (isset($message_display)) {
+                        echo '<div class="error_msg">' . $message_display . '</div>';
+                    } ?>
+                </div>
+
+                <div class="form-group">
+                    <label for="apellidos">Apellidos:</label>
+                    <?php
+                    $apellidos_attr = ['id' => 'apellidos', 'name' => 'apellidos', 'class' => 'form-control'];
+                    if ($eventos[0]->idevento_estado != 2) {
+                        $apellidos_attr['disabled'] = 'disabled';
+                    }
+                    echo form_input($apellidos_attr);
+                    ?>
+                    <?php if (isset($message_display)) {
+                        echo '<div class="error_msg">' . $message_display . '</div>';
+                    } ?>
+                </div>
+
+                <div class="form-group">
+                    <label for="nombres">Nombres:</label>
+                    <?php
+                    $nombres_attr = ['id' => 'nombres', 'name' => 'nombres', 'class' => 'form-control'];
+                    if ($eventos[0]->idevento_estado != 2) {
+                        $nombres_attr['disabled'] = 'disabled';
+                    }
+                    echo form_input($nombres_attr);
+                    ?>
+                    <?php if (isset($message_display)) {
+                        echo '<div class="error_msg">' . $message_display . '</div>';
+                    } ?>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Correo:</label>
+                    <?php
+                    $email_attr = ['id' => 'email', 'type' => 'email', 'name' => 'email', 'class' => 'form-control', 'required' => 'required'];
+                    echo form_input($email_attr);
+                    ?>
+                </div>
+
+                <div class="form-group">
+                    <label for="idsexo">Sexo:</label>
+                    <?php
+                    $sexo_options = ['' => '--Selecciona tu sexo--'];
+                    foreach ($sexos as $row) {
+                        $sexo_options[$row->idsexo] = $row->nombre;
+                    }
+                    echo form_dropdown('idsexo', $sexo_options, set_select('idsexo', ''), ['class' => 'form-control', 'id' => 'idsexo', 'required' => 'required']);
+                    ?>
+                </div>
+
+                <div class="form-group">
+                    <label for="fechanacimiento">Fecha de nacimiento:</label>
+                    <?php
+                    $fecha_nac_attr = ['id' => 'fechanacimiento', 'type' => 'date', 'name' => 'fechanacimiento', 'class' => 'form-control', 'required' => 'required'];
+                    echo form_input($fecha_nac_attr);
+                    ?>
+                </div>
+
+                <div class="form-group">
+                    <label for="telefono">Teléfono:</label>
+                    <?php
+                    $telefono_attr = ['id' => 'telefono', 'type' => 'text', 'name' => 'telefono', 'class' => 'form-control', 'required' => 'required'];
+                    echo form_input($telefono_attr);
+                    ?>
+                </div>
+
+                <div class="form-group">
+                    <label for="idpais">País:</label>
+                    <?php
+                    $pais_options = ['' => '--Selecciona tu país--'];
+                    foreach ($paises as $row) {
+                        $pais_options[$row->idpais] = $row->nombre;
+                    }
+                    echo form_dropdown('idpais', $pais_options, set_select('idpais', ''), ['class' => 'form-control', 'id' => 'idpais', 'required' => 'required']);
+                    ?>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Contraseña:</label>
+                    <?php
+                    echo form_password(['id' => 'password', 'name' => 'password', 'class' => 'form-control', 'required' => 'required']);
+                    ?>
+                </div>
+
+                <div class="form-group">
+                    <label for="password2">Repita contraseña:</label>
+                    <?php
+                    echo form_password(['id' => 'password2', 'name' => 'password2', 'class' => 'form-control', 'required' => 'required']); // Changed name to password2 for separate validation if needed
+                    ?>
+                </div>
+
+                <div class="form-group">
+                    <input type="checkbox" id="showPasswordCheckbox" onclick="togglePasswordVisibility()"> &ensp; Mostrar contraseña
+                </div>
+
+                <div class="form-group">
+                    <?php
+                    $submit_data = [
+                        'type'  => 'submit',
+                        'value' => 'Guardar datos',
+                        'name'  => 'submit',
+                        'class' => 'submit-button'
+                    ];
+                    if ($eventos[0]->idevento_estado != 2) {
+                        $submit_data['disabled'] = 'disabled';
+                    }
+                    echo form_submit($submit_data);
+                    ?>
+                </div>
+                <?php echo form_close(); ?>
+
+                <footer class="login-link-footer">
+                    ¿Ya creaste tu cuenta? <br>
+                    <a href="<?php echo base_url(); ?>index.php/login" role="button">Ingresar al sistema</a>
+                </footer>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    $(document).ready(function() {
+        // Prevent non-numeric input for cedula
+        $('#cedula').on('keydown', function(event) {
+            if (isNaN(event.key) && event.key !== 'Backspace' && event.key !== 'Tab' && event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') {
+                event.preventDefault();
+            }
+        });
+
+        // Call get_datos when cedula field has 10 digits
+        $('#cedula').on('keyup', function() {
+            if (this.value.length === 10) {
+                get_datos();
+            }
+        });
+    });
+
+    function togglePasswordVisibility() {
+        var passwordField = document.getElementById("password");
+        var password2Field = document.getElementById("password2");
+        if (passwordField.type === "password") {
+            passwordField.type = "text";
+            password2Field.type = "text";
+        } else {
+            passwordField.type = "password";
+            password2Field.type = "password";
+        }
+    }
+
+    // Fetches user data based on cedula
+    function get_datos() {
+        var cedula = $('#cedula').val();
+        $.ajax({
+            url: "<?php echo site_url('persona/get_datos'); ?>",
+            data: { cedula: cedula },
+            method: 'POST',
+            dataType: 'json',
+            success: function(data) {
+                if (data && data.length > 0) {
+                    $('#nombres').val(data[0].nombres);
+                    $('#apellidos').val(data[0].apellidos);
+                    $('#fechanacimiento').val(data[0].fechanacimiento);
+                    $('#email').val(data[0].correo);
+                    $('#telefono').val(data[0].telefono);
+                } else {
+                    // Clear fields if no data found for the cedula
+                    $('#nombres').val('');
+                    $('#apellidos').val('');
+                    $('#fechanacimiento').val('');
+                    $('#email').val('');
+                    $('#telefono').val('');
+                }
+            },
+            error: function(xhr, ajaxOptions, thrownError) {
+                console.error("Error fetching data:", xhr.status, thrownError);
+                // Optionally show a user-friendly message
+                // alert("Error al obtener datos. Por favor, intente de nuevo.");
+            }
+        });
+    }
+
+    // Populates event details when a different event is selected
+    function show_detalle() {
+        var idevento = $('#idevento').val();
+        if (idevento === '' || idevento === '0') { // Handle "Select event" option
+            $('#titulo').val(''); // Clear title if "select" is chosen
+            $('#detalle').html('<p>Para poder unirte a este evento sigue las instrucciones: </p><br><ol><li> Verifica si el evento esta en etapa de Inscripción.  </li><li> Ingresa tus datos personales y de contacto solicitados.  </li><li> <span style="color:red; font-size:30px;">Todos los datos deben ser ingresados.</span>  </li><li> Finalmente guarda los datos y estas listo para ingresar a nuestra plaforma.  </li></ol>'); // Reset instructions
+            $('#imagenevento').attr('src', 'https://repositorioutlvte.org/Repositorio/eventos/sinimagen.png'); // Reset image
+            return;
+        }
+
+        $.ajax({
+            url: "<?php echo site_url('evento/get_evento2'); ?>",
+            data: { idevento: idevento },
+            method: 'POST',
+            dataType: 'json',
+            success: function(data) {
+                if (data && data.length > 0) {
+                    $('#titulo1').text("Sistema de registro para eventos académicos y de gestión \n CTI-UTELVT"); // Keep original title or adjust as needed
+                    $('#detalle').html('<p>' + data[0].detalle + '</p>'); // Assuming 'detalle' is the rich text description
+                    var eventImageSrc = 'https://repositorioutlvte.org/Repositorio/eventos/' + data[0].idevento + '.png';
+                    // Check if image exists before setting (requires server-side check or a more robust client-side check)
+                    // For now, assuming direct link is okay or will fallback
+                    $('#imagenevento').attr('src', eventImageSrc);
+
+                    // Update form fields based on event status if needed.
+                    // This logic might need to be refined based on how you want the form to behave
+                    // when selecting different events and their statuses.
+                    var isEventOpen = (data[0].idevento_estado == 2);
+                    if (isEventOpen) {
+                        $('input, select, textarea, .submit-button').not('#titulo').prop('disabled', false);
+                        $('.status-message').text('INSCRIPCIONES ABIERTAS').removeClass('status-closed').addClass('status-open');
+                    } else {
+                        $('input, select, textarea, .submit-button').not('#titulo').prop('disabled', true);
+                        $('.status-message').text('INSCRIPCIONES CERRADAS').removeClass('status-open').addClass('status-closed');
+                    }
+                }
+            },
+            error: function(xhr, ajaxOptions, thrownError) {
+                console.error("Error fetching event details:", xhr.status, thrownError);
+                // alert("Error al obtener detalles del evento. Por favor, intente de nuevo.");
+            }
+        });
+    }
+
+    // Note: get_evento() function seems to be for populating event dropdown based on institution,
+    // but there's no institution dropdown in the current form.
+    // If it's intended to be used, you'll need to add the 'idinstitucion' field.
+    /*
+    async function get_evento() {
+        var idinstitucion = $('select[name=idinstitucion]').val();
+        $.ajax({
+            url: "<?php //echo site_url('evento/get_evento'); ?>",
+            data: { idinstitucion: idinstitucion },
+            method: 'POST',
+            async: false, // Avoid synchronous calls
+            dataType: 'json',
+            success: function(data) {
+                var html = '<option value="">--Selecciona un evento--</option>'; // Default option
+                $.each(data, function(i, item) {
+                    html += '<option value="' + item.idevento + '">' + item.titulo + '</option>';
+                });
+                $('#idevento').html(html);
+            },
+            error: function(xhr, ajaxOptions, thrownError) {
+                console.error("Error fetching events:", xhr.status, thrownError);
+            }
+        });
+    }
+    */
+</script>
+
+</body>
+</html>
