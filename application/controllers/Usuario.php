@@ -135,9 +135,9 @@ public function listar()
   $data['perfil']= $this->perfil_model->lista_perfiles()->result();
 		$data['instituciones']= $this->institucion_model->lista_instituciones()->result();
   $data['title']="Usuarios";
-	$this->load->view('template/page_header');		
+	$this->load->view('page_header');		
   $this->load->view('usuario_list',$data);
-	$this->load->view('template/page_footer');
+	$this->load->view('page_footer');
 }
 
 function usuario_data()
