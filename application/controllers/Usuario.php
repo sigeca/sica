@@ -36,20 +36,20 @@ public function actual(){
  if(isset($this->session->userdata['logged_in'])){
 	$data['usuario']=$this->usuario_model->usuario($this->uri->segment(3))->row_array();
 
-	$data['personas']= $this->persona_model->lista_personas()->result();
+	$data['personas']= $this->persona_model->lista_personas0()->result();
 	$data['paginas']= $this->pagina_model->lista_paginas()->result();
 	$data['perfiles']= $this->perfil_model->lista_perfiles()->result();
 		$data['instituciones']= $this->institucion_model->lista_instituciones()->result();
 
 
 	$data['title']="Modulo de Usuario";
-	$this->load->view('template/page_header');		
+	$this->load->view('page_header');		
 	$this->load->view('usuario_record',$data);
-	$this->load->view('template/page_footer');
+	$this->load->view('page_footer');
    }else{
-	$this->load->view('template/page_header.php');
+	$this->load->view('page_header.php');
 	$this->load->view('login_form');
-	$this->load->view('template/page_footer.php');
+	$this->load->view('page_footer.php');
    }
 }
 
@@ -58,13 +58,13 @@ public function actual(){
 
 public function add()
 {
-		$data['personas']= $this->persona_model->lista_personas()->result();
+		$data['personas']= $this->persona_model->lista_personas0()->result();
 		$data['perfiles']= $this->perfil_model->lista_perfiles()->result();
 		$data['instituciones']= $this->institucion_model->lista_instituciones()->result();
 		$data['title']="Nuevo Usuario";
-	 	$this->load->view('template/page_header');		
+	 	$this->load->view('page_header');		
 	 	$this->load->view('usuario_form',$data);
-	 	$this->load->view('template/page_footer');
+	 	$this->load->view('page_footer');
 
 
 }
