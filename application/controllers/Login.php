@@ -133,9 +133,9 @@ public function new_user_registration() {
             $data['eventos']= $this->evento_model->lista_eventos()->result();
   	    $data["sexos"]= $this->sexo_model->lista_sexos()->result();
   	    $data["paises"]= $this->pais_model->lista_paises()->result();
-            $this->load->view('template/page_header.php');
+            $this->load->view('page_header.php');
             $this->load->view('registration_form',$data);
-            $this->load->view('template/page_footer.php');
+            $this->load->view('page_footer.php');
           } else {
 		//Definiento de donde es llama la funcion
 		//1=javascrip   0=php
