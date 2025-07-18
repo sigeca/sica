@@ -14,7 +14,7 @@ class Usuario extends CI_Controller{
 	public function index(){
  if(isset($this->session->userdata['logged_in'])){
 	$data['usuario'] = $this->usuario_model->elultimo();
-	$data['personas']= $this->persona_model->lista_personas()->result();
+	$data['personas']= $this->persona_model->lista_personas0()->result();
 	$data['paginas']= $this->pagina_model->lista_paginas()->result();
 	$data['perfiles']= $this->perfil_model->lista_perfiles()->result();
 	$data['instituciones']= $this->institucion_model->lista_instituciones()->result();
