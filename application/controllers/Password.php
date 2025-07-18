@@ -56,13 +56,13 @@ public function actual(){
 
 public function add()
 {
-	$data['personas']= $this->persona_model->lista_personas()->result();
+	$data['personas']= $this->persona_model->lista_personas0()->result();
   	$data['usuarios']= $this->usuario_model->lista_usuarios1()->result();
   	$data['modulos']= $this->modulo_model->lista_modulos()->result();
 		$data['title']="Nueva Password";
-	 	$this->load->view('template/page_header');		
+	 	$this->load->view('page_header');		
 	 	$this->load->view('password_form',$data);
-	 	$this->load->view('template/page_footer');
+	 	$this->load->view('page_footer');
 
 
 }
