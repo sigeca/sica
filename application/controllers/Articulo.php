@@ -6,6 +6,7 @@ class Articulo extends CI_Controller{
       parent::__construct();
       $this->load->model('articulo_model');
       $this->load->model('prestamoarticulo_model');
+      $this->load->model('precioarticulo_model');
   	  $this->load->model('institucion_model');
   	  $this->load->model('ubicacionarticulo_model');
 }

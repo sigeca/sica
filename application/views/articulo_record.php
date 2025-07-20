@@ -184,7 +184,7 @@ $textarea_options = array('class' => 'form-control','rows' => '4','disabled'=>'d
 <div class="row" style="background-color:lightgray; padding-top:0.5cm; padding-bottom:0.5cm; border-bottom:0.5cm solid white;">
     <div class="col-lg-12 margin-tb">
         <div class="pull-left">
- <?php echo anchor('precioarticulo/add', 'Prestamo'); ?>:
+ <?php echo anchor('precioarticulo/add', 'Precio'); ?>:
         </div>
         
     </div>
