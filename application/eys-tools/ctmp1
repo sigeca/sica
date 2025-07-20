@@ -1,154 +1,287 @@
 <?php
-class Documentochklstportafolio extends CI_Controller{
+class Precioarticulo extends CI_Controller{
 
 	public function __construct(){
       		parent::__construct();
-      		$this->load->model('unidadsilabo_model');
+      		$this->load->model('prestamoarticulo_model');
+      		$this->load->model('documento_model');
       		$this->load->model('persona_model');
-      		$this->load->model('silabo_model');
-      		$this->load->model('tema_model');
+      		$this->load->model('evento_model');
+      		$this->load->model('articulo_model');
+      		$this->load->model('fechacalendario_model');
+      		$this->load->model('modoevaluacion_model');
 	}
 
 	public function index(){
-  		$data['silabos']= $this->silabo_model->lista_silabos()->result();
+		$data['prestamoarticulo'] = $this->prestamoarticulo_model->elultimo();
+		$data['articulos']= $this->articulo_model->lista_articulos()->result();
   		$data['personas']= $this->persona_model->lista_personas()->result();
-		$data['unidadsilabo'] = $this->unidadsilabo_model->elultimo();
 
- 		// print_r($data['unidadsilabo_list']);
-  		$data['title']="Lista de Documentochklstportafolioes";
-		$this->load->view('template/page_header');		
-  		$this->load->view('unidadsilabo_record',$data);
-		$this->load->view('template/page_footer');
+ 		// print_r($data['prestamoarticulo_list']);
+  		$data['title']="Lista de Precioarticuloes";
+		$this->load->view('page_header');		
+  		$this->load->view('prestamoarticulo_record',$data);
+		$this->load->view('page_footer');
 	}
+
+
+
+	public function actual(){
+	 if(isset($this->session->userdata['logged_in'])){
+
+		$data['prestamoarticulo'] = $this->prestamoarticulo_model->prestamoarticulo($this->uri->segment(3))->row_array();
+
+
+		$data['articulos']= $this->articulo_model->lista_articulos()->result();
+		$data['personas']= $this->persona_model->lista_personas0()->result();
+		$data['title']="Precioarticulo del documento";
+	 
+		$data['title']="Modulo de sesiones del evento";
+		$this->load->view('page_header');		
+		$this->load->view('prestamoarticulo_record',$data);
+		$this->load->view('page_footer');
+	   }else{
+		$this->load->view('page_header.php');
+		$this->load->view('login_form');
+		$this->load->view('page_footer.php');
+	   }
+	}
+
+
 
 
 	public function add()
 	{
-		$data['personas']= $this->persona_model->lista_personas()->result();
-		$data['silabos']= $this->silabo_model->silabo($this->uri->segment(3))->result();
-		$data['unidadsilabo'] = $this->unidadsilabo_model->unidadsilaboss($this->uri->segment(3));
-		$data['title']="Nueva unidades del silabo";
-	 	$this->load->view('template/page_header');		
-	 	$this->load->view('unidadsilabo_form',$data);
-	 	$this->load->view('template/page_footer');
+
+		$data['articulos']= $this->articulo_model->lista_articulos()->result();
+		$data['personas']= $this->persona_model->lista_personas0()->result();
+   		date_default_timezone_set('America/Guayaquil');
+	     	$date = date("Y-m-d");
+		$data['title']="Nueva sesion de eventos";
+	 	$this->load->view('page_header');		
+	 	$this->load->view('prestamoarticulo_form',$data);
+	 	$this->load->view('page_footer');
 	}
 
 
 	public function  save()
 	{
 	 	$array_item=array(
-		 	'idsilabo' => $this->input->post('idsilabo'),
-		 	'nombre' => $this->input->post('nombre'),
-		 	'unidad' => $this->input->post('unidad'),
+		 	'idarticulo' => $this->input->post('idarticulo'),
+		 	'idpersona' => $this->input->post('idpersona'),
+		 	'fechaprestamo' => $this->input->post('fechaprestamo'),
+		 	'fechadevolucion' => $this->input->post('fechadevolucion'),
+		 	'detalle' => $this->input->post('detalle'),
+		 	'horaprestamo' => $this->input->post('horaprestamo'),
+		 	'horadevolucion' => $this->input->post('horadevolucion'),
 	 	);
-	 	$this->unidadsilabo_model->save($array_item);
-	 	redirect('unidadsilabo');
+	 	$result=$this->prestamoarticulo_model->save($array_item);
+	 	if($result == FALSE)
+		{
+			echo "<script language='JavaScript'> alert('Fecha para este evento ya fue asignado'); </script>";
+			echo "<script language='JavaScript'> window.history.go(-2);</script>";
+		}else{
+			echo "<script language='JavaScript'> window.history.go(-2);</script>";
+		}
+ 
  	}
 
 
 
 	public function edit()
 	{
-	 	$data['unidadsilabo'] = $this->unidadsilabo_model->unidadsilabo($this->uri->segment(3))->row_array();
-		$data['silabos']= $this->silabo_model->lista_silabos()->result();
+	 	$data['prestamoarticulo'] = $this->prestamoarticulo_model->prestamoarticulo($this->uri->segment(3))->row_array();
+		$data['articulos']= $this->articulo_model->lista_articulos()->result();
 		$data['personas']= $this->persona_model->lista_personas()->result();
- 	 	$data['title'] = "Actualizar Documentochklstportafolio";
- 	 	$this->load->view('template/page_header');		
- 	 	$this->load->view('unidadsilabo_edit',$data);
-	 	$this->load->view('template/page_footer');
+ 	 	$data['title'] = "Actualizar Precioarticulo";
+ 	 	$this->load->view('page_header');		
+ 	 	$this->load->view('prestamoarticulo_edit',$data);
+	 	$this->load->view('page_footer');
 	}
 
 
 	public function  save_edit()
 	{
-		$id=$this->input->post('idunidadsilabo');
+		$id=$this->input->post('idprestamoarticulo');
 	 	$array_item=array(
-		 	'nombre' => $this->input->post('nombre'),
-		 	'unidad' => $this->input->post('unidad'),
-		 	'idsilabo' => $this->input->post('idsilabo'),
-	 	);
-	 	$this->unidadsilabo_model->update($id,$array_item);
-	 	redirect('unidadsilabo/actual/'.$id);
- 	}
-
-	public function  save_edit2()
-	{
-		$id=$this->input->post('idunidadsilabo');
-	 	$array_item=array(
-		 	'idsilabo' => $this->input->post('idsilabo'),
+		 	'idprestamoarticulo' => $this->input->post('idprestamoarticulo'),
+		 	'idarticulo' => $this->input->post('idarticulo'),
 		 	'idpersona' => $this->input->post('idpersona'),
+		 	'fechaprestamo' => $this->input->post('fechaprestamo'),
+		 	'fechadevolucion' => $this->input->post('fechadevolucion'),
+		 	'detalle' => $this->input->post('detalle'),
+		 	'horaprestamo' => $this->input->post('horaprestamo'),
+		 	'horadevolucion' => $this->input->post('horadevolucion'),
 	 	);
-	 	echo $this->unidadsilabo_model->update($id,$array_item);
+	 	$this->prestamoarticulo_model->update($id,$array_item);
+	 	redirect('prestamoarticulo/actual/'.$id);
  	}
 
 
 
  	public function delete()
  	{
- 		$data=$this->unidadsilabo_model->delete($this->uri->segment(3));
+ 		$data=$this->prestamoarticulo_model->delete($this->uri->segment(3));
  		echo json_encode($data);
-	 	redirect('unidadsilabo/elprimero');
+	 	redirect('prestamoarticulo/elprimero');
 	//	$db['default']['db_debug']=FALSE
  	}
 
 
-	public function listar()
+
+public function listar()
+{
+	
+	$data['eventos']= $this->evento_model->lista_eventos()->result();
+  $data['title']="Sesiones de evento";
+	$this->load->view('page_header');		
+  $this->load->view('prestamoarticulo_list',$data);
+	$this->load->view('page_footer');
+}
+
+
+
+function prestamoarticulo_data()
+{
+		$draw= intval($this->input->get("draw"));
+		$draw= intval($this->input->get("start"));
+		$draw= intval($this->input->get("length"));
+
+		if($this->uri->segment(3))
+		{
+			$idevento=$this->uri->segment(3);
+		}else{
+			$idevento=$this->input->get('idevento');
+		}
+
+	 	$data0 = $this->prestamoarticulo_model->prestamoarticulosA($idevento);
+		$data=array();
+		foreach($data0->result() as $r){
+			$data[]=array($r->idprestamoarticulo,$r->elevento,$r->fecha,$r->tema,
+				$r->href='<a href="javascript:void(0);" class="btn btn-info btn-sm item_ver" data-retorno="'.site_url('prestamoarticulo/actual').'"   data-idprestamoarticulo="'.$r->idprestamoarticulo.'">Ver</a>');
+		}	
+		$output=array( "draw"=>$draw,
+			"recordsTotal"=> $data0->num_rows(),
+			"recordsFiltered"=> $data0->num_rows(),
+			"data"=>$data
+		);
+		echo json_encode($output);
+		exit();
+
+}
+
+
+
+
+	public function reportepdf()
 	{
 		
-		$data['title']="Unidades del silabo";
-		$this->load->view('template/page_header');		
-		$this->load->view('unidadsilabo_list',$data);
-		$this->load->view('template/page_footer');
-	}
 
+	 	$data['prestamoarticulos']= $this->prestamoarticulo_model->prestamoarticulosA($this->uri->segment(3))->result();
 
-
-	function unidadsilabo_data()
-	{
-			$draw= intval($this->input->get("draw"));
-			$draw= intval($this->input->get("start"));
-			$draw= intval($this->input->get("length"));
-
-
-			$data0 = $this->unidadsilabo_model->listar_unidadsilabo1();
-			$data=array();
-			foreach($data0->result() as $r){
-				$data[]=array($r->idunidadsilabo,$r->idsilabo,$r->unidad,$r->launidad,$r->href='<a href="javascript:void(0);" class="btn btn-info btn-sm item_ver"  data-idsilabo="'.$r->idunidadsilabo.'">Ver</a>');
-			}	
-			$output=array( "draw"=>$draw,
-				"recordsTotal"=> $data0->num_rows(),
-				"recordsFiltered"=> $data0->num_rows(),
-				"data"=>$data
-			);
-			echo json_encode($output);
-			exit();
+		$data['title']="Evento";
+	//	$this->load->view('page_header');		
+		$this->load->view('prestamoarticulo_list_pdf',$data);
+//		$this->load->view('page_footer');
 	}
 
 
 
 
 
-	function tema_data()
-	{
-			$draw= intval($this->input->get("draw"));
-			$draw= intval($this->input->get("start"));
-			$draw= intval($this->input->get("length"));
+public function elprimero()
+{
+  	$data['documentos']= $this->documento_model->lista_documentos()->result();
+	$data['prestamoarticulo'] = $this->prestamoarticulo_model->elprimero();
+		$data['modoevaluacions']= $this->modoevaluacion_model->lista_modoevaluacions()->result();
+  if(!empty($data))
+  {
+  		$data['eventos']= $this->evento_model->lista_eventos()->result();
 
-			$idunidadsilabo=$this->input->get('idunidadsilabo');
-			$data0 =$this->tema_model->temas2($idunidadsilabo);
-			$data=array();
-			foreach($data0->result() as $r){
-				$data[]=array($r->idunidadsilabo,$r->idtema,$r->unidad,$r->numerosesion,$r->nombrecorto,$r->duracionminutos,$r->idvideotutorial,
-				$r->href='<a href="javascript:void(0);" class="btn btn-info btn-sm item_ver"  data-retorno="'.site_url('tema/actual').'"    data-idtema="'.$r->idtema.'">Ver</a>');
-			}	
-			$output=array( "draw"=>$draw,
-				"recordsTotal"=> $data0->num_rows(),
-				"recordsFiltered"=> $data0->num_rows(),
-				"data"=>$data
-			);
-			echo json_encode($output);
-			exit();
+  	$data['personas']= $this->persona_model->lista_personas()->result();
+    $data['title']="Precioarticulo del documento";
+    $this->load->view('page_header');		
+    $this->load->view('prestamoarticulo_record',$data);
+    $this->load->view('page_footer');
+  }else{
+    $this->load->view('page_header');		
+    $this->load->view('registro_vacio');
+    $this->load->view('page_footer');
+  }
+ }
+
+public function elultimo()
+{
+  $data['documentos']= $this->documento_model->lista_documentos()->result();
+  		$data['temas']= $this->tema_model->lista_temas()->result();
+	$data['prestamoarticulo'] = $this->prestamoarticulo_model->elultimo();
+		$data['modoevaluacions']= $this->modoevaluacion_model->lista_modoevaluacions()->result();
+  if(!empty($data))
+  {
+  		$data['eventos']= $this->evento_model->lista_eventos()->result();
+  	$data['personas']= $this->persona_model->lista_personas()->result();
+    $data['title']="Precioarticulo del documento";
+  
+    $this->load->view('page_header');		
+    $this->load->view('prestamoarticulo_record',$data);
+    $this->load->view('page_footer');
+  }else{
+
+    $this->load->view('page_header');		
+    $this->load->view('registro_vacio');
+    $this->load->view('page_footer');
+  }
+}
+
+public function siguiente(){
+ // $data['prestamoarticulo_list']=$this->prestamoarticulo_model->lista_prestamoarticulo()->result();
+	$data['documentos']= $this->documento_model->lista_documentos()->result();
+  		$data['temas']= $this->tema_model->lista_temas()->result();
+		$data['modoevaluacions']= $this->modoevaluacion_model->lista_modoevaluacions()->result();
+	$data['prestamoarticulo'] = $this->prestamoarticulo_model->siguiente($this->uri->segment(3))->row_array();
+  	$data['personas']= $this->persona_model->lista_personas()->result();
+  	$data['eventos']= $this->evento_model->lista_eventos()->result();
+    $data['title']="Precioarticulo del documento";
+ // $data['title']="Correo";
+	$this->load->view('page_header');		
+  $this->load->view('prestamoarticulo_record',$data);
+	$this->load->view('page_footer');
+}
+
+public function anterior(){
+ // $data['prestamoarticulo_list']=$this->prestamoarticulo_model->lista_prestamoarticulo()->result();
+  $data['documentos']= $this->documento_model->lista_documentos()->result();
+  		$data['temas']= $this->tema_model->lista_temas()->result();
+	$data['prestamoarticulo'] = $this->prestamoarticulo_model->anterior($this->uri->segment(3))->row_array();
+		$data['modoevaluacions']= $this->modoevaluacion_model->lista_modoevaluacions()->result();
+ 	$data['personas']= $this->persona_model->lista_personas()->result();
+  		$data['eventos']= $this->evento_model->lista_eventos()->result();
+ // $data['title']="Correo";
+    $data['title']="Precioarticulo del documento";
+	$this->load->view('page_header');		
+  $this->load->view('prestamoarticulo_record',$data);
+	$this->load->view('page_footer');
+}
+
+
+
+
+
+
+
+public function get_prestamoarticulo() {
+    $this->load->database();
+    $this->load->helper('form');
+    if($this->input->get('idprestamoarticulo')) 
+    {
+        $this->db->select('*');
+    	$this->db->order_by("fecha","asc");
+        $this->db->where(array('idprestamoarticulo' => $this->input->get('idprestamoarticulo')));
+        $query = $this->db->get('prestamoarticulo');
+	$data=$query->result();
+	echo json_encode($data);
 	}
+}
 
 
 
@@ -157,93 +290,7 @@ class Documentochklstportafolio extends CI_Controller{
 
 
 
-	public function actual()
-	{
-		$data['unidadsilabo'] = $this->unidadsilabo_model->unidadsilabo($this->uri->segment(3))->row_array();
-	  if(!empty($data))
-	  {
-			$data['silabos']= $this->silabo_model->lista_silabos()->result();
 
-		$data['personas']= $this->persona_model->lista_personas()->result();
-	    $data['title']="Documentochklstportafolio del videotutorial";
-	    $this->load->view('template/page_header');		
-	    $this->load->view('unidadsilabo_record',$data);
-	    $this->load->view('template/page_footer');
-	  }else{
-	    $this->load->view('template/page_header');		
-	    $this->load->view('registro_vacio');
-	    $this->load->view('template/page_footer');
-	  }
-	}
-
-
-
-
-
-
-
-	public function elprimero()
-	{
-		$data['unidadsilabo'] = $this->unidadsilabo_model->elprimero();
-	  if(!empty($data))
-	  {
-			$data['silabos']= $this->silabo_model->lista_silabos()->result();
-
-		$data['personas']= $this->persona_model->lista_personas()->result();
-	    $data['title']="Documentochklstportafolio del videotutorial";
-	    $this->load->view('template/page_header');		
-	    $this->load->view('unidadsilabo_record',$data);
-	    $this->load->view('template/page_footer');
-	  }else{
-	    $this->load->view('template/page_header');		
-	    $this->load->view('registro_vacio');
-	    $this->load->view('template/page_footer');
-	  }
-	}
-
-	public function elultimo()
-	{
-		$data['unidadsilabo'] = $this->unidadsilabo_model->elultimo();
-	  if(!empty($data))
-	  {
-			$data['silabos']= $this->silabo_model->lista_silabos()->result();
-		$data['personas']= $this->persona_model->lista_personas()->result();
-	    $data['title']="Documentochklstportafolio del videotutorial";
-	  
-	    $this->load->view('template/page_header');		
-	    $this->load->view('unidadsilabo_record',$data);
-	    $this->load->view('template/page_footer');
-	  }else{
-
-	    $this->load->view('template/page_header');		
-	    $this->load->view('registro_vacio');
-	    $this->load->view('template/page_footer');
-	  }
-	}
-
-	public function siguiente(){
-	 // $data['unidadsilabo_list']=$this->unidadsilabo_model->lista_unidadsilabo()->result();
-		$data['unidadsilabo'] = $this->unidadsilabo_model->siguiente($this->uri->segment(3))->row_array();
-		$data['personas']= $this->persona_model->lista_personas()->result();
-		$data['silabos']= $this->silabo_model->lista_silabos()->result();
-	    $data['title']="Documentochklstportafolio del videotutorial";
-	 // $data['title']="Correo";
-		$this->load->view('template/page_header');		
-	  $this->load->view('unidadsilabo_record',$data);
-		$this->load->view('template/page_footer');
-	}
-
-	public function anterior(){
-	 // $data['unidadsilabo_list']=$this->unidadsilabo_model->lista_unidadsilabo()->result();
-	$data['unidadsilabo'] = $this->unidadsilabo_model->anterior($this->uri->segment(3))->row_array();
-	$data['personas']= $this->persona_model->lista_personas()->result();
-	$data['silabos']= $this->silabo_model->lista_silabos()->result();
-	 // $data['title']="Correo";
-	    $data['title']="Documentochklstportafolio del videotutorial";
-		$this->load->view('template/page_header');		
-	  $this->load->view('unidadsilabo_record',$data);
-		$this->load->view('template/page_footer');
-	}
 
 
 }

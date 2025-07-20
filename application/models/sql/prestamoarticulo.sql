@@ -1,5 +1,4 @@
 use educayso_facae;
-drop table prestamoarticulo;
 CREATE TABLE `prestamoarticulo` (
   `idprestamoarticulo` int(11) NOT NULL auto_increment primary key,
   `idarticulo` int(11) DEFAULT NULL,
