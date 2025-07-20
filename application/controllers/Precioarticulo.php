@@ -102,8 +102,7 @@ class Precioarticulo extends CI_Controller{
 		 	'fechadesde' => $this->input->post('fechadesde'),
 		 	'fechahasta' => $this->input->post('fechahasta'),
 		 	'detalle' => $this->input->post('detalle'),
-		 	'horaprestamo' => $this->input->post('horaprestamo'),
-		 	'horadevolucion' => $this->input->post('horadevolucion'),
+		 	'precio' => $this->input->post('precio'),
 	 	);
 	 	$this->precioarticulo_model->update($id,$array_item);
 	 	redirect('precioarticulo/actual/'.$id);
