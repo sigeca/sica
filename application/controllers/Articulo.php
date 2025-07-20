@@ -296,6 +296,12 @@ public function anterior(){
 	  $this->load->view('articulos/articulo-1');
 	}
 
+	public function articulo_48()
+	{
+	  $this->load->view('articulos/articulo-48');
+	}
+
+
 
 
 
