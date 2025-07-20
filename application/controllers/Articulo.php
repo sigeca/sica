@@ -293,12 +293,12 @@ public function anterior(){
 
 	public function articulo_1()
 	{
-	  $this->load->view('articulos/articulo-1');
+	  $this->load->view('web/articulo-1');
 	}
 
 	public function articulo_48()
 	{
-	  $this->load->view('articulos/articulo-48');
+	  $this->load->view('web/articulo-48');
 	}
 
 
