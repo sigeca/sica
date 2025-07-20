@@ -5,7 +5,6 @@ class Precioarticulo extends CI_Controller{
       		parent::__construct();
       		$this->load->model('precioarticulo_model');
       		$this->load->model('documento_model');
-      		$this->load->model('persona_model');
       		$this->load->model('evento_model');
       		$this->load->model('articulo_model');
       		$this->load->model('fechacalendario_model');
@@ -15,7 +14,6 @@ class Precioarticulo extends CI_Controller{
 	public function index(){
 		$data['precioarticulo'] = $this->precioarticulo_model->elultimo();
 		$data['articulos']= $this->articulo_model->lista_articulos()->result();
-  		$data['personas']= $this->persona_model->lista_personas0()->result();
 
  		// print_r($data['precioarticulo_list']);
   		$data['title']="Lista de Precioarticuloes";
@@ -33,7 +31,6 @@ class Precioarticulo extends CI_Controller{
 
 
 		$data['articulos']= $this->articulo_model->lista_articulos()->result();
-		$data['personas']= $this->persona_model->lista_personas0()->result();
 		$data['title']="Precioarticulo del documento";
 	 
 		$data['title']="Modulo de sesiones del evento";
@@ -54,7 +51,6 @@ class Precioarticulo extends CI_Controller{
 	{
 
 		$data['articulos']= $this->articulo_model->lista_articulos()->result();
-		$data['personas']= $this->persona_model->lista_personas0()->result();
    		date_default_timezone_set('America/Guayaquil');
 	     	$date = date("Y-m-d");
 		$data['title']="Nueva sesion de eventos";
@@ -90,7 +86,6 @@ class Precioarticulo extends CI_Controller{
 	{
 	 	$data['precioarticulo'] = $this->precioarticulo_model->precioarticulo($this->uri->segment(3))->row_array();
 		$data['articulos']= $this->articulo_model->lista_articulos()->result();
-		$data['personas']= $this->persona_model->lista_personas()->result();
  	 	$data['title'] = "Actualizar Precioarticulo";
  	 	$this->load->view('page_header');		
  	 	$this->load->view('precioarticulo_edit',$data);
@@ -104,9 +99,8 @@ class Precioarticulo extends CI_Controller{
 	 	$array_item=array(
 		 	'idprecioarticulo' => $this->input->post('idprecioarticulo'),
 		 	'idarticulo' => $this->input->post('idarticulo'),
-		 	'idpersona' => $this->input->post('idpersona'),
-		 	'fechaprestamo' => $this->input->post('fechaprestamo'),
-		 	'fechadevolucion' => $this->input->post('fechadevolucion'),
+		 	'fechadesde' => $this->input->post('fechadesde'),
+		 	'fechahasta' => $this->input->post('fechahasta'),
 		 	'detalle' => $this->input->post('detalle'),
 		 	'horaprestamo' => $this->input->post('horaprestamo'),
 		 	'horadevolucion' => $this->input->post('horadevolucion'),
@@ -196,7 +190,6 @@ public function elprimero()
   {
   		$data['eventos']= $this->evento_model->lista_eventos()->result();
 
-  	$data['personas']= $this->persona_model->lista_personas()->result();
     $data['title']="Precioarticulo del documento";
     $this->load->view('page_header');		
     $this->load->view('precioarticulo_record',$data);
@@ -217,7 +210,6 @@ public function elultimo()
   if(!empty($data))
   {
   		$data['eventos']= $this->evento_model->lista_eventos()->result();
-  	$data['personas']= $this->persona_model->lista_personas()->result();
     $data['title']="Precioarticulo del documento";
   
     $this->load->view('page_header');		
@@ -237,7 +229,6 @@ public function siguiente(){
   		$data['temas']= $this->tema_model->lista_temas()->result();
 		$data['modoevaluacions']= $this->modoevaluacion_model->lista_modoevaluacions()->result();
 	$data['precioarticulo'] = $this->precioarticulo_model->siguiente($this->uri->segment(3))->row_array();
-  	$data['personas']= $this->persona_model->lista_personas()->result();
   	$data['eventos']= $this->evento_model->lista_eventos()->result();
     $data['title']="Precioarticulo del documento";
  // $data['title']="Correo";
@@ -252,7 +243,6 @@ public function anterior(){
   		$data['temas']= $this->tema_model->lista_temas()->result();
 	$data['precioarticulo'] = $this->precioarticulo_model->anterior($this->uri->segment(3))->row_array();
 		$data['modoevaluacions']= $this->modoevaluacion_model->lista_modoevaluacions()->result();
- 	$data['personas']= $this->persona_model->lista_personas()->result();
   		$data['eventos']= $this->evento_model->lista_eventos()->result();
  // $data['title']="Correo";
     $data['title']="Precioarticulo del documento";
