@@ -33,7 +33,7 @@ class Prestamoarticulo extends CI_Controller{
 
 
 		$data['articulos']= $this->articulo_model->lista_articulos()->result();
-		$data['personas']= $this->persona_model->lista_personas()->result();
+		$data['personas']= $this->persona_model->lista_personas0()->result();
 		$data['title']="Prestamoarticulo del documento";
 	 
 		$data['title']="Modulo de sesiones del evento";
