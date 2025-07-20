@@ -94,9 +94,9 @@ public function listar()
 {
   $data['unidad'] = $this->unidad_model->lista_unidadesA()->result();
   $data['title']="Unidad";
-	$this->load->view('template/page_header');		
+	$this->load->view('page_header');		
   $this->load->view('unidad_list',$data);
-	$this->load->view('template/page_footer');
+	$this->load->view('page_footer');
 }
 
 function unidad_data()
