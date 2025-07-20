@@ -102,7 +102,14 @@ echo form_input('idarticulo',$options[$precioarticulo['idarticulo']],array("disa
 </div>
 
 
- 
+ <div class="form-group row">
+    <label class="col-md-2 col-form-label"> Precio:</label>
+	<div class="col-md-10">
+		<?php
+      		 echo form_input('precio',$precioarticulo['precio'],array("disabled"=>"disabled",  'placeholder'=>'precio','style'=>'width:500px;')) 
+		?>
+	</div> 
+</div>
   
 
 
