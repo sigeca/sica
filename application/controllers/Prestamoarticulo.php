@@ -54,7 +54,7 @@ class Prestamoarticulo extends CI_Controller{
 	{
 
 		$data['articulos']= $this->articulo_model->lista_articulos()->result();
-		$data['personas']= $this->persona_model->lista_personas()->result();
+		$data['personas']= $this->persona_model->lista_personas0()->result();
    		date_default_timezone_set('America/Guayaquil');
 	     	$date = date("Y-m-d");
 		$data['title']="Nueva sesion de eventos";
