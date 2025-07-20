@@ -15,13 +15,13 @@ public function index(){
 	  	$data['articulo']=$this->articulo_model->elultimo();
   		$data['instituciones']= $this->institucion_model->lista_instituciones()->result();
   		$data['title']="Lista de Artiulos";
-		$this->load->view('template/page_header');		
+		$this->load->view('page_header');		
   		$this->load->view('articulo_record',$data);
-		$this->load->view('template/page_footer');
+		$this->load->view('page_footer');
 	}else{
-	 	$this->load->view('template/page_header.php');
+	 	$this->load->view('page_header.php');
 		$this->load->view('login_form');
-	 	$this->load->view('template/page_footer.php');
+	 	$this->load->view('page_footer.php');
 	}
 }
 
@@ -30,9 +30,9 @@ public function add()
 {
   		$data['instituciones']= $this->institucion_model->lista_instituciones()->result();
 		$data['title']="Nuevo Artículo";
-	 	$this->load->view('template/page_header');		
+	 	$this->load->view('page_header');		
 	 	$this->load->view('articulo_form',$data);
-	 	$this->load->view('template/page_footer');
+	 	$this->load->view('page_footer');
 }
 
 
@@ -55,9 +55,9 @@ public function edit()
 	 	$data['articulo'] = $this->articulo_model->articulo($this->uri->segment(3))->row_array();
   		$data['instituciones']= $this->institucion_model->lista_instituciones()->result();
  	 	$data['title'] = "Actualizar Articulo";
- 	 	$this->load->view('template/page_header');		
+ 	 	$this->load->view('page_header');		
  	 	$this->load->view('articulo_edit',$data);
-	 	$this->load->view('template/page_footer');
+	 	$this->load->view('page_footer');
  
 }
 
@@ -82,9 +82,9 @@ public function listar()
 {
 	
   $data['title']="Articulo";
-	$this->load->view('template/page_header');		
+	$this->load->view('page_header');		
   $this->load->view('articulo_list',$data);
-	$this->load->view('template/page_footer');
+	$this->load->view('page_footer');
 }
 
 function articulo_data()
