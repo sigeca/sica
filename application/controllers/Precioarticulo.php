@@ -68,12 +68,10 @@ class Precioarticulo extends CI_Controller{
 	{
 	 	$array_item=array(
 		 	'idarticulo' => $this->input->post('idarticulo'),
-		 	'idpersona' => $this->input->post('idpersona'),
-		 	'fechaprestamo' => $this->input->post('fechaprestamo'),
-		 	'fechadevolucion' => $this->input->post('fechadevolucion'),
+		 	'fechadesde' => $this->input->post('fechadesde'),
+		 	'fechahasta' => $this->input->post('fechahasta'),
 		 	'detalle' => $this->input->post('detalle'),
-		 	'horaprestamo' => $this->input->post('horaprestamo'),
-		 	'horadevolucion' => $this->input->post('horadevolucion'),
+		 	'precio' => $this->input->post('precio'),
 	 	);
 	 	$result=$this->precioarticulo_model->save($array_item);
 	 	if($result == FALSE)
