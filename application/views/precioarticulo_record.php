@@ -63,19 +63,7 @@ echo form_input('idarticulo',$options[$precioarticulo['idarticulo']],array("disa
 
 
 
-<div class="form-group row">
-    <label class="col-md-2 col-form-label">   <?php echo anchor('persona/actual/'.$precioarticulo['idpersona'],'La persona: '); ?></label>
-	<div class="col-md-10">
-     <?php 
-$options= array("NADA");
-foreach ($personas as $row){
-	$options[$row->idpersona]=$row->apellidos."  ".$row->nombres;
-}
 
-echo form_input('idpersona',$options[$precioarticulo['idpersona']],array("disabled"=>"disabled",'style'=>'width:500px;')); 
-		?>
-	</div> 
-</div>
 
 
 
@@ -93,7 +81,7 @@ echo form_input('idpersona',$options[$precioarticulo['idpersona']],array("disabl
     <label class="col-md-2 col-form-label"> Fecha de prestamo:</label>
 	<div class="col-md-10">
 		<?php
-      		 echo form_input('fechaprestamo',$precioarticulo['fechaprestamo'],array('type'=>'date',"disabled"=>"disabled", 'placeholder'=>'fecha','style'=>'width:500px;')) 
+      		 echo form_input('fechadesde',$precioarticulo['fechadesde'],array('type'=>'date',"disabled"=>"disabled", 'placeholder'=>'fecha','style'=>'width:500px;')) 
 		?>
 	</div> 
 </div>
@@ -117,7 +105,7 @@ echo form_input('idpersona',$options[$precioarticulo['idpersona']],array("disabl
     <label class="col-md-2 col-form-label"> Fecha devolucion:</label>
 	<div class="col-md-10">
 		<?php
-      		 echo form_input('fechadevolucion',$precioarticulo['fechadevolucion'],array('type'=>'date',"disabled"=>"disabled",  'placeholder'=>'fecha','style'=>'width:500px;')) 
+      		 echo form_input('fechahasta',$precioarticulo['fechahasta'],array('type'=>'date',"disabled"=>"disabled",  'placeholder'=>'fecha','style'=>'width:500px;')) 
 		?>
 	</div> 
 </div>
