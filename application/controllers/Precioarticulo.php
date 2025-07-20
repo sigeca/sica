@@ -15,7 +15,7 @@ class Precioarticulo extends CI_Controller{
 	public function index(){
 		$data['precioarticulo'] = $this->precioarticulo_model->elultimo();
 		$data['articulos']= $this->articulo_model->lista_articulos()->result();
-  		$data['personas']= $this->persona_model->lista_personas()->result();
+  		$data['personas']= $this->persona_model->lista_personas0()->result();
 
  		// print_r($data['precioarticulo_list']);
   		$data['title']="Lista de Precioarticuloes";
