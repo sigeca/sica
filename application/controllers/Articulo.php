@@ -298,6 +298,7 @@ public function anterior(){
 
 	public function articulo_48()
 	{
+      echo "hola";
 	  $this->load->view('web/articulo-48');
 	}
 
