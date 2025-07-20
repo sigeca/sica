@@ -12,7 +12,7 @@ if(isset($articulo))
         <li> <?php echo anchor('articulo/add', 'Nuevo', 'style="text-decoration:none; color:#28a745; font-weight:bold;"'); ?></li>
         <li> <?php echo anchor('articulo/edit/'.$articulo['idarticulo'],'Edit', 'style="text-decoration:none; color:#ffc107; font-weight:bold;"'); ?></li>
       <!--  <li style="border-right:1px solid green"> <?php echo anchor('articulo/delete/'.$articulo['idarticulo'],'Delete'); ?></li> --->
-        <li> <?php echo anchor('articulo/listar/','Listar', 'style="text-decoration:none; color:#17a2b8; font-weight:bold;"'); ?></li>
+        <li style="border-right:1px solid #ccc; padding-right:15px;"> <?php echo anchor('articulo/listar/','Listar', 'style="text-decoration:none; color:#17a2b8; font-weight:bold;"'); ?></li>
         <li> <?php echo anchor('articulo/genpagina/1','generar web', 'style="text-decoration:none; color:#17a2b8; font-weight:bold;"'); ?></li>
         <li> <?php echo anchor('articulo/articulo_1','Web', 'style="text-decoration:none; color:#17a2b8; font-weight:bold;"'); ?></li>
 
