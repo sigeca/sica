@@ -216,13 +216,13 @@ public function actual()
   if(!empty($data))
   {
     $data['title']="Articulo";
-    $this->load->view('template/page_header');		
+    $this->load->view('page_header');		
     $this->load->view('articulo_record',$data);
-    $this->load->view('template/page_footer');
+    $this->load->view('page_footer');
   }else{
-    $this->load->view('template/page_header');		
+    $this->load->view('page_header');		
     $this->load->view('registro_vacio');
-    $this->load->view('template/page_footer');
+    $this->load->view('page_footer');
   }
  }
 
@@ -239,13 +239,13 @@ public function elprimero()
   if(!empty($data))
   {
     $data['title']="Articulo";
-    $this->load->view('template/page_header');		
+    $this->load->view('page_header');		
     $this->load->view('articulo_record',$data);
-    $this->load->view('template/page_footer');
+    $this->load->view('page_footer');
   }else{
-    $this->load->view('template/page_header');		
+    $this->load->view('page_header');		
     $this->load->view('registro_vacio');
-    $this->load->view('template/page_footer');
+    $this->load->view('page_footer');
   }
  }
 
@@ -256,15 +256,15 @@ public function elultimo()
   if(!empty($data))
   {
     $data['title']="Articulo";
-  
-    $this->load->view('template/page_header');		
+ 
+    $this->load->view('page_header');		
     $this->load->view('articulo_record',$data);
-    $this->load->view('template/page_footer');
+    $this->load->view('page_footer');
   }else{
 
-    $this->load->view('template/page_header');		
+    $this->load->view('page_header');		
     $this->load->view('registro_vacio');
-    $this->load->view('template/page_footer');
+    $this->load->view('page_footer');
   }
 }
 
@@ -273,9 +273,9 @@ public function siguiente(){
 	$data['articulo'] = $this->articulo_model->siguiente($this->uri->segment(3))->row_array();
  	$data['instituciones']= $this->institucion_model->lista_instituciones()->result();
   $data['title']="Articulo";
-	$this->load->view('template/page_header');		
+	$this->load->view('page_header');		
   $this->load->view('articulo_record',$data);
-	$this->load->view('template/page_footer');
+	$this->load->view('page_footer');
 }
 
 public function anterior(){
@@ -283,9 +283,9 @@ public function anterior(){
 	$data['articulo'] = $this->articulo_model->anterior($this->uri->segment(3))->row_array();
  	$data['instituciones']= $this->institucion_model->lista_instituciones()->result();
   $data['title']="Articulo";
-	$this->load->view('template/page_header');		
+	$this->load->view('page_header');		
   $this->load->view('articulo_record',$data);
-	$this->load->view('template/page_footer');
+	$this->load->view('page_footer');
 }
 
 
