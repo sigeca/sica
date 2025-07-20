@@ -14,7 +14,7 @@ if(isset($articulo))
       <!--  <li style="border-right:1px solid green"> <?php echo anchor('articulo/delete/'.$articulo['idarticulo'],'Delete'); ?></li> --->
         <li style="border-right:1px solid #ccc; padding-right:15px;"> <?php echo anchor('articulo/listar/','Listar', 'style="text-decoration:none; color:#17a2b8; font-weight:bold;"'); ?></li>
         <li> <?php echo anchor('articulo/genpagina/'.$articulo['idinstitucion'],'generar web', 'style="text-decoration:none; color:#17a2b8; font-weight:bold;"'); ?></li>
-        <li> <?php echo anchor('articulo/articulo_'.$articulo['idinstitucion'],'Web', 'style="text-decoration:none; color:#17a2b8; font-weight:bold;"'); ?></li>
+        <li> <?php echo anchor('web/articulo_'.$articulo['idinstitucion'],'Web', 'style="text-decoration:none; color:#17a2b8; font-weight:bold;"'); ?></li>
 
 <?php 
 }else{
