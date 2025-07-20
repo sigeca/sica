@@ -441,7 +441,7 @@ $data=$data.'
 foreach($precioarticulo as $rowj){
 			if(isset($rowj[$row->idarticulo]['idarticulo'])){		
 
-			$data=$data.'<b>'.$rowj[$row->idarticulo]['idprecioarticulo'] .': </b><span style="font-size:14px; color:red">'.$rowj[$row->idarticulo]['lapersona'].'('.$rowj[$row->idarticulo]['fechadesde'].' - '.$rowj[$row->idarticulo]['fechahasta'].'),</span> - link:<a href="https://educaysoft.org/sica/precioarticulo/actual/'.$rowj[$row->idarticulo]['idprecioarticulo'].'"> <i class="fas fa-book" style="font-size:24px" ></i> </a><br>';
+			$data=$data.'<b>'.$rowj[$row->idarticulo]['idprecioarticulo'] .': </b><span style="font-size:14px; color:red">'.$rowj[$row->idarticulo]['pecio'].'('.$rowj[$row->idarticulo]['fechadesde'].' - '.$rowj[$row->idarticulo]['fechahasta'].'),</span> - link:<a href="https://educaysoft.org/sica/precioarticulo/actual/'.$rowj[$row->idarticulo]['idprecioarticulo'].'"> <i class="fas fa-book" style="font-size:24px" ></i> </a><br>';
 			}	
 	//		echo $rowj; echo '<br>';
 		}
