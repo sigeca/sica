@@ -19,9 +19,9 @@ class Prestamoarticulo extends CI_Controller{
 
  		// print_r($data['prestamoarticulo_list']);
   		$data['title']="Lista de Prestamoarticuloes";
-		$this->load->view('template/page_header');		
+		$this->load->view('page_header');		
   		$this->load->view('prestamoarticulo_record',$data);
-		$this->load->view('template/page_footer');
+		$this->load->view('page_footer');
 	}
 
 
@@ -37,13 +37,13 @@ class Prestamoarticulo extends CI_Controller{
 		$data['title']="Prestamoarticulo del documento";
 	 
 		$data['title']="Modulo de sesiones del evento";
-		$this->load->view('template/page_header');		
+		$this->load->view('page_header');		
 		$this->load->view('prestamoarticulo_record',$data);
-		$this->load->view('template/page_footer');
+		$this->load->view('page_footer');
 	   }else{
-		$this->load->view('template/page_header.php');
+		$this->load->view('page_header.php');
 		$this->load->view('login_form');
-		$this->load->view('template/page_footer.php');
+		$this->load->view('page_footer.php');
 	   }
 	}
 
@@ -58,9 +58,9 @@ class Prestamoarticulo extends CI_Controller{
    		date_default_timezone_set('America/Guayaquil');
 	     	$date = date("Y-m-d");
 		$data['title']="Nueva sesion de eventos";
-	 	$this->load->view('template/page_header');		
+	 	$this->load->view('page_header');		
 	 	$this->load->view('prestamoarticulo_form',$data);
-	 	$this->load->view('template/page_footer');
+	 	$this->load->view('page_footer');
 	}
 
 
@@ -94,9 +94,9 @@ class Prestamoarticulo extends CI_Controller{
 		$data['articulos']= $this->articulo_model->lista_articulos()->result();
 		$data['personas']= $this->persona_model->lista_personas()->result();
  	 	$data['title'] = "Actualizar Prestamoarticulo";
- 	 	$this->load->view('template/page_header');		
+ 	 	$this->load->view('page_header');		
  	 	$this->load->view('prestamoarticulo_edit',$data);
-	 	$this->load->view('template/page_footer');
+	 	$this->load->view('page_footer');
 	}
 
 
@@ -134,9 +134,9 @@ public function listar()
 	
 	$data['eventos']= $this->evento_model->lista_eventos()->result();
   $data['title']="Sesiones de evento";
-	$this->load->view('template/page_header');		
+	$this->load->view('page_header');		
   $this->load->view('prestamoarticulo_list',$data);
-	$this->load->view('template/page_footer');
+	$this->load->view('page_footer');
 }
 
 
@@ -180,9 +180,9 @@ function prestamoarticulo_data()
 	 	$data['prestamoarticulos']= $this->prestamoarticulo_model->prestamoarticulosA($this->uri->segment(3))->result();
 
 		$data['title']="Evento";
-	//	$this->load->view('template/page_header');		
+	//	$this->load->view('page_header');		
 		$this->load->view('prestamoarticulo_list_pdf',$data);
-//		$this->load->view('template/page_footer');
+//		$this->load->view('page_footer');
 	}
 
 
@@ -200,13 +200,13 @@ public function elprimero()
 
   	$data['personas']= $this->persona_model->lista_personas()->result();
     $data['title']="Prestamoarticulo del documento";
-    $this->load->view('template/page_header');		
+    $this->load->view('page_header');		
     $this->load->view('prestamoarticulo_record',$data);
-    $this->load->view('template/page_footer');
+    $this->load->view('page_footer');
   }else{
-    $this->load->view('template/page_header');		
+    $this->load->view('page_header');		
     $this->load->view('registro_vacio');
-    $this->load->view('template/page_footer');
+    $this->load->view('page_footer');
   }
  }
 
@@ -222,14 +222,14 @@ public function elultimo()
   	$data['personas']= $this->persona_model->lista_personas()->result();
     $data['title']="Prestamoarticulo del documento";
   
-    $this->load->view('template/page_header');		
+    $this->load->view('page_header');		
     $this->load->view('prestamoarticulo_record',$data);
-    $this->load->view('template/page_footer');
+    $this->load->view('page_footer');
   }else{
 
-    $this->load->view('template/page_header');		
+    $this->load->view('page_header');		
     $this->load->view('registro_vacio');
-    $this->load->view('template/page_footer');
+    $this->load->view('page_footer');
   }
 }
 
@@ -243,9 +243,9 @@ public function siguiente(){
   	$data['eventos']= $this->evento_model->lista_eventos()->result();
     $data['title']="Prestamoarticulo del documento";
  // $data['title']="Correo";
-	$this->load->view('template/page_header');		
+	$this->load->view('page_header');		
   $this->load->view('prestamoarticulo_record',$data);
-	$this->load->view('template/page_footer');
+	$this->load->view('page_footer');
 }
 
 public function anterior(){
@@ -258,9 +258,9 @@ public function anterior(){
   		$data['eventos']= $this->evento_model->lista_eventos()->result();
  // $data['title']="Correo";
     $data['title']="Prestamoarticulo del documento";
-	$this->load->view('template/page_header');		
+	$this->load->view('page_header');		
   $this->load->view('prestamoarticulo_record',$data);
-	$this->load->view('template/page_footer');
+	$this->load->view('page_footer');
 }
 
 
