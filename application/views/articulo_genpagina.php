@@ -174,7 +174,7 @@ contenedor {
     <div class="container">
       <div class="row">
         <div class="col-sm-8 col-md-7 py-4">
-          <h4 class="text-white"> <a href="https://repositorioutlvte.org/Repositorio/eventos/2023-11-29.jpeg" class="text-white">Acerca del Proyecto de Aula de Ingenieria de Software</a></h4>
+          <h4 class="text-white"> <a href="https://educaysoft.org/repositorioeys/eventos/2023-11-29.jpeg" class="text-white">Acerca del Proyecto de Aula de Ingenieria de Software</a></h4>
           <p class="text-light"> El proyecto de aula en Ingeniería de Software  implico la planificación, desarrollo y evaluación colaborativa de soluciones informáticas, fomentando el trabajo en equipo, la resolución de problemas y la aplicación práctica de conceptos técnicos. .</p>
 
         </div>
@@ -217,7 +217,7 @@ $data1='</div>
     <p class="float-end mb-1">
       <a href="#">Back to top</a>
     </p>
-     <p class="mb-1">Este sitio web que presenta <xxxx>/<yyyy> clases, es parte del producto del <b>PROYECTO DE AULA</b> titulado <a href="https://repositorioutlvte.org/Repositorio/2024-01-15-FQSA-01627.pdf"> <b> "Diseño y Desarrollo de una plataforma web para la Gestión de la información Académica"</b></a> </p>
+     <p class="mb-1">Este sitio web que presenta <xxxx>/<yyyy> clases, es parte del producto del <b>PROYECTO DE AULA</b> titulado <a href="https://educaysoft.org/repositorioeys/2024-01-15-FQSA-01627.pdf"> <b> "Diseño y Desarrollo de una plataforma web para la Gestión de la información Académica"</b></a> </p>
     <p class="mb-0">El proyecto fue realizado con la participación de <a href="https://educaysoft.org/sica/evento/participantes/350"> 4-B Base de Datos I</a> ,<a href="https://educaysoft.org/sica/evento/participantes/356"> 5to-A</a> y <a href="https://educaysoft.org/sica/evento/participantes/357">5to-B</a>  Ingenieria de Software I en el periodo 2023-1S, cuyo tutor fue el Ing. Stalin Francis Msc., Docente de las Asignaturas.</p>
   </div>
 </footer>
@@ -317,7 +317,7 @@ function uploadImage(nombre,idx) {
 
 function getUploadUrl() {
     var selectElement = document.getElementById("idordenador");
-    var url = "https://repositorioutlvte.org";
+    var url = "https://educaysoft.org";
     return url.endsWith("/") ? url + "cargaimagen.php" : url + "/cargaimagen.php";
 }
 
@@ -358,7 +358,7 @@ foreach($articulos as $row){
     		<meta name="author" content="Stalin Francis Quinde">
     		<meta name="generator" content="Hugo 0.101.0">
         	<meta property="og:site_name" content="Carrera en Tecnología de la Información" />
-        	<meta property="og:image" content="https://repositorioutlvte.org/Repositorio/logos/logocti.png" />
+        	<meta property="og:image" content="https://educaysoft.org/repositorioeys/logos/logocti.png" />
         	<meta property="og:image:width" content="400" />
         	<meta property="og:image:height" content="400" />
     		<title> Carrera: TECNOLOGIA DE LA INFORMACION </title>
@@ -373,7 +373,7 @@ foreach($articulos as $row){
   		<section class="py-5 text-center container">
     		<div class="row py-lg-5" style="display:flex;  align-items:center; justify-content: center;" >
 		<div style=" flex-basis: 40%"  >
-		<img src="https://repositorioutlvte.org/Repositorio/qr/articulo-'.$row->idinstitucion.'-'.$row->idinstitucion.'.png" height="150px">
+		<img src="https://educaysoft.org/repositorioeys/qr/articulo-'.$row->idinstitucion.'-'.$row->idinstitucion.'.png" height="150px">
 		</div>
       		<div >
         	<h1 class="fw-light">'.$row->idinstitucion.'</h1>  
