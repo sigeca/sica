@@ -1,20 +1,20 @@
 <div id="eys-nav-i">
     <h3 style="text-align: left; margin-top:-10px;"> <?php echo $title;  ?></h3>
-    <ul>
+    <ul style="list-style:none; padding:0; display:flex; gap:15px; background-color:#f2f2f2; padding:10px; border-radius:5px; margin-top:15px;">
 <?php
 if(isset($articulo))
 {
 ?>
-        <li> <?php echo anchor('articulo/elprimero/', 'primero'); ?></li>
-        <li> <?php echo anchor('articulo/siguiente/'.$articulo['idarticulo'], 'siguiente'); ?></li>
-        <li> <?php echo anchor('articulo/anterior/'.$articulo['idarticulo'], 'anterior'); ?></li>
-        <li style="border-right:1px solid green"><?php echo anchor('articulo/elultimo/', 'Último'); ?></li>
-        <li> <?php echo anchor('articulo/add', 'Nuevo'); ?></li>
-        <li> <?php echo anchor('articulo/edit/'.$articulo['idarticulo'],'Edit'); ?></li>
+        <li> <?php echo anchor('articulo/elprimero/', 'primero', 'style="text-decoration:none; color:#007bff; font-weight:bold;"'); ?></li>
+        <li> <?php echo anchor('articulo/siguiente/'.$articulo['idarticulo'], 'siguiente', 'style="text-decoration:none; color:#007bff; font-weight:bold;"'); ?></li>
+        <li> <?php echo anchor('articulo/anterior/'.$articulo['idarticulo'], 'anterior', 'style="text-decoration:none; color:#007bff; font-weight:bold;"'); ?></li>
+        <li  style="border-right:1px solid #ccc; padding-right:15px;"><?php echo anchor('articulo/elultimo/', 'Último', 'style="text-decoration:none; color:#007bff; font-weight:bold;"'); ?></li>
+        <li> <?php echo anchor('articulo/add', 'Nuevo', 'style="text-decoration:none; color:#28a745; font-weight:bold;"'); ?></li>
+        <li> <?php echo anchor('articulo/edit/'.$articulo['idarticulo'],'Edit', 'style="text-decoration:none; color:#ffc107; font-weight:bold;"'); ?></li>
       <!--  <li style="border-right:1px solid green"> <?php echo anchor('articulo/delete/'.$articulo['idarticulo'],'Delete'); ?></li> --->
-        <li> <?php echo anchor('articulo/listar/','Listar'); ?></li>
-        <li> <?php echo anchor('articulo/genpagina/1','generar web'); ?></li>
-        <li> <?php echo anchor('articulo/articulo_1','Web'); ?></li>
+        <li> <?php echo anchor('articulo/listar/','Listar', 'style="text-decoration:none; color:#17a2b8; font-weight:bold;"'); ?></li>
+        <li> <?php echo anchor('articulo/genpagina/1','generar web', 'style="text-decoration:none; color:#17a2b8; font-weight:bold;"'); ?></li>
+        <li> <?php echo anchor('articulo/articulo_1','Web', 'style="text-decoration:none; color:#17a2b8; font-weight:bold;"'); ?></li>
 
 <?php 
 }else{
