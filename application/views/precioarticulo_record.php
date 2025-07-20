@@ -78,7 +78,7 @@ echo form_input('idarticulo',$options[$precioarticulo['idarticulo']],array("disa
 
 
 <div class="form-group row">
-    <label class="col-md-2 col-form-label"> Fecha de prestamo:</label>
+    <label class="col-md-2 col-form-label"> Fecha desde:</label>
 	<div class="col-md-10">
 		<?php
       		 echo form_input('fechadesde',$precioarticulo['fechadesde'],array('type'=>'date',"disabled"=>"disabled", 'placeholder'=>'fecha','style'=>'width:500px;')) 
@@ -87,22 +87,13 @@ echo form_input('idarticulo',$options[$precioarticulo['idarticulo']],array("disa
 </div>
 
 
-<div class="form-group row">
-    <label class="col-md-2 col-form-label"> Hora pretamo:</label>
-	<div class="col-md-10">
-		<?php
-     $eys_arrinput=array('name'=>'horaprestamo','id'=>'horaprestamo',"type"=>"time",'value'=>$precioarticulo['horaprestamo'], "style"=>"width:500px");
-     echo form_input($eys_arrinput); 
 
-		?>
-	</div> 
-</div>
 
 
 
 
 <div class="form-group row">
-    <label class="col-md-2 col-form-label"> Fecha devolucion:</label>
+    <label class="col-md-2 col-form-label"> Fecha hasta:</label>
 	<div class="col-md-10">
 		<?php
       		 echo form_input('fechahasta',$precioarticulo['fechahasta'],array('type'=>'date',"disabled"=>"disabled",  'placeholder'=>'fecha','style'=>'width:500px;')) 
@@ -111,15 +102,7 @@ echo form_input('idarticulo',$options[$precioarticulo['idarticulo']],array("disa
 </div>
 
 
- <div class="form-group row">
-    <label class="col-md-2 col-form-label"> Hora devolucion:</label>
-	<div class="col-md-10">
-		<?php
-     $eys_arrinput=array('name'=>'horadevolucion','id'=>'horadevolucion',"type"=>"time",'value'=>$precioarticulo['horadevolucion'], "style"=>"width:500px");
-     echo form_input($eys_arrinput); 
-		?>
-	</div> 
-</div>
+ 
   
 
 
