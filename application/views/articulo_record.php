@@ -74,7 +74,7 @@ $textarea_options = array('class' => 'form-control','rows' => '4','disabled'=>'d
 <div class="form-group row">
     <label class="col-md-2 col-form-label"> Foto:</label>
 	<div class="col-md-10">
- <img src="https://repositorioutlvte.org/Repositorio/articulos/articulo<?php echo $articulo['idarticulo']; ?>.jpg" alt="articulo" width="400" height="300"> 
+ <img src="https://educaysoft.org/repositorioeys/articulos/articulo<?php echo $articulo['idarticulo']; ?>.jpg" alt="articulo" width="400" height="300"> 
   
 
 	</div> 
@@ -253,7 +253,7 @@ function uploadImage(nombre,idx) {
 
 function getUploadUrl() {
     var selectElement = document.getElementById("idordenador");
-    var url = "https://repositorioutlvte.org";
+    var url = "https://educaysoft.org";
     return url.endsWith("/") ? url + "cargaimagen.php" : url + "/cargaimagen.php";
 }
 
