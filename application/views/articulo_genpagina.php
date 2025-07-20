@@ -395,13 +395,13 @@ $data=$data.'<div class="col">
 		  <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/>';
 
 // Remote file url
-$remoteFile = "https://repositorioutlvte.org/Repositorio/articulos/articulo".trim($row->idarticulo).".jpg";
+$remoteFile = "https://educaysoft.org/repositorioeys/articulos/articulo".trim($row->idarticulo).".jpg";
 
 $file_headers = @get_headers($remoteFile);
 
 if($file_headers[0] == 'HTTP/1.1 404 Not Found') {
 
-    $data=$data.'<image href="https://repositorioutlvte.org/Repositorio/articulos/articulo0.jpg" alt="No hay programación" height="100%" width="100%"/> </svg>
+    $data=$data.'<image href="https://educaysoft.org/repositorioeys/articulos/articulo0.jpg" alt="No hay programación" height="100%" width="100%"/> </svg>
     <div class="img-contenedor w3-card-4" style="position:relative; width:100%; height:100%; display:flex; justify-content: center; align-items: center;">';
 
 
@@ -411,7 +411,7 @@ $data=$data.' <input type="file" id="fileInput'.trim($row->idarticulo).'" accept
 
 }else{
 
-$data=$data.'<image  class="thumbnail" href="https://repositorioutlvte.org/Repositorio/articulos/articulo'.trim($row->idarticulo).'.jpg" alt="No hay programación" height="100%" width="100%"  onclick="mostrarImagen(\'https://repositorioutlvte.org/Repositorio/articulos/articulo'.trim($row->idarticulo).'.jpg\')" /> </svg>
+$data=$data.'<image  class="thumbnail" href="https://educaysoft.org/repositorioeys/articulos/articulo'.trim($row->idarticulo).'.jpg" alt="No hay programación" height="100%" width="100%"  onclick="mostrarImagen(\'https://educaysoft.org/repositorioeys/articulos/articulo'.trim($row->idarticulo).'.jpg\')" /> </svg>
 <div class="img-contenedor w3-card-4" style="position:absolute"; top:0px;right:0px; border: 2px solid green; border-radius: 50%; width: 30%; display:flex; justify-content: center; align-items: center;">';
 
 
@@ -460,7 +460,7 @@ foreach($prestamoarticulo as $rowj){
 
 	 	$data=$data.$data1;
 
-			$file='application/views/articulos/articulo-'.$row->idinstitucion.'.php';
+			$file='application/views/web/articulo-'.$row->idinstitucion.'.php';
 
 
 	if ( !write_file($file, $data)){
