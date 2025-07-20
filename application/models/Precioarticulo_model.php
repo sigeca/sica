@@ -19,13 +19,13 @@ class Precioarticulo_model extends CI_model {
 
 
  	function precioarticulos( $id){
- 		$precioarticulo = $this->db->query('select * from precioarticulo where idarticulo="'. $id.'" order by fechaprestamo');
+ 		$precioarticulo = $this->db->query('select * from precioarticulo where idarticulo="'. $id.'" order by fechadesde');
  		return $precioarticulo;
  	}
 
 
  	function precioarticulosA( $id){
- 		$precioarticulo = $this->db->query('select * from precioarticulo1 where idarticulo="'. $id.'" ORDER BY date(fechaprestamo) ASC');
+ 		$precioarticulo = $this->db->query('select * from precioarticulo1 where idarticulo="'. $id.'" ORDER BY date(fechadesde) ASC');
  		return $precioarticulo;
  	}
 
@@ -69,7 +69,7 @@ class Precioarticulo_model extends CI_model {
 
  	function save($array)
 	{	
-		$condition ="idarticulo="."'". $array['idarticulo']."' and  fechaprestamo=". "'".$array['fechaprestamo']."' and  horaprestamo=". "'".$array['horaprestamo']."'";
+		$condition ="idarticulo="."'". $array['idarticulo']."' and  fechadesde=". "'".$array['fechadesde']."' and  horaprestamo=". "'".$array['horaprestamo']."'";
 		$this->db->select('*');
 		$this->db->from('precioarticulo');
 		$this->db->where($condition);
@@ -85,7 +85,7 @@ class Precioarticulo_model extends CI_model {
 				return false;
 			}
 		}else{
-			$this->db->where('fechaprestamo',$array['fechaprestamo']);
+			$this->db->where('fechadesde',$array['fechadesde']);
 			$this->db->where('horaprestamo',$array['horaprestamo']);
 			$this->db->where('idarticulo',$array['idarticulo']);
 			$this->db->update('precioarticulo',$array);
