@@ -173,6 +173,51 @@ $textarea_options = array('class' => 'form-control','rows' => '4','disabled'=>'d
 
 
 
+
+<div class="form-group row">
+	<div class="col-md-10">
+	<div class="row justify-content-left">
+      	<!-- Page Heading -->
+ 	<div class="row">
+  	<div class="col-12"  style="border:solid;" >
+
+<div class="row" style="background-color:lightgray; padding-top:0.5cm; padding-bottom:0.5cm; border-bottom:0.5cm solid white;">
+    <div class="col-lg-12 margin-tb">
+        <div class="pull-left">
+ <?php echo anchor('precioarticulo/add', 'Prestamo'); ?>:
+        </div>
+        
+    </div>
+</div>
+
+
+	<table class="table table-striped table-bordered table-hover" id="mydatac">
+	 <thead>
+	 <tr>
+	 <th>idprecio</th>
+	 <th>idarticulo</th>
+	 <th>precio</th>
+	 <th>fecha desde.</th>
+	 <th>fecha hasta.</th>
+	 <th style="text-align: right;">Actions</th>
+	 </tr>
+	 </thead>
+	 <tbody id="show_dataprecio">
+	 </tbody>
+	</table>
+	</div>
+	</div>
+	</div>
+	</div> 
+</div>
+
+
+
+
+
+
+
+
 <?php echo form_close(); ?>
 
 
@@ -185,6 +230,7 @@ $(document).ready(function(){
 
 
 	var mytablaf= $('#mydatac').DataTable({"ajax": {url: '<?php echo site_url('articulo/prestamo_data')?>', type: 'GET',data:{idarticulo:idarticulo}},});
+	var mytablaf= $('#mydataprecio').DataTable({"ajax": {url: '<?php echo site_url('articulo/precio_data')?>', type: 'GET',data:{idarticulo:idarticulo}},});
 });
 
 $('#show_datau').on('click','.item_ver',function(){
@@ -202,6 +248,14 @@ var id= $(this).data('idprestamoarticulo');
 var retorno= $(this).data('retorno');
 window.location.href = retorno+'/'+id;
 });
+
+
+$('#show_dataprecio').on('click','.item_ver',function(){
+var id= $(this).data('idpreciorticulo');
+var retorno= $(this).data('retorno');
+window.location.href = retorno+'/'+id;
+});
+
 
 
 

@@ -166,6 +166,43 @@ function articulo_data()
 
 
 
+
+
+	function precio_data()
+	{
+			$draw= intval($this->input->get("draw"));
+			$draw= intval($this->input->get("start"));
+			$draw= intval($this->input->get("length"));
+
+			$idarticulo=$this->input->get('idarticulo');
+			$data0 =$this->precioarticulo_model->precioarticulosA($idarticulo);
+			$data=array();
+			foreach($data0->result() as $r){
+				$data[]=array($r->idprecioarticulo,$r->idarticulo,$r->precio,$r->fechadesde,$r->fechahasta,
+				$r->href='<a href="javascript:void(0);" class="btn btn-info btn-sm item_ver"  data-retorno="'.site_url('precioarticulo/actual').'"    data-idprecioarticulo="'.$r->idprecioarticulo.'">Ver</a><a href="javascript:void(0);" class="btn btn-info btn-sm item_ver"  data-retorno="'.site_url('precioarticulo/edit').'"    data-idprecioarticulo="'.$r->idprecioarticulo.'">edit</a>');
+			}	
+			$output=array( "draw"=>$draw,
+				"recordsTotal"=> $data0->num_rows(),
+				"recordsFiltered"=> $data0->num_rows(),
+				"data"=>$data
+			);
+			echo json_encode($output);
+			exit();
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 public function genpagina()
 {
 	$iddistributivo=0;
