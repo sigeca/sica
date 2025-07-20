@@ -281,6 +281,53 @@ public function genpaginaprecios()
 
 
 
+public function genpaginaprecios1()
+{
+	if($this->uri->segment(3))
+	{
+		$idinstitucion=$this->uri->segment(3);
+	 	$data['articulos']= $this->articulo_model->articuloA($idinstitucion)->result();
+		$arreglo=array();
+		$i=0;
+		foreach($data['articulos'] as $row){
+		$idarticulo=$row->idarticulo;
+
+		$xx=array($this->precioarticulo_model->precioarticulosA($idarticulo)->result_array());
+		if(count($xx[0]) > 0){
+		foreach($xx as $row2){
+			foreach($row2 as $row3)
+			 {
+				$arreglo+=array($i=>array($row->idarticulo=>$row3));
+				$i=$i+1;
+			}
+			}
+		}
+
+		}
+		$data['precioarticulo']=array();
+		$data['precioarticulo']=$arreglo;
+
+        // Load header, the improved view, and footer
+        $this->load->view('page_header');
+		$this->load->view('articulo_genpaginaprecios1',$data); // This is the view that will be improved
+        $this->load->view('page_footer');
+
+	} else {
+        // Handle case where no institution ID is provided, e.g., redirect or show error
+        redirect('articulo');
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
 public function actual()
