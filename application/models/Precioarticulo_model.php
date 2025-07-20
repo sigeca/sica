@@ -69,7 +69,7 @@ class Precioarticulo_model extends CI_model {
 
  	function save($array)
 	{	
-		$condition ="idarticulo="."'". $array['idarticulo']."' and  fechadesde=". "'".$array['fechadesde']."' and  horaprestamo=". "'".$array['horaprestamo']."'";
+		$condition ="idarticulo="."'". $array['idarticulo']."' and  fechadesde=". "'".$array['fechadesde']."'";
 		$this->db->select('*');
 		$this->db->from('precioarticulo');
 		$this->db->where($condition);
@@ -86,7 +86,6 @@ class Precioarticulo_model extends CI_model {
 			}
 		}else{
 			$this->db->where('fechadesde',$array['fechadesde']);
-			$this->db->where('horaprestamo',$array['horaprestamo']);
 			$this->db->where('idarticulo',$array['idarticulo']);
 			$this->db->update('precioarticulo',$array);
 
