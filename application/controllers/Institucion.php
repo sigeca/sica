@@ -11,13 +11,13 @@ public function index(){
 	if(isset($this->session->userdata['logged_in'])){
 		$data['institucion']=$this->institucion_model->elultimo();
 		$data['title']="Lista de instituciones";
-		$this->load->view('template/page_header');
+		$this->load->view('page_header');
 		$this->load->view('institucion_record',$data);
-		$this->load->view('template/page_footer');
+		$this->load->view('page_footer');
 	}else{
-	 	$this->load->view('template/page_header.php');
+	 	$this->load->view('page_header.php');
 		$this->load->view('login_form');
-	 	$this->load->view('template/page_footer.php');
+	 	$this->load->view('page_footer.php');
 	}
 }
 
@@ -25,9 +25,9 @@ public function index(){
 public function add()
 {
 		$data['title']="Nueva institucion";
-	 	$this->load->view('template/page_header');		
+	 	$this->load->view('page_header');		
 	 	$this->load->view('institucion_form',$data);
-	 	$this->load->view('template/page_footer');
+	 	$this->load->view('page_footer');
 }
 
 
@@ -57,9 +57,9 @@ public function  save()
 	{
 			$data['institucion'] = $this->institucion_model->institucion($this->uri->segment(3))->row_array();
 			$data['title'] = "Actualizar institucion";
-			$this->load->view('template/page_header');		
+			$this->load->view('page_header');		
 			$this->load->view('institucion_edit',$data);
-			$this->load->view('template/page_footer');
+			$this->load->view('page_footer');
 	 
 	}
 
@@ -95,9 +95,9 @@ public function  save()
 	{
 		
 	  $data['title']="Institucion";
-		$this->load->view('template/page_header');		
+		$this->load->view('page_header');		
 	  $this->load->view('institucion_list',$data);
-		$this->load->view('template/page_footer');
+		$this->load->view('page_footer');
 	}
 
 
@@ -138,9 +138,9 @@ public function actual()
     $this->load->view('institucion_record',$data);
     $this->load->view('template/page_footer');
   }else{
-    $this->load->view('template/page_header');		
+    $this->load->view('page_header');		
     $this->load->view('registro_vacio');
-    $this->load->view('template/page_footer');
+    $this->load->view('page_footer');
   }
  }
 
@@ -156,13 +156,13 @@ public function elprimero()
   if(!empty($data))
   {
     $data['title']="Institucion";
-    $this->load->view('template/page_header');		
+    $this->load->view('page_header');		
     $this->load->view('institucion_record',$data);
-    $this->load->view('template/page_footer');
+    $this->load->view('page_footer');
   }else{
-    $this->load->view('template/page_header');		
+    $this->load->view('page_header');		
     $this->load->view('registro_vacio');
-    $this->load->view('template/page_footer');
+    $this->load->view('page_footer');
   }
  }
 
@@ -173,14 +173,14 @@ public function elultimo()
   {
     $data['title']="Institucion";
   
-    $this->load->view('template/page_header');		
+    $this->load->view('page_header');		
     $this->load->view('institucion_record',$data);
-    $this->load->view('template/page_footer');
+    $this->load->view('page_footer');
   }else{
 
-    $this->load->view('template/page_header');		
+    $this->load->view('page_header');		
     $this->load->view('registro_vacio');
-    $this->load->view('template/page_footer');
+    $this->load->view('page_footer');
   }
 }
 
@@ -188,18 +188,18 @@ public function siguiente(){
  // $data['institucion_list']=$this->institucion_model->lista_institucion()->result();
 	$data['institucion'] = $this->institucion_model->siguiente($this->uri->segment(3))->row_array();
   $data['title']="Institucion";
-	$this->load->view('template/page_header');		
+	$this->load->view('page_header');		
   $this->load->view('institucion_record',$data);
-	$this->load->view('template/page_footer');
+	$this->load->view('page_footer');
 }
 
 public function anterior(){
  // $data['institucion_list']=$this->institucion_model->lista_institucion()->result();
 	$data['institucion'] = $this->institucion_model->anterior($this->uri->segment(3))->row_array();
   $data['title']="Institucion";
-	$this->load->view('template/page_header');		
+	$this->load->view('page_header');		
   $this->load->view('institucion_record',$data);
-	$this->load->view('template/page_footer');
+	$this->load->view('page_footer');
 }
 
 }
