@@ -17,7 +17,7 @@ if(isset($articulo))
         <li> <?php echo anchor('articulo/articulo_'.$articulo['idinstitucion'],'Web', 'style="text-decoration:none; color:#17a2b8; font-weight:bold;"'); ?></li>
 
         <li> <?php echo anchor('articulo/genpaginaprecios/'.$articulo['idinstitucion'],'generar web', 'style="text-decoration:none; color:#17a2b8; font-weight:bold;"'); ?></li>
-        <li> <?php echo anchor('articulo/articulopecios_'.$articulo['idinstitucion'],'Web', 'style="text-decoration:none; color:#17a2b8; font-weight:bold;"'); ?></li>
+        <li> <?php echo anchor('articulo/articuloprecios_'.$articulo['idinstitucion'],'Web', 'style="text-decoration:none; color:#17a2b8; font-weight:bold;"'); ?></li>
 
 <?php 
 }else{
