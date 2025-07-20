@@ -229,6 +229,7 @@ public function genpagina()
 			}
 			}
 		}
+
 		}
 		$data['prestamoarticulo']=array();
 		$data['prestamoarticulo']=$arreglo; 
@@ -238,6 +239,41 @@ public function genpagina()
 	}
 }
 
+
+public function genpaginaprecios()
+{
+	$iddistributivo=0;
+
+	$ordenrpt=0;
+	if($this->uri->segment(3))
+	{
+		$idinstitucion=$this->uri->segment(3);
+		//$iddistributivo=1;
+	 	$data['articulos']= $this->articulo_model->articuloA($idinstitucion)->result();
+		$arreglo=array();
+		$i=0;
+		foreach($data['articulos'] as $row){
+		$idarticulo=$row->idarticulo;
+
+		$xx=array($this->precioarticulo_model->precioarticulosA($idarticulo)->result_array());
+		if(count($xx[0]) > 0){
+		foreach($xx as $row2){
+			foreach($row2 as $row3)
+			 {
+				$arreglo+=array($i=>array($row->idarticulo=>$row3));
+				$i=$i+1;
+			}
+			}
+		}
+
+		}
+		$data['precioarticulo']=array();
+		$data['precioarticulo']=$arreglo; 
+		echo "<br> jornadadocnete<br>" ;
+
+		$this->load->view('articulo_genpaginaprecios',$data);
+	}
+}
 
 
 
@@ -341,6 +377,11 @@ public function anterior(){
 	}
 
 
+	public function articuloprecios_48()
+	{
+      echo "hola";
+	  $this->load->view('web/articuloprecios-48');
+	}
 
 
 
