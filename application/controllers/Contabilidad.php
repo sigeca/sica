@@ -9,6 +9,16 @@ class Contabilidad extends CI_Controller{
       	$this->load->model('tipodocu_model');
       	$this->load->model('documento_model');
   	  $this->load->model('pagador_model');
+
+ // Esto es importante para permitir solicitudes de origen cruzado (CORS)
+        header('Access-Control-Allow-Origin: *');
+        header('Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE');
+        header('Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With');
+        if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
+            exit();
+        }
+
+
 }
 
 public function index(){
@@ -235,6 +245,97 @@ public function anterior(){
  	$this->load->view('contabilidad_record',$data);
 	$this->load->view('template/page_footer');
 }
+
+
+ public function api_save_contabilidad() {
+        $this->output->set_content_type('application/json');
+
+        // Obtener los datos del cuerpo de la solicitud JSON
+        $input = json_decode($this->input->raw_input_stream, true);
+
+        if ($input) {
+            $array_item = array(
+                'fechacontabilidad' => $input['fechacontabilidad'],
+                'valor' => $input['valor'],
+                'detalle' => $input['detalle'],
+                'idbeneficiario' => $input['idbeneficiario'],
+                'idpagador' => $input['idpagador'],
+            );
+
+            $result = $this->contabilidad_model->save($array_item);
+
+            if ($result) {
+                $this->output->set_output(json_encode(['status' => 'success', 'message' => 'Registro guardado exitosamente']));
+            } else {
+                $this->output->set_output(json_encode(['status' => 'error', 'message' => 'Error al guardar el registro']));
+            }
+        } else {
+            $this->output->set_output(json_encode(['status' => 'error', 'message' => 'Datos inválidos']));
+        }
+    }
+
+    public function api_update_contabilidad() {
+        $this->output->set_content_type('application/json');
+
+        // Obtener los datos del cuerpo de la solicitud JSON
+        $input = json_decode($this->input->raw_input_stream, true);
+
+        if ($input && isset($input['idcontabilidad'])) {
+            $id = $input['idcontabilidad'];
+            $array_item = array(
+                'idcontabilidad' => $input['idcontabilidad'],
+                'fechacontabilidad' => $input['fechacontabilidad'],
+                'valor' => $input['valor'],
+                'detalle' => $input['detalle'],
+                'idbeneficiario' => $input['idbeneficiario'],
+                'idpagador' => $input['idpagador'],
+                'iddocumento' => $input['iddocumento'], // Asegúrate de que este campo exista si lo envías
+            );
+
+            $result = $this->contabilidad_model->update($id, $array_item);
+
+            if ($result) {
+                $this->output->set_output(json_encode(['status' => 'success', 'message' => 'Registro actualizado exitosamente']));
+            } else {
+                $this->output->set_output(json_encode(['status' => 'error', 'message' => 'Error al actualizar el registro']));
+            }
+        } else {
+            $this->output->set_output(json_encode(['status' => 'error', 'message' => 'Datos inválidos o ID no proporcionado']));
+        }
+    }
+
+    // Función para obtener un registro por ID (necesario para editar)
+    public function api_get_contabilidad_by_id($id) {
+        $this->output->set_content_type('application/json');
+        $contabilidad = $this->contabilidad_model->contabilidad($id)->row_array();
+        if ($contabilidad) {
+            $this->output->set_output(json_encode(['status' => 'success', 'data' => $contabilidad]));
+        } else {
+            $this->output->set_output(json_encode(['status' => 'error', 'message' => 'Registro no encontrado']));
+        }
+    }
+
+    // Función para listar todos los registros (necesario para la pantalla principal)
+    public function api_get_all_contabilidades() {
+        $this->output->set_content_type('application/json');
+        $contabilidades = $this->contabilidad_model->lista_contabilidadsA()->result_array(); // Asumiendo que esta función devuelve todos los registros
+        if ($contabilidades) {
+            $this->output->set_output(json_encode(['status' => 'success', 'data' => $contabilidades]));
+        } else {
+            $this->output->set_output(json_encode(['status' => 'error', 'message' => 'No hay registros de contabilidad']));
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
 
 
 
