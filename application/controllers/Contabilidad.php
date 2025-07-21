@@ -255,11 +255,12 @@ public function anterior(){
 
         if ($input) {
             $array_item = array(
-                'fechacontabilidad' => $input['fechacontabilidad'],
-                'valor' => $input['valor'],
-                'detalle' => $input['detalle'],
-                'idbeneficiario' => $input['idbeneficiario'],
-                'idpagador' => $input['idpagador'],
+                'fechacontabilidad' => $this->input->post['fechacontabilidad'],
+                'valor' => $this->input->post['valor'],
+                'detalle' => $this->input->post['detalle'],
+                'idbeneficiario' => $this->input->post['idbeneficiario'],
+                'idpagador' => $this->input->post['idpagador'],
+                'iddocumento' => $this->input->post['iddocumento'] ?? null, // Asegúrate de que este campo exista y sea opcional
             );
 
             $result = $this->contabilidad_model->save($array_item);
