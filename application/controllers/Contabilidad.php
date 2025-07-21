@@ -260,7 +260,6 @@ public function anterior(){
                 'detalle' => $input['detalle'],
                 'idbeneficiario' => $input['idbeneficiario'],
                 'idpagador' => $input['idpagador'],
-                'iddocumento' => $input['iddocumento'] ?? null, // Asegúrate de que este campo exista y sea opcional
             );
 
             $result = $this->contabilidad_model->save($array_item);
