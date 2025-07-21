@@ -59,3 +59,11 @@ $route['menu'] = 'MenuController/index';
 $route['blog'] = 'blog/index';
 $route['blog/view/(:num)'] = 'blog/view/$1';
 $route['blog/create'] = 'blog/create';
+
+$route['api/contabilidad/save'] = 'contabilidad/api_save_contabilidad';
+$route['api/contabilidad/update'] = 'contabilidad/api_update_contabilidad';
+$route['api/contabilidad/(:num)'] = 'contabilidad/api_get_contabilidad_by_id/$1';
+$route['api/contabilidad'] = 'contabilidad/api_get_all_contabilidades';
+
+
+
