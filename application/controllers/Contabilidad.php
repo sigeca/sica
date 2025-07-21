@@ -317,7 +317,7 @@ public function anterior(){
     // API para obtener el último registro
     public function api_get_last_contabilidad() {
         $this->output->set_content_type('application/json');
-        $contabilidad = $this->contabilidad_model->elultimo()->row_array();
+        $contabilidad = $this->contabilidad_model->elultimo();
         if ($contabilidad) {
             $this->output->set_output(json_encode(['status' => 'success', 'data' => $contabilidad]));
         } else {
