@@ -60,10 +60,17 @@ $route['blog'] = 'blog/index';
 $route['blog/view/(:num)'] = 'blog/view/$1';
 $route['blog/create'] = 'blog/create';
 
+
 $route['api/contabilidad/save'] = 'contabilidad/api_save_contabilidad';
 $route['api/contabilidad/update'] = 'contabilidad/api_update_contabilidad';
-$route['api/contabilidad/(:num)'] = 'contabilidad/api_get_contabilidad_by_id/$1';
-$route['api/contabilidad'] = 'contabilidad/api_get_all_contabilidades';
-
-
+$route['api/contabilidad/last'] = 'contabilidad/api_get_last_contabilidad';
+$route['api/contabilidad/first'] = 'contabilidad/api_get_first_contabilidad';
+$route['api/contabilidad/next/(:num)'] = 'contabilidad/api_get_next_contabilidad/$1';
+$route['api/contabilidad/previous/(:num)'] = 'contabilidad/api_get_previous_contabilidad/$1';
+$route['api/contabilidad/search'] = 'contabilidad/api_search_contabilidad';
+$route['api/contabilidad/list/(:num)/(:num)'] = 'contabilidad/api_list_contabilidades/$1/$2'; // limit/offset
+$route['api/beneficiarios'] = 'contabilidad/api_get_beneficiarios';
+$route['api/pagadores'] = 'contabilidad/api_get_pagadores';
+$route['api/reporte'] = 'contabilidad/api_get_consolidated_report';
+$route['api/contabilidad/(:num)'] = 'contabilidad/api_get_contabilidad_by_id/$1'; // Mantener esta al final si hay rutas más específicas
 
