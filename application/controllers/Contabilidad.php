@@ -280,15 +280,15 @@ public function anterior(){
         $this->output->set_content_type('application/json');
         $input = json_decode($this->input->raw_input_stream, true);
 
-        if ($input && isset($input['idcontabilidad'])) {
-            $id = $input['idcontabilidad'];
+        if ($input && isset($this->input->post['idcontabilidad'])) {
+            $id = $this->input->post['idcontabilidad'];
             $array_item = array(
-                'fechacontabilidad' => $input['fechacontabilidad'],
-                'valor' => $input['valor'],
-                'detalle' => $input['detalle'],
-                'idbeneficiario' => $input['idbeneficiario'],
-                'idpagador' => $input['idpagador'],
-                'iddocumento' => $input['iddocumento'] ?? null,
+                'fechacontabilidad' => $this->input->post['fechacontabilidad'],
+                'valor' => $this->input->post['valor'],
+                'detalle' => $this->input->post['detalle'],
+                'idbeneficiario' => $this->input->post['idbeneficiario'],
+                'idpagador' => $this->input->post['idpagador'],
+                'iddocumento' => $this->input->post['iddocumento'] ?? null,
             );
 
             $result = $this->contabilidad_model->update($id, $array_item);
