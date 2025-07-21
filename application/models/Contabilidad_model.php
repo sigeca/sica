@@ -129,10 +129,6 @@ class Contabilidad_model extends CI_model {
         return $this->db->get('contabilidad');
     }
 
-    // Método para obtener todos los registros (si aún lo necesitas en algún lugar)
-    public function lista_contabilidadsA() {
-        return $this->db->get('contabilidad');
-    }
 
 
 
