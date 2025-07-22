@@ -29,14 +29,21 @@ class Contabilidad_model extends CI_model {
 
  	function save($array)
  	{
-		$this->db->insert("contabilidad", $array);
+		$result = $this->db->insert("contabilidad", $array);
+        return $result; // Return the boolean result
  	}
 
- 	function update($id,$array_item)
- 	{
- 		$this->db->where('idcontabilidad',$id);
- 		$this->db->update('contabilidad',$array_item);
-	}
+    function update($id, $array_item)
+    {
+        $this->db->where('idcontabilidad', $id);
+        // The update() method returns TRUE on success, FALSE on failure
+        $result = $this->db->update('contabilidad', $array_item);
+        return $result; // Return the boolean result
+    }
+
+
+
+
  
 
 
