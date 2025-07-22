@@ -61,7 +61,7 @@ class Contabilidad_model extends CI_model {
 
 	function elprimero()
 	{
-		$query=$this->db->order_by("idcontabilidad")->get('contabilidad');
+		$query=$this->db->order_by("idcontabilidad")->get('contabilidad1');
 		if($query->num_rows()>0)
 		{
 			return $query->first_row('array');
@@ -74,7 +74,7 @@ class Contabilidad_model extends CI_model {
 // Para ir al último registro
 	function elultimo()
 	{
-		$query=$this->db->order_by("idcontabilidad")->get('contabilidad');
+		$query=$this->db->order_by("idcontabilidad")->get('contabilidad1');
 		if($query->num_rows()>0)
 		{
 			return $query->last_row('array');
@@ -86,7 +86,7 @@ class Contabilidad_model extends CI_model {
 
 	// Para moverse al siguiente registro
  	function siguiente($id){
- 		$contabilidad = $this->db->select("idcontabilidad")->order_by("idcontabilidad")->get('contabilidad')->result_array();
+ 		$contabilidad = $this->db->select("idcontabilidad")->order_by("idcontabilidad")->get('contabilidad1')->result_array();
 		$arr=array("idcontabilidad"=>$id);
 		$clave=array_search($arr,$contabilidad);
 	   if(array_key_exists($clave+1,$contabilidad))
@@ -104,7 +104,7 @@ class Contabilidad_model extends CI_model {
 
 // Para moverse al anterior registro
  	function anterior($id){
- 		$contabilidad = $this->db->select("idcontabilidad")->order_by("idcontabilidad")->get('contabilidad')->result_array();
+ 		$contabilidad = $this->db->select("idcontabilidad")->order_by("idcontabilidad")->get('contabilidad1')->result_array();
 		$arr=array("idcontabilidad"=>$id);
 		$clave=array_search($arr,$contabilidad);
 	   if(array_key_exists($clave-1,$contabilidad))
