@@ -127,13 +127,13 @@ class Contabilidad_model extends CI_model {
         // Puedes añadir más campos para buscar si es necesario
         // $this->db->or_like('fechacontabilidad', $query);
         // $this->db->or_like('valor', $query);
-        return $this->db->get('contabilidad');
+        return $this->db->get('contabilidad1');
     }
 
     public function get_paginated_contabilidades($limit, $offset) {
         $this->db->order_by('idcontabilidad', 'DESC'); // Ordenar por ID descendente para los últimos registros
         $this->db->limit($limit, $offset);
-        return $this->db->get('contabilidad');
+        return $this->db->get('contabilidad1');
     }
 
 
