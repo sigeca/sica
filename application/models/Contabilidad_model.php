@@ -2,7 +2,7 @@
 class Contabilidad_model extends CI_model {
 
 	function lista_contabilidads(){
-		 $contabilidad= $this->db->get('contabilidad');
+		 $contabilidad= $this->db->get('contabilidad1');
 		 return $contabilidad;
 	}
 
@@ -74,7 +74,7 @@ class Contabilidad_model extends CI_model {
 // Para ir al último registro
     function elultimo()
     {
-        $this->db->order_by("idcontabilidad", "ASC"); // Order by ID in descending order
+        $this->db->order_by("idcontabilidad"); // Order by ID in descending order
         $query = $this->db->get('contabilidad1'); // Get the record
 
         if ($query->num_rows() > 0) {
@@ -96,10 +96,10 @@ class Contabilidad_model extends CI_model {
 	   if(array_key_exists($clave+1,$contabilidad))
 		 {
 
- 		$contabilidad = $this->db->query('select * from contabilidad where idcontabilidad="'. $contabilidad[$clave+1]["idcontabilidad"].'"');
+ 		$contabilidad = $this->db->query('select * from contabilidad1 where idcontabilidad="'. $contabilidad[$clave+1]["idcontabilidad"].'"');
 		 }else{
 
- 		$contabilidad = $this->db->query('select * from contabilidad where idcontabilidad="'. $id.'"');
+ 		$contabilidad = $this->db->query('select * from contabilidad1 where idcontabilidad="'. $id.'"');
 		 }
 		 	
  		return $contabilidad;
@@ -114,10 +114,10 @@ class Contabilidad_model extends CI_model {
 	   if(array_key_exists($clave-1,$contabilidad))
 		 {
 
- 		$contabilidad = $this->db->query('select * from contabilidad where idcontabilidad="'. $contabilidad[$clave-1]["idcontabilidad"].'"');
+ 		$contabilidad = $this->db->query('select * from contabilidad1 where idcontabilidad="'. $contabilidad[$clave-1]["idcontabilidad"].'"');
 		 }else{
 
- 		$contabilidad = $this->db->query('select * from contabilidad where idcontabilidad="'. $id.'"');
+ 		$contabilidad = $this->db->query('select * from contabilidad1 where idcontabilidad="'. $id.'"');
 		 }
 		 	
  		return $contabilidad;
