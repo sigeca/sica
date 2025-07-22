@@ -74,7 +74,7 @@ class Contabilidad_model extends CI_model {
 // Para ir al último registro
     function elultimo()
     {
-        $this->db->order_by("idcontabilidad", "DESC"); // Order by ID in descending order
+        $this->db->order_by("idcontabilidad", "ASC"); // Order by ID in descending order
         $query = $this->db->get('contabilidad1'); // Get the record
 
         if ($query->num_rows() > 0) {
