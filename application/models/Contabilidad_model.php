@@ -75,16 +75,15 @@ class Contabilidad_model extends CI_model {
     function elultimo()
     {
         $this->db->order_by("idcontabilidad", "DESC"); // Order by ID in descending order
-        $this->db->limit(1); // Limit to only one record
         $query = $this->db->get('contabilidad1'); // Get the record
 
         if ($query->num_rows() > 0) {
-            return $query->row_array(); // Use row_array() to get a single row as an array
+          //  return $query->row_array(); // Use row_array() to get a single row as an array
+            return $query->last_row('array'); // Use row_array() to get a single row as an array
         } else {
             return array(); // Return an empty array if no records are found
         }
     }
-
 
 
 
