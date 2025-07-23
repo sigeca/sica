@@ -11,18 +11,18 @@ public function index(){
   	$data['tipodocu']=$this->tipodocu_model->tipodocu(1)->row_array();
  
   	$data['title']="Tipos de documentos";
-	$this->load->view('template/page_header');		
+	$this->load->view('page_header');		
   	$this->load->view('tipodocu_record',$data);
-	$this->load->view('template/page_footer');
+	$this->load->view('page_footer');
 }
 
 
 public function add()
 {
 		$data['title']="Nueva Tipo de documento";
-	 	$this->load->view('template/page_header');		
+	 	$this->load->view('page_header');		
 	 	$this->load->view('tipodocu_form',$data);
-	 	$this->load->view('template/page_footer');
+	 	$this->load->view('page_footer');
 
 
 }
@@ -45,9 +45,9 @@ public function add()
 	{
 	 	$data['tipodocu'] = $this->tipodocu_model->tipodocu($this->uri->segment(3))->row_array();
  	 	$data['title'] = "Actualizar tipodocu";
- 	 	$this->load->view('template/page_header');		
+ 	 	$this->load->view('page_header');		
  	 	$this->load->view('tipodocu_edit',$data);
-	 	$this->load->view('template/page_footer');
+	 	$this->load->view('page_footer');
  
 	}
 
@@ -80,9 +80,9 @@ public function listar()
 	
   $data['tipodocu_list'] = $this->tipodocu_model->lista_tipodocusA()->result();
   $data['title']="Tipo documento";
-	$this->load->view('template/page_header');		
+	$this->load->view('page_header');		
   $this->load->view('tipodocu_list',$data);
-	$this->load->view('template/page_footer');
+	$this->load->view('page_footer');
 }
 
 
@@ -121,13 +121,13 @@ public function actual()
   	if(!empty($data))
   	{
     		$data['title']="Tipo documento";
-    		$this->load->view('template/page_header');		
+    		$this->load->view('page_header');		
     		$this->load->view('tipodocu_record',$data);
-    		$this->load->view('template/page_footer');
+    		$this->load->view('page_footer');
   	}else{
-    		$this->load->view('template/page_header');		
+    		$this->load->view('page_header');		
     		$this->load->view('registro_vacio');
-    		$this->load->view('template/page_footer');
+    		$this->load->view('page_footer');
   	}
  }
 
@@ -139,13 +139,13 @@ public function elprimero()
   if(!empty($data))
   {
     $data['title']="Tipo documento";
-    $this->load->view('template/page_header');		
+    $this->load->view('page_header');		
     $this->load->view('tipodocu_record',$data);
-    $this->load->view('template/page_footer');
+    $this->load->view('page_footer');
   }else{
-    $this->load->view('template/page_header');		
+    $this->load->view('page_header');		
     $this->load->view('registro_vacio');
-    $this->load->view('template/page_footer');
+    $this->load->view('page_footer');
   }
  }
 
@@ -156,14 +156,14 @@ public function elultimo()
   {
     $data['title']="Tipo documento";
   
-    $this->load->view('template/page_header');		
+    $this->load->view('page_header');		
     $this->load->view('tipodocu_record',$data);
-    $this->load->view('template/page_footer');
+    $this->load->view('page_footer');
   }else{
 
-    $this->load->view('template/page_header');		
+    $this->load->view('page_header');		
     $this->load->view('registro_vacio');
-    $this->load->view('template/page_footer');
+    $this->load->view('page_footer');
   }
 }
 
@@ -171,18 +171,18 @@ public function siguiente(){
  // $data['tipodocu_list']=$this->tipodocu_model->lista_tipodocu()->result();
 	$data['tipodocu'] = $this->tipodocu_model->siguiente($this->uri->segment(3))->row_array();
   $data['title']="Tipo documento";
-	$this->load->view('template/page_header');		
+	$this->load->view('page_header');		
   $this->load->view('tipodocu_record',$data);
-	$this->load->view('template/page_footer');
+	$this->load->view('page_footer');
 }
 
 public function anterior(){
  // $data['tipodocu_list']=$this->tipodocu_model->lista_tipodocu()->result();
 	$data['tipodocu'] = $this->tipodocu_model->anterior($this->uri->segment(3))->row_array();
   $data['title']="Tipo documento";
-	$this->load->view('template/page_header');		
+	$this->load->view('page_header');		
   $this->load->view('tipodocu_record',$data);
-	$this->load->view('template/page_footer');
+	$this->load->view('page_footer');
 }
 
 
