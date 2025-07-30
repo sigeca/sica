@@ -1,7 +1,15 @@
 <div id="eys-nav-i">
-	<h3 style="text-align: left; margin-top:-10px;"> <?php echo $title;  ?></h3>
-	<ul>
+<div style="display:flex;flex-direction:row; justify-content:space-between; align-items:center;">
+        <span style="text-align: left; font-size:x-large; font-weight:bold;">
+            <?php echo $title;  ?>
+            <span style="font-size:large; margin-left:10px;" id="idcalendarioacademico"><?php echo $calendarioacademico['idcalendarioacademico']; ?></span>
+        </span>
+        <?php echo ($calendarioacademico['eliminado']==1)? '<span style="font-size:large; color:red; font-weight:bold;"> - ELIMINADO</span>':'<span style="font-size:large; color:green; font-weight:bold;"> - ACTIVO</span>'; ?>
+    </div>
+
+
 <?php
+$permitir_acceso_modulo=true; 
 if(isset($calendarioacademico))
 {
 	$permitir=0;
@@ -23,7 +31,7 @@ if(isset($calendarioacademico))
 	}
 ?>
 <?php 	if($this->session->userdata['acceso'][$numero]['nivelacceso']['navegar']){ ?>
-<ul>
+    <ul style="list-style:none; padding:0; display:flex; gap:15px; background-color:#f2f2f2; padding:10px; border-radius:5px; margin-top:15px;">
         <li> <?php echo anchor('calendarioacademico/elprimero/', 'primero'); ?></li>
         <li> <?php echo anchor('calendarioacademico/siguiente/'.$calendarioacademico['idcalendarioacademico'], 'siguiente'); ?></li>
         <li> <?php echo anchor('calendarioacademico/anterior/'.$calendarioacademico['idcalendarioacademico'], 'anterior'); ?></li>

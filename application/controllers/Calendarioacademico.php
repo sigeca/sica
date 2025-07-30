@@ -18,13 +18,13 @@ class Calendarioacademico extends CI_Controller{
 			$data['calendarioacademico']=$this->calendarioacademico_model->elultimo();
 			$data['periodoacademicos'] = $this->periodoacademico_model->lista_periodoacademicos()->result();
 			$data['title']="Lista de calendarioacademicos";
-			$this->load->view('template/page_header');
+			$this->load->view('page_header');
 			$this->load->view('calendarioacademico_record',$data);
-			$this->load->view('template/page_footer');
+			$this->load->view('page_footer');
 		}else{
-			$this->load->view('template/page_header.php');
+			$this->load->view('page_header.php');
 			$this->load->view('login_form');
-			$this->load->view('template/page_footer.php');
+			$this->load->view('page_footer.php');
 		}
 	}
 
@@ -33,9 +33,9 @@ class Calendarioacademico extends CI_Controller{
 	{
 			$data['title']="Nueva calendarioacademico";
 			$data['periodoacademicos'] = $this->periodoacademico_model->lista_periodoacademicos()->result();
-			$this->load->view('template/page_header');		
+			$this->load->view('page_header');		
 			$this->load->view('calendarioacademico_form',$data);
-			$this->load->view('template/page_footer');
+			$this->load->view('page_footer');
 	}
 
 
@@ -58,9 +58,9 @@ class Calendarioacademico extends CI_Controller{
 			$data['calendarioacademico'] = $this->calendarioacademico_model->calendarioacademico($this->uri->segment(3))->row_array();
 			$data['periodoacademicos'] = $this->periodoacademico_model->lista_periodoacademicos()->result();
 			$data['title'] = "Actualizar calendarioacademico";
-			$this->load->view('template/page_header');		
+			$this->load->view('page_header');		
 			$this->load->view('calendarioacademico_edit',$data);
-			$this->load->view('template/page_footer');
+			$this->load->view('page_footer');
 	 
 	}
 
@@ -104,9 +104,9 @@ class Calendarioacademico extends CI_Controller{
 		$data['calendarioacademicos'] = $this->calendarioacademico_model->lista_calendarioacademicos1(0)->result();
 	  	$data['title']="Calendarioacademico";
   		$data['filtro']= $this->uri->segment(3);
-		$this->load->view('template/page_header');		
+		$this->load->view('page_header');		
 	  	$this->load->view('calendarioacademico_list',$data);
-		$this->load->view('template/page_footer');
+		$this->load->view('page_footer');
 	}
 
 
@@ -144,9 +144,9 @@ public function panel()
 	
 	$data['calendarioacademicos'] = $this->calendarioacademico_model->lista_calendarioacademicos()->result();
   	$data['title']="Calendarioacademico";
-	$this->load->view('template/page_header');		
+	$this->load->view('page_header');		
   	$this->load->view('calendarioacademicos/calendarioacademicos',$data);
-	$this->load->view('template/page_footer');
+	$this->load->view('page_footer');
 }
 
 
@@ -156,9 +156,9 @@ public function iniciar()
 	$data['calendarioacademico'] = $this->calendarioacademico_model->calendarioacademico($_GET['idcalendarioacademico'])->row_array();
 	$data['periodoacademicos'] = $this->periodoacademico_model->lista_unidades($_GET['idcalendarioacademico'])->result();
   	$data['title']="Calendarioacademico";
-	$this->load->view('template/page_header');		
+	$this->load->view('page_header');		
  	$this->load->view('calendarioacademicos/FundamentosDeProgramacion_clases',$data);
-	$this->load->view('template/page_footer');
+	$this->load->view('page_footer');
 }
 
 
@@ -208,13 +208,13 @@ public function actual()
   if(!empty($data))
   {
     $data['title']="Calendarioacademico";
-    $this->load->view('template/page_header');		
+    $this->load->view('page_header');		
     $this->load->view('calendarioacademico_record',$data);
-    $this->load->view('template/page_footer');
+    $this->load->view('page_footer');
   }else{
-    $this->load->view('template/page_header');		
+    $this->load->view('page_header');		
     $this->load->view('registro_vacio');
-    $this->load->view('template/page_footer');
+    $this->load->view('page_footer');
   }
  }
 
@@ -228,13 +228,13 @@ public function elprimero()
   if(!empty($data))
   {
     $data['title']="Calendarioacademico";
-    $this->load->view('template/page_header');		
+    $this->load->view('page_header');		
     $this->load->view('calendarioacademico_record',$data);
-    $this->load->view('template/page_footer');
+    $this->load->view('page_footer');
   }else{
-    $this->load->view('template/page_header');		
+    $this->load->view('page_header');		
     $this->load->view('registro_vacio');
-    $this->load->view('template/page_footer');
+    $this->load->view('page_footer');
   }
  }
 
@@ -246,14 +246,14 @@ public function elultimo()
   {
     $data['title']="Calendarioacademico";
   
-    $this->load->view('template/page_header');		
+    $this->load->view('page_header');		
     $this->load->view('calendarioacademico_record',$data);
-    $this->load->view('template/page_footer');
+    $this->load->view('page_footer');
   }else{
 
-    $this->load->view('template/page_header');		
+    $this->load->view('page_header');		
     $this->load->view('registro_vacio');
-    $this->load->view('template/page_footer');
+    $this->load->view('page_footer');
   }
 }
 
@@ -262,9 +262,9 @@ public function siguiente(){
 	$data['calendarioacademico'] = $this->calendarioacademico_model->siguiente($this->uri->segment(3))->row_array();
 	$data['periodoacademicos'] = $this->periodoacademico_model->lista_periodoacademicos()->result();
   	$data['title']="Calendarioacademico";
-	$this->load->view('template/page_header');		
+	$this->load->view('page_header');		
   	$this->load->view('calendarioacademico_record',$data);
-	$this->load->view('template/page_footer');
+	$this->load->view('page_footer');
 }
 
 public function anterior(){
@@ -272,9 +272,9 @@ public function anterior(){
 	$data['calendarioacademico'] = $this->calendarioacademico_model->anterior($this->uri->segment(3))->row_array();
 	$data['periodoacademicos'] = $this->periodoacademico_model->lista_periodoacademicos()->result();
   	$data['title']="Calendarioacademico";
-	$this->load->view('template/page_header');		
+	$this->load->view('page_header');		
   	$this->load->view('calendarioacademico_record',$data);
-	$this->load->view('template/page_footer');
+	$this->load->view('page_footer');
 }
 
 public function get_periodoacademico() {
