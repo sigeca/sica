@@ -148,7 +148,6 @@ echo form_input('fechafin',$periodoacademico['fechafin'],array('placeholder'=>'F
 	</div>
 	</div>
 	</div> 
-</div>
 
 
 
