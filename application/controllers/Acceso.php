@@ -43,13 +43,13 @@ public function actual(){
   	$data['modulos']= $this->modulo_model->lista_modulos()->result();
   	$data['nivelaccesos']= $this->nivelacceso_model->lista_nivelaccesos()->result();
 	$data['title']="Modulo de acceso";
-	$this->load->view('template/page_header');		
+	$this->load->view('page_header');		
 	$this->load->view('acceso_record',$data);
-	$this->load->view('template/page_footer');
+	$this->load->view('page_footer');
    }else{
-	$this->load->view('template/page_header.php');
+	$this->load->view('page_header.php');
 	$this->load->view('login_form');
-	$this->load->view('template/page_footer.php');
+	$this->load->view('page_footer.php');
    }
 }
 
@@ -62,9 +62,9 @@ public function add()
   	$data['modulos']= $this->modulo_model->lista_modulos()->result();
   	$data['nivelaccesos']= $this->nivelacceso_model->lista_nivelaccesos()->result();
 		$data['title']="Nueva Acceso";
-	 	$this->load->view('template/page_header');		
+	 	$this->load->view('page_header');		
 	 	$this->load->view('acceso_form',$data);
-	 	$this->load->view('template/page_footer');
+	 	$this->load->view('page_footer');
 
 
 }
@@ -91,9 +91,9 @@ public function edit()
   		$data['nivelaccesos']= $this->nivelacceso_model->lista_nivelaccesos()->result();
   		$data['modulos']= $this->modulo_model->lista_modulos()->result();
  	 	$data['title'] = "Actualizar Acceso";
- 	 	$this->load->view('template/page_header');		
+ 	 	$this->load->view('page_header');		
  	 	$this->load->view('acceso_edit',$data);
-	 	$this->load->view('template/page_footer');
+	 	$this->load->view('page_footer');
  
 }
 
@@ -127,9 +127,9 @@ public function edit()
 	
   		$data['usuarios']= $this->usuario_model->lista_usuarios1()->result();
   		$data['title']="Accesos";
-		$this->load->view('template/page_header');		
+		$this->load->view('page_header');		
   		$this->load->view('acceso_list',$data);
-		$this->load->view('template/page_footer');
+		$this->load->view('page_footer');
 	}
 
 
@@ -182,13 +182,13 @@ public function elprimero()
 
 
     $data['title']="Acceso";
-    $this->load->view('template/page_header');		
+    $this->load->view('page_header');		
     $this->load->view('acceso_record',$data);
-    $this->load->view('template/page_footer');
+    $this->load->view('page_footer');
   }else{
-    $this->load->view('template/page_header');		
+    $this->load->view('page_header');		
     $this->load->view('registro_vacio');
-    $this->load->view('template/page_footer');
+    $this->load->view('page_footer');
   }
  }
 
@@ -208,14 +208,14 @@ public function elultimo()
 
     $data['title']="Acceso";
   
-    $this->load->view('template/page_header');		
+    $this->load->view('page_header');		
     $this->load->view('acceso_record',$data);
-    $this->load->view('template/page_footer');
+    $this->load->view('page_footer');
   }else{
 
-    $this->load->view('template/page_header');		
+    $this->load->view('page_header');		
     $this->load->view('registro_vacio');
-    $this->load->view('template/page_footer');
+    $this->load->view('page_footer');
   }
 }
 
@@ -232,9 +232,9 @@ public function siguiente(){
 
 
  	$data['title']="Acceso";
-	$this->load->view('template/page_header');		
+	$this->load->view('page_header');		
   	$this->load->view('acceso_record',$data);
-	$this->load->view('template/page_footer');
+	$this->load->view('page_footer');
 }
 
 public function anterior(){
@@ -246,9 +246,9 @@ public function anterior(){
 	 
  
   $data['title']="Acceso";
-	$this->load->view('template/page_header');		
+	$this->load->view('page_header');		
   $this->load->view('acceso_record',$data);
-	$this->load->view('template/page_footer');
+	$this->load->view('page_footer');
 }
 
 
