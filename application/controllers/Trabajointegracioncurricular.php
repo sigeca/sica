@@ -25,13 +25,13 @@ class Trabajointegracioncurricular extends CI_Controller{
 	        $data['estadotrabajointegracioncurriculars']= $this->estadotrabajointegracioncurricular_model->lista_estadotrabajointegracioncurriculars()->result();
 
 			$data['title']="Usted esta visualizando el trabajointegracioncurricular No: ";
-			$this->load->view('template/page_header');		
+			$this->load->view('page_header');		
 			$this->load->view('trabajointegracioncurricular_record',$data);
-			$this->load->view('template/page_footer');
+			$this->load->view('page_footer');
    		}else{
-			$this->load->view('template/page_header.php');
+			$this->load->view('page_header.php');
 			$this->load->view('login_form');
-			$this->load->view('template/page_footer.php');
+			$this->load->view('page_footer.php');
    		}
 	}
 
@@ -48,9 +48,9 @@ class Trabajointegracioncurricular extends CI_Controller{
 	    $data['estadotrabajointegracioncurriculars']= $this->estadotrabajointegracioncurricular_model->lista_estadotrabajointegracioncurriculars()->result();
 		$data['ordenadores']= $this->ordenador_model->lista_ordenadores()->result();
 		$data['personas']= $this->persona_model->lista_personasA()->result();
-	 	$this->load->view('template/page_header');		
+	 	$this->load->view('page_header');		
 	 	$this->load->view('trabajointegracioncurricular_form',$data);
-	 	$this->load->view('template/page_footer');
+	 	$this->load->view('page_footer');
 	}
 
 
@@ -227,9 +227,9 @@ public function genpagina2()
 		$data['ordenadores'] = $this->ordenador_model->lista_ordenadores()->result();
 		$data['directorios'] = $this->directorio_model->lista_directorios()->result();
 		$data['title']="Usted esta visualizando el trabajointegracioncurricular No: ";
-		$this->load->view('template/page_header');		
+		$this->load->view('page_header');		
 	  $this->load->view('trabajointegracioncurricular_record',$data);
-		$this->load->view('template/page_footer');
+		$this->load->view('page_footer');
 	}
 
 //////////////////////////////////
@@ -242,9 +242,9 @@ public function genpagina2()
   		$data['tipodocus']= $this->tipodocu_model->lista_tipodocu()->result();
   		$data['filtro']= $this->uri->segment(3);
   		$data['title']="Trabajointegracioncurricular";
-		$this->load->view('template/page_header');		
+		$this->load->view('page_header');		
   		$this->load->view('trabajointegracioncurricular_list',$data);
-		$this->load->view('template/page_footer');
+		$this->load->view('page_footer');
 	}
 
 	function trabajointegracioncurricular_data()
@@ -311,9 +311,9 @@ public function genpagina2()
   		$data['lectores'] = $this->trabajointegracioncurricular_model->lectores(1)->result();
   		$data['title']="Trabajointegracioncurricular";
   		$data['filtro']= $this->uri->segment(3);
-		$this->load->view('template/page_header');		
+		$this->load->view('page_header');		
   		$this->load->view('trabajointegracioncurricular_listxtipodocu',$data);
-		$this->load->view('template/page_footer');
+		$this->load->view('page_footer');
 	}
 
 	function trabajointegracioncurricular_dataxtipodocu()
@@ -373,14 +373,14 @@ public function elprimero()
 	$data['directorios'] = $this->directorio_model->lista_directorios()->result();
 	$data['title']="Usted esta visualizando el trabajointegracioncurricular No: ";
   
-    $this->load->view('template/page_header');		
+    $this->load->view('page_header');		
     $this->load->view('trabajointegracioncurricular_record',$data);
-    $this->load->view('template/page_footer');
+    $this->load->view('page_footer');
   }else{
 
-    $this->load->view('template/page_header');		
+    $this->load->view('page_header');		
     $this->load->view('registro_vacio');
-    $this->load->view('template/page_footer');
+    $this->load->view('page_footer');
 
   }
   
@@ -401,14 +401,14 @@ public function elultimo()
 	$data['directorios'] = $this->directorio_model->lista_directorios()->result();
 	$data['title']="Usted esta visualizando el trabajointegracioncurricular No: ";
   
-    $this->load->view('template/page_header');		
+    $this->load->view('page_header');		
     $this->load->view('trabajointegracioncurricular_record',$data);
-    $this->load->view('template/page_footer');
+    $this->load->view('page_footer');
   }else{
 
-    $this->load->view('template/page_header');		
+    $this->load->view('page_header');		
     $this->load->view('registro_vacio');
-    $this->load->view('template/page_footer');
+    $this->load->view('page_footer');
 
   }
   
@@ -432,9 +432,9 @@ public function siguiente(){
 	$data['estadotrabajointegracioncurriculars']= $this->estadotrabajointegracioncurricular_model->lista_estadotrabajointegracioncurriculars()->result();
 	$data['directorios'] = $this->directorio_model->lista_directorios()->result();
 	$data['title']="Usted esta visualizando el trabajointegracioncurricular No: ";
-	$this->load->view('template/page_header');		
+	$this->load->view('page_header');		
   $this->load->view('trabajointegracioncurricular_record',$data);
-	$this->load->view('template/page_footer');
+	$this->load->view('page_footer');
 }
 
 
@@ -448,9 +448,9 @@ public function anterior(){
 	$data['ordenadores']=  $this->ordenador_model->lista_ordenadores()->result();
 	$data['directorios'] = $this->directorio_model->lista_directorios()->result();
 	$data['title']="Usted esta visualizando el trabajointegracioncurricular No: ";
-	$this->load->view('template/page_header');		
+	$this->load->view('page_header');		
   $this->load->view('trabajointegracioncurricular_record',$data);
-	$this->load->view('template/page_footer');
+	$this->load->view('page_footer');
 }
 
 
@@ -463,9 +463,9 @@ public function anterior(){
     		$data['lectores'] = $this->trabajointegracioncurricular_model->lectores($this->uri->segment(3))->result();
     		$data['title'] = "Actualizar el  Trabajointegracioncurricular No: ";
 	        $data['estadotrabajointegracioncurriculars']= $this->estadotrabajointegracioncurricular_model->lista_estadotrabajointegracioncurriculars()->result();
- 	 	$this->load->view('template/page_header');		
+ 	 	$this->load->view('page_header');		
  	 	$this->load->view('trabajointegracioncurricular_edit',$data);
-	 	$this->load->view('template/page_footer');
+	 	$this->load->view('page_footer');
  
 }
 
@@ -512,17 +512,17 @@ public function anterior(){
 
 
 public function canvas(){
-	$this->load->view('template/page_header');
+	$this->load->view('page_header');
 	$this->load->view('canvas');
-	$this->load->view('template/page_footer');
+	$this->load->view('page_footer');
 }
 
 function show_pdf() {
 	 	$data['trabajointegracioncurricular'] = $this->trabajointegracioncurricular_model->trabajointegracioncurricularA($this->uri->segment(3))->row_array();
- $this->load->view('template/page_header');
+ $this->load->view('page_header');
  $data['blog_text'] = "POSTULACION"; 
  $this->load->view('cargapdf',$data);
- $this->load->view('template/page_footer'); 
+ $this->load->view('page_footer'); 
  }
 
 
