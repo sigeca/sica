@@ -384,6 +384,7 @@ alter table portafolio add column  idchklstportafolio int default 1;
 */
 
 
-alter table documentoportafolio add column  iddocumentochklstportafolio int default 1; 
+/* alter table documentoportafolio add column  iddocumentochklstportafolio int default 1; */
 
 
+ alter table fotoevidencia add column eliminado tinyint default 0;

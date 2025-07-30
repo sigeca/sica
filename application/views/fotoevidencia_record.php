@@ -9,7 +9,7 @@
 
     <?php
 $permitir_acceso_modulo=true; 
-    if(isset($persona)) {
+    if(isset($fotoevidencia)) {
         $permitir=0;
         $j=0;
         $numero=$j;
@@ -33,16 +33,16 @@ $permitir_acceso_modulo=true;
 
     <ul style="list-style:none; padding:0; display:flex; gap:15px; background-color:#f2f2f2; padding:10px; border-radius:5px; margin-top:15px;">
 
-        <li> <?php echo anchor('fotoevidencia/elprimero/', 'primero'); ?></li>
-        <li> <?php echo anchor('fotoevidencia/siguiente/'.$fotoevidencia['idfotoevidencia'], 'siguiente'); ?></li>
-        <li> <?php echo anchor('fotoevidencia/anterior/'.$fotoevidencia['idfotoevidencia'], 'anterior'); ?></li>
-        <li style="border-right:1px solid green"><?php echo anchor('fotoevidencia/elultimo/', 'Último'); ?></li>
-        <li> <?php echo anchor('fotoevidencia/add', 'Nuevo'); ?></li>
-        <li> <?php echo anchor('fotoevidencia/edit/'.$fotoevidencia['idfotoevidencia'],'Edit'); ?></li>
+        <li> <?php echo anchor('fotoevidencia/elprimero/', 'primero', 'style="text-decoration:none; color:#007bff; font-weight:bold;"'); ?></li>
+        <li> <?php echo anchor('fotoevidencia/siguiente/'.$fotoevidencia['idfotoevidencia'], 'siguiente', 'style="text-decoration:none; color:#007bff; font-weight:bold;"'); ?></li>
+        <li> <?php echo anchor('fotoevidencia/anterior/'.$fotoevidencia['idfotoevidencia'], 'anterior', 'style="text-decoration:none; color:#007bff; font-weight:bold;"'); ?></li>
+        <li  style="border-right:1px solid #ccc; padding-right:15px;"><?php echo anchor('fotoevidencia/elultimo/', 'Último', 'style="text-decoration:none; color:#007bff; font-weight:bold;"'); ?></li>
+        <li> <?php echo anchor('fotoevidencia/add', 'Nuevo', 'style="text-decoration:none; color:#28a745; font-weight:bold;"'); ?></li>
+        <li style="border-right:1px solid #ccc; padding-right:15px;"> <?php echo anchor('fotoevidencia/edit/'.$fotoevidencia['idfotoevidencia'],'Edit', 'style="text-decoration:none; color:#28a745; font-weight:bold;"'); ?></li>
       <!--  <li style="border-right:1px solid green"> <?php echo anchor('fotoevidencia/delete/'.$fotoevidencia['idfotoevidencia'],'Delete'); ?></li> --->
-        <li> <?php echo anchor('fotoevidencia/listar/','Listar'); ?></li>
-        <li> <?php echo anchor('fotoevidencia/genpagina/1','generar web'); ?></li>
-        <li> <?php echo anchor('fotoevidencia/fotoevidencia_1','Web'); ?></li>
+        <li> <?php echo anchor('fotoevidencia/listar/','Listar', 'style="text-decoration:none; color:#17a2b8; font-weight:bold;"'); ?></li>
+        <li> <?php echo anchor('fotoevidencia/genpagina/1','generar web', 'style="text-decoration:none; color:#17a2b8; font-weight:bold;"'); ?></li>
+        <li> <?php echo anchor('fotoevidencia/fotoevidencia_1','Web', 'style="text-decoration:none; color:#17a2b8; font-weight:bold;"'); ?></li>
     </ul>
     <?php } ?>
     <?php
@@ -121,7 +121,7 @@ $textarea_options = array('class' => 'form-control','rows' => '4','disabled'=>'d
 <div class="form-group row">
     <label class="col-md-2 col-form-label"> Foto:</label>
 	<div class="col-md-10">
- <img src="https://repositorioutlvte.org/Repositorio/fotoevidencias/fotoevidencia<?php echo $fotoevidencia['idfotoevidencia']; ?>.jpg" alt="fotoevidencia" width="400" height="300"> 
+ <img src="https://educaysoft.org/repositorioeys/fotoevidencias/fotoevidencia<?php echo $fotoevidencia['idfotoevidencia']; ?>.jpg" alt="fotoevidencia" width="400" height="300"> 
   
 
 	</div> 
@@ -213,7 +213,7 @@ function uploadImage(nombre,idx) {
 
 function getUploadUrl() {
     var selectElement = document.getElementById("idordenador");
-    var url = "https://repositorioutlvte.org";
+    var url = "https://educaysoft.org";
     return url.endsWith("/") ? url + "cargafotoevidencia.php" : url + "/cargafotoevidencia.php";
 }
 
