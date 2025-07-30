@@ -56,6 +56,17 @@ if(isset($periodoacademico))
 }
 ?>
     </ul>
+    <?php } ?>
+    <?php
+    } else {
+    ?>
+    <ul style="list-style:none; padding:0; display:flex; gap:15px; background-color:#f2f2f2; padding:10px; border-radius:5px; margin-top:15px;">
+        <li><?php echo anchor('periodoacademico/add', 'Nuevo', 'style="text-decoration:none; color:#28a745; font-weight:bold;"'); ?></li>
+    </ul>
+    <?php
+    }
+    ?>
+
 </div>
 <br>
 <br>
