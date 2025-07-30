@@ -78,7 +78,7 @@ $permitir_acceso_modulo=true;
     <label class="col-md-2 col-form-label"> Nombre corto: </label>
 	<div class="col-md-10">
      	<?php 
-      echo form_input('nombrecorto',$periodoacademico['nombrecorto'],array('placeholder'=>'Nombre corto del periodoacademico'));
+      echo form_input('nombrecorto',$periodoacademico['nombrecorto'],array('placeholder'=>'Nombre corto del periodoacademico', "disabled"=>"disabled",'style'=>'width:100%;'));
 
 	?>
 	</div> 
@@ -91,7 +91,7 @@ $permitir_acceso_modulo=true;
     <label class="col-md-2 col-form-label"> Nombre largo: </label>
 	<div class="col-md-10">
      	<?php 
-      echo form_input('nombrelargo',$periodoacademico['nombrelargo'],array('placeholder'=>'Nombre largo del periodoacademico'));
+      echo form_input('nombrelargo',$periodoacademico['nombrelargo'],array('placeholder'=>'Nombre largo del periodoacademico', "disabled"=>"disabled",'style'=>'width:100%;'));
 	?>
 	</div> 
 </div>
@@ -105,7 +105,7 @@ $permitir_acceso_modulo=true;
 	<div class="col-md-10">
      	<?php 
 
-       echo form_input('fechainicio',$periodoacademico['fechainicio'],array('placeholder'=>'Fecha en que inicia el periodoacademico')); 
+       echo form_input('fechainicio',$periodoacademico['fechainicio'],array('placeholder'=>'Fecha en que inicia el periodoacademico', "disabled"=>"disabled",'style'=>'width:100%;')); 
 
 ?>
 	</div> 
@@ -117,12 +117,13 @@ $permitir_acceso_modulo=true;
     <label class="col-md-2 col-form-label"> Fecha finaliza: </label>
 	<div class="col-md-10">
      	<?php 
-echo form_input('fechafin',$periodoacademico['fechafin'],array('placeholder'=>'Fecha en que finaliza el periodoacademico')); 
+echo form_input('fechafin',$periodoacademico['fechafin'],array('placeholder'=>'Fecha en que finaliza el periodoacademico', "disabled"=>"disabled",'style'=>'width:100%;')); 
 ?>
 	</div> 
 </div>
 
-
+<br>
+<br>
 
 <div class="form-group row">
     <label class="col-md-2 col-form-label" > Lista de silabos : </label>
