@@ -9,14 +9,14 @@
 
     <?php
 $permitir_acceso_modulo=true; 
-    if(isset($persona)) {
+    if(isset($periodoacademico)) {
         $permitir=0;
         $j=0;
         $numero=$j;
         if(isset($this->session->userdata['acceso'])) {
             foreach($this->session->userdata['acceso'] as $row) 
             {
-                if("persona"==$row["modulo"]["modulo"]) {
+                if("periodoacademico"==$row["modulo"]["modulo"]) {
                     $numero=$j;
                     $permitir=1;
                 }
