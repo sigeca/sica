@@ -157,7 +157,7 @@ echo form_input('fechafin',$periodoacademico['fechafin'],array('placeholder'=>'F
 <script type="text/javascript">
 
 $(document).ready(function(){
-	var idperiodoacademico=document.getElementById("idperiodoacademico").value;
+	var idperiodoacademico=document.getElementById("idperiodoacademico").innerHTML;
 	var mytablaf= $('#mydatas').DataTable({"ajax": {url: '<?php echo site_url('periodoacademico/silabo_data')?>', type: 'GET',data:{idperiodoacademico:idperiodoacademico}},});
 
 
