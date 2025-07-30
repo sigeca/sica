@@ -30,14 +30,8 @@ $permitir_acceso_modulo=true;
 
     <?php if($this->session->userdata['acceso'][$numero]['nivelacceso']['navegar']){ ?>
  
-
-
     <ul style="list-style:none; padding:0; display:flex; gap:15px; background-color:#f2f2f2; padding:10px; border-radius:5px; margin-top:15px;">
-<?php
-if(isset($periodoacademico))
-{
-?>
-        <li> <?php echo anchor('periodoacademico/elprimero/', 'primero', 'style="text-decoration:none; color:#007bff; font-weight:bold;"'); ?></li>
+       <li> <?php echo anchor('periodoacademico/elprimero/', 'primero', 'style="text-decoration:none; color:#007bff; font-weight:bold;"'); ?></li>
         <li> <?php echo anchor('periodoacademico/siguiente/'.$periodoacademico['idperiodoacademico'], 'siguiente', 'style="text-decoration:none; color:#007bff; font-weight:bold;"'); ?></li>
         <li> <?php echo anchor('periodoacademico/anterior/'.$periodoacademico['idperiodoacademico'], 'anterior', 'style="text-decoration:none; color:#007bff; font-weight:bold;"'); ?></li>
         <li style="border-right:1px solid #ccc; padding-right:15px;"><?php echo anchor('periodoacademico/elultimo/', 'Último', 'style="text-decoration:none; color:#007bff; font-weight:bold;"'); ?></li>
@@ -58,7 +52,6 @@ if(isset($periodoacademico))
     <?php
     }
     ?>
-
 </div>
 <br>
 <br>
