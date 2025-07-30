@@ -62,12 +62,13 @@ $permitir_acceso_modulo=true;
 
 
 
+<div class="container" style="max-width:900px; margin:auto; padding:20px; border:1px solid #ddd; border-radius:8px; box-shadow:0 0 10px rgba(0,0,0,0.1);">
 
-<div class="form-group row">
+    <div class="form-group row mb-3">
     <label class="col-md-2 col-form-label"> Id Periodo acad.: </label>
 	<div class="col-md-10">
      	<?php 
-      echo form_input('idperiodoacademico',$periodoacademico['idperiodoacademico'],array("id"=>"idperiodoacademico", "disabled"=>"disabled"));
+      echo form_input('idperiodoacademico',$periodoacademico['idperiodoacademico'],array("id"=>"idperiodoacademico", "disabled"=>"disabled",'style'=>'width:100%;')));
 	?>
 	</div> 
 </div>
