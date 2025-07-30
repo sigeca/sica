@@ -1,10 +1,38 @@
 <div id="eys-nav-i">
-    <h3 style="text-align: left; margin-top:-10px;"> <?php echo $title;  ?></h3>
-    <ul>
-<?php
-if(isset($fotoevidencia))
-{
-?>
+    <div style="display:flex;flex-direction:row; justify-content:space-between; align-items:center;">
+        <span style="text-align: left; font-size:x-large; font-weight:bold;">
+            <?php echo $title;  ?>
+            <span style="font-size:large; margin-left:10px;" id="idpersona"><?php echo $fotoevidencia['idfotoevidencia']; ?></span>
+        </span>
+        <?php echo ($fotoevidencia['eliminado']==1)? '<span style="font-size:large; color:red; font-weight:bold;"> - ELIMINADO</span>':'<span style="font-size:large; color:green; font-weight:bold;"> - ACTIVO</span>'; ?>
+    </div>
+
+    <?php
+$permitir_acceso_modulo=true; 
+    if(isset($persona)) {
+        $permitir=0;
+        $j=0;
+        $numero=$j;
+        if(isset($this->session->userdata['acceso'])) {
+            foreach($this->session->userdata['acceso'] as $row) 
+            {
+                if("fotoevidencia"==$row["modulo"]["modulo"]) {
+                    $numero=$j;
+                    $permitir=1;
+                }
+                $j=$j+1;
+            }
+        }
+        if($permitir==0) {
+            redirect('login/logout');
+        }
+    ?>
+
+
+    <?php if($this->session->userdata['acceso'][$numero]['nivelacceso']['navegar']){ ?>
+
+    <ul style="list-style:none; padding:0; display:flex; gap:15px; background-color:#f2f2f2; padding:10px; border-radius:5px; margin-top:15px;">
+
         <li> <?php echo anchor('fotoevidencia/elprimero/', 'primero'); ?></li>
         <li> <?php echo anchor('fotoevidencia/siguiente/'.$fotoevidencia['idfotoevidencia'], 'siguiente'); ?></li>
         <li> <?php echo anchor('fotoevidencia/anterior/'.$fotoevidencia['idfotoevidencia'], 'anterior'); ?></li>
@@ -15,23 +43,31 @@ if(isset($fotoevidencia))
         <li> <?php echo anchor('fotoevidencia/listar/','Listar'); ?></li>
         <li> <?php echo anchor('fotoevidencia/genpagina/1','generar web'); ?></li>
         <li> <?php echo anchor('fotoevidencia/fotoevidencia_1','Web'); ?></li>
-
-<?php 
-}else{
-?>
-
-        <li> <?php echo anchor('fotoevidencia/add', 'Nuevo'); ?></li>
-<?php
-}
-?>
     </ul>
+    <?php } ?>
+    <?php
+    } else {
+    ?>
+    <ul style="list-style:none; padding:0; display:flex; gap:15px; background-color:#f2f2f2; padding:10px; border-radius:5px; margin-top:15px;">
+        <li><?php echo anchor('persona/add', 'Nuevo', 'style="text-decoration:none; color:#28a745; font-weight:bold;"'); ?></li>
+    </ul>
+    <?php
+    }
+    ?>
 </div>
 <br>
 <br>
 
 
-<?php echo form_hidden('idfotoevidencia',$fotoevidencia['idfotoevidencia']) ?>
 
+
+
+
+
+<?php echo form_hidden('idfotoevidencia',$fotoevidencia['idfotoevidencia']) ?>
+<div class="container" style="max-width:900px; margin:auto; padding:20px; border:1px solid #ddd; border-radius:8px; box-shadow:0 0 10px rgba(0,0,0,0.1);">
+
+ 
 
  <div class="form-group row">
     <label class="col-md-2 col-form-label"> Id artículo:</label>
