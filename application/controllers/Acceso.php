@@ -16,19 +16,19 @@ public function index(){
   	if(isset($this->session->userdata['logged_in'])){
 			
   	$data['acceso']=$this->acceso_model->lista_accesos()->row_array();
-  	$data['personas']= $this->persona_model->lista_personas()->result();
+  	$data['personas']= $this->persona_model->lista_personas0()->result();
   	$data['usuarios']= $this->usuario_model->lista_usuarios1()->result();
   	$data['modulos']= $this->modulo_model->lista_modulos()->result();
   	$data['nivelaccesos']= $this->nivelacceso_model->lista_nivelaccesos()->result();
 			
 		$data['title']="Lista de accesos";
-		$this->load->view('template/page_header');
+		$this->load->view('page_header');
 		$this->load->view('acceso_record',$data);
-		$this->load->view('template/page_footer');
+		$this->load->view('page_footer');
 	}else{
-	 	$this->load->view('template/page_header.php');
+	 	$this->load->view('page_header.php');
 		$this->load->view('login_form');
-	 	$this->load->view('template/page_footer.php');
+	 	$this->load->view('page_footer.php');
 	}
 
  }
