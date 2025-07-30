@@ -12,13 +12,13 @@ public function index(){
 	if(isset($this->session->userdata['logged_in'])){
 		$data['periodoacademico']=$this->periodoacademico_model->elultimo();
 		$data['title']="Lista de periodoacademicos";
-		$this->load->view('template/page_header');
+		$this->load->view('page_header');
 		$this->load->view('periodoacademico_record',$data);
-		$this->load->view('template/page_footer');
+		$this->load->view('page_footer');
 	}else{
-	 	$this->load->view('template/page_header.php');
+	 	$this->load->view('page_header.php');
 		$this->load->view('login_form');
-	 	$this->load->view('template/page_footer.php');
+	 	$this->load->view('page_footer.php');
 	}
 }
 
@@ -26,9 +26,9 @@ public function index(){
 public function add()
 {
 		$data['title']="Nueva periodoacademico";
-	 	$this->load->view('template/page_header');		
+	 	$this->load->view('page_header');		
 	 	$this->load->view('periodoacademico_form',$data);
-	 	$this->load->view('template/page_footer');
+	 	$this->load->view('page_footer');
 }
 
 
@@ -63,9 +63,9 @@ public function edit()
 {
 	 	$data['periodoacademico'] = $this->periodoacademico_model->periodoacademico($this->uri->segment(3))->row_array();
  	 	$data['title'] = "Actualizar periodoacademico";
- 	 	$this->load->view('template/page_header');		
+ 	 	$this->load->view('page_header');		
  	 	$this->load->view('periodoacademico_edit',$data);
-	 	$this->load->view('template/page_footer');
+	 	$this->load->view('page_footer');
  
 }
 
@@ -97,9 +97,9 @@ public function edit()
 	{
 	
 		  $data['title']="Periodoacademico";
-		$this->load->view('template/page_header');		
+		$this->load->view('page_header');		
 		  $this->load->view('periodoacademico_list',$data);
-		$this->load->view('template/page_footer');
+		$this->load->view('page_footer');
 	}
 
 
@@ -160,13 +160,13 @@ public function actual()
   if(!empty($data))
   {
     $data['title']="Periodoacademico";
-    $this->load->view('template/page_header');		
+    $this->load->view('page_header');		
     $this->load->view('periodoacademico_record',$data);
-    $this->load->view('template/page_footer');
+    $this->load->view('page_footer');
   }else{
-    $this->load->view('template/page_header');		
+    $this->load->view('page_header');		
     $this->load->view('registro_vacio');
-    $this->load->view('template/page_footer');
+    $this->load->view('page_footer');
   }
  }
 
@@ -181,13 +181,13 @@ public function elprimero()
   if(!empty($data))
   {
     $data['title']="Periodoacademico";
-    $this->load->view('template/page_header');		
+    $this->load->view('page_header');		
     $this->load->view('periodoacademico_record',$data);
-    $this->load->view('template/page_footer');
+    $this->load->view('page_footer');
   }else{
-    $this->load->view('template/page_header');		
+    $this->load->view('page_header');		
     $this->load->view('registro_vacio');
-    $this->load->view('template/page_footer');
+    $this->load->view('page_footer');
   }
  }
 
@@ -198,14 +198,14 @@ public function elultimo()
   {
     $data['title']="Periodoacademico";
   
-    $this->load->view('template/page_header');		
+    $this->load->view('page_header');		
     $this->load->view('periodoacademico_record',$data);
-    $this->load->view('template/page_footer');
+    $this->load->view('page_footer');
   }else{
 
-    $this->load->view('template/page_header');		
+    $this->load->view('page_header');		
     $this->load->view('registro_vacio');
-    $this->load->view('template/page_footer');
+    $this->load->view('page_footer');
   }
 }
 
@@ -213,18 +213,18 @@ public function siguiente(){
  // $data['periodoacademico_list']=$this->periodoacademico_model->lista_periodoacademico()->result();
 	$data['periodoacademico'] = $this->periodoacademico_model->siguiente($this->uri->segment(3))->row_array();
   $data['title']="Periodoacademico";
-	$this->load->view('template/page_header');		
+	$this->load->view('page_header');		
   $this->load->view('periodoacademico_record',$data);
-	$this->load->view('template/page_footer');
+	$this->load->view('page_footer');
 }
 
 public function anterior(){
  // $data['periodoacademico_list']=$this->periodoacademico_model->lista_periodoacademico()->result();
 	$data['periodoacademico'] = $this->periodoacademico_model->anterior($this->uri->segment(3))->row_array();
   $data['title']="Periodoacademico";
-	$this->load->view('template/page_header');		
+	$this->load->view('page_header');		
   $this->load->view('periodoacademico_record',$data);
-	$this->load->view('template/page_footer');
+	$this->load->view('page_footer');
 }
 
 }
