@@ -47,15 +47,7 @@ if(isset($periodoacademico))
         <li> <?php echo anchor('periodoacademico/listar/','Listar', 'style="text-decoration:none; color:#17a2b8; font-weight:bold;"'); ?></li>
         <li> <?php echo anchor('calendarioacademico/','Calendario', 'style="text-decoration:none; color:#17a2b8; font-weight:bold;"'); ?></li>
 
-<?php 
-}else{
-?>
-
-        <li> <?php echo anchor('periodoacademico/add', 'Nuevo'); ?></li>
-<?php
-}
-?>
-    </ul>
+   </ul>
     <?php } ?>
     <?php
     } else {
