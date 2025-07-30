@@ -68,7 +68,7 @@ $permitir_acceso_modulo=true;
     <label class="col-md-2 col-form-label"> Id Periodo acad.: </label>
 	<div class="col-md-10">
      	<?php 
-      echo form_input('idperiodoacademico',$periodoacademico['idperiodoacademico'],array("id"=>"idperiodoacademico", "disabled"=>"disabled",'style'=>'width:100%;')));
+      echo form_input('idperiodoacademico',$periodoacademico['idperiodoacademico'],array("id"=>"idperiodoacademico", "disabled"=>"disabled",'style'=>'width:100%;'));
 	?>
 	</div> 
 </div>
