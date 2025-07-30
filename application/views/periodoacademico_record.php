@@ -1,5 +1,36 @@
 <div id="eys-nav-i">
-	<h3 style="text-align: left; margin-top:-10px;"> <?php echo $title;  ?></h3>
+    <div style="display:flex;flex-direction:row; justify-content:space-between; align-items:center;">
+<span style="text-align: left; font-size:x-large; font-weight:bold;">
+            <?php echo $title;  ?>
+            <span style="font-size:large; margin-left:10px;" id="idperiodoacademico"><?php echo $periodoacademico['idperiodoacademico']; ?></span>
+        </span>
+
+    </div>
+
+    <?php
+$permitir_acceso_modulo=true; 
+    if(isset($persona)) {
+        $permitir=0;
+        $j=0;
+        $numero=$j;
+        if(isset($this->session->userdata['acceso'])) {
+            foreach($this->session->userdata['acceso'] as $row) 
+            {
+                if("persona"==$row["modulo"]["modulo"]) {
+                    $numero=$j;
+                    $permitir=1;
+                }
+                $j=$j+1;
+            }
+        }
+        if($permitir==0) {
+            redirect('login/logout');
+        }
+    ?>
+
+    <?php if($this->session->userdata['acceso'][$numero]['nivelacceso']['navegar']){ ?>
+ 
+
 
     <ul style="list-style:none; padding:0; display:flex; gap:15px; background-color:#f2f2f2; padding:10px; border-radius:5px; margin-top:15px;">
 <?php

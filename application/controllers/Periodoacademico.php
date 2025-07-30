@@ -11,7 +11,7 @@ class Periodoacademico extends CI_Controller{
 public function index(){
 	if(isset($this->session->userdata['logged_in'])){
 		$data['periodoacademico']=$this->periodoacademico_model->elultimo();
-		$data['title']="Lista de periodoacademicos";
+		$data['title']="Periodo académico";
 		$this->load->view('page_header');
 		$this->load->view('periodoacademico_record',$data);
 		$this->load->view('page_footer');
