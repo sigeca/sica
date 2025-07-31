@@ -135,7 +135,7 @@ contenedor {
     <div class="container">
       <div class="row">
         <div class="col-sm-8 col-md-7 py-4">
-          <h4 class="text-white"> <a href="https://repositorioutlvte.org/Repositorio/eventos/2023-11-29.jpeg" class="text-white">Acerca del Proyecto de Aula de Ingenieria de Software</a></h4>
+          <h4 class="text-white"> <a href="https://educaysoft.org/repositorioeys/eventos/2023-11-29.jpeg" class="text-white">Acerca del Proyecto de Aula de Ingenieria de Software</a></h4>
           <p class="text-light"> El proyecto de aula en Ingeniería de Software  implico la planificación, desarrollo y evaluación colaborativa de soluciones informáticas, fomentando el trabajo en equipo, la resolución de problemas y la aplicación práctica de conceptos técnicos. .</p>
 
         </div>
@@ -178,7 +178,7 @@ $data1='</div>
     <p class="float-end mb-1">
       <a href="#">Back to top</a>
     </p>
-     <p class="mb-1">Este sitio web que presenta <xxxx>/<yyyy> clases, es parte del producto del <b>PROYECTO DE AULA</b> titulado <a href="https://repositorioutlvte.org/Repositorio/2024-01-15-FQSA-01627.pdf"> <b> "Diseño y Desarrollo de una plataforma web para la Gestión de la información Académica"</b></a> </p>
+     <p class="mb-1">Este sitio web que presenta <xxxx>/<yyyy> clases, es parte del producto del <b>PROYECTO DE AULA</b> titulado <a href="https://educaysoft.org/repositorioeys/2024-01-15-FQSA-01627.pdf"> <b> "Diseño y Desarrollo de una plataforma web para la Gestión de la información Académica"</b></a> </p>
     <p class="mb-0">El proyecto fue realizado con la participación de <a href="https://educaysoft.org/sica/evento/participantes/350"> 4-B Base de Datos I</a> ,<a href="https://educaysoft.org/sica/evento/participantes/356"> 5to-A</a> y <a href="https://educaysoft.org/sica/evento/participantes/357">5to-B</a>  Ingenieria de Software I en el periodo 2023-1S, cuyo tutor fue el Ing. Stalin Francis Msc., Docente de las Asignaturas.</p>
   </div>
 </footer>
@@ -237,7 +237,7 @@ foreach($modulos as $row){
     		<meta name="author" content="Stalin Francis Quinde">
     		<meta name="generator" content="Hugo 0.101.0">
         	<meta property="og:site_name" content="Carrera en Tecnología de la Información" />
-        	<meta property="og:image" content="https://repositorioutlvte.org/Repositorio/logos/logocti.png" />
+        	<meta property="og:image" content="https://educaysoft.org/repositorioeys/logos/logocti.png" />
         	<meta property="og:image:width" content="400" />
         	<meta property="og:image:height" content="400" />
     		<title> Carrera: '.'$row->eldepartamento'.'  - Periodo '.'$row->elperiodoacademico'.' </title>
@@ -252,7 +252,7 @@ foreach($modulos as $row){
   		<section class="py-5 text-center container">
     		<div class="row py-lg-5" style="display:flex;  align-items:center; justify-content: center;" >
 		<div style=" flex-basis: 40%"  >
-		<img src="https://repositorioutlvte.org/Repositorio/qr/modulo.png" height="150px">
+		<img src="https://educaysoft.org/repositorioeys/qr/modulo.png" height="150px">
 		</div>
       		<div >
         	<h1 class="fw-light">'.'UNIVERSIDAD TÉCNICA LUIS VARGAS TORRES DE ESMERALDAS'.'</h1>  
@@ -274,25 +274,25 @@ $data=$data.'<div class="col">
 		  <a  href="#"><svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/>';
 
 // Remote file url
-$remoteFile = "https://repositorioutlvte.org/Repositorio/eventos/modulo.jpg";
+$remoteFile = "https://educaysoft.org/repositorioeys/eventos/modulo.jpg";
 
 $file_headers = @get_headers($remoteFile);
 
 
 if($file_headers[0] == 'HTTP/1.1 404 Not Found') {
- $data=$data.'<image href="https://repositorioutlvte.org/Repositorio/eventos/modulo.jpg"  height="100%" width="100%"/> </svg></a>
+ $data=$data.'<image href="https://educaysoft.org/repositorioeys/eventos/modulo.jpg"  height="100%" width="100%"/> </svg></a>
 
 <div class="img-contenedor w3-card-4" style="position:absolute; top:0px;right:0px; border: 2px solid green; border-radius: 50%; width: 30%; display:flex; justify-content: center; align-items: center;">';
 
 }else{
-$data=$data.'<image href="https://repositorioutlvte.org/Repositorio/eventos/modulo.jpg" alt="No hay programación" height="100%" width="100%"/> </svg></a>
+$data=$data.'<image href="https://educaysoft.org/repositorioeys/eventos/modulo.jpg" alt="No hay programación" height="100%" width="100%"/> </svg></a>
 <div class="img-contenedor w3-card-4" style="position:absolute; top:0px;right:0px; border: 2px solid green; border-radius: 50%; width: 30%; display:flex; justify-content: center; align-items: center;">';
 
 }
 
 
 // Remote file url
-$remoteFile = "https://repositorioutlvte.org/Repositorio/iconos/".trim($row->icono).".png";
+$remoteFile = "https://educaysoft.org/repositorioeys/iconos/".trim($row->icono).".png";
 
 $file_headers = @get_headers($remoteFile);
 
@@ -300,11 +300,11 @@ $file_headers = @get_headers($remoteFile);
 //if(!file_exists($remoteFile)){
 if($file_headers[0] == 'HTTP/1.1 404 Not Found') {
   //  echo 'File not found';
-	$data=$data.'<img src="https://repositorioutlvte.org/Repositorio/fotos/perfil.jpg" width="100%" height="100%" style="border-radius:50px;">';
+	$data=$data.'<img src="https://educaysoft.org/repositorioeys/fotos/perfil.jpg" width="100%" height="100%" style="border-radius:50px;">';
 
 }else{
 //	$data=$data.'<img src="https://repositorioutlvte.org/Repositorio/fotos/perfil.jpg" width="100%" height="100%" style="border-radius:50px;">';
-	$data=$data.'<img src="https://repositorioutlvte.org/Repositorio/iconos/'.trim($row->icono).'.png" width="100%" height="100%" style="border-radius:50px;">';
+	$data=$data.'<img src="https://educaysoft.org/repositorioeys/iconos/'.trim($row->icono).'.png" width="100%" height="100%" style="border-radius:50px;">';
 
 
 }
