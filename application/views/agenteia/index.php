@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Generador de Prompts de IA</title>
+    <title>Generador de Prompts de IA para Reglamentos</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
@@ -38,7 +38,7 @@
 
             <div class="form-group">
                 <label for="prompt_usuario">Instrucción para la IA:</label>
-                <textarea name="prompt_usuario" id="prompt_usuario" class="form-control" rows="3" placeholder="Ej: Resume el contenido en un párrafo conciso." required>Resume el siguiente contenido</textarea>
+                <textarea name="prompt_usuario" id="prompt_usuario" class="form-control" rows="3" placeholder="Ej: Resume el contenido en un párrafo conciso." required></textarea>
             </div>
             
             <button type="submit" class="btn btn-primary btn-block">Generar Prompt IA</button>
