@@ -10,7 +10,7 @@ class Agenteia extends CI_Controller {
 
     public function index() {
         $data['reglamentos'] = $this->Agenteia_model->get_reglamentos();
-        $this->load->view('ia_prompt/index', $data);
+        $this->load->view('agenteia/index', $data);
     }
 
     public function generar_prompt() {
@@ -24,7 +24,7 @@ class Agenteia extends CI_Controller {
         $respuesta = $this->consultar_openai($prompt_completo);
 
         $data['respuesta'] = $respuesta;
-        $this->load->view('ia_prompt/resultado', $data);
+        $this->load->view('agenteia/resultado', $data);
     }
 
     private function consultar_openai($prompt) {
