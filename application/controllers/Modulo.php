@@ -12,13 +12,13 @@ public function index(){
 	if(isset($this->session->userdata['logged_in'])){
 	  	$data['modulo']=$this->modulo_model->elmodulo(1)->row_array();
   		$data['title']="Modulo del sistema";
-			$this->load->view('template/page_header');		
+			$this->load->view('page_header');		
   		$this->load->view('modulo_record',$data);
-			$this->load->view('template/page_footer');
+			$this->load->view('page_footer');
 	}else{
-	 	$this->load->view('template/page_header.php');
+	 	$this->load->view('page_header.php');
 		$this->load->view('login_form');
-	 	$this->load->view('template/page_footer.php');
+	 	$this->load->view('page_footer.php');
 	}
 }
 
@@ -26,9 +26,9 @@ public function index(){
 public function add()
 {
 		$data['title']="Nuevo módulo";
-	 	$this->load->view('template/page_header');		
+	 	$this->load->view('page_header');		
 	 	$this->load->view('modulo_form',$data);
-	 	$this->load->view('template/page_footer');
+	 	$this->load->view('page_footer');
 }
 
 
@@ -53,9 +53,9 @@ public function edit()
 {
 	 	$data['modulo'] = $this->modulo_model->modulo($this->uri->segment(3))->row_array();
  	 	$data['title'] = "Actualizar Modulo";
- 	 	$this->load->view('template/page_header');		
+ 	 	$this->load->view('page_header');		
  	 	$this->load->view('modulo_edit',$data);
-	 	$this->load->view('template/page_footer');
+	 	$this->load->view('page_footer');
  
 }
 
@@ -101,9 +101,9 @@ public function listar()
 	
   $data['modulo'] = $this->modulo_model->lista_modulos()->result();
   $data['title']="Modulo";
-	$this->load->view('template/page_header');		
+	$this->load->view('page_header');		
   $this->load->view('modulo_list',$data);
-	$this->load->view('template/page_footer');
+	$this->load->view('page_footer');
 }
 
 function modulo_data()
@@ -136,13 +136,13 @@ public function actual()
   if(!empty($data))
   {
     $data['title']="Modulo";
-    $this->load->view('template/page_header');		
+    $this->load->view('page_header');		
     $this->load->view('modulo_record',$data);
-    $this->load->view('template/page_footer');
+    $this->load->view('page_footer');
   }else{
-    $this->load->view('template/page_header');		
+    $this->load->view('page_header');		
     $this->load->view('registro_vacio');
-    $this->load->view('template/page_footer');
+    $this->load->view('page_footer');
   }
  }
 
@@ -158,13 +158,13 @@ public function elprimero()
   if(!empty($data))
   {
     $data['title']="Modulo";
-    $this->load->view('template/page_header');		
+    $this->load->view('page_header');		
     $this->load->view('modulo_record',$data);
-    $this->load->view('template/page_footer');
+    $this->load->view('page_footer');
   }else{
-    $this->load->view('template/page_header');		
+    $this->load->view('page_header');		
     $this->load->view('registro_vacio');
-    $this->load->view('template/page_footer');
+    $this->load->view('page_footer');
   }
  }
 
@@ -175,14 +175,14 @@ public function elultimo()
   {
     $data['title']="Modulo";
   
-    $this->load->view('template/page_header');		
+    $this->load->view('page_header');		
     $this->load->view('modulo_record',$data);
-    $this->load->view('template/page_footer');
+    $this->load->view('page_footer');
   }else{
 
-    $this->load->view('template/page_header');		
+    $this->load->view('page_header');		
     $this->load->view('registro_vacio');
-    $this->load->view('template/page_footer');
+    $this->load->view('page_footer');
   }
 }
 
@@ -190,18 +190,18 @@ public function siguiente(){
  // $data['modulo_list']=$this->modulo_model->lista_modulo()->result();
 	$data['modulo'] = $this->modulo_model->siguiente($this->uri->segment(3))->row_array();
   $data['title']="Modulo";
-	$this->load->view('template/page_header');		
+	$this->load->view('page_header');		
   $this->load->view('modulo_record',$data);
-	$this->load->view('template/page_footer');
+	$this->load->view('page_footer');
 }
 
 public function anterior(){
  // $data['modulo_list']=$this->modulo_model->lista_modulo()->result();
 	$data['modulo'] = $this->modulo_model->anterior($this->uri->segment(3))->row_array();
   $data['title']="Modulo";
-	$this->load->view('template/page_header');		
+	$this->load->view('page_header');		
   $this->load->view('modulo_record',$data);
-	$this->load->view('template/page_footer');
+	$this->load->view('page_footer');
 }
 
 
