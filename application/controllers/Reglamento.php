@@ -15,13 +15,13 @@ public function index(){
   		$data['instituciones']= $this->institucion_model->lista_instituciones()->result();
 		$data['procesos']= $this->proceso_model->lista_procesos()->result();
   		$data['title']="Lista de Artiulos";
-			$this->load->view('template/page_header');		
+			$this->load->view('page_header');		
   		$this->load->view('reglamento_record',$data);
-			$this->load->view('template/page_footer');
+			$this->load->view('page_footer');
 	}else{
-	 	$this->load->view('template/page_header.php');
+	 	$this->load->view('page_header.php');
 		$this->load->view('login_form');
-	 	$this->load->view('template/page_footer.php');
+	 	$this->load->view('page_footer.php');
 	}
 }
 
@@ -31,9 +31,9 @@ public function add()
   		$data['instituciones']= $this->institucion_model->lista_instituciones()->result();
 		$data['procesos']= $this->proceso_model->lista_procesos()->result();
 		$data['title']="Nuevo Artículo";
-	 	$this->load->view('template/page_header');		
+	 	$this->load->view('page_header');		
 	 	$this->load->view('reglamento_form',$data);
-	 	$this->load->view('template/page_footer');
+	 	$this->load->view('page_footer');
 }
 
 
@@ -67,9 +67,9 @@ public function edit()
   		$data['instituciones']= $this->institucion_model->lista_instituciones()->result();
 		$data['procesos']= $this->proceso_model->lista_procesos()->result();
  	 	$data['title'] = "Actualizar Reglamento";
- 	 	$this->load->view('template/page_header');		
+ 	 	$this->load->view('page_header');		
  	 	$this->load->view('reglamento_edit',$data);
-	 	$this->load->view('template/page_footer');
+	 	$this->load->view('page_footer');
  
 }
 
@@ -97,9 +97,9 @@ public function listar()
 {
 	
   $data['title']="Reglamento";
-	$this->load->view('template/page_header');		
+	$this->load->view('page_header');		
   $this->load->view('reglamento_list',$data);
-	$this->load->view('template/page_footer');
+	$this->load->view('page_footer');
 }
 
 function reglamento_data()
@@ -217,13 +217,13 @@ public function actual()
   if(!empty($data))
   {
     $data['title']="Reglamento";
-    $this->load->view('template/page_header');		
+    $this->load->view('page_header');		
     $this->load->view('reglamento_record',$data);
-    $this->load->view('template/page_footer');
+    $this->load->view('page_footer');
   }else{
-    $this->load->view('template/page_header');		
+    $this->load->view('page_header');		
     $this->load->view('registro_vacio');
-    $this->load->view('template/page_footer');
+    $this->load->view('page_footer');
   }
  }
 
@@ -241,13 +241,13 @@ public function elprimero()
   if(!empty($data))
   {
     $data['title']="Reglamento";
-    $this->load->view('template/page_header');		
+    $this->load->view('page_header');		
     $this->load->view('reglamento_record',$data);
-    $this->load->view('template/page_footer');
+    $this->load->view('page_footer');
   }else{
-    $this->load->view('template/page_header');		
+    $this->load->view('page_header');		
     $this->load->view('registro_vacio');
-    $this->load->view('template/page_footer');
+    $this->load->view('page_footer');
   }
  }
 
@@ -260,14 +260,14 @@ public function elultimo()
   {
     $data['title']="Reglamento";
   
-    $this->load->view('template/page_header');		
+    $this->load->view('page_header');		
     $this->load->view('reglamento_record',$data);
-    $this->load->view('template/page_footer');
+    $this->load->view('page_footer');
   }else{
 
-    $this->load->view('template/page_header');		
+    $this->load->view('page_header');		
     $this->load->view('registro_vacio');
-    $this->load->view('template/page_footer');
+    $this->load->view('page_footer');
   }
 }
 
@@ -277,9 +277,9 @@ public function siguiente(){
  	$data['instituciones']= $this->institucion_model->lista_instituciones()->result();
 		$data['procesos']= $this->proceso_model->lista_procesos()->result();
   $data['title']="Reglamento";
-	$this->load->view('template/page_header');		
+	$this->load->view('page_header');		
   $this->load->view('reglamento_record',$data);
-	$this->load->view('template/page_footer');
+	$this->load->view('page_footer');
 }
 
 public function anterior(){
@@ -288,9 +288,9 @@ public function anterior(){
  	$data['instituciones']= $this->institucion_model->lista_instituciones()->result();
 		$data['procesos']= $this->proceso_model->lista_procesos()->result();
   $data['title']="Reglamento";
-	$this->load->view('template/page_header');		
+	$this->load->view('page_header');		
   $this->load->view('reglamento_record',$data);
-	$this->load->view('template/page_footer');
+	$this->load->view('page_footer');
 }
 
 
