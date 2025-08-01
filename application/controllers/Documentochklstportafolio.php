@@ -16,9 +16,9 @@ class Documentochklstportafolio extends CI_Controller{
 
  		// print_r($data['documentochklstportafolio_list']);
   		$data['title']="Lista de Documentochklstportafolioes";
-		$this->load->view('template/page_header');		
+		$this->load->view('page_header');		
   		$this->load->view('documentochklstportafolio_record',$data);
-		$this->load->view('template/page_footer');
+		$this->load->view('page_footer');
 	}
 
 
@@ -32,9 +32,9 @@ class Documentochklstportafolio extends CI_Controller{
 		$data['documentochklstportafolio'] = $this->documentochklstportafolio_model->documentochklstportafolioss(1);
         }
 		$data['title']="Nueva unidades del chklstportafolio";
-	 	$this->load->view('template/page_header');		
+	 	$this->load->view('page_header');		
 	 	$this->load->view('documentochklstportafolio_form',$data);
-	 	$this->load->view('template/page_footer');
+	 	$this->load->view('page_footer');
 	}
 
 
@@ -57,9 +57,9 @@ class Documentochklstportafolio extends CI_Controller{
 		$data['chklstportafolios']= $this->chklstportafolio_model->lista_chklstportafolios()->result();
 		$data['personas']= $this->persona_model->lista_personas0()->result();
  	 	$data['title'] = "Actualizar Documentochklstportafolio";
- 	 	$this->load->view('template/page_header');		
+ 	 	$this->load->view('page_header');		
  	 	$this->load->view('documentochklstportafolio_edit',$data);
-	 	$this->load->view('template/page_footer');
+	 	$this->load->view('page_footer');
 	}
 
 
@@ -100,9 +100,9 @@ class Documentochklstportafolio extends CI_Controller{
 	{
 		
 		$data['title']="Unidades del chklstportafolio";
-		$this->load->view('template/page_header');		
+		$this->load->view('page_header');		
 		$this->load->view('documentochklstportafolio_list',$data);
-		$this->load->view('template/page_footer');
+		$this->load->view('page_footer');
 	}
 
 
@@ -170,13 +170,13 @@ class Documentochklstportafolio extends CI_Controller{
 
 		$data['personas']= $this->persona_model->lista_personas0()->result();
 	    $data['title']="Documentochklstportafolio del videotutorial";
-	    $this->load->view('template/page_header');		
+	    $this->load->view('page_header');		
 	    $this->load->view('documentochklstportafolio_record',$data);
-	    $this->load->view('template/page_footer');
+	    $this->load->view('page_footer');
 	  }else{
-	    $this->load->view('template/page_header');		
+	    $this->load->view('page_header');		
 	    $this->load->view('registro_vacio');
-	    $this->load->view('template/page_footer');
+	    $this->load->view('page_footer');
 	  }
 	}
 
@@ -195,13 +195,13 @@ class Documentochklstportafolio extends CI_Controller{
 
 		$data['personas']= $this->persona_model->lista_personas0()->result();
 	    $data['title']="Documentochklstportafolio del videotutorial";
-	    $this->load->view('template/page_header');		
+	    $this->load->view('page_header');		
 	    $this->load->view('documentochklstportafolio_record',$data);
-	    $this->load->view('template/page_footer');
+	    $this->load->view('page_footer');
 	  }else{
-	    $this->load->view('template/page_header');		
+	    $this->load->view('page_header');		
 	    $this->load->view('registro_vacio');
-	    $this->load->view('template/page_footer');
+	    $this->load->view('page_footer');
 	  }
 	}
 
@@ -214,14 +214,14 @@ class Documentochklstportafolio extends CI_Controller{
 		$data['personas']= $this->persona_model->lista_personas0()->result();
 	    $data['title']="Documentochklstportafolio del videotutorial";
 	  
-	    $this->load->view('template/page_header');		
+	    $this->load->view('page_header');		
 	    $this->load->view('documentochklstportafolio_record',$data);
-	    $this->load->view('template/page_footer');
+	    $this->load->view('page_footer');
 	  }else{
 
-	    $this->load->view('template/page_header');		
+	    $this->load->view('page_header');		
 	    $this->load->view('registro_vacio');
-	    $this->load->view('template/page_footer');
+	    $this->load->view('page_footer');
 	  }
 	}
 
@@ -232,9 +232,9 @@ class Documentochklstportafolio extends CI_Controller{
 		$data['chklstportafolios']= $this->chklstportafolio_model->lista_chklstportafolios()->result();
 	    $data['title']="Documentochklstportafolio del videotutorial";
 	 // $data['title']="Correo";
-		$this->load->view('template/page_header');		
+		$this->load->view('page_header');		
 	  $this->load->view('documentochklstportafolio_record',$data);
-		$this->load->view('template/page_footer');
+		$this->load->view('page_footer');
 	}
 
 	public function anterior(){
@@ -244,9 +244,9 @@ class Documentochklstportafolio extends CI_Controller{
 	$data['chklstportafolios']= $this->chklstportafolio_model->lista_chklstportafolios()->result();
 	 // $data['title']="Correo";
 	    $data['title']="Documentochklstportafolio del videotutorial";
-		$this->load->view('template/page_header');		
+		$this->load->view('page_header');		
 	  $this->load->view('documentochklstportafolio_record',$data);
-		$this->load->view('template/page_footer');
+		$this->load->view('page_footer');
 	}
 
 
