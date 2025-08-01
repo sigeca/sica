@@ -11,7 +11,7 @@ class Documentochklstportafolio extends CI_Controller{
 
 	public function index(){
   		$data['chklstportafolios']= $this->chklstportafolio_model->lista_chklstportafolios()->result();
-  		$data['personas']= $this->persona_model->lista_personas()->result();
+  		$data['personas']= $this->persona_model->lista_personas0()->result();
 		$data['documentochklstportafolio'] = $this->documentochklstportafolio_model->elultimo();
 
  		// print_r($data['documentochklstportafolio_list']);
@@ -55,7 +55,7 @@ class Documentochklstportafolio extends CI_Controller{
 	{
 	 	$data['documentochklstportafolio'] = $this->documentochklstportafolio_model->documentochklstportafolio($this->uri->segment(3))->row_array();
 		$data['chklstportafolios']= $this->chklstportafolio_model->lista_chklstportafolios()->result();
-		$data['personas']= $this->persona_model->lista_personas()->result();
+		$data['personas']= $this->persona_model->lista_personas0()->result();
  	 	$data['title'] = "Actualizar Documentochklstportafolio";
  	 	$this->load->view('template/page_header');		
  	 	$this->load->view('documentochklstportafolio_edit',$data);
@@ -168,7 +168,7 @@ class Documentochklstportafolio extends CI_Controller{
 	  {
 			$data['chklstportafolios']= $this->chklstportafolio_model->lista_chklstportafolios()->result();
 
-		$data['personas']= $this->persona_model->lista_personas()->result();
+		$data['personas']= $this->persona_model->lista_personas0()->result();
 	    $data['title']="Documentochklstportafolio del videotutorial";
 	    $this->load->view('template/page_header');		
 	    $this->load->view('documentochklstportafolio_record',$data);
@@ -193,7 +193,7 @@ class Documentochklstportafolio extends CI_Controller{
 	  {
 			$data['chklstportafolios']= $this->chklstportafolio_model->lista_chklstportafolios()->result();
 
-		$data['personas']= $this->persona_model->lista_personas()->result();
+		$data['personas']= $this->persona_model->lista_personas0()->result();
 	    $data['title']="Documentochklstportafolio del videotutorial";
 	    $this->load->view('template/page_header');		
 	    $this->load->view('documentochklstportafolio_record',$data);
@@ -211,7 +211,7 @@ class Documentochklstportafolio extends CI_Controller{
 	  if(!empty($data))
 	  {
 			$data['chklstportafolios']= $this->chklstportafolio_model->lista_chklstportafolios()->result();
-		$data['personas']= $this->persona_model->lista_personas()->result();
+		$data['personas']= $this->persona_model->lista_personas0()->result();
 	    $data['title']="Documentochklstportafolio del videotutorial";
 	  
 	    $this->load->view('template/page_header');		
@@ -228,7 +228,7 @@ class Documentochklstportafolio extends CI_Controller{
 	public function siguiente(){
 	 // $data['documentochklstportafolio_list']=$this->documentochklstportafolio_model->lista_documentochklstportafolio()->result();
 		$data['documentochklstportafolio'] = $this->documentochklstportafolio_model->siguiente($this->uri->segment(3))->row_array();
-		$data['personas']= $this->persona_model->lista_personas()->result();
+		$data['personas']= $this->persona_model->lista_personas0()->result();
 		$data['chklstportafolios']= $this->chklstportafolio_model->lista_chklstportafolios()->result();
 	    $data['title']="Documentochklstportafolio del videotutorial";
 	 // $data['title']="Correo";
@@ -240,7 +240,7 @@ class Documentochklstportafolio extends CI_Controller{
 	public function anterior(){
 	 // $data['documentochklstportafolio_list']=$this->documentochklstportafolio_model->lista_documentochklstportafolio()->result();
 	$data['documentochklstportafolio'] = $this->documentochklstportafolio_model->anterior($this->uri->segment(3))->row_array();
-	$data['personas']= $this->persona_model->lista_personas()->result();
+	$data['personas']= $this->persona_model->lista_personas0()->result();
 	$data['chklstportafolios']= $this->chklstportafolio_model->lista_chklstportafolios()->result();
 	 // $data['title']="Correo";
 	    $data['title']="Documentochklstportafolio del videotutorial";
