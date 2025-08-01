@@ -9,7 +9,7 @@ class Documentochklstportafolio_model extends CI_model {
 
 
 
-	function listar_documentochklstportafolio1($versesiones){
+	function listar_documentochklstportafolio1(){
 		 $documentochklstportafolio= $this->db->get('documentochklstportafolio1');
 		 return $documentochklstportafolio;
 	}
