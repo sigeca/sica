@@ -117,7 +117,7 @@ class Documentochklstportafolio extends CI_Controller{
 			$data0 = $this->documentochklstportafolio_model->listar_documentochklstportafolio1();
 			$data=array();
 			foreach($data0->result() as $r){
-				$data[]=array($r->iddocumentochklstportafolio,$r->idchklstportafolio,$r->unidad,$r->launidad,$r->href='<a href="javascript:void(0);" class="btn btn-info btn-sm item_ver"  data-idchklstportafolio="'.$r->iddocumentochklstportafolio.'">Ver</a>');
+				$data[]=array($r->iddocumentochklstportafolio,$r->idchklstportafolio,$r->orden,$r->eldocumento,$r->href='<a href="javascript:void(0);" class="btn btn-info btn-sm item_ver"  data-idchklstportafolio="'.$r->iddocumentochklstportafolio.'">Ver</a>');
 			}	
 			$output=array( "draw"=>$draw,
 				"recordsTotal"=> $data0->num_rows(),
