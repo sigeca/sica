@@ -312,7 +312,7 @@ if($file_headers[0] == 'HTTP/1.1 404 Not Found') {
 $data=$data.'</div>
 
 	    <div class="card-body" style="background-color:#D3D3D3"  >
-	    <div style="font-size:24px;  color:#333;  margin-top:10px;"><b>Módulo:</b>'.$row->nombre.' </div>';	
+	    <div  style="text-transform:uppercase;text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); font-size:24px;  color:#333;  margin-top:10px;"><b>Módulo:</b></br>'.$row->nombre.' </div>';	
 
 
 			    $data=$data.' <div class="card-body" style="background-color:#d5f4d7;padding: 20px;border-radius: 5px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2) "  > <span class="lead text-muted"  style="text-transform:uppercase;text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); ">Descripción</span><br>'. $row->descripcion.'  -</div>';
