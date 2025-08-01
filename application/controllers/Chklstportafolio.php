@@ -6,6 +6,7 @@ class Chklstportafolio extends CI_Controller{
       parent::__construct();
       $this->load->model('chklstportafolio_model');
       $this->load->model('documentochklstportafolio_model');
+      $this->load->model('documento_model');
   }
 
 //=========================================================
