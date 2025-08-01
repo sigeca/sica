@@ -42,9 +42,9 @@ body {font-family: Arial, Helvetica, sans-serif;}
  <thead>
  <tr>
  <th>Iddocumentochklstportafolio</th>
- <th>idsilabo</th>
- <th>unidad</th>
- <th>launidad</th>
+ <th>idchklst</th>
+ <th>orden</th>
+ <th>el documento</th>
  <th style="text-align: right;">Actions</th>
  </tr>
  </thead>
