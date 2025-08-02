@@ -21,7 +21,7 @@ class Telefono_model extends CI_model {
 
 
  	function telefonospersona( $id){
- 		$telefono = $this->db->query('select * from telefono where idpersona="'. $id.'"');
+ 		$telefono = $this->db->query('select * from telefono1 where idpersona="'. $id.'"');
  		return $telefono;
  	}
 
