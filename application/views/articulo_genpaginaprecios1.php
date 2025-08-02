@@ -284,7 +284,7 @@
                                 if(isset($rowj[$row->idarticulo]['idarticulo'])){
                                     $has_price = true;
                                     $current_price = $rowj[$row->idarticulo]['precio'];
-                                    echo '<p class="price"><strong>Precio:</strong> $'. number_format($current_price, 2) .' (Desde: '. $rowj[$row->idarticulo]['fechadesde'] .' - Hasta: '. $rowj[$row->idarticulo]['fechahasta'] .')</p>';
+                                    echo '<p class="price"><strong>Precio:</strong> $'. number_format($current_price, 2) .'<br> Desde: '. $rowj[$row->idarticulo]['fechadesde'] .' <br> Hasta: '. $rowj[$row->idarticulo]['fechahasta'] .'</p>';
                                     // Removed the direct link to pricearticulo/actual as it's not a typical e-commerce link
                                     break; // Assuming one active price per article for simplicity
                                 }
