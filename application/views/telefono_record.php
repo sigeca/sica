@@ -4,7 +4,7 @@
             <?php echo $title;  ?>
             <span style="font-size:large; margin-left:10px;" id="id"><?php echo $telefono['idtelefono']; ?></span>
         </span>
-        <?php echo ($['eliminado']==1)? '<span style="font-size:large; color:red; font-weight:bold;"> - ELIMINADO</span>':'<span style="font-size:large; color:green; font-weight:bold;"> - ACTIVO</span>'; ?>
+        <?php echo ($telefono['eliminado']==1)? '<span style="font-size:large; color:red; font-weight:bold;"> - ELIMINADO</span>':'<span style="font-size:large; color:green; font-weight:bold;"> - ACTIVO</span>'; ?>
     </div>
 
     <?php

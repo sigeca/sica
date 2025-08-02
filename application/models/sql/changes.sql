@@ -388,4 +388,8 @@ alter table portafolio add column  idchklstportafolio int default 1;
 
 
 /* alter table fotoevidencia add column eliminado tinyint default 0; */
- alter table calendarioacademico add column eliminado tinyint default 0;
+ /* alter table calendarioacademico add column eliminado tinyint default 0; */
+
+ alter table telefono add column eliminado tinyint default 0;
+
+
