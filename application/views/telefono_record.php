@@ -70,7 +70,7 @@ $permitir_acceso_modulo=true;
      <td>Persona:</td>
      <td><?php 
 $options= array("NADA");
-foreach ($s as $row){
+foreach ($personas as $row){
 	$options[$row->id]= $row->apellidos." ".$row->nombres;
 }
 
