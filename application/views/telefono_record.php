@@ -71,7 +71,7 @@ $permitir_acceso_modulo=true;
      <td><?php 
 $options= array("NADA");
 foreach ($personas as $row){
-	$options[$row->id]= $row->apellidos." ".$row->nombres;
+	$options[$row->idpersona]= $row->apellidos." ".$row->nombres;
 }
 
 echo form_input('id',$options[$telefono['idpersona']],array("disabled"=>"disabled")) ?></td>
