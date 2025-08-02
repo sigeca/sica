@@ -175,7 +175,7 @@ $permitir_acceso_modulo=true;
             $options = array();
             $arractut=array();
             foreach ($telefonos as $row){
-                $options[$row->idtelefono]=$row->numero;
+                $options[$row->idtelefono]=$row->numero.' - '.$row->elestado;
                 $arractut[$row->idtelefono]= base_url().'telefono/actual/'.$row->idtelefono;
             }
             echo form_multiselect('telefono[]',$options,(array)set_value('idtelefono', ''), array('class'=>'form-control','style'=>'width:100%','name'=>'telefono', 'id'=>'idtelefono','onchange'=>'editartelefono()'));
