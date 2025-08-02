@@ -237,7 +237,7 @@
         <div class="row py-lg-5" style="display:flex;  align-items:center; justify-content: center;" >
             <?php if (!empty($articulos)): ?>
             <div style=" flex-basis: 40%"  >
-                <img src="https://educaysoft.org/repositorioeys/qr/articulo-<?php echo $articulos[0]->idinstitucion; ?>-<?php echo $articulos[0]->idinstitucion; ?>.png" height="150px" alt="QR Code">
+                <img src="https://educaysoft.org/repositorioeys/qr/articulos-<?php echo $articulos[0]->idinstitucion; ?>.png" height="150px" alt="QR Code">
             </div>
             <div>
                 <h1 class="fw-light"><?php echo $articulos[0]->idinstitucion; ?></h1>
