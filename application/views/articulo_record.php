@@ -254,7 +254,7 @@ window.location.href = retorno+'/'+id;
 
 
 $('#show_dataprecio').on('click','.item_ver',function(){
-var id= $(this).data('idpreciorticulo');
+var id= $(this).data('idprecioarticulo');
 var retorno= $(this).data('retorno');
 window.location.href = retorno+'/'+id;
 });
