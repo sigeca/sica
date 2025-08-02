@@ -1,32 +1,60 @@
 <div id="eys-nav-i">
-<h3 style="text-align: left; margin-top:-10px;"> <?php echo $title;  ?></h3>
-	<ul>
-<?php
-if(isset($telefono))
-{
-?>
-        <li> <?php echo anchor('telefono/elprimero/', 'primero'); ?></li>
-        <li> <?php echo anchor('telefono/anterior/'.$telefono['idtelefono'], 'anterior'); ?></li>
-        <li> <?php echo anchor('telefono/siguiente/'.$telefono['idtelefono'], 'siguiente'); ?></li>
-        <li style="border-right:1px solid green"><?php echo anchor('telefono/elultimo/', 'Último'); ?></li>
-        <li> <?php echo anchor('telefono/add', 'Nuevo'); ?></li>
-        <li> <?php echo anchor('telefono/edit/'.$telefono['idtelefono'],'Edit'); ?></li>
-        <li style="border-right:1px solid green"> <?php echo anchor('telefono/delete/'.$telefono['idtelefono'],'Delete'); ?></li>
-        <li> <?php echo anchor('telefono/listar/','Listar'); ?></li>
+    <div style="display:flex;flex-direction:row; justify-content:space-between; align-items:center;">
+        <span style="text-align: left; font-size:x-large; font-weight:bold;">
+            <?php echo $title;  ?>
+            <span style="font-size:large; margin-left:10px;" id="id"><?php echo $telefono['idtelefono']; ?></span>
+        </span>
+        <?php echo ($['eliminado']==1)? '<span style="font-size:large; color:red; font-weight:bold;"> - ELIMINADO</span>':'<span style="font-size:large; color:green; font-weight:bold;"> - ACTIVO</span>'; ?>
+    </div>
 
-<?php 
-}else{
-?>
+    <?php
+$permitir_acceso_modulo=true; 
+    if(isset($)) {
+        $permitir=0;
+        $j=0;
+        $numero=$j;
+        if(isset($this->session->userdata['acceso'])) {
+            foreach($this->session->userdata['acceso'] as $row) 
+            {
+                if(""==$row["modulo"]["modulo"]) {
+                    $numero=$j;
+                    $permitir=1;
+                }
+                $j=$j+1;
+            }
+        }
+        if($permitir==0) {
+            redirect('login/logout');
+        }
+    ?>
 
-        <li> <?php echo anchor('telefono/add', 'Nuevo'); ?></li>
-<?php
-}
-?>
-
+    <?php if($this->session->userdata['acceso'][$numero]['nivelacceso']['navegar']){ ?>
+    <ul style="list-style:none; padding:0; display:flex; gap:15px; background-color:#f2f2f2; padding:10px; border-radius:5px; margin-top:15px;">
+        <li> <?php echo anchor('telefono/elprimero/', 'primero', 'style="text-decoration:none; color:#007bff; font-weight:bold;"'); ?></li>
+        <li> <?php echo anchor('telefono/anterior/'.$telefono['idtelefono'], 'anterior', 'style="text-decoration:none; color:#007bff; font-weight:bold;"'); ?></li>
+        <li> <?php echo anchor('telefono/siguiente/'.$telefono['idtelefono'], 'siguiente', 'style="text-decoration:none; color:#007bff; font-weight:bold;"'); ?></li>
+        <li  style="border-right:1px solid #ccc; padding-right:15px;"><?php echo anchor('telefono/elultimo/', 'Último', 'style="text-decoration:none; color:#007bff; font-weight:bold;"'); ?></li>
+        <li> <?php echo anchor('telefono/add', 'Nuevo', 'style="text-decoration:none; color:#28a745; font-weight:bold;"'); ?></li>
+        <li> <?php echo anchor('telefono/edit/'.$telefono['idtelefono'],'Edit', 'style="text-decoration:none; color:#28a745; font-weight:bold;"'); ?></li>
+        <li style="border-right:1px solid #ccc; padding-right:15px;" > <?php echo anchor('telefono/delete/'.$telefono['idtelefono'],'Delete', 'style="text-decoration:none; color:#28a745; font-weight:bold;"'); ?></li>
+        <li> <?php echo anchor('telefono/listar/','Listar', 'style="text-decoration:none; color:#17a2b8; font-weight:bold;"'); ?></li>
     </ul>
+    <?php } ?>
+    <?php
+    } else {
+    ?>
+    <ul style="list-style:none; padding:0; display:flex; gap:15px; background-color:#f2f2f2; padding:10px; border-radius:5px; margin-top:15px;">
+        <li><?php echo anchor('telefono/add', 'Nuevo', 'style="text-decoration:none; color:#28a745; font-weight:bold;"'); ?></li>
+    </ul>
+    <?php
+    }
+    ?>
 </div>
 <br>
 <br>
+
+
+
 
 
 <?php echo form_open('telefono/save_edit') ?>
@@ -42,11 +70,11 @@ if(isset($telefono))
      <td>Persona:</td>
      <td><?php 
 $options= array("NADA");
-foreach ($personas as $row){
-	$options[$row->idpersona]= $row->apellidos." ".$row->nombres;
+foreach ($s as $row){
+	$options[$row->id]= $row->apellidos." ".$row->nombres;
 }
 
-echo form_input('idpersona',$options[$telefono['idpersona']],array("disabled"=>"disabled")) ?></td>
+echo form_input('id',$options[$telefono['idpersona']],array("disabled"=>"disabled")) ?></td>
   </tr>
  
  
