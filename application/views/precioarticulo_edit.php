@@ -26,50 +26,32 @@ foreach ($articulos as $row){
 </tr>
 
 
-<tr>
-<td> Persona:</td>
-<td><?php
-$options= array('--Select--');
-foreach ($personas as $row){
-	$options[$row->idpersona]=$row->apellidos."  ".$row->nombres;
-}
 
- echo form_dropdown("idpersona",$options, $precioarticulo['idpersona']);  ?></td>
-</tr>
 
 
 
 
  <tr>
-      <td>Fecha prestamo :</td>
-      <td><?php echo form_input( array("name"=>'fechaprestamo',"id"=>'fechaprestamo',"value"=>$precioarticulo['fechaprestamo'],'type'=>'date','placeholder'=>'fecha')); ?></td>
+      <td>Fecha desde :</td>
+      <td><?php echo form_input( array("name"=>'fechadesde',"id"=>'fechadesde',"value"=>$precioarticulo['fechadesde'],'type'=>'date','placeholder'=>'fecha')); ?></td>
   </tr>
  
-
-<tr>
-     <td>Hora prestamo:</td>
-     <td><?php 
-     $eys_arrinput=array('name'=>'horaprestamo','id'=>'horaprestamo',"type"=>"time",'value'=>$precioarticulo['horaprestamo'], "style"=>"width:500px");
-     echo form_input($eys_arrinput); ?></td>
-</tr>
-
 
 
 
  <tr>
-      <td>Fecha devolucion :</td>
-      <td><?php echo form_input( array("name"=>'fechadevolucion',"id"=>'fechadevolucion',"value"=>$precioarticulo['fechadevolucion'],'type'=>'date','placeholder'=>'fecha')); ?></td>
+      <td>Fecha hasta :</td>
+      <td><?php echo form_input( array("name"=>'fechahasta',"id"=>'fechahasta',"value"=>$precioarticulo['fechahasta'],'type'=>'date','placeholder'=>'fecha')); ?></td>
   </tr>
  
-
 <tr>
-     <td>Hora devolucion:</td>
+     <td>Precio:</td>
      <td><?php 
-     $eys_arrinput=array('name'=>'horadevolucion','id'=>'horadevolucion',"type"=>"time",'value'=>$precioarticulo['horadevolucion'], "style"=>"width:500px");
-     echo form_input($eys_arrinput); ?></td>
-</tr>
 
 
+$eys_arrinput=array('name'=>'precio','value'=>$precioarticulo['precio'],'readonly'=>'true', "style"=>"width:500px");
+echo form_input($eys_arrinput); ?></td>
+  </tr>
 
 
 <tr>
@@ -79,23 +61,6 @@ foreach ($personas as $row){
 $textarea_options = array('class' => 'form-control','rows' => '4',   'cols' => '20', 'style'=> 'width:50%;height:100px;', "placeholder"=>"detalle","id" =>"detalle");    
 echo form_textarea('detalle',$precioarticulo['detalle'],$textarea_options ); ?></td>
  </tr>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
