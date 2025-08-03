@@ -28,7 +28,7 @@ class Articulovendido extends CI_Controller {
                 'idarticulo'    => $item['id'],
                 'cantidad'      => $item['quantity'],
                 'precio'        => $item['price'],
-                'fechavendido'  => date('Y-m-d')
+                'fechaventa'  => date('Y-m-d')
             ];
 
             // Use the model to save the data
