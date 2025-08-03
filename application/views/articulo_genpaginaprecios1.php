@@ -447,7 +447,8 @@
         document.getElementById('checkout-btn').addEventListener('click', () => {
             if (cart.length > 0) {
 
-                alert('Procediendo al pago para: ' + JSON.stringify(cart));
+                alert('<?php echo base_url(); ?>articulovendido/guardar');
+                alert('Procediendo  pago para: ' + JSON.stringify(cart));
 // Send the cart data to the server
         axios.post('<?php echo base_url(); ?>articulovendido/guardar', { cart: cart })
             .then(response => {
