@@ -32,7 +32,7 @@ class Articulovendido extends CI_Controller {
             ];
 
             // Use the model to save the data
-            if (!$this->Articulovendido_model->guardar_articulo_vendido($data)) {
+            if (!$this->articulovendido_model->guardar_articulo_vendido($data)) {
                 $all_saved = false;
                 break; // Stop if any save fails
             }
