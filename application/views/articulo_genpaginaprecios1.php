@@ -446,7 +446,31 @@
         // Checkout button functionality (example - would typically go to a checkout page)
         document.getElementById('checkout-btn').addEventListener('click', () => {
             if (cart.length > 0) {
-                alert('Procediendo al pago para: ' + JSON.stringify(cart));
+
+// Send the cart data to the server
+        axios.post('<?php echo base_url(); ?>Articulovendido/guardar', { cart: cart })
+            .then(response => {
+                if (response.data.success) {
+                    alert('¡Gracias por tu compra! Tu pedido ha sido procesado.');
+                    // Clear cart after successful checkout
+                    cart = [];
+                    saveCart();
+                    renderCart();
+                    toggleCart(); // Hide cart
+                } else {
+                    alert('Hubo un error al procesar tu compra. Por favor, inténtalo de nuevo.');
+                    console.error('Error del servidor:', response.data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error de red o del servidor:', error);
+                alert('Hubo un error de conexión. Inténtalo de nuevo más tarde.');
+            });
+
+
+
+
+              //  alert('Procediendo al pago para: ' + JSON.stringify(cart));
                 // In a real application, you would send this data to a server-side endpoint
                 // e.g., using Axios:
                 /*
