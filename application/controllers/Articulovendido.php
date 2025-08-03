@@ -5,7 +5,7 @@ class Articulovendido extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
-        $this->load->model('Articulovendido_model'); // Load the model
+        $this->load->model('articulovendido_model'); // Load the model
         $this->load->helper('date');
     }
 
