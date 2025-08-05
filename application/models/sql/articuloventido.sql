@@ -1,5 +1,7 @@
+use educayso_facae;
+drop table articulovendido;
 CREATE TABLE `articulovendido` (
-  `idarticulovendido` int NOT NULL,
+  `idarticulovendido` int NOT NULL   auto_increment primary key,
   `idarticulo` int ,
   `cantidad` decimal(10,2),
   `precio` decimal(10,2) ,

@@ -453,12 +453,26 @@
         axios.post('<?php echo base_url(); ?>index.php/articulovendido/guardar', { cart: cart })
             .then(response => {
                 if (response.data.success) {
+
+  // Si la respuesta incluye una URL de pago, redirigir
+                if (response.data.payment_url) {
+                    window.location.href = response.data.payment_url;
+                } 
+                // Si la respuesta incluye un QR, mostrarlo
+                else if (response.data.qr_code) {
+                    // Aquí debes tener un modal para mostrar el QR
+                    showQRModal(response.data.qr_code);
+                } else {
+
+
+
                     alert('¡Gracias por tu compra! Tu pedido ha sido procesado.');
                     // Clear cart after successful checkout
                     cart = [];
                     saveCart();
                     renderCart();
                     toggleCart(); // Hide cart
+               }
                 } else {
                     alert('Hubo un error al procesar tu compra. Por favor, inténtalo de nuevo.');
                     console.error('Error del servidor:', response.data.message);
@@ -495,6 +509,21 @@
             }
         });
     });
+
+
+
+// Función de ejemplo para mostrar el QR en un modal
+function showQRModal(qr_code_base64) {
+    // Asumiendo que tienes un modal con un <img> con ID 'qr-image'
+    var modal = document.getElementById('qr-modal');
+    var qrImage = document.getElementById('qr-image');
+    
+    qrImage.src = qr_code_base64;
+    modal.style.display = 'block'; // O la forma en que muestres tu modal
+}
+
+
+
 
     // Existing image upload and modal functions (kept for completeness)
     function mostrarImagen(imagen) {

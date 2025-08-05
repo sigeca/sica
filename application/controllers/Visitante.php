@@ -328,7 +328,7 @@ public function elultimo()
   if(!empty($data))
   {
   		$data['departamentos']= $this->departamento_model->lista_departamentos()->result();
-  	$data['personas']= $this->persona_model->lista_personas()->result();
+  	$data['personas']= $this->persona_model->lista_personas0()->result();
     $data['title']="Visitante del documento";
   
     $this->load->view('template/page_header');		
