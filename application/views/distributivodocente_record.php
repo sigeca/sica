@@ -1,37 +1,69 @@
 <div id="eys-nav-i">
-<h3 style="text-align: left; margin-top:-10px;"> <?php echo $title;  ?></h3>
+    <div style="display:flex;flex-direction:row; justify-content:space-between; align-items:center;">
+        <span style="text-align: left; font-size:x-large; font-weight:bold;">
+            <?php echo $title;  ?>
+            <span style="font-size:large; margin-left:10px;" id="iddistributivodocente"><?php echo $distributivodocente['iddistributivodocente']; ?></span>
+        </span>
+        <?php echo ($distributivodocente['eliminado']==1)? '<span style="font-size:large; color:red; font-weight:bold;"> - ELIMINADO</span>':'<span style="font-size:large; color:green; font-weight:bold;"> - ACTIVO</span>'; ?>
+    </div>
 
+    <?php
+$permitir_acceso_modulo=true; 
+    if(isset($distributivodocente)) {
+        $permitir=0;
+        $j=0;
+        $numero=$j;
+        if(isset($this->session->userdata['acceso'])) {
+            foreach($this->session->userdata['acceso'] as $row) 
+            {
+                if("persona"==$row["modulo"]["modulo"]) {
+                    $numero=$j;
+                    $permitir=1;
+                }
+                $j=$j+1;
+            }
+        }
+        if($permitir==0) {
+            redirect('login/logout');
+        }
+    ?>
+
+    <?php if($this->session->userdata['acceso'][$numero]['nivelacceso']['navegar']){ ?>
     <ul style="list-style:none; padding:0; display:flex; gap:15px; background-color:#f2f2f2; padding:10px; border-radius:5px; margin-top:15px;">
-<?php
-if(isset($distributivodocente))
-{
-?>
-        <li> <?php echo anchor('distributivodocente/elprimero/', 'primero'); ?></li>
-        <li> <?php echo anchor('distributivodocente/anterior/'.$distributivodocente['iddistributivodocente'], 'anterior'); ?></li>
-        <li> <?php echo anchor('distributivodocente/siguiente/'.$distributivodocente['iddistributivodocente'], 'siguiente'); ?></li>
-        <li style="border-right:1px solid green"><?php echo anchor('distributivodocente/elultimo/', 'Último'); ?></li>
-        <li> <?php echo anchor('distributivodocente/add', 'Nuevo'); ?></li>
-        <li> <?php echo anchor('distributivodocente/edit/'.$distributivodocente['iddistributivodocente'],'Edit'); ?></li>
-        <li style="border-right:1px solid green"> <?php echo anchor('distributivodocente/quitar/'.$distributivodocente['iddistributivodocente'],'Quitar'); ?></li>
-        <li> <?php echo anchor('distributivodocente/listar/','Listar'); ?></li>
-        <li> <?php echo anchor('distributivodocente/reportepdf/'.$distributivodocente['iddistributivodocente'],'reportepdf'); ?></li>
-        <li> <?php echo anchor('distributivodocente/generaweb/'.$distributivodocente['iddistributivo'],'generaweb'); ?></li>
-        <li> <?php echo anchor('distributivodocente/paginaweb/'.$distributivodocente['iddistributivo'],'web'); ?></li>
-        <li> <?php echo anchor('distributivodocente/reportepdf2/'.$distributivodocente['iddistributivo'],'reportepdf2'); ?></li>
 
-<?php 
-}else{
-?>
 
-        <li> <?php echo anchor('distributivodocente/add', 'Nuevo'); ?></li>
-<?php
-}
-?>
-
+        <li> <?php echo anchor('distributivodocente/elprimero/', 'primero', 'style="text-decoration:none; color:#007bff; font-weight:bold;"'); ?></li>
+        <li> <?php echo anchor('distributivodocente/anterior/'.$distributivodocente['iddistributivodocente'], 'anterior', 'style="text-decoration:none; color:#007bff; font-weight:bold;"'); ?></li>
+        <li> <?php echo anchor('distributivodocente/siguiente/'.$distributivodocente['iddistributivodocente'], 'siguiente', 'style="text-decoration:none; color:#007bff; font-weight:bold;"'); ?></li>
+        <li style="border-right:1px solid #ccc; padding-right:15px;"><?php echo anchor('distributivodocente/elultimo/', 'Último', 'style="text-decoration:none; color:#007bff; font-weight:bold;"'); ?></li>
+        <li> <?php echo anchor('distributivodocente/add', 'Nuevo', 'style="text-decoration:none; color:#28a745; font-weight:bold;"'); ?></li>
+        <li> <?php echo anchor('distributivodocente/edit/'.$distributivodocente['iddistributivodocente'],'Edit', 'style="text-decoration:none; color:#28a745; font-weight:bold;"'); ?></li>
+        <li style="border-right:1px solid #ccc; padding-right:15px;"> <?php echo anchor('distributivodocente/quitar/'.$distributivodocente['iddistributivodocente'],'Quitar', 'style="text-decoration:none; color:#28a745; font-weight:bold;"'); ?></li>
+        <li> <?php echo anchor('distributivodocente/listar/','Listar', 'style="text-decoration:none; color:#17a2b8; font-weight:bold;"'); ?></li>
+        <li> <?php echo anchor('distributivodocente/reportepdf/'.$distributivodocente['iddistributivodocente'],'reportepdf', 'style="text-decoration:none; color:#17a2b8; font-weight:bold;"'); ?></li>
+        <li> <?php echo anchor('distributivodocente/generaweb/'.$distributivodocente['iddistributivo'],'generaweb', 'style="text-decoration:none; color:#17a2b8; font-weight:bold;"'); ?></li>
+        <li> <?php echo anchor('distributivodocente/paginaweb/'.$distributivodocente['iddistributivo'],'web', 'style="text-decoration:none; color:#17a2b8; font-weight:bold;"'); ?></li>
+        <li> <?php echo anchor('distributivodocente/reportepdf2/'.$distributivodocente['iddistributivo'],'reportepdf2', 'style="text-decoration:none; color:#17a2b8; font-weight:bold;"'); ?></li>
     </ul>
+    <?php } ?>
+    <?php
+    } else {
+    ?>
+    <ul style="list-style:none; padding:0; display:flex; gap:15px; background-color:#f2f2f2; padding:10px; border-radius:5px; margin-top:15px;">
+        <li><?php echo anchor('distributivodocente/add', 'Nuevo', 'style="text-decoration:none; color:#28a745; font-weight:bold;"'); ?></li>
+    </ul>
+    <?php
+    }
+    ?>
 </div>
 <br>
 <br>
+
+
+
+
+
+
 
 
 <?php echo form_open('distributivodocente/save_edit') ?>
