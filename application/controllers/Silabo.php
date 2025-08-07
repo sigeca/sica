@@ -37,13 +37,13 @@ class Silabo extends CI_Controller{
  			$data['periodoacademicos']= $this->periodoacademico_model->lista_periodoacademicos()->result();
 			$data['documentos']= $this->documento_model->lista_documentos()->result();
 			$data['title']="Lista de silaboes";
-			$this->load->view('template/page_header');
+			$this->load->view('page_header');
 			$this->load->view('silabo_record',$data);
-			$this->load->view('template/page_footer');
+			$this->load->view('page_footer');
 		}else{
-			$this->load->view('template/page_header.php');
+			$this->load->view('page_header.php');
 			$this->load->view('login_form');
-			$this->load->view('template/page_footer.php');
+			$this->load->view('page_footer.php');
 		}
 	}
 
@@ -55,9 +55,9 @@ class Silabo extends CI_Controller{
   		$data['asignaturas']= $this->asignatura_model->lista_asignaturasA()->result();
   		$data['docentes']= $this->docente_model->lista_docentesA(0)->result();
 		$data['title']="Nueva silabo";
-		$this->load->view('template/page_header');
+		$this->load->view('page_header');
 		$this->load->view('silabo_form',$data);
-		$this->load->view('template/page_footer');
+		$this->load->view('page_footer');
 	}
 
 
@@ -92,9 +92,9 @@ class Silabo extends CI_Controller{
 			$data['documentos']= $this->documento_model->lista_documentosxtipo($tipodocumento,$data['docente']['idpersona'])->result();
   			$data['periodoacademicos']= $this->periodoacademico_model->lista_periodoacademicos()->result();
 			$data['title'] = "Actualizar silabo";
-			$this->load->view('template/page_header');		
+			$this->load->view('page_header');		
 			$this->load->view('silabo_edit',$data);
-			$this->load->view('template/page_footer');
+			$this->load->view('page_footer');
 	 
 	}
 
@@ -140,9 +140,9 @@ class Silabo extends CI_Controller{
 	{
 		
 	  $data['title']="Silabo";
-		$this->load->view('template/page_header');		
+		$this->load->view('page_header');		
 	  $this->load->view('silabo_list',$data);
-		$this->load->view('template/page_footer');
+		$this->load->view('page_footer');
 	}
 
 
@@ -237,9 +237,9 @@ public function panel()
 	
 	$data['silabos'] = $this->silabo_model->lista_silabos()->result();
   	$data['title']="Silabo";
-	$this->load->view('template/page_header');		
+	$this->load->view('page_header');		
   	$this->load->view('silabos/silabos',$data);
-	$this->load->view('template/page_footer');
+	$this->load->view('page_footer');
 }
 
 
@@ -249,9 +249,9 @@ public function iniciar()
 	$data['silabo'] = $this->silabo_model->silabo($_GET['idsilabo'])->row_array();
 	$data['unidadsilabos'] = $this->unidadsilabo_model->lista_unidades($_GET['idsilabo'])->result();
   	$data['title']="Silabo";
-	$this->load->view('template/page_header');		
+	$this->load->view('page_header');		
  	$this->load->view('silabos/FundamentosDeProgramacion_clases',$data);
-	$this->load->view('template/page_footer');
+	$this->load->view('page_footer');
 }
 
 
@@ -268,13 +268,13 @@ public function actual()
 	  if(!empty($data))
 	  {
 	    $data['title']="Silabo";
-	    $this->load->view('template/page_header');		
+	    $this->load->view('page_header');		
 	    $this->load->view('silabo_record',$data);
-	    $this->load->view('template/page_footer');
+	    $this->load->view('page_footer');
 	  }else{
-	    $this->load->view('template/page_header');		
+	    $this->load->view('page_header');		
 	    $this->load->view('registro_vacio');
-	    $this->load->view('template/page_footer');
+	    $this->load->view('page_footer');
 	  }
  }
 
@@ -299,9 +299,9 @@ public function actual()
 		$data['departamento']=$this->departamento_model->departamento($data['malla'][0]->iddepartamento)->result();
 		$data['calendarioacademico'] = $this->calendarioacademico_model->lista_calendarioacademico2($data['silabo'][0]->idperiodoacademico,$data['malla'][0]->iddepartamento)->result();
 		$data['title']="Silabo";
-	//	$this->load->view('template/page_header');		
+	//	$this->load->view('page_header');		
 		$this->load->view('silabo_list_pdf',$data);
-//		$this->load->view('template/page_footer');
+//		$this->load->view('page_footer');
 	}
 
 
@@ -350,13 +350,13 @@ public function elprimero()
   if(!empty($data))
   {
     $data['title']="Silabo";
-    $this->load->view('template/page_header');		
+    $this->load->view('page_header');		
     $this->load->view('silabo_record',$data);
-    $this->load->view('template/page_footer');
+    $this->load->view('page_footer');
   }else{
-    $this->load->view('template/page_header');		
+    $this->load->view('page_header');		
     $this->load->view('registro_vacio');
-    $this->load->view('template/page_footer');
+    $this->load->view('page_footer');
   }
  }
 
@@ -372,14 +372,14 @@ public function elultimo()
   {
     $data['title']="Silabo";
   
-    $this->load->view('template/page_header');		
+    $this->load->view('page_header');		
     $this->load->view('silabo_record',$data);
-    $this->load->view('template/page_footer');
+    $this->load->view('page_footer');
   }else{
 
-    $this->load->view('template/page_header');		
+    $this->load->view('page_header');		
     $this->load->view('registro_vacio');
-    $this->load->view('template/page_footer');
+    $this->load->view('page_footer');
   }
 }
 
@@ -392,9 +392,9 @@ public function siguiente(){
  	$data['periodoacademicos']= $this->periodoacademico_model->lista_periodoacademicos()->result();
   		$data['docentes']= $this->docente_model->lista_docentesA(0)->result();
   	$data['title']="Silabo";
-	$this->load->view('template/page_header');		
+	$this->load->view('page_header');		
   	$this->load->view('silabo_record',$data);
-	$this->load->view('template/page_footer');
+	$this->load->view('page_footer');
 }
 
 public function anterior(){
@@ -406,9 +406,9 @@ public function anterior(){
  	$data['periodoacademicos']= $this->periodoacademico_model->lista_periodoacademicos()->result();
   		$data['docentes']= $this->docente_model->lista_docentesA(0)->result();
   	$data['title']="Silabo";
-	$this->load->view('template/page_header');		
+	$this->load->view('page_header');		
   	$this->load->view('silabo_record',$data);
-	$this->load->view('template/page_footer');
+	$this->load->view('page_footer');
 }
 
 
