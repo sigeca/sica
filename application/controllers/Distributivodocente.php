@@ -37,13 +37,13 @@ public function index(){
   		$data['departamentos']= $this->departamento_model->lista_departamentos()->result();
 			
 		$data['title']="Lista de distributivodocentes";
-		$this->load->view('template/page_header');
+		$this->load->view('page_header');
 		$this->load->view('distributivodocente_record',$data);
-		$this->load->view('template/page_footer');
+		$this->load->view('page_footer');
 	}else{
-	 	$this->load->view('template/page_header.php');
+	 	$this->load->view('page_header.php');
 		$this->load->view('login_form');
-	 	$this->load->view('template/page_footer.php');
+	 	$this->load->view('page_footer.php');
 	}
 
  }
@@ -64,9 +64,9 @@ public function add()
   	$data['categoriadocentes']= $this->categoriadocente_model->lista_categoriadocentes()->result();
   	$data['relaciondependencias']= $this->relaciondependencia_model->lista_relaciondependencias()->result();
 		$data['title']="Nueva Distributivodocente";
-	 	$this->load->view('template/page_header');		
+	 	$this->load->view('page_header');		
 	 	$this->load->view('distributivodocente_form',$data);
-	 	$this->load->view('template/page_footer');
+	 	$this->load->view('page_footer');
 
 
 }
@@ -107,9 +107,9 @@ public function add()
 			$data['categoriadocentes']= $this->categoriadocente_model->lista_categoriadocentes()->result();
 			$data['relaciondependencias']= $this->relaciondependencia_model->lista_relaciondependencias()->result();
 			$data['title'] = "Actualizar Distributivodocente";
-			$this->load->view('template/page_header');		
+			$this->load->view('page_header');		
 			$this->load->view('distributivodocente_edit',$data);
-			$this->load->view('template/page_footer');
+			$this->load->view('page_footer');
 	 
 	}
 
@@ -152,9 +152,9 @@ public function listar()
 {
 	
   $data['title']="Distributivodocentes";
-	$this->load->view('template/page_header');		
+	$this->load->view('page_header');		
   $this->load->view('distributivodocente_list',$data);
-	$this->load->view('template/page_footer');
+	$this->load->view('page_footer');
 }
 
 
@@ -609,13 +609,13 @@ public function elprimero()
 	  {
   	$data['docentes']= $this->docente_model->lista_docentesA(0)->result();
     $data['title']="Distributivodocente";
-    $this->load->view('template/page_header');		
+    $this->load->view('page_header');		
     $this->load->view('distributivodocente_record',$data);
-    $this->load->view('template/page_footer');
+    $this->load->view('page_footer');
   }else{
-    $this->load->view('template/page_header');		
+    $this->load->view('page_header');		
     $this->load->view('registro_vacio');
-    $this->load->view('template/page_footer');
+    $this->load->view('page_footer');
   }
  }
 
@@ -632,14 +632,14 @@ public function elultimo()
   {
     $data['title']="Distributivodocente";
   
-    $this->load->view('template/page_header');		
+    $this->load->view('page_header');		
     $this->load->view('distributivodocente_record',$data);
-    $this->load->view('template/page_footer');
+    $this->load->view('page_footer');
   }else{
 
-    $this->load->view('template/page_header');		
+    $this->load->view('page_header');		
     $this->load->view('registro_vacio');
-    $this->load->view('template/page_footer');
+    $this->load->view('page_footer');
   }
 }
 
@@ -655,9 +655,9 @@ public function siguiente(){
   
 
 $data['title']="Distributivodocente";
-	$this->load->view('template/page_header');		
+	$this->load->view('page_header');		
   $this->load->view('distributivodocente_record',$data);
-	$this->load->view('template/page_footer');
+	$this->load->view('page_footer');
 }
 
 public function anterior(){
@@ -670,9 +670,9 @@ public function anterior(){
   	$data['distributivo']= $this->distributivo_model->lista_distributivos1(0)->result();
 		$data['departamentos']= $this->departamento_model->lista_departamentos()->result();
   $data['title']="Distributivodocente";
-	$this->load->view('template/page_header');		
+	$this->load->view('page_header');		
   $this->load->view('distributivodocente_record',$data);
-	$this->load->view('template/page_footer');
+	$this->load->view('page_footer');
 }
 
 
