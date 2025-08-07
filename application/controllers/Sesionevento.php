@@ -96,7 +96,7 @@ class Sesionevento extends CI_Controller{
   		$data['temas']= $this->tema_model->lista_temass($data['evento']['idsilabo'])->result();
 	    }else{
 	     	$data["idevento"]=$idevento;
-		$data['personas']= $this->persona_model->lista_personas()->result();
+		$data['personas']= $this->persona_model->lista_personas0()->result();
 		$data['evento']= $this->evento_model->evento($idevento)->first_row('array');
 		$data['eventos']= $this->evento_model->evento($idevento)->result();
   		$data['temas']= $this->tema_model->lista_temass($data['evento']['idsilabo'])->result();
@@ -142,7 +142,7 @@ class Sesionevento extends CI_Controller{
 
 	    if(!isset($idevento)){
 	      $idevento=0;
-		$data['personas']= $this->persona_model->lista_personas()->result();
+		$data['personas']= $this->persona_model->lista_personas0()->result();
 		$data['eventos']= $this->evento_model->lista_eventos()->result();
 		$data['modoevaluacions']= $this->modoevaluacion_model->lista_modoevaluacions()->result();
 		$data['cumplimientosesiones']= $this->cumplimientosesion_model->lista_cumplimientosesiones()->result();
@@ -150,7 +150,7 @@ class Sesionevento extends CI_Controller{
 
 	    }else{
 	     	$data["idevento"]=$idevento;
-		$data['personas']= $this->persona_model->lista_personas()->result();
+		$data['personas']= $this->persona_model->lista_personas0()->result();
 		$data['evento']= $this->evento_model->evento($idevento)->first_row('array');
 		$data['eventos']= $this->evento_model->evento($idevento)->result();
 
@@ -245,7 +245,7 @@ class Sesionevento extends CI_Controller{
 	//	$data['eventos']= $this->evento_model->lista_eventos()->result();
 		$data['eventos'] = $this->evento_model->evento($data['sesionevento']['idevento'])->result();
   		$data['temas']= $this->tema_model->lista_temass($data['evento']['idsilabo'])->result();
-		$data['personas']= $this->persona_model->lista_personas()->result();
+		$data['personas']= $this->persona_model->lista_personas0()->result();
 		$data['modoevaluacions']= $this->modoevaluacion_model->lista_modoevaluacions()->result();
 		$data['cumplimientosesiones']= $this->cumplimientosesion_model->lista_cumplimientosesiones()->result();
 		$data['calendarioacademico'] = $this->calendarioacademico_model->lista_calendarioacademicosA($data['evento']['idcalendarioacademico'])->result();
@@ -274,7 +274,7 @@ class Sesionevento extends CI_Controller{
 	//	$data['eventos']= $this->evento_model->lista_eventos()->result();
 		$data['eventos'] = $this->evento_model->evento($data['sesionevento']['idevento'])->result();
   		$data['temas']= $this->tema_model->lista_temass($data['evento']['idsilabo'])->result();
-		$data['personas']= $this->persona_model->lista_personas()->result();
+		$data['personas']= $this->persona_model->lista_personas0()->result();
 		$data['modoevaluacions']= $this->modoevaluacion_model->lista_modoevaluacions()->result();
 		$data['cumplimientosesiones']= $this->cumplimientosesion_model->lista_cumplimientosesiones()->result();
 		$data['calendarioacademico'] = $this->calendarioacademico_model->lista_calendarioacademicosA($data['evento']['idcalendarioacademico'])->result();
@@ -502,7 +502,7 @@ public function elprimero()
 	$data['evento'] = $this->evento_model->evento($data['sesionevento']['idevento'])->row_array();
   	$data['temas']= $this->tema_model->lista_temass($data['evento']['idsilabo'])->result();
 
-  	$data['personas']= $this->persona_model->lista_personas()->result();
+  	$data['personas']= $this->persona_model->lista_personas0()->result();
     $data['title']="Sesionevento del documento";
     $this->load->view(' page_header');		
     $this->load->view('sesionevento_record',$data);
@@ -525,7 +525,7 @@ public function elultimo()
   if(!empty($data))
   {
   	$data['eventos']= $this->evento_model->lista_eventos()->result();
-  	$data['personas']= $this->persona_model->lista_personas()->result();
+  	$data['personas']= $this->persona_model->lista_personas0()->result();
     	$data['title']="Sesionevento del documento";
   
     	$this->load->view(' page_header');		
@@ -545,7 +545,7 @@ public function siguiente(){
 	$data['modoevaluacions']= $this->modoevaluacion_model->lista_modoevaluacions()->result();
 		$data['cumplimientosesiones']= $this->cumplimientosesion_model->lista_cumplimientosesiones()->result();
 	$data['sesionevento'] = $this->sesionevento_model->siguiente($this->uri->segment(3))->row_array();
-  	$data['personas']= $this->persona_model->lista_personas()->result();
+  	$data['personas']= $this->persona_model->lista_personas0()->result();
   	$data['eventos']= $this->evento_model->lista_eventos()->result();
 	$data['evento'] = $this->evento_model->evento($data['sesionevento']['idevento'])->row_array();
   	$data['temas']= $this->tema_model->lista_temass($data['evento']['idsilabo'])->result();
@@ -562,7 +562,7 @@ public function anterior(){
 	$data['sesionevento'] = $this->sesionevento_model->anterior($this->uri->segment(3))->row_array();
 	$data['modoevaluacions']= $this->modoevaluacion_model->lista_modoevaluacions()->result();
 		$data['cumplimientosesiones']= $this->cumplimientosesion_model->lista_cumplimientosesiones()->result();
- 	$data['personas']= $this->persona_model->lista_personas()->result();
+ 	$data['personas']= $this->persona_model->lista_personas0()->result();
   	$data['eventos']= $this->evento_model->lista_eventos()->result();
 	$data['evento'] = $this->evento_model->evento($data['sesionevento']['idevento'])->row_array();
   	$data['temas']= $this->tema_model->lista_temass($data['evento']['idsilabo'])->result();
