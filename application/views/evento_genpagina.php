@@ -305,6 +305,21 @@ $data=$data.'<div class="col">
           <div class="card shadow-sm">
 		  <a  href="https://educaysoft.org/sica/evento/detalle/'.$row->idevento.'"><svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/>';
 
+$remoteFile = "https://educaysoft.org/verfoto.php?cedula=".trim($row->cedula);
+$file_headers = @get_headers($remoteFile);
+
+if($file_headers[0] == 'HTTP/1.1 404 Not Found') {
+    $data .= '<image href="https://educaysoft.org.org/verfoto.php?cedula=perfil" height="100%" width="100%"/> </svg></a>
+    <div class="img-contenedor w3-card-4" style="position:absolute; top:0px;right:0px; border: 2px solid green; border-radius: 50%; width: 30%; display:flex; justify-content: center; align-items: center;">';
+} else {
+    $data .= '<image href="'.$remoteFile.'" height="100%" width="100%"/> </svg></a>
+    <div class="img-contenedor w3-card-4" style="position:absolute; top:0px;right:0px; border: 2px solid green; border-radius: 50%; width: 30%; display:flex; justify-content: center; align-items: center;">';
+}
+
+
+
+
+/*
 // Remote file url
 $remoteFile = "https://repositorioutlvte.org/Repositorio/fotos/".trim($row->cedula).".jpg";
 
@@ -324,10 +339,10 @@ $data=$data.'<image href="https://repositorioutlvte.org/Repositorio/fotos/'.trim
 
 <div class="img-contenedor w3-card-4" style="position:absolute; top:0px;right:0px; border: 2px solid green; border-radius: 50%; width: 30%; display:flex; justify-content: center; align-items: center;">';
 
-
-
-
 }
+
+
+ */
 
 if(isset($asistencia[$row->idpersona])){
 	$tasistencia=$asistencia[$row->idpersona];
