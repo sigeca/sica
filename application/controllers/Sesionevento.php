@@ -33,14 +33,14 @@ class Sesionevento extends CI_Controller{
 
  		// print_r($data['sesionevento_list']);
   		$data['title']="Esta viendo la  Sesión #: ";
-		$this->load->view('template/page_header');		
+		$this->load->view('page_header');		
   		$this->load->view('sesionevento_record',$data);
-		$this->load->view('template/page_footer');
+		$this->load->view('page_footer');
 
    		}else{
-			$this->load->view('template/page_header.php');
+			$this->load->view('tpage_header.php');
 			$this->load->view('login_form');
-			$this->load->view('template/page_footer.php');
+			$this->load->view('page_footer.php');
    		}
 	}
 
@@ -66,13 +66,13 @@ class Sesionevento extends CI_Controller{
 		$data['title']="Sesionevento del documento";
 	 
 		$data['title']="Modulo de sesiones del evento";
-		$this->load->view('template/page_header');		
+		$this->load->view('page_header');		
 		$this->load->view('sesionevento_record',$data);
-		$this->load->view('template/page_footer');
+		$this->load->view('page_footer');
 	   }else{
-		$this->load->view('template/page_header.php');
+		$this->load->view('page_header.php');
 		$this->load->view('login_form');
-		$this->load->view('template/page_footer.php');
+		$this->load->view('page_footer.php');
 	   }
 	}
 
@@ -125,9 +125,9 @@ class Sesionevento extends CI_Controller{
 		$data['sesionevento'] = $this->sesionevento_model->sesionevento_sesiones($idevento)->result();
 		$data['title']="<div style='padding:30px; text-align:left; background:black; color:white; font-size:30px;'> <p style='font-size:40px; font-weight:bold; text-transform:uppercase;' >Planificar una nueva sesión del evento</p>
 			<p>En este formulario se ingresa el plan a seguir para dar exito a la ejecución de esta nueva sesión del evento</p> </div>";
-	 	$this->load->view('template/page_header');		
+	 	$this->load->view('page_header');		
 	 	$this->load->view('sesionevento_form',$data);
-	 	$this->load->view('template/page_footer');
+	 	$this->load->view('page_footer');
 	}
 
 
@@ -170,9 +170,9 @@ class Sesionevento extends CI_Controller{
 		$data['calendarioacademico'] = $this->calendarioacademico_model->lista_calendarioacademicosA($data['evento']['idcalendarioacademico'])->result();
 		$data['sesionevento'] = $this->sesionevento_model->sesionevento_sesiones($idevento)->result();
 		$data['title']="Nueva sesion de eventos";
-	 	$this->load->view('template/page_header');		
+	 	$this->load->view('page_header');		
 	 	$this->load->view('sesionevento_formx',$data);
-	 	$this->load->view('template/page_footer');
+	 	$this->load->view('page_footer');
 	}
 
 
@@ -251,9 +251,9 @@ class Sesionevento extends CI_Controller{
 		$data['calendarioacademico'] = $this->calendarioacademico_model->lista_calendarioacademicosA($data['evento']['idcalendarioacademico'])->result();
   		$data['documentos']= $this->documento_model->lista_documentos()->result();
  	 	$data['title'] = "Actualizar Sesionevento";
- 	 	$this->load->view('template/page_header');		
+ 	 	$this->load->view('page_header');		
  	 	$this->load->view('sesionevento_editx',$data);
-	 	$this->load->view('template/page_footer');
+	 	$this->load->view('page_footer');
 	}
 
 
@@ -286,9 +286,9 @@ class Sesionevento extends CI_Controller{
 
 			<p>En este formulario se puede hacer modificaciones a la planificación del evento</p> </div>";
 
- 	 	$this->load->view('template/page_header');		
+ 	 	$this->load->view('page_header');		
  	 	$this->load->view('sesionevento_edit',$data);
-	 	$this->load->view('template/page_footer');
+	 	$this->load->view('page_footer');
 	}
 
 
@@ -413,9 +413,9 @@ public function listar()
 	
 	$data['eventos']= $this->evento_model->lista_eventos()->result();
   $data['title']="Sesiones de evento";
-	$this->load->view('template/page_header');		
+	$this->load->view('page_header');		
   $this->load->view('sesionevento_list',$data);
-	$this->load->view('template/page_footer');
+	$this->load->view('page_footer');
 }
 
 
@@ -481,9 +481,9 @@ function sesionevento_data()
 		$data['mesnumero']=$mesnumero;
 		$data['mesletra'] = array(1 => 'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre');
 		$data['title']="Evento";
-	//	$this->load->view('template/page_header');		
+	//	$this->load->view('page_header');		
 		$this->load->view('sesionevento_list_pdf',$data);
-//		$this->load->view('template/page_footer');
+//		$this->load->view('page_footer');
 	}
 
 
@@ -504,13 +504,13 @@ public function elprimero()
 
   	$data['personas']= $this->persona_model->lista_personas()->result();
     $data['title']="Sesionevento del documento";
-    $this->load->view('template/page_header');		
+    $this->load->view(' page_header');		
     $this->load->view('sesionevento_record',$data);
-    $this->load->view('template/page_footer');
+    $this->load->view(' page_footer');
   }else{
-    $this->load->view('template/page_header');		
+    $this->load->view('page_header');		
     $this->load->view('registro_vacio');
-    $this->load->view('template/page_footer');
+    $this->load->view('page_footer');
   }
  }
 
@@ -528,14 +528,14 @@ public function elultimo()
   	$data['personas']= $this->persona_model->lista_personas()->result();
     	$data['title']="Sesionevento del documento";
   
-    	$this->load->view('template/page_header');		
+    	$this->load->view(' page_header');		
     	$this->load->view('sesionevento_record',$data);
-    	$this->load->view('template/page_footer');
+    	$this->load->view(' page_footer');
   }else{
 
-    $this->load->view('template/page_header');		
+    $this->load->view('page_header');		
     $this->load->view('registro_vacio');
-    $this->load->view('template/page_footer');
+    $this->load->view('page_footer');
   }
 }
 
@@ -551,9 +551,9 @@ public function siguiente(){
   	$data['temas']= $this->tema_model->lista_temass($data['evento']['idsilabo'])->result();
     $data['title']="Sesionevento del documento";
  // $data['title']="Correo";
-	$this->load->view('template/page_header');		
+	$this->load->view('page_header');		
   $this->load->view('sesionevento_record',$data);
-	$this->load->view('template/page_footer');
+	$this->load->view('page_footer');
 }
 
 public function anterior(){
@@ -568,9 +568,9 @@ public function anterior(){
   	$data['temas']= $this->tema_model->lista_temass($data['evento']['idsilabo'])->result();
  // $data['title']="Correo";
     $data['title']="Sesionevento del documento";
-	$this->load->view('template/page_header');		
+	$this->load->view('page_header');		
   $this->load->view('sesionevento_record',$data);
-	$this->load->view('template/page_footer');
+	$this->load->view('page_footer');
 }
 
 
