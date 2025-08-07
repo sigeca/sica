@@ -11,26 +11,26 @@ class Unidadsilabo extends CI_Controller{
 
 	public function index(){
   		$data['silabos']= $this->silabo_model->lista_silabos()->result();
-  		$data['personas']= $this->persona_model->lista_personas()->result();
+  		$data['personas']= $this->persona_model->lista_personas0()->result();
 		$data['unidadsilabo'] = $this->unidadsilabo_model->elultimo();
 
  		// print_r($data['unidadsilabo_list']);
   		$data['title']="Lista de Unidadsilaboes";
-		$this->load->view('template/page_header');		
+		$this->load->view('page_header');		
   		$this->load->view('unidadsilabo_record',$data);
-		$this->load->view('template/page_footer');
+		$this->load->view('page_footer');
 	}
 
 
 	public function add()
 	{
-		$data['personas']= $this->persona_model->lista_personas()->result();
+		$data['personas']= $this->persona_model->lista_personas0()->result();
 		$data['silabos']= $this->silabo_model->silabo($this->uri->segment(3))->result();
 		$data['unidadsilabo'] = $this->unidadsilabo_model->unidadsilaboss($this->uri->segment(3));
 		$data['title']="Nueva unidades del silabo";
-	 	$this->load->view('template/page_header');		
+	 	$this->load->view('page_header');		
 	 	$this->load->view('unidadsilabo_form',$data);
-	 	$this->load->view('template/page_footer');
+	 	$this->load->view('page_footer');
 	}
 
 
@@ -51,11 +51,11 @@ class Unidadsilabo extends CI_Controller{
 	{
 	 	$data['unidadsilabo'] = $this->unidadsilabo_model->unidadsilabo($this->uri->segment(3))->row_array();
 		$data['silabos']= $this->silabo_model->lista_silabos()->result();
-		$data['personas']= $this->persona_model->lista_personas()->result();
+		$data['personas']= $this->persona_model->lista_personas0()->result();
  	 	$data['title'] = "Actualizar Unidadsilabo";
- 	 	$this->load->view('template/page_header');		
+ 	 	$this->load->view('page_header');		
  	 	$this->load->view('unidadsilabo_edit',$data);
-	 	$this->load->view('template/page_footer');
+	 	$this->load->view('page_footer');
 	}
 
 
@@ -96,9 +96,9 @@ class Unidadsilabo extends CI_Controller{
 	{
 		
 		$data['title']="Unidades del silabo";
-		$this->load->view('template/page_header');		
+		$this->load->view('page_header');		
 		$this->load->view('unidadsilabo_list',$data);
-		$this->load->view('template/page_footer');
+		$this->load->view('page_footer');
 	}
 
 
@@ -164,15 +164,15 @@ class Unidadsilabo extends CI_Controller{
 	  {
 			$data['silabos']= $this->silabo_model->lista_silabos()->result();
 
-		$data['personas']= $this->persona_model->lista_personas()->result();
+		$data['personas']= $this->persona_model->lista_personas0()->result();
 	    $data['title']="Unidadsilabo del videotutorial";
-	    $this->load->view('template/page_header');		
+	    $this->load->view('page_header');		
 	    $this->load->view('unidadsilabo_record',$data);
-	    $this->load->view('template/page_footer');
+	    $this->load->view('page_footer');
 	  }else{
-	    $this->load->view('template/page_header');		
+	    $this->load->view('page_header');		
 	    $this->load->view('registro_vacio');
-	    $this->load->view('template/page_footer');
+	    $this->load->view('page_footer');
 	  }
 	}
 
@@ -189,15 +189,15 @@ class Unidadsilabo extends CI_Controller{
 	  {
 			$data['silabos']= $this->silabo_model->lista_silabos()->result();
 
-		$data['personas']= $this->persona_model->lista_personas()->result();
+		$data['personas']= $this->persona_model->lista_personas0()->result();
 	    $data['title']="Unidadsilabo del videotutorial";
-	    $this->load->view('template/page_header');		
+	    $this->load->view('page_header');		
 	    $this->load->view('unidadsilabo_record',$data);
-	    $this->load->view('template/page_footer');
+	    $this->load->view('page_footer');
 	  }else{
-	    $this->load->view('template/page_header');		
+	    $this->load->view('page_header');		
 	    $this->load->view('registro_vacio');
-	    $this->load->view('template/page_footer');
+	    $this->load->view('page_footer');
 	  }
 	}
 
@@ -207,42 +207,42 @@ class Unidadsilabo extends CI_Controller{
 	  if(!empty($data))
 	  {
 			$data['silabos']= $this->silabo_model->lista_silabos()->result();
-		$data['personas']= $this->persona_model->lista_personas()->result();
+		$data['personas']= $this->persona_model->lista_personas0()->result();
 	    $data['title']="Unidadsilabo del videotutorial";
 	  
-	    $this->load->view('template/page_header');		
+	    $this->load->view('page_header');		
 	    $this->load->view('unidadsilabo_record',$data);
-	    $this->load->view('template/page_footer');
+	    $this->load->view('page_footer');
 	  }else{
 
-	    $this->load->view('template/page_header');		
+	    $this->load->view('page_header');		
 	    $this->load->view('registro_vacio');
-	    $this->load->view('template/page_footer');
+	    $this->load->view('page_footer');
 	  }
 	}
 
 	public function siguiente(){
 	 // $data['unidadsilabo_list']=$this->unidadsilabo_model->lista_unidadsilabo()->result();
 		$data['unidadsilabo'] = $this->unidadsilabo_model->siguiente($this->uri->segment(3))->row_array();
-		$data['personas']= $this->persona_model->lista_personas()->result();
+		$data['personas']= $this->persona_model->lista_personas0()->result();
 		$data['silabos']= $this->silabo_model->lista_silabos()->result();
 	    $data['title']="Unidadsilabo del videotutorial";
 	 // $data['title']="Correo";
-		$this->load->view('template/page_header');		
+		$this->load->view('page_header');		
 	  $this->load->view('unidadsilabo_record',$data);
-		$this->load->view('template/page_footer');
+		$this->load->view('page_footer');
 	}
 
 	public function anterior(){
 	 // $data['unidadsilabo_list']=$this->unidadsilabo_model->lista_unidadsilabo()->result();
 	$data['unidadsilabo'] = $this->unidadsilabo_model->anterior($this->uri->segment(3))->row_array();
-	$data['personas']= $this->persona_model->lista_personas()->result();
+	$data['personas']= $this->persona_model->lista_personas0()->result();
 	$data['silabos']= $this->silabo_model->lista_silabos()->result();
 	 // $data['title']="Correo";
 	    $data['title']="Unidadsilabo del videotutorial";
-		$this->load->view('template/page_header');		
+		$this->load->view('page_header');		
 	  $this->load->view('unidadsilabo_record',$data);
-		$this->load->view('template/page_footer');
+		$this->load->view('page_footer');
 	}
 
 
