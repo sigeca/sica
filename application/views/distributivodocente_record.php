@@ -69,6 +69,9 @@ $permitir_acceso_modulo=true;
 <?php echo form_open('distributivodocente/save_edit') ?>
 <?php echo form_hidden('iddistributivodocente',$distributivodocente['iddistributivodocente']) ?>
 
+
+<div class="container" style="max-width:900px; margin:auto; padding:20px; border:1px solid #ddd; border-radius:8px; box-shadow:0 0 10px rgba(0,0,0,0.1);">
+
 <div class="form-group row">
     <label class="col-md-2 col-form-label"> Id distributivo docente: </label>
 	<div class="col-md-10">
