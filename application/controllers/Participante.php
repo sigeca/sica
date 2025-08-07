@@ -17,7 +17,7 @@ class Participante extends CI_Controller{
   		$data['eventos']= $this->evento_model->lista_eventos()->result();
   		$data['participanteestado']= $this->participanteestado_model->lista_participanteestados()->result();
   		$data['nivelparticipante']= $this->nivelparticipante_model->lista_nivelparticipantes()->result();
-  		$data['personas']= $this->persona_model->lista_personas()->result();
+  		$data['personas']= $this->persona_model->lista_personas0()->result();
   		$data['documentos']= $this->documento_model->lista_documentos()->result();
 		$data['participante'] = $this->participante_model->elultimo();
 		$data['evento'] = $this->evento_model->evento($data['participante']['idevento'])->row_array();
@@ -26,9 +26,9 @@ class Participante extends CI_Controller{
 
  		// print_r($data['participante_list']);
   		$data['title']="Lista de Participantees";
-		$this->load->view('template/page_header');		
+		$this->load->view(page_header');		
   		$this->load->view('participante_record',$data);
-		$this->load->view('template/page_footer');
+		$this->load->view(page_footer');
 	}
 
 
@@ -40,20 +40,20 @@ public function actual(){
 	$data['tipoparticipacion']= $this->tipoparticipacion_model->lista_tipoparticipacions()->result();
   	$data['participanteestado']= $this->participanteestado_model->lista_participanteestados()->result();
   	$data['nivelparticipante']= $this->nivelparticipante_model->lista_nivelparticipantes()->result();
-	$data['personas']= $this->persona_model->lista_personas()->result();
+	$data['personas']= $this->persona_model->lista_personas0()->result();
  
  
    	$data['participante']=$this->participante_model->participante($this->uri->segment(3))->row_array();
   	$data['grupoparticipantes']= $this->grupoparticipante_model->grupoparticipantesxparticipante($data['participante']['idparticipante'])->result();
 	$data['evento'] = $this->evento_model->evento($data['participante']['idevento'])->row_array();
 	$data['title']="Esta viendo el Participante # :";
-	$this->load->view('template/page_header');		
+	$this->load->view(page_header');		
 	$this->load->view('participante_record',$data);
-	$this->load->view('template/page_footer');
+	$this->load->view(page_footer');
    }else{
-	$this->load->view('template/page_header.php');
+	$this->load->view(page_header.php');
 	$this->load->view('login_form');
-	$this->load->view('template/page_footer.php');
+	$this->load->view(page_footer.php');
    }
 }
 
@@ -71,13 +71,13 @@ public function actual(){
 
 
 
-		$data['personas']= $this->persona_model->lista_personas()->result();
+		$data['personas']= $this->persona_model->lista_personas0()->result();
   		$data['participanteestado']= $this->participanteestado_model->lista_participanteestados()->result();
   		$data['nivelparticipante']= $this->nivelparticipante_model->lista_nivelparticipantes()->result();
 		$data['title']="Nuevo Participante";
-	 	$this->load->view('template/page_header');		
+	 	$this->load->view(page_header');		
 	 	$this->load->view('participante_form',$data);
-	 	$this->load->view('template/page_footer');
+	 	$this->load->view(page_footer');
 	}
 
 
@@ -109,12 +109,12 @@ public function actual(){
   		$data['participanteestado']= $this->participanteestado_model->lista_participanteestados()->result();
   		$data['nivelparticipante']= $this->nivelparticipante_model->lista_nivelparticipantes()->result();
 		$data['eventos']= $this->evento_model->lista_eventos()->result();
-		$data['personas']= $this->persona_model->lista_personas()->result();
+		$data['personas']= $this->persona_model->lista_personas0()->result();
   		$data['documentos']= $this->documento_model->lista_documentos()->result();
  	 	$data['title'] = "Actualizar Participante";
- 	 	$this->load->view('template/page_header');		
+ 	 	$this->load->view(page_header');		
  	 	$this->load->view('participante_edit',$data);
-	 	$this->load->view('template/page_footer');
+	 	$this->load->view(page_footer');
 	}
 
 
@@ -220,9 +220,9 @@ public function listar()
   $data['participante'] = $this->participante_model->listar_participante1()->result();
   $data['title']="participantes";
   $data['eventos']= $this->evento_model->lista_eventos()->result();
-	$this->load->view('template/page_header');		
+	$this->load->view(page_header');		
   $this->load->view('participante_list',$data);
-	$this->load->view('template/page_footer');
+	$this->load->view(page_footer');
 }
 
 
@@ -281,9 +281,9 @@ public function listarxevento()
   $data['eventos']= $this->evento_model->lista_eventos()->result();
   $data['title']="participantes";
    $data['filtro']= $this->uri->segment(3);
-	$this->load->view('template/page_header');		
+	$this->load->view(page_header');		
   $this->load->view('participante_listxevento',$data);
-	$this->load->view('template/page_footer');
+	$this->load->view(page_footer');
 }
 
 
@@ -334,15 +334,15 @@ public function elprimero()
   {
   		$data['eventos']= $this->evento_model->lista_eventos()->result();
 
-  	$data['personas']= $this->persona_model->lista_personas()->result();
+  	$data['personas']= $this->persona_model->lista_personas0()->result();
     $data['title']="Participante del documento";
-    $this->load->view('template/page_header');		
+    $this->load->view(page_header');		
     $this->load->view('participante_record',$data);
-    $this->load->view('template/page_footer');
+    $this->load->view(page_footer');
   }else{
-    $this->load->view('template/page_header');		
+    $this->load->view(page_header');		
     $this->load->view('registro_vacio');
-    $this->load->view('template/page_footer');
+    $this->load->view(page_footer');
   }
  }
 
@@ -356,17 +356,17 @@ public function elultimo()
   if(!empty($data))
   {
   		$data['eventos']= $this->evento_model->lista_eventos()->result();
-  	$data['personas']= $this->persona_model->lista_personas()->result();
+  	$data['personas']= $this->persona_model->lista_personas0()->result();
     $data['title']="Participante del documento";
   
-    $this->load->view('template/page_header');		
+    $this->load->view(page_header');		
     $this->load->view('participante_record',$data);
-    $this->load->view('template/page_footer');
+    $this->load->view(page_footer');
   }else{
 
-    $this->load->view('template/page_header');		
+    $this->load->view(page_header');		
     $this->load->view('registro_vacio');
-    $this->load->view('template/page_footer');
+    $this->load->view(page_footer');
   }
 }
 
@@ -377,13 +377,13 @@ public function siguiente(){
   		$data['nivelparticipante']= $this->nivelparticipante_model->lista_nivelparticipantes()->result();
 	$data['participante'] = $this->participante_model->siguiente($this->uri->segment(3))->row_array();
 	$data['evento'] = $this->evento_model->evento($data['participante']['idevento'])->row_array();
-  	$data['personas']= $this->persona_model->lista_personas()->result();
+  	$data['personas']= $this->persona_model->lista_personas0()->result();
   		$data['eventos']= $this->evento_model->lista_eventos()->result();
     $data['title']="Participante del documento";
  // $data['title']="Correo";
-	$this->load->view('template/page_header');		
+	$this->load->view(page_header');		
   $this->load->view('participante_record',$data);
-	$this->load->view('template/page_footer');
+	$this->load->view(page_footer');
 }
 
 public function anterior(){
@@ -393,13 +393,13 @@ public function anterior(){
   		$data['nivelparticipante']= $this->nivelparticipante_model->lista_nivelparticipantes()->result();
 	$data['participante'] = $this->participante_model->anterior($this->uri->segment(3))->row_array();
 	$data['evento'] = $this->evento_model->evento($data['participante']['idevento'])->row_array();
- 	$data['personas']= $this->persona_model->lista_personas()->result();
+ 	$data['personas']= $this->persona_model->lista_personas0()->result();
   		$data['eventos']= $this->evento_model->lista_eventos()->result();
  // $data['title']="Correo";
     $data['title']="Participante del documento";
-	$this->load->view('template/page_header');		
+	$this->load->view(page_header');		
   $this->load->view('participante_record',$data);
-	$this->load->view('template/page_footer');
+	$this->load->view(page_footer');
 }
 
 
