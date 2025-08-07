@@ -373,7 +373,7 @@ h
 <script type="text/javascript">
 
 $(document).ready(function(){
-	var iddistributivodocente=document.getElementById("iddistributivodocente").value;
+	var iddistributivodocente=document.getElementById("iddistributivodocente").innerHTML;
 	var idperiodoacademico=<?php echo $distributivo[0]->idperiodoacademico; ?>;
 	var iddocente=  document.getElementById("iddocente").value;
 	var mytablaf= $('#mydatac').DataTable({"ajax": {url: '<?php echo site_url('distributivodocente/asignaturadocente_data')?>', type: 'GET',data:{iddistributivodocente:iddistributivodocente}},});
