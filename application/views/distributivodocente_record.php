@@ -76,7 +76,7 @@ $permitir_acceso_modulo=true;
     <label class="col-md-2 col-form-label"> Id distributivo docente: </label>
 	<div class="col-md-10">
      	<?php 
-      echo form_input('iddistributivodocente',$distributivodocente['iddistributivodocente'],array("id"=>"iddistributivodocente","disabled"=>"disabled",'placeholder'=>'Iddistributivodocentes')); 
+      echo form_input('iddistributivodocente',$distributivodocente['iddistributivodocente'],array("id"=>"iddistributivodocente","disabled"=>"disabled",'placeholder'=>'Iddistributivodocentes','style'=>'width:100%')); 
 		?>
 	</div> 
 </div>
@@ -95,7 +95,7 @@ foreach ($docentes as $row){
 	$options[$row->iddocente]= $row->eldocente;
 }
 
-echo form_input('eldocente',$options[$distributivodocente['iddocente']],array("id"=>"eldocente","disabled"=>"disabled",'style'=>'width:500px;')); 
+echo form_input('eldocente',$options[$distributivodocente['iddocente']],array("id"=>"eldocente","disabled"=>"disabled",'style'=>'width:100%;')); 
 
 echo form_input(array('name'=>'iddocente',"type"=>"hidden","value"=>$distributivodocente['iddocente'],"id"=>"iddocente")); 
 		?>
@@ -112,7 +112,7 @@ echo form_input(array('name'=>'iddocente',"type"=>"hidden","value"=>$distributiv
     foreach ($distributivo as $row){
 	      $options[$row->iddistributivo]= $row->eldistributivo;
     }
-    echo form_input('iddistributivo',$options[$distributivodocente['iddistributivo']],array("disabled"=>"disabled",'style'=>'width:500px;')); 
+    echo form_input('iddistributivo',$options[$distributivodocente['iddistributivo']],array("disabled"=>"disabled",'style'=>'width:100%;')); 
 		?>
 	</div> 
 </div>
@@ -130,7 +130,7 @@ foreach ($tiempodedicacions as $row){
 	$options[$row->idtiempodedicacion]= $row->nombre;
 }
 
-echo form_input('idtiempodedicacion',$options[$distributivodocente['idtiempodedicacion']],array("id"=>"idtiempodedicacion","disabled"=>"disabled",'style'=>'width:500px;')); 
+echo form_input('idtiempodedicacion',$options[$distributivodocente['idtiempodedicacion']],array("id"=>"idtiempodedicacion","disabled"=>"disabled",'style'=>'width:100%;')); 
 
 		?>
 	</div> 
@@ -145,7 +145,7 @@ foreach ($categoriadocentes as $row){
 	$options[$row->idcategoriadocente]= $row->nombre;
 }
 
-echo form_input('idcategoriadocente',$options[$distributivodocente['idcategoriadocente']],array("id"=>"idcategoriadocente","disabled"=>"disabled",'style'=>'width:500px;')); 
+echo form_input('idcategoriadocente',$options[$distributivodocente['idcategoriadocente']],array("id"=>"idcategoriadocente","disabled"=>"disabled",'style'=>'width:100%;')); 
 
 		?>
 	</div> 
@@ -161,7 +161,7 @@ foreach ($relaciondependencias as $row){
 	$options[$row->idrelaciondependencia]= $row->nombre;
 }
 
-echo form_input('idrelaciondependencia',$options[$distributivodocente['idrelaciondependencia']],array("id"=>"idrelaciondependencia","disabled"=>"disabled",'style'=>'width:500px;')); 
+echo form_input('idrelaciondependencia',$options[$distributivodocente['idrelaciondependencia']],array("id"=>"idrelaciondependencia","disabled"=>"disabled",'style'=>'width:100%;')); 
 
 		?>
 	</div> 
@@ -172,7 +172,7 @@ echo form_input('idrelaciondependencia',$options[$distributivodocente['idrelacio
     <label class="col-md-2 col-form-label"> Portfolio Web: </label>
 	<div class="col-md-10">
      	<?php 
-      echo form_input('portafoliodrive',$distributivodocente['portafoliodrive'],array("id"=>"portafoliodrive","disabled"=>"disabled",'placeholder'=>'Portafolioweb')); 
+      echo form_input('portafoliodrive',$distributivodocente['portafoliodrive'],array("id"=>"portafoliodrive","disabled"=>"disabled",'placeholder'=>'Portafolioweb','style'=>'width:100%')); 
 		?>
 	</div> 
 </div>
