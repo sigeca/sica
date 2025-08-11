@@ -101,6 +101,7 @@ if(isset($evento))
 <div class="container" style="max-width:900px; margin:auto; padding:20px; border:1px solid #ddd; border-radius:8px; box-shadow:0 0 10px rgba(0,0,0,0.1);">
 
 
+<div class="form-group row">
     <label class="col-md-2 col-form-label"> <?php echo anchor('institucion/add', 'Institución:') ?> </label>
      <?php 
     $options= array("NADA");
