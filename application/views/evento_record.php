@@ -15,9 +15,9 @@
 <div style="display:flex;flex-direction:row; justify-content:space-between; align-items:center;">
         <span style="text-align: left; font-size:x-large; font-weight:bold;">
             <?php echo $title;  ?>
-            <span style="font-size:large; margin-left:10px;" id="idpersona"><?php echo $persona['idpersona']; ?></span>
+            <span style="font-size:large; margin-left:10px;" id="idevento"><?php echo $evento['idevento']; ?></span>
         </span>
-        <?php echo ($persona['eliminado']==1)? '<span style="font-size:large; color:red; font-weight:bold;"> - ELIMINADO</span>':'<span style="font-size:large; color:green; font-weight:bold;"> - ACTIVO</span>'; ?>
+        <?php echo ($evento['eliminado']==1)? '<span style="font-size:large; color:red; font-weight:bold;"> - ELIMINADO</span>':'<span style="font-size:large; color:green; font-weight:bold;"> - ACTIVO</span>'; ?>
     </div>
 
 
