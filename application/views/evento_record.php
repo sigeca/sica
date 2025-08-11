@@ -97,7 +97,6 @@ if(isset($evento))
 <?php echo form_open('evento/save_edit') ?>
 <?php echo form_hidden('idevento',$evento['idevento'],array('name'=>'idevento')) ?>
 
-<div class="form-group row">
 
 <div class="container" style="max-width:900px; margin:auto; padding:20px; border:1px solid #ddd; border-radius:8px; box-shadow:0 0 10px rgba(0,0,0,0.1);">
 
