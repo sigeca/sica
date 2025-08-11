@@ -12,13 +12,20 @@
 
 
 <div id="eys-nav-i">
-	<div style="text-align: left; font-size:large"> <?php echo $title  ?></div>
-    <span style="font-size:large; margin-left:10px;" id="idevento"><?php echo $evento['idevento']; ?></span>
+<div style="display:flex;flex-direction:row; justify-content:space-between; align-items:center;">
+        <span style="text-align: left; font-size:x-large; font-weight:bold;">
+            <?php echo $title;  ?>
+            <span style="font-size:large; margin-left:10px;" id="idpersona"><?php echo $persona['idpersona']; ?></span>
+        </span>
+        <?php echo ($persona['eliminado']==1)? '<span style="font-size:large; color:red; font-weight:bold;"> - ELIMINADO</span>':'<span style="font-size:large; color:green; font-weight:bold;"> - ACTIVO</span>'; ?>
+    </div>
+
+
 	
 <?php
+$permitir_acceso_modulo=true; 
 if(isset($evento))
 {
-
 	$permitir=0;
 	$j=0;
 	$numero=$j;
@@ -91,6 +98,10 @@ if(isset($evento))
 <?php echo form_hidden('idevento',$evento['idevento'],array('name'=>'idevento')) ?>
 
 <div class="form-group row">
+
+<div class="container" style="max-width:900px; margin:auto; padding:20px; border:1px solid #ddd; border-radius:8px; box-shadow:0 0 10px rgba(0,0,0,0.1);">
+
+
     <label class="col-md-2 col-form-label"> <?php echo anchor('institucion/add', 'Institución:') ?> </label>
      <?php 
     $options= array("NADA");
