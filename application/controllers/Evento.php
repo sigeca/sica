@@ -77,13 +77,13 @@ public function cumplimiento(){
 	$data['asignaturadocentes'] = $this->asignaturadocente_model->lista_asignaturadocentesA(0)->result();
 	$data['calendarioacademicos'] = $this->calendarioacademico_model->lista_calendarioacademicosA(0)->result();
 	$data['title']="Usted esta visualizando el Eventos  #";
-	$this->load->view('template/page_header');		
+	$this->load->view('page_header');		
 	$this->load->view('evento_cumplimiento',$data);
-	$this->load->view('template/page_footer');
+	$this->load->view('page_footer');
    }else{
-	$this->load->view('template/page_header.php');
+	$this->load->view('page_header.php');
 	$this->load->view('login_form');
-	$this->load->view('template/page_footer.php');
+	$this->load->view('page_footer.php');
    }
 }
 
@@ -106,9 +106,9 @@ public function cumplimiento(){
 	$data['instituciones']= $this->institucion_model->lista_instituciones()->result();
 	$data['personas']= $this->persona_model->lista_personas()->result();
 	$data['paginas']= $this->pagina_model->lista_paginas()->result();
-	$this->load->view('template/page_header');		
+	$this->load->view('page_header');		
 	$this->load->view('evento_form',$data);
-	$this->load->view('template/page_footer');
+	$this->load->view('page_footer');
 	}
 
 //==============================================
@@ -205,9 +205,9 @@ public function cumplimiento(){
 			$data['evento_estados']= $this->evento_estado_model->lista_evento_estados()->result();
 			$data['instituciones']= $this->institucion_model->lista_instituciones()->result();
 	    		$data['title'] = "Actualizar Evento";
-			$this->load->view('template/page_header');		
+			$this->load->view('page_header');		
 			$this->load->view('evento_edit',$data);
-			$this->load->view('template/page_footer');
+			$this->load->view('page_footer');
 	 
 	}
 
@@ -275,9 +275,9 @@ public function cumplimiento(){
 		$data['title']="Detalle del evento # ". $data['evento']['idevento'];
 
 
-		$this->load->view('template/page_header');		
+		$this->load->view('page_header');		
 		$this->load->view('evento_frontend',$data);
-		$this->load->view('template/page_footer');
+		$this->load->view('page_footer');
 	}
 
 
@@ -605,9 +605,9 @@ public function persona_data1() {
 		$data['filtro']= $this->uri->segment(3);
 
 		$data['title']="Evento";
-		$this->load->view('template/page_header');		
+		$this->load->view('page_header');		
 		$this->load->view('evento_list_participantes',$data);
-		$this->load->view('template/page_footer');
+		$this->load->view('page_footer');
 	}
 
 
@@ -992,13 +992,13 @@ $r->href='<a href="javascript:void(0);" class="btn btn-info btn-outline-primary 
 		
   			$data['temas']= $this->tema_model->lista_temass($data['evento']['idsilabo'])->result();
 			$data['title']="Evento";
-			$this->load->view('template/page_header');		
+			$this->load->view('page_header');		
 			$this->load->view('evento_record',$data);
-			$this->load->view('template/page_footer');
+			$this->load->view('page_footer');
 		  }else{
-			$this->load->view('template/page_header');		
+			$this->load->view('page_header');		
 			$this->load->view('registro_vacio');
-			$this->load->view('template/page_footer');
+			$this->load->view('page_footer');
 		  }
 	  
 	}
@@ -1026,13 +1026,13 @@ $r->href='<a href="javascript:void(0);" class="btn btn-info btn-outline-primary 
 		$data['calendarioacademicos'] = $this->calendarioacademico_model->lista_calendarioacademicosA(0)->result();
 		$data['jornadadocente'] =$this->jornadadocente_model->jornadadocentes($data['evento']['idasignaturadocente'])->result();
 			$data['title']="Evento";
-			$this->load->view('template/page_header');		
+			$this->load->view('page_header');		
 			$this->load->view('evento_record',$data);
-			$this->load->view('template/page_footer');
+			$this->load->view('page_footer');
 		  }else{
-			$this->load->view('template/page_header');		
+			$this->load->view('page_header');		
 			$this->load->view('registro_vacio');
-			$this->load->view('template/page_footer');
+			$this->load->view('page_footer');
 		  }
 	  }
 
@@ -1060,9 +1060,9 @@ $r->href='<a href="javascript:void(0);" class="btn btn-info btn-outline-primary 
 		$data['calendarioacademicos'] = $this->calendarioacademico_model->lista_calendarioacademicosA(0)->result();
 		$data['jornadadocente'] =$this->jornadadocente_model->jornadadocentes($data['evento']['idasignaturadocente'])->result();
 	  	$data['title']="Evento";
-		$this->load->view('template/page_header');		
+		$this->load->view('page_header');		
 	  	$this->load->view('evento_record',$data);
-		$this->load->view('template/page_footer');
+		$this->load->view('page_footer');
 	}
 
 
@@ -1088,9 +1088,9 @@ $r->href='<a href="javascript:void(0);" class="btn btn-info btn-outline-primary 
 		$data['calendarioacademicos'] = $this->calendarioacademico_model->lista_calendarioacademicosA(0)->result();
 		$data['jornadadocente'] =$this->jornadadocente_model->jornadadocentes($data['evento']['idasignaturadocente'])->result();
 		$data['title']="Evento";
-		$this->load->view('template/page_header');		
+		$this->load->view('page_header');		
 		$this->load->view('evento_record',$data);
-		$this->load->view('template/page_footer');
+		$this->load->view('page_footer');
 	}
 
 
@@ -1138,7 +1138,7 @@ $r->href='<a href="javascript:void(0);" class="btn btn-info btn-outline-primary 
 
 		$data['silabo']=$this->silabo_model->silabo1($data['evento']['idsilabo'])->row_array();
 		$data['asignatura']=$this->asignatura_model->asignatura($data['silabo']['idasignatura'])->row_array();
-//		$this->load->view('template/page_header');		
+//		$this->load->view('page_header');		
 //		unset($this->session->userdata['logged_in']);
 	 //   $this->load->view('page_header');
 		$this->load->view('eventos/evento',$data);
@@ -1148,17 +1148,17 @@ $r->href='<a href="javascript:void(0);" class="btn btn-info btn-outline-primary 
 
 
 public function canvas(){
-	$this->load->view('template/page_header');
+	$this->load->view('page_header');
 	$this->load->view('canvas');
-	$this->load->view('template/page_footer');
+	$this->load->view('page_footer');
 }
 
 function show_pdf() {
 	 	$data['evento'] = $this->evento_model->evento($this->uri->segment(3))->row_array();
- $this->load->view('template/page_header');
+ $this->load->view('page_header');
  $data['blog_text'] = "POSTULACION"; 
  $this->load->view('cargapdf',$data);
- $this->load->view('template/page_footer'); 
+ $this->load->view('page_footer'); 
  }
 
 
