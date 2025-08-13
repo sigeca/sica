@@ -35,6 +35,8 @@
 <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js" integrity="sha512-7Pi/otER0Dtm/72tQkrS0O+4+7fdFAnHrXWgTYSdwn9kFGk7cemO+Tq1NYyF024o+rcZ0pUmtYNz7KfLzCFgMoQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 
 </head>
 <body>
