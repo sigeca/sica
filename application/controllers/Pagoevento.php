@@ -12,14 +12,14 @@ class Pagoevento extends CI_Controller{
 
 	public function index(){
   		$data['eventos']= $this->evento_model->lista_eventos()->result();
-  		$data['personas']= $this->persona_model->lista_personas()->result();
+  		$data['personas']= $this->persona_model->lista_personas0()->result();
 		$data['pagoevento'] = $this->pagoevento_model->elultimo();
 
  		// print_r($data['pagoevento_list']);
   		$data['title']="Lista de Pagoeventoes";
-		$this->load->view('template/page_header');		
+		$this->load->view('page_header');		
   		$this->load->view('pagoevento_record',$data);
-		$this->load->view('template/page_footer');
+		$this->load->view('page_footer');
 	}
 
 
@@ -32,26 +32,26 @@ class Pagoevento extends CI_Controller{
 	     $data["idevento"]=$idevento;
 	    }
 
-		$data['personas']= $this->persona_model->lista_personas()->result();
+		$data['personas']= $this->persona_model->lista_personas0()->result();
 		$data['eventos']= $this->evento_model->evento($idevento)->result();
 		$data['sesioneventos'] =$this->sesionevento_model->sesioneventos($idevento)->result();
        
 
 		$data['title']="Nuevo Pagoevento";
-	 	$this->load->view('template/page_header');		
+	 	$this->load->view('page_header');		
 	 	$this->load->view('pagoevento_form',$data);
-	 	$this->load->view('template/page_footer');
+	 	$this->load->view('page_footer');
 	}
 
 
 	public function evento()
 	{
-		$data['personas']= $this->persona_model->lista_personas()->result();
+		$data['personas']= $this->persona_model->lista_personas0()->result();
 		$data['eventos']= $this->evento_model->lista_eventos()->result();
 		$data['title']="Nuevo Pagoevento";
-	 	$this->load->view('template/page_header');		
+	 	$this->load->view('page_header');		
 	 	$this->load->view('pagoevento_form1',$data);
-	 	$this->load->view('template/page_footer');
+	 	$this->load->view('page_footer');
 	}
 
 
@@ -108,11 +108,11 @@ class Pagoevento extends CI_Controller{
 	{
 	 	$data['pagoevento'] = $this->pagoevento_model->pagoevento($this->uri->segment(3))->row_array();
 		$data['eventos']= $this->evento_model->lista_eventos()->result();
-		$data['personas']= $this->persona_model->lista_personas()->result();
+		$data['personas']= $this->persona_model->lista_personas0()->result();
  	 	$data['title'] = "Actualizar Pagoevento";
- 	 	$this->load->view('template/page_header');		
+ 	 	$this->load->view('page_header');		
  	 	$this->load->view('pagoevento_edit',$data);
-	 	$this->load->view('template/page_footer');
+	 	$this->load->view('page_footer');
 	}
 
 
@@ -148,9 +148,9 @@ public function listar()
 	
   $data['pagoevento'] = $this->pagoevento_model->listar_pagoevento1(0)->result();
   $data['title']="Certificado";
-	$this->load->view('template/page_header');		
+	$this->load->view('page_header');		
   $this->load->view('pagoevento_list',$data);
-	$this->load->view('template/page_footer');
+	$this->load->view('page_footer');
 }
 
 
@@ -215,9 +215,9 @@ public function reporte()
 	$data['sesioneventos'] =$this->sesionevento_model->sesionevento_activo2($this->uri->segment(3))->result();
   	$data['pagoevento'] = $this->pagoevento_model->listar_pagoevento1($this->uri->segment(3))->result();
   	$data['title']="Certificado";
-	$this->load->view('template/page_header');		
+	$this->load->view('page_header');		
  	$this->load->view('pagoevento_report',$data);
-	$this->load->view('template/page_footer');
+	$this->load->view('page_footer');
 
 
 
@@ -240,10 +240,10 @@ public function reportepdf()
   	$data['title']="Certificado";
 	$fechascortes=array(1=>"2022-04-08",2=>"2022-06-01",3=>"2022-06-10");
 	$data['fechacorte']=$fechascortes;
-//	$this->load->view('template/page_header');		
+//	$this->load->view('page_header');		
 // 	$this->load->view('pagoevento_report',$data);
 	$this->load->view('pagoevento_reportepdf',$data);
-//	$this->load->view('template/page_footer');
+//	$this->load->view('page_footer');
 
 
 
@@ -324,17 +324,17 @@ public function actual()
  if(isset($this->session->userdata['logged_in'])){
 
  	$data['eventos']= $this->evento_model->lista_eventos()->result();
-  	$data['personas']= $this->persona_model->lista_personas()->result();
+  	$data['personas']= $this->persona_model->lista_personas0()->result();
 	$data['pagoevento'] = $this->pagoevento_model->pagoevento($this->uri->segment(3))->row_array();
     $data['title']="Pagoevento del documento";
-    $this->load->view('template/page_header');		
+    $this->load->view('page_header');		
     $this->load->view('pagoevento_record',$data);
-    $this->load->view('template/page_footer');
+    $this->load->view('page_footer');
 
    }else{
-	$this->load->view('template/page_header.php');
+	$this->load->view('page_header.php');
 	$this->load->view('login_form');
-	$this->load->view('template/page_footer.php');
+	$this->load->view('page_footer.php');
    }
 
  }
@@ -352,15 +352,15 @@ public function elprimero()
   if(!empty($data))
   {
 	$data['eventos']= $this->evento_model->lista_eventos()->result();
-  	$data['personas']= $this->persona_model->lista_personas()->result();
+  	$data['personas']= $this->persona_model->lista_personas0()->result();
     $data['title']="Pagoevento del documento";
-    $this->load->view('template/page_header');		
+    $this->load->view('page_header');		
     $this->load->view('pagoevento_record',$data);
-    $this->load->view('template/page_footer');
+    $this->load->view('page_footer');
   }else{
-    $this->load->view('template/page_header');		
+    $this->load->view('page_header');		
     $this->load->view('registro_vacio');
-    $this->load->view('template/page_footer');
+    $this->load->view('page_footer');
   }
  }
 
@@ -371,17 +371,17 @@ public function elultimo()
   if(!empty($data))
   {
   		$data['eventos']= $this->evento_model->lista_eventos()->result();
-  	$data['personas']= $this->persona_model->lista_personas()->result();
+  	$data['personas']= $this->persona_model->lista_personas0()->result();
     $data['title']="Pagoevento del documento";
   
-    $this->load->view('template/page_header');		
+    $this->load->view('page_header');		
     $this->load->view('pagoevento_record',$data);
-    $this->load->view('template/page_footer');
+    $this->load->view('page_footer');
   }else{
 
-    $this->load->view('template/page_header');		
+    $this->load->view('page_header');		
     $this->load->view('registro_vacio');
-    $this->load->view('template/page_footer');
+    $this->load->view('page_footer');
   }
 }
 
@@ -389,26 +389,26 @@ public function siguiente(){
  // $data['pagoevento_list']=$this->pagoevento_model->lista_pagoevento()->result();
   $data['documentos']= $this->documento_model->lista_documentos()->result();
 	$data['pagoevento'] = $this->pagoevento_model->siguiente($this->uri->segment(3))->row_array();
-  	$data['personas']= $this->persona_model->lista_personas()->result();
+  	$data['personas']= $this->persona_model->lista_personas0()->result();
   		$data['eventos']= $this->evento_model->lista_eventos()->result();
     $data['title']="Pagoevento del documento";
  // $data['title']="Correo";
-	$this->load->view('template/page_header');		
+	$this->load->view('page_header');		
   $this->load->view('pagoevento_record',$data);
-	$this->load->view('template/page_footer');
+	$this->load->view('page_footer');
 }
 
 public function anterior(){
  // $data['pagoevento_list']=$this->pagoevento_model->lista_pagoevento()->result();
   $data['documentos']= $this->documento_model->lista_documentos()->result();
 	$data['pagoevento'] = $this->pagoevento_model->anterior($this->uri->segment(3))->row_array();
- 	$data['personas']= $this->persona_model->lista_personas()->result();
+ 	$data['personas']= $this->persona_model->lista_personas0()->result();
   	$data['eventos']= $this->evento_model->lista_eventos()->result();
  // $data['title']="Correo";
     $data['title']="Pagoevento del documento";
-	$this->load->view('template/page_header');		
+	$this->load->view('page_header');		
   $this->load->view('pagoevento_record',$data);
-	$this->load->view('template/page_footer');
+	$this->load->view('page_footer');
 }
 
 
