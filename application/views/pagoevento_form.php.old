@@ -12,6 +12,7 @@
 
 <h2> <?php echo $title; ?>(<?php echo anchor('pagoevento/reporte/'.$eventos[0]->idevento, 'Reporte'); ?>)</h2>
 <hr/>
+<!---<?php echo form_open(); ?>-->
 <br>
 
 
@@ -70,13 +71,19 @@ foreach ($sesioneventos as $row){
 
 
 
+<!--- <?php echo form_close();?>  --->
+
+<!--- MODAL ADD ---->
+
 <form>
 	<div class="modal fade" id="Modal_Edit" tabindex="-1"  role="dialog" arias-labelledby="exampleModalLabel" aria-hidden="true" >
 		<div class="modal-dialog modal-lg" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
 					<h5 class="modal-title" id="exampleModalLabel">Editar notas</h5>
-					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
 				</div>
 				<div class="modal-body">
 
@@ -149,7 +156,7 @@ foreach ($sesioneventos as $row){
 
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 					<button type="button" class="submit" id="btn_update" class="btn btn-primary">Guardar</button>
 				</div>
 			</div>
@@ -364,9 +371,7 @@ $("#btn_update").on("click", function(){
         var html = '';
         var i;
         get_participantes2();
-        var myModalEl = document.getElementById('Modal_Edit');
-        var modal = bootstrap.Modal.getInstance(myModalEl);
-        modal.hide();
+	$("#Modal_Edit").modal("hide");
         alert("Se guardo con exito");
         },
       error: function (xhr, ajaxOptions, thrownError) {
@@ -408,8 +413,7 @@ function get_pagoevento_xx() {
         var html = '';
 	var comentario="";
         var i;
-        var myModal = new bootstrap.Modal(document.getElementById('Modal_Edit'), {});
-        myModal.show();
+	$('#Modal_Edit').modal('show');
         if(data.length!=1){
           $('[name="idpagoevento_edit"]').val(0);
           $('[name="idevento_edit"]').val(idevento);
