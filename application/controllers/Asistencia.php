@@ -18,15 +18,15 @@ class Asistencia extends CI_Controller{
 
 	public function index(){
   		$data['eventos']= $this->evento_model->lista_eventos()->result();
-  		$data['personas']= $this->persona_model->lista_personas()->result();
+  		$data['personas']= $this->persona_model->lista_personas0()->result();
   		$data['tipoasistencias']= $this->tipoasistencia_model->lista_tipoasistencias()->result();
 		$data['asistencia'] = $this->asistencia_model->elultimo();
 
  		// print_r($data['asistencia_list']);
   		$data['title']="Lista de Asistenciaes";
-		$this->load->view('template/page_header');		
+		$this->load->view('page_header');		
   		$this->load->view('asistencia_record',$data);
-		$this->load->view('template/page_footer');
+		$this->load->view('page_footer');
 	}
 
 
@@ -40,14 +40,14 @@ class Asistencia extends CI_Controller{
 	    }
 
 
-		$data['personas']= $this->persona_model->lista_personas()->result();
+		$data['personas']= $this->persona_model->lista_personas0()->result();
 		$data['eventos']= $this->evento_model->lista_eventos_open($idevento)->result();
   		$data['tipoasistencias']= $this->tipoasistencia_model->lista_tipoasistencias()->result();
 		$data['sesioneventos'] =$this->sesionevento_model->sesioneventos($idevento)->result();
 		$data['title']="Tomar  Asistencia";
-	 	$this->load->view('template/page_header');		
+	 	$this->load->view('page_header');		
 	 	$this->load->view('asistencia_form',$data);
-	 	$this->load->view('template/page_footer');
+	 	$this->load->view('page_footer');
 	}
 
 
@@ -61,14 +61,14 @@ class Asistencia extends CI_Controller{
 	    }
 
 
-		$data['personas']= $this->persona_model->lista_personas()->result();
+		$data['personas']= $this->persona_model->lista_personas0()->result();
 		$data['eventos']= $this->evento_model->lista_eventos_open($idevento)->result();
   		$data['tipoasistencias']= $this->tipoasistencia_model->lista_tipoasistencias()->result();
 		$data['sesioneventos'] =$this->sesionevento_model->sesioneventos($idevento)->result();
 		$data['title']="Nuevo Asistencia";
-	 	$this->load->view('template/page_header');		
+	 	$this->load->view('page_header');		
 	 	$this->load->view('asistencia_form1',$data);
-	 	$this->load->view('template/page_footer');
+	 	$this->load->view('page_footer');
 	}
 
 
@@ -78,13 +78,13 @@ class Asistencia extends CI_Controller{
 
 	public function evento()
 	{
-		$data['personas']= $this->persona_model->lista_personas()->result();
+		$data['personas']= $this->persona_model->lista_personas0()->result();
 		$data['eventos']= $this->evento_model->lista_eventos()->result();
   		$data['tipoasistencias']= $this->tipoasistencia_model->lista_tipoasistencias()->result();
 		$data['title']="Nuevo Asistencia";
-	 	$this->load->view('template/page_header');		
+	 	$this->load->view('page_header');		
 	 	$this->load->view('asistencia_form1',$data);
-	 	$this->load->view('template/page_footer');
+	 	$this->load->view('page_footer');
 	}
 
 
@@ -179,11 +179,11 @@ class Asistencia extends CI_Controller{
 	{
 	 	$data['asistencia'] = $this->asistencia_model->asistencia($this->uri->segment(3))->row_array();
 		$data['eventos']= $this->evento_model->lista_eventos()->result();
-		$data['personas']= $this->persona_model->lista_personas()->result();
+		$data['personas']= $this->persona_model->lista_personas0()->result();
  	 	$data['title'] = "Actualizar Asistencia";
- 	 	$this->load->view('template/page_header');		
+ 	 	$this->load->view('page_header');		
  	 	$this->load->view('asistencia_edit',$data);
-	 	$this->load->view('template/page_footer');
+	 	$this->load->view('page_footer');
 	}
 
 
@@ -192,9 +192,9 @@ class Asistencia extends CI_Controller{
 	public function geolocal()
 	{
  	 	$data['title'] = "Actualizar Asistencia";
- 	 	$this->load->view('template/page_header');		
+ 	 	$this->load->view('page_header');		
  	 	$this->load->view('geolocalizacion');
-	 	$this->load->view('template/page_footer');
+	 	$this->load->view('page_footer');
 	}
 
 
@@ -242,9 +242,9 @@ class Asistencia extends CI_Controller{
 		
 	  $data['asistencia'] = $this->asistencia_model->listar_asistencia1()->result();
 	  $data['title']="Certificado";
-		$this->load->view('template/page_header');		
+		$this->load->view('page_header');		
 	  $this->load->view('asistencia_list',$data);
-		$this->load->view('template/page_footer');
+		$this->load->view('page_footer');
 	}
 
 
@@ -322,9 +322,9 @@ class Asistencia extends CI_Controller{
   	$data['title']="Certificado";
 
 
-	//	$this->load->view('template/page_header');		
+	//	$this->load->view('page_header');		
 		$this->load->view('asistencia_list_pdf',$data);
-//		$this->load->view('template/page_footer');
+//		$this->load->view('page_footer');
 	}
 
 
@@ -428,15 +428,15 @@ public function elprimero()
   {
   		$data['eventos']= $this->evento_model->lista_eventos()->result();
 
-  	$data['personas']= $this->persona_model->lista_personas()->result();
+  	$data['personas']= $this->persona_model->lista_personas0()->result();
     $data['title']="Asistencia ";
-    $this->load->view('template/page_header');		
+    $this->load->view('page_header');		
     $this->load->view('asistencia_record',$data);
-    $this->load->view('template/page_footer');
+    $this->load->view('page_footer');
   }else{
-    $this->load->view('template/page_header');		
+    $this->load->view('page_header');		
     $this->load->view('registro_vacio');
-    $this->load->view('template/page_footer');
+    $this->load->view('page_footer');
   }
  }
 
@@ -446,42 +446,42 @@ public function elultimo()
   if(!empty($data))
   {
   		$data['eventos']= $this->evento_model->lista_eventos()->result();
-  	$data['personas']= $this->persona_model->lista_personas()->result();
+  	$data['personas']= $this->persona_model->lista_personas0()->result();
     $data['title']="Asistencia ";
   
-    $this->load->view('template/page_header');		
+    $this->load->view('page_header');		
     $this->load->view('asistencia_record',$data);
-    $this->load->view('template/page_footer');
+    $this->load->view('page_footer');
   }else{
 
-    $this->load->view('template/page_header');		
+    $this->load->view('page_header');		
     $this->load->view('registro_vacio');
-    $this->load->view('template/page_footer');
+    $this->load->view('page_footer');
   }
 }
 
 public function siguiente(){
  // $data['asistencia_list']=$this->asistencia_model->lista_asistencia()->result();
 	$data['asistencia'] = $this->asistencia_model->siguiente($this->uri->segment(3))->row_array();
-  	$data['personas']= $this->persona_model->lista_personas()->result();
+  	$data['personas']= $this->persona_model->lista_personas0()->result();
   		$data['eventos']= $this->evento_model->lista_eventos()->result();
     $data['title']="Asistencia ";
  // $data['title']="Correo";
-	$this->load->view('template/page_header');		
+	$this->load->view('page_header');		
   $this->load->view('asistencia_record',$data);
-	$this->load->view('template/page_footer');
+	$this->load->view('page_footer');
 }
 
 public function anterior(){
  // $data['asistencia_list']=$this->asistencia_model->lista_asistencia()->result();
 	$data['asistencia'] = $this->asistencia_model->anterior($this->uri->segment(3))->row_array();
- 	$data['personas']= $this->persona_model->lista_personas()->result();
+ 	$data['personas']= $this->persona_model->lista_personas0()->result();
   		$data['eventos']= $this->evento_model->lista_eventos()->result();
  // $data['title']="Correo";
     $data['title']="Asistencia ";
-	$this->load->view('template/page_header');		
+	$this->load->view('page_header');		
   $this->load->view('asistencia_record',$data);
-	$this->load->view('template/page_footer');
+	$this->load->view('page_footer');
 }
 
 
