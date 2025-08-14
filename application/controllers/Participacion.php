@@ -26,9 +26,9 @@ class Participacion extends CI_Controller{
 
  		// print_r($data['participacion_list']);
   		$data['title']="Lista de Participaciones";
-		$this->load->view('template/page_header');		
+		$this->load->view('page_header');		
   		$this->load->view('participacion_record',$data);
-		$this->load->view('template/page_footer');
+		$this->load->view('page_footer');
 	}
 
 
@@ -48,9 +48,9 @@ class Participacion extends CI_Controller{
        
 
 		$data['title']="Nuevo Participacion";
-	 	$this->load->view('template/page_header');		
+	 	$this->load->view('page_header');		
 	 	$this->load->view('participacion_form',$data);
-	 	$this->load->view('template/page_footer');
+	 	$this->load->view('page_footer');
 	}
 
 
@@ -60,9 +60,9 @@ class Participacion extends CI_Controller{
 		$data['eventos']= $this->evento_model->lista_eventos()->result();
   		$data['tipoparticipacions']= $this->tipoparticipacion_model->lista_tipoparticipacions()->result();
 		$data['title']="Nuevo Participacion";
-	 	$this->load->view('template/page_header');		
+	 	$this->load->view('page_header');		
 	 	$this->load->view('participacion_form1',$data);
-	 	$this->load->view('template/page_footer');
+	 	$this->load->view('page_footer');
 	}
 
 
@@ -124,9 +124,9 @@ class Participacion extends CI_Controller{
 		$data['personas']= $this->persona_model->lista_personas0()->result();
   	$data['tipoparticipaciones']= $this->tipoparticipacion_model->lista_tipoparticipacions()->result();
  	 	$data['title'] = "Actualizar Participacion";
- 	 	$this->load->view('template/page_header');		
+ 	 	$this->load->view('page_header');		
  	 	$this->load->view('participacion_edit',$data);
-	 	$this->load->view('template/page_footer');
+	 	$this->load->view('page_footer');
 	}
 
 
@@ -163,9 +163,9 @@ public function listar()
 	
   $data['participacion'] = $this->participacion_model->listar_participacion1(0)->result();
   $data['title']="Certificado";
-	$this->load->view('template/page_header');		
+	$this->load->view('page_header');		
   $this->load->view('participacion_list',$data);
-	$this->load->view('template/page_footer');
+	$this->load->view('page_footer');
 }
 
 function participacion_data()
@@ -231,9 +231,9 @@ public function reporte()
 	$data['sesioneventos'] =$this->sesionevento_model->sesionevento_activo2($this->uri->segment(3))->result();
   	$data['participacion'] = $this->participacion_model->listar_participacion1($this->uri->segment(3))->result();
   	$data['title']="Certificado";
-	$this->load->view('template/page_header');		
+	$this->load->view('page_header');		
  	$this->load->view('participacion_report',$data);
-	$this->load->view('template/page_footer');
+	$this->load->view('page_footer');
 
 
 
@@ -278,10 +278,10 @@ public function reportepdf()
 //	die();
 //	$fechascortes=array(1=>"2022-10-05",2=>"2022-12-01",3=>"2022-12-16");
 //	$data['fechacorte']=$fechascortes;
-//	$this->load->view('template/page_header');		
+//	$this->load->view('page_header');		
 // 	$this->load->view('participacion_report',$data);
 	$this->load->view('participacion_reportepdf',$data);
-//	$this->load->view('template/page_footer');
+//	$this->load->view('page_footer');
 
 
 
@@ -366,13 +366,13 @@ public function actual()
   	$data['personas']= $this->persona_model->lista_personas0()->result();
 	$data['tipoparticipaciones']= $this->tipoparticipacion_model->lista_tipoparticipacions()->result();
     $data['title']="Participacion del documento";
-    $this->load->view('template/page_header');		
+    $this->load->view('page_header');		
     $this->load->view('participacion_record',$data);
-    $this->load->view('template/page_footer');
+    $this->load->view('page_footer');
   }else{
-    $this->load->view('template/page_header');		
+    $this->load->view('page_header');		
     $this->load->view('registro_vacio');
-    $this->load->view('template/page_footer');
+    $this->load->view('page_footer');
   }
  }
 
@@ -392,13 +392,13 @@ public function elprimero()
   	$data['personas']= $this->persona_model->lista_personas0()->result();
 	$data['tipoparticipaciones']= $this->tipoparticipacion_model->lista_tipoparticipacions()->result();
     $data['title']="Participacion del documento";
-    $this->load->view('template/page_header');		
+    $this->load->view('page_header');		
     $this->load->view('participacion_record',$data);
-    $this->load->view('template/page_footer');
+    $this->load->view('page_footer');
   }else{
-    $this->load->view('template/page_header');		
+    $this->load->view('page_header');		
     $this->load->view('registro_vacio');
-    $this->load->view('template/page_footer');
+    $this->load->view('page_footer');
   }
  }
 
@@ -413,14 +413,14 @@ public function elultimo()
 	$data['tipoparticipaciones']= $this->tipoparticipacion_model->lista_tipoparticipacions()->result();
     $data['title']="Participacion del documento";
   
-    $this->load->view('template/page_header');		
+    $this->load->view('page_header');		
     $this->load->view('participacion_record',$data);
-    $this->load->view('template/page_footer');
+    $this->load->view('page_footer');
   }else{
 
-    $this->load->view('template/page_header');		
+    $this->load->view('page_header');		
     $this->load->view('registro_vacio');
-    $this->load->view('template/page_footer');
+    $this->load->view('page_footer');
   }
 }
 
@@ -433,9 +433,9 @@ public function siguiente(){
 	$data['tipoparticipaciones']= $this->tipoparticipacion_model->lista_tipoparticipacions()->result();
     $data['title']="Participacion del documento";
  // $data['title']="Correo";
-	$this->load->view('template/page_header');		
+	$this->load->view('page_header');		
   $this->load->view('participacion_record',$data);
-	$this->load->view('template/page_footer');
+	$this->load->view('page_footer');
 }
 
 public function anterior(){
@@ -447,9 +447,9 @@ public function anterior(){
   	$data['eventos']= $this->evento_model->lista_eventos()->result();
  // $data['title']="Correo";
     $data['title']="Participacion del documento";
-	$this->load->view('template/page_header');		
+	$this->load->view('page_header');		
   $this->load->view('participacion_record',$data);
-	$this->load->view('template/page_footer');
+	$this->load->view('page_footer');
 }
 
 
