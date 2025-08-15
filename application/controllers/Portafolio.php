@@ -28,13 +28,13 @@ public function index(){
 		$data['directorios'] = $this->directorio_model->lista_directorios()->result();
 			
 		$data['title']="Lista de portafolios";
-		$this->load->view('template/page_header');
+		$this->load->view('page_header');
 		$this->load->view('portafolio_record',$data);
-		$this->load->view('template/page_footer');
+		$this->load->view('page_footer');
 	}else{
-	 	$this->load->view('template/page_header.php');
+	 	$this->load->view('page_header.php');
 		$this->load->view('login_form');
-	 	$this->load->view('template/page_footer.php');
+	 	$this->load->view('page_footer.php');
 	}
 
  }
@@ -46,9 +46,9 @@ public function index(){
 		$data['periodoacademicos']= $this->periodoacademico_model->lista_periodoacademicos()->result();
 		$data['ordenadores']=  $this->ordenador_model->lista_ordenadores()->result();
 		$data['title']="Nueva Portafolio";
-		$this->load->view('template/page_header');		
+		$this->load->view('page_header');		
 		$this->load->view('portafolio_form',$data);
-		$this->load->view('template/page_footer');
+		$this->load->view('page_footer');
 
 
 	}
@@ -78,9 +78,9 @@ public function edit()
 		$data['ordenadores']=  $this->ordenador_model->lista_ordenadores()->result();
 		$data['directorios'] = $this->directorio_model->lista_directoriosxordenador($data['portafolio']['idordenador'])->result();
  	 	$data['title'] = "Actualizar Portafolio";
- 	 	$this->load->view('template/page_header');		
+ 	 	$this->load->view('page_header');		
  	 	$this->load->view('portafolio_edit',$data);
-	 	$this->load->view('template/page_footer');
+	 	$this->load->view('page_footer');
  
 }
 
@@ -115,9 +115,9 @@ public function listar()
 {
   	$data['title']="Portafolios";
   	$data['idpersona']=$this->uri->segment(3);
-	$this->load->view('template/page_header');		
+	$this->load->view('page_header');		
   	$this->load->view('portafolio_list',$data);
-	$this->load->view('template/page_footer');
+	$this->load->view('page_footer');
 }
 
 
@@ -137,9 +137,9 @@ public function listar()
 
 	 	$data['periodoacademicos'] = $this->periodoacademico_model->lista_periodoacademicosxpersona($idpersona)->result();
 		$data['title']="Evento";
-		$this->load->view('template/page_header');		
+		$this->load->view('page_header');		
 		$this->load->view('portafolio_xpersona',$data);
-		$this->load->view('template/page_footer');
+		$this->load->view('page_footer');
 	}
 
 
@@ -296,13 +296,13 @@ public function actual()
 	  {
   	$data['personas']= $this->persona_model->lista_personasA()->result();
     $data['title']="Portafolio";
-    $this->load->view('template/page_header');		
+    $this->load->view('page_header');		
     $this->load->view('portafolio_record',$data);
-    $this->load->view('template/page_footer');
+    $this->load->view('page_footer');
   }else{
-    $this->load->view('template/page_header');		
+    $this->load->view('page_header');		
     $this->load->view('registro_vacio');
-    $this->load->view('template/page_footer');
+    $this->load->view('page_footer');
   }
  }
 
@@ -327,13 +327,13 @@ public function elprimero()
 	  {
   	$data['personas']= $this->persona_model->lista_personasA()->result();
     $data['title']="Portafolio";
-    $this->load->view('template/page_header');		
+    $this->load->view('page_header');		
     $this->load->view('portafolio_record',$data);
-    $this->load->view('template/page_footer');
+    $this->load->view('page_footer');
   }else{
-    $this->load->view('template/page_header');		
+    $this->load->view('page_header');		
     $this->load->view('registro_vacio');
-    $this->load->view('template/page_footer');
+    $this->load->view('page_footer');
   }
  }
 
@@ -349,14 +349,14 @@ public function elultimo()
   {
     $data['title']="Portafolio";
   
-    $this->load->view('template/page_header');		
+    $this->load->view('page_header');		
     $this->load->view('portafolio_record',$data);
-    $this->load->view('template/page_footer');
+    $this->load->view('page_footer');
   }else{
 
-    $this->load->view('template/page_header');		
+    $this->load->view('page_header');		
     $this->load->view('registro_vacio');
-    $this->load->view('template/page_footer');
+    $this->load->view('page_footer');
   }
 }
 
@@ -371,9 +371,9 @@ public function siguiente(){
   
 
 $data['title']="Portafolio";
-	$this->load->view('template/page_header');		
+	$this->load->view('page_header');		
   $this->load->view('portafolio_record',$data);
-	$this->load->view('template/page_footer');
+	$this->load->view('page_footer');
 }
 
 public function anterior(){
@@ -385,9 +385,9 @@ public function anterior(){
 	$data['ordenadores'] = $this->ordenador_model->lista_ordenadores()->result();
 	$data['directorios'] = $this->directorio_model->lista_directorios()->result();
   	$data['title']="Portafolio";
-	$this->load->view('template/page_header');		
+	$this->load->view('page_header');		
   	$this->load->view('portafolio_record',$data);
-	$this->load->view('template/page_footer');
+	$this->load->view('page_footer');
 }
 
 
