@@ -91,7 +91,7 @@ if(isset($portafolio) and !empty($portafolio))
 
 
 
-<div class="form-group row">
+ <div class="form-group row mb-3">
     <label class="col-md-2 col-form-label"><?php echo anchor('persona/actual/'.$portafolio['idpersona'], 'La persona:'); ?></label>
 	<div class="col-md-10">
      <?php 
@@ -106,7 +106,7 @@ echo form_input('lapersona',$options[$portafolio['idpersona']],array("id"=>"lape
 
 
 
-<div class="form-group row">
+ <div class="form-group row mb-3">
     <label class="col-md-2 col-form-label">Id persona:</label>
 	<div class="col-md-10">
   
@@ -155,7 +155,7 @@ echo form_input('iddocumento',$options[$portafolio['iddocumento']],array("id"=>"
 ---->
 
 
-<div class="form-group row">
+ <div class="form-group row mb-3">
     <label class="col-md-2 col-form-label"><?php echo anchor('periodoacademico/actual/'.$portafolio['idperiodoacademico'], 'Periodo académico:'); ?></label>
 	<div class="col-md-10">
 	<?php 
@@ -171,7 +171,7 @@ echo form_input('iddocumento',$options[$portafolio['iddocumento']],array("id"=>"
 
 
 
-<div class="form-group row">
+ <div class="form-group row mb-3">
     <label class="col-md-2 col-form-label"> Ordenador:</label>
      	<?php 
 	$options= array("NADA");
@@ -189,7 +189,7 @@ echo form_input('iddocumento',$options[$portafolio['iddocumento']],array("id"=>"
 
 
 
-<div class="form-group row">
+ <div class="form-group row mb-3">
     <label class="col-md-2 col-form-label"> Directorio:</label>
      	<?php 
 	$options= array("NADA");
@@ -205,8 +205,8 @@ echo form_input('iddocumento',$options[$portafolio['iddocumento']],array("id"=>"
 </div>
 
 
-<div class="form-group row">
-    <label class="col-md-2 col-form-label"><?php echo anchor('chklstportafolio/actual/'.$portafolio['idchklstportafolio'], 'Chklst portafolio:'); ?></label>
+ <div class="form-group row mb-3">
+ <label class="col-md-2 col-form-label"><?php echo anchor('chklstportafolio/actual/'.$portafolio['idchklstportafolio'], 'Chklst portafolio:'); ?></label>
 	<div class="col-md-10">
 	<?php 
 	$options= array("NADA");
@@ -223,7 +223,7 @@ echo form_input('iddocumento',$options[$portafolio['iddocumento']],array("id"=>"
 
 
 
-<div class="form-group row">
+ <div class="form-group row mb-3">
 
 	<div class="col-md-10">
 	<div class="row justify-content-left">
