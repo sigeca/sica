@@ -262,6 +262,7 @@ echo form_input('iddocumento',$options[$portafolio['iddocumento']],array("id"=>"
         </div>
     </div>
 </div>
+        <div class="table-responsive">
 	<table class="table table-striped table-bordered table-hover" id="mydatac">
 	 <thead>
 	 <tr>
@@ -277,6 +278,10 @@ echo form_input('iddocumento',$options[$portafolio['iddocumento']],array("id"=>"
 	 <tbody id="show_data">
 	 </tbody>
 	</table>
+
+
+
+	</div>
 	</div>
 	</div>
 	</div>
