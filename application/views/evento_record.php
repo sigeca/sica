@@ -380,7 +380,7 @@ echo form_input($arrdatos) ?>
 </div>
 
 
-
+<br>
 
 <div class="container-fluid">
     <div class="row">
@@ -424,13 +424,11 @@ echo form_input($arrdatos) ?>
     </div>
 </div>
 
+<br>
 
-
-
-
-
-<div class="form-group row">
-	<div class="col-md-10">
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
  
 <div class="row justify-content-left">
       <!-- Page Heading -->
@@ -449,22 +447,25 @@ echo form_input($arrdatos) ?>
         </div>
     </div>
 </div>
-<table class="table table-striped table-bordered table-hover" id="mydatap">
- <thead>
- <tr>
- <th>Participante</th>
- <th>Cédula</th>
- <th>certificado</th>
- <th>grupo</th>
- <th>quitar</th>
- <th style="text-align: right;">Actions</th>
- </tr>
- </thead>
+    <div class="table-responsive">
+    <table class="table table-striped table-bordered table-hover" id="mydatap">
+     <thead>
+         <tr>
+         <th>Participante</th>
+         <th>Cédula</th>
+         <th>certificado</th>
+         <th>grupo</th>
+         <th>quitar</th>
+         <th style="text-align: right;">Actions</th>
+         </tr>
+     </thead>
 
- <tbody id="show_data1">
+     <tbody id="show_data1">
 
- </tbody>
-</table>
+     </tbody>
+    </table>
+</div>
+</div>
 </div>
 </div>
 </div>
