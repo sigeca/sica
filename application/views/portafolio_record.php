@@ -213,7 +213,7 @@ echo form_input('iddocumento',$options[$portafolio['iddocumento']],array("id"=>"
 	foreach ($chklstportafolios as $row){
 		$options[$row->idchklstportafolio]=$row->nombre;
 	}
-	echo form_input('idchklstportafolio',$options[$portafolio['idchklstportafolio']],array("id"=>"idchklstportafolio","disabled"=>"disabled", "style"=>"width:600px")); 
+	echo form_input('idchklstportafolio',$options[$portafolio['idchklstportafolio']],array("id"=>"idchklstportafolio","disabled"=>"disabled", "style"=>"width:100%")); 
 	?>
 
 	</div> 
