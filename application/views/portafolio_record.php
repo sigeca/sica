@@ -223,14 +223,14 @@ echo form_input('iddocumento',$options[$portafolio['iddocumento']],array("id"=>"
 
 
 
- <div class="form-group row mb-3">
+ <div class="form-group row mb-3" style="width:100%">
 
 	<div class="col-md-10">
 	<div class="row justify-content-left">
       	<!-- Page Heading -->
  	<div class="row">
   	<div class="col-12" style="border:solid;">
-<div class="row" style="background-color:lightgray; padding-top:0.5cm; padding-bottom:0.5cm; border-bottom:0.5cm solid white; width:100% ">
+<div class="row" style="background-color:lightgray; padding-top:0.5cm; padding-bottom:0.5cm; border-bottom:0.5cm solid white  ">
     <div class="col-lg-12 margin-tb">
         <div class="pull-left">
          <a class="btn btn-danger" href="<?php echo base_url('documentoportafolio/add/'.$portafolio['idportafolio']) ?>">Nuevo documento</a>  <!--            <b>Documentos del portafolio: </b> -->
