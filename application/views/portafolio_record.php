@@ -79,12 +79,12 @@ if(isset($portafolio) and !empty($portafolio))
 
 <div class="container" style="max-width:900px; margin:auto; padding:20px; border:1px solid #ddd; border-radius:8px; box-shadow:0 0 10px rgba(0,0,0,0.1);">
 
-<div class="form-group row">
-    <label class="col-md-2 col-form-label">Id portafolio:</label>
-	<div class="col-md-10">
 
+    <div class="form-group row mb-3">
+        <label class="col-md-3 col-form-label" style="font-weight:bold;">Id Portafolio:</label>
+        <div class="col-md-9">
 
-     <?php echo form_input('idportafolio',$portafolio['idportafolio'],array("id"=>"idportafolio","disabled"=>"disabled",'placeholder'=>'Idportafolios')); ?>
+     <?php echo form_input('idportafolio',$portafolio['idportafolio'],array("id"=>"idportafolio","disabled"=>"disabled",'placeholder'=>'Idportafolios', 'style'=>'width:100%')); ?>
  
 	</div> 
 </div>

@@ -394,4 +394,9 @@ alter table portafolio add column  idchklstportafolio int default 1;
 * alter table telefono add column eliminado tinyint default 0;
 */
 
+/*
  alter table distributivo add column eliminado tinyint default 0;
+ 
+*/
+
+alter table portafolio add column eliminado tinyint default 0;
