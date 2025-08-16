@@ -493,6 +493,7 @@ echo form_input($arrdatos) ?>
         
     </div>
 </div>
+    <div class="table-responsive">
 <table class="table table-striped table-bordered table-hover" id="mydataq">
  <thead>
  <tr>
@@ -509,11 +510,12 @@ echo form_input($arrdatos) ?>
 </div>
 </div>
 </div>
+</div>
 
 	</div> 
 </div>
 
-
+<br>
 
 <div class="form-group row">
 	<div class="col-md-10">
