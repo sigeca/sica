@@ -475,10 +475,10 @@ echo form_input($arrdatos) ?>
 
 
 
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
 
-<div class="form-group row">
-	<div class="col-md-10">
- 
 <div class="row justify-content-left">
       <!-- Page Heading -->
  <div class="row">
@@ -507,6 +507,7 @@ echo form_input($arrdatos) ?>
 
  </tbody>
 </table>
+</div>
 </div>
 </div>
 </div>
