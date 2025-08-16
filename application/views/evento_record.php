@@ -474,6 +474,7 @@ echo form_input($arrdatos) ?>
 </div>
 
 
+<br>
 
 <div class="container-fluid">
     <div class="row">
@@ -518,8 +519,11 @@ echo form_input($arrdatos) ?>
 
 <br>
 
-<div class="form-group row">
-	<div class="col-md-10">
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+
 	<div class="row justify-content-left">
       	<!-- Page Heading -->
  	<div class="row">
@@ -537,6 +541,7 @@ echo form_input($arrdatos) ?>
     </div>
 </div>
 
+    <div class="table-responsive">
 	<table class="table table-striped table-bordered table-hover" id="mydatas">
 	 <thead>
 	 <tr>
@@ -550,6 +555,7 @@ echo form_input($arrdatos) ?>
 	 <tbody id="show_data3">
 	 </tbody>
 	</table>
+	</div>
 	</div>
 	</div>
 	</div>
