@@ -334,7 +334,7 @@ echo form_input($arrdatos) ?>
   	foreach ($jornadadocente as $row){
 		$options[$row->idjornadadocente]=$row->nombre." (Inicia::".$row->horainicio.")"." (Dura::".$row->duracionminutos." minutos.)";
 	}
- echo form_multiselect('jornadadocente[]',$options,(array)set_value('idjornadadocente', ''), array('style'=>'width:500px')); 
+ echo form_multiselect('jornadadocente[]',$options,(array)set_value('idjornadadocente', ''), array('style'=>'width:100%')); 
 
 	?>
 	</div> 
@@ -352,7 +352,7 @@ echo form_input($arrdatos) ?>
 	<div class="col-md-10">
 		<?php
 
- echo form_multiselect('documentoevento[]',$options,(array)set_value('iddocumento', ''), array('style'=>'width:500px','name'=>'iddocumentoevento','id'=>'iddocumentoevento','onChange'=>'mostrarref()')); 
+ echo form_multiselect('documentoevento[]',$options,(array)set_value('iddocumento', ''), array('style'=>'width:100%','name'=>'iddocumentoevento','id'=>'iddocumentoevento','onChange'=>'mostrarref()')); 
 		?>
 	</div> 
 </div>
