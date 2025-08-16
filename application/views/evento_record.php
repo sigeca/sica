@@ -111,7 +111,7 @@ if(isset($evento))
 	?>
 	<div class="col-md-10">
 		<?php
-    $arrdatos=array('name'=>'idinstitucion','value'=>$options[$evento['idinstitucion']],"disabled"=>"disabled", "style"=>"width:600px");
+    $arrdatos=array('name'=>'idinstitucion','value'=>$options[$evento['idinstitucion']],"disabled"=>"disabled", "style"=>"width:100%");
 echo form_input($arrdatos) ?>
 	</div> 
 </div>
@@ -121,7 +121,7 @@ echo form_input($arrdatos) ?>
 <div class="form-group row">
     <label class="col-md-2 col-form-label"> Título del evento:</label>
 	<div class="col-md-10">
-     <?php echo form_input('titulo',$evento['titulo'],array("disabled"=>"disabled",'placeholder'=>'titulo','style'=>'width:600px;')) 
+     <?php echo form_input('titulo',$evento['titulo'],array("disabled"=>"disabled",'placeholder'=>'titulo','style'=>'width:100%;')) 
 		?>
 	</div> 
 </div>
