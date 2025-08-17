@@ -409,15 +409,20 @@ function getUploadUrl() {
     return url.endsWith("/") ? url + "cargaimagenportada.php" : url + "/cargaimagenportada.php";
 }
 
+
 // Function to load PDF into the iframe for preview
 document.addEventListener('DOMContentLoaded', function() {
     var pdfFileName = "<?php echo $documento['archivopdf']; ?>";
     var pdfViewer = document.getElementById('pdfPreview');
+
     if (pdfFileName) {
-        var pdfUrl = "https://educaysoft.org/repositorioeys/" + pdfFileName.trim();
+        // La nueva URL apunta a descargar.php, pasando el nombre del archivo como parámetro 'archivo'
+        var pdfUrl = "https://educaysoft.org/descargar.php?archivo=" + pdfFileName.trim();
         pdfViewer.src = pdfUrl;
     }
 });
+
+
 
 </script>
 
