@@ -78,7 +78,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
 
 
 
-
+<br>
 
 
 <div class="row justify-content-center">
@@ -118,13 +118,11 @@ body {font-family: Arial, Helvetica, sans-serif;}
 </div>
 
 
+<br>
 
 
 
 
-
-<div class="form-group row">
-	<div class="col-md-10">
 <div class="row justify-content-center">
       <!-- Page Heading -->
  <div class="row">
@@ -139,6 +137,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
 </div>
 
 <div id="filtro" style="display:none"><?php echo $filtro; ?></div>
+ <div class="table-responsive">
 <table class="table table-striped table-bordered table-hover" id="mydatac_t">
  <thead>
  <tr>
@@ -155,6 +154,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
 
  </tbody>
 </table>
+</div>
 </div>
 </div>
 </div>
