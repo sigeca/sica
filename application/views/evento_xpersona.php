@@ -30,9 +30,8 @@ body {font-family: Arial, Helvetica, sans-serif;}
 
 
 
+<div id="eys-nav-i">
 
-<div class="form-group row">
-	<div class="col-md-10">
 <div class="row justify-content-center">
       <!-- Page Heading -->
  <div class="row">
@@ -53,6 +52,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
 
 
 <div id="filtro" style="display:none"><?php echo $filtro; ?></div>
+ <div class="table-responsive">
 <table class="table table-striped table-bordered table-hover" id="mydatac">
  <thead>
  <tr>
@@ -69,6 +69,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
 
  </tbody>
 </table>
+</div>
 </div>
 </div>
 </div>
