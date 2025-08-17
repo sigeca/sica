@@ -100,11 +100,14 @@ $permitir_acceso_modulo=true;
     </div>
 
     <div class="form-group row mb-4">
-        <label class="col-md-3 col-form-label" style="font-weight:bold;">Foto:</label>
-        <div class="col-md-9">
-            <img src="https://educaysoft.org/repositorioeys/fotos/<?php echo $persona['cedula']; ?>.jpg" alt="Foto de la persona" style="max-width:100%; height:auto; border-radius:5px; box-shadow:0 0 5px rgba(0,0,0,0.2);">
-        </div>
+    <label class="col-md-3 col-form-label" style="font-weight:bold;">Foto:</label>
+    <div class="col-md-9">
+        <img src="https://educaysoft.org/descargar.php?archivo=fotos/<?php echo $persona['cedula']; ?>.jpg" 
+             alt="Foto de la persona" 
+             style="max-width:100%; height:auto; border-radius:5px; box-shadow:0 0 5px rgba(0,0,0,0.2);">
     </div>
+</div>
+
 
     <div class="form-group row mb-3">
         <label class="col-md-3 col-form-label" style="font-weight:bold;">Fecha nacimiento:</label>
