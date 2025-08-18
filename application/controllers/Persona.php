@@ -495,7 +495,7 @@ public function elultimo()
      */
     public function quitar($idpersona) {
         $this->_check_access();
-        if ($this->persona_model->quitar_persona($idpersona)) {
+        if ($this->persona_model->quitar($idpersona)) {
             $this->session->set_flashdata('success', 'Persona marcada como eliminada exitosamente.');
         } else {
             $this->session->set_flashdata('error', 'Error al marcar la persona como eliminada.');
