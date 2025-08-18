@@ -335,6 +335,7 @@ var orde=document.getElementById("idordenador").value;
 var dire=document.getElementById("iddirectorio").value;
 var ordenador = "https://"+orde;
 var ubicacion=dire;
+var ubicacion='descargar.php?archivo=';
 if(ordenador.slice(-1) != "/" && ubicacion.slice(0,1) != "/"){
         ubicacion = ordenador+"/"+ubicacion;
 }else{
