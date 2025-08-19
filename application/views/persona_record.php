@@ -351,11 +351,8 @@ $(document).ready(function(){
                         const canEdit = <?php echo $permitir_acceso_modulo ? 'true' : 'false'; ?>;
                         const canDelete = <?php echo $permitir_acceso_modulo ? 'true' : 'false'; ?>;
 
-                        if (canView) {
-                            actions += '<button class="btn btn-info btn-sm item_ver" data-idevento="' + row.iddocumento + '" data-bs-toggle="modal" data-bs-target="#myModal">Veri</button> ';
-                        }
-                        if (canEdit) {
-                            actions += '<a href="<?php echo site_url('evento/edit/'); ?>' + row.iddocumento + '" class="btn btn-warning btn-sm">Editar</a> ';
+                       if (canEdit) {
+                            actions += '<a href="<?php echo site_url('documento/actual/'); ?>' + row.iddocumento + '" class="btn btn-warning btn-sm">Editar</a> ';
                         }
                         return actions;
                     }
