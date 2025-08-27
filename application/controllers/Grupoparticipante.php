@@ -199,7 +199,7 @@ public function elultimo()
 //  	$data['tipogrupoparticipantes']= $this->tipogrupoparticipante_model->lista_tipogrupoparticipantes()->result();
   if(!empty($data))
   {
-  	$data['participantes']= $this->participante_model->listar_participante3()->result();
+  	$data['participantes']= $this->participante_model->listar_participante()->result();
     $data['title']="Grupoparticipante";
   
     $this->load->view('page_header');		
