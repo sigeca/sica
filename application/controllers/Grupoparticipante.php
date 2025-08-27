@@ -216,7 +216,7 @@ public function elultimo()
 public function siguiente(){
  // $data['grupoparticipante_list']=$this->grupoparticipante_model->lista_grupoparticipante()->result();
 	$data['grupoparticipante'] = $this->grupoparticipante_model->siguiente($this->uri->segment(3))->row_array();
-  	$data['participantes']= $this->participante_model->listar_participante3()->result();
+  	$data['participantes']= $this->participante_model->listar_participante()->result();
 //  	$data['tipogrupoparticipantes']= $this->tipogrupoparticipante_model->lista_tipogrupoparticipantes()->result();
   $data['title']="Grupoparticipante";
 	$this->load->view('page_header');		
