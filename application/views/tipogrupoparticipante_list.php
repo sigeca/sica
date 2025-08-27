@@ -28,14 +28,14 @@
 
 <div id="eys-nav-i">
     <ul>
-        <li><?php echo anchor('tipocalidad', 'Home'); ?></li>
+        <li><?php echo anchor('tipogrupoparticipante', 'Home'); ?></li>
     </ul>
 </div>
 
 <div class="container">
     <div class="row">
         <div class="col-12">
-            <h3>Tipocalidad - Listar</h3>
+            <h3>Tipogrupoparticipante - Listar</h3>
         </div>
     </div>
 
@@ -61,13 +61,13 @@
     $(document).ready(function(){
         var mytabla = $('#mydatac').DataTable({
             "ajax": {
-                url: '<?php echo site_url('tipocalidad/tipocalidad_data')?>',
+                url: '<?php echo site_url('tipogrupoparticipante/tipogrupoparticipante_data')?>',
                 type: 'GET'
             }
         });
 
         $('#show_data').on('click','.item_ver', function(){
-            var id = $(this).data('idtipocalidad');
+            var id = $(this).data('idtipogrupoparticipante');
             var retorno = $(this).data('retorno');
             window.location.href = retorno + '/' + id;
         });

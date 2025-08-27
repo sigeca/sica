@@ -1,128 +1,91 @@
 <?php
-class Prestamoarticulo_model extends CI_model {
+class Tipocalidad_model extends CI_model {
 
-	function listar_prestamoarticulo(){
-		 $prestamoarticulo= $this->db->get('prestamoarticulo');
-		 return $prestamoarticulo;
+	function lista_tipocalidads(){
+		 $tipocalidad= $this->db->get('tipocalidad0');
+		 return $tipocalidad;
 	}
 
-	function listar_prestamoarticulo1(){
-		 $prestamoarticulo= $this->db->get('prestamoarticulo1');
-		 return $prestamoarticulo;
+	function lista_tipocalidadsA(){
+		 $tipocalidad= $this->db->get('tipocalidad1');
+		 return $tipocalidad;
 	}
 
- 	function prestamoarticulo( $id){
- 		$prestamoarticulo = $this->db->query('select * from prestamoarticulo where idprestamoarticulo="'. $id.'"');
- 		return $prestamoarticulo;
+
+
+
+ 	function tipocalidad( $id){
+ 		$tipocalidad = $this->db->query('select * from tipocalidad0 where idtipocalidad="'. $id.'"');
+ 		return $tipocalidad;
  	}
-
-
-
- 	function prestamoarticulos( $id){
- 		$prestamoarticulo = $this->db->query('select * from prestamoarticulo where idarticulo="'. $id.'" order by fechaprestamo');
- 		return $prestamoarticulo;
- 	}
-
-
- 	function prestamoarticulosA( $id){
- 		$prestamoarticulo = $this->db->query('select * from prestamoarticulo1 where idarticulo="'. $id.'" ORDER BY date(fechaprestamo) ASC');
- 		return $prestamoarticulo;
- 	}
-
-
-
-	function prestamoarticulo_activo($id){
- 		$prestamoarticulo = $this->db->query('select * from prestamoarticulo where idevento='. $id.' and fecha in (select fecha from participacion p where  p.idevento='.$id.' and p.idtipoparticipacion=1) order by fecha');
- 		return $prestamoarticulo;
- 	}
-
-
-	function prestamoarticulo_activo2($id){
- 		$prestamoarticulo = $this->db->query('select * from prestamoarticulo where idevento='. $id.' and fecha in (select fecha from participacion p where  p.idevento='.$id.' and p.idtipoparticipacion!=1) order by fecha');
- 		return $prestamoarticulo;
- 	}
-
-
-
-
-
-	function prestamoarticulo_asistencia($id){
- 		$prestamoarticulo = $this->db->query('select * from prestamoarticulo where idevento='. $id.' and fecha in (select fecha from asistencia a where  a.idevento='.$id.') order by fecha');
- 		return $prestamoarticulo;
- 	}
-
-
-
-	function prestamoarticulos_AsisPart($idevento,$idpersona){
-		$prestamoarticulo =$this->db->query('select fev.idevento,fev.fecha,fev.temacorto,fev.tema,(select idtipoasistencia from asistencia asi where asi.fecha=fev.fecha and  asi.idpersona='.$idpersona.' limit 1  ) as asistencia, (select longitud from asistencia asi where asi.fecha=fev.fecha and  asi.idpersona='.$idpersona.' limit 1 ) as longitud,  (select latitud from asistencia asi where asi.fecha=fev.fecha and  asi.idpersona='.$idpersona.' limit 1 ) as latitud, (select porcentaje from participacion par where par.fecha=fev.fecha and par.idpersona='.$idpersona.' limit 1  ) as participacion, (select valor from pagoevento pev where pev.fecha=fev.fecha and pev.idpersona='.$idpersona.' limit 1) as pagos   from prestamoarticulo fev where fev.idevento='.$idevento.' order by fecha');
-
- 		return $prestamoarticulo;
- 	}
-
-
-
-
-
-
-
-
 
  	function save($array)
-	{	
-		$condition ="idarticulo="."'". $array['idarticulo']."' and  fechaprestamo=". "'".$array['fechaprestamo']."' and  horaprestamo=". "'".$array['horaprestamo']."'";
+ 	{
+		$condition = "idtipocalidad =" . "'" . $array['idtipocalidad'] . "'";
 		$this->db->select('*');
-		$this->db->from('prestamoarticulo');
+		$this->db->from('tipocalidad');
 		$this->db->where($condition);
 		$this->db->limit(1);
 		$query = $this->db->get();
-		if($query->num_rows()==0)
-		{	
-			$this->db->insert("prestamoarticulo", $array);
-			if($this->db->affected_rows()>0)
-			{
-				return true;
-			}else{
-				return false;
-			}
-		}else{
-			$this->db->where('fechaprestamo',$array['fechaprestamo']);
-			$this->db->where('horaprestamo',$array['horaprestamo']);
-			$this->db->where('idarticulo',$array['idarticulo']);
-			$this->db->update('prestamoarticulo',$array);
-
-			if($this->db->affected_rows()>0)
-			{
-				return true;
-			}else{
-				return false;
-			}
-		}
+		if ($query->num_rows() == 0) {
+		   $this->db->insert("tipocalidad", $array);
+		   if( $this->db->affected_rows()>0){
+			    return true;
+		   }else{
+			    return false;
+		   }
+	   }else{
+		    return false;
+		   }
  	}
 
  	function update($id,$array_item)
  	{
- 		$this->db->where('idprestamoarticulo',$id);
- 		$this->db->update('prestamoarticulo',$array_item);
+ 		$this->db->where('idtipocalidad',$id);
+ 		$this->db->update('tipocalidad',$array_item);
 	}
  
 
-
-
-  public function delete($id)
+ 	 function delete($id)
 	{
- 		$this->db->where('idprestamoarticulo',$id);
-		$this->db->delete('prestamoarticulo');
-    		if($this->db->affected_rows()==1)
+ 		$this->db->where('idtipocalidad',$id);
+		$this->db->delete('tipocalidad');
+    	if($this->db->affected_rows()==1){
 			$result=true;
-		else
+        }else{
 			$result=false;
+    }
 		return $result;
  	}
 
 
+
+ 	function quitar($id)
+	{
+
+        $this->db->select('*');
+		$this->db->from('tipocalidad0');
+ 		$this->db->where('idtipocalidad',$id);
+		$this->db->limit(1);
+		$query = $this->db->get();
+		if ($query->num_rows() != 0) {
+	 	  	$this->db->where('idtipocalidad',$id);
+			$this->db->update('tipocalidad', array('eliminado'=>1));
+			$result=true;
+        }else{
+            $result=false;
+        }
+		return $result;
+ 	}
+
+
+
+
+
+
 	function elprimero()
 	{
-		$query=$this->db->order_by("idprestamoarticulo")->get('prestamoarticulo');
+		$query=$this->db->order_by("idtipocalidad")->get('tipocalidad');
 		if($query->num_rows()>0)
 		{
 			return $query->first_row('array');
@@ -135,7 +98,7 @@ class Prestamoarticulo_model extends CI_model {
 // Para ir al último registro
 	function elultimo()
 	{
-		$query=$this->db->order_by("idprestamoarticulo")->get('prestamoarticulo');
+		$query=$this->db->order_by("idtipocalidad")->get('tipocalidad');
 		if($query->num_rows()>0)
 		{
 			return $query->last_row('array');
@@ -147,44 +110,38 @@ class Prestamoarticulo_model extends CI_model {
 
 	// Para moverse al siguiente registro
  	function siguiente($id){
- 		$prestamoarticulo = $this->db->select("idprestamoarticulo")->order_by("idprestamoarticulo")->get('prestamoarticulo')->result_array();
-		$arr=array("idprestamoarticulo"=>$id);
-		$clave=array_search($arr,$prestamoarticulo);
-	   if(array_key_exists($clave+1,$prestamoarticulo))
+ 		$tipocalidad = $this->db->select("idtipocalidad")->order_by("idtipocalidad")->get('tipocalidad')->result_array();
+		$arr=array("idtipocalidad"=>$id);
+		$clave=array_search($arr,$tipocalidad);
+	   if(array_key_exists($clave+1,$tipocalidad))
 		 {
 
- 		$prestamoarticulo = $this->db->query('select * from prestamoarticulo where idprestamoarticulo="'. $prestamoarticulo[$clave+1]["idprestamoarticulo"].'"');
+ 		$tipocalidad = $this->db->query('select * from tipocalidad where idtipocalidad="'. $tipocalidad[$clave+1]["idtipocalidad"].'"');
 		 }else{
 
- 		$prestamoarticulo = $this->db->query('select * from prestamoarticulo where idprestamoarticulo="'. $id.'"');
+ 		$tipocalidad = $this->db->query('select * from tipocalidad where idtipocalidad="'. $id.'"');
 		 }
 		 	
- 		return $prestamoarticulo;
+ 		return $tipocalidad;
  	}
 
 
 // Para moverse al anterior registro
  	function anterior($id){
- 		$prestamoarticulo = $this->db->select("idprestamoarticulo")->order_by("idprestamoarticulo")->get('prestamoarticulo')->result_array();
-		$arr=array("idprestamoarticulo"=>$id);
-		$clave=array_search($arr,$prestamoarticulo);
-	   if(array_key_exists($clave-1,$prestamoarticulo))
+ 		$tipocalidad = $this->db->select("idtipocalidad")->order_by("idtipocalidad")->get('tipocalidad')->result_array();
+		$arr=array("idtipocalidad"=>$id);
+		$clave=array_search($arr,$tipocalidad);
+	   if(array_key_exists($clave-1,$tipocalidad))
 		 {
 
- 		$prestamoarticulo = $this->db->query('select * from prestamoarticulo where idprestamoarticulo="'. $prestamoarticulo[$clave-1]["idprestamoarticulo"].'"');
+ 		$tipocalidad = $this->db->query('select * from tipocalidad where idtipocalidad="'. $tipocalidad[$clave-1]["idtipocalidad"].'"');
 		 }else{
 
- 		$prestamoarticulo = $this->db->query('select * from prestamoarticulo where idprestamoarticulo="'. $id.'"');
+ 		$tipocalidad = $this->db->query('select * from tipocalidad where idtipocalidad="'. $id.'"');
 		 }
 		 	
- 		return $prestamoarticulo;
+ 		return $tipocalidad;
  	}
-
-
-
-
-
-
 
 
 

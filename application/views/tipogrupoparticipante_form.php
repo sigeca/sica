@@ -1,14 +1,14 @@
 <h2> <?php echo $title; ?> </h2>
 <hr/>
-<?php echo form_open("tipocalidad/save", array('id'=>'eys-form')); ?>
-<?php echo form_hidden("idtipocalidad");  ?>
+<?php echo form_open("tipogrupoparticipante/save", array('id'=>'eys-form')); ?>
+<?php echo form_hidden("idtipogrupoparticipante");  ?>
 
 
 
 <div class="form-group row">
-    <label class="col-md-2 col-form-label"> Id Tipocalidad:</label>
+    <label class="col-md-2 col-form-label"> Id Tipogrupoparticipante:</label>
 	<div class="col-md-10">
-<?php echo form_input("idtipocalidad","", array("placeholder"=>"Id tipocalidad"));  ?>
+<?php echo form_input("idtipogrupoparticipante","", array("placeholder"=>"Id tipogrupoparticipante"));  ?>
 	</div> 
 </div>
 
@@ -16,7 +16,7 @@
 <div class="form-group row">
     <label class="col-md-2 col-form-label"> Nombre:</label>
 	<div class="col-md-10">
-<?php echo form_input("nombre","", array("placeholder"=>"Descripcion de tipocalidad"));  ?>
+<?php echo form_input("nombre","", array("placeholder"=>"Descripcion de tipogrupoparticipante"));  ?>
 	</div> 
 </div> 
 
