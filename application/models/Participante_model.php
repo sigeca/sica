@@ -21,7 +21,7 @@ class Participante_model extends CI_model {
 			return true;  
 		}
 
- 		$query = $this->db->query('select * from participante where idevento="'.$idevento.'" and  idpersona="'. $id.'" and idnivelparticipante=2');
+ 		$query = $this->db->query('select * from participante where idevento="'.$idevento.'" and  idpersona="'. $id.'" and idniv=2');
 		if ($query->num_rows() == 0) //SI NO ES UN INSTRUCTOR DE LA CLASES. 
 		{
 			return false;
@@ -96,7 +96,7 @@ class Participante_model extends CI_model {
 		 if($idevento>0)
                 {
                 $this->db->where('idevento='.$idevento);
-                $this->db->where('idnivelparticipante=2'); // 2= instructor
+                $this->db->where('idniv=2'); // 2= instructor
                 }
 
 		 $participante= $this->db->get('participante1');
@@ -166,7 +166,7 @@ $sql=$sql." union ";
 
    date_default_timezone_set('America/Guayaquil');
     $fecha = date("Y-m-d");
-$participante=$this->db->query('select pa.idparticipante,pa.idnivelparticipante,pa.idpersona,ev.idevento,ev.titulo as elevento,concat(pe.apellidos," ",pe.nombres) as nombres,doc.archivopdf,pa.grupoletra,(select idtipoasistencia from asistencia asis where asis.fecha="'.$fecha.'" and asis.idpersona= pa.idpersona) as hoy    from participante pa,evento ev,persona pe,documento doc where pa.idpersona=pe.idpersona and pa.idevento=ev.idevento and pa.iddocumento=doc.iddocumento UNION  select pa.idparticipante,pa.idnivelparticipante,pa.idpersona,ev.idevento,ev.titulo as elevento,concat(pe.apellidos," ",pe.nombres) as nombres," " as archivopdf,pa.grupoletra ,(select idtipoasistencia from asistencia asis where asis.fecha="'.$fecha.'" and asis.idpersona= pa.idpersona) as hoy  from participante pa,evento ev,persona pe,documento doc where pa.idpersona=pe.idpersona and pa.idevento=ev.idevento and pa.idevento=ev.idevento and  pa.iddocumento=0;');
+$participante=$this->db->query('select pa.idparticipante,pa.idniv,pa.idpersona,ev.idevento,ev.titulo as elevento,concat(pe.apellidos," ",pe.nombres) as nombres,doc.archivopdf,pa.grupoletra,(select idtipoasistencia from asistencia asis where asis.fecha="'.$fecha.'" and asis.idpersona= pa.idpersona) as hoy    from participante pa,evento ev,persona pe,documento doc where pa.idpersona=pe.idpersona and pa.idevento=ev.idevento and pa.iddocumento=doc.iddocumento UNION  select pa.idparticipante,pa.idnivelparticipante,pa.idpersona,ev.idevento,ev.titulo as elevento,concat(pe.apellidos," ",pe.nombres) as nombres," " as archivopdf,pa.grupoletra ,(select idtipoasistencia from asistencia asis where asis.fecha="'.$fecha.'" and asis.idpersona= pa.idpersona) as hoy  from participante pa,evento ev,persona pe,documento doc where pa.idpersona=pe.idpersona and pa.idevento=ev.idevento and pa.idevento=ev.idevento and  pa.iddocumento=0;');
 
 return $participante;
 }
