@@ -16,8 +16,9 @@ public function index(){
     //    }else{
             $idevento=50;
       //  }
-  		$data['grupoparticipante']=$this->grupoparticipante_model->lista_grupoparticipantes()->row_array();
-  		$data['participantes']= $this->participante_model->listar_participante3($idevento)->result();
+  		$data['grupoparticipante']=$this->grupoparticipante_model->elultimo();
+  		//$data['grupoparticipante']=$this->grupoparticipante_model->lista_grupoparticipantes()->row_array();
+  		$data['participantes']= $this->participante_model->participante1($data['grupoparticipante']['idparticipante'])->result();
 			
 		$data['title']="Lista de grupoparticipantes";
 		$this->load->view('page_header');
@@ -196,7 +197,8 @@ public function elprimero()
 public function elultimo()
 {
 	$data['grupoparticipante'] = $this->grupoparticipante_model->elultimo();
-//  	$data['tipogrupoparticipantes']= $this->tipogrupoparticipante_model->lista_tipogrupoparticipantes()->result();
+  		//$data['grupoparticipante']=$this->grupoparticipante_model->lista_grupoparticipantes()->row_array();
+  		$data['participantes']= $this->participante_model->participante1($data['grupoparticipante']['idparticipante'])->result();
   if(!empty($data))
   {
   	$data['participantes']= $this->participante_model->listar_participante()->result();
