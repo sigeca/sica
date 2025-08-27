@@ -201,7 +201,6 @@ public function elultimo()
   		$data['participantes']= $this->participante_model->participante1($data['grupoparticipante']['idparticipante'])->result();
   if(!empty($data))
   {
-  	$data['participantes']= $this->participante_model->listar_participante()->result();
     $data['title']="Grupoparticipante";
   
     $this->load->view('page_header');		
