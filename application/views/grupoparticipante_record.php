@@ -1,10 +1,15 @@
 <div id="eys-nav-i">
-<h3 style="text-align: left; margin-top:-10px;"> <?php echo $title;  ?></h3>
-	<ul>
-<?php
-if(isset($grupoparticipante))
-{
-?>
+
+<div style="display:flex;flex-direction:row; justify-content:space-between; align-items:center;">
+        <span style="text-align: left; font-size:x-large; font-weight:bold;">
+            <?php echo $title;  ?>
+            <span style="font-size:large; margin-left:10px;" id="idpersona"><?php echo $persona['idpersona']; ?></span>
+        </span>
+        <?php echo ($persona['eliminado']==1)? '<span style="font-size:large; color:red; font-weight:bold;"> - ELIMINADO</span>':'<span style="font-size:large; color:green; font-weight:bold;"> - ACTIVO</span>'; ?>
+    </div>
+
+
+    <ul style="list-style:none; padding:0; display:flex; gap:15px; background-color:#f2f2f2; padding:10px; border-radius:5px; margin-top:15px;">
         <li> <?php echo anchor('grupoparticipante/elprimero/', 'primero'); ?></li>
         <li> <?php echo anchor('grupoparticipante/anterior/'.$grupoparticipante['idgrupoparticipante'], 'anterior'); ?></li>
         <li> <?php echo anchor('grupoparticipante/siguiente/'.$grupoparticipante['idgrupoparticipante'], 'siguiente'); ?></li>
@@ -13,16 +18,6 @@ if(isset($grupoparticipante))
         <li> <?php echo anchor('grupoparticipante/edit/'.$grupoparticipante['idgrupoparticipante'],'Edit'); ?></li>
         <li style="border-right:1px solid green"> <?php echo anchor('grupoparticipante/delete/'.$grupoparticipante['idgrupoparticipante'],'Delete'); ?></li>
         <li> <?php echo anchor('grupoparticipante/listar/','Listar'); ?></li>
-
-<?php 
-}else{
-?>
-
-        <li> <?php echo anchor('grupoparticipante/add', 'Nuevo'); ?></li>
-<?php
-}
-?>
-
     </ul>
 </div>
 <br>
@@ -31,6 +26,7 @@ if(isset($grupoparticipante))
 
 <?php echo form_open('grupoparticipante/save_edit') ?>
 <?php echo form_hidden('idgrupoparticipante',$grupoparticipante['idgrupoparticipante']) ?>
+<div class="container" style="max-width:900px; margin:auto; padding:20px; border:1px solid #ddd; border-radius:8px; box-shadow:0 0 10px rgba(0,0,0,0.1);">
 <table>
   <tr>
      <td>Id Grupoparticipante:</td>
