@@ -17,12 +17,12 @@ echo form_input($eys_arrinput); ?></td>
 
 <tr>
       <td>Fecha desde:</td>
-<td><?php echo form_input(array("name"=>'fechadesde',"id"=>"fechadesde","value"=>$evento['fechadesde'],"type"=>"date")); ?></td>
+<td><?php echo form_input(array("name"=>'fechadesde',"id"=>"fechadesde","value"=>$grupoparticipante['fechadesde'],"type"=>"date")); ?></td>
   </tr>
 
 <tr>
       <td>Fecha hasta:</td>
-<td><?php echo form_input(array("name"=>'fechahasta',"id"=>"fechahasta","value"=>$evento['fechahasta'],"type"=>"date")); ?></td>
+<td><?php echo form_input(array("name"=>'fechahasta',"id"=>"fechahasta","value"=>$grupoparticipante['fechahasta'],"type"=>"date")); ?></td>
   </tr>
  
  
