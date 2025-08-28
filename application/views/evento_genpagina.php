@@ -420,13 +420,33 @@ $data=$data.'</div>
  */
 
 
+$ok=0;
+foreach($grupos as $rowj){
+            if(isset($rowj[$row->idparticipante]['idparticipante'])){     
 
 
+$data=$data.'</div>
+
+            <div class="card-body" style="background-color:'. $rowj[$row->idparticipante]['color'].';">
+              <b>Participante : </b>'.$row->nombres.'.<br>
+              <b>Grupos donde participa: </b> <br>';
+
+$ok=1;
+
+
+            }   
+        }
+
+
+
+if($ok==0){
 $data=$data.'</div>
 
             <div class="card-body">
               <b>Participante : </b>'.$row->nombres.'.<br>
               <b>Grupos donde participa: </b> <br>';
+
+}
 
 foreach($grupos as $rowj){
             if(isset($rowj[$row->idparticipante]['idparticipante'])){     
