@@ -427,7 +427,7 @@ foreach($grupos as $rowj){
 $data=$data.'</div>
 
             <div class="card-body" style="background-color:'. $rowj[$row->idparticipante]['color'].';" >
-              <b>Participante : </b>'.$row->nombres.'.<br>
+              <b>Participante x : </b>'.$row->nombres.'.<br>
               <b>Grupos donde participa: </b> <br>';
 
              $ok=1;
@@ -448,26 +448,11 @@ if($ok==0){
               <b>Participante : </b>'.$row->nombres.'.<br>
               <b>Grupos donde participa: </b> <br>';
 
-
-
-
             break;
 
 
             }   
  
-
-
-
-
-
-
-
-
-
-
-
-
 
 foreach($grupos as $rowj){
             if(isset($rowj[$row->idparticipante]['idparticipante'])){     
