@@ -300,31 +300,9 @@ $data=$data.'
 	}
 
 
-foreach($grupos as $rowj){
-            if(isset($rowj[$row->idparticipante]['idparticipante'])){     
-
-$data=$data.'<div class="col" style="background-color:'. $rowj[$row->idparticipante]['color'].';" >
-          <div class="card shadow-sm">
-		  <a  href="https://educaysoft.org/sica/evento/detalle/'.$row->idevento.'"><svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/>';
-
-            break;
-
-
-
-            }else{
-
 $data=$data.'<div class="col">
           <div class="card shadow-sm">
 		  <a  href="https://educaysoft.org/sica/evento/detalle/'.$row->idevento.'"><svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/>';
-
-            break;
-
-
-            }   
-        }
-
-
-
 
 
 
@@ -443,13 +421,52 @@ $data=$data.'</div>
  */
 
 
+foreach($grupos as $rowj){
+            if(isset($rowj[$row->idparticipante]['idparticipante'])){     
 
+$data=$data.'</div>
+
+            <div class="card-body" style="background-color:'. $rowj[$row->idparticipante]['color'].';" >
+              <b>Participante : </b>'.$row->nombres.'.<br>
+              <b>Grupos donde participa: </b> <br>';
+
+
+
+
+            break;
+
+
+
+            }else{
 
 $data=$data.'</div>
 
             <div class="card-body">
               <b>Participante : </b>'.$row->nombres.'.<br>
               <b>Grupos donde participa: </b> <br>';
+
+
+
+
+            break;
+
+
+            }   
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 foreach($grupos as $rowj){
             if(isset($rowj[$row->idparticipante]['idparticipante'])){     
