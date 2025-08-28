@@ -202,6 +202,7 @@ public function elultimo()
 {
 	$data['grupoparticipante'] = $this->grupoparticipante_model->elultimo();
   		//$data['grupoparticipante']=$this->grupoparticipante_model->lista_grupoparticipantes()->row_array();
+  		$data['tipogrupoparticipantes']=$this->tipogrupoparticipante_model->Lista_tipogrupoparticipantes()->result();
   		$data['participantes']= $this->participante_model->participante1($data['grupoparticipante']['idparticipante'])->result();
   if(!empty($data))
   {
@@ -221,6 +222,7 @@ public function elultimo()
 public function siguiente(){
  // $data['grupoparticipante_list']=$this->grupoparticipante_model->lista_grupoparticipante()->result();
 	$data['grupoparticipante'] = $this->grupoparticipante_model->siguiente($this->uri->segment(3))->row_array();
+  		$data['tipogrupoparticipantes']=$this->tipogrupoparticipante_model->Lista_tipogrupoparticipantes()->result();
   	$data['participantes']= $this->participante_model->listar_participante()->result();
 //  	$data['tipogrupoparticipantes']= $this->tipogrupoparticipante_model->lista_tipogrupoparticipantes()->result();
   $data['title']="Grupoparticipante";
@@ -232,6 +234,7 @@ public function siguiente(){
 public function anterior(){
  // $data['grupoparticipante_list']=$this->grupoparticipante_model->lista_grupoparticipante()->result();
 	$data['grupoparticipante'] = $this->grupoparticipante_model->anterior($this->uri->segment(3))->row_array();
+  		$data['tipogrupoparticipantes']=$this->tipogrupoparticipante_model->Lista_tipogrupoparticipantes()->result();
  	$data['participantes']= $this->participante_model->listar_participante3()->result();
 //  	$data['tipogrupoparticipantes']= $this->tipogrupoparticipante_model->lista_tipogrupoparticipantes()->result();
   $data['title']="Grupoparticipante";
