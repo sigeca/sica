@@ -300,11 +300,10 @@ $data=$data.'
 	}
 
 
+
 $data=$data.'<div class="col">
           <div class="card shadow-sm">
 		  <a  href="https://educaysoft.org/sica/evento/detalle/'.$row->idevento.'"><svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/>';
-
-
 
 $remoteFile = "https://educaysoft.org/verfoto.php?cedula=".trim($row->cedula);
 $file_headers = @get_headers($remoteFile);
@@ -420,39 +419,14 @@ $data=$data.'</div>
 
  */
 
-$ok=0;
-foreach($grupos as $rowj){
-            if(isset($rowj[$row->idparticipante]['idparticipante'])){     
+
+
 
 $data=$data.'</div>
-
-            <div class="card-body" style="background-color:'. $rowj[$row->idparticipante]['color'].';" >
-              <b>Participante x : </b>'.$row->nombres.'.<br>
-              <b>Grupos donde participa: </b> <br>';
-
-             $ok=1;
-
-
-            break;
-
-
-
-            }
-
-       }
-
-if($ok==0){
-    $data=$data.'</div>
 
             <div class="card-body">
               <b>Participante : </b>'.$row->nombres.'.<br>
               <b>Grupos donde participa: </b> <br>';
-
-            break;
-
-
-            }   
- 
 
 foreach($grupos as $rowj){
             if(isset($rowj[$row->idparticipante]['idparticipante'])){     
