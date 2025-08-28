@@ -100,6 +100,7 @@ public function add()
 public function edit()
 {
 	 	$data['grupoparticipante'] = $this->grupoparticipante_model->grupoparticipante($this->uri->segment(3))->row_array();
+  		$data['tipogrupoparticipantes']=$this->tipogrupoparticipante_model->Lista_tipogrupoparticipantes()->result();
   		$data['participantes']= $this->participante_model->participante1($data['grupoparticipante']['idparticipante'])->result();
  // 		$data['tipogrupoparticipantes']= $this->tipogrupoparticipante_model->lista_tipogrupoparticipantes()->result();
  	 	$data['title'] = "Actualizar Grupoparticipante";
