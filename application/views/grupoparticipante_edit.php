@@ -15,20 +15,20 @@ echo form_input($eys_arrinput); ?></td>
 
 
 
- 
- <tr>
-<td> Asignatura:</td>
-<td><?php
-$options= array('--Select--');
-foreach ($asignaturas as $row){
-	$options[$row->idasignatura]=$row->malla." - ".$row->area." - ".$row->nombre;
-}
-
- echo form_dropdown("idasignatura",$options, $grupoparticipante['idasignatura']);  ?></td>
-</tr>
+<tr>
+      <td>Fecha desde:</td>
+<td><?php echo form_input(array("name"=>'fechadesde',"id"=>"fechadesde","value"=>$evento['fechadesde'],"type"=>"date")); ?></td>
+  </tr>
 
 <tr>
-<td> Topo de horas:</td>
+      <td>Fecha hasta:</td>
+<td><?php echo form_input(array("name"=>'fechahasta',"id"=>"fechahasta","value"=>$evento['fechahasta'],"type"=>"date")); ?></td>
+  </tr>
+ 
+ 
+
+<tr>
+<td> Topo de grupo:</td>
 <td><?php
 $options= array('--Select--');
 foreach ($tipogrupoparticipantes as $row){
@@ -39,8 +39,8 @@ foreach ($tipogrupoparticipantes as $row){
 </tr>
 
 <tr>
-      <td>Cantidad:</td>
-      <td><?php echo form_input( array("name"=>'cantidad',"id"=>'cantidad',"value"=>$grupoparticipante['cantidad'],'type'=>'text','placeholder'=>'cantidad')); ?></td>
+      <td>grupo:</td>
+      <td><?php echo form_input( array("name"=>'nombre',"id"=>'nombre',"value"=>$grupoparticipante['nombre'],'type'=>'text','placeholder'=>'nombre')); ?></td>
   </tr>
 
 
