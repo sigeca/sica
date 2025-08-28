@@ -4,6 +4,7 @@ class Grupoparticipante extends CI_Controller{
 
   public function __construct(){
       parent::__construct();
+      $this->load->model('tipogrupoparticipante_model');
       $this->load->model('grupoparticipante_model');
   	  $this->load->model('participante_model');
 }
@@ -17,6 +18,7 @@ public function index(){
             $idevento=50;
       //  }
   		$data['grupoparticipante']=$this->grupoparticipante_model->elultimo();
+  		$data['tipogrupoparticipantes']=$this->tipogrupoparticipante_model->Lista_tipograupoparticipantes()->result();
   		//$data['grupoparticipante']=$this->grupoparticipante_model->lista_grupoparticipantes()->row_array();
   		$data['participantes']= $this->participante_model->participante1($data['grupoparticipante']['idparticipante'])->result();
 			
@@ -36,6 +38,7 @@ public function index(){
 public function actual(){
  if(isset($this->session->userdata['logged_in'])){
         $data['grupoparticipante'] = $this->grupoparticipante_model->grupoparticipante($this->uri->segment(3))->row_array();
+  		$data['tipogrupoparticipantes']=$this->tipogrupoparticipante_model->Lista_tipograupoparticipantes()->result();
         $data['participantes']= $this->participante_model->listar_participante3()->result();
         $data['title']="Modulo de Telefonos";
         $this->load->view('page_header');		
@@ -180,6 +183,7 @@ public function elprimero()
 {
 	$data['grupoparticipante'] = $this->grupoparticipante_model->elprimero();
 //  	$data['tipogrupoparticipantes']= $this->tipogrupoparticipante_model->lista_tipogrupoparticipantes()->result();
+  		$data['tipogrupoparticipantes']=$this->tipogrupoparticipante_model->Lista_tipograupoparticipantes()->result();
   if(!empty($data))
   {
   	$data['participantes']= $this->participante_model->listar_participante3()->result();

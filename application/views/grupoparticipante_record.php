@@ -83,7 +83,20 @@ echo form_input('idparticipante',$options[$grupoparticipante['idparticipante']],
 
 
 
+<div class="form-group row">
+    <label class="col-md-2 col-form-label"> <?php echo anchor('tipogrupoparticipante/actual/'.$grupoparticipante['idtipogrupoparticipante'], 'tipo grupo:') ?> </label>
+	<div class="col-md-10">
+     	<?php 
 
+	$options = array();
+  	foreach ($tipogrupoparticipantes as $row){
+		$options[$row->idtipogrupoparticipante]=$row->nombre;
+        }	
+echo form_input('idparticipante',$options[$grupoparticipante['idtipogrupoparticipante']],array("disabled"=>"disabled",'style'=>'width:500px')); 
+ 
+		?>
+	</div> 
+</div>
 
 
 
