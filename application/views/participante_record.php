@@ -531,7 +531,7 @@ function editargrupo()
 //	  var idreferenciasasignatura=2;
        var refe = JSON.parse('<?= json_encode($arrurl2); ?>');
 	console.log(refe[idgrupoparticipante]);
-	window.location.href = refe[idhorasasignatura];
+	window.location.href = refe[idgrupoparticipante];
 
 }
 
