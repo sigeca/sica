@@ -432,7 +432,7 @@ $data=$data.'</div>
               <b>Grupos donde participa: </b> <br>';
 
 $ok=1;
-
+break;
 
             }   
         }
