@@ -201,7 +201,7 @@ echo form_input('idnivelparticipante',$options[$participante['idnivelparticipant
 		$options[$row->idgrupoparticipante]=$row->nombre." (".$row->fechadesde." - ".$row->fechahasta.")";
 		$arrurl2[$row->idgrupoparticipante]= base_url().'grupoparticipante/actual/'.$row->idgrupoparticipante;
 	}
- echo form_multiselect('grupoparticipante[]',$options,(array)set_value('idgrupoparticipante', ''), array('style'=>'width:500px','name'=>'idgrupoparticipante','id'=> 'idgrupoparticipante','onChange'=>'editarhoras()')); 
+ echo form_multiselect('grupoparticipante[]',$options,(array)set_value('idgrupoparticipante', ''), array('style'=>'width:500px','name'=>'idgrupoparticipante','id'=> 'idgrupoparticipante','onChange'=>'editargrupo()')); 
 
 	?>
 	</div> 
@@ -519,6 +519,19 @@ var iddocumento=document.getElementById("iddocumento").value;
 
     })
 
+
+}
+
+function editargrupo()
+{
+
+	var options = document.getElementById('idgrupoparticipante').selectedOptions;
+	  var idgrupoparticipante = Array.from(options).map(({ value }) => value);
+//	  var idreferenciasasignatura= $('select[name=idreferenciasasignatura]').val();
+//	  var idreferenciasasignatura=2;
+       var refe = JSON.parse('<?= json_encode($arrurl2); ?>');
+	console.log(refe[idgrupoparticipante]);
+	window.location.href = refe[idhorasasignatura];
 
 }
 

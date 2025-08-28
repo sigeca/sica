@@ -88,6 +88,7 @@ public function add()
 		 	'fechadesde' => $this->input->post('fechadesde'),
 		 	'fechahasta' => $this->input->post('fechahasta'),
 		 	'nombre' => $this->input->post('nombre'),
+			'idtipogrupoparticipante' => $this->input->post('idtipogrupoparticipante'),
 			'idparticipante' => $this->input->post('idparticipante'),
 	 	);
 	 	$this->grupoparticipante_model->save($array_item);
@@ -120,6 +121,7 @@ public function edit()
 		 	'fechadesde' => $this->input->post('fechadesde'),
 		 	'fechahasta' => $this->input->post('fechahasta'),
 		 	'nombre' => $this->input->post('nombre'),
+			'idtipogrupoparticipante' => $this->input->post('idtipogrupoparticipante'),
 			'idparticipante' => $this->input->post('idparticipante'),
 	 	);
 	 	$this->grupoparticipante_model->update($id,$array_item);
