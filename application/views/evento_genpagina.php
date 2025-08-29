@@ -451,8 +451,18 @@ $data=$data.'</div>
 foreach($grupos as $rowj){
             if(isset($rowj[$row->idparticipante]['idparticipante'])){     
 
+                if( $rowj[$row->idparticipante]['color']=='#ffffff'){
                 $data=$data.'<b>'.$rowj[$row->idparticipante]['nombre'] .': </b><span style="background-color:'. $rowj[$row->idparticipante]['color'].';  color:red">'.$rowj[$row->idparticipante]['fechadesde'].'-'.$rowj[$row->idparticipante]['fechahasta'].'</span><br>';
+                }else{
 
+                $data=$data.'<span style=" font: 900 52px/1.05 system-ui, sans-serif;
+  color:#efefef;
+  -webkit-text-stroke: 1px #666;       /* contorno */
+  text-shadow:
+    0 2px 0 #bbb,
+    0 4px 6px rgba(0,0,0,.3);                                  "><b>'.$rowj[$row->idparticipante]['nombre'] .': </b>'.$rowj[$row->idparticipante]['fechadesde'].'-'.$rowj[$row->idparticipante]['fechahasta'].'</span><br>';
+
+                }
             }   
         }
 $data=$data.'<b>Participaciones : </b> '. str_repeat('⭐', $tparticipacionpositiva).str_repeat('🔴', $tparticipacionnegativa).'".<br>';
