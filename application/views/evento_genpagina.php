@@ -455,7 +455,7 @@ foreach($grupos as $rowj){
                 $data=$data.'<b>'.$rowj[$row->idparticipante]['nombre'] .': </b><span style="background-color:'. $rowj[$row->idparticipante]['color'].';  color:red">'.$rowj[$row->idparticipante]['fechadesde'].'-'.$rowj[$row->idparticipante]['fechahasta'].'</span><br>';
                 }else{
 
-                $data=$data.'<span style=" font: 900 52px/1.05 system-ui, sans-serif;
+                $data=$data.'<span style=" 
   color:#efefef;
   -webkit-text-stroke: 1px #666;       /* contorno */
   text-shadow:
