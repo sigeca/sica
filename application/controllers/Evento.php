@@ -502,10 +502,6 @@ public function persona_data1() {
 	}
 
 
-
-
-
-
 	function persona_data_e()
 	{
 		$draw= intval($this->input->get("draw"));
