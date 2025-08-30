@@ -179,8 +179,8 @@ $(document).ready(function(){
 	var idportafolio=0;
 	var idperiodoacademico=0;
 	var mytabla= $('#mydatac').DataTable({"ajax": {url: '<?php echo site_url('evento/persona_data')?>', type: 'GET',data:{idpersona:idpersona}},});
-	var mytabla_e= $('#mydatac_e').DataTable({"ajax": {url: '<?php echo site_url('evento/persona_data_e')?>', type: 'GET',data:{idpersona:idpersona}},});
 	var mytabla_t= $('#mydatac_t').DataTable({"ajax": {url: '<?php echo site_url('evento/persona_data_t')?>', type: 'GET',data:{idpersona:idpersona}},});
+	var mytabla_e= $('#mydatac_e').DataTable({"ajax": {url: '<?php echo site_url('evento/persona_data_e')?>', type: 'GET',data:{idpersona:idpersona}},});
 //	var mytablaf= $('#mydatap').DataTable({"ajax": {url: '<?php echo site_url('portafolio/documento_data')?>', type: 'GET',data:{idpersona:idpersona,idperiodoacademico:idperiodoacademico}},});
 });
 
