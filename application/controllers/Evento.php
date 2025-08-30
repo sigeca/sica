@@ -548,10 +548,10 @@ public function persona_data1() {
 		$data=array();
 		foreach($data0->result() as $r){
 			
-		$result = $this->participante_model->esinstructor($id,$r->idevento);
 
 		if($r->idevento_estado==4)  // SOLO LOS EVENTOS TERMINADOS
 		{
+		$result = $this->participante_model->esinstructor($id,$r->idevento);
 		if($result)
 		{
 
@@ -564,7 +564,6 @@ public function persona_data1() {
 			$r->href='<a href="javascript:void(0);"  class="btn btn-info btn-sm item_ver3"  data-retorno3="'.site_url('evento/detalle').'"    data-idevento3="'.$r->idevento.'">Ver</a>');
 			}	
 		}	
-
 
 		}
 			$output=array( "draw"=>$draw,
