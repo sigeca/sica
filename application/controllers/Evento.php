@@ -556,7 +556,10 @@ public function persona_data1() {
 		{
 
 			$data[]=array($r->idevento,$r->titulo,$r->fechainicia,$r->fechafinaliza,$r->eltutor,
-			$r->href='<a href="javascript:void(0);" class="btn btn-info btn-sm item_ver3"  data-retorno3="'.site_url('evento/actual').'"    data-idevento3="'.$r->idevento.'">Edit</a><a href="javascript:void(0);" class="btn btn-info btn-sm item_ver3"  data-retorno="'.site_url('evento/detalle').'"    data-idevento3="'.$r->idevento.'">Ver</a>');
+			$r->href='<a href="javascript:void(0);"  class="btn btn-info btn-sm item_ver"  data-retorno="'.site_url('evento/detalle').'"    data-idevento="'.$r->idevento.'">Ver</a>');
+
+//			$data[]=array($r->idevento,$r->titulo,$r->fechainicia,$r->fechafinaliza,$r->eltutor,
+//			$r->href='<a href="javascript:void(0);" class="btn btn-info btn-sm item_ver3"  data-retorno3="'.site_url('evento/actual').'"    data-idevento3="'.$r->idevento.'">Edit</a><a href="javascript:void(0);" class="btn btn-info btn-sm item_ver3"  data-retorno="'.site_url('evento/detalle').'"    data-idevento3="'.$r->idevento.'">Ver</a>');
 				
 			}else{
 
