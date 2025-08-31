@@ -21,7 +21,7 @@ class Participante_model extends CI_model {
 			return true;  
 		}
 
- 		$query = $this->db->query('select * from participante where idevento="'.$idevento.'" and  idpersona="'. $id.'" and idniv=2');
+ 		$query = $this->db->query('select * from participante where idevento="'.$idevento.'" and  idpersona="'. $id.'" and idnivelparticipante=2');
 		if ($query->num_rows() == 0) //SI NO ES UN INSTRUCTOR DE LA CLASES. 
 		{
 			return false;
@@ -96,7 +96,7 @@ class Participante_model extends CI_model {
 		 if($idevento>0)
                 {
                 $this->db->where('idevento='.$idevento);
-                $this->db->where('idniv=2'); // 2= instructor
+                $this->db->where('idnivelparticipante=2'); // 2= instructor
                 }
 
 		 $participante= $this->db->get('participante1');
