@@ -14,7 +14,9 @@
 <hr/>
 <!---<?php echo form_open(); ?>-->
 <br>
-
+<?php
+$fecha_from_url = isset($_GET['fecha']) ? $_GET['fecha'] : null;
+?>
 
 <div class="form-group row">
 <label class="col-md-2 col-form-label">Evento:</label>
@@ -177,13 +179,44 @@ foreach ($sesioneventos as $row){
 <script>
 
 
-	$(document).ready(()=>{
-	  var idevento= <?php echo $idevento; ?>;
-	  if(idevento>0){
-		    $('#idevento option[value="'+idevento+'"]').attr('selected','selected');
-		    get_participantes();
-	  }
-	});     
+
+
+
+$(document).ready(() => {
+        // Existing code to handle idevento...
+        var idevento = <?php echo $idevento; ?>;
+        if (idevento > 0) {
+            $('#idevento option[value="' + idevento + '"]').attr('selected', 'selected');
+            get_participantes();
+        }
+
+        // New code to handle fecha from GET parameter
+        var fecha_from_url = '<?php echo $fecha_from_url; ?>';
+        if (fecha_from_url) {
+            // Find the option in the dropdown that matches the date from the URL
+            $('#idsesionevento option').each(function() {
+                // The option text contains both the date and the theme
+                if ($(this).text().startsWith(fecha_from_url)) {
+                    // Set the dropdown to the correct value
+                    $(this).prop('selected', true);
+                    // Manually trigger the onchange event to filter the participants
+                    get_participantes2();
+                    return false; // Exit the loop once found
+                }
+            });
+        }
+    });
+
+
+
+
+//	$(document).ready(()=>{
+//	  var idevento= <?php echo $idevento; ?>;
+//	  if(idevento>0){
+//		    $('#idevento option[value="'+idevento+'"]').attr('selected','selected');
+//		    get_participantes();
+//	  }
+//	});     
 
 
 
