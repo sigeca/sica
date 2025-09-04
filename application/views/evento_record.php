@@ -579,6 +579,7 @@ echo form_input($arrdatos) ?>
 <script type="text/javascript">
 
 
+	var idevento=<?php echo $evento['idevento']; ?>; 
 $(document).ready(function(){
 	var idevento=<?php echo $evento['idevento']; ?>; 
 	var mytablaf= $('#mydatac').DataTable({"ajax": {url: '<?php echo site_url('evento/evento_fechas')?>', type: 'GET',data:{idevento:idevento}},
@@ -609,6 +610,38 @@ var retorno= $(this).data('retorno');
 window.location.href = retorno+'/'+id;
 
 });
+
+$('#show_data').on('click','.item_part',function(){
+var fecha= $(this).data('fecha');
+var retorno= $(this).data('retorno');
+window.location.href = retorno+'/'+ideento+"?fecha="+fecha;
+
+});
+
+$('#show_data').on('click','.item_asis',function(){
+var fecha= $(this).data('fecha');
+var retorno= $(this).data('retorno');
+window.location.href = retorno+'/'+ideento+"?fecha="+fecha;
+
+});
+
+$('#show_data').on('click','.item_pago',function(){
+var fecha= $(this).data('fecha');
+var retorno= $(this).data('retorno');
+window.location.href = retorno+'/'+ideento+"?fecha="+fecha;
+
+});
+
+
+
+
+
+
+
+
+
+
+
 
 
 $('#show_data1').on('click','.item_ver',function(){

@@ -741,7 +741,7 @@ public function genpagina()
 			$data=array();
 			foreach($data0->result() as $r){
 				$data[]=array($r->numerosesion,$r->unidad,$r->fecha,$r->horainicio,$r->horafin,$r->idmodoevaluacion,$r->tema, 
-				$r->href='<a href="javascript:void(0);" class="btn btn-info btn-sm item_ver"  data-retorno="'.site_url('sesionevento/edit').'"    data-idsesionevento="'.$r->idsesionevento.'">Modificar</a>');
+				$r->href='<a href="javascript:void(0);" class="btn btn-info btn-sm item_ver"  data-retorno="'.site_url('sesionevento/edit').'"    data-idsesionevento="'.$r->idsesionevento.'">Modificar</a><a href="javascript:void(0);" class="btn btn-primary btn-sm item_part"  data-retorno="'.site_url('participacion/add').'"    data-fecha="'.$r->fecha.'">participa</a><a href="javascript:void(0);" class="btn btn-primary btn-sm item_asis"  data-retorno="'.site_url('asistencia/add').'"    data-fecha="'.$r->fecha.'">Asite</a><a href="javascript:void(0);" class="btn btn-primary btn-sm item_pago"  data-retorno="'.site_url('pagoevento/add').'"    data-fecha="'.$r->fecha.'">pago</a>');
 		//		$r->href='<a href="javascript:void(0);" class="btn btn-info btn-sm item_ver"  data-retorno="'.site_url('sesionevento/actual').'"    data-idsesionevento="'.$r->idsesionevento.'">Ver</a><a href="javascript:void(0);" class="btn btn-info btn-sm item_edit"  data-idsesionevento="'.$r->idsesionevento.'"  data-idevento="'.$r->idevento.'">edit</a>');
 			}	
 			$output=array( "draw"=>$draw,
