@@ -185,9 +185,9 @@ foreach ($temas as $row){
 <div class="col-md-10">
 <?php
 if($numerosesion>0 && $numerosesion==$sesionactual){
-	$eys_arrinput=array('name'=>'numerosesion','value'=>$numerosesion,"readonly"=>"true", "style"=>"width:500px");
+	$eys_arrinput=array('name'=>'numerosesion','value'=>$numerosesion,"readonly"=>"true", "style"=>"width:100%");
 }else{
-	$eys_arrinput=array('name'=>'numerosesion','value'=>$sesionactual,"readonly"=>"true", "style"=>"color:red; width:500px");
+	$eys_arrinput=array('name'=>'numerosesion','value'=>$sesionactual,"readonly"=>"true", "style"=>"color:red; width:100%");
 }
 echo form_input($eys_arrinput);
 
@@ -219,7 +219,7 @@ foreach ($unidadsilabos as $row){
 <label class="col-md-2 col-form-label">Id tema:</label>
 <div class="col-md-10">
 <?php
-	$eys_arrinput=array('name'=>'idtema','value'=>$sesionevento['idtema'],"readonly"=>"true", "style"=>"width:500px");
+	$eys_arrinput=array('name'=>'idtema','value'=>$sesionevento['idtema'],"readonly"=>"true", "style"=>"width:100%");
 echo form_input($eys_arrinput);
 
 ?>
@@ -238,7 +238,7 @@ echo form_input($eys_arrinput);
 <?php
 
   
-$textarea_options = array('class' => 'form-control','rows' => '2',   'cols' => '20','maxlength'=>'100','style'=> 'width:50%;height:100px;', "placeholder"=>"tema","id" =>"temacorto");    
+$textarea_options = array('class' => 'form-control','rows' => '2',   'cols' => '20','maxlength'=>'100','style'=> 'width:100%;height:100px;', "placeholder"=>"tema","id" =>"temacorto");    
 echo form_textarea('temacorto',$sesionevento['temacorto'],$textarea_options ); 
 ?><div id="textarea_feedback"></div>
 </div>
@@ -255,7 +255,7 @@ echo form_textarea('temacorto',$sesionevento['temacorto'],$textarea_options );
 <div class="col-md-10">
 <?php
   
-$textarea_options = array('class' => 'form-control','rows' => '4',   'cols' => '20', 'style'=> 'width:50%;height:100px;', "placeholder"=>"tema","id" =>"tema");    
+$textarea_options = array('class' => 'form-control','rows' => '4',   'cols' => '20', 'style'=> 'width:100%;height:100px;', "placeholder"=>"tema","id" =>"tema");    
 echo form_textarea('tema',$sesionevento['tema'],$textarea_options ); 
 
 ?>
@@ -269,7 +269,7 @@ echo form_textarea('tema',$sesionevento['tema'],$textarea_options );
 <div class="col-md-10">
 <?php
     
-$textarea_options = array('name'=>'secuencia','class' => 'form-control','rows' => '8',   'cols' => '20', 'style'=> 'width:50%;height:200px;','value'=>$sesionevento['secuencia'], "placeholder"=>"Actividades que va a realizar para cumplir los objetivos de aprendizaje" );    
+$textarea_options = array('name'=>'secuencia','class' => 'form-control','rows' => '8',   'cols' => '20', 'style'=> 'width:100%;height:200px;','value'=>$sesionevento['secuencia'], "placeholder"=>"Actividades que va a realizar para cumplir los objetivos de aprendizaje" );    
  echo form_textarea( $textarea_options);  
 
 ?>
@@ -426,6 +426,7 @@ echo form_input($eys_arrinput); echo "1=SI / 0=NO";
 	 <th>idtema</th>
 	 <th>tema</th>
 	 <th>Detalle</th>
+     <th style="text-align: right;">Actions</th>
 	 </tr>
 	 </thead>
 	 <tbody id="show_data">
@@ -474,5 +475,14 @@ $(document).ready(function() {
         $('#textarea_feedback').html('Quedan ' + text_remaining + ' caracteres');
     });
 });
+
+$('#show_data1').on('click','.item_ver',function(){
+var id= $(this).data('idtema');
+var retorno= $(this).data('retorno');
+window.location.href = retorno+'/'+id;
+});
+
+
+
 </script>
  

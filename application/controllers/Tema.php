@@ -202,7 +202,8 @@ function tema_silabo()
 		$data=array();
 		foreach($data0->result() as $r){
 			$data[]=array($r->numerosesion,$r->unidad,$r->idtema,$r->nombrecorto,$r->nombrelargo,
-				);
+				$r->href='<a href="javascript:void(0);" class="btn btn-info btn-sm item_ver"  data-retorno="'.site_url('tema/actual').'"    data-idtema="'.$r->idtema.'">Modificar</a>');
+				
 		}	
 		$output=array( "draw"=>$draw,
 			"recordsTotal"=> $data0->num_rows(),
