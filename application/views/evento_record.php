@@ -614,21 +614,21 @@ window.location.href = retorno+'/'+id;
 $('#show_data').on('click','.item_part',function(){
 var fecha= $(this).data('fecha');
 var retorno= $(this).data('retorno');
-window.location.href = retorno+'/'+ideento+"?fecha="+fecha;
+window.location.href = retorno+'/'+idevento+"?fecha="+fecha;
 
 });
 
 $('#show_data').on('click','.item_asis',function(){
 var fecha= $(this).data('fecha');
 var retorno= $(this).data('retorno');
-window.location.href = retorno+'/'+ideento+"?fecha="+fecha;
+window.location.href = retorno+'/'+idevento+"?fecha="+fecha;
 
 });
 
 $('#show_data').on('click','.item_pago',function(){
 var fecha= $(this).data('fecha');
 var retorno= $(this).data('retorno');
-window.location.href = retorno+'/'+ideento+"?fecha="+fecha;
+window.location.href = retorno+'/'+idevento+"?fecha="+fecha;
 
 });
 
