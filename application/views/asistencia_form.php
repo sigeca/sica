@@ -2,6 +2,12 @@
 <h2> <?php echo $title; ?> </h2>
 </div>
 <hr/>
+
+
+<?php
+$fecha_from_url = isset($_GET['fecha']) ? $_GET['fecha'] : null;
+?>
+
 <?php echo form_open() ?>
 
 
@@ -126,10 +132,35 @@ echo form_textarea("comentario","",$textarea_options);
 
 $(document).ready(function(){
 	var idevento= <?php echo $idevento; ?>;
-	var fecha="";
-//	var mytablap= $('#mydatap').DataTable({"ajax": {url: '<?php echo site_url('evento/evento_asistencia')?>', type: 'GET',data:{idevento:idevento}},});
+
+        // New code to handle fecha from GET parameter
+        var fecha_from_url = '<?php echo $fecha_from_url; ?>';
+        if (fecha_from_url) {
+            // Find the option in the dropdown that matches the date from the URL
+            $('#idsesionevento option').each(function() {
+                // The option text contains both the date and the theme
+                if ($(this).text().startsWith(fecha_from_url)) {
+                    // Set the dropdown to the correct value
+                    $(this).prop('selected', true);
+                    // Manually trigger the onchange event to filter the participants
+                    return false; // Exit the loop once found
+                }
+            });
+        }
+
+	var fecha=fecha_from_url;
+
 	var mytablap= $('#mydatap').DataTable({pageLength:50,destroy:true,"ajax": {url: '<?php echo site_url('evento/evento_asistencia2')?>', type: 'GET',data:{idevento:idevento,fecha:fecha}},});
+
+
+
+
 });
+
+
+
+
+
 
 
 	function get_participantes2x() {
