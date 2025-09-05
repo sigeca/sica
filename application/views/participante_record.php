@@ -130,7 +130,7 @@ echo form_input('nombre',$options[$participante['idpersona']],array("id"=>"nombr
 
 
 
-
+<!---
 
 <div class="form-group row">
     <label class="col-md-2 col-form-label">Id documento:</label>
@@ -140,7 +140,7 @@ echo form_input('nombre',$options[$participante['idpersona']],array("id"=>"nombr
 		?>
 	</div> 
 </div> 
-
+-->
 
 
 
