@@ -118,6 +118,19 @@ echo form_input('nombre',$options[$participante['idpersona']],array("id"=>"nombr
 </div> 
  
 
+<div class="form-group row mb-4">
+    <label class="col-md-3 col-form-label" style="font-weight:bold;">Foto:</label>
+    <div class="col-md-9">
+        <img src="https://educaysoft.org/descargar.php?archivo=fotos/<?php echo $participante['cedula']; ?>.jpg" 
+             alt="Foto de la persona" 
+             style="max-width:100%; height:auto; border-radius:5px; box-shadow:0 0 5px rgba(0,0,0,0.2);">
+    </div>
+</div>
+
+
+
+
+
 
 <div class="form-group row">
     <label class="col-md-2 col-form-label">Id documento:</label>

@@ -310,7 +310,7 @@ return $participante;
 
 	// Para moverse al siguiente registro
  	function siguiente($id){
- 		$participante = $this->db->select("idparticipante")->order_by("idparticipante")->get('participante0')->result_array();
+ 		$participante = $this->db->select("idparticipante")->order_by("idparticipante")->get('participante1')->result_array();
 		$arr=array("idparticipante"=>$id);
 		$clave=array_search($arr,$participante);
 	   if(array_key_exists($clave+1,$participante))
@@ -328,7 +328,7 @@ return $participante;
 
 // Para moverse al anterior registro
  	function anterior($id){
- 		$participante = $this->db->select("idparticipante")->order_by("idparticipante")->get('participante0')->result_array();
+ 		$participante = $this->db->select("idparticipante")->order_by("idparticipante")->get('participante1')->result_array();
 		$arr=array("idparticipante"=>$id);
 		$clave=array_search($arr,$participante);
 	   if(array_key_exists($clave-1,$participante))

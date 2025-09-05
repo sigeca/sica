@@ -80,7 +80,11 @@ echo form_input('idpersona',$options[$docente['idpersona']],array("disabled"=>"d
 <div class="form-group row">
     <label class="col-md-2 col-form-label"> Foto:</label>
 	<div class="col-md-10">
- <img src="https://educaysoft.org/repositorioeys/fotos/<?php echo $docente['cedula']; ?>.jpg" alt="foto" width="400" height="300"> 
+
+    <img src="https://educaysoft.org/descargar.php?archivo=fotos/<?php echo $persona['cedula']; ?>.jpg" 
+             alt="Foto de la persona" 
+             style="max-width:100%; height:auto; border-radius:5px; box-shadow:0 0 5px rgba(0,0,0,0.2);">
+
 	</div> 
 </div>
 
