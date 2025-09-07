@@ -287,7 +287,7 @@ public function actual(){
 
 	public function elprimero()
 	{
-		$data['personas']= $this->persona_model->lista_personas()->result();
+		$data['personas']= $this->persona_model->lista_personas0()->result();
 		$data['docente'] = $this->docente_model->elprimero();
 		$data['departamentos']= $this->departamento_model->lista_departamentos()->result();
 		$data['estudios']= $this->estudio_model->estudios($data['docente']['idpersona'])->result();
@@ -314,7 +314,7 @@ public function actual(){
 		$data['departamentos']= $this->departamento_model->lista_departamentos()->result();
 		  if(!empty($data))
 		  {
-			$data['personas']= $this->persona_model->lista_personas()->result();
+			$data['personas']= $this->persona_model->lista_personas0()->result();
 		    $data['title']="Docente";
 		  
 		    $this->load->view('template/page_header');		
@@ -330,7 +330,7 @@ public function actual(){
 
 	public function siguiente(){
 		$data['docente'] = $this->docente_model->siguiente($this->uri->segment(3))->row_array();
-		$data['personas']= $this->persona_model->lista_personas()->result();
+		$data['personas']= $this->persona_model->lista_personas0()->result();
 		$data['departamentos']= $this->departamento_model->lista_departamentos()->result();
 		$data['estudios']= $this->estudio_model->estudios($data['docente']['idpersona'])->result();
 
@@ -342,7 +342,7 @@ public function actual(){
 
 	public function anterior(){
 		$data['docente'] = $this->docente_model->anterior($this->uri->segment(3))->row_array();
-		$data['personas']= $this->persona_model->lista_personas()->result();
+		$data['personas']= $this->persona_model->lista_personas0()->result();
 		$data['estudios']= $this->estudio_model->estudios($data['docente']['idpersona'])->result();
 		$data['departamentos']= $this->departamento_model->lista_departamentos()->result();
 		$data['title']="Docente";
