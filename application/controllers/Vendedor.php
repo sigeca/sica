@@ -354,4 +354,30 @@ public function actual(){
 
 
 
+
+
+	public function vendedor1(){
+                header('Content-Type: application/json');
+
+ // Consultar la vista vendedor1
+ // Consultar la vista vendedor1
+
+		$vendedores = $this->vendedor_model->vendedor(1)->result();
+ // Si no hay resultados, devolver un array vacío
+        if (empty($vendedores)) {
+            echo json_encode([]);
+            return;
+        }
+
+        // Codificar los resultados a JSON y enviarlos a la salida
+        echo json_encode($vendedores);
+
+
+	}
+
+
+
+
+
+
 }
