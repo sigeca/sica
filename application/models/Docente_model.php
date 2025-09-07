@@ -107,7 +107,7 @@ class Docente_model extends CI_model {
 
 	function elprimero()
 	{
-		$query=$this->db->order_by("iddocente")->get('docente0');
+		$query=$this->db->order_by("iddocente")->get('docente1');
 		if($query->num_rows()>0)
 		{
 			return $query->first_row('array');
@@ -138,10 +138,10 @@ class Docente_model extends CI_model {
 	   if(array_key_exists($clave+1,$docente))
 		 {
 
- 		$docente = $this->db->query('select * from docente0 where iddocente="'. $docente[$clave+1]["iddocente"].'"');
+ 		$docente = $this->db->query('select * from docente1 where iddocente="'. $docente[$clave+1]["iddocente"].'"');
 		 }else{
 
- 		$docente = $this->db->query('select * from docente0 where iddocente="'. $id.'"');
+ 		$docente = $this->db->query('select * from docente1 where iddocente="'. $id.'"');
 		 }
 		 	
  		return $docente;
@@ -156,10 +156,10 @@ class Docente_model extends CI_model {
 	   if(array_key_exists($clave-1,$docente))
 		 {
 
- 		$docente = $this->db->query('select * from docente0 where iddocente="'. $docente[$clave-1]["iddocente"].'"');
+ 		$docente = $this->db->query('select * from docente1 where iddocente="'. $docente[$clave-1]["iddocente"].'"');
 		 }else{
 
- 		$docente = $this->db->query('select * from docente0 where iddocente="'. $id.'"');
+ 		$docente = $this->db->query('select * from docente1 where iddocente="'. $id.'"');
 		 }
 		 	
  		return $docente;
