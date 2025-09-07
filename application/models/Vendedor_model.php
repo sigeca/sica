@@ -35,6 +35,11 @@ class Vendedor_model extends CI_model {
  		return $vendedor;
  	}
 
+ 	function vendedordep1( $iddepartamento){
+ 		$vendedor = $this->db->query('select * from vendedor1 where iddepartamento="'. $iddepartamento.'"');
+ 		return $vendedor;
+ 	}
+
 
 
  	function vendedorspersona( $id){

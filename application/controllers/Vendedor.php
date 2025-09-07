@@ -362,7 +362,7 @@ public function actual(){
  // Consultar la vista vendedor1
  // Consultar la vista vendedor1
 
-		$vendedores = $this->vendedor_model->vendedor(1)->result();
+		$vendedores = $this->vendedor_model->vendedordep1(1)->result();
  // Si no hay resultados, devolver un array vacío
         if (empty($vendedores)) {
             echo json_encode([]);
