@@ -81,7 +81,7 @@ echo form_input('idpersona',$options[$docente['idpersona']],array("disabled"=>"d
     <label class="col-md-2 col-form-label"> Foto:</label>
 	<div class="col-md-10">
 
-    <img src="https://educaysoft.org/descargar.php?archivo=fotos/<?php echo $persona['cedula']; ?>.jpg" 
+    <img src="https://educaysoft.org/descargar.php?archivo=fotos/<?php echo $docente['cedula']; ?>.jpg" 
              alt="Foto de la persona" 
              style="max-width:100%; height:auto; border-radius:5px; box-shadow:0 0 5px rgba(0,0,0,0.2);">
 
