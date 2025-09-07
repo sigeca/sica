@@ -309,7 +309,7 @@ public function actual(){
 	public function elultimo()
 	{
 		$data['docente'] = $this->docente_model->elultimo();
-		$data['personas']= $this->persona_model->lista_personas()->result();
+		$data['personas']= $this->persona_model->lista_personas0()->result();
 		$data['estudios']= $this->estudio_model->estudios($data['docente']['idpersona'])->result();
 		$data['departamentos']= $this->departamento_model->lista_departamentos()->result();
 		  if(!empty($data))
