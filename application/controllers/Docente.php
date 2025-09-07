@@ -84,13 +84,13 @@ public function actual(){
 
 
 	$data['title']="Modulo del Docente";
-	$this->load->view('template/page_header');		
+	$this->load->view('page_header');		
 	$this->load->view('docente_record',$data);
-	$this->load->view('template/page_footer');
+	$this->load->view('page_footer');
    }else{
-	$this->load->view('template/page_header.php');
+	$this->load->view('page_header.php');
 	$this->load->view('login_form');
-	$this->load->view('template/page_footer.php');
+	$this->load->view('page_footer.php');
    }
 }
 
@@ -134,9 +134,9 @@ public function actual(){
 			$data['personas']= $this->persona_model->lista_personas()->result();
 			$data['departamentos']= $this->departamento_model->lista_departamentos()->result();
 			$data['title'] = "Actualizar Docente";
-			$this->load->view('template/page_header');		
+			$this->load->view('page_header');		
 			$this->load->view('docente_edit',$data);
-			$this->load->view('template/page_footer');
+			$this->load->view('page_footer');
 	 
 	}
 
@@ -296,13 +296,13 @@ public function actual(){
 		  {
 			$data['personas']= $this->persona_model->lista_personas()->result();
 		    $data['title']="Docente";
-		    $this->load->view('template/page_header');		
+		    $this->load->view('page_header');		
 		    $this->load->view('docente_record',$data);
-		    $this->load->view('template/page_footer');
+		    $this->load->view('page_footer');
 		  }else{
-		    $this->load->view('template/page_header');		
+		    $this->load->view('page_header');		
 		    $this->load->view('registro_vacio');
-		    $this->load->view('template/page_footer');
+		    $this->load->view('page_footer');
 		  }
 	 }
 
@@ -317,14 +317,14 @@ public function actual(){
 			$data['personas']= $this->persona_model->lista_personas0()->result();
 		    $data['title']="Docente";
 		  
-		    $this->load->view('template/page_header');		
+		    $this->load->view('page_header');		
 		    $this->load->view('docente_record',$data);
-		    $this->load->view('template/page_footer');
+		    $this->load->view('page_footer');
 		  }else{
 
-		    $this->load->view('template/page_header');		
+		    $this->load->view('page_header');		
 		    $this->load->view('registro_vacio');
-		    $this->load->view('template/page_footer');
+		    $this->load->view('page_footer');
 		  }
 	}
 
@@ -335,9 +335,9 @@ public function actual(){
 		$data['estudios']= $this->estudio_model->estudios($data['docente']['idpersona'])->result();
 
 		$data['title']="Docente";
-		$this->load->view('template/page_header');		
+		$this->load->view('page_header');		
 		$this->load->view('docente_record',$data);
-		$this->load->view('template/page_footer');
+		$this->load->view('page_footer');
 	}
 
 	public function anterior(){
@@ -346,9 +346,9 @@ public function actual(){
 		$data['estudios']= $this->estudio_model->estudios($data['docente']['idpersona'])->result();
 		$data['departamentos']= $this->departamento_model->lista_departamentos()->result();
 		$data['title']="Docente";
-		$this->load->view('template/page_header');		
+		$this->load->view('page_header');		
 		$this->load->view('docente_record',$data);
-		$this->load->view('template/page_footer');
+		$this->load->view('page_footer');
 	}
 
 
