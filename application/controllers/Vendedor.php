@@ -1,12 +1,12 @@
 <?php
 
-class Docente extends CI_Controller{
+class Vendedor extends CI_Controller{
 
   public function __construct(){
       parent::__construct();
   	  $this->load->model('persona_model');
   	  $this->load->model('departamento_model');
-  	  $this->load->model('docente_model');
+  	  $this->load->model('vendedor_model');
   	  $this->load->model('estudio_model');
   	  $this->load->model('silabo_model');
 }
@@ -39,14 +39,14 @@ public function index(){
 
   	if(isset($this->session->userdata['logged_in'])){
 			
-		$data['docente']=$this->docente_model->elultimo();
+		$data['vendedor']=$this->vendedor_model->elultimo();
 		$data['personas']= $this->persona_model->lista_personas0()->result();
 		$data['departamentos']= $this->departamento_model->lista_departamentos()->result();
-		$data['estudios']= $this->estudio_model->estudios($data['docente']['idpersona'])->result();
+		$data['estudios']= $this->estudio_model->estudios($data['vendedor']['idpersona'])->result();
 			
-		$data['title']="Lista de docentes";
+		$data['title']="Lista de vendedors";
 		$this->load->view('page_header');
-		$this->load->view('docente_record',$data);
+		$this->load->view('vendedor_record',$data);
 		$this->load->view('page_footer');
 	}else{
 	 	$this->load->view('page_header.php');
@@ -65,7 +65,7 @@ public function index(){
 		$idpersona=$this->uri->segment(3);
 	 	$data['estudios']= $this->estudio_model->lista_estudios1($idpersona)->result();
 		$data['title']="Evento";
-		$this->load->view('docente_list_pdf',$data);
+		$this->load->view('vendedor_list_pdf',$data);
 	}
 
 
@@ -79,13 +79,13 @@ public function actual(){
 
 	$data['personas']= $this->persona_model->lista_personas()->result();
 	$data['departamentos']= $this->departamento_model->lista_departamentos()->result();
-	$data['docente']=$this->docente_model->docente($this->uri->segment(3))->row_array();
-	$data['estudios']= $this->estudio_model->estudios($data['docente']['idpersona'])->result();
+	$data['vendedor']=$this->vendedor_model->vendedor($this->uri->segment(3))->row_array();
+	$data['estudios']= $this->estudio_model->estudios($data['vendedor']['idpersona'])->result();
 
 
-	$data['title']="Modulo del Docente";
+	$data['title']="Modulo del Vendedor";
 	$this->load->view('page_header');		
-	$this->load->view('docente_record',$data);
+	$this->load->view('vendedor_record',$data);
 	$this->load->view('page_footer');
    }else{
 	$this->load->view('page_header.php');
@@ -101,9 +101,9 @@ public function actual(){
 	{
 			$data['personas']= $this->persona_model->lista_personas0()->result();
 			$data['departamentos']= $this->departamento_model->lista_departamentos()->result();
-			$data['title']="Nueva Docente";
+			$data['title']="Nueva Vendedor";
 			$this->load->view('page_header');		
-			$this->load->view('docente_form',$data);
+			$this->load->view('vendedor_form',$data);
 			$this->load->view('page_footer');
 	}
 
@@ -112,14 +112,14 @@ public function actual(){
 	{
 	 	$array_item=array(
 		 	
-		 	'iddocente' => $this->input->post('iddocente'),
+		 	'idvendedor' => $this->input->post('idvendedor'),
 			'idpersona' => $this->input->post('idpersona'),
 			'iddepartamento' => $this->input->post('iddepartamento'),
 	 	);
-	 	$result=$this->docente_model->save($array_item);
+	 	$result=$this->vendedor_model->save($array_item);
 	 	if($result == FALSE)
 		{
-			echo "<script language='JavaScript'> alert('Docente ya existe'); </script>";
+			echo "<script language='JavaScript'> alert('Vendedor ya existe'); </script>";
 			echo "<script language='JavaScript'> window.history.go(-2);</script>";
 		}else{
 			echo "<script language='JavaScript'> window.history.go(-2);</script>";
@@ -130,12 +130,12 @@ public function actual(){
 
 	public function edit()
 	{
-			$data['docente'] = $this->docente_model->docente($this->uri->segment(3))->row_array();
+			$data['vendedor'] = $this->vendedor_model->vendedor($this->uri->segment(3))->row_array();
 			$data['personas']= $this->persona_model->lista_personas()->result();
 			$data['departamentos']= $this->departamento_model->lista_departamentos()->result();
-			$data['title'] = "Actualizar Docente";
+			$data['title'] = "Actualizar Vendedor";
 			$this->load->view('page_header');		
-			$this->load->view('docente_edit',$data);
+			$this->load->view('vendedor_edit',$data);
 			$this->load->view('page_footer');
 	 
 	}
@@ -143,50 +143,50 @@ public function actual(){
 
 	public function  save_edit()
 	{
-		$id=$this->input->post('iddocente');
+		$id=$this->input->post('idvendedor');
 	 	$array_item=array(
 		 	
-		 	'iddocente' => $this->input->post('iddocente'),
+		 	'idvendedor' => $this->input->post('idvendedor'),
 			'idpersona' => $this->input->post('idpersona'),
 			'iddepartamento' => $this->input->post('iddepartamento'),
 	 	);
-	 	$this->docente_model->update($id,$array_item);
-	 	redirect('docente');
+	 	$this->vendedor_model->update($id,$array_item);
+	 	redirect('vendedor');
  	}
 
 
  	public function delete()
  	{
- 		$data=$this->docente_model->delete($this->uri->segment(3));
+ 		$data=$this->vendedor_model->delete($this->uri->segment(3));
  		echo json_encode($data);
-	 	redirect('docente/elprimero');
+	 	redirect('vendedor/elprimero');
 	//	$db['default']['db_debug']=FALSE
  	}
 
 
 	public function listar()
 	{
-		$data['title']="Docentes";
+		$data['title']="Vendedors";
 		$this->load->view('page_header');		
-		$this->load->view('docente_list',$data);
+		$this->load->view('vendedor_list',$data);
 		$this->load->view('page_footer');
 	}
 
 
 
-	function docente_data()
+	function vendedor_data()
 	{
 			$draw= intval($this->input->get("draw"));
 			$draw= intval($this->input->get("start"));
 			$draw= intval($this->input->get("length"));
 
 
-			$data0 = $this->docente_model->lista_docentesB();
+			$data0 = $this->vendedor_model->lista_vendedorsB();
 			$data=array();
 			foreach($data0->result() as $r){
-				$data[]=array($r->iddocente,$r->eldocente,
+				$data[]=array($r->idvendedor,$r->elvendedor,
 					$r->href='<a href="javascript:void(0);" class="item_ver" data-doctos="'.$r->idpersona.'">'.$r->cantidad.'</a>',
-					$r->href='<a href="javascript:void(0);" class="btn btn-info btn-sm item_ver"   data-retorno="'.site_url('docente/actual').'"  data-iddocente="'.$r->iddocente.'">Ver</a>');
+					$r->href='<a href="javascript:void(0);" class="btn btn-info btn-sm item_ver"   data-retorno="'.site_url('vendedor/actual').'"  data-idvendedor="'.$r->idvendedor.'">Ver</a>');
 			}	
 			$output=array( "draw"=>$draw,
 				"recordsTotal"=> $data0->num_rows(),
@@ -206,12 +206,12 @@ public function actual(){
 			$draw= intval($this->input->get("start"));
 			$draw= intval($this->input->get("length"));
 
-			$iddocente=$this->input->get('iddocente');
+			$idvendedor=$this->input->get('idvendedor');
 			$idperiodoacademico=$this->input->get('idperiodoacademico');
-			$data0 =$this->silabo_model->silabosdp($iddocente,$idperiodoacademico);
+			$data0 =$this->silabo_model->silabosdp($idvendedor,$idperiodoacademico);
 			$data=array();
 			foreach($data0->result() as $r){
-				$data[]=array($r->iddocente,$r->idsilabo,$r->elsilabo,$r->elperiodo,$r->archivopdf,
+				$data[]=array($r->idvendedor,$r->idsilabo,$r->elsilabo,$r->elperiodo,$r->archivopdf,
 				$r->href='<a href="javascript:void(0);" class="btn btn-info btn-sm item_ver"  data-retornos="'.site_url('silabo/actual').'"    data-idsilabo="'.$r->idsilabo.'">Ver</a>');
 			}	
 			$output=array( "draw"=>$draw,
@@ -288,16 +288,16 @@ public function actual(){
 	public function elprimero()
 	{
 		$data['personas']= $this->persona_model->lista_personas0()->result();
-		$data['docente'] = $this->docente_model->elprimero();
+		$data['vendedor'] = $this->vendedor_model->elprimero();
 		$data['departamentos']= $this->departamento_model->lista_departamentos()->result();
-		$data['estudios']= $this->estudio_model->estudios($data['docente']['idpersona'])->result();
+		$data['estudios']= $this->estudio_model->estudios($data['vendedor']['idpersona'])->result();
 
 		  if(!empty($data))
 		  {
 			$data['personas']= $this->persona_model->lista_personas()->result();
-		    $data['title']="Docente";
+		    $data['title']="Vendedor";
 		    $this->load->view('page_header');		
-		    $this->load->view('docente_record',$data);
+		    $this->load->view('vendedor_record',$data);
 		    $this->load->view('page_footer');
 		  }else{
 		    $this->load->view('page_header');		
@@ -308,17 +308,17 @@ public function actual(){
 
 	public function elultimo()
 	{
-		$data['docente'] = $this->docente_model->elultimo();
+		$data['vendedor'] = $this->vendedor_model->elultimo();
 		$data['personas']= $this->persona_model->lista_personas0()->result();
-		$data['estudios']= $this->estudio_model->estudios($data['docente']['idpersona'])->result();
+		$data['estudios']= $this->estudio_model->estudios($data['vendedor']['idpersona'])->result();
 		$data['departamentos']= $this->departamento_model->lista_departamentos()->result();
 		  if(!empty($data))
 		  {
 			$data['personas']= $this->persona_model->lista_personas0()->result();
-		    $data['title']="Docente";
+		    $data['title']="Vendedor";
 		  
 		    $this->load->view('page_header');		
-		    $this->load->view('docente_record',$data);
+		    $this->load->view('vendedor_record',$data);
 		    $this->load->view('page_footer');
 		  }else{
 
@@ -329,25 +329,25 @@ public function actual(){
 	}
 
 	public function siguiente(){
-		$data['docente'] = $this->docente_model->siguiente($this->uri->segment(3))->row_array();
+		$data['vendedor'] = $this->vendedor_model->siguiente($this->uri->segment(3))->row_array();
 		$data['personas']= $this->persona_model->lista_personas0()->result();
 		$data['departamentos']= $this->departamento_model->lista_departamentos()->result();
-		$data['estudios']= $this->estudio_model->estudios($data['docente']['idpersona'])->result();
+		$data['estudios']= $this->estudio_model->estudios($data['vendedor']['idpersona'])->result();
 
-		$data['title']="Docente";
+		$data['title']="Vendedor";
 		$this->load->view('page_header');		
-		$this->load->view('docente_record',$data);
+		$this->load->view('vendedor_record',$data);
 		$this->load->view('page_footer');
 	}
 
 	public function anterior(){
-		$data['docente'] = $this->docente_model->anterior($this->uri->segment(3))->row_array();
+		$data['vendedor'] = $this->vendedor_model->anterior($this->uri->segment(3))->row_array();
 		$data['personas']= $this->persona_model->lista_personas0()->result();
-		$data['estudios']= $this->estudio_model->estudios($data['docente']['idpersona'])->result();
+		$data['estudios']= $this->estudio_model->estudios($data['vendedor']['idpersona'])->result();
 		$data['departamentos']= $this->departamento_model->lista_departamentos()->result();
-		$data['title']="Docente";
+		$data['title']="Vendedor";
 		$this->load->view('page_header');		
-		$this->load->view('docente_record',$data);
+		$this->load->view('vendedor_record',$data);
 		$this->load->view('page_footer');
 	}
 
