@@ -435,9 +435,9 @@ public function anterior(){
                 header('Content-Type: application/json');
 
 
-	$id=$this->uri->segment(3);
     
     
+			$id= $this->input->get("idpersona");
     
     
         $articulos = $this->articulo_model->articulopers($id)->result();
