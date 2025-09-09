@@ -237,7 +237,7 @@
         <div class="row py-lg-5" style="display:flex;  align-items:center; justify-content: center;" >
             <?php if (!empty($articulos)): ?>
             <div style=" flex-basis: 40%"  >
-                <img src="https://educaysoft.org/repositorioeys/qr/articulos-<?php echo $articulos[0]->idinstitucion; ?>.png" height="150px" alt="QR Code1">
+                <img src="https://educaysoft.org/descargar.php?archivo=qr/articulos-<?php echo $articulos[0]->idinstitucion; ?>.png" height="150px" alt="QR Code1">
             </div>
             <div>
                 <h1 class="fw-light"><?php echo $articulos[0]->idinstitucion; ?></h1>
@@ -254,7 +254,7 @@
                 <?php
                 $arrcolor=array(1=>"#b4b2b2",2=>"#F5DA81",3=>"#A9F5A9",4=>"#A9F4F3",5=>"#CFCEF7",6=>"#D1A9F4",7=>"#F5A8F3",8=>"#80DBF5",9=>"#9BFE2F",10=>"#9BFE2F");
                 foreach($articulos as $row):
-                    $remoteFile = "https://educaysoft.org/repositorioeys/articulos/articulo" . trim($row->idarticulo) . ".jpg";
+                    $remoteFile = "https://educaysoft.org/descargar.php?archivo=articulos/articulo" . trim($row->idarticulo) . ".jpg";
                     $file_headers = @get_headers($remoteFile);
                     $image_exists = ($file_headers && $file_headers[0] != 'HTTP/1.1 404 Not Found');
                 ?>
@@ -263,7 +263,7 @@
                         <?php if ($image_exists): ?>
                             <img class="bd-placeholder-img card-img-top thumbnail" src="<?php echo $remoteFile; ?>" alt="<?php echo $row->elarticulo; ?>" onclick="mostrarImagen('<?php echo $remoteFile; ?>')">
                         <?php else: ?>
-                            <img class="bd-placeholder-img card-img-top" src="https://educaysoft.org/repositorioeys/articulos/articulo0.jpg" alt="No image available">
+                            <img class="bd-placeholder-img card-img-top" src="https://educaysoft.org/descargar.php?archivo=articulos/articulo0.jpg" alt="No image available">
                             <div class="img-contenedor w3-card-4" style="position:relative; width:100%; height:100%; display:flex; justify-content: center; align-items: center; padding: 10px;">
                                 <input type="file" id="fileInput<?php echo trim($row->idarticulo); ?>" accept="image/*" style="display:none;">
                                 <button class="btn btn-sm btn-outline-secondary" onclick="document.getElementById('fileInput<?php echo trim($row->idarticulo); ?>').click();">Seleccionar Imagen</button>
