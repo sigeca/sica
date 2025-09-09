@@ -431,6 +431,33 @@ public function anterior(){
 	}
 
 
+	public function articulo1(){
+                header('Content-Type: application/json');
+
+
+	$id=$this->uri->segment(3);
+    
+    
+    
+    
+        $articulos = $this->articulo_model->articulopers($id)->result();
+ // Si no hay resultados, devolver un array vacío
+        if (empty($articulos)) {
+            echo json_encode([]);
+            return;
+        }
+
+        // Codificar los resultados a JSON y enviarlos a la salida
+        echo json_encode($articulos);
+
+
+	}
+
+
+
+
+
+
 
 
 }

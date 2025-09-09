@@ -25,6 +25,11 @@ class Articulo_model extends CI_model {
  		return $articulo;
  	}
 
+ 	function articulopers( $id){
+ 		$articulo = $this->db->query('select * from articulo1 where idpersona="'. $id.'"');
+ 		return $articulo;
+ 	}
+
 
 
 
