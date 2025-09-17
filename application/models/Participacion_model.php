@@ -30,6 +30,7 @@ class Participacion_model extends CI_model {
 	function get_participacionpersonaAll($idevento,$idpersona){
 		 if($idevento>0)
                 {
+		        $this->db->order_by("idmodoevaluacion  asc","fecha asc");
                 $this->db->where('idevento='.$idevento);
                 $this->db->where('idpersona="'.$idpersona.'"');
                 $query = $this->db->get('participacion2'); // Suponiendo que la tabla se llama 'documentos'
