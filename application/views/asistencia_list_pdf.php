@@ -154,7 +154,7 @@ foreach ($asistencia as $row){
 
      if($arrasistencia[$row1['fecha']][0]==2)   //atraseo
 		{
-   $pdf->SetFillColor(173,255,47);
+   $pdf->SetFillColor(255,255,0);
   $pdf->Cell(4,5,"AT",1,0,'C',1);
     $asistencia=$asistencia+0.75;
 		}
@@ -225,7 +225,7 @@ $pdf->Cell(4,5,"PU",1,0,'L',1);
 
      if($arrasistencia[$row1['fecha']][0]==2)   //atraseo
 		{
-   $pdf->SetFillColor(273,255,47);
+   $pdf->SetFillColor(255,255,0);
 $pdf->Cell(4,5,"AT",1,0,'L',1);
     $asistencia=$asistencia+0.75;
 		}
