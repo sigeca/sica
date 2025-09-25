@@ -154,15 +154,15 @@ foreach ($asistencia as $row){
 
      if($arrasistencia[$row1['fecha']][0]==2)   //atraseo
 		{
-   $pdf->SetFillColor(144,238,144);
-  $pdf->Cell(4,5,"AT",1,0,'C',0);
+   $pdf->SetFillColor(173,255,47);
+  $pdf->Cell(4,5,"AT",1,0,'C',1);
     $asistencia=$asistencia+0.75;
 		}
 
 
      if($arrasistencia[$row1['fecha']][0]==3)  
      {
-	     $pdf->SetFillColor(240,57,77); 
+	     $pdf->SetFillColor(255,165,0); 
 	     $pdf->Cell(4,5,"FJ",1,0,'L',1);
     $asistencia=$asistencia+0.50;
      }
@@ -214,27 +214,26 @@ $j=0;
     $asistencia=0;
     foreach ($sesiones as $row1){
       if(isset($arrasistencia[$row1['fecha']])){
-//          echo "<td style='color:black'>". $arrasistencia[$row1->fecha][0]."</td>";
 
 
       if($arrasistencia[$row1['fecha']][0]==1)   //puntual
 		{
    $pdf->SetFillColor(144,238,144);
-$pdf->Cell(4,5,"PU",1,0,'L',0);
+$pdf->Cell(4,5,"PU",1,0,'L',1);
     $asistencia=$asistencia+1;
 		}
 
      if($arrasistencia[$row1['fecha']][0]==2)   //atraseo
 		{
-   $pdf->SetFillColor(144,238,144);
-$pdf->Cell(4,5,"AT",1,0,'L',0);
+   $pdf->SetFillColor(273,255,47);
+$pdf->Cell(4,5,"AT",1,0,'L',1);
     $asistencia=$asistencia+0.75;
 		}
 
 
      if($arrasistencia[$row1['fecha']][0]==3)  
      {
-	$pdf->SetFillColor(240,57,77);
+	$pdf->SetFillColor(255,165,0);
      $pdf->Cell(4,5,"FJ",1,0,'L',1);
     $asistencia=$asistencia+0.5;
      }
@@ -243,7 +242,7 @@ $pdf->Cell(4,5,"AT",1,0,'L',0);
      if($arrasistencia[$row1['fecha']][0]==4)  
      {
 	$pdf->SetFillColor(240,57,77);
-      $pdf->Cell(4,5,"FI"."</td>",1,0,'L',0);
+      $pdf->Cell(4,5,"FI",1,0,'L',0);
     $asistencia=$asistencia+0;
      }
 
