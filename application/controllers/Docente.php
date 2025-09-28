@@ -77,7 +77,7 @@ public function index(){
 public function actual(){
  if(isset($this->session->userdata['logged_in'])){
 
-	$data['personas']= $this->persona_model->lista_personas()->result();
+	$data['personas']= $this->persona_model->lista_personas0()->result();
 	$data['departamentos']= $this->departamento_model->lista_departamentos()->result();
 	$data['docente']=$this->docente_model->docente($this->uri->segment(3))->row_array();
 	$data['estudios']= $this->estudio_model->estudios($data['docente']['idpersona'])->result();
