@@ -121,7 +121,8 @@ function checkIfImageExists(url) {
 
                             for (const item of response.data) { // Usamos for...of para poder usar await
                                 // Default photo if not provided or empty
-                                const docentePhotoUrlBase = "https://educaysoft.org/repositorioeys/fotos/";
+                           //     const docentePhotoUrlBase = "https://educaysoft.org/repositorioeys/fotos/";
+                                const docentePhotoUrlBase = "https://educaysoft.org/descargar.php?archivo=fotos/";
                                 let docentePhoto = `${docentePhotoUrlBase}${item.cedula}.jpg`;
                                 let finalDocentePhoto = '';
 
