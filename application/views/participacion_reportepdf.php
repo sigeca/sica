@@ -260,12 +260,13 @@ class ReporteParticipacionPDF
                     $this->pdf->SetTextColor(0, 0, 0);
                 }
 
+                       if($row1->idmodoevaluacion==2||$row1->idmodoevaluacion== 6){   //si son las participaciones A1 O A2
+
                 $xparti = (100 - ($participantData['participaciones'][$row1->fecha] + $participantData['ayudas'][$row1->fecha])) * ($vp / (100 * $cmp));
 
                 
 
                 $xpartiacu=($xpartiacu ?? 0) +$xparti;
-                       if($row1->idmodoevaluacion==2||$row1->idmodoevaluacion== 6){   //si son las participaciones A1 O A2
                 $score = round(($participantData['participaciones'][$row1->fecha] + $participantData['ayudas'][$row1->fecha] + $xpartiacu) * $ponderacion, 2);
                 $xpartiacu=0;
                         }else{
