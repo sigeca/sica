@@ -261,7 +261,20 @@ class ReporteParticipacionPDF
                 }
 
                 $xparti = (100 - ($participantData['participaciones'][$row1->fecha] + $participantData['ayudas'][$row1->fecha])) * ($vp / (100 * $cmp));
-                $score = round(($participantData['participaciones'][$row1->fecha] + $participantData['ayudas'][$row1->fecha] + $xparti) * $ponderacion, 2);
+
+                
+
+                xpartiacu=(xpartiacu ?? 0) +xparti;
+                       if($row1->idmodoevaluacion==2||$row1->idmodoevaluacion== 6){   //si son las participaciones A1 O A2
+                $score = round(($participantData['participaciones'][$row1->fecha] + $participantData['ayudas'][$row1->fecha] + $xpartiacu) * $ponderacion, 2);
+                xpartiacu=0;
+                        }else{
+    
+
+                $score = round(($participantData['participaciones'][$row1->fecha] + $participantData['ayudas'][$row1->fecha] + 0) * $ponderacion, 2);
+                        }
+
+
                 if(($nivelRpt==2 || $nivelRpt==1) and $score<=70)
                 {
                     $this->pdf->setFillColor(255, 165,0);  //Color naranja de poner cuidado
