@@ -269,7 +269,12 @@ class ReporteParticipacionPDF
 
                 $xparti = (100 - ($participantData['participaciones'][$row1->fecha] + $participantData['ayudas'][$row1->fecha])) * ($svp / (100 * $scmp));
 
-                 
+                if(($xparti??-1)>0){
+                    echo $xparti;
+                    die;
+                }
+
+                
                 $scmp=0;
                 $svp=0;
 
