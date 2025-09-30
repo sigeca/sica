@@ -261,7 +261,7 @@ class ReporteParticipacionPDF
                     $this->pdf->SetTextColor(0, 0, 0);
                 }
                 $scmp=($scmp ??0)+$cmp;
-                $svp=($svp ??0)+$svp;
+                $svp=($svp ??0)+$vp;
 
 
                 
