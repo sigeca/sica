@@ -247,7 +247,7 @@ class ReporteParticipacionPDF
             if (isset($participantData['participaciones'][$row1->fecha])) {
                 $fecha2 = $row1->fecha;
 
-                $q1 = $this->db->query("select idpersona, count(porcentaje) as cantidad from participacion2 where idevento=" . $row1->idevento . " and idmodoevaluacion=1 and (fecha between '" . $fecha1 . "' and '" . $fecha2 . "') group by idpersona order by cantidad desc limit 1");
+                $q1 = $this->db->query("select idpersona, count(porcentaje) as cantidad from participacion2 where idevento=" . $row1->idevento . " and porcentaje !=0  and idmodoevaluacion=1 and (fecha between '" . $fecha1 . "' and '" . $fecha2 . "') group by idpersona order by cantidad desc limit 1");
                 $cmp = ($q1->num_rows() > 0) ? $q1->result()[0]->cantidad : 1;
 
                 $q2 = $this->db->query("select idpersona, sum(porcentaje) as total from participacion2 where idpersona=" . $participantData['idpersona'] . " and idmodoevaluacion=1 and idevento=" . $row1->idevento . " and (fecha between '" . $fecha1 . "' and '" . $fecha2 . "') group by idpersona limit 1");
@@ -268,13 +268,6 @@ class ReporteParticipacionPDF
                        if($row1->idmodoevaluacion==2||$row1->idmodoevaluacion== 6){   //si son las participaciones A1 O A2
 
                 $xparti = (100 - ($participantData['participaciones'][$row1->fecha] + $participantData['ayudas'][$row1->fecha])) * ($svp / (100 * $scmp));
-
-                if(($xparti ?? 0)>0){
-                    echo $xparti."<br>";
-                    echo $svp."<br>";
-                    echo $scmp;
-                    die;
-                }
 
                 
                 $scmp=0;
