@@ -260,15 +260,21 @@ class ReporteParticipacionPDF
                 } else {
                     $this->pdf->SetTextColor(0, 0, 0);
                 }
+                $scmp=($scmp ??0)+$cmp;
+                $svp=($svp ??0)+$svp;
 
-                       if($row1->idmodoevaluacion==2||$row1->idmodoevaluacion== 6){   //si son las participaciones A1 O A2
-
-                $xparti = (100 - ($participantData['participaciones'][$row1->fecha] + $participantData['ayudas'][$row1->fecha])) * ($vp / (100 * $cmp));
 
                 
+                       if($row1->idmodoevaluacion==2||$row1->idmodoevaluacion== 6){   //si son las participaciones A1 O A2
 
-                $xpartiacu=($xpartiacu ?? 0) +$xparti;
-                $score = round(($participantData['participaciones'][$row1->fecha] + $participantData['ayudas'][$row1->fecha] + $xpartiacu) * $ponderacion, 2);
+                $xparti = (100 - ($participantData['participaciones'][$row1->fecha] + $participantData['ayudas'][$row1->fecha])) * ($svp / (100 * $scmp));
+
+                
+                $scmp=0;
+                $svp=0;
+
+        //        $xpartiacu=($xpartiacu ?? 0) +$xparti;
+                $score = round(($participantData['participaciones'][$row1->fecha] + $participantData['ayudas'][$row1->fecha] + $xparti) * $ponderacion, 2);
                 $xpartiacu=0;
                         }else{
     
