@@ -243,6 +243,8 @@ class ReporteParticipacionPDF
         $fecha1 = $calendarioAcademico[0]->fechahasta ?? null;
         $fecha1 = $calendarioAcademico[0]->fechadesde ?? null;
 
+        echo $fecha1;
+        die();
         foreach ($sesionEventos as $row1) {
             if (isset($participantData['participaciones'][$row1->fecha])) {
                 $fecha2 = $row1->fecha;
