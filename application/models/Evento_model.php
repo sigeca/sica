@@ -69,7 +69,7 @@ Class Evento_model extends CI_model {
                 {
                 $this->db->where('idpersona='.$idpersona);
             //    $this->db->where('estado="'.$estado.'"');
-                $query = $this->db->order_by('idevento'.'desc')->get('evento2'); // Suponiendo que la tabla se llama 'documentos'
+                $query = $this->db->order_by('idevento','desc')->get('evento2'); // Suponiendo que la tabla se llama 'documentos'
         return $query->result_array(); // Devolver array de documentos
          }else{
 
