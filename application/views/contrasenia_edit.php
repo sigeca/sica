@@ -3,21 +3,30 @@
 <h2> <?php echo $title; ?></h2>
 <hr />
 <table>
- 
-    
-  <tr>
-      <td>Nombre largo:</td>
+
+
+<tr>
+      <td>Dirección web:</td>
       <td><?php
  
-$eys_arrinput=array('name'=>'nombrelargo','value'=>$contrasenia['nombrelargo'], "style"=>"width:500px");
+$eys_arrinput=array('name'=>'direccionweb','value'=>$contrasenia['direccionweb'], "style"=>"width:100%");
+ echo form_input($eys_arrinput); ?></td>
+  </tr>
+
+    
+  <tr>
+      <td>Usuario:</td>
+      <td><?php
+ 
+$eys_arrinput=array('name'=>'usuario','value'=>$contrasenia['usuario'], "style"=>"width:100%");
  echo form_input($eys_arrinput); ?></td>
   </tr>
 
 <tr>
-      <td>Nombre corto:</td>
+      <td>Password:</td>
       <td><?php
  
-$eys_arrinput=array('name'=>'nombrecorto','value'=>$contrasenia['nombrecorto'], "style"=>"width:500px");
+$eys_arrinput=array('name'=>'password','value'=>$contrasenia['password'], "style"=>"width:500px");
  echo form_input($eys_arrinput); ?></td>
   </tr>
 

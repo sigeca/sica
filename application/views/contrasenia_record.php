@@ -75,10 +75,22 @@ $permitir_acceso_modulo=true;
 
 
 <div class="form-group row">
-    <label class="col-md-2 col-form-label"> Nombre corto: </label>
+    <label class="col-md-2 col-form-label"> Dirección web: </label>
 	<div class="col-md-10">
      	<?php 
-      echo form_input('nombrecorto',$contrasenia['nombrecorto'],array('placeholder'=>'Nombre corto del contrasenia', "disabled"=>"disabled",'style'=>'width:100%;'));
+      echo form_input('direccionweb',$contrasenia['direccionweb'],array('placeholder'=>'Dirección web', "disabled"=>"disabled",'style'=>'width:100%;'));
+
+	?>
+	</div> 
+</div>
+
+
+
+<div class="form-group row">
+    <label class="col-md-2 col-form-label"> Usuario: </label>
+	<div class="col-md-10">
+     	<?php 
+      echo form_input('usuario',$contrasenia['usuario'],array('placeholder'=>'Nombre corto del contrasenia', "disabled"=>"disabled",'style'=>'width:100%;'));
 
 	?>
 	</div> 
@@ -88,10 +100,10 @@ $permitir_acceso_modulo=true;
 
 
 <div class="form-group row">
-    <label class="col-md-2 col-form-label"> Nombre largo: </label>
+    <label class="col-md-2 col-form-label"> Password: </label>
 	<div class="col-md-10">
      	<?php 
-      echo form_input('nombrelargo',$contrasenia['nombrelargo'],array('placeholder'=>'Nombre largo del contrasenia', "disabled"=>"disabled",'style'=>'width:100%;'));
+      echo form_input('password',$contrasenia['password'],array('placeholder'=>'Nombre largo del contrasenia', "disabled"=>"disabled",'style'=>'width:100%;'));
 	?>
 	</div> 
 </div>
@@ -125,31 +137,8 @@ echo form_input('fechafin',$contrasenia['fechafin'],array('placeholder'=>'Fecha 
 <br>
 <br>
 
-<div class="form-group row">
-    <label class="col-md-2 col-form-label" > Lista de silabos : </label>
 
-	<div class="col-md-10">
-	<div class="row justify-content-left">
-      	<!-- Page Heading -->
- 	<div class="row">
-  	<div class="col-12">
-	<table class="table table-striped table-bordered table-hover" id="mydatas">
-	 <thead>
-	 <tr>
-	 <th>iddocente</th>
-	 <th>idsilabo</th>
-	 <th>elsilabo</th>
-	 <th>periodo</th>
-	 <th style="text-align: right;">Actions</th>
-	 </tr>
-	 </thead>
-	 <tbody id="show_datas">
-	 </tbody>
-	</table>
-	</div>
-	</div>
-	</div>
-	</div> 
+	 
 
 
 

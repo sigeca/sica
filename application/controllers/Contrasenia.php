@@ -11,7 +11,7 @@ class Contrasenia extends CI_Controller{
 public function index(){
 	if(isset($this->session->userdata['logged_in'])){
 		$data['contrasenia']=$this->contrasenia_model->elultimo();
-		$data['title']="Periodo académico";
+		$data['title']="Contraseñas";
 		$this->load->view('page_header');
 		$this->load->view('contrasenia_record',$data);
 		$this->load->view('page_footer');
@@ -39,16 +39,19 @@ public function  save()
 
 	 	$array_item=array(
 	 	'idcontrasenia' => $this->input->post('idcontrasenia'),
-	 	'nombrecorto' => $this->input->post('nombrecorto'),
-	 	'nombrelargo' => $this->input->post('nombrelargo'),
+	 	'direccionweb' => $this->input->post('direccionweb'),
+	 	'usuario' => $this->input->post('usuario'),
+	 	'password' => $this->input->post('password'),
 	 	'fechainicio' => $this->input->post('fechainicio'),
 	 	'fechafin' => $this->input->post('fechafin'),
         );
 
         }else{    
 	 	$array_item=array(
-	 	'nombrecorto' => $this->input->post('nombrecorto'),
-	 	'nombrelargo' => $this->input->post('nombrelargo'),
+	 	'idcontrasenia' => $this->input->post('idcontrasenia'),
+	 	'direccionweb' => $this->input->post('direccionweb'),
+	 	'usuario' => $this->input->post('usuario'),
+	 	'password' => $this->input->post('password'),
 	 	'fechainicio' => $this->input->post('fechainicio'),
 	 	'fechafin' => $this->input->post('fechafin'),
         );
@@ -76,8 +79,9 @@ public function edit()
 	 	$array_item=array(
 		 	
 			'idcontrasenia' => $this->input->post('idcontrasenia'),
-			'nombrecorto' => $this->input->post('nombrecorto'),
-			'nombrelargo' => $this->input->post('nombrelargo'),
+	 	    'direccionweb' => $this->input->post('direccionweb'),
+	 	    'usuario' => $this->input->post('usuario'),
+	 	    'password' => $this->input->post('password'),
 			'fechainicio' => $this->input->post('fechainicio'),
 			'fechafin' => $this->input->post('fechafin'),
 	 	);
@@ -95,11 +99,10 @@ public function edit()
 
 	public function listar()
 	{
-	
 		  $data['title']="Contrasenia";
-		$this->load->view('page_header');		
+		  $this->load->view('page_header');		
 		  $this->load->view('contrasenia_list',$data);
-		$this->load->view('page_footer');
+		  $this->load->view('page_footer');
 	}
 
 
@@ -113,7 +116,7 @@ public function edit()
 	 	$data0 = $this->contrasenia_model->lista_contrasenias();
 		$data=array();
 		foreach($data0->result() as $r){
-			$data[]=array($r->idcontrasenia,$r->nombrecorto,$r->fechainicio,$r->fechafin,
+			$data[]=array($r->idcontrasenia,$r->direccionweb,$r->fechainicio,$r->fechafin,
 				$r->href='<a href="javascript:void(0);" class="btn btn-info btn-sm item_ver" data-retorno="'.site_url('contrasenia/actual').'"  data-idcontrasenia="'.$r->idcontrasenia.'">Ver</a>');
 		}	
 		$output=array( "draw"=>$draw,

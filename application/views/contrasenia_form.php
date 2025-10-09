@@ -11,13 +11,19 @@
 
 
 <tr>
-<td> Nombre corto </td>
-<td><?php echo form_input("nombrecorto","", array("placeholder"=>"Nombre corto de contrasenia"))  ?></td>
+<td> Dirección web: </td>
+<td><?php echo form_input("direccionweb","", array("placeholder"=>"Nombre corto de contrasenia"))  ?></td>
+</tr>
+
+
+<tr>
+<td> Usuario </td>
+<td><?php echo form_input("usuario","", array("placeholder"=>"Nombre corto de contrasenia"))  ?></td>
 </tr>
 
 <tr>
-<td> Nombre largo: </td>
-<td><?php echo form_input("nombrelargo","", array("placeholder"=>"Nombre largo de contrasenia"))  ?></td>
+<td> Password: </td>
+<td><?php echo form_input("password","", array("placeholder"=>"Nombre largo de contrasenia"))  ?></td>
 </tr>
 
 
