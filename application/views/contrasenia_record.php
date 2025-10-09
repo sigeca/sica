@@ -2,21 +2,21 @@
     <div style="display:flex;flex-direction:row; justify-content:space-between; align-items:center;">
 <span style="text-align: left; font-size:x-large; font-weight:bold;">
             <?php echo $title;  ?>
-            <span style="font-size:large; margin-left:10px;" id="idperiodoacademico"><?php echo $periodoacademico['idperiodoacademico']; ?></span>
+            <span style="font-size:large; margin-left:10px;" id="idcontrasenia"><?php echo $contrasenia['idcontrasenia']; ?></span>
         </span>
 
     </div>
 
     <?php
 $permitir_acceso_modulo=true; 
-    if(isset($periodoacademico)) {
+    if(isset($contrasenia)) {
         $permitir=0;
         $j=0;
         $numero=$j;
         if(isset($this->session->userdata['acceso'])) {
             foreach($this->session->userdata['acceso'] as $row) 
             {
-                if("periodoacademico"==$row["modulo"]["modulo"]) {
+                if("contrasenia"==$row["modulo"]["modulo"]) {
                     $numero=$j;
                     $permitir=1;
                 }
@@ -31,14 +31,14 @@ $permitir_acceso_modulo=true;
     <?php if($this->session->userdata['acceso'][$numero]['nivelacceso']['navegar']){ ?>
  
     <ul style="list-style:none; padding:0; display:flex; gap:15px; background-color:#f2f2f2; padding:10px; border-radius:5px; margin-top:15px;">
-       <li> <?php echo anchor('periodoacademico/elprimero/', 'primero', 'style="text-decoration:none; color:#007bff; font-weight:bold;"'); ?></li>
-        <li> <?php echo anchor('periodoacademico/siguiente/'.$periodoacademico['idperiodoacademico'], 'siguiente', 'style="text-decoration:none; color:#007bff; font-weight:bold;"'); ?></li>
-        <li> <?php echo anchor('periodoacademico/anterior/'.$periodoacademico['idperiodoacademico'], 'anterior', 'style="text-decoration:none; color:#007bff; font-weight:bold;"'); ?></li>
-        <li style="border-right:1px solid #ccc; padding-right:15px;"><?php echo anchor('periodoacademico/elultimo/', 'Último', 'style="text-decoration:none; color:#007bff; font-weight:bold;"'); ?></li>
-        <li> <?php echo anchor('periodoacademico/add', 'Nuevo', 'style="text-decoration:none; color:#28a745; font-weight:bold;"'); ?></li>
-        <li style="border-right:1px solid #ccc; padding-right:15px;"> <?php echo anchor('periodoacademico/edit/'.$periodoacademico['idperiodoacademico'],'Edit', 'style="text-decoration:none; color:#28a745; font-weight:bold;"'); ?></li>
-   <!---     <li style="border-right:1px solid green"> <?php echo anchor('periodoacademico/delete/'.$periodoacademico['idperiodoacademico'],'Delete'); ?></li>  --->
-        <li> <?php echo anchor('periodoacademico/listar/','Listar', 'style="text-decoration:none; color:#17a2b8; font-weight:bold;"'); ?></li>
+       <li> <?php echo anchor('contrasenia/elprimero/', 'primero', 'style="text-decoration:none; color:#007bff; font-weight:bold;"'); ?></li>
+        <li> <?php echo anchor('contrasenia/siguiente/'.$contrasenia['idcontrasenia'], 'siguiente', 'style="text-decoration:none; color:#007bff; font-weight:bold;"'); ?></li>
+        <li> <?php echo anchor('contrasenia/anterior/'.$contrasenia['idcontrasenia'], 'anterior', 'style="text-decoration:none; color:#007bff; font-weight:bold;"'); ?></li>
+        <li style="border-right:1px solid #ccc; padding-right:15px;"><?php echo anchor('contrasenia/elultimo/', 'Último', 'style="text-decoration:none; color:#007bff; font-weight:bold;"'); ?></li>
+        <li> <?php echo anchor('contrasenia/add', 'Nuevo', 'style="text-decoration:none; color:#28a745; font-weight:bold;"'); ?></li>
+        <li style="border-right:1px solid #ccc; padding-right:15px;"> <?php echo anchor('contrasenia/edit/'.$contrasenia['idcontrasenia'],'Edit', 'style="text-decoration:none; color:#28a745; font-weight:bold;"'); ?></li>
+   <!---     <li style="border-right:1px solid green"> <?php echo anchor('contrasenia/delete/'.$contrasenia['idcontrasenia'],'Delete'); ?></li>  --->
+        <li> <?php echo anchor('contrasenia/listar/','Listar', 'style="text-decoration:none; color:#17a2b8; font-weight:bold;"'); ?></li>
         <li> <?php echo anchor('calendarioacademico/','Calendario', 'style="text-decoration:none; color:#17a2b8; font-weight:bold;"'); ?></li>
 
    </ul>
@@ -47,7 +47,7 @@ $permitir_acceso_modulo=true;
     } else {
     ?>
     <ul style="list-style:none; padding:0; display:flex; gap:15px; background-color:#f2f2f2; padding:10px; border-radius:5px; margin-top:15px;">
-        <li><?php echo anchor('periodoacademico/add', 'Nuevo', 'style="text-decoration:none; color:#28a745; font-weight:bold;"'); ?></li>
+        <li><?php echo anchor('contrasenia/add', 'Nuevo', 'style="text-decoration:none; color:#28a745; font-weight:bold;"'); ?></li>
     </ul>
     <?php
     }
@@ -57,8 +57,8 @@ $permitir_acceso_modulo=true;
 <br>
 
 
-<?php echo form_open('periodoacademico/save_edit') ?>
-<?php echo form_hidden('idperiodoacademico',$periodoacademico['idperiodoacademico']) ?>
+<?php echo form_open('contrasenia/save_edit') ?>
+<?php echo form_hidden('idcontrasenia',$contrasenia['idcontrasenia']) ?>
 
 
 
@@ -68,7 +68,7 @@ $permitir_acceso_modulo=true;
     <label class="col-md-2 col-form-label"> Id Periodo acad.: </label>
 	<div class="col-md-10">
      	<?php 
-      echo form_input('idperiodoacademico',$periodoacademico['idperiodoacademico'],array("id"=>"idperiodoacademico", "disabled"=>"disabled",'style'=>'width:100%;'));
+      echo form_input('idcontrasenia',$contrasenia['idcontrasenia'],array("id"=>"idcontrasenia", "disabled"=>"disabled",'style'=>'width:100%;'));
 	?>
 	</div> 
 </div>
@@ -78,7 +78,7 @@ $permitir_acceso_modulo=true;
     <label class="col-md-2 col-form-label"> Nombre corto: </label>
 	<div class="col-md-10">
      	<?php 
-      echo form_input('nombrecorto',$periodoacademico['nombrecorto'],array('placeholder'=>'Nombre corto del periodoacademico', "disabled"=>"disabled",'style'=>'width:100%;'));
+      echo form_input('nombrecorto',$contrasenia['nombrecorto'],array('placeholder'=>'Nombre corto del contrasenia', "disabled"=>"disabled",'style'=>'width:100%;'));
 
 	?>
 	</div> 
@@ -91,7 +91,7 @@ $permitir_acceso_modulo=true;
     <label class="col-md-2 col-form-label"> Nombre largo: </label>
 	<div class="col-md-10">
      	<?php 
-      echo form_input('nombrelargo',$periodoacademico['nombrelargo'],array('placeholder'=>'Nombre largo del periodoacademico', "disabled"=>"disabled",'style'=>'width:100%;'));
+      echo form_input('nombrelargo',$contrasenia['nombrelargo'],array('placeholder'=>'Nombre largo del contrasenia', "disabled"=>"disabled",'style'=>'width:100%;'));
 	?>
 	</div> 
 </div>
@@ -105,7 +105,7 @@ $permitir_acceso_modulo=true;
 	<div class="col-md-10">
      	<?php 
 
-       echo form_input('fechainicio',$periodoacademico['fechainicio'],array('placeholder'=>'Fecha en que inicia el periodoacademico', "disabled"=>"disabled",'style'=>'width:100%;')); 
+       echo form_input('fechainicio',$contrasenia['fechainicio'],array('placeholder'=>'Fecha en que inicia el contrasenia', "disabled"=>"disabled",'style'=>'width:100%;')); 
 
 ?>
 	</div> 
@@ -117,7 +117,7 @@ $permitir_acceso_modulo=true;
     <label class="col-md-2 col-form-label"> Fecha finaliza: </label>
 	<div class="col-md-10">
      	<?php 
-echo form_input('fechafin',$periodoacademico['fechafin'],array('placeholder'=>'Fecha en que finaliza el periodoacademico', "disabled"=>"disabled",'style'=>'width:100%;')); 
+echo form_input('fechafin',$contrasenia['fechafin'],array('placeholder'=>'Fecha en que finaliza el contrasenia', "disabled"=>"disabled",'style'=>'width:100%;')); 
 ?>
 	</div> 
 </div>
@@ -159,8 +159,8 @@ echo form_input('fechafin',$periodoacademico['fechafin'],array('placeholder'=>'F
 <script type="text/javascript">
 
 $(document).ready(function(){
-	var idperiodoacademico=document.getElementById("idperiodoacademico").innerHTML;
-	var mytablaf= $('#mydatas').DataTable({"ajax": {url: '<?php echo site_url('periodoacademico/silabo_data')?>', type: 'GET',data:{idperiodoacademico:idperiodoacademico}},});
+	var idcontrasenia=document.getElementById("idcontrasenia").innerHTML;
+	var mytablaf= $('#mydatas').DataTable({"ajax": {url: '<?php echo site_url('contrasenia/silabo_data')?>', type: 'GET',data:{idcontrasenia:idcontrasenia}},});
 
 
 });

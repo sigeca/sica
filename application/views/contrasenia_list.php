@@ -29,7 +29,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
 
 <div id="eys-nav-i">
 	<ul>
-		<li> <?php echo anchor('periodoacademico', 'Home'); ?></li>
+		<li> <?php echo anchor('contrasenia', 'Home'); ?></li>
 	</ul>
 </div>
 
@@ -84,13 +84,13 @@ body {font-family: Arial, Helvetica, sans-serif;}
 
 $(document).ready(function(){
 
-	var mytabla= $('#mydatac').DataTable({"ajax": {url: '<?php echo site_url('periodoacademico/periodoacademico_data')?>', type: 'GET'},});
+	var mytabla= $('#mydatac').DataTable({"ajax": {url: '<?php echo site_url('contrasenia/contrasenia_data')?>', type: 'GET'},});
 
 });
 
 $('#show_data').on('click','.item_ver',function(){
 
-var id= $(this).data('idperiodoacademico');
+var id= $(this).data('idcontrasenia');
 var retorno= $(this).data('retorno');
 window.location.href = retorno+'/'+id;
 

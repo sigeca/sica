@@ -4,16 +4,16 @@ class Contrasenia extends CI_Controller{
 
   public function __construct(){
       parent::__construct();
-      	$this->load->model('periodoacademico_model');
+      	$this->load->model('contrasenia_model');
     	$this->load->model('silabo_model');
 }
 
 public function index(){
 	if(isset($this->session->userdata['logged_in'])){
-		$data['periodoacademico']=$this->periodoacademico_model->elultimo();
+		$data['contrasenia']=$this->contrasenia_model->elultimo();
 		$data['title']="Periodo académico";
 		$this->load->view('page_header');
-		$this->load->view('periodoacademico_record',$data);
+		$this->load->view('contrasenia_record',$data);
 		$this->load->view('page_footer');
 	}else{
 	 	$this->load->view('page_header.php');
@@ -25,20 +25,20 @@ public function index(){
 
 public function add()
 {
-		$data['title']="Nueva periodoacademico";
+		$data['title']="Nueva contrasenia";
 	 	$this->load->view('page_header');		
-	 	$this->load->view('periodoacademico_form',$data);
+	 	$this->load->view('contrasenia_form',$data);
 	 	$this->load->view('page_footer');
 }
 
 
 public function  save()
 	{
-        if($this->input->post('idperiodoacademico')>0)
+        if($this->input->post('idcontrasenia')>0)
         {
 
 	 	$array_item=array(
-	 	'idperiodoacademico' => $this->input->post('idperiodoacademico'),
+	 	'idcontrasenia' => $this->input->post('idcontrasenia'),
 	 	'nombrecorto' => $this->input->post('nombrecorto'),
 	 	'nombrelargo' => $this->input->post('nombrelargo'),
 	 	'fechainicio' => $this->input->post('fechainicio'),
@@ -53,18 +53,18 @@ public function  save()
 	 	'fechafin' => $this->input->post('fechafin'),
         );
         }
-	 	$this->periodoacademico_model->save($array_item);
-	 	redirect('periodoacademico');
+	 	$this->contrasenia_model->save($array_item);
+	 	redirect('contrasenia');
  	}
 
 
 
 public function edit()
 {
-	 	$data['periodoacademico'] = $this->periodoacademico_model->periodoacademico($this->uri->segment(3))->row_array();
- 	 	$data['title'] = "Actualizar periodoacademico";
+	 	$data['contrasenia'] = $this->contrasenia_model->contrasenia($this->uri->segment(3))->row_array();
+ 	 	$data['title'] = "Actualizar contrasenia";
  	 	$this->load->view('page_header');		
- 	 	$this->load->view('periodoacademico_edit',$data);
+ 	 	$this->load->view('contrasenia_edit',$data);
 	 	$this->load->view('page_footer');
  
 }
@@ -72,24 +72,24 @@ public function edit()
 
 	public function  save_edit()
 	{
-		$id=$this->input->post('idperiodoacademico');
+		$id=$this->input->post('idcontrasenia');
 	 	$array_item=array(
 		 	
-			'idperiodoacademico' => $this->input->post('idperiodoacademico'),
+			'idcontrasenia' => $this->input->post('idcontrasenia'),
 			'nombrecorto' => $this->input->post('nombrecorto'),
 			'nombrelargo' => $this->input->post('nombrelargo'),
 			'fechainicio' => $this->input->post('fechainicio'),
 			'fechafin' => $this->input->post('fechafin'),
 	 	);
-	 	$this->periodoacademico_model->update($id,$array_item);
-	 	redirect('periodoacademico');
+	 	$this->contrasenia_model->update($id,$array_item);
+	 	redirect('contrasenia');
  	}
 
 
  	public function xdelete()
  	{
- 		$this->periodoacademico_model->delete($this->uri->segment(3));
-	 	redirect('periodoacademico/elultimo');
+ 		$this->contrasenia_model->delete($this->uri->segment(3));
+	 	redirect('contrasenia/elultimo');
  	}
 
 
@@ -98,23 +98,23 @@ public function edit()
 	
 		  $data['title']="Contrasenia";
 		$this->load->view('page_header');		
-		  $this->load->view('periodoacademico_list',$data);
+		  $this->load->view('contrasenia_list',$data);
 		$this->load->view('page_footer');
 	}
 
 
 
-	function periodoacademico_data()
+	function contrasenia_data()
 	{
 		$draw= intval($this->input->get("draw"));
 		$draw= intval($this->input->get("start"));
 		$draw= intval($this->input->get("length"));
 
-	 	$data0 = $this->periodoacademico_model->lista_periodoacademicos();
+	 	$data0 = $this->contrasenia_model->lista_contrasenias();
 		$data=array();
 		foreach($data0->result() as $r){
-			$data[]=array($r->idperiodoacademico,$r->nombrecorto,$r->fechainicio,$r->fechafin,
-				$r->href='<a href="javascript:void(0);" class="btn btn-info btn-sm item_ver" data-retorno="'.site_url('periodoacademico/actual').'"  data-idperiodoacademico="'.$r->idperiodoacademico.'">Ver</a>');
+			$data[]=array($r->idcontrasenia,$r->nombrecorto,$r->fechainicio,$r->fechafin,
+				$r->href='<a href="javascript:void(0);" class="btn btn-info btn-sm item_ver" data-retorno="'.site_url('contrasenia/actual').'"  data-idcontrasenia="'.$r->idcontrasenia.'">Ver</a>');
 		}	
 		$output=array( "draw"=>$draw,
 			"recordsTotal"=> $data0->num_rows(),
@@ -134,8 +134,8 @@ public function edit()
 			$draw= intval($this->input->get("start"));
 			$draw= intval($this->input->get("length"));
 
-			$idperiodoacademico=$this->input->get('idperiodoacademico');
-			$data0 =$this->silabo_model->silabosp($idperiodoacademico);
+			$idcontrasenia=$this->input->get('idcontrasenia');
+			$data0 =$this->silabo_model->silabosp($idcontrasenia);
 			$data=array();
 			foreach($data0->result() as $r){
 				$data[]=array($r->iddocente,$r->idsilabo,$r->elsilabo,$r->elperiodo,
@@ -156,12 +156,12 @@ public function edit()
 
 public function actual()
 {
-	$data['periodoacademico'] = $this->periodoacademico_model->periodoacademico($this->uri->segment(3))->row_array();
+	$data['contrasenia'] = $this->contrasenia_model->contrasenia($this->uri->segment(3))->row_array();
   if(!empty($data))
   {
     $data['title']="Contrasenia";
     $this->load->view('page_header');		
-    $this->load->view('periodoacademico_record',$data);
+    $this->load->view('contrasenia_record',$data);
     $this->load->view('page_footer');
   }else{
     $this->load->view('page_header');		
@@ -177,12 +177,12 @@ public function actual()
 
 public function elprimero()
 {
-	$data['periodoacademico'] = $this->periodoacademico_model->elprimero();
+	$data['contrasenia'] = $this->contrasenia_model->elprimero();
   if(!empty($data))
   {
     $data['title']="Contrasenia";
     $this->load->view('page_header');		
-    $this->load->view('periodoacademico_record',$data);
+    $this->load->view('contrasenia_record',$data);
     $this->load->view('page_footer');
   }else{
     $this->load->view('page_header');		
@@ -193,13 +193,13 @@ public function elprimero()
 
 public function elultimo()
 {
-	$data['periodoacademico'] = $this->periodoacademico_model->elultimo();
+	$data['contrasenia'] = $this->contrasenia_model->elultimo();
   if(!empty($data))
   {
     $data['title']="Contrasenia";
   
     $this->load->view('page_header');		
-    $this->load->view('periodoacademico_record',$data);
+    $this->load->view('contrasenia_record',$data);
     $this->load->view('page_footer');
   }else{
 
@@ -210,20 +210,20 @@ public function elultimo()
 }
 
 public function siguiente(){
- // $data['periodoacademico_list']=$this->periodoacademico_model->lista_periodoacademico()->result();
-	$data['periodoacademico'] = $this->periodoacademico_model->siguiente($this->uri->segment(3))->row_array();
+ // $data['contrasenia_list']=$this->contrasenia_model->lista_contrasenia()->result();
+	$data['contrasenia'] = $this->contrasenia_model->siguiente($this->uri->segment(3))->row_array();
   $data['title']="Contrasenia";
 	$this->load->view('page_header');		
-  $this->load->view('periodoacademico_record',$data);
+  $this->load->view('contrasenia_record',$data);
 	$this->load->view('page_footer');
 }
 
 public function anterior(){
- // $data['periodoacademico_list']=$this->periodoacademico_model->lista_periodoacademico()->result();
-	$data['periodoacademico'] = $this->periodoacademico_model->anterior($this->uri->segment(3))->row_array();
+ // $data['contrasenia_list']=$this->contrasenia_model->lista_contrasenia()->result();
+	$data['contrasenia'] = $this->contrasenia_model->anterior($this->uri->segment(3))->row_array();
   $data['title']="Contrasenia";
 	$this->load->view('page_header');		
-  $this->load->view('periodoacademico_record',$data);
+  $this->load->view('contrasenia_record',$data);
 	$this->load->view('page_footer');
 }
 
