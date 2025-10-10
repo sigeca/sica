@@ -3,7 +3,7 @@ class Prestamoproducto extends CI_Controller{
 
 	public function __construct(){
       		parent::__construct();
-      		$this->load->model('prestamoarticulo_model');
+      		$this->load->model('prestamoproducto_model');
       		$this->load->model('documento_model');
       		$this->load->model('persona_model');
       		$this->load->model('evento_model');
@@ -13,14 +13,14 @@ class Prestamoproducto extends CI_Controller{
 	}
 
 	public function index(){
-		$data['prestamoarticulo'] = $this->prestamoarticulo_model->elultimo();
+		$data['prestamoproducto'] = $this->prestamoproducto_model->elultimo();
 		$data['articulos']= $this->articulo_model->lista_articulos()->result();
   		$data['personas']= $this->persona_model->lista_personas()->result();
 
- 		// print_r($data['prestamoarticulo_list']);
+ 		// print_r($data['prestamoproducto_list']);
   		$data['title']="Lista de Prestamoproductoes";
 		$this->load->view('page_header');		
-  		$this->load->view('prestamoarticulo_record',$data);
+  		$this->load->view('prestamoproducto_record',$data);
 		$this->load->view('page_footer');
 	}
 
@@ -29,7 +29,7 @@ class Prestamoproducto extends CI_Controller{
 	public function actual(){
 	 if(isset($this->session->userdata['logged_in'])){
 
-		$data['prestamoarticulo'] = $this->prestamoarticulo_model->prestamoarticulo($this->uri->segment(3))->row_array();
+		$data['prestamoproducto'] = $this->prestamoproducto_model->prestamoproducto($this->uri->segment(3))->row_array();
 
 
 		$data['articulos']= $this->articulo_model->lista_articulos()->result();
@@ -38,7 +38,7 @@ class Prestamoproducto extends CI_Controller{
 	 
 		$data['title']="Modulo de sesiones del evento";
 		$this->load->view('page_header');		
-		$this->load->view('prestamoarticulo_record',$data);
+		$this->load->view('prestamoproducto_record',$data);
 		$this->load->view('page_footer');
 	   }else{
 		$this->load->view('page_header.php');
@@ -59,7 +59,7 @@ class Prestamoproducto extends CI_Controller{
 	     	$date = date("Y-m-d");
 		$data['title']="Nueva sesion de eventos";
 	 	$this->load->view('page_header');		
-	 	$this->load->view('prestamoarticulo_form',$data);
+	 	$this->load->view('prestamoproducto_form',$data);
 	 	$this->load->view('page_footer');
 	}
 
@@ -75,7 +75,7 @@ class Prestamoproducto extends CI_Controller{
 		 	'horaprestamo' => $this->input->post('horaprestamo'),
 		 	'horadevolucion' => $this->input->post('horadevolucion'),
 	 	);
-	 	$result=$this->prestamoarticulo_model->save($array_item);
+	 	$result=$this->prestamoproducto_model->save($array_item);
 	 	if($result == FALSE)
 		{
 			echo "<script language='JavaScript'> alert('Fecha para este evento ya fue asignado'); </script>";
@@ -90,21 +90,21 @@ class Prestamoproducto extends CI_Controller{
 
 	public function edit()
 	{
-	 	$data['prestamoarticulo'] = $this->prestamoarticulo_model->prestamoarticulo($this->uri->segment(3))->row_array();
+	 	$data['prestamoproducto'] = $this->prestamoproducto_model->prestamoproducto($this->uri->segment(3))->row_array();
 		$data['articulos']= $this->articulo_model->lista_articulos()->result();
 		$data['personas']= $this->persona_model->lista_personas()->result();
  	 	$data['title'] = "Actualizar Prestamoproducto";
  	 	$this->load->view('page_header');		
- 	 	$this->load->view('prestamoarticulo_edit',$data);
+ 	 	$this->load->view('prestamoproducto_edit',$data);
 	 	$this->load->view('page_footer');
 	}
 
 
 	public function  save_edit()
 	{
-		$id=$this->input->post('idprestamoarticulo');
+		$id=$this->input->post('idprestamoproducto');
 	 	$array_item=array(
-		 	'idprestamoarticulo' => $this->input->post('idprestamoarticulo'),
+		 	'idprestamoproducto' => $this->input->post('idprestamoproducto'),
 		 	'idarticulo' => $this->input->post('idarticulo'),
 		 	'idpersona' => $this->input->post('idpersona'),
 		 	'fechaprestamo' => $this->input->post('fechaprestamo'),
@@ -113,17 +113,17 @@ class Prestamoproducto extends CI_Controller{
 		 	'horaprestamo' => $this->input->post('horaprestamo'),
 		 	'horadevolucion' => $this->input->post('horadevolucion'),
 	 	);
-	 	$this->prestamoarticulo_model->update($id,$array_item);
-	 	redirect('prestamoarticulo/actual/'.$id);
+	 	$this->prestamoproducto_model->update($id,$array_item);
+	 	redirect('prestamoproducto/actual/'.$id);
  	}
 
 
 
  	public function delete()
  	{
- 		$data=$this->prestamoarticulo_model->delete($this->uri->segment(3));
+ 		$data=$this->prestamoproducto_model->delete($this->uri->segment(3));
  		echo json_encode($data);
-	 	redirect('prestamoarticulo/elprimero');
+	 	redirect('prestamoproducto/elprimero');
 	//	$db['default']['db_debug']=FALSE
  	}
 
@@ -135,13 +135,13 @@ public function listar()
 	$data['eventos']= $this->evento_model->lista_eventos()->result();
   $data['title']="Sesiones de evento";
 	$this->load->view('page_header');		
-  $this->load->view('prestamoarticulo_list',$data);
+  $this->load->view('prestamoproducto_list',$data);
 	$this->load->view('page_footer');
 }
 
 
 
-function prestamoarticulo_data()
+function prestamoproducto_data()
 {
 		$draw= intval($this->input->get("draw"));
 		$draw= intval($this->input->get("start"));
@@ -154,11 +154,11 @@ function prestamoarticulo_data()
 			$idevento=$this->input->get('idevento');
 		}
 
-	 	$data0 = $this->prestamoarticulo_model->prestamoarticulosA($idevento);
+	 	$data0 = $this->prestamoproducto_model->prestamoproductosA($idevento);
 		$data=array();
 		foreach($data0->result() as $r){
-			$data[]=array($r->idprestamoarticulo,$r->elevento,$r->fecha,$r->tema,
-				$r->href='<a href="javascript:void(0);" class="btn btn-info btn-sm item_ver" data-retorno="'.site_url('prestamoarticulo/actual').'"   data-idprestamoarticulo="'.$r->idprestamoarticulo.'">Ver</a>');
+			$data[]=array($r->idprestamoproducto,$r->elevento,$r->fecha,$r->tema,
+				$r->href='<a href="javascript:void(0);" class="btn btn-info btn-sm item_ver" data-retorno="'.site_url('prestamoproducto/actual').'"   data-idprestamoproducto="'.$r->idprestamoproducto.'">Ver</a>');
 		}	
 		$output=array( "draw"=>$draw,
 			"recordsTotal"=> $data0->num_rows(),
@@ -177,11 +177,11 @@ function prestamoarticulo_data()
 	{
 		
 
-	 	$data['prestamoarticulos']= $this->prestamoarticulo_model->prestamoarticulosA($this->uri->segment(3))->result();
+	 	$data['prestamoproductos']= $this->prestamoproducto_model->prestamoproductosA($this->uri->segment(3))->result();
 
 		$data['title']="Evento";
 	//	$this->load->view('page_header');		
-		$this->load->view('prestamoarticulo_list_pdf',$data);
+		$this->load->view('prestamoproducto_list_pdf',$data);
 //		$this->load->view('page_footer');
 	}
 
@@ -192,7 +192,7 @@ function prestamoarticulo_data()
 public function elprimero()
 {
   	$data['documentos']= $this->documento_model->lista_documentos()->result();
-	$data['prestamoarticulo'] = $this->prestamoarticulo_model->elprimero();
+	$data['prestamoproducto'] = $this->prestamoproducto_model->elprimero();
 		$data['modoevaluacions']= $this->modoevaluacion_model->lista_modoevaluacions()->result();
   if(!empty($data))
   {
@@ -201,7 +201,7 @@ public function elprimero()
   	$data['personas']= $this->persona_model->lista_personas()->result();
     $data['title']="Prestamoproducto del documento";
     $this->load->view('page_header');		
-    $this->load->view('prestamoarticulo_record',$data);
+    $this->load->view('prestamoproducto_record',$data);
     $this->load->view('page_footer');
   }else{
     $this->load->view('page_header');		
@@ -214,7 +214,7 @@ public function elultimo()
 {
   $data['documentos']= $this->documento_model->lista_documentos()->result();
   		$data['temas']= $this->tema_model->lista_temas()->result();
-	$data['prestamoarticulo'] = $this->prestamoarticulo_model->elultimo();
+	$data['prestamoproducto'] = $this->prestamoproducto_model->elultimo();
 		$data['modoevaluacions']= $this->modoevaluacion_model->lista_modoevaluacions()->result();
   if(!empty($data))
   {
@@ -223,7 +223,7 @@ public function elultimo()
     $data['title']="Prestamoproducto del documento";
   
     $this->load->view('page_header');		
-    $this->load->view('prestamoarticulo_record',$data);
+    $this->load->view('prestamoproducto_record',$data);
     $this->load->view('page_footer');
   }else{
 
@@ -234,32 +234,32 @@ public function elultimo()
 }
 
 public function siguiente(){
- // $data['prestamoarticulo_list']=$this->prestamoarticulo_model->lista_prestamoarticulo()->result();
+ // $data['prestamoproducto_list']=$this->prestamoproducto_model->lista_prestamoproducto()->result();
 	$data['documentos']= $this->documento_model->lista_documentos()->result();
   		$data['temas']= $this->tema_model->lista_temas()->result();
 		$data['modoevaluacions']= $this->modoevaluacion_model->lista_modoevaluacions()->result();
-	$data['prestamoarticulo'] = $this->prestamoarticulo_model->siguiente($this->uri->segment(3))->row_array();
+	$data['prestamoproducto'] = $this->prestamoproducto_model->siguiente($this->uri->segment(3))->row_array();
   	$data['personas']= $this->persona_model->lista_personas()->result();
   	$data['eventos']= $this->evento_model->lista_eventos()->result();
     $data['title']="Prestamoproducto del documento";
  // $data['title']="Correo";
 	$this->load->view('page_header');		
-  $this->load->view('prestamoarticulo_record',$data);
+  $this->load->view('prestamoproducto_record',$data);
 	$this->load->view('page_footer');
 }
 
 public function anterior(){
- // $data['prestamoarticulo_list']=$this->prestamoarticulo_model->lista_prestamoarticulo()->result();
+ // $data['prestamoproducto_list']=$this->prestamoproducto_model->lista_prestamoproducto()->result();
   $data['documentos']= $this->documento_model->lista_documentos()->result();
   		$data['temas']= $this->tema_model->lista_temas()->result();
-	$data['prestamoarticulo'] = $this->prestamoarticulo_model->anterior($this->uri->segment(3))->row_array();
+	$data['prestamoproducto'] = $this->prestamoproducto_model->anterior($this->uri->segment(3))->row_array();
 		$data['modoevaluacions']= $this->modoevaluacion_model->lista_modoevaluacions()->result();
  	$data['personas']= $this->persona_model->lista_personas()->result();
   		$data['eventos']= $this->evento_model->lista_eventos()->result();
  // $data['title']="Correo";
     $data['title']="Prestamoproducto del documento";
 	$this->load->view('page_header');		
-  $this->load->view('prestamoarticulo_record',$data);
+  $this->load->view('prestamoproducto_record',$data);
 	$this->load->view('page_footer');
 }
 
@@ -269,15 +269,15 @@ public function anterior(){
 
 
 
-public function get_prestamoarticulo() {
+public function get_prestamoproducto() {
     $this->load->database();
     $this->load->helper('form');
-    if($this->input->get('idprestamoarticulo')) 
+    if($this->input->get('idprestamoproducto')) 
     {
         $this->db->select('*');
     	$this->db->order_by("fecha","asc");
-        $this->db->where(array('idprestamoarticulo' => $this->input->get('idprestamoarticulo')));
-        $query = $this->db->get('prestamoarticulo');
+        $this->db->where(array('idprestamoproducto' => $this->input->get('idprestamoproducto')));
+        $query = $this->db->get('prestamoproducto');
 	$data=$query->result();
 	echo json_encode($data);
 	}
