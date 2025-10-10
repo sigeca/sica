@@ -28,7 +28,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
 
 <div id="eys-nav-i">
 	<ul>
-		<li> <?php echo anchor('articulo', 'Home'); ?></li>
+		<li> <?php echo anchor('producto', 'Home'); ?></li>
 	</ul>
 </div>
 
@@ -76,13 +76,13 @@ body {font-family: Arial, Helvetica, sans-serif;}
 
 $(document).ready(function(){
 
-	var mytabla= $('#mydatac').DataTable({"ajax": {url: '<?php echo site_url('articulo/articulo_data')?>', type: 'GET'},});
+	var mytabla= $('#mydatac').DataTable({"ajax": {url: '<?php echo site_url('producto/producto_data')?>', type: 'GET'},});
 
 });
 
 $('#show_data').on('click','.item_ver',function(){
 
-var id= $(this).data('idarticulo');
+var id= $(this).data('idproducto');
 var retorno= $(this).data('retorno');
 window.location.href = retorno+'/'+id;
 

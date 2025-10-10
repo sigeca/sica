@@ -4,20 +4,20 @@ class Producto extends CI_Controller{
 
   public function __construct(){
       parent::__construct();
-      $this->load->model('articulo_model');
-      $this->load->model('prestamoarticulo_model');
-      $this->load->model('precioarticulo_model');
+      $this->load->model('producto_model');
+      $this->load->model('prestamoproducto_model');
+      $this->load->model('precioproducto_model');
   	  $this->load->model('institucion_model');
-  	  $this->load->model('ubicacionarticulo_model');
+  	  $this->load->model('ubicacionproducto_model');
 }
 
 public function index(){
 	if(isset($this->session->userdata['logged_in'])){
-	  	$data['articulo']=$this->articulo_model->elultimo();
+	  	$data['producto']=$this->producto_model->elultimo();
   		$data['instituciones']= $this->institucion_model->lista_instituciones()->result();
   		$data['title']="Lista de Artiulos";
 		$this->load->view('page_header');		
-  		$this->load->view('articulo_record',$data);
+  		$this->load->view('producto_record',$data);
 		$this->load->view('page_footer');
 	}else{
 	 	$this->load->view('page_header.php');
@@ -32,7 +32,7 @@ public function add()
   		$data['instituciones']= $this->institucion_model->lista_instituciones()->result();
 		$data['title']="Nuevo Artículo";
 	 	$this->load->view('page_header');		
-	 	$this->load->view('articulo_form',$data);
+	 	$this->load->view('producto_form',$data);
 	 	$this->load->view('page_footer');
 }
 
@@ -40,24 +40,24 @@ public function add()
 public function  save()
 	{
 	 	$array_item=array(
-	 	'idarticulo' => $this->input->post('idarticulo'),
+	 	'idproducto' => $this->input->post('idproducto'),
 	 	'nombre' => $this->input->post('nombre'),
 	 	'detalle' => $this->input->post('detalle'),
 	 	'idinstitucion' => $this->input->post('idinstitucion'),
 	 	);
-	 	$this->articulo_model->save($array_item);
-	 	redirect('articulo');
+	 	$this->producto_model->save($array_item);
+	 	redirect('producto');
  	}
 
 
 
 public function edit()
 {
-	 	$data['articulo'] = $this->articulo_model->articulo($this->uri->segment(3))->row_array();
+	 	$data['producto'] = $this->producto_model->producto($this->uri->segment(3))->row_array();
   		$data['instituciones']= $this->institucion_model->lista_instituciones()->result();
  	 	$data['title'] = "Actualizar Producto";
  	 	$this->load->view('page_header');		
- 	 	$this->load->view('articulo_edit',$data);
+ 	 	$this->load->view('producto_edit',$data);
 	 	$this->load->view('page_footer');
  
 }
@@ -65,16 +65,16 @@ public function edit()
 
 	public function  save_edit()
 	{
-		$id=$this->input->post('idarticulo');
+		$id=$this->input->post('idproducto');
 	 	$array_item=array(
 		 	
-		 	'idarticulo' => $this->input->post('idarticulo'),
+		 	'idproducto' => $this->input->post('idproducto'),
 		 	'nombre' => $this->input->post('nombre'),
 		 	'detalle' => $this->input->post('detalle'),
 	 		'idinstitucion' => $this->input->post('idinstitucion'),
 	 	);
-	 	$this->articulo_model->update($id,$array_item);
-	 	redirect('articulo');
+	 	$this->producto_model->update($id,$array_item);
+	 	redirect('producto');
  	}
 
 
@@ -84,22 +84,22 @@ public function listar()
 	
   $data['title']="Producto";
 	$this->load->view('page_header');		
-  $this->load->view('articulo_list',$data);
+  $this->load->view('producto_list',$data);
 	$this->load->view('page_footer');
 }
 
-function articulo_data()
+function producto_data()
 {
 		$draw= intval($this->input->get("draw"));
 		$draw= intval($this->input->get("start"));
 		$draw= intval($this->input->get("length"));
 
 
-	 	$data0 = $this->articulo_model->lista_articulos();
+	 	$data0 = $this->producto_model->lista_productos();
 		$data=array();
 		foreach($data0->result() as $r){
-			$data[]=array($r->idarticulo,$r->nombre,$r->detalle,
-				$r->href='<a href="javascript:void(0);" class="btn btn-info btn-sm item_ver"  data-retorno="'.site_url('articulo/actual').'"  data-idarticulo="'.$r->idarticulo.'">Ver</a>');
+			$data[]=array($r->idproducto,$r->nombre,$r->detalle,
+				$r->href='<a href="javascript:void(0);" class="btn btn-info btn-sm item_ver"  data-retorno="'.site_url('producto/actual').'"  data-idproducto="'.$r->idproducto.'">Ver</a>');
 		}	
 		$output=array( "draw"=>$draw,
 			"recordsTotal"=> $data0->num_rows(),
@@ -119,12 +119,12 @@ function articulo_data()
 			$draw= intval($this->input->get("start"));
 			$draw= intval($this->input->get("length"));
 
-			$idarticulo=$this->input->get('idarticulo');
-			$data0 =$this->ubicacionarticulo_model->ubicacionarticulosA($idarticulo);
+			$idproducto=$this->input->get('idproducto');
+			$data0 =$this->ubicacionproducto_model->ubicacionproductosA($idproducto);
 			$data=array();
 			foreach($data0->result() as $r){
-				$data[]=array($r->idubicacionarticulo,$r->idarticulo,$r->launidad,$r->lapersona,$r->fecha,
-				$r->href='<a href="javascript:void(0);" class="btn btn-info btn-sm item_ver"  data-retorno="'.site_url('ubicacionarticulo/actual').'"    data-idubicacionarticulo="'.$r->idubicacionarticulo.'">Ver</a><a href="javascript:void(0);" class="btn btn-info btn-sm item_ver"  data-retorno="'.site_url('ubicacionarticulo/edit').'"    data-idubicacionarticulo="'.$r->idubicacionarticulo.'">edit</a>');
+				$data[]=array($r->idubicacionproducto,$r->idproducto,$r->launidad,$r->lapersona,$r->fecha,
+				$r->href='<a href="javascript:void(0);" class="btn btn-info btn-sm item_ver"  data-retorno="'.site_url('ubicacionproducto/actual').'"    data-idubicacionproducto="'.$r->idubicacionproducto.'">Ver</a><a href="javascript:void(0);" class="btn btn-info btn-sm item_ver"  data-retorno="'.site_url('ubicacionproducto/edit').'"    data-idubicacionproducto="'.$r->idubicacionproducto.'">edit</a>');
 			}	
 			$output=array( "draw"=>$draw,
 				"recordsTotal"=> $data0->num_rows(),
@@ -148,12 +148,12 @@ function articulo_data()
 			$draw= intval($this->input->get("start"));
 			$draw= intval($this->input->get("length"));
 
-			$idarticulo=$this->input->get('idarticulo');
-			$data0 =$this->prestamoarticulo_model->prestamoarticulosA($idarticulo);
+			$idproducto=$this->input->get('idproducto');
+			$data0 =$this->prestamoproducto_model->prestamoproductosA($idproducto);
 			$data=array();
 			foreach($data0->result() as $r){
-				$data[]=array($r->idprestamoarticulo,$r->idarticulo,$r->lapersona,$r->fechaprestamo,$r->horaprestamo,$r->fechadevolucion,$r->horadevolucion,
-				$r->href='<a href="javascript:void(0);" class="btn btn-info btn-sm item_ver"  data-retorno="'.site_url('prestamoarticulo/actual').'"    data-idprestamoarticulo="'.$r->idprestamoarticulo.'">Ver</a><a href="javascript:void(0);" class="btn btn-info btn-sm item_ver"  data-retorno="'.site_url('prestamoarticulo/edit').'"    data-idprestamoarticulo="'.$r->idprestamoarticulo.'">edit</a>');
+				$data[]=array($r->idprestamoproducto,$r->idproducto,$r->lapersona,$r->fechaprestamo,$r->horaprestamo,$r->fechadevolucion,$r->horadevolucion,
+				$r->href='<a href="javascript:void(0);" class="btn btn-info btn-sm item_ver"  data-retorno="'.site_url('prestamoproducto/actual').'"    data-idprestamoproducto="'.$r->idprestamoproducto.'">Ver</a><a href="javascript:void(0);" class="btn btn-info btn-sm item_ver"  data-retorno="'.site_url('prestamoproducto/edit').'"    data-idprestamoproducto="'.$r->idprestamoproducto.'">edit</a>');
 			}	
 			$output=array( "draw"=>$draw,
 				"recordsTotal"=> $data0->num_rows(),
@@ -175,12 +175,12 @@ function articulo_data()
 			$draw= intval($this->input->get("start"));
 			$draw= intval($this->input->get("length"));
 
-			$idarticulo=$this->input->get('idarticulo');
-			$data0 =$this->precioarticulo_model->precioarticulosA($idarticulo);
+			$idproducto=$this->input->get('idproducto');
+			$data0 =$this->precioproducto_model->precioproductosA($idproducto);
 			$data=array();
 			foreach($data0->result() as $r){
-				$data[]=array($r->idprecioarticulo,$r->idarticulo,$r->precio,$r->fechadesde,$r->fechahasta,
-				$r->href='<a href="javascript:void(0);" class="btn btn-info btn-sm item_ver"  data-retorno="'.site_url('precioarticulo/actual').'"    data-idprecioarticulo="'.$r->idprecioarticulo.'">Ver</a><a href="javascript:void(0);" class="btn btn-info btn-sm item_ver"  data-retorno="'.site_url('precioarticulo/edit').'"    data-idprecioarticulo="'.$r->idprecioarticulo.'">edit</a>');
+				$data[]=array($r->idprecioproducto,$r->idproducto,$r->precio,$r->fechadesde,$r->fechahasta,
+				$r->href='<a href="javascript:void(0);" class="btn btn-info btn-sm item_ver"  data-retorno="'.site_url('precioproducto/actual').'"    data-idprecioproducto="'.$r->idprecioproducto.'">Ver</a><a href="javascript:void(0);" class="btn btn-info btn-sm item_ver"  data-retorno="'.site_url('precioproducto/edit').'"    data-idprecioproducto="'.$r->idprecioproducto.'">edit</a>');
 			}	
 			$output=array( "draw"=>$draw,
 				"recordsTotal"=> $data0->num_rows(),
@@ -213,29 +213,29 @@ public function genpagina()
 	{
 		$idinstitucion=$this->uri->segment(3);
 		//$iddistributivo=1;
-	 	$data['articulos']= $this->articulo_model->articuloA($idinstitucion)->result();
+	 	$data['productos']= $this->producto_model->productoA($idinstitucion)->result();
 		$arreglo=array();
 		$i=0;
-		foreach($data['articulos'] as $row){
-		$idarticulo=$row->idarticulo;
+		foreach($data['productos'] as $row){
+		$idproducto=$row->idproducto;
 
-		$xx=array($this->prestamoarticulo_model->prestamoarticulosA($idarticulo)->result_array());
+		$xx=array($this->prestamoproducto_model->prestamoproductosA($idproducto)->result_array());
 		if(count($xx[0]) > 0){
 		foreach($xx as $row2){
 			foreach($row2 as $row3)
 			 {
-				$arreglo+=array($i=>array($row->idarticulo=>$row3));
+				$arreglo+=array($i=>array($row->idproducto=>$row3));
 				$i=$i+1;
 			}
 			}
 		}
 
 		}
-		$data['prestamoarticulo']=array();
-		$data['prestamoarticulo']=$arreglo; 
+		$data['prestamoproducto']=array();
+		$data['prestamoproducto']=$arreglo; 
 		echo "<br> jornadadocnete<br>" ;
 
-		$this->load->view('articulo_genpagina',$data);
+		$this->load->view('producto_genpagina',$data);
 	}
 }
 
@@ -249,29 +249,29 @@ public function genpaginaprecios()
 	{
 		$idinstitucion=$this->uri->segment(3);
 		//$iddistributivo=1;
-	 	$data['articulos']= $this->articulo_model->articuloA($idinstitucion)->result();
+	 	$data['productos']= $this->producto_model->productoA($idinstitucion)->result();
 		$arreglo=array();
 		$i=0;
-		foreach($data['articulos'] as $row){
-		$idarticulo=$row->idarticulo;
+		foreach($data['productos'] as $row){
+		$idproducto=$row->idproducto;
 
-		$xx=array($this->precioarticulo_model->precioarticulosA($idarticulo)->result_array());
+		$xx=array($this->precioproducto_model->precioproductosA($idproducto)->result_array());
 		if(count($xx[0]) > 0){
 		foreach($xx as $row2){
 			foreach($row2 as $row3)
 			 {
-				$arreglo+=array($i=>array($row->idarticulo=>$row3));
+				$arreglo+=array($i=>array($row->idproducto=>$row3));
 				$i=$i+1;
 			}
 			}
 		}
 
 		}
-		$data['precioarticulo']=array();
-		$data['precioarticulo']=$arreglo; 
+		$data['precioproducto']=array();
+		$data['precioproducto']=$arreglo; 
 		echo "<br> jornadadocnete<br>" ;
 
-		$this->load->view('articulo_genpaginaprecios',$data);
+		$this->load->view('producto_genpaginaprecios',$data);
 	}
 }
 
@@ -286,35 +286,35 @@ public function genpaginaprecios1()
 	if($this->uri->segment(3))
 	{
 		$idinstitucion=$this->uri->segment(3);
-	 	$data['articulos']= $this->articulo_model->articuloA($idinstitucion)->result();
+	 	$data['productos']= $this->producto_model->productoA($idinstitucion)->result();
 		$arreglo=array();
 		$i=0;
-		foreach($data['articulos'] as $row){
-		$idarticulo=$row->idarticulo;
+		foreach($data['productos'] as $row){
+		$idproducto=$row->idproducto;
 
-		$xx=array($this->precioarticulo_model->precioarticulosA($idarticulo)->result_array());
+		$xx=array($this->precioproducto_model->precioproductosA($idproducto)->result_array());
 		if(count($xx[0]) > 0){
 		foreach($xx as $row2){
 			foreach($row2 as $row3)
 			 {
-				$arreglo+=array($i=>array($row->idarticulo=>$row3));
+				$arreglo+=array($i=>array($row->idproducto=>$row3));
 				$i=$i+1;
 			}
 			}
 		}
 
 		}
-		$data['precioarticulo']=array();
-		$data['precioarticulo']=$arreglo;
+		$data['precioproducto']=array();
+		$data['precioproducto']=$arreglo;
 
         // Load header, the improved view, and footer
         $this->load->view('page_header');
-		$this->load->view('articulo_genpaginaprecios1',$data); // This is the view that will be improved
+		$this->load->view('producto_genpaginaprecios1',$data); // This is the view that will be improved
         $this->load->view('page_footer');
 
 	} else {
         // Handle case where no institution ID is provided, e.g., redirect or show error
-        redirect('articulo');
+        redirect('producto');
     }
 }
 
@@ -332,13 +332,13 @@ public function genpaginaprecios1()
 
 public function actual()
 {
-	$data['articulo'] = $this->articulo_model->articulo($this->uri->segment(3))->row_array();
+	$data['producto'] = $this->producto_model->producto($this->uri->segment(3))->row_array();
  	$data['instituciones']= $this->institucion_model->lista_instituciones()->result();
   if(!empty($data))
   {
     $data['title']="Producto";
     $this->load->view('page_header');		
-    $this->load->view('articulo_record',$data);
+    $this->load->view('producto_record',$data);
     $this->load->view('page_footer');
   }else{
     $this->load->view('page_header');		
@@ -355,13 +355,13 @@ public function actual()
 
 public function elprimero()
 {
-	$data['articulo'] = $this->articulo_model->elprimero();
+	$data['producto'] = $this->producto_model->elprimero();
  	$data['instituciones']= $this->institucion_model->lista_instituciones()->result();
   if(!empty($data))
   {
     $data['title']="Producto";
     $this->load->view('page_header');		
-    $this->load->view('articulo_record',$data);
+    $this->load->view('producto_record',$data);
     $this->load->view('page_footer');
   }else{
     $this->load->view('page_header');		
@@ -372,14 +372,14 @@ public function elprimero()
 
 public function elultimo()
 {
-	  $data['articulo'] = $this->articulo_model->elultimo();
+	  $data['producto'] = $this->producto_model->elultimo();
  	$data['instituciones']= $this->institucion_model->lista_instituciones()->result();
   if(!empty($data))
   {
     $data['title']="Producto";
  
     $this->load->view('page_header');		
-    $this->load->view('articulo_record',$data);
+    $this->load->view('producto_record',$data);
     $this->load->view('page_footer');
   }else{
 
@@ -390,48 +390,48 @@ public function elultimo()
 }
 
 public function siguiente(){
- // $data['articulo_list']=$this->articulo_model->lista_articulo()->result();
-	$data['articulo'] = $this->articulo_model->siguiente($this->uri->segment(3))->row_array();
+ // $data['producto_list']=$this->producto_model->lista_producto()->result();
+	$data['producto'] = $this->producto_model->siguiente($this->uri->segment(3))->row_array();
  	$data['instituciones']= $this->institucion_model->lista_instituciones()->result();
   $data['title']="Producto";
 	$this->load->view('page_header');		
-  $this->load->view('articulo_record',$data);
+  $this->load->view('producto_record',$data);
 	$this->load->view('page_footer');
 }
 
 public function anterior(){
- // $data['articulo_list']=$this->articulo_model->lista_articulo()->result();
-	$data['articulo'] = $this->articulo_model->anterior($this->uri->segment(3))->row_array();
+ // $data['producto_list']=$this->producto_model->lista_producto()->result();
+	$data['producto'] = $this->producto_model->anterior($this->uri->segment(3))->row_array();
  	$data['instituciones']= $this->institucion_model->lista_instituciones()->result();
   $data['title']="Producto";
 	$this->load->view('page_header');		
-  $this->load->view('articulo_record',$data);
+  $this->load->view('producto_record',$data);
 	$this->load->view('page_footer');
 }
 
 
 
 
-	public function articulo_1()
+	public function producto_1()
 	{
-	  $this->load->view('web/articulo-1');
+	  $this->load->view('web/producto-1');
 	}
 
-	public function articulo_48()
-	{
-      echo "hola";
-	  $this->load->view('web/articulo-48');
-	}
-
-
-	public function articuloprecios_48()
+	public function producto_48()
 	{
       echo "hola";
-	  $this->load->view('web/articuloprecios-48');
+	  $this->load->view('web/producto-48');
 	}
 
 
-	public function articulo1(){
+	public function productoprecios_48()
+	{
+      echo "hola";
+	  $this->load->view('web/productoprecios-48');
+	}
+
+
+	public function producto1(){
                 header('Content-Type: application/json');
 
 
@@ -440,15 +440,15 @@ public function anterior(){
 			$id= $this->input->get("idpersona");
     
     
-        $articulos = $this->articulo_model->articulopers($id)->result();
+        $productos = $this->producto_model->productopers($id)->result();
  // Si no hay resultados, devolver un array vacío
-        if (empty($articulos)) {
+        if (empty($productos)) {
             echo json_encode([]);
             return;
         }
 
         // Codificar los resultados a JSON y enviarlos a la salida
-        echo json_encode($articulos);
+        echo json_encode($productos);
 
 
 	}
