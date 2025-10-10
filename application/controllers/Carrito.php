@@ -15,7 +15,7 @@ class Carrito extends CI_Controller{
         if(isset($this->session->userdata['logged_in'])){
             $data['carrito'] = $this->carrito_model->elultimo();
             // Asumiendo que esta es la función para listar usuarios
-            $data['personas'] = $this->persona_model->lista_personas()->result(); 
+            $data['personas'] = $this->persona_model->lista_personas0()->result(); 
             $data['title'] = "Registro de Carrito";
             $this->load->view('page_header');
             $this->load->view('carrito_record', $data);
@@ -32,7 +32,7 @@ class Carrito extends CI_Controller{
     public function add()
     {
         $data['title'] = "Nuevo Carrito";
-        $data['personas'] = $this->persona_model->lista_personas()->result();
+        $data['personas'] = $this->persona_model->lista_personas0()->result();
         $this->load->view('page_header');        
         $this->load->view('carrito_form', $data);
         $this->load->view('page_footer');
@@ -53,7 +53,7 @@ class Carrito extends CI_Controller{
     public function edit()
     {
         $data['carrito'] = $this->carrito_model->carrito($this->uri->segment(3))->row_array();
-        $data['personas'] = $this->persona_model->lista_personas()->result();
+        $data['personas'] = $this->persona_model->lista_personas0()->result();
         $data['title'] = "Actualizar Carrito";
         $this->load->view('page_header');        
         $this->load->view('carrito_edit', $data);
@@ -117,7 +117,7 @@ class Carrito extends CI_Controller{
     public function actual()
     {
         $data['carrito'] = $this->carrito_model->carrito($this->uri->segment(3))->row_array();
-        $data['personas'] = $this->persona_model->lista_personas()->result();
+        $data['personas'] = $this->persona_model->lista_personas0()->result();
         if(!empty($data['carrito']))
         {
             $data['title'] = "Carrito";
@@ -135,7 +135,7 @@ class Carrito extends CI_Controller{
     public function elprimero()
     {
         $data['carrito'] = $this->carrito_model->elprimero();
-        $data['personas'] = $this->persona_model->lista_personas()->result();
+        $data['personas'] = $this->persona_model->lista_personas0()->result();
         if(!empty($data['carrito']))
         {
             $data['title'] = "Carrito";
@@ -153,7 +153,7 @@ class Carrito extends CI_Controller{
     public function elultimo()
     {
         $data['carrito'] = $this->carrito_model->elultimo();
-        $data['personas'] = $this->persona_model->lista_personas()->result();
+        $data['personas'] = $this->persona_model->lista_personas0()->result();
         if(!empty($data['carrito']))
         {
             $data['title'] = "Carrito";
@@ -170,7 +170,7 @@ class Carrito extends CI_Controller{
     // Navegación: Siguiente
     public function siguiente(){
         $data['carrito'] = $this->carrito_model->siguiente($this->uri->segment(3))->row_array();
-        $data['personas'] = $this->persona_model->lista_personas()->result();
+        $data['personas'] = $this->persona_model->lista_personas0()->result();
         $data['title'] = "Carrito";
         $this->load->view('page_header');		
         $this->load->view('carrito_record',$data);
@@ -180,7 +180,7 @@ class Carrito extends CI_Controller{
     // Navegación: Anterior
     public function anterior(){
         $data['carrito'] = $this->carrito_model->anterior($this->uri->segment(3))->row_array();
-        $data['personas'] = $this->persona_model->lista_personas()->result();
+        $data['personas'] = $this->persona_model->lista_personas0()->result();
         $data['title'] = "Carrito";
         $this->load->view('page_header');		
         $this->load->view('carrito_record',$data);
