@@ -54,7 +54,6 @@ $permitir_acceso_modulo=true;
 <br>
 <br>
 
-<?php echo form_open('persona/save_edit') ?>
 <?php echo form_hidden('idpersona',$persona['idpersona']) ?>
 
 <div class="container" style="max-width:900px; margin:auto; padding:20px; border:1px solid #ddd; border-radius:8px; box-shadow:0 0 10px rgba(0,0,0,0.1);">

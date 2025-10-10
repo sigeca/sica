@@ -5,9 +5,22 @@
 <hr/>
 <?php echo form_open("carritoproducto/save") ?>
 
+<div class="form-group row">
+<label class="col-md-2 col-form-label">Carrito:</label>
+<div class="col-md-10">
+<?php
+$options= array('--Select--');
+foreach ($carritoes as $row){
+	$options[$row->idcarrito]=$row->nombre;
+}
+ echo form_dropdown("idcarrito",$options,set_select('--Select--','default_value'), array('id'=>'idcarrito'));  
+?>
+</div>
+</div>
+
 
 <div class="form-group row">
-<label class="col-md-2 col-form-label">Articulo: </label>
+<label class="col-md-2 col-form-label">Producto: </label>
 <div class="col-md-10">
 <?php
 $options= array('--Select--');
@@ -20,56 +33,34 @@ foreach ($productos as $row){
 </div>
 </div>
 
-<div class="form-group row">
-<label class="col-md-2 col-form-label">persona:</label>
-<div class="col-md-10">
-<?php
-$options= array('--Select--');
-foreach ($personas as $row){
-	$options[$row->idpersona]=$row->apellidos." - ".$row->nombres;
-}
- echo form_dropdown("idpersona",$options,set_select('--Select--','default_value'), array('id'=>'idpersona'));  
-?>
-</div>
-</div>
-
-
-<div class="form-group row">
-<label class="col-md-2 col-form-label">Unidad:</label>
-<div class="col-md-10">
-<?php
-$options= array('--Select--');
-foreach ($unidades as $row){
-	$options[$row->idunidad]=$row->nombre;
-}
- echo form_dropdown("idunidad",$options,set_select('--Select--','default_value'), array('id'=>'idunidad'));  
-?>
-</div>
-</div>
 
 
 
 
 
 <div class="form-group row">
-<label class="col-md-2 col-form-label">Fecha de ubicación:</label>
+<label class="col-md-2 col-form-label">Cantidad :</label>
 <div class="col-md-10">
 <?php
 
-   date_default_timezone_set('America/Guayaquil');
-    $date = date("Y-m-d");
-    $horai= date("H:i:s");
-    
 
-    $horaf= date("H:i:s",strtotime(' + 2 hours'));
-
- echo form_input(array("name"=>"fecha","id"=>"fecha","type"=>"date","value"=>$date));  
+ echo form_input(array("name"=>"cantidad","id"=>"cantidad","type"=>"text","value"=>1));  
 
 ?>
 </div>
 </div>
 
+<div class="form-group row">
+<label class="col-md-2 col-form-label">Precio :</label>
+<div class="col-md-10">
+<?php
 
+
+ echo form_input(array("name"=>"precio","id"=>"precio","type"=>"text","value"=>0));  
+
+?>
+</div>
+</div>
 
 
 
