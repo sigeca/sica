@@ -3,7 +3,7 @@
 <h2> <?php echo $title; ?> </h2>
 </div>
 <hr/>
-<?php echo form_open("precioarticulo/save") ?>
+<?php echo form_open("ubicacionarticulo/save") ?>
 
 
 <div class="form-group row">
@@ -20,10 +20,39 @@ foreach ($articulos as $row){
 </div>
 </div>
 
+<div class="form-group row">
+<label class="col-md-2 col-form-label">persona:</label>
+<div class="col-md-10">
+<?php
+$options= array('--Select--');
+foreach ($personas as $row){
+	$options[$row->idpersona]=$row->apellidos." - ".$row->nombres;
+}
+ echo form_dropdown("idpersona",$options,set_select('--Select--','default_value'), array('id'=>'idpersona'));  
+?>
+</div>
+</div>
 
 
 <div class="form-group row">
-<label class="col-md-2 col-form-label">Fecha desde:</label>
+<label class="col-md-2 col-form-label">Unidad:</label>
+<div class="col-md-10">
+<?php
+$options= array('--Select--');
+foreach ($unidades as $row){
+	$options[$row->idunidad]=$row->nombre;
+}
+ echo form_dropdown("idunidad",$options,set_select('--Select--','default_value'), array('id'=>'idunidad'));  
+?>
+</div>
+</div>
+
+
+
+
+
+<div class="form-group row">
+<label class="col-md-2 col-form-label">Fecha de ubicación:</label>
 <div class="col-md-10">
 <?php
 
@@ -32,77 +61,13 @@ foreach ($articulos as $row){
     $horai= date("H:i:s");
     
 
+    $horaf= date("H:i:s",strtotime(' + 2 hours'));
 
- echo form_input(array("name"=>"fechadesde","id"=>"fechadesde","type"=>"date","value"=>$date));  
-
-?>
-</div>
-</div>
-
-
-
-
-
-
-<div class="form-group row">
-<label class="col-md-2 col-form-label">Fecha hasta:</label>
-<div class="col-md-10">
-<?php
-
-   date_default_timezone_set('America/Guayaquil');
-    $date = date("Y-m-d");
-    $horai= date("H:i:s");
-    
-
-
- echo form_input(array("name"=>"fechahasta","id"=>"fechahasta","type"=>"date","value"=>0,"disabled"=>"disabled"));  
+ echo form_input(array("name"=>"fecha","id"=>"fecha","type"=>"date","value"=>$date));  
 
 ?>
 </div>
 </div>
-
-
-
-
-
-
-<div class="form-group row">
-<label class="col-md-2 col-form-label">Precio:</label>
-<div class="col-md-10">
-<?php
-    
-$textarea_options = array('style'=> 'width:100px;', "placeholder"=>"Precio con decimals" );    
- echo form_textarea("precio","", $textarea_options);  
-
-?>
-</div>
-</div>
-
-
-<div class="form-group row">
-<label class="col-md-2 col-form-label">Detalle:</label>
-<div class="col-md-10">
-<?php
-    
-$textarea_options = array('class' => 'form-control','rows' => '4',   'cols' => '20', 'style'=> 'width:50%;height:100px;', "placeholder"=>"Detalle del prestamo" );    
- echo form_textarea("detalle","", $textarea_options);  
-
-?>
-</div>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -110,7 +75,7 @@ $textarea_options = array('class' => 'form-control','rows' => '4',   'cols' => '
 
 <table>
 <tr>
-<td colspan="2"> <hr><?php echo form_submit("submit", "Guardar"); ?><?php echo anchor("precioarticulo","Atrás") ?> </td>
+<td colspan="2"> <hr><?php echo form_submit("submit", "Guardar"); ?><?php echo anchor("ubicacionarticulo","Atrás") ?> </td>
 </tr>
 
 </table>

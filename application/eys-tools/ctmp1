@@ -1,10 +1,11 @@
 <?php
-class Precioproducto extends CI_Controller{
+class Ubicacionproducto extends CI_Controller{
 
 	public function __construct(){
       		parent::__construct();
-      		$this->load->model('precioarticulo_model');
-      		$this->load->model('documento_model');
+      		$this->load->model('ubicacionarticulo_model');
+      		$this->load->model('unidad_model');
+      		$this->load->model('persona_model');
       		$this->load->model('evento_model');
       		$this->load->model('articulo_model');
       		$this->load->model('fechacalendario_model');
@@ -12,14 +13,16 @@ class Precioproducto extends CI_Controller{
 	}
 
 	public function index(){
-		$data['precioarticulo'] = $this->precioarticulo_model->elultimo();
+		$data['ubicacionarticulo'] = $this->ubicacionarticulo_model->elultimo();
 		$data['articulos']= $this->articulo_model->lista_articulos()->result();
+  		$data['personas']= $this->persona_model->lista_personas()->result();
+		$data['unidades']= $this->unidad_model->lista_unidades()->result();
 
- 		// print_r($data['precioarticulo_list']);
-  		$data['title']="Lista de Precioproductoes";
-		$this->load->view('page_header');		
-  		$this->load->view('precioarticulo_record',$data);
-		$this->load->view('page_footer');
+ 		// print_r($data['ubicacionarticulo_list']);
+  		$data['title']="Lista de Ubicacionproductoes";
+		$this->load->view('template/page_header');		
+  		$this->load->view('ubicacionarticulo_record',$data);
+		$this->load->view('template/page_footer');
 	}
 
 
@@ -27,20 +30,21 @@ class Precioproducto extends CI_Controller{
 	public function actual(){
 	 if(isset($this->session->userdata['logged_in'])){
 
-		$data['precioarticulo'] = $this->precioarticulo_model->precioarticulo($this->uri->segment(3))->row_array();
+		$data['ubicacionarticulo'] = $this->ubicacionarticulo_model->ubicacionarticulo($this->uri->segment(3))->row_array();
 
 
 		$data['articulos']= $this->articulo_model->lista_articulos()->result();
-		$data['title']="Precioproducto del documento";
+		$data['personas']= $this->persona_model->lista_personas()->result();
+		$data['title']="Ubicacionproducto del unidad";
 	 
-		$data['title']="Modulo de sesiones del evento";
-		$this->load->view('page_header');		
-		$this->load->view('precioarticulo_record',$data);
-		$this->load->view('page_footer');
+		$data['title']="Modulo ubicación del artículo: ";
+		$this->load->view('template/page_header');		
+		$this->load->view('ubicacionarticulo_record',$data);
+		$this->load->view('template/page_footer');
 	   }else{
-		$this->load->view('page_header.php');
+		$this->load->view('template/page_header.php');
 		$this->load->view('login_form');
-		$this->load->view('page_footer.php');
+		$this->load->view('template/page_footer.php');
 	   }
 	}
 
@@ -50,13 +54,22 @@ class Precioproducto extends CI_Controller{
 	public function add()
 	{
 
-		$data['articulos']= $this->articulo_model->lista_articulos()->result();
+
+	    if($this->uri->segment(3))
+	    {
+		    $data['articulos']= $this->articulo_model->articulo($this->uri->segment(3))->result();
+        }else{
+		    $data['articulos']= $this->articulo_model->lista_articulos()->result();
+         }
+
+		$data['personas']= $this->persona_model->lista_personas0()->result();
+		$data['unidades']= $this->unidad_model->lista_unidades()->result();
    		date_default_timezone_set('America/Guayaquil');
 	     	$date = date("Y-m-d");
-		$data['title']="Nueva sesion de eventos";
-	 	$this->load->view('page_header');		
-	 	$this->load->view('precioarticulo_form',$data);
-	 	$this->load->view('page_footer');
+		$data['title']="Nueva ubicación de artículo: ";
+	 	$this->load->view('template/page_header');		
+	 	$this->load->view('ubicacionarticulo_form',$data);
+	 	$this->load->view('template/page_footer');
 	}
 
 
@@ -64,12 +77,11 @@ class Precioproducto extends CI_Controller{
 	{
 	 	$array_item=array(
 		 	'idarticulo' => $this->input->post('idarticulo'),
-		 	'fechadesde' => $this->input->post('fechadesde'),
-		 	'fechahasta' => $this->input->post('fechahasta'),
-		 	'detalle' => $this->input->post('detalle'),
-		 	'precio' => $this->input->post('precio'),
+		 	'idpersona' => $this->input->post('idpersona'),
+		 	'fecha' => $this->input->post('fecha'),
+		 	'idunidad' => $this->input->post('idunidad'),
 	 	);
-	 	$result=$this->precioarticulo_model->save($array_item);
+	 	$result=$this->ubicacionarticulo_model->save($array_item);
 	 	if($result == FALSE)
 		{
 			echo "<script language='JavaScript'> alert('Fecha para este evento ya fue asignado'); </script>";
@@ -84,37 +96,38 @@ class Precioproducto extends CI_Controller{
 
 	public function edit()
 	{
-	 	$data['precioarticulo'] = $this->precioarticulo_model->precioarticulo($this->uri->segment(3))->row_array();
+	 	$data['ubicacionarticulo'] = $this->ubicacionarticulo_model->ubicacionarticulo($this->uri->segment(3))->row_array();
 		$data['articulos']= $this->articulo_model->lista_articulos()->result();
- 	 	$data['title'] = "Actualizar Precioproducto";
- 	 	$this->load->view('page_header');		
- 	 	$this->load->view('precioarticulo_edit',$data);
-	 	$this->load->view('page_footer');
+		$data['personas']= $this->persona_model->lista_personas()->result();
+ 	 	$data['title'] = "Actualizar Ubicacionproducto";
+ 	 	$this->load->view('template/page_header');		
+ 	 	$this->load->view('ubicacionarticulo_edit',$data);
+	 	$this->load->view('template/page_footer');
 	}
 
 
 	public function  save_edit()
 	{
-		$id=$this->input->post('idprecioarticulo');
+		$id=$this->input->post('idubicacionarticulo');
 	 	$array_item=array(
-		 	'idprecioarticulo' => $this->input->post('idprecioarticulo'),
+		 	'idubicacionarticulo' => $this->input->post('idubicacionarticulo'),
+
 		 	'idarticulo' => $this->input->post('idarticulo'),
-		 	'fechadesde' => $this->input->post('fechadesde'),
-		 	'fechahasta' => $this->input->post('fechahasta'),
-		 	'detalle' => $this->input->post('detalle'),
-		 	'precio' => $this->input->post('precio'),
+		 	'idpersona' => $this->input->post('idpersona'),
+		 	'fecha' => $this->input->post('fecha'),
+		 	'idunidad' => $this->input->post('idunidad'),
 	 	);
-	 	$this->precioarticulo_model->update($id,$array_item);
-	 	redirect('precioarticulo/actual/'.$id);
+	 	$this->ubicacionarticulo_model->update($id,$array_item);
+	 	redirect('ubicacionarticulo/actual/'.$id);
  	}
 
 
 
  	public function delete()
  	{
- 		$data=$this->precioarticulo_model->delete($this->uri->segment(3));
+ 		$data=$this->ubicacionarticulo_model->delete($this->uri->segment(3));
  		echo json_encode($data);
-	 	redirect('precioarticulo/elprimero');
+	 	redirect('ubicacionarticulo/elprimero');
 	//	$db['default']['db_debug']=FALSE
  	}
 
@@ -125,14 +138,14 @@ public function listar()
 	
 	$data['eventos']= $this->evento_model->lista_eventos()->result();
   $data['title']="Sesiones de evento";
-	$this->load->view('page_header');		
-  $this->load->view('precioarticulo_list',$data);
-	$this->load->view('page_footer');
+	$this->load->view('template/page_header');		
+  $this->load->view('ubicacionarticulo_list',$data);
+	$this->load->view('template/page_footer');
 }
 
 
 
-function precioarticulo_data()
+function ubicacionarticulo_data()
 {
 		$draw= intval($this->input->get("draw"));
 		$draw= intval($this->input->get("start"));
@@ -145,11 +158,11 @@ function precioarticulo_data()
 			$idevento=$this->input->get('idevento');
 		}
 
-	 	$data0 = $this->precioarticulo_model->precioarticulosA($idevento);
+	 	$data0 = $this->ubicacionarticulo_model->ubicacionarticulosA($idevento);
 		$data=array();
 		foreach($data0->result() as $r){
-			$data[]=array($r->idprecioarticulo,$r->elevento,$r->fecha,$r->tema,
-				$r->href='<a href="javascript:void(0);" class="btn btn-info btn-sm item_ver" data-retorno="'.site_url('precioarticulo/actual').'"   data-idprecioarticulo="'.$r->idprecioarticulo.'">Ver</a>');
+			$data[]=array($r->idubicacionarticulo,$r->elevento,$r->fecha,$r->tema,
+				$r->href='<a href="javascript:void(0);" class="btn btn-info btn-sm item_ver" data-retorno="'.site_url('ubicacionarticulo/actual').'"   data-idubicacionarticulo="'.$r->idubicacionarticulo.'">Ver</a>');
 		}	
 		$output=array( "draw"=>$draw,
 			"recordsTotal"=> $data0->num_rows(),
@@ -168,12 +181,12 @@ function precioarticulo_data()
 	{
 		
 
-	 	$data['precioarticulos']= $this->precioarticulo_model->precioarticulosA($this->uri->segment(3))->result();
+	 	$data['ubicacionarticulos']= $this->ubicacionarticulo_model->ubicacionarticulosA($this->uri->segment(3))->result();
 
 		$data['title']="Evento";
-	//	$this->load->view('page_header');		
-		$this->load->view('precioarticulo_list_pdf',$data);
-//		$this->load->view('page_footer');
+	//	$this->load->view('template/page_header');		
+		$this->load->view('ubicacionarticulo_list_pdf',$data);
+//		$this->load->view('template/page_footer');
 	}
 
 
@@ -182,72 +195,81 @@ function precioarticulo_data()
 
 public function elprimero()
 {
-  	$data['documentos']= $this->documento_model->lista_documentos()->result();
-	$data['precioarticulo'] = $this->precioarticulo_model->elprimero();
+  	$data['unidades']= $this->unidad_model->lista_unidades()->result();
+	$data['ubicacionarticulo'] = $this->ubicacionarticulo_model->elprimero();
 		$data['modoevaluacions']= $this->modoevaluacion_model->lista_modoevaluacions()->result();
   if(!empty($data))
   {
   		$data['eventos']= $this->evento_model->lista_eventos()->result();
 
-    $data['title']="Precioproducto del documento";
-    $this->load->view('page_header');		
-    $this->load->view('precioarticulo_record',$data);
-    $this->load->view('page_footer');
+  	$data['personas']= $this->persona_model->lista_personas()->result();
+    $data['title']="Ubicacionproducto del unidad";
+    $this->load->view('template/page_header');		
+    $this->load->view('ubicacionarticulo_record',$data);
+    $this->load->view('template/page_footer');
   }else{
-    $this->load->view('page_header');		
+    $this->load->view('template/page_header');		
     $this->load->view('registro_vacio');
-    $this->load->view('page_footer');
+    $this->load->view('template/page_footer');
   }
  }
 
 public function elultimo()
 {
-  $data['documentos']= $this->documento_model->lista_documentos()->result();
-  		$data['temas']= $this->tema_model->lista_temas()->result();
-	$data['precioarticulo'] = $this->precioarticulo_model->elultimo();
-		$data['modoevaluacions']= $this->modoevaluacion_model->lista_modoevaluacions()->result();
+	$data['unidades']= $this->unidad_model->lista_unidades()->result();
+  $data['articulos']= $this->articulo_model->lista_articulos()->result();
+ // 		$data['temas']= $this->tema_model->lista_temas()->result();
+	$data['ubicacionarticulo'] = $this->ubicacionarticulo_model->elultimo();
+//		$data['modoevaluacions']= $this->modoevaluacion_model->lista_modoevaluacions()->result();
   if(!empty($data))
   {
-  		$data['eventos']= $this->evento_model->lista_eventos()->result();
-    $data['title']="Precioproducto del documento";
+  //		$data['eventos']= $this->evento_model->lista_eventos()->result();
+  	$data['personas']= $this->persona_model->lista_personas()->result();
+    $data['title']="Ubicacionproducto del unidad";
   
-    $this->load->view('page_header');		
-    $this->load->view('precioarticulo_record',$data);
-    $this->load->view('page_footer');
+    $this->load->view('template/page_header');		
+    $this->load->view('ubicacionarticulo_record',$data);
+    $this->load->view('template/page_footer');
   }else{
 
-    $this->load->view('page_header');		
+    $this->load->view('template/page_header');		
     $this->load->view('registro_vacio');
-    $this->load->view('page_footer');
+    $this->load->view('template/page_footer');
   }
 }
 
 public function siguiente(){
- // $data['precioarticulo_list']=$this->precioarticulo_model->lista_precioarticulo()->result();
-	$data['documentos']= $this->documento_model->lista_documentos()->result();
-  		$data['temas']= $this->tema_model->lista_temas()->result();
-		$data['modoevaluacions']= $this->modoevaluacion_model->lista_modoevaluacions()->result();
-	$data['precioarticulo'] = $this->precioarticulo_model->siguiente($this->uri->segment(3))->row_array();
+ // $data['ubicacionarticulo_list']=$this->ubicacionarticulo_model->lista_ubicacionarticulo()->result();
+	$data['unidades']= $this->unidad_model->lista_unidades()->result();
+
+	$data['unidades']= $this->unidad_model->lista_unidades()->result();
+  $data['articulos']= $this->articulo_model->lista_articulos()->result();
+
+
+  	//	$data['temas']= $this->tema_model->lista_temas()->result();
+//		$data['modoevaluacions']= $this->modoevaluacion_model->lista_modoevaluacions()->result();
+	$data['ubicacionarticulo'] = $this->ubicacionarticulo_model->siguiente($this->uri->segment(3))->row_array();
+  	$data['personas']= $this->persona_model->lista_personas()->result();
   	$data['eventos']= $this->evento_model->lista_eventos()->result();
-    $data['title']="Precioproducto del documento";
+    $data['title']="Ubicacionproducto del unidad";
  // $data['title']="Correo";
-	$this->load->view('page_header');		
-  $this->load->view('precioarticulo_record',$data);
-	$this->load->view('page_footer');
+	$this->load->view('template/page_header');		
+  $this->load->view('ubicacionarticulo_record',$data);
+	$this->load->view('template/page_footer');
 }
 
 public function anterior(){
- // $data['precioarticulo_list']=$this->precioarticulo_model->lista_precioarticulo()->result();
-  $data['documentos']= $this->documento_model->lista_documentos()->result();
-  		$data['temas']= $this->tema_model->lista_temas()->result();
-	$data['precioarticulo'] = $this->precioarticulo_model->anterior($this->uri->segment(3))->row_array();
-		$data['modoevaluacions']= $this->modoevaluacion_model->lista_modoevaluacions()->result();
-  		$data['eventos']= $this->evento_model->lista_eventos()->result();
+ // $data['ubicacionarticulo_list']=$this->ubicacionarticulo_model->lista_ubicacionarticulo()->result();
+  $data['unidades']= $this->unidad_model->lista_unidades()->result();
+	$data['ubicacionarticulo'] = $this->ubicacionarticulo_model->anterior($this->uri->segment(3))->row_array();
+	$data['modoevaluacions']= $this->modoevaluacion_model->lista_modoevaluacions()->result();
+ 	$data['personas']= $this->persona_model->lista_personas()->result();
+  	$data['eventos']= $this->evento_model->lista_eventos()->result();
  // $data['title']="Correo";
-    $data['title']="Precioproducto del documento";
-	$this->load->view('page_header');		
-  $this->load->view('precioarticulo_record',$data);
-	$this->load->view('page_footer');
+    $data['title']="Ubicacionproducto del unidad";
+	$this->load->view('template/page_header');		
+  $this->load->view('ubicacionarticulo_record',$data);
+	$this->load->view('template/page_footer');
 }
 
 
@@ -256,15 +278,15 @@ public function anterior(){
 
 
 
-public function get_precioarticulo() {
+public function get_ubicacionarticulo() {
     $this->load->database();
     $this->load->helper('form');
-    if($this->input->get('idprecioarticulo')) 
+    if($this->input->get('idubicacionarticulo')) 
     {
         $this->db->select('*');
     	$this->db->order_by("fecha","asc");
-        $this->db->where(array('idprecioarticulo' => $this->input->get('idprecioarticulo')));
-        $query = $this->db->get('precioarticulo');
+        $this->db->where(array('idubicacionarticulo' => $this->input->get('idubicacionarticulo')));
+        $query = $this->db->get('ubicacionarticulo');
 	$data=$query->result();
 	echo json_encode($data);
 	}
