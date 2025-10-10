@@ -3,7 +3,7 @@ class Carrito_model extends CI_model {
 
     // Obtiene todos los carritos
 	function lista_carritos(){
-		 $carrito = $this->db->get('carrito');
+		 $carrito = $this->db->get('carrito1');
 		 return $carrito;
 	}
 
