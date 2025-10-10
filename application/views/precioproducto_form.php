@@ -3,7 +3,7 @@
 <h2> <?php echo $title; ?> </h2>
 </div>
 <hr/>
-<?php echo form_open("precioarticulo/save") ?>
+<?php echo form_open("precioproducto/save") ?>
 
 
 <div class="form-group row">
@@ -110,7 +110,7 @@ $textarea_options = array('class' => 'form-control','rows' => '4',   'cols' => '
 
 <table>
 <tr>
-<td colspan="2"> <hr><?php echo form_submit("submit", "Guardar"); ?><?php echo anchor("precioarticulo","Atrás") ?> </td>
+<td colspan="2"> <hr><?php echo form_submit("submit", "Guardar"); ?><?php echo anchor("precioproducto","Atrás") ?> </td>
 </tr>
 
 </table>
