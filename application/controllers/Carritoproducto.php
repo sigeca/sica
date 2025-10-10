@@ -13,7 +13,6 @@ class Carritoproducto extends CI_Controller{
 		$data['carritoproducto'] = $this->carritoproducto_model->elultimo();
 		$data['productos']= $this->producto_model->lista_productos()->result();
   		$data['personas']= $this->persona_model->lista_personas0()->result();
-		$data['unidades']= $this->unidad_model->lista_unidades()->result();
 
  		// print_r($data['carritoproducto_list']);
   		$data['title']="Lista de Carritoproductoes";
