@@ -43,6 +43,7 @@ $permitir_acceso_modulo=true;
         <li> <?php echo anchor('sexo/listar/','Listar', 'style="text-decoration:none; color:#28a745; font-weight:bold;"'); ?></li>
 
 
+    </ul>
   <?php } ?>
     <?php
     } else {
