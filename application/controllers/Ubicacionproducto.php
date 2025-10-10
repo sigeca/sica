@@ -15,14 +15,14 @@ class Ubicacionproducto extends CI_Controller{
 	public function index(){
 		$data['ubicacionproducto'] = $this->ubicacionproducto_model->elultimo();
 		$data['productos']= $this->producto_model->lista_productos()->result();
-  		$data['personas']= $this->persona_model->lista_personas()->result();
+  		$data['personas']= $this->persona_model->lista_personas0()->result();
 		$data['unidades']= $this->unidad_model->lista_unidades()->result();
 
  		// print_r($data['ubicacionproducto_list']);
   		$data['title']="Lista de Ubicacionproductoes";
-		$this->load->view('template/page_header');		
+		$this->load->view('page_header');		
   		$this->load->view('ubicacionproducto_record',$data);
-		$this->load->view('template/page_footer');
+		$this->load->view('page_footer');
 	}
 
 
@@ -34,17 +34,17 @@ class Ubicacionproducto extends CI_Controller{
 
 
 		$data['productos']= $this->producto_model->lista_productos()->result();
-		$data['personas']= $this->persona_model->lista_personas()->result();
+		$data['personas']= $this->persona_model->lista_personas0()->result();
 		$data['title']="Ubicacionproducto del unidad";
 	 
 		$data['title']="Modulo ubicación del artículo: ";
-		$this->load->view('template/page_header');		
+		$this->load->view('page_header');		
 		$this->load->view('ubicacionproducto_record',$data);
-		$this->load->view('template/page_footer');
+		$this->load->view('page_footer');
 	   }else{
-		$this->load->view('template/page_header.php');
+		$this->load->view('page_header.php');
 		$this->load->view('login_form');
-		$this->load->view('template/page_footer.php');
+		$this->load->view('page_footer.php');
 	   }
 	}
 
@@ -67,9 +67,9 @@ class Ubicacionproducto extends CI_Controller{
    		date_default_timezone_set('America/Guayaquil');
 	     	$date = date("Y-m-d");
 		$data['title']="Nueva ubicación de artículo: ";
-	 	$this->load->view('template/page_header');		
+	 	$this->load->view('page_header');		
 	 	$this->load->view('ubicacionproducto_form',$data);
-	 	$this->load->view('template/page_footer');
+	 	$this->load->view('page_footer');
 	}
 
 
@@ -98,11 +98,11 @@ class Ubicacionproducto extends CI_Controller{
 	{
 	 	$data['ubicacionproducto'] = $this->ubicacionproducto_model->ubicacionproducto($this->uri->segment(3))->row_array();
 		$data['productos']= $this->producto_model->lista_productos()->result();
-		$data['personas']= $this->persona_model->lista_personas()->result();
+		$data['personas']= $this->persona_model->lista_personas0()->result();
  	 	$data['title'] = "Actualizar Ubicacionproducto";
- 	 	$this->load->view('template/page_header');		
+ 	 	$this->load->view('page_header');		
  	 	$this->load->view('ubicacionproducto_edit',$data);
-	 	$this->load->view('template/page_footer');
+	 	$this->load->view('page_footer');
 	}
 
 
@@ -138,9 +138,9 @@ public function listar()
 	
 	$data['eventos']= $this->evento_model->lista_eventos()->result();
   $data['title']="Sesiones de evento";
-	$this->load->view('template/page_header');		
+	$this->load->view('page_header');		
   $this->load->view('ubicacionproducto_list',$data);
-	$this->load->view('template/page_footer');
+	$this->load->view('page_footer');
 }
 
 
@@ -184,9 +184,9 @@ function ubicacionproducto_data()
 	 	$data['ubicacionproductos']= $this->ubicacionproducto_model->ubicacionproductosA($this->uri->segment(3))->result();
 
 		$data['title']="Evento";
-	//	$this->load->view('template/page_header');		
+	//	$this->load->view('page_header');		
 		$this->load->view('ubicacionproducto_list_pdf',$data);
-//		$this->load->view('template/page_footer');
+//		$this->load->view('page_footer');
 	}
 
 
@@ -202,15 +202,15 @@ public function elprimero()
   {
   		$data['eventos']= $this->evento_model->lista_eventos()->result();
 
-  	$data['personas']= $this->persona_model->lista_personas()->result();
+  	$data['personas']= $this->persona_model->lista_personas0()->result();
     $data['title']="Ubicacionproducto del unidad";
-    $this->load->view('template/page_header');		
+    $this->load->view('page_header');		
     $this->load->view('ubicacionproducto_record',$data);
-    $this->load->view('template/page_footer');
+    $this->load->view('page_footer');
   }else{
-    $this->load->view('template/page_header');		
+    $this->load->view('page_header');		
     $this->load->view('registro_vacio');
-    $this->load->view('template/page_footer');
+    $this->load->view('page_footer');
   }
  }
 
@@ -224,17 +224,17 @@ public function elultimo()
   if(!empty($data))
   {
   //		$data['eventos']= $this->evento_model->lista_eventos()->result();
-  	$data['personas']= $this->persona_model->lista_personas()->result();
+  	$data['personas']= $this->persona_model->lista_personas0()->result();
     $data['title']="Ubicacionproducto del unidad";
   
-    $this->load->view('template/page_header');		
+    $this->load->view('page_header');		
     $this->load->view('ubicacionproducto_record',$data);
-    $this->load->view('template/page_footer');
+    $this->load->view('page_footer');
   }else{
 
-    $this->load->view('template/page_header');		
+    $this->load->view('page_header');		
     $this->load->view('registro_vacio');
-    $this->load->view('template/page_footer');
+    $this->load->view('page_footer');
   }
 }
 
@@ -249,13 +249,13 @@ public function siguiente(){
   	//	$data['temas']= $this->tema_model->lista_temas()->result();
 //		$data['modoevaluacions']= $this->modoevaluacion_model->lista_modoevaluacions()->result();
 	$data['ubicacionproducto'] = $this->ubicacionproducto_model->siguiente($this->uri->segment(3))->row_array();
-  	$data['personas']= $this->persona_model->lista_personas()->result();
+  	$data['personas']= $this->persona_model->lista_personas0()->result();
   	$data['eventos']= $this->evento_model->lista_eventos()->result();
     $data['title']="Ubicacionproducto del unidad";
  // $data['title']="Correo";
-	$this->load->view('template/page_header');		
+	$this->load->view('page_header');		
   $this->load->view('ubicacionproducto_record',$data);
-	$this->load->view('template/page_footer');
+	$this->load->view('page_footer');
 }
 
 public function anterior(){
@@ -263,13 +263,13 @@ public function anterior(){
   $data['unidades']= $this->unidad_model->lista_unidades()->result();
 	$data['ubicacionproducto'] = $this->ubicacionproducto_model->anterior($this->uri->segment(3))->row_array();
 	$data['modoevaluacions']= $this->modoevaluacion_model->lista_modoevaluacions()->result();
- 	$data['personas']= $this->persona_model->lista_personas()->result();
+ 	$data['personas']= $this->persona_model->lista_personas0()->result();
   	$data['eventos']= $this->evento_model->lista_eventos()->result();
  // $data['title']="Correo";
     $data['title']="Ubicacionproducto del unidad";
-	$this->load->view('template/page_header');		
+	$this->load->view('page_header');		
   $this->load->view('ubicacionproducto_record',$data);
-	$this->load->view('template/page_footer');
+	$this->load->view('page_footer');
 }
 
 
