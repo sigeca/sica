@@ -60,15 +60,15 @@ echo form_input('idunidad',$options[$ubicacionproducto['idunidad']],array("disab
 
 
 <div class="form-group row">
-    <label class="col-md-2 col-form-label"> <?php echo anchor('articulo/actual/'.$ubicacionproducto['idarticulo'], 'El artículo:'); ?> </label>
+    <label class="col-md-2 col-form-label"> <?php echo anchor('producto/actual/'.$ubicacionproducto['idproducto'], 'El artículo:'); ?> </label>
 	<div class="col-md-10">
      <?php 
 $options= array("NADA");
-foreach ($articulos as $row){
-	$options[$row->idarticulo]= $row->nombre;
+foreach ($productos as $row){
+	$options[$row->idproducto]= $row->nombre;
 }
 
-echo form_input('idarticulo',$options[$ubicacionproducto['idarticulo']],array("disabled"=>"disabled",'style'=>'width:500px;')); 
+echo form_input('idproducto',$options[$ubicacionproducto['idproducto']],array("disabled"=>"disabled",'style'=>'width:500px;')); 
 		?>
 	</div> 
 </div>
