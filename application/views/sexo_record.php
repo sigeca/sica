@@ -42,9 +42,23 @@ $permitir_acceso_modulo=true;
         <li  style="border-right:1px solid #ccc; padding-right:15px;"> <?php echo anchor('sexo/quitar/'.$sexo['idsexo'],'Quitar', 'style="text-decoration:none; color:#dc3545; font-weight:bold;"'); ?></li>
         <li> <?php echo anchor('sexo/listar/','Listar', 'style="text-decoration:none; color:#28a745; font-weight:bold;"'); ?></li>
 
+
+  <?php } ?>
+    <?php
+    } else {
+    ?>
+    <ul style="list-style:none; padding:0; display:flex; gap:15px; background-color:#f2f2f2; padding:10px; border-radius:5px; margin-top:15px;">
+        <li><?php echo anchor('sexo/add', 'Nuevo', 'style="text-decoration:none; color:#28a745; font-weight:bold;"'); ?></li>
     </ul>
+    <?php
+    }
+    ?>
 </div>
 <br>
+<br>
+
+
+
 
 
 <?php echo form_hidden('idsexo',$sexo['idsexo']) ?>
