@@ -4,12 +4,9 @@ class Carritoproducto extends CI_Controller{
 	public function __construct(){
       		parent::__construct();
       		$this->load->model('carritoproducto_model');
-      		$this->load->model('unidad_model');
       		$this->load->model('persona_model');
-      		$this->load->model('evento_model');
+      		$this->load->model('carrito_model');
       		$this->load->model('producto_model');
-      		$this->load->model('fechacalendario_model');
-      		$this->load->model('modoevaluacion_model');
 	}
 
 	public function index(){
@@ -57,13 +54,12 @@ class Carritoproducto extends CI_Controller{
 
 	    if($this->uri->segment(3))
 	    {
-		    $data['productos']= $this->producto_model->producto($this->uri->segment(3))->result();
+		    $data['carritos']= $this->carrito_model->carrito($this->uri->segment(3))->result();
         }else{
-		    $data['productos']= $this->producto_model->lista_productos()->result();
+		    $data['carritos']= $this->carrito_model->lista_carritos()->result();
          }
 
-		$data['personas']= $this->persona_model->lista_personas0()->result();
-		$data['unidades']= $this->unidad_model->lista_unidades()->result();
+		 $data['productos']= $this->producto_model->lista_productos()->result();
    		date_default_timezone_set('America/Guayaquil');
 	     	$date = date("Y-m-d");
 		$data['title']="Nueva ubicación de artículo: ";

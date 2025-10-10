@@ -10,8 +10,8 @@
 <div class="col-md-10">
 <?php
 $options= array('--Select--');
-foreach ($carritoes as $row){
-	$options[$row->idcarrito]=$row->nombre;
+foreach ($carritos as $row){
+	$options[$row->idcarrito]=$row->propietario;
 }
  echo form_dropdown("idcarrito",$options,set_select('--Select--','default_value'), array('id'=>'idcarrito'));  
 ?>
