@@ -11,11 +11,11 @@
 <div class="col-md-10">
 <?php
 $options= array('--Select--');
-foreach ($articulos as $row){
-	$options[$row->idarticulo]= $row->nombre;
+foreach ($productos as $row){
+	$options[$row->idproducto]= $row->nombre;
 }
 
- echo form_dropdown("idarticulo",$options, set_select('--Select--','default_value'),array('id'=>'idarticulo'));  
+ echo form_dropdown("idproducto",$options, set_select('--Select--','default_value'),array('id'=>'idproducto'));  
 ?>
 </div>
 </div>
@@ -84,9 +84,9 @@ foreach ($unidades as $row){
 <script>
 
 	$(document).ready(()=>{
-	  var idarticulo= <?php echo $idarticulo; ?>;
-	  if(idarticulo>0){
-		    $('#idarticulo option[value="'+idarticulo+'"]').attr('selected','selected');
+	  var idproducto= <?php echo $idproducto; ?>;
+	  if(idproducto>0){
+		    $('#idproducto option[value="'+idproducto+'"]').attr('selected','selected');
 		    get_participantes();
 	  }
 	});     
