@@ -69,7 +69,7 @@ class Carritoproducto_model extends CI_model {
 
  	function save($array)
 	{	
-		$condition ="idproducto="."'". $array['idproducto']."' and  fecha=". "'".$array['fecha']."'";
+		$condition ="idproducto="."'". $array['idproducto']."' and  idcarrito=". "'".$array['idcarrito']."'";
 		$this->db->select('*');
 		$this->db->from('carritoproducto');
 		$this->db->where($condition);
@@ -85,7 +85,7 @@ class Carritoproducto_model extends CI_model {
 				return false;
 			}
 		}else{
-			$this->db->where('fecha',$array['fecha']);
+			$this->db->where('idcarrito',$array['idcarrito']);
 			$this->db->where('idproducto',$array['idproducto']);
 			$this->db->update('carritoproducto',$array);
 
