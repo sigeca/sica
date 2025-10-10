@@ -7,14 +7,14 @@ class Ubicacionproducto extends CI_Controller{
       		$this->load->model('unidad_model');
       		$this->load->model('persona_model');
       		$this->load->model('evento_model');
-      		$this->load->model('articulo_model');
+      		$this->load->model('producto_model');
       		$this->load->model('fechacalendario_model');
       		$this->load->model('modoevaluacion_model');
 	}
 
 	public function index(){
 		$data['ubicacionproducto'] = $this->ubicacionproducto_model->elultimo();
-		$data['articulos']= $this->articulo_model->lista_articulos()->result();
+		$data['productos']= $this->producto_model->lista_productos()->result();
   		$data['personas']= $this->persona_model->lista_personas()->result();
 		$data['unidades']= $this->unidad_model->lista_unidades()->result();
 
@@ -33,7 +33,7 @@ class Ubicacionproducto extends CI_Controller{
 		$data['ubicacionproducto'] = $this->ubicacionproducto_model->ubicacionproducto($this->uri->segment(3))->row_array();
 
 
-		$data['articulos']= $this->articulo_model->lista_articulos()->result();
+		$data['productos']= $this->producto_model->lista_productos()->result();
 		$data['personas']= $this->persona_model->lista_personas()->result();
 		$data['title']="Ubicacionproducto del unidad";
 	 
@@ -57,9 +57,9 @@ class Ubicacionproducto extends CI_Controller{
 
 	    if($this->uri->segment(3))
 	    {
-		    $data['articulos']= $this->articulo_model->articulo($this->uri->segment(3))->result();
+		    $data['productos']= $this->producto_model->producto($this->uri->segment(3))->result();
         }else{
-		    $data['articulos']= $this->articulo_model->lista_articulos()->result();
+		    $data['productos']= $this->producto_model->lista_productos()->result();
          }
 
 		$data['personas']= $this->persona_model->lista_personas0()->result();
@@ -76,7 +76,7 @@ class Ubicacionproducto extends CI_Controller{
 	public function  save()
 	{
 	 	$array_item=array(
-		 	'idarticulo' => $this->input->post('idarticulo'),
+		 	'idproducto' => $this->input->post('idproducto'),
 		 	'idpersona' => $this->input->post('idpersona'),
 		 	'fecha' => $this->input->post('fecha'),
 		 	'idunidad' => $this->input->post('idunidad'),
@@ -97,7 +97,7 @@ class Ubicacionproducto extends CI_Controller{
 	public function edit()
 	{
 	 	$data['ubicacionproducto'] = $this->ubicacionproducto_model->ubicacionproducto($this->uri->segment(3))->row_array();
-		$data['articulos']= $this->articulo_model->lista_articulos()->result();
+		$data['productos']= $this->producto_model->lista_productos()->result();
 		$data['personas']= $this->persona_model->lista_personas()->result();
  	 	$data['title'] = "Actualizar Ubicacionproducto";
  	 	$this->load->view('template/page_header');		
@@ -112,7 +112,7 @@ class Ubicacionproducto extends CI_Controller{
 	 	$array_item=array(
 		 	'idubicacionproducto' => $this->input->post('idubicacionproducto'),
 
-		 	'idarticulo' => $this->input->post('idarticulo'),
+		 	'idproducto' => $this->input->post('idproducto'),
 		 	'idpersona' => $this->input->post('idpersona'),
 		 	'fecha' => $this->input->post('fecha'),
 		 	'idunidad' => $this->input->post('idunidad'),
@@ -217,7 +217,7 @@ public function elprimero()
 public function elultimo()
 {
 	$data['unidades']= $this->unidad_model->lista_unidades()->result();
-  $data['articulos']= $this->articulo_model->lista_articulos()->result();
+  $data['productos']= $this->producto_model->lista_productos()->result();
  // 		$data['temas']= $this->tema_model->lista_temas()->result();
 	$data['ubicacionproducto'] = $this->ubicacionproducto_model->elultimo();
 //		$data['modoevaluacions']= $this->modoevaluacion_model->lista_modoevaluacions()->result();
@@ -243,7 +243,7 @@ public function siguiente(){
 	$data['unidades']= $this->unidad_model->lista_unidades()->result();
 
 	$data['unidades']= $this->unidad_model->lista_unidades()->result();
-  $data['articulos']= $this->articulo_model->lista_articulos()->result();
+  $data['productos']= $this->producto_model->lista_productos()->result();
 
 
   	//	$data['temas']= $this->tema_model->lista_temas()->result();
