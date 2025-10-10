@@ -3,19 +3,21 @@
 <?php echo form_open("carrito/save") ?>
 
 <div class="form-group row">
-    <label class="col-md-2 col-form-label"> Persona:</label>
-	<div class="col-md-10">
-		<?php
+<label class="col-md-2 col-form-label">persona responsable:</label>
+<div class="col-md-10">
+<?php
 $options= array('--Select--');
 foreach ($personas as $row){
-    // Asumiendo que 'eluser' o 'nombre' es el campo a mostrar de la persona/usuario
-	$options[$row->idpersona]= isset($row->eluser) ? $row->eluser : $row->idpersona; 
+	$options[$row->idpersona]=$row->apellidos." - ".$row->nombres;
 }
-
- echo form_dropdown($name="idpersona",$options, set_select('--Select--','default_value'),array('id'=>'idpersona'));  
-		?>
-	</div> 
+ echo form_dropdown("idpersona",$options,set_select('--Select--','default_value'), array('id'=>'idpersona'));  
+?>
 </div>
+</div>
+
+
+
+
 
 <table>
 <tr>
