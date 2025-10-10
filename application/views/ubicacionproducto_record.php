@@ -1,12 +1,39 @@
 <div id="eys-nav-i">
 
-<h3 style="text-align: left; margin-top:-10px;"> <?php echo $title;  ?></h3>
-<?php echo form_open('ubicacionproducto/save_edit') ?>
-    <ul>
-<?php
-if(isset($ubicacionproducto))
-{
-?>
+<div style="display:flex;flex-direction:row; justify-content:space-between; align-items:center;">
+        <span style="text-align: left; font-size:x-large; font-weight:bold;">
+            <?php echo $title;  ?>
+            <span style="font-size:large; margin-left:10px;" id="idubicacionproducto"><?php echo $ubicacionproducto['idubicacionproducto']; ?></span>
+        </span>
+        <?php echo ($ubicacionproducto['eliminado']==1)? '<span style="font-size:large; color:red; font-weight:bold;"> - ELIMINADO</span>':'<span style="font-size:large; color:green; font-weight:bold;"> - ACTIVO</span>'; ?>
+    </div>
+
+
+
+    <?php
+$permitir_acceso_modulo=true; 
+    if(isset($ubicacionproducto)) {
+        $permitir=0;
+        $j=0;
+        $numero=$j;
+        if(isset($this->session->userdata['acceso'])) {
+            foreach($this->session->userdata['acceso'] as $row) 
+            {
+                if("ubicacionproducto"==$row["modulo"]["modulo"]) {
+                    $numero=$j;
+                    $permitir=1;
+                }
+                $j=$j+1;
+            }
+        }
+        if($permitir==0) {
+            redirect('login/logout');
+        }
+    ?>
+
+    <?php if($this->session->userdata['acceso'][$numero]['nivelacceso']['navegar']){ ?>
+    <ul style="list-style:none; padding:0; display:flex; gap:15px; background-color:#f2f2f2; padding:10px; border-radius:5px; margin-top:15px;">
+ 
  
         <li> <?php echo anchor('ubicacionproducto/elprimero/', 'primero'); ?></li>
         <li> <?php echo anchor('ubicacionproducto/anterior/'.$ubicacionproducto['idubicacionproducto'], 'anterior'); ?></li>
@@ -19,29 +46,32 @@ if(isset($ubicacionproducto))
 	<li> <?php echo anchor('ubicacionproducto/reportepdf/'.$ubicacionproducto['idubicacionproducto'], 'Reportepdf'); ?></li>
 
     </ul>
-<?php 
-}else{
-?>
 
-        <li> <?php echo anchor('ubicacionproducto/add', 'Nuevo'); ?></li>
+    <?php } ?>
+    <?php
+    } else {
+    ?>
+    <ul style="list-style:none; padding:0; display:flex; gap:15px; background-color:#f2f2f2; padding:10px; border-radius:5px; margin-top:15px;">
+        <li><?php echo anchor('ubicacionproducto/add', 'Nuevo', 'style="text-decoration:none; color:#28a745; font-weight:bold;"'); ?></li>
     </ul>
-<?php
-	die();
-}
-?>
-
-
-
-
-
+    <?php
+    }
+    ?>
 </div>
+<br>
 <br>
 
 
-<?php echo form_hidden('idevento',$ubicacionproducto['idubicacionproducto']) ?>
-<table>
 
 
+
+
+
+
+<?php echo form_hidden('idubicacionproducto',$ubicacionproducto['idubicacionproducto']) ?>
+
+
+<div class="container" style="max-width:900px; margin:auto; padding:20px; border:1px solid #ddd; border-radius:8px; box-shadow:0 0 10px rgba(0,0,0,0.1);">
 
 <div class="form-group row">
     <label class="col-md-2 col-form-label"> <?php echo anchor('unidad/actual/'.$ubicacionproducto['idunidad'], 'La unidad:'); ?> </label>
@@ -60,7 +90,7 @@ echo form_input('idunidad',$options[$ubicacionproducto['idunidad']],array("disab
 
 
 <div class="form-group row">
-    <label class="col-md-2 col-form-label"> <?php echo anchor('producto/actual/'.$ubicacionproducto['idproducto'], 'El artículo:'); ?> </label>
+    <label class="col-md-2 col-form-label"> <?php echo anchor('producto/actual/'.$ubicacionproducto['idproducto'], 'El producto:'); ?> </label>
 	<div class="col-md-10">
      <?php 
 $options= array("NADA");
