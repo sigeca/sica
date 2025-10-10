@@ -72,10 +72,10 @@ class Carritoproducto extends CI_Controller{
 	public function  save()
 	{
 	 	$array_item=array(
+		 	'idcarrito' => $this->input->post('idcarrito'),
 		 	'idproducto' => $this->input->post('idproducto'),
-		 	'idpersona' => $this->input->post('idpersona'),
-		 	'fecha' => $this->input->post('fecha'),
-		 	'idunidad' => $this->input->post('idunidad'),
+		 	'cantidad' => $this->input->post('cantidad'),
+		 	'precio' => $this->input->post('precio'),
 	 	);
 	 	$result=$this->carritoproducto_model->save($array_item);
 	 	if($result == FALSE)
@@ -107,11 +107,10 @@ class Carritoproducto extends CI_Controller{
 		$id=$this->input->post('idcarritoproducto');
 	 	$array_item=array(
 		 	'idcarritoproducto' => $this->input->post('idcarritoproducto'),
-
+		 	'idcarrito' => $this->input->post('idcarrito'),
 		 	'idproducto' => $this->input->post('idproducto'),
-		 	'idpersona' => $this->input->post('idpersona'),
-		 	'fecha' => $this->input->post('fecha'),
-		 	'idunidad' => $this->input->post('idunidad'),
+		 	'cantidad' => $this->input->post('cantidad'),
+		 	'precio' => $this->input->post('precio'),
 	 	);
 	 	$this->carritoproducto_model->update($id,$array_item);
 	 	redirect('carritoproducto/actual/'.$id);
