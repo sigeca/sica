@@ -1,15 +1,15 @@
-<?php echo form_open('ubicacionarticulo/save_edit') ?>
-<?php echo form_hidden('idubicacionarticulo',$ubicacionarticulo['idubicacionarticulo']) ?>
+<?php echo form_open('ubicacionproducto/save_edit') ?>
+<?php echo form_hidden('idubicacionproducto',$ubicacionproducto['idubicacionproducto']) ?>
 <h2> <?php echo $title; ?></h2>
 <hr />
 <table>
  
    <tr>
-     <td>Id ubicacionarticulo</td>
+     <td>Id ubicacionproducto</td>
      <td><?php 
 
 
-$eys_arrinput=array('name'=>'idubicacionarticulo','value'=>$ubicacionarticulo['idubicacionarticulo'],'readonly'=>'true', "style"=>"width:500px");
+$eys_arrinput=array('name'=>'idubicacionproducto','value'=>$ubicacionproducto['idubicacionproducto'],'readonly'=>'true', "style"=>"width:500px");
 echo form_input($eys_arrinput); ?></td>
   </tr> 
 
@@ -22,7 +22,7 @@ foreach ($articulos as $row){
 	$options[$row->idarticulo]= $row->nombre;
 }
 
- echo form_dropdown("idarticulo",$options, $ubicacionarticulo['idarticulo']);  ?></td>
+ echo form_dropdown("idarticulo",$options, $ubicacionproducto['idarticulo']);  ?></td>
 </tr>
 
 
@@ -34,7 +34,7 @@ foreach ($personas as $row){
 	$options[$row->idpersona]=$row->apellidos."  ".$row->nombres;
 }
 
- echo form_dropdown("idpersona",$options, $ubicacionarticulo['idpersona']);  ?></td>
+ echo form_dropdown("idpersona",$options, $ubicacionproducto['idpersona']);  ?></td>
 </tr>
 
 
@@ -42,14 +42,14 @@ foreach ($personas as $row){
 
  <tr>
       <td>Fecha prestamo :</td>
-      <td><?php echo form_input( array("name"=>'fechaprestamo',"id"=>'fechaprestamo',"value"=>$ubicacionarticulo['fechaprestamo'],'type'=>'date','placeholder'=>'fecha')); ?></td>
+      <td><?php echo form_input( array("name"=>'fechaprestamo',"id"=>'fechaprestamo',"value"=>$ubicacionproducto['fechaprestamo'],'type'=>'date','placeholder'=>'fecha')); ?></td>
   </tr>
  
 
 <tr>
      <td>Hora prestamo:</td>
      <td><?php 
-     $eys_arrinput=array('name'=>'horaprestamo','id'=>'horaprestamo',"type"=>"time",'value'=>$ubicacionarticulo['horaprestamo'], "style"=>"width:500px");
+     $eys_arrinput=array('name'=>'horaprestamo','id'=>'horaprestamo',"type"=>"time",'value'=>$ubicacionproducto['horaprestamo'], "style"=>"width:500px");
      echo form_input($eys_arrinput); ?></td>
 </tr>
 
@@ -58,14 +58,14 @@ foreach ($personas as $row){
 
  <tr>
       <td>Fecha devolucion :</td>
-      <td><?php echo form_input( array("name"=>'fechadevolucion',"id"=>'fechadevolucion',"value"=>$ubicacionarticulo['fechadevolucion'],'type'=>'date','placeholder'=>'fecha')); ?></td>
+      <td><?php echo form_input( array("name"=>'fechadevolucion',"id"=>'fechadevolucion',"value"=>$ubicacionproducto['fechadevolucion'],'type'=>'date','placeholder'=>'fecha')); ?></td>
   </tr>
  
 
 <tr>
      <td>Hora devolucion:</td>
      <td><?php 
-     $eys_arrinput=array('name'=>'horadevolucion','id'=>'horadevolucion',"type"=>"time",'value'=>$ubicacionarticulo['horadevolucion'], "style"=>"width:500px");
+     $eys_arrinput=array('name'=>'horadevolucion','id'=>'horadevolucion',"type"=>"time",'value'=>$ubicacionproducto['horadevolucion'], "style"=>"width:500px");
      echo form_input($eys_arrinput); ?></td>
 </tr>
 
@@ -77,7 +77,7 @@ foreach ($personas as $row){
   <td><?php 
   
 $textarea_options = array('class' => 'form-control','rows' => '4',   'cols' => '20', 'style'=> 'width:50%;height:100px;', "placeholder"=>"detalle","id" =>"detalle");    
-echo form_textarea('detalle',$ubicacionarticulo['detalle'],$textarea_options ); ?></td>
+echo form_textarea('detalle',$ubicacionproducto['detalle'],$textarea_options ); ?></td>
  </tr>
 
 
@@ -100,7 +100,7 @@ echo form_textarea('detalle',$ubicacionarticulo['detalle'],$textarea_options ); 
 
 
  <tr>
- <td colspan="2"> <hr><?php echo form_submit('submit', 'Guardar'); ?> <?php echo anchor('ubicacionarticulo','Atras') ?></td>
+ <td colspan="2"> <hr><?php echo form_submit('submit', 'Guardar'); ?> <?php echo anchor('ubicacionproducto','Atras') ?></td>
  </tr>
 </table>
 <?php echo form_close(); ?>

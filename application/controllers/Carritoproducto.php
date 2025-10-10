@@ -1,9 +1,9 @@
 <?php
-class Ubicacionproducto extends CI_Controller{
+class Carritoproducto extends CI_Controller{
 
 	public function __construct(){
       		parent::__construct();
-      		$this->load->model('ubicacionproducto_model');
+      		$this->load->model('carritoproducto_model');
       		$this->load->model('unidad_model');
       		$this->load->model('persona_model');
       		$this->load->model('evento_model');
@@ -13,15 +13,15 @@ class Ubicacionproducto extends CI_Controller{
 	}
 
 	public function index(){
-		$data['ubicacionproducto'] = $this->ubicacionproducto_model->elultimo();
+		$data['carritoproducto'] = $this->carritoproducto_model->elultimo();
 		$data['productos']= $this->producto_model->lista_productos()->result();
   		$data['personas']= $this->persona_model->lista_personas0()->result();
 		$data['unidades']= $this->unidad_model->lista_unidades()->result();
 
- 		// print_r($data['ubicacionproducto_list']);
-  		$data['title']="Lista de Ubicacionproductoes";
+ 		// print_r($data['carritoproducto_list']);
+  		$data['title']="Lista de Carritoproductoes";
 		$this->load->view('page_header');		
-  		$this->load->view('ubicacionproducto_record',$data);
+  		$this->load->view('carritoproducto_record',$data);
 		$this->load->view('page_footer');
 	}
 
@@ -30,16 +30,16 @@ class Ubicacionproducto extends CI_Controller{
 	public function actual(){
 	 if(isset($this->session->userdata['logged_in'])){
 
-		$data['ubicacionproducto'] = $this->ubicacionproducto_model->ubicacionproducto($this->uri->segment(3))->row_array();
+		$data['carritoproducto'] = $this->carritoproducto_model->carritoproducto($this->uri->segment(3))->row_array();
 
 
 		$data['productos']= $this->producto_model->lista_productos()->result();
 		$data['personas']= $this->persona_model->lista_personas0()->result();
-		$data['title']="Ubicacionproducto del unidad";
+		$data['title']="Carritoproducto del unidad";
 	 
 		$data['title']="Modulo ubicación del artículo: ";
 		$this->load->view('page_header');		
-		$this->load->view('ubicacionproducto_record',$data);
+		$this->load->view('carritoproducto_record',$data);
 		$this->load->view('page_footer');
 	   }else{
 		$this->load->view('page_header.php');
@@ -68,7 +68,7 @@ class Ubicacionproducto extends CI_Controller{
 	     	$date = date("Y-m-d");
 		$data['title']="Nueva ubicación de artículo: ";
 	 	$this->load->view('page_header');		
-	 	$this->load->view('ubicacionproducto_form',$data);
+	 	$this->load->view('carritoproducto_form',$data);
 	 	$this->load->view('page_footer');
 	}
 
@@ -81,7 +81,7 @@ class Ubicacionproducto extends CI_Controller{
 		 	'fecha' => $this->input->post('fecha'),
 		 	'idunidad' => $this->input->post('idunidad'),
 	 	);
-	 	$result=$this->ubicacionproducto_model->save($array_item);
+	 	$result=$this->carritoproducto_model->save($array_item);
 	 	if($result == FALSE)
 		{
 			echo "<script language='JavaScript'> alert('Fecha para este evento ya fue asignado'); </script>";
@@ -96,38 +96,38 @@ class Ubicacionproducto extends CI_Controller{
 
 	public function edit()
 	{
-	 	$data['ubicacionproducto'] = $this->ubicacionproducto_model->ubicacionproducto($this->uri->segment(3))->row_array();
+	 	$data['carritoproducto'] = $this->carritoproducto_model->carritoproducto($this->uri->segment(3))->row_array();
 		$data['productos']= $this->producto_model->lista_productos()->result();
 		$data['personas']= $this->persona_model->lista_personas0()->result();
- 	 	$data['title'] = "Actualizar Ubicacionproducto";
+ 	 	$data['title'] = "Actualizar Carritoproducto";
  	 	$this->load->view('page_header');		
- 	 	$this->load->view('ubicacionproducto_edit',$data);
+ 	 	$this->load->view('carritoproducto_edit',$data);
 	 	$this->load->view('page_footer');
 	}
 
 
 	public function  save_edit()
 	{
-		$id=$this->input->post('idubicacionproducto');
+		$id=$this->input->post('idcarritoproducto');
 	 	$array_item=array(
-		 	'idubicacionproducto' => $this->input->post('idubicacionproducto'),
+		 	'idcarritoproducto' => $this->input->post('idcarritoproducto'),
 
 		 	'idproducto' => $this->input->post('idproducto'),
 		 	'idpersona' => $this->input->post('idpersona'),
 		 	'fecha' => $this->input->post('fecha'),
 		 	'idunidad' => $this->input->post('idunidad'),
 	 	);
-	 	$this->ubicacionproducto_model->update($id,$array_item);
-	 	redirect('ubicacionproducto/actual/'.$id);
+	 	$this->carritoproducto_model->update($id,$array_item);
+	 	redirect('carritoproducto/actual/'.$id);
  	}
 
 
 
  	public function delete()
  	{
- 		$data=$this->ubicacionproducto_model->delete($this->uri->segment(3));
+ 		$data=$this->carritoproducto_model->delete($this->uri->segment(3));
  		echo json_encode($data);
-	 	redirect('ubicacionproducto/elprimero');
+	 	redirect('carritoproducto/elprimero');
 	//	$db['default']['db_debug']=FALSE
  	}
 
@@ -139,13 +139,13 @@ public function listar()
 	$data['eventos']= $this->evento_model->lista_eventos()->result();
   $data['title']="Sesiones de evento";
 	$this->load->view('page_header');		
-  $this->load->view('ubicacionproducto_list',$data);
+  $this->load->view('carritoproducto_list',$data);
 	$this->load->view('page_footer');
 }
 
 
 
-function ubicacionproducto_data()
+function carritoproducto_data()
 {
 		$draw= intval($this->input->get("draw"));
 		$draw= intval($this->input->get("start"));
@@ -158,11 +158,11 @@ function ubicacionproducto_data()
 			$idevento=$this->input->get('idevento');
 		}
 
-	 	$data0 = $this->ubicacionproducto_model->ubicacionproductosA($idevento);
+	 	$data0 = $this->carritoproducto_model->carritoproductosA($idevento);
 		$data=array();
 		foreach($data0->result() as $r){
-			$data[]=array($r->idubicacionproducto,$r->elevento,$r->fecha,$r->tema,
-				$r->href='<a href="javascript:void(0);" class="btn btn-info btn-sm item_ver" data-retorno="'.site_url('ubicacionproducto/actual').'"   data-idubicacionproducto="'.$r->idubicacionproducto.'">Ver</a>');
+			$data[]=array($r->idcarritoproducto,$r->elevento,$r->fecha,$r->tema,
+				$r->href='<a href="javascript:void(0);" class="btn btn-info btn-sm item_ver" data-retorno="'.site_url('carritoproducto/actual').'"   data-idcarritoproducto="'.$r->idcarritoproducto.'">Ver</a>');
 		}	
 		$output=array( "draw"=>$draw,
 			"recordsTotal"=> $data0->num_rows(),
@@ -181,11 +181,11 @@ function ubicacionproducto_data()
 	{
 		
 
-	 	$data['ubicacionproductos']= $this->ubicacionproducto_model->ubicacionproductosA($this->uri->segment(3))->result();
+	 	$data['carritoproductos']= $this->carritoproducto_model->carritoproductosA($this->uri->segment(3))->result();
 
 		$data['title']="Evento";
 	//	$this->load->view('page_header');		
-		$this->load->view('ubicacionproducto_list_pdf',$data);
+		$this->load->view('carritoproducto_list_pdf',$data);
 //		$this->load->view('page_footer');
 	}
 
@@ -196,16 +196,16 @@ function ubicacionproducto_data()
 public function elprimero()
 {
   	$data['unidades']= $this->unidad_model->lista_unidades()->result();
-	$data['ubicacionproducto'] = $this->ubicacionproducto_model->elprimero();
+	$data['carritoproducto'] = $this->carritoproducto_model->elprimero();
 		$data['modoevaluacions']= $this->modoevaluacion_model->lista_modoevaluacions()->result();
   if(!empty($data))
   {
   		$data['eventos']= $this->evento_model->lista_eventos()->result();
 
   	$data['personas']= $this->persona_model->lista_personas0()->result();
-    $data['title']="Ubicacionproducto del unidad";
+    $data['title']="Carritoproducto del unidad";
     $this->load->view('page_header');		
-    $this->load->view('ubicacionproducto_record',$data);
+    $this->load->view('carritoproducto_record',$data);
     $this->load->view('page_footer');
   }else{
     $this->load->view('page_header');		
@@ -219,16 +219,16 @@ public function elultimo()
 	$data['unidades']= $this->unidad_model->lista_unidades()->result();
   $data['productos']= $this->producto_model->lista_productos()->result();
  // 		$data['temas']= $this->tema_model->lista_temas()->result();
-	$data['ubicacionproducto'] = $this->ubicacionproducto_model->elultimo();
+	$data['carritoproducto'] = $this->carritoproducto_model->elultimo();
 //		$data['modoevaluacions']= $this->modoevaluacion_model->lista_modoevaluacions()->result();
   if(!empty($data))
   {
   //		$data['eventos']= $this->evento_model->lista_eventos()->result();
   	$data['personas']= $this->persona_model->lista_personas0()->result();
-    $data['title']="Ubicacionproducto del unidad";
+    $data['title']="Carritoproducto del unidad";
   
     $this->load->view('page_header');		
-    $this->load->view('ubicacionproducto_record',$data);
+    $this->load->view('carritoproducto_record',$data);
     $this->load->view('page_footer');
   }else{
 
@@ -239,7 +239,7 @@ public function elultimo()
 }
 
 public function siguiente(){
- // $data['ubicacionproducto_list']=$this->ubicacionproducto_model->lista_ubicacionproducto()->result();
+ // $data['carritoproducto_list']=$this->carritoproducto_model->lista_carritoproducto()->result();
 	$data['unidades']= $this->unidad_model->lista_unidades()->result();
 
 	$data['unidades']= $this->unidad_model->lista_unidades()->result();
@@ -248,27 +248,27 @@ public function siguiente(){
 
   	//	$data['temas']= $this->tema_model->lista_temas()->result();
 //		$data['modoevaluacions']= $this->modoevaluacion_model->lista_modoevaluacions()->result();
-	$data['ubicacionproducto'] = $this->ubicacionproducto_model->siguiente($this->uri->segment(3))->row_array();
+	$data['carritoproducto'] = $this->carritoproducto_model->siguiente($this->uri->segment(3))->row_array();
   	$data['personas']= $this->persona_model->lista_personas0()->result();
   	$data['eventos']= $this->evento_model->lista_eventos()->result();
-    $data['title']="Ubicacionproducto del unidad";
+    $data['title']="Carritoproducto del unidad";
  // $data['title']="Correo";
 	$this->load->view('page_header');		
-  $this->load->view('ubicacionproducto_record',$data);
+  $this->load->view('carritoproducto_record',$data);
 	$this->load->view('page_footer');
 }
 
 public function anterior(){
- // $data['ubicacionproducto_list']=$this->ubicacionproducto_model->lista_ubicacionproducto()->result();
+ // $data['carritoproducto_list']=$this->carritoproducto_model->lista_carritoproducto()->result();
   $data['unidades']= $this->unidad_model->lista_unidades()->result();
-	$data['ubicacionproducto'] = $this->ubicacionproducto_model->anterior($this->uri->segment(3))->row_array();
+	$data['carritoproducto'] = $this->carritoproducto_model->anterior($this->uri->segment(3))->row_array();
 	$data['modoevaluacions']= $this->modoevaluacion_model->lista_modoevaluacions()->result();
  	$data['personas']= $this->persona_model->lista_personas0()->result();
   	$data['eventos']= $this->evento_model->lista_eventos()->result();
  // $data['title']="Correo";
-    $data['title']="Ubicacionproducto del unidad";
+    $data['title']="Carritoproducto del unidad";
 	$this->load->view('page_header');		
-  $this->load->view('ubicacionproducto_record',$data);
+  $this->load->view('carritoproducto_record',$data);
 	$this->load->view('page_footer');
 }
 
@@ -278,15 +278,15 @@ public function anterior(){
 
 
 
-public function get_ubicacionproducto() {
+public function get_carritoproducto() {
     $this->load->database();
     $this->load->helper('form');
-    if($this->input->get('idubicacionproducto')) 
+    if($this->input->get('idcarritoproducto')) 
     {
         $this->db->select('*');
     	$this->db->order_by("fecha","asc");
-        $this->db->where(array('idubicacionproducto' => $this->input->get('idubicacionproducto')));
-        $query = $this->db->get('ubicacionproducto');
+        $this->db->where(array('idcarritoproducto' => $this->input->get('idcarritoproducto')));
+        $query = $this->db->get('carritoproducto');
 	$data=$query->result();
 	echo json_encode($data);
 	}

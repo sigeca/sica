@@ -3,7 +3,7 @@
 <h2> <?php echo $title; ?> </h2>
 </div>
 <hr/>
-<?php echo form_open("ubicacionproducto/save") ?>
+<?php echo form_open("carritoproducto/save") ?>
 
 
 <div class="form-group row">
@@ -75,7 +75,7 @@ foreach ($unidades as $row){
 
 <table>
 <tr>
-<td colspan="2"> <hr><?php echo form_submit("submit", "Guardar"); ?><?php echo anchor("ubicacionproducto","Atrás") ?> </td>
+<td colspan="2"> <hr><?php echo form_submit("submit", "Guardar"); ?><?php echo anchor("carritoproducto","Atrás") ?> </td>
 </tr>
 
 </table>

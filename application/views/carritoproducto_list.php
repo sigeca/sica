@@ -29,7 +29,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
 
 <div id="eys-nav-i">
 	<ul>
-		<li> <?php echo anchor('ubicacionproducto', 'Home'); ?></li>
+		<li> <?php echo anchor('carritoproducto', 'Home'); ?></li>
 	</ul>
 </div>
 
@@ -66,7 +66,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
 <table class="table table-striped table-bordered table-hover" id="mydatac">
  <thead>
  <tr>
- <th>IDubicacionproducto</th>
+ <th>IDcarritoproducto</th>
  <th>evento</th>
  <th>Fecha</th>
  <th>tema</th>
@@ -100,13 +100,13 @@ body {font-family: Arial, Helvetica, sans-serif;}
 
 $(document).ready(function(){
 
-	var mytabla= $('#mydatac').DataTable({"ajax": {url: '<?php echo site_url('ubicacionproducto/ubicacionproducto_data')?>', type: 'GET'},});
+	var mytabla= $('#mydatac').DataTable({"ajax": {url: '<?php echo site_url('carritoproducto/carritoproducto_data')?>', type: 'GET'},});
 
 });
 
 $('#show_data').on('click','.item_ver',function(){
 
-var id= $(this).data('idubicacionproducto');
+var id= $(this).data('idcarritoproducto');
 var retorno= $(this).data('retorno');
 window.location.href = retorno+'/'+id;
 
@@ -121,7 +121,7 @@ function filtra_evento()
 
        var idevento = $('select[name=idevento]').val();
 
-var mytabla= $('#mydatac').DataTable({destroy: true,"ajax": {url: '<?php echo site_url('ubicacionproducto/ubicacionproducto_data')?>', type: 'GET',data:{idevento:idevento}},});
+var mytabla= $('#mydatac').DataTable({destroy: true,"ajax": {url: '<?php echo site_url('carritoproducto/carritoproducto_data')?>', type: 'GET',data:{idevento:idevento}},});
 }
 
 
