@@ -29,7 +29,7 @@ public function add()
 	}else{
 		$data['documentos']= $this->documento_model->lista_documentosA(0)->result();
 	}
-		$data['personas']= $this->persona_model->lista_personas()->result();
+		$data['personas']= $this->persona_model->lista_personas0()->result();
 		$data['title']="Nuevo Destinario";
 	 	$this->load->view('template/page_header');		
 	 	$this->load->view('destinatario_form',$data);
