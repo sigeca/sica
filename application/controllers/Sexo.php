@@ -12,22 +12,22 @@ class Sexo extends CI_Controller {
         if (isset($this->session->userdata['logged_in'])) {
             $data['sexo'] = $this->sexo_model->elultimo();
             $data['title'] = "Sexo";
-            $this->load->view('template/page_header');
+            $this->load->view('page_header');
             $this->load->view('sexo_record', $data);
-            $this->load->view('template/page_footer');
+            $this->load->view('page_footer');
         } else {
-            $this->load->view('template/page_header.php');
+            $this->load->view('page_header.php');
             $this->load->view('login_form');
-            $this->load->view('template/page_footer.php');
+            $this->load->view('page_footer.php');
         }
     }
 
     // Método para mostrar el formulario de agregar nuevo sexo
     public function add() {
         $data['title'] = "Nuevo sexo";
-        $this->load->view('template/page_header');
+        $this->load->view('page_header');
         $this->load->view('sexo_form', $data);
-        $this->load->view('template/page_footer');
+        $this->load->view('page_footer');
     }
 
     // Método para guardar un nuevo sexo
@@ -53,9 +53,9 @@ class Sexo extends CI_Controller {
     public function edit() {
         $data['sexo'] = $this->sexo_model->sexo($this->uri->segment(3))->row_array();
         $data['title'] = "Actualizar sexo";
-        $this->load->view('template/page_header');
+        $this->load->view('page_header');
         $this->load->view('sexo_edit', $data);
-        $this->load->view('template/page_footer');
+        $this->load->view('page_footer');
     }
 
     // Método para guardar los cambios realizados en la edición de sexo
@@ -99,9 +99,9 @@ class Sexo extends CI_Controller {
     public function listar() {
         $data['sexo_list'] = $this->sexo_model->lista_sexosA()->result();
         $data['title'] = "Tipo documento";
-        $this->load->view('template/page_header');
+        $this->load->view('page_header');
         $this->load->view('sexo_list', $data);
-        $this->load->view('template/page_footer');
+        $this->load->view('page_footer');
     }
 
     // Método para obtener datos de sexo en formato JSON
@@ -131,18 +131,18 @@ class Sexo extends CI_Controller {
             $data['sexo'] = $this->sexo_model->elprimero();
             if (!empty($data)) {
                 $data['title'] = "Tipo documento";
-                $this->load->view('template/page_header');
+                $this->load->view('page_header');
                 $this->load->view('sexo_record', $data);
-                $this->load->view('template/page_footer');
+                $this->load->view('page_footer');
             } else {
-                $this->load->view('template/page_header');
+                $this->load->view('page_header');
                 $this->load->view('registro_vacio');
-                $this->load->view('template/page_footer');
+                $this->load->view('page_footer');
             }
         } else {
-            $this->load->view('template/page_header.php');
+            $this->load->view('page_header.php');
             $this->load->view('login_form');
-            $this->load->view('template/page_footer.php');
+            $this->load->view('page_footer.php');
         }
     }
 
@@ -152,18 +152,18 @@ class Sexo extends CI_Controller {
             $data['sexo'] = $this->sexo_model->elultimo();
             if (!empty($data)) {
                 $data['title'] = "Tipo documento";
-                $this->load->view('template/page_header');
+                $this->load->view('page_header');
                 $this->load->view('sexo_record', $data);
-                $this->load->view('template/page_footer');
+                $this->load->view('page_footer');
             } else {
-                $this->load->view('template/page_header');
+                $this->load->view('page_header');
                 $this->load->view('registro_vacio');
-                $this->load->view('template/page_footer');
+                $this->load->view('page_footer');
             }
         } else {
-            $this->load->view('template/page_header.php');
+            $this->load->view('page_header.php');
             $this->load->view('login_form');
-            $this->load->view('template/page_footer.php');
+            $this->load->view('page_footer.php');
         }
     }
 
@@ -172,13 +172,13 @@ class Sexo extends CI_Controller {
         if (isset($this->session->userdata['logged_in'])) {
             $data['sexo'] = $this->sexo_model->siguiente($this->uri->segment(3))->row_array();
             $data['title'] = "Tipo documento";
-            $this->load->view('template/page_header');
+            $this->load->view('page_header');
             $this->load->view('sexo_record', $data);
-            $this->load->view('template/page_footer');
+            $this->load->view('page_footer');
         } else {
-            $this->load->view('template/page_header.php');
+            $this->load->view('page_header.php');
             $this->load->view('login_form');
-            $this->load->view('template/page_footer.php');
+            $this->load->view('page_footer.php');
         }
     }
 
@@ -187,13 +187,13 @@ class Sexo extends CI_Controller {
   	    if(isset($this->session->userdata['logged_in'])){
             $data['sexo'] = $this->sexo_model->anterior($this->uri->segment(3))->row_array();
             $data['title']="Tipo documento";
-            $this->load->view('template/page_header');		
+            $this->load->view('page_header');		
             $this->load->view('sexo_record',$data);
-            $this->load->view('template/page_footer');
+            $this->load->view('page_footer');
         } else{
-	 	    $this->load->view('template/page_header.php');
+	 	    $this->load->view('page_header.php');
 		    $this->load->view('login_form');
-	 	    $this->load->view('template/page_footer.php');
+	 	    $this->load->view('page_footer.php');
         } 
     }
 
