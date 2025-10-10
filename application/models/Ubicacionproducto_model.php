@@ -19,13 +19,13 @@ class Ubicacionproducto_model extends CI_model {
 
 
  	function ubicacionproductos( $id){
- 		$ubicacionproducto = $this->db->query('select * from ubicacionproducto where idarticulo="'. $id.'" order by fecha');
+ 		$ubicacionproducto = $this->db->query('select * from ubicacionproducto where idproducto="'. $id.'" order by fecha');
  		return $ubicacionproducto;
  	}
 
 
  	function ubicacionproductosA( $id){
- 		$ubicacionproducto = $this->db->query('select * from ubicacionproducto1 where idarticulo="'. $id.'" ORDER BY date(fecha) ASC');
+ 		$ubicacionproducto = $this->db->query('select * from ubicacionproducto1 where idproducto="'. $id.'" ORDER BY date(fecha) ASC');
  		return $ubicacionproducto;
  	}
 
@@ -69,7 +69,7 @@ class Ubicacionproducto_model extends CI_model {
 
  	function save($array)
 	{	
-		$condition ="idarticulo="."'". $array['idarticulo']."' and  fecha=". "'".$array['fecha']."'";
+		$condition ="idproducto="."'". $array['idproducto']."' and  fecha=". "'".$array['fecha']."'";
 		$this->db->select('*');
 		$this->db->from('ubicacionproducto');
 		$this->db->where($condition);
@@ -86,7 +86,7 @@ class Ubicacionproducto_model extends CI_model {
 			}
 		}else{
 			$this->db->where('fecha',$array['fecha']);
-			$this->db->where('idarticulo',$array['idarticulo']);
+			$this->db->where('idproducto',$array['idproducto']);
 			$this->db->update('ubicacionproducto',$array);
 
 			if($this->db->affected_rows()>0)
