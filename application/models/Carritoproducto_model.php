@@ -19,7 +19,7 @@ class Carritoproducto_model extends CI_model {
 
 
  	function carritoproductos( $id){
- 		$carritoproducto = $this->db->query('select * from carritoproducto where idcarrito="'. $id.'" ');
+ 		$carritoproducto = $this->db->query('select * from carritoproducto1 where idcarrito="'. $id.'" ');
  		return $carritoproducto;
  	}
 
