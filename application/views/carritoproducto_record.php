@@ -74,6 +74,23 @@ $permitir_acceso_modulo=true;
 <div class="container" style="max-width:900px; margin:auto; padding:20px; border:1px solid #ddd; border-radius:8px; box-shadow:0 0 10px rgba(0,0,0,0.1);">
 
 <div class="form-group row">
+    <label class="col-md-2 col-form-label"> Id Carritocompra:</label>
+	<div class="col-md-10">
+		<?php
+      echo form_input('idcarritocompra',$carrito['idcarritocompra'],array("id"=>"idcarritocompra","disabled"=>"disabled"));
+		?>
+	</div> 
+</div>
+
+
+
+
+
+
+
+
+
+<div class="form-group row">
     <label class="col-md-2 col-form-label"> <?php echo anchor('unidad/actual/'.$carritoproducto['idunidad'], 'La unidad:'); ?> </label>
 	<div class="col-md-10">
      <?php 
@@ -105,19 +122,7 @@ echo form_input('idproducto',$options[$carritoproducto['idproducto']],array("dis
 
 
 
-<div class="form-group row">
-    <label class="col-md-2 col-form-label">   <?php echo anchor('persona/actual/'.$carritoproducto['idpersona'],'La persona: '); ?></label>
-	<div class="col-md-10">
-     <?php 
-$options= array("NADA");
-foreach ($personas as $row){
-	$options[$row->idpersona]=$row->apellidos."  ".$row->nombres;
-}
 
-echo form_input('idpersona',$options[$carritoproducto['idpersona']],array("disabled"=>"disabled",'style'=>'width:500px;')); 
-		?>
-	</div> 
-</div>
 
 
 
@@ -132,15 +137,22 @@ echo form_input('idpersona',$options[$carritoproducto['idpersona']],array("disab
 
 
 <div class="form-group row">
-    <label class="col-md-2 col-form-label"> Fecha ubicación:</label>
+    <label class="col-md-2 col-form-label"> Cantidad:</label>
 	<div class="col-md-10">
 		<?php
-      		 echo form_input('fecha',$carritoproducto['fecha'],array('type'=>'date',"disabled"=>"disabled", 'placeholder'=>'fecha','style'=>'width:500px;')) 
+      		 echo form_input('cantidad',$carritoproducto['cantidad'],array('type'=>'text',"disabled"=>"disabled", 'placeholder'=>'cantidad','style'=>'width:500px;')) 
 		?>
 	</div> 
 </div>
 
-
+<div class="form-group row">
+    <label class="col-md-2 col-form-label"> Precio:</label>
+	<div class="col-md-10">
+		<?php
+      		 echo form_input('precio',$carritoproducto['precio'],array('type'=>'text',"disabled"=>"disabled", 'placeholder'=>'precio','style'=>'width:500px;')) 
+		?>
+	</div> 
+</div>
 
 
 
