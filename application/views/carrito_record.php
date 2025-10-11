@@ -62,14 +62,14 @@ if(isset($carrito))
 <br>
 
 
-<?php echo form_open('carrito/save_edit') ?>
 <?php echo form_hidden('idcarrito',$carrito['idcarrito']) ?>
 
 <div class="form-group row">
     <label class="col-md-2 col-form-label"> Id Carrito:</label>
 	<div class="col-md-10">
 		<?php
-      echo form_input('idcarrito',$carrito['idcarrito'],array("id"=>"idcarrito","disabled"=>"disabled"));
+  $eys_arrctl=array("id"=>"idcarrito",  "name"=>'idcarrito','value'=>$carrito['idcarrito'],"disabled"=>"disabled",'placeholder'=>'idcarrito','style'=>'width:100%;');
+echo form_input($eys_arrctl);
 		?>
 	</div> 
 </div> 
