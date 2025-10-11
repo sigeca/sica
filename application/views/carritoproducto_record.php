@@ -96,7 +96,7 @@ $permitir_acceso_modulo=true;
      <?php 
 $options= array("NADA");
 foreach ($carritos as $row){
-	$options[$row->idcarritos]= $row->propietario;
+	$options[$row->idcarrito]= $row->propietario;
 }
 
 echo form_input('idcarrito',$options[$carritoproducto['idcarrito']],array("disabled"=>"disabled",'style'=>'width:500px;')); 
