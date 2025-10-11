@@ -156,18 +156,7 @@ echo form_input('idproducto',$options[$carritoproducto['idproducto']],array("dis
 
 
 
-<div class="form-group row">
-    <label class="col-md-2 col-form-label"> Detalle:</label>
-	<div class="col-md-10">
-		<?php
 
-$textarea_options = array('class' => 'form-control','rows' => '4', "disabled"=>"disabled",  'cols' => '20', 'style'=> 'width:500px;height:100px;');    
- echo form_textarea('detalle',$carritoproducto['detalle'],$textarea_options); 
-
-
-		?>
-	</div> 
-</div>
 
 
 
