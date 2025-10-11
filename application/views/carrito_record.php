@@ -155,7 +155,6 @@ echo form_input($eys_arrctl);
 
 $(document).ready(function(){
 	var idcarrito=document.getElementById("idcarrito").innerHTML;
- alert(idcarrito);
 	var mytablaf= $('#mydatau').DataTable({"ajax": {url: '<?php echo site_url('carritoproducto/carritoproducto_data')?>', type: 'GET',data:{idcarrito:idcarrito}},});
 
 });
