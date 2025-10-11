@@ -11,6 +11,7 @@ class Carritoproducto extends CI_Controller{
 
 	public function index(){
 		$data['carritoproducto'] = $this->carritoproducto_model->elultimo();
+		$data['carritos']= $this->carrito_model->lista_carritos()->result();
 		$data['productos']= $this->producto_model->lista_productos()->result();
   		$data['personas']= $this->persona_model->lista_personas0()->result();
 
