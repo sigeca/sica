@@ -19,7 +19,7 @@ class Carritoproducto_model extends CI_model {
 
 
  	function carritoproductos( $id){
- 		$carritoproducto = $this->db->query('select * from carritoproducto where idproducto="'. $id.'" order by fecha');
+ 		$carritoproducto = $this->db->query('select * from carritoproducto where idcarrito="'. $id.'" ');
  		return $carritoproducto;
  	}
 

@@ -4,6 +4,7 @@ class Carrito extends CI_Controller{
     public function __construct(){
         parent::__construct();
         $this->load->model('carrito_model');
+        $this->load->model('carritoproducto_model');
         // Asumiendo que existe un modelo para la tabla usuario/persona
         $this->load->model('persona_model'); 
     }
