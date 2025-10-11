@@ -147,7 +147,7 @@ function carritoproducto_data()
 		$draw= intval($this->input->get("start"));
 		$draw= intval($this->input->get("length"));
 
-			$idcarrito=$this->input->get('idcarrito');
+		$idcarrito=$this->input->get('idcarrito');
 
 	 	$data0 = $this->carritoproducto_model->carritoproductosA($idcarrito);
 		$data=array();

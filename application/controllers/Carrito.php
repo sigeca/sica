@@ -186,5 +186,30 @@ class Carrito extends CI_Controller{
         $this->load->view('carrito_record',$data);
         $this->load->view('page_footer');
     }
+
+	public function carrito1(){
+        header('Content-Type: application/json');
+		$id= $this->input->get("idcarrito");
+    
+        $productos = $this->carritoproducto_model->carritoproductos($id)->result();
+ // Si no hay resultados, devolver un array vacío
+        if (empty($productos)) {
+            echo json_encode([]);
+            return;
+        }
+
+        // Codificar los resultados a JSON y enviarlos a la salida
+        echo json_encode($productos);
+
+
+	}
+
+
+
+
+
+
+
+
 }
 ?>
