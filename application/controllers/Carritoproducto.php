@@ -149,15 +149,15 @@ function carritoproducto_data()
 
 		if($this->uri->segment(3))
 		{
-			$idevento=$this->uri->segment(3);
+			$idcarrito=$this->uri->segment(3);
 		}else{
-			$idevento=$this->input->get('idevento');
+			$idcarrito=$this->input->get('idcarrito');
 		}
 
-	 	$data0 = $this->carritoproducto_model->carritoproductosA($idevento);
+	 	$data0 = $this->carritoproducto_model->carritoproductosA($idcarrito);
 		$data=array();
 		foreach($data0->result() as $r){
-			$data[]=array($r->idcarritoproducto,$r->elevento,$r->fecha,$r->tema,
+			$data[]=array($r->idcarrito,$r->idcarritoproducto,$r->idproducto,$r->elproducto,$r->cantidad,$r->precio,
 				$r->href='<a href="javascript:void(0);" class="btn btn-info btn-sm item_ver" data-retorno="'.site_url('carritoproducto/actual').'"   data-idcarritoproducto="'.$r->idcarritoproducto.'">Ver</a>');
 		}	
 		$output=array( "draw"=>$draw,
