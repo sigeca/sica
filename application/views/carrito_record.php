@@ -155,7 +155,7 @@ if(isset($carrito))
 
 $(document).ready(function(){
 	var idcarrito=document.getElementById("idcarrito").value;
-
+ alert(idcarrito);
 	var mytablaf= $('#mydatau').DataTable({"ajax": {url: '<?php echo site_url('carritoproducto/carritoproducto_data')?>', type: 'GET',data:{idcarrito:idcarrito}},});
 
 });
