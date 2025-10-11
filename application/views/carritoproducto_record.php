@@ -91,15 +91,15 @@ $permitir_acceso_modulo=true;
 
 
 <div class="form-group row">
-    <label class="col-md-2 col-form-label"> <?php echo anchor('unidad/actual/'.$carritoproducto['idunidad'], 'La unidad:'); ?> </label>
+    <label class="col-md-2 col-form-label"> <?php echo anchor('unidad/actual/'.$carritoproducto['idcarrito'], 'La unidad:'); ?> </label>
 	<div class="col-md-10">
      <?php 
 $options= array("NADA");
-foreach ($unidades as $row){
-	$options[$row->idunidad]= $row->nombre;
+foreach ($carritos as $row){
+	$options[$row->idcarritos]= $row->propietario;
 }
 
-echo form_input('idunidad',$options[$carritoproducto['idunidad']],array("disabled"=>"disabled",'style'=>'width:500px;')); 
+echo form_input('idcarrito',$options[$carritoproducto['idcarrito']],array("disabled"=>"disabled",'style'=>'width:500px;')); 
 		?>
 	</div> 
 </div>
