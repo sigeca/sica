@@ -28,6 +28,7 @@ class Carritoproducto extends CI_Controller{
 
 		$data['carritoproducto'] = $this->carritoproducto_model->carritoproducto($this->uri->segment(3))->row_array();
 
+		    $data['carritos']= $this->carrito_model->lista_carritos()->result();
 
 		$data['productos']= $this->producto_model->lista_productos()->result();
 		$data['personas']= $this->persona_model->lista_personas0()->result();
