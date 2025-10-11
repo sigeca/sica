@@ -77,7 +77,7 @@ $permitir_acceso_modulo=true;
     <label class="col-md-2 col-form-label"> Id Carritoproducto:</label>
 	<div class="col-md-10">
 		<?php
-      echo form_input('idcarritoproducto',$carritoproducto['idcarritocompra'],array("id"=>"idcarritoproducto","disabled"=>"disabled"));
+      echo form_input('idcarritoproducto',$carritoproducto['idcarritoproducto'],array("id"=>"idcarritoproducto","disabled"=>"disabled"));
 		?>
 	</div> 
 </div>
