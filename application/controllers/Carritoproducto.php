@@ -147,12 +147,7 @@ function carritoproducto_data()
 		$draw= intval($this->input->get("start"));
 		$draw= intval($this->input->get("length"));
 
-		if($this->uri->segment(3))
-		{
-			$idcarrito=$this->uri->segment(3);
-		}else{
 			$idcarrito=$this->input->get('idcarrito');
-		}
 
 	 	$data0 = $this->carritoproducto_model->carritoproductosA($idcarrito);
 		$data=array();
